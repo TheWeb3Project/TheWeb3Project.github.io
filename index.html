@@ -16,7 +16,8 @@
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
         <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
           <a id="logo" href="index.html" class="text-decoration-none mb-5 w-100 d-flex align-items-center ps-3 pe-2">
-            <img src="images/logotype.png" alt="logo-icon" class="col-2">
+            <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
+            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-4" style="width: 100%;">
           </a>
 
           <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
@@ -53,20 +54,17 @@
           </ul>
 
           <div class="d-flex justify-content-around w-100 px-4">
-            <a href="https://t.me/titano_finance" class="text-decoration-none text-reset fs-5 social-icon-hover">
+            <a href="https://t.me/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
               <i class="bi bi-send-fill"></i>
             </a>
-
-            <a href="https://titano.medium.com/" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-medium"></i>
-            </a>
-
-            <a href="https://twitter.com/TitanoFinance" class="text-decoration-none text-reset fs-5 social-icon-hover">
+            <a href="https://twitter.com/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
               <i class="bi bi-twitter"></i>
             </a>
-
-            <a href="https://discord.gg/titano" class="text-decoration-none text-reset fs-5 social-icon-hover">
+            <a href="https://discord.gg/crQkCE7Mn6" class="text-decoration-none text-reset fs-5 social-icon-hover">
               <i class="bi bi-discord"></i>
+            </a>
+            <a href="https://www.youtube.com/c/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
+              <i class="bi bi-youtube"></i>
             </a>
           </div>
         </div>
@@ -81,7 +79,7 @@
 
             <div class="dropdown ms-auto">
               <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
-                <i class="bi bi-info-circle-fill"></i> <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
+                <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
               </button>
 
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
@@ -90,7 +88,7 @@
               </ul>
             </div>
 
-            <button type="button" class="btn rounded-1 ms-3">
+            <button id="connect" type="button" class="btn rounded-1 ms-3">
               Connect Wallet
             </button>
           </div>
@@ -106,13 +104,13 @@
                 </div>
 
                 <div class="col mb-3">
-                  <div class="text-secondary mb-1">WEB3 Price</div>
+                  <div class="text-secondary mb-1">$WEB3 Price</div>
                   <h4 id="price" class="fw-bold">$0</h4>
                 </div>
 
                 <div class="col mb-3">
                   <div class="text-secondary mb-1">Next Rebase</div>
-                  <h4 class="fw-bold">00:00:00</h4>
+                  <h4 class="fw-bold">Wait Launch</h4>
                 </div>
 
                 <div class="col mb-3">
@@ -122,12 +120,12 @@
 
                 <div class="col mb-3">
                   <div class="text-secondary mb-1">Backed Liquidity</div>
-                  <h4 class="fw-bold">0%?</h4>
+                  <h4 class="fw-bold">Wait Launch</h4>
                 </div>
 
                 <div class="col mb-3">
-                  <div class="text-secondary mb-1">Average WEB3 Holding</div>
-                  <h4 class="fw-bold">$0?</h4>
+                  <div class="text-secondary mb-1">Average $WEB3 Holding</div>
+                  <h4 class="fw-bold">Wait Launch</h4>
                 </div>
               </div>
             </div>
@@ -138,7 +136,7 @@
               <div class="card bg-light border border-primary p-4">
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-secondary">
-                    WEB3 Price
+                    $WEB3 Price
                   </span>
 
                   <span class="text-primary border border-primary shadow rounded-pill py-2 px-3 small">
@@ -154,7 +152,7 @@
               <div class="card bg-light border border-primary p-4">
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-secondary">
-                    Market Value Of Treasury Assets
+                    The $WEB3 Treasury (TWT) Market Value
                   </span>
 
                   <span class="text-primary border border-primary shadow rounded-pill py-2 px-3 small">
@@ -186,7 +184,7 @@
               <div class="card bg-light border border-primary p-4">
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-secondary">
-                    WEB3 Trust Fund Market Value
+                    $WEB3 Trust Fund (WTF) Market Value
                   </span>
 
                   <span class="text-primary border border-primary shadow rounded-pill py-2 px-3 small">
@@ -211,7 +209,7 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@0bda38318bd1986f3e5b118a0245151e5b8a2519/js/base.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@6af511ee87aac012af28ee4c4b2bb1ff260fbfc7/js/base.js"></script>
 
   <script>
     document.getElementById("showSidebar").addEventListener("click", function () {
@@ -226,11 +224,31 @@
 
 
 
+    let balance;
+    async function doAfterConnect() {
+      displayText('#connect', SHORTADR(CURADR));
 
+      balance = await CONTS['web3'].balanceOf(CURADR);
+      balance = balance / BNBDIV;
+
+      displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
+    }
 
     let bnbPrice;
     let price;
     (async () => {
+
+      CURADR = await getCurAdr();
+      if (CURADR == null) {
+        // connect wallet button
+      } else {
+        doAfterConnect();
+        // display address
+      }
+
+      // do global
+      select('#connect')[0].onclick = async () => { await conn(); };
+
       bnbPrice = 1 / (await getPrice(ADR['busd']));
 
       let totalSupply = await CONTS['web3'].totalSupply();
