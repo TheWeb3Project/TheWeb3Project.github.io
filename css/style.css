@@ -2207,7 +2207,7 @@ progress {
   background-color: #0D0F19;
   border-color: #93f1d9;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 118, 0.25);
 }
 .form-control::-webkit-date-and-time-value {
   height: 1.5em;
@@ -2369,7 +2369,7 @@ textarea.form-control-lg {
 .form-select:focus {
   border-color: #93f1d9;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
 }
 .form-select[multiple], .form-select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -2435,7 +2435,7 @@ textarea.form-control-lg {
 .form-check-input:focus {
   border-color: #93f1d9;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
 }
 .form-check-input:checked {
   background-color: #0071bc;
@@ -2512,10 +2512,10 @@ textarea.form-control-lg {
   outline: 0;
 }
 .form-range:focus::-webkit-slider-thumb {
-  box-shadow: 0 0 0 1px #0D0F19, 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 1px #0D0F19, 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
 }
 .form-range:focus::-moz-range-thumb {
-  box-shadow: 0 0 0 1px #0D0F19, 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 1px #0D0F19, 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
 }
 .form-range::-moz-focus-outer {
   border: 0;
@@ -2921,7 +2921,7 @@ textarea.form-control-lg {
 }
 .btn-check:focus + .btn, .btn:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
 }
 .btn:disabled, .btn.disabled, fieldset:disabled .btn {
   pointer-events: none;
@@ -3178,7 +3178,7 @@ textarea.form-control-lg {
   border-color: #0071bc;
 }
 .btn-check:focus + .btn-outline-primary, .btn-outline-primary:focus {
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.5);
 }
 .btn-check:checked + .btn-outline-primary, .btn-check:active + .btn-outline-primary, .btn-outline-primary:active, .btn-outline-primary.active, .btn-outline-primary.dropdown-toggle.show {
   color: #000;
@@ -3186,7 +3186,7 @@ textarea.form-control-lg {
   border-color: #0071bc;
 }
 .btn-check:checked + .btn-outline-primary:focus, .btn-check:active + .btn-outline-primary:focus, .btn-outline-primary:active:focus, .btn-outline-primary.active:focus, .btn-outline-primary.dropdown-toggle.show:focus {
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.5);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.5);
 }
 .btn-outline-primary:disabled, .btn-outline-primary.disabled {
   color: #0071bc;
@@ -4620,7 +4620,7 @@ textarea.form-control-lg {
   z-index: 3;
   border-color: #93f1d9;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
 }
 
 .accordion-header {
@@ -4729,7 +4729,7 @@ textarea.form-control-lg {
   color: #1eb58f;
   background-color: #e9ecef;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
 }
 
 .page-item:not(:first-child) .page-link {
@@ -5304,7 +5304,7 @@ textarea.form-control-lg {
 }
 .btn-close:focus {
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(38, 226, 179, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(0, 113, 188, 0.25);
   opacity: 1;
 }
 .btn-close:disabled, .btn-close.disabled {
@@ -11125,7 +11125,7 @@ textarea.form-control-lg {
   }
 }
 body {
-  background-image: url(https://dashboard.theweb3project.com/bg.jpg);
+  background-image: url(../images/background.png);
   background-repeat: no-repeat;
   background-position: center top;
   background-size: cover;
@@ -11141,7 +11141,7 @@ body {
   font-weight: 600;
 }
 #titano-finance .border-primary {
-  border-color: rgba(38, 226, 179, 0.1) !important;
+  border-color: rgba(0, 113, 188, 0.1) !important;
 }
 #titano-finance .border-secondary {
   border-color: rgba(208, 220, 232, 0.4) !important;
@@ -11185,7 +11185,7 @@ body {
   color: #0071bc;
 }
 #titano-finance #sidebar-nav li.active {
-  border: 1px solid rgba(38, 226, 179, 0.1);
+  border: 1px solid rgba(0, 113, 188, 0.1);
   background-color: #121520;
   box-shadow: 0.6rem 0.5rem 1rem rgba(0, 0, 0, 0.5);
   color: #0071bc;

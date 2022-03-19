@@ -3,7 +3,7 @@
 $body-bg : #0D0F19;
 $body-color: #e7dfdf;
 $font-family-sans-serif: 'Montserrat', sans-serif;
-$primary: #26e2b3;
+$primary: #0071bc;
 $secondary: rgba(208, 220, 232, 0.698);
 $light: #121520;
 $border-radius-lg: 2rem;
@@ -12,7 +12,7 @@ $border-radius-sm: 0.6rem;
 $box-shadow: 0.6rem .5rem 1rem rgba(#000000, 0.5);
 
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import url("../node_modules/bootstrap-icons/font/bootstrap-icons.css");
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css");
 
 body {
     background-image: url(../images/background.png);
