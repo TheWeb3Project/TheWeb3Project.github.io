@@ -254,7 +254,41 @@
         // display address
       }
 
+      // do global
       select('#connect')[0].onclick = async () => { await conn(); };
+
+      bnbPrice = 1 / (await getPrice(ADR['busd']));
+
+      let totalSupply = await CONTS['web3'].totalSupply();
+      totalSupply = totalSupply / BNBDIV;
+      let blackHoleBalance = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
+      blackHoleBalance = blackHoleBalance / BNBDIV;
+
+      let circulatingSupply = totalSupply - blackHoleBalance;
+
+
+      let trustFundBalance = await getBalance("0xe7F0704b198585B8777abe859C3126f57eB8C989");
+      trustFundBalance = trustFundBalance / BNBDIV;
+      let treasuryBalance = await getBalance("0xe710D22dcf97779EE598085d96B5DF60aA382f6B");
+      treasuryBalance = treasuryBalance / BNBDIV;
+      let presaleBalance = await getBalance("0x8ABC3Be97Eb5C0ea271DB82694483Fd20b9ac281");
+      presaleBalance = presaleBalance / BNBDIV;
+
+      let liqBnb = presaleBalance * 0.6;
+      let liqWeb3 = 9000;
+      let liqRate = liqBnb / liqWeb3; // 15000 * 0.6 = 9000
+      price = liqRate * bnbPrice;
+      let mcap = price * totalSupply;
+
+      displayText("#mcap", `$${COMMA(ROUND(mcap, 3))}`);
+      displayText("#price", `$${COMMA(ROUND(price, 3))}`);
+
+      displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
+
+      displayText("#treasury", `$${COMMA(ROUND(treasuryBalance * bnbPrice, 3))}`);
+
+      displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 3))}`);
+      displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance * bnbPrice, 3))}`);
 
       // do global
 
