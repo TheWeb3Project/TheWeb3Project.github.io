@@ -174,20 +174,20 @@
 
               <div class="row justify-centent-between mt-4">
                 <div class="mt-2 col">
-                  Next Rebase Reward Amount
+                  Next 1 hour Reward Amount
                 </div>
 
-                <div id="nextRebaseReward" class="mt-2 col-auto">
+                <div id="nexthourReward" class="mt-2 col-auto">
                   0.000 $WEB3
                 </div>
               </div>
 
               <div class="row justify-centent-between mt-4">
                 <div class="mt-2 col">
-                  Next Reward Amount USD
+                  Next 1 hour Reward Amount USD
                 </div>
 
-                <div id="nextrebaseRewardInUsd" class="mt-2 col-auto text-primary">
+                <div id="nexthourRewardInUsd" class="mt-2 col-auto text-primary">
                   $0.000
                 </div>
               </div>
@@ -252,7 +252,7 @@
 
 
     let bnbPrice;
-    
+
     let balance;
     async function doAfterConnect() {
       displayText('#connect', SHORTADR(CURADR));
@@ -271,11 +271,15 @@
 
       let rebaseRate = 0.00000079;
       displayText("#nextRebaseReward", `${COMMA(ROUND(balance * rebaseRate, 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `${COMMA(ROUND(balance * rebaseRate * bnbPrice, 3))} $WEB3`);
+      displayText("#nextRebaseRewardInUsd", `$${COMMA(ROUND(balance * rebaseRate * bnbPrice, 3))}`);
+
+      let hourRate = 0.0009484491193146;
+      displayText("#nexthourReward", `${COMMA(ROUND(balance * hourRate, 3))} $WEB3`);
+      displayText("#nexthourRewardInUsd", `$${COMMA(ROUND(balance * hourRate * bnbPrice, 3))}`);
 
       let MonthRate = 0.978936799350339;
       displayText("#nextRebaseReward", `${COMMA(ROUND(balance * MonthRate, 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `${COMMA(ROUND(balance * MonthRate * bnbPrice, 3))} $WEB3`);
+      displayText("#nextRebaseRewardInUsd", `$${COMMA(ROUND(balance * MonthRate * bnbPrice, 3))}`);
     }
 
     
