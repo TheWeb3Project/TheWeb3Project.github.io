@@ -259,10 +259,9 @@
       displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
     }
 
-    // async function runManualRebase() {
-    //   SEND_TX('web3', 'manualRebase', [], 0)
-    //   await CONTS['web3'].manualRebase();
-    // }
+    async function runManualRebase() {
+      await SEND_TX('web3', 'manualRebase', []);
+    }
 
     let bnbPrice;
     let price;
@@ -295,8 +294,8 @@
       treasuryBalance = treasuryBalance / BNBDIV;
 
       let liqReserves = await CONTS['pair'].getReserves();
-      let liqBnb = liqReserves[1]; 
-      let liqWeb3 = liqReserves[0];
+      let liqBnb = liqReserves[1] / BNBDIV; 
+      let liqWeb3 = liqReserves[0] / BNBDIV;
       let liqRate = liqBnb / liqWeb3;
       price = liqRate * bnbPrice;
       let mcap = price * totalSupply;
