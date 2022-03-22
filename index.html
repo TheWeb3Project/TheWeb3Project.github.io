@@ -354,7 +354,8 @@
 
       let liqReserves = await CONTS['pair'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
-      displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 0))}`);
+      // displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 0))}`);
+      displayText("#liquidity", `After Launch`);
       displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance) / liqBnb * 100, 0))}%`);
 
       let liqWeb3 = liqReserves[0] / BNBDIV;
