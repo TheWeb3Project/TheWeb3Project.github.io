@@ -379,7 +379,7 @@
       let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
       lastRebaseBlock = INT(lastRebaseBlock);
       let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
-      console.log(lastRebaseBlock, curBlock, lastRebaseTime);
+      displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
       select('#rebase')[0].onclick = async () => { await runManualRebase(); };
 
     })();
