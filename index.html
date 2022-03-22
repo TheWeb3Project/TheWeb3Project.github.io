@@ -375,6 +375,7 @@
       let curBlock = await PROVIDER.getBlock();
       curBlock = curBlock['number'];
       let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
+      console.log(lastRebaseBlock, curBlock);
       select('#rebase')[0].onclick = async () => { await runManualRebase(); };
 
     })();

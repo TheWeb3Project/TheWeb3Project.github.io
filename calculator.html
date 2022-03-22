@@ -273,7 +273,7 @@
       balance = await CONTS['web3'].balanceOf(CURADR);
       balance = balance / BNBDIV;
 
-      displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
+      displayText("#balance", `${COMMA(ROUND(balance, 3))}`);
     }
 
     let bnbPrice;
