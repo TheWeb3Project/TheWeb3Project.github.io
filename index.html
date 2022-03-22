@@ -284,12 +284,11 @@
       trustFundBalance = trustFundBalance / BNBDIV;
       let treasuryBalance = await getBalance("0xe710D22dcf97779EE598085d96B5DF60aA382f6B");
       treasuryBalance = treasuryBalance / BNBDIV;
-      let presaleBalance = await getBalance("0x8ABC3Be97Eb5C0ea271DB82694483Fd20b9ac281");
-      presaleBalance = presaleBalance / BNBDIV;
 
-      let liqBnb = presaleBalance * 0.6;
-      let liqWeb3 = 9000;
-      let liqRate = liqBnb / liqWeb3; // 15000 * 0.6 = 9000
+      let liqReserves = await CONTS['pair'].getReserves();
+      let liqBnb = liqReserves[1]; 
+      let liqWeb3 = liqReserves[0];
+      let liqRate = liqBnb / liqWeb3;
       price = liqRate * bnbPrice;
       let mcap = price * totalSupply;
 
