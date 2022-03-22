@@ -215,6 +215,10 @@
                 <h3 id="trustFund">$0</h3>
               </div>
             </div>
+            <button id="rebase" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
+              <span class="fw-medium ms-1">MANUAL REBASE</span>
+              <span id="lastRebase"></span>
+            </button>
           </div>
         </div>
       </main>
@@ -230,7 +234,7 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@6af511ee87aac012af28ee4c4b2bb1ff260fbfc7/js/base.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@11783f40aad3970e5b3ed7d4ab3d8c0fd46a5664/js/base.js"></script>
 
   <script>
     document.getElementById("showSidebar").addEventListener("click", function () {
@@ -254,6 +258,11 @@
 
       displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
     }
+
+    // async function runManualRebase() {
+    //   SEND_TX('web3', 'manualRebase', [], 0)
+    //   await CONTS['web3'].manualRebase();
+    // }
 
     let bnbPrice;
     let price;
@@ -301,6 +310,9 @@
 
       displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 3))}`);
       displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance * bnbPrice, 3))}`);
+
+      // manual rebase
+      select('#rebase')[0].onclick = async () => { await runManualRebase(); };
     })();
 
 
