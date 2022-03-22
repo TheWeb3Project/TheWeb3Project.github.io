@@ -146,16 +146,16 @@
                 <div class="col-sm-6">
                   <div class="p-4">
                     <span class="text-secondary">Next Rebase:</span>
-                    <h4 class="fw-bold my-2">After Launch</h4>
+                    <h4 class="fw-bold my-2">Every 3 Seconds</h4>
                     <span class="text-secondary">Interest Coming In Your Wallet</span>
                   </div>
                 </div>
 
                 <div class="col-sm-6">
                   <div class="card bg-light border border-primary p-4">
-                    <span class="text-secondary">Your Earnings/Daily</span>
-                    <h4 class="fw-bold my-2">After Launch</h4>
-                    <span class="text-secondary">0.000 $WEB3</span>
+                    <span class="text-secondary">Your Earnings / Daily</span>
+                    <h4 id="nextDailyRewardInUsd" class="fw-bold my-2">$0.000</h4>
+                    <span id="nextDailyReward" class="text-secondary">0.000 $WEB3</span>
                   </div>
                 </div>
               </div>
@@ -174,11 +174,11 @@
 
               <div class="row justify-centent-between mt-4">
                 <div class="mt-2 col">
-                  Next Reward Amount
+                  Next Rebase Reward Amount
                 </div>
 
-                <div class="mt-2 col-auto">
-                  After Launch
+                <div id="nextRebaseReward" class="mt-2 col-auto">
+                  0.000 $WEB3
                 </div>
               </div>
 
@@ -187,8 +187,8 @@
                   Next Reward Amount USD
                 </div>
 
-                <div class="mt-2 col-auto text-primary">
-                  After Launch
+                <div id="nextrebaseRewardInUsd" class="mt-2 col-auto text-primary">
+                  $0.000
                 </div>
               </div>
 
@@ -207,8 +207,8 @@
                   ROI (30-Day Rate)
                 </div>
 
-                <div class="mt-2 col-auto text-primary">
-                  After Launch
+                <div id="nextMonthReward" class="mt-2 col-auto text-primary">
+                  0.000 $WEB3
                 </div>
               </div>
 
@@ -217,8 +217,8 @@
                   ROI (30-Day Rate) USD
                 </div>
 
-                <div class="mt-2 col-auto text-primary">
-                  After Launch
+                <div id="nextMonthRewardInUsd" class="mt-2 col-auto text-primary">
+                  $0.000
                 </div>
               </div>
             </div>
@@ -260,6 +260,19 @@
       balance = balance / BNBDIV;
 
       displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
+      displayText("#balanceInUsd", `$${COMMA(ROUND(balance * bnbPrice, 3))}`);
+      
+      let dailyRate = 0.0230127917189176;
+      displayText("#nextDailyReward", `${COMMA(ROUND(balance * dailyRate, 3))} $WEB3`);
+      displayText("#nextDailyRewardInUsd", `$${COMMA(ROUND(balance * dailyRate * bnbPrice, 3))}`);
+
+      let rebaseRate = 0.00000079;
+      displayText("#nextRebaseReward", `${COMMA(ROUND(balance * rebaseRate, 3))} $WEB3`);
+      displayText("#nextRebaseRewardInUsd", `${COMMA(ROUND(balance * rebaseRate * bnbPrice, 3))} $WEB3`);
+
+      let MonthRate = 0.978936799350339;
+      displayText("#nextRebaseReward", `${COMMA(ROUND(balance * MonthRate, 3))} $WEB3`);
+      displayText("#nextRebaseRewardInUsd", `${COMMA(ROUND(balance * MonthRate * bnbPrice, 3))} $WEB3`);
     }
 
     let bnbPrice;
