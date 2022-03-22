@@ -386,7 +386,7 @@
 
       displayText("#curWealth", `$${COMMA(ROUND(futInvest * (1 + totalRate), 3))}`);
 
-      displayText("#rewardsEsti", `${COMMA(ROUND(amount * (totalRate), 3))} WEB3`);
+      displayText("#rewardsEsti", `${COMMA(ROUND(amount * totalRate, 3))}`);
 
       displayText("#potenReturn", `$${COMMA(ROUND(futInvest * totalRate, 3))}`);
 
