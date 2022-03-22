@@ -217,7 +217,7 @@
             </div>
             <button id="rebase" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
               <span class="fw-medium ms-1">MANUAL REBASE</span>
-              <span id="lastRebase"></span>
+              <span id="lastRebase">0</span>
             </button>
           </div>
         </div>
@@ -234,7 +234,7 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@1c829c2c4f571abbf822c780cc62abf5ad4587bd/js/base.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@254e2c017893c9ee422cc580d838cef13a0ae3bc/js/base.js"></script>
 
   <script>
     document.getElementById("showSidebar").addEventListener("click", function () {
@@ -368,8 +368,13 @@
 
       let mcap = price * totalSupply;
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
+      
+      _lastRebaseBlock = block.number;
 
       // manual rebase
+      let curBlock = await PROVIDER.getBlock();
+      curBlock = curBlock['number'];
+      let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
       select('#rebase')[0].onclick = async () => { await runManualRebase(); };
 
     })();
