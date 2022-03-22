@@ -247,7 +247,61 @@
       document.getElementById("overlay").style.display = "none"
     });
 
+    async function GAS(name, method, args, value=null) {
+      if (value != null) {
+        const overrides = {
+          value: BIG(value),
+        };
+      }
+    
+      try {
+        if (value != null) {
+          let result = await SIGNS[name].estimateGas[method](...args, overrides);
+        } else {
+          let result = await SIGNS[name].estimateGas[method](...args);
+        }
+        console.log('result', result);
+        return [ false, result ];
+      } catch (err) {
+        err = await ERR(err);
+        return [ true, err ];
+      }
+    }
+    
+    async function SEND_TX(name, method, args, value=null, check=true) {
+      if (value != null) {
+        const overrides = {
+          value: BIG(value),
+        };
+      }
 
+      if (check == true) {
+        let { res, data } = await GAS(name, method, args, value);
+        if (res == true) {
+          console.log(res);
+          return [ true, data ];
+        } 
+    
+        // use gas result
+        console.log(res, data);
+      }
+
+      try {
+        if (value != null) {
+          let result = await SIGNS[name][method](...args, overrides);
+        } else {
+          let result = await SIGNS[name][method](...args);
+        }
+        console.log('result', result);
+        return [ false, result ];
+        /* console.log(tx.hash); */
+        // wait()
+        // receipt.events
+      } catch (err) {
+        err = await ERR(err);
+        return [ true, err ];
+      }
+    }
 
     let balance;
     async function doAfterConnect() {
