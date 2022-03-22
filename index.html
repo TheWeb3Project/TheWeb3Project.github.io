@@ -271,7 +271,7 @@
     }
     
     async function SEND_TX(name, method, args, value=null, check=true) {
-      let overrides;
+      let overrides = {};
       if (value != null) {
         overrides = {
           value: BIG(value),
@@ -286,7 +286,8 @@
         } 
     
         // use gas result
-        console.log(res, data);
+        console.log(res, INT(data));
+        overrides['gasLimit'] = INT(data * 1.3);
       }
 
       try {
@@ -379,6 +380,7 @@
       let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
       lastRebaseBlock = INT(lastRebaseBlock);
       let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
+      let gasEstimation = (await GAS('web3', 'manualRebase', []))[1]
       displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
       select('#rebase')[0].onclick = async () => { await runManualRebase(); };
 
