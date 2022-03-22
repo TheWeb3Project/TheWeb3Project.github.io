@@ -352,11 +352,13 @@
       treasuryBalance = treasuryBalance / BNBDIV;
       displayText("#treasury", `$${COMMA(ROUND(treasuryBalance * bnbPrice, 3))}`);
 
+      let marketingBalance = await getBalance("0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175");
+      marketingBalance = marketingBalance / BNBDIV;
+
       let liqReserves = await CONTS['pair'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
-      // displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 0))}`);
-      displayText("#liquidity", `After Launch`);
-      displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance) / liqBnb * 100, 0))}%`);
+      displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 0))}`);
+      displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance + marketingBalance) / liqBnb * 100, 0))}%`);
 
       let liqWeb3 = liqReserves[0] / BNBDIV;
       let liqRate = liqBnb / liqWeb3;
