@@ -194,11 +194,11 @@
 
               <div class="row justify-centent-between mt-4">
                 <div class="mt-2 col">
-                  Next Reward Yield
+                  Next 1 hour Reward Yield
                 </div>
 
                 <div class="mt-2 col-auto">
-                  0.000079%
+                  0.094844%
                 </div>
               </div>
 
@@ -278,8 +278,8 @@
       displayText("#nexthourRewardInUsd", `$${COMMA(ROUND(balance * hourRate * bnbPrice, 3))}`);
 
       let MonthRate = 0.978936799350339;
-      displayText("#nextRebaseReward", `${COMMA(ROUND(balance * MonthRate, 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `$${COMMA(ROUND(balance * MonthRate * bnbPrice, 3))}`);
+      displayText("#nextMonthReward", `${COMMA(ROUND(balance * MonthRate, 3))} $WEB3`);
+      displayText("#nextMonthRewardInUsd", `$${COMMA(ROUND(balance * MonthRate * bnbPrice, 3))}`);
     }
 
     
