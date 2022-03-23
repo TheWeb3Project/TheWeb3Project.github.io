@@ -249,7 +249,7 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@3eabe7c82e0d59cf1fa403c91541fc0135ad1421/js/base.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@6e9b3af4bea9c4489de588e38459c501c0e869fe/js/base.js"></script>
   <script>
     document.getElementById("showSidebar").addEventListener("click", function () {
       document.getElementById("sidebarContainer").classList.add("show");
@@ -279,15 +279,6 @@
     let bnbPrice;
     let price;
     (async () => {
-      
-      CURADR = await getCurAdr();
-      if (CURADR == null) {
-        // connect wallet button
-      } else {
-        doAfterConnect();
-        // display address
-      }
-
 
       // do global
       select('#connect')[0].onclick = async () => { await conn(); };
@@ -346,7 +337,16 @@
       select('#setCurToFutPrice')[0].onclick = async () => {
         select('#futPrice')[0].value = ROUND(price, 3);
       };
+      
 
+      CURADR = await getCurAdr();
+      if (CURADR == null) {
+        // connect wallet button
+      } else {
+        doAfterConnect();
+        // display address
+      }
+      
       if (CURADR == null) {
         return;
       }

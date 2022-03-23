@@ -237,7 +237,7 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@3eabe7c82e0d59cf1fa403c91541fc0135ad1421/js/base.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets@6e9b3af4bea9c4489de588e38459c501c0e869fe/js/base.js"></script>
 
   <script>
     document.getElementById("showSidebar").addEventListener("click", function () {
@@ -285,15 +285,6 @@
     
     let price;
     (async () => {
-
-      CURADR = await getCurAdr();
-      if (CURADR == null) {
-        // connect wallet button
-      } else {
-        doAfterConnect();
-        // display address
-      }
-
       // do global
       select('#connect')[0].onclick = async () => { await conn(); };
 
@@ -335,9 +326,17 @@
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
 
       // do global
-
+      
       let apy = 404092.65;
       displayText("#apy", `${COMMA(ROUND(apy, 2))}%`);
+
+      CURADR = await getCurAdr();
+      if (CURADR == null) {
+        // connect wallet button
+      } else {
+        doAfterConnect();
+        // display address
+      }
     })();
 
 
