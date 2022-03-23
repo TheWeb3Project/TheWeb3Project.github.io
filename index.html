@@ -389,9 +389,10 @@
       res = gasEstimation[0];
       if (res == true) {
         return;
+      } else {
+        gasEstimation = gasEstimation[1];
+        displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
       }
-      gasEstimation = gasEstimation[1];
-      displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
     })();
 
 
