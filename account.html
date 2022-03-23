@@ -263,23 +263,23 @@
       bnbPrice = 1 / (await getPrice(ADR['busd']));
 
       displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
-      displayText("#balanceInUsd", `$${COMMA(ROUND(balance * bnbPrice, 3))}`);
+      displayText("#balanceInUsd", `$${COMMA(ROUND(balance * price, 3))}`);
       
       let dailyRate = 0.0230127917189176;
       displayText("#nextDailyReward", `${COMMA(ROUND(balance * dailyRate, 3))} $WEB3`);
-      displayText("#nextDailyRewardInUsd", `$${COMMA(ROUND(balance * dailyRate * bnbPrice, 3))}`);
+      displayText("#nextDailyRewardInUsd", `$${COMMA(ROUND(balance * dailyRate * price, 3))}`);
 
       let rebaseRate = 0.00000079;
       displayText("#nextRebaseReward", `${COMMA(ROUND(balance * rebaseRate, 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `$${COMMA(ROUND(balance * rebaseRate * bnbPrice, 3))}`);
+      displayText("#nextRebaseRewardInUsd", `$${COMMA(ROUND(balance * rebaseRate * price, 3))}`);
 
       let hourRate = 0.0009484491193146;
       displayText("#nexthourReward", `${COMMA(ROUND(balance * hourRate, 3))} $WEB3`);
-      displayText("#nexthourRewardInUsd", `$${COMMA(ROUND(balance * hourRate * bnbPrice, 3))}`);
+      displayText("#nexthourRewardInUsd", `$${COMMA(ROUND(balance * hourRate * price, 3))}`);
 
       let MonthRate = 0.978936799350339;
       displayText("#nextMonthReward", `${COMMA(ROUND(balance * MonthRate, 3))} $WEB3`);
-      displayText("#nextMonthRewardInUsd", `$${COMMA(ROUND(balance * MonthRate * bnbPrice, 3))}`);
+      displayText("#nextMonthRewardInUsd", `$${COMMA(ROUND(balance * MonthRate * price, 3))}`);
     }
 
     
