@@ -385,7 +385,12 @@
         // display address
       }
 
-      let gasEstimation = (await GAS('web3', 'manualRebase', []))[1];
+      let gasEstimation = (await GAS('web3', 'manualRebase', []));
+      res = gasEstimation[0];
+      if (res == true) {
+        return;
+      }
+      gasEstimation = gasEstimation[1];
       displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
     })();
 
