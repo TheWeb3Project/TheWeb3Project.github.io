@@ -343,7 +343,7 @@
       let amount = BigInt(0);
       let txLogs;
       for (var idx = 0; idx < 1000; idx++) {
-          console.log('Getting Updates', idx);
+          displayText("#totalEarned", "Getting Updates.. ", idx);
           let startBlock = STARTBLOCK + 5000 * idx;
           let endBlock = STARTBLOCK + 5000 * idx + 5000;
           if (CURBLOCK < endBlock) {
@@ -384,9 +384,6 @@
 
       let totalEarned = balance - amount; // little precision
       let earnRate = totalEarned / balance * 100;
-      console.log(balance, amount, earnRate);
-      console.log(`${COMMA(ROUND(totalEarned, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
-      console.log(`$${COMMA(ROUND(totalEarned * price, 3))}`);
       displayText("#totalEarned", `${COMMA(ROUND(totalEarned, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
       displayText("#totalEarnedInUsd", `$${COMMA(ROUND(totalEarned * price, 3))}`);
       
