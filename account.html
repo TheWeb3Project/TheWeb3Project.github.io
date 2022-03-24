@@ -342,8 +342,9 @@
       let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
       let amount = BigInt(0);
       let txLogs;
-      for (var idx = 0; idx < 1000; idx++) {
-          displayText("#totalEarned", `Getting Updates.. ${idx}`);
+      let n = INT((CURBLOCK - STARTBLOCK) / 5000);
+      for (var idx = 0; idx < n; idx++) {
+          displayText("#totalEarned", `Getting Updates.. ${ROUND(idx / n * 100, 1)}%`);
           let startBlock = STARTBLOCK + 5000 * idx;
           let endBlock = STARTBLOCK + 5000 * idx + 5000;
           if (CURBLOCK < endBlock) {
