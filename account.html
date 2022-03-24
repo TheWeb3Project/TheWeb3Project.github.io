@@ -115,11 +115,11 @@
 
         <div class="container pt-3">
           <div class="col-xl-8 mx-auto">
-            <div class="card bg-light border border-primary p-4 mt-5">
+            <!-- <div class="card bg-light border border-primary p-4 mt-5">
               <span class="text-secondary">Total Earned</span>
               <h1 id="totalEarnedInUsd" class="text-primary fw-bold my-2">$0.000</h1>
               <span id="totalEarned" class="text-secondary">0.000 $WEB3 (+0.000%)</span>
-            </div>
+            </div> -->
 
             <div class="card bg-light border border-primary mt-5">
               <div class="row">
@@ -383,6 +383,8 @@
 
       let totalEarned = INT(balance) - INT(amount); // little precision
       let earnRate = totalEarned / balance * 100;
+      console.log(`${COMMA(ROUND(totalEarned / BNBDIV, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
+      console.log(`$${COMMA(ROUND(totalEarned / BNBDIV * price, 3))}`);
       displayText("#totalEarned", `${COMMA(ROUND(totalEarned / BNBDIV, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
       displayText("#totalEarnedInUsd", `$${COMMA(ROUND(totalEarned / BNBDIV * price, 3))}`);
       
