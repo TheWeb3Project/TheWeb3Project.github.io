@@ -115,11 +115,11 @@
 
         <div class="container pt-3">
           <div class="col-xl-8 mx-auto">
-            <!-- <div class="card bg-light border border-primary p-4 mt-5">
+            <div class="card bg-light border border-primary p-4 mt-5">
               <span class="text-secondary">Total Earned</span>
-              <h1 id="totalEarnedInUsd" class="text-primary fw-bold my-2">After Launch</h1>
+              <h1 id="totalEarnedInUsd" class="text-primary fw-bold my-2">$0.000</h1>
               <span id="totalEarned" class="text-secondary">0.000 $WEB3 (+0.000%)</span>
-            </div> -->
+            </div>
 
             <div class="card bg-light border border-primary mt-5">
               <div class="row">
@@ -337,9 +337,61 @@
         doAfterConnect();
         // display address
       }
+
+      let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
+      let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
+      let amount = BigInt(0);
+      let txLogs;
+      for (var idx = 0; idx < 1000; idx++) {
+          console.log('Getting Updates', idx);
+          let startBlock = STARTBLOCK + 5000 * idx;
+          let endBlock = STARTBLOCK + 5000 * idx + 5000;
+          if (CURBLOCK < endBlock) {
+              endBlock = CURBLOCK;
+          }
+
+          for (var idy = 0; idy < 10; idy++) {
+              try {
+                  txLogs = await CONTS['web3'].queryFilter(buyFilter, startBlock, endBlock);
+                  break;
+              } catch {
+                  DELAY(1);
+              }
+          }
+          for (var idy = 0; idy < txLogs.length; idy++) {
+              let data = txLogs[idy]['data'];
+              amount += BigInt(data);
+          }
+          
+          for (var idy = 0; idy < 10; idy++) {
+              try {
+                  txLogs = await CONTS['web3'].queryFilter(sellFilter, startBlock, endBlock);
+                  break;
+              } catch {
+                  DELAY(1);
+              }
+          }
+          for (var idy = 0; idy < txLogs.length; idy++) {
+              let data = txLogs[idy]['data'];
+              amount -= BigInt(data);
+          }
+
+          if (endBlock == CURBLOCK) {
+              break;
+          }
+      }
+
+      let totalEarned = INT(balance) - INT(amount); // little precision
+      let earnRate = totalEarned / balance * 100;
+      displayText("#totalEarned", `${COMMA(ROUND(totalEarned / BNBDIV, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
+      displayText("#totalEarnedInUsd", `$${COMMA(ROUND(totalEarned / BNBDIV * price, 3))}`);
+      
+
     })();
 
-
+    (async () => {
+      
+    })();
   </script>
 </body>
 </html>
