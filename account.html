@@ -380,14 +380,15 @@
               break;
           }
       }
+      amount = INT(amount) / BNBDIV;
 
-      let totalEarned = INT(balance) - INT(amount); // little precision
+      let totalEarned = balance - INT(amount); // little precision
       let earnRate = totalEarned / balance * 100;
       console.log(balance, amount, earnRate);
-      console.log(`${COMMA(ROUND(totalEarned / BNBDIV, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
-      console.log(`$${COMMA(ROUND(totalEarned / BNBDIV * price, 3))}`);
-      displayText("#totalEarned", `${COMMA(ROUND(totalEarned / BNBDIV, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
-      displayText("#totalEarnedInUsd", `$${COMMA(ROUND(totalEarned / BNBDIV * price, 3))}`);
+      console.log(`${COMMA(ROUND(totalEarned, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
+      console.log(`$${COMMA(ROUND(totalEarned * price, 3))}`);
+      displayText("#totalEarned", `${COMMA(ROUND(totalEarned, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
+      displayText("#totalEarnedInUsd", `$${COMMA(ROUND(totalEarned * price, 3))}`);
       
 
     })();
