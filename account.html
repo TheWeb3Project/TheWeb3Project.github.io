@@ -382,7 +382,7 @@
       }
       amount = INT(amount) / BNBDIV;
 
-      let totalEarned = balance - INT(amount); // little precision
+      let totalEarned = balance - amount; // little precision
       let earnRate = totalEarned / balance * 100;
       console.log(balance, amount, earnRate);
       console.log(`${COMMA(ROUND(totalEarned, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
