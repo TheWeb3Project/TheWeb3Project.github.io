@@ -26,7 +26,7 @@ if (window.ethereum) {
 } else {
   PROVIDER = new ethers.providers.JsonRpcProvider("https://bsc-dataseed.binance.org", {name: 'binance', 'chainId': 56});
 }
-const SIGNER = PROVIDER.getSigner();
+const SIGNER =  PROVIDER.getSigner();
 
 
 const ADRS = {};
@@ -364,7 +364,7 @@ async function conn() {
     await handleAccountsChanged(accounts);
     await doAfterConnect();
   } catch (err) {
-  	
+  	console.log(err);
     if (err == 'ReferenceError: ethereum is not defined') {
       alert('Use Dapp to connect wallet!');
       return;
