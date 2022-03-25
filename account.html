@@ -331,13 +331,16 @@
       displayText("#apy", `${COMMA(ROUND(apy, 2))}%`);
 
       CURADR = await getCurAdr();
+
       if (CURADR == null) {
         // connect wallet button
-      } else {
-        doAfterConnect();
-        // display address
+        displayText("#totalEarnedInUsd", `Connect Wallet`);
+        return;
       }
-
+			// make these in the do after connect
+      doAfterConnect();
+        // display address
+			
       let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
       let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
       let amount = BigInt(0);
