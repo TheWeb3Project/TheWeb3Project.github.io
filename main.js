@@ -219,5 +219,6 @@ function saveCapture(url) {
     a.remove();
 }
 
+console.log(document.querySelectorAll('.output-img img'));
 showOutputImage();
 setTimeout(showOutputImage, 1000);
