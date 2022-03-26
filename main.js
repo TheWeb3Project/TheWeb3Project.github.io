@@ -165,20 +165,22 @@ function showOutputImage() {
         .then(b64 => document.querySelector('img#combined-output-img').src = b64); */
 
         let resEle = document.querySelector("canvas#combined-output-img");
-        setTimeout(function() {
-            var context = resEle.getContext("2d");
-            resEle.width = imgs[0].width;
-            resEle.height = imgs[0].height;
-            context.drawImage(imgs[8], 0, 0);
-            context.drawImage(imgs[7], 0, 0);
-            context.drawImage(imgs[6], 0, 0);
-            context.drawImage(imgs[5], 0, 0);
-            context.drawImage(imgs[4], 0, 0);
-            context.drawImage(imgs[3], 0, 0);
-            context.drawImage(imgs[2], 0, 0);
-            context.drawImage(imgs[1], 0, 0);
-            context.drawImage(imgs[0], 0, 0);
-        }, 100);
+        if (resEle != null) {
+            setTimeout(function() {
+                var context = resEle.getContext("2d");
+                resEle.width = imgs[0].width;
+                resEle.height = imgs[0].height;
+                context.drawImage(imgs[8], 0, 0);
+                context.drawImage(imgs[7], 0, 0);
+                context.drawImage(imgs[6], 0, 0);
+                context.drawImage(imgs[5], 0, 0);
+                context.drawImage(imgs[4], 0, 0);
+                context.drawImage(imgs[3], 0, 0);
+                context.drawImage(imgs[2], 0, 0);
+                context.drawImage(imgs[1], 0, 0);
+                context.drawImage(imgs[0], 0, 0);
+            }, 100);
+        }
     }
     catch(e) {
         console.log(e);
