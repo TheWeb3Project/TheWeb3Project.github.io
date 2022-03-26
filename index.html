@@ -323,7 +323,7 @@
         // display address
       }
 
-      let [res, data] = (await GAS('web3', 'manualRebase', []));
+      let [res, data] = await GAS('web3', 'manualRebase', []);
       if (res == true) {
         return;
       } else {
