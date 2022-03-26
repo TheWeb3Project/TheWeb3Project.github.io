@@ -222,4 +222,4 @@ function saveCapture(url) {
 
 console.log(document.querySelectorAll('.output-img img'));
 showOutputImage();
-setTimeout(showOutputImage, 1000);
+setTimeout(showOutputImage, 3000);
