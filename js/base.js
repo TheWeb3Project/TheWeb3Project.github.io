@@ -392,6 +392,42 @@ function handleChainChanged(_chainId) {
 
 ////////////////////////////////// tx
 
+async function ERR(err) {
+  let result = err;
+
+  if (!('code' in err)) {
+    console.log('no code', err);
+    return result;
+  }
+
+  if (err['code'] == -32603) {
+    if (!('data' in err)) {
+      console.log('no data', err);
+      return result;
+    }
+
+    let data = err['data'];
+    if (!('code' in data)) {
+      console.log('no code data', err);
+      return result;
+    }
+
+    if (data['code'] == 3) {
+      msg = data['message'];
+      result = msg;
+      return result;
+    }
+
+    if (data['code'] == -32000) {
+      msg = data['message'];
+      result = msg;
+      return result;
+    }
+  }
+
+  return result;
+}
+
 async function SIGN(name, msg, bin=false) {
 	if (bin == true) {
   	msg = ethers.utils.arrayify(msg);
@@ -436,43 +472,7 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
  
 }
  
-async function ERR(err) { 
-  if (!('code' in err)) {
-    console.log('no code', err);
-    return [ true, err ];
-  }
- 
-  if (err['code'] == -32603) {
-    if (!('data' in err)) {
-      console.log('no data', err);
-      return [ true, err ];
-    }
- 
-    let data = err['data'];
-    if (!('code' in data)) {
-      console.log('no code data', err);
-      return [ true, err ];
-    }
- 
-    if (data['code'] == 3) {
-      msg = data['message'];
-      return [ false, msg ];
-    }
- 
-    if (data['code'] == -32000) {
-      msg = data['message'];
-      return [ false, msg ];
-    }
-    
-    console.log('not def', err);
-    return [ true, err ];
-  }
-  
-  console.log('no code not def', err);
-  return [ false, err ];
-}
- 
-async function GAS(name, method, args, value=null) {
+async function GAS(name, method, args, value = null) {
   let overrides;
   if (value != null) {
     overrides = {
@@ -480,8 +480,8 @@ async function GAS(name, method, args, value=null) {
     };
   }
 
+  let result;
   try {
-    let result;
     if (value != null) {
       result = await SIGNS[name].estimateGas[method](...args, overrides);
     } else {
@@ -490,9 +490,9 @@ async function GAS(name, method, args, value=null) {
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
-    err = await ERR(err);
-    return [ true, err ];
-  }
+    result = await ERR(err);
+    return [ true, result ];
+  };
 }
  
 async function SEND_TX(name, method, args, value=null, check=true) {
@@ -534,9 +534,6 @@ async function SEND_TX(name, method, args, value=null, check=true) {
 }
 
 
-
-
-
 let buyTxhashData;
 async function privateBuy() {
 	let buyAmount = select('#buy-input')[0].value;
@@ -557,27 +554,6 @@ async function privateBuy() {
 /* 
 await CONTS[name].balanceOf(adr)
  */
- 
-/* SIGNS[name].transfer(adr, balance); */
- 
-/* CONTS[name].on("Transfer", (from, to, amount, event) => {
-  console.log(`${ from } sent ${ formatEther(amount) } to ${ to}`);
-      // The event object contains the verbatim log data, the
-    // EventFragment and functions to fetch the block,
-    // transaction and receipt and event functions
-})
- */
-// filter
-
-
-
-
-
-
-
-/* 
-await CONTS[name].balanceOf(adr)
- */
 
 /* SIGNS[name].transfer(adr, balance); */
 
@@ -590,116 +566,7 @@ await CONTS[name].balanceOf(adr)
  */
 // filter
 
-async function READ_TX(name, method, args, from = "0x0000000000000000000000000000000000000000") {
-  const overrides = {
-    from: from,
-  };
 
-  let result;
-  try {
-    result = await CONTS[name][method](...args, overrides);
-    console.log('result', result);
-  } catch (err) {
-    result = await ERR(err);
-  };
-
-  return result;
-}
-
-async function ERR(err) {
-  let result = err;
-
-  if (!('code' in err)) {
-    console.log('no code', err);
-    return result;
-  }
-
-  if (err['code'] == -32603) {
-    if (!('data' in err)) {
-      console.log('no data', err);
-      return result;
-    }
-
-    let data = err['data'];
-    if (!('code' in data)) {
-      console.log('no code data', err);
-      return result;
-    }
-
-    if (data['code'] == 3) {
-      msg = data['message'];
-      result = msg;
-      return result;
-    }
-
-    if (data['code'] == -32000) {
-      msg = data['message'];
-      result = msg;
-      return result;
-    }
-  }
-
-  return result;
-}
-
-async function GAS(name, method, args, value = null) {
-  let overrides;
-  if (value != null) {
-    overrides = {
-      value: BIG(value),
-    };
-  }
-
-  let result;
-  try {
-    if (value != null) {
-      result = await SIGNS[name].estimateGas[method](...args, overrides);
-    } else {
-      result = await SIGNS[name].estimateGas[method](...args);
-    }
-    console.log('result', result);
-  } catch (err) {
-    result = await ERR(err);
-  };
-
-  return result;
-}
-
-async function SEND_TX(name, method, args, value = null, check = true) {
-  let overrides;
-  if (value != null) {
-    overrides = {
-      value: BIG(value),
-    };
-  }
-  
-
-  let res;
-  if (check == true) {
-    res = await GAS(name, method, args, value);
-    if (typeof (res) == "string") {
-      console.log(res);
-      return;
-    }
-
-    // use gas result
-    console.log(res);
-  }
-
-  let tx;
-  try {
-    if (value != null) {
-      tx = await SIGNS[name][method](...args, overrides);
-    } else {
-      tx = await SIGNS[name][method](...args);
-    }
-    console.log(tx.hash);
-    // wait()
-    // receipt.events
-  } catch (err) {
-    console.log('err', err);
-  }
-}
 
 
 async function getCurAdr() {
