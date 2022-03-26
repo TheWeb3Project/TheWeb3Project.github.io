@@ -1,36 +1,40 @@
 try {
-    var openBoxModal = document.getElementById('openBoxModal')
-    openBoxModal.addEventListener('show.bs.modal', function (event) {
-        var button = event.relatedTarget
-        var purpose = button.getAttribute('data-bs-whatever');
-        //console.log(purpose);
-        if(purpose == "forMysteryBox") {
-            openBoxModal.querySelector("#forMysteryBtn").style.display = "flex"
-            openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "none"
-        }
-        else {
-            openBoxModal.querySelector("#forMysteryBtn").style.display = "none"
-            openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "flex"
-        }
+    var openBoxModal = document.getElementById('openBoxModal');
+    if (openBoxModal != null) {
+        openBoxModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget
+            var purpose = button.getAttribute('data-bs-whatever');
+            //console.log(purpose);
+            if(purpose == "forMysteryBox") {
+                openBoxModal.querySelector("#forMysteryBtn").style.display = "flex"
+                openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "none"
+            }
+            else {
+                openBoxModal.querySelector("#forMysteryBtn").style.display = "none"
+                openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "flex"
+            }
 
-        // openBoxModal.querySelector('#modal-body-video video').play();
-    })
+            // openBoxModal.querySelector('#modal-body-video video').play();
+        })
+    }
 }
 catch(err) {
     console.log(err);
 }
 
 try {
-    var connectWalletModal = document.getElementById('connectWalletModal')
-    connectWalletModal.addEventListener('show.bs.modal', function (event) {
-        connectWalletModal.querySelector('#modal-body-text').classList.add('d-none');
-        connectWalletModal.querySelector('#modal-body-video').classList.remove('d-none');     
-        connectWalletModal.querySelector('#modal-body-video video').play();
-        setTimeout(function() {
-            connectWalletModal.querySelector('#modal-body-video').classList.add('d-none');
-            connectWalletModal.querySelector('#modal-body-text').classList.remove('d-none');
-        }, 1200);
-    })
+    var connectWalletModal = document.getElementById('connectWalletModal');
+    if (connectWalletModal != null) {
+        connectWalletModal.addEventListener('show.bs.modal', function (event) {
+            connectWalletModal.querySelector('#modal-body-text').classList.add('d-none');
+            connectWalletModal.querySelector('#modal-body-video').classList.remove('d-none');     
+            connectWalletModal.querySelector('#modal-body-video video').play();
+            setTimeout(function() {
+                connectWalletModal.querySelector('#modal-body-video').classList.add('d-none');
+                connectWalletModal.querySelector('#modal-body-text').classList.remove('d-none');
+            }, 1200);
+        });
+    }
 }
 catch(err) {
     console.log(err);
