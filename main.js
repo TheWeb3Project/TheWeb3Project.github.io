@@ -166,7 +166,7 @@ function showOutputImage() {
             imgsSrc.push(element.src);
         });
 
-        console.log(imgsSrc);
+        // console.log(imgsSrc);
 
         /* mergeImages(imgsSrc)
         .then(b64 => document.querySelector('img#combined-output-img').src = b64); */
