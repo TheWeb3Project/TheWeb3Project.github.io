@@ -504,9 +504,7 @@ async function SEND_TX(name, method, args, value=null, check=true) {
   }
 
   if (check == true) {
-    let data = await GAS(name, method, args, value);
-    let res = data[0];
-    data = data[1];
+    let [res, data] = await GAS(name, method, args, value);
     if (res == true) {
       console.log(res);
       return [ true, data ];
