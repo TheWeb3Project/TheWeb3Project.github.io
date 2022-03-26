@@ -33,22 +33,21 @@ const ADRS = {};
 const ABIS = {};
 
 ADRS['web3'] = "0x333FD139cAeF6Aa31056cC905987b77B1044d259",
-  ABIS['web3'] = [
-    "function name() view returns (string)",
-    "function symbol() view returns (string)",
-    "function totalSupply() view returns (uint256)",
-    "function balanceOf(address) view returns (uint)",
-    "function transfer(address to, uint amount)",
-    "function manualRebase()",
-    "function _lastRebaseBlock() view returns (uint256)",
-    "event Transfer(address indexed from, address indexed to, uint amount)",
-  ];
-
+ABIS['web3'] = [
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function transfer(address to, uint amount)",
+  "function manualRebase()",
+  "function _lastRebaseBlock() view returns (uint256)",
+  "event Transfer(address indexed from, address indexed to, uint amount)",
+];
 
 
 ADRS['factory'] = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 ABIS['factory'] = [
-  "function getPair(address tokenA, address tokenB) external view returns (address pair)",
+  "function getPair(address tokenA, address tokenB) view returns (address pair)",
 ];
 
 
@@ -60,10 +59,16 @@ ABIS['router'] = [
 
 ADRS['pair'] = "0x9f7d235b7d3f4403133A559b0968361687e4fC62";
 ABIS['pair'] = [
-  "function token0() external view returns (address)",
-  "function getReserves() external view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
+  "function token0() view returns (address)",
+  "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
 ];
 
+ADRS['nft'] = "0x933D6472131545BC742Cde7d051a443eA0683a85";
+ABIS['nft'] = [
+  "function _ownedTotalItemCount(address) view returns (uint)",
+  "function tokenOfOwnerByIndex(address, uint) view returns (uint)",
+  "function _itemById(uint) view returns (uint)",
+];
 
 ADRS['wbnb'] = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
 ADRS['busd'] = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
@@ -373,7 +378,7 @@ async function conn() {
   }
 }
 
-async function doAfterConnect() {
+async function doAfterConnect() { // dummy
 }
 
 function handleChainChanged(_chainId) {
@@ -474,24 +479,24 @@ async function GAS(name, method, args, value=null) {
       value: BIG(value),
     };
   }
- 
+
   try {
     let result;
     if (value != null) {
-  	  result = await SIGNS[name].estimateGas[method](...args, overrides);
+      result = await SIGNS[name].estimateGas[method](...args, overrides);
     } else {
       result = await SIGNS[name].estimateGas[method](...args);
     }
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
-  	err = await ERR(err);
+    err = await ERR(err);
     return [ true, err ];
   }
 }
  
 async function SEND_TX(name, method, args, value=null, check=true) {
-  let overrides;
+  let overrides = {};
   if (value != null) {
     overrides = {
       value: BIG(value),
@@ -499,14 +504,17 @@ async function SEND_TX(name, method, args, value=null, check=true) {
   }
 
   if (check == true) {
-  	let { res, data } = await GAS(name, method, args, value);
+    let data = await GAS(name, method, args, value);
+    let res = data[0];
+    data = data[1];
     if (res == true) {
-    	console.log(res);
-    	return [ true, data ];
+      console.log(res);
+      return [ true, data ];
     } 
- 
+
     // use gas result
-    console.log(res, data);
+    console.log('gas', res, INT(data));
+    overrides['gasLimit'] = INT(data * 1.3);
   }
 
   try {
@@ -522,7 +530,7 @@ async function SEND_TX(name, method, args, value=null, check=true) {
     // wait()
     // receipt.events
   } catch (err) {
-  	err = await ERR(err);
+    err = await ERR(err);
     return [ true, err ];
   }
 }
@@ -693,8 +701,9 @@ async function getCurAdr() {
 }
 
 
-
 (async () => {
+  ethereum.on('chainChanged', handleChainChanged);
+  ethereum.on('accountsChanged', handleAccountsChanged);
  
   // do global
  

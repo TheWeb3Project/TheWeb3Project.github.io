@@ -247,69 +247,7 @@
       document.getElementById("overlay").style.display = "none"
     });
 
-    async function GAS(name, method, args, value=null) {
-      let overrides;
-      if (value != null) {
-        overrides = {
-          value: BIG(value),
-        };
-      }
     
-      try {
-        let result;
-        if (value != null) {
-          result = await SIGNS[name].estimateGas[method](...args, overrides);
-        } else {
-          result = await SIGNS[name].estimateGas[method](...args);
-        }
-        console.log('result', result);
-        return [ false, result ];
-      } catch (err) {
-        err = await ERR(err);
-        return [ true, err ];
-      }
-    }
-    
-    async function SEND_TX(name, method, args, value=null, check=true) {
-      let overrides = {};
-      if (value != null) {
-        overrides = {
-          value: BIG(value),
-        };
-      }
-
-      if (check == true) {
-        let data = await GAS(name, method, args, value);
-        let res = data[0];
-        data = data[1];
-        if (res == true) {
-          console.log(res);
-          return [ true, data ];
-        } 
-    
-        // use gas result
-        console.log('gas', res, INT(data));
-        overrides['gasLimit'] = INT(data * 1.3);
-      }
-
-      try {
-        let result;
-        if (value != null) {
-          result = await SIGNS[name][method](...args, overrides);
-        } else {
-          result = await SIGNS[name][method](...args);
-        }
-        console.log('result', result);
-        return [ false, result ];
-        /* console.log(tx.hash); */
-        // wait()
-        // receipt.events
-      } catch (err) {
-        err = await ERR(err);
-        return [ true, err ];
-      }
-    }
-
     let balance;
     async function doAfterConnect() {
       displayText('#connect', SHORTADR(CURADR));
