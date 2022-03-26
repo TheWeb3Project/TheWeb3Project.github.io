@@ -159,7 +159,7 @@ function showOutputImage() {
     try {
         imgs = document.querySelectorAll('.output-img img');
         /* imgs.reverse(); */
-        console.log(imgs);
+        // console.log(imgs);
 
         imgsSrc = [];
         imgs.forEach(element => {
