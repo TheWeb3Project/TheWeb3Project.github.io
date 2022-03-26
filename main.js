@@ -13,7 +13,7 @@ try {
             openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "flex"
         }
 
-        openBoxModal.querySelector('#modal-body-video video').play();
+        // openBoxModal.querySelector('#modal-body-video video').play();
     })
 }
 catch(err) {
