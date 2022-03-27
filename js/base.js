@@ -630,13 +630,13 @@ async function getCurAdr() {
 }
 
 
-while (true) {
-	if (isScriptLoaded == SCRIPTS.length) {
-    break;
-  }
+// while (true) {
+// 	if (isScriptLoaded == SCRIPTS.length) {
+//     break;
+//   }
 
-  DELAY(100);
-}
+//   DELAY(100);
+// }
 
 (async () => {
   if (window.ethereum) {
