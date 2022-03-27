@@ -1,3 +1,53 @@
+
+
+const slideTrack = select('#slide-track')[0];
+
+for (var idx = 0; idx < 8; idx++) {
+    {
+        let div = makeElem('div', '', 'slide');
+        {
+            let img = makeElem('img');
+            img.src = "images/star-icon.png";
+            img.alt = "";
+            div.append(img);
+        }
+        slideTrack.append(div);
+    }
+    {
+        let div = makeElem('div', '', 'slide');
+        {
+            let img = makeElem('img', null, 'img-fluid');
+            img.src = "images/mystery-box-sm.png";
+            img.alt = "mystery-box";
+            div.append(img);
+        }
+        slideTrack.append(div);
+        }
+    }
+    {
+        let div = makeElem('div', '', 'slide');
+        {
+            let img = makeElem('img');
+            img.src = "images/star-icon.png";
+            img.alt = "";
+            div.append(img);
+        }
+        slideTrack.append(div);
+    }
+    {
+        let div = makeElem('div', '', 'slide');
+        {
+            let span = makeElem('span', null, 'text-uppercase text-info');
+            span.innerHTML = "Mystery Box";
+            div.append(span);
+        }
+        slideTrack.append(div);
+        }
+    }
+}
+
+
+
 try {
     var openBoxModal = document.getElementById('openBoxModal');
     if (openBoxModal != null) {

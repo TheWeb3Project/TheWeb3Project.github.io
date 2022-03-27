@@ -151,6 +151,18 @@ function select(el, all = true) {
   }
 }
 
+function makeElem(elemType, elemId = null, elemClass = null) {
+  elem = document.createElement(elemType);
+  if (elemId) {
+    elem.setAttribute('id', elemId);
+  }
+  if (elemClass) {
+    elem.setAttribute('class', elemClass);
+  }
+
+  return elem;
+}
+
 function displayText(el, text) {
   let els = select(el);
   for (var idx = 0; idx < els.length; idx++) {
