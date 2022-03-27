@@ -630,6 +630,9 @@ async function getCurAdr() {
 }
 
 
+
+
+
 // while (true) {
 // 	if (isScriptLoaded == SCRIPTS.length) {
 //     break;
