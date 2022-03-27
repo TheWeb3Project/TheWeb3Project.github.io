@@ -15,8 +15,9 @@ for (const [idy, grade] of Object.entries(GRADES)) {
     }
 
     elms = select(`#${grade}-stat`);
+    `bg-${grade} fw-bold px-4 py-2 rounded-pill me-3`
     for (const elm of elms) {
-        elm.setAttribute('class', `bg-${grade} fw-bold px-4 py-2 rounded-pill me-3`);
+        elm.setAttribute('class', );
         
         htmlStr = `${grade} - ${PERCENTAGES[idy]}`;
         htmlStr += `<span id="${grade}-bonus" class="text-error">+0%</span>`;

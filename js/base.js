@@ -638,6 +638,8 @@ async function getCurAdr() {
 //   DELAY(100);
 // }
 
+
+
 (async () => {
   if (window.ethereum) {
     ethereum.on('chainChanged', handleChainChanged);
