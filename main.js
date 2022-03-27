@@ -46,7 +46,6 @@ for (var idx = 0; idx < 8; idx++) {
             div.append(img);
         }
         slideTrack.append(div);
-        }
     }
     {
         let div = makeElem('div', '', 'slide');
