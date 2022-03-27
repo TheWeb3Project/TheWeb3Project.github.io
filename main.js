@@ -1,4 +1,17 @@
+// for (const [idy, avatarPartNameVar] of Object.entries(avatarPartNameVars)) { // use each element
 
+const GRADES = ['common', 'rare', 'epic', 'legendary'];
+
+for (const [idy, grade] of Object.entries(GRADES)) {
+    const elms = select(`#${grade}-stars`);
+    for (const elm of elms) {
+        htmlStr = '';
+        for (var idx = 0; idx < INT(idy) + 1; idx++) {
+            htmlStr += `<img src="images/star.png" alt="star"></img>`;    
+        }
+        elm.innerHTML = htmlStr;
+    }
+}
 
 const slideTrack = select('#slide-track')[0];
 
