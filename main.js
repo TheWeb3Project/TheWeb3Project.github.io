@@ -119,7 +119,6 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 })
 
 try {
-
     let owl = $('.owl-carousel');
     if (0 < owl.length) {
         $('.owl-carousel').owlCarousel({
