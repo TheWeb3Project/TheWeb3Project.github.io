@@ -151,7 +151,7 @@ function select(el, all = true) {
 }
 
 function makeElem(elemType, elemId = null, elemClass = null) {
-  elem = document.createElement(elemType);
+  let elem = document.createElement(elemType);
   if (elemId) {
     elem.setAttribute('id', elemId);
   }
