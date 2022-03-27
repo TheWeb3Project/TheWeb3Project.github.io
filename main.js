@@ -1,14 +1,25 @@
 // for (const [idy, avatarPartNameVar] of Object.entries(avatarPartNameVars)) { // use each element
 
 const GRADES = ['common', 'rare', 'epic', 'legendary'];
+const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
 
+let elms;
 for (const [idy, grade] of Object.entries(GRADES)) {
-    const elms = select(`#${grade}-stars`);
+    elms = select(`#${grade}-stars`);
     for (const elm of elms) {
         htmlStr = '';
         for (var idx = 0; idx < INT(idy) + 1; idx++) {
             htmlStr += `<img src="images/star.png" alt="star"></img>`;    
         }
+        elm.innerHTML = htmlStr;
+    }
+
+    elms = select(`#${grade}-stat`);
+    for (const elm of elms) {
+        elm.setAttribute('class', `bg-${grade} fw-bold px-4 py-2 rounded-pill me-3`);
+        
+        htmlStr = `${grade} - ${PERCENTAGES[idy]}`;
+        htmlStr += `<span id="${grade}-bonus" class="text-error">+0%</span>`;
         elm.innerHTML = htmlStr;
     }
 }
