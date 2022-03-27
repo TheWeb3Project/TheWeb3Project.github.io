@@ -1,8 +1,8 @@
+
 'use strict'
 
 
 function loadScript(url, callback) {
-  // Adding the script tag to the head as suggested before
   let body = document.body;
   let script = document.createElement('script');
   script.type = 'text/javascript';
@@ -16,9 +16,9 @@ function loadScript(url, callback) {
 }
 
 
-
+let isScriptLoaded = 0;
 function loadScriptDone() {
-
+	isScriptLoaded += 1;
 }
 
 const SCRIPTS = [
@@ -61,6 +61,7 @@ if (window.ethereum) {
 } else {
   PROVIDER = new ethers.providers.JsonRpcProvider("https://bsc-dataseed.binance.org", {name: 'binance', 'chainId': 56});
 }
+
 const SIGNER =  PROVIDER.getSigner();
 
 
@@ -629,6 +630,13 @@ async function getCurAdr() {
 }
 
 
+while (true) {
+	if (isScriptLoaded == SCRIPTS.length) {
+    break;
+  }
+
+  DELAY(100);
+}
 
 (async () => {
   if (window.ethereum) {
