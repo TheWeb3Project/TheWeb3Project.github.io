@@ -20,19 +20,19 @@ $modal-backdrop-opacity: .8;
 background: linear-gradient(90deg, #AC79FF 0%, #9C60FF 104.42%);
 }
 
-.bg-grey .bg-common {
+.bg-grey, .bg-common {
     background: linear-gradient(90deg, #8A8A8A 0%, #777777 100%);
 }
 
-.bg-light .bg-rare {
+.bg-light, .bg-rare {
     background: linear-gradient(90deg, #79c9ff 0%, #60bdff 100%);
 }
 
-.bg-info .bg-epic {
+.bg-info, .bg-epic {
     background: linear-gradient(90deg, #AC79FF 0%, #9C60FF 104.42%);
 }
 
-.bg-warning .bg-legendary {
+.bg-warning, .bg-legendary {
     background: linear-gradient(90deg, #FFE48B 0%, #FFC70B 100%);
 }
 
