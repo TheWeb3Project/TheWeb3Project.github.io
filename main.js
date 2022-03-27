@@ -65,7 +65,6 @@ for (var idx = 0; idx < 8; idx++) {
             div.append(span);
         }
         slideTrack.append(div);
-        }
     }
 }
 
