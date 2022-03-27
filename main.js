@@ -119,26 +119,25 @@ var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 })
 
 try {
-    $(window).load(function () {
-        let owl = $('.owl-carousel');
-        if (0 < owl.length) {
-            $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                navText: ["<div class='nav-button owl-prev'><img src='images/arrow-left.png' alt='' /></div>", "<div class='nav-button owl-next'><img src='images/arrow-right.png' alt='' /></div>"],
-                autoplay: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 3
-                    }
+
+    let owl = $('.owl-carousel');
+    if (0 < owl.length) {
+        $('.owl-carousel').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            navText: ["<div class='nav-button owl-prev'><img src='images/arrow-left.png' alt='' /></div>", "<div class='nav-button owl-next'><img src='images/arrow-right.png' alt='' /></div>"],
+            autoplay: true,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 3
                 }
-            });
-        }    
-    });
+            }
+        });
+    }    
 }
 catch(err) {
     console.log(err);
