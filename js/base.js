@@ -32,9 +32,9 @@ const SCRIPTS = [
   "https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js",
 ];
 
-for (const script of SCRIPTS) {
-	loadScript(script, loadScriptDone);
-} 
+// for (const script of SCRIPTS) {
+// 	loadScript(script, loadScriptDone);
+// } 
 
 /////////////////////////////////////////////////////////// consts
 
