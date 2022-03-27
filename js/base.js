@@ -141,6 +141,7 @@ function HREF(link, txt) {
 	return `<a href="${link}">${txt}</a>`;
 }
 
+
 function select(el, all = true) {
   el = el.trim()
   if (all) {
@@ -148,6 +149,20 @@ function select(el, all = true) {
   } else {
     return document.querySelector(el)
   }
+}
+
+function loadScript(url, callback) {
+    // Adding the script tag to the head as suggested before
+    let body = document.body;
+    let script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    script.onreadystatechange = callback;
+    script.onload = callback;
+    script.async = false;
+
+    body.appendChild(script);
 }
 
 function makeElem(elemType, elemId = null, elemClass = null) {
@@ -591,6 +606,24 @@ async function getCurAdr() {
   return curAdr;
 }
 
+function loadScriptDone() {
+
+}
+
+const SCRIPTS = [
+  "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js",
+	"https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js",
+	"https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js",
+	"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
+  "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js",
+  "https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js",
+  "https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js",
+  "https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js",
+];
+
+for (const script of SCRIPTS) {
+	loadScript(script, loadScriptDone);
+}
 
 (async () => {
   if (window.ethereum) {
