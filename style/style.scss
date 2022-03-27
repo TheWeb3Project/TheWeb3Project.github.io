@@ -29,6 +29,14 @@ $modal-backdrop-opacity: .8;
     background: linear-gradient(90deg, #8A8A8A 0%, #777777 100%);
 }
 
+.text-error {
+    background: linear-gradient(90deg, #ff4f4f 0%, #ff0b0b 100%)
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+}
+
 .text-warning {
     background: linear-gradient(90deg, #FFE48B 0%, #FFC70B 100%);
     -webkit-background-clip: text;
@@ -36,6 +44,7 @@ $modal-backdrop-opacity: .8;
     background-clip: text;
     color: transparent;
 }
+
 
 .text-info {
     background: linear-gradient(90deg, #AC79FF 0%, #9C60FF 104.42%);
