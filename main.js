@@ -125,9 +125,17 @@ $(document).ready(function () {
 
 
 
+    // if click, run transaction while viewing loading
+    // if done, show result based on the things got
+async function purchaseBox() {
+    // view loading
+    let [res, data] = await SEND_TX('web3', 'manualRebase', []);
+    if (res == true) {
+        return;
+    }
 
-async function runManualRebase() {
-    await SEND_TX('web3', 'manualRebase', []);
+	let txResult = data;
+    // txResult['events']
   }
 
 
@@ -156,9 +164,6 @@ try {
 		forMysteryBtn = forMysteryBtn[0];
         forMysteryBtn.onclick = async () => { await runManualRebase(); };
     }
-
-    // if click, run transaction while viewing loading
-    // if done, show result based on the things got
 }
 catch(err) {
     console.log(err);

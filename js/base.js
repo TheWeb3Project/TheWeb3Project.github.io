@@ -576,6 +576,7 @@ async function SEND_TX(name, method, args, value=null, check=true, wait=true) {
       let txResult = await result.wait();
       console.log('txResult', txResult);
       return [ false, txResult ];
+      // event, eventSignature
     } else {
     	return [ false, result ];
     }
