@@ -33,6 +33,33 @@ for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
     carousel.append(div);
 }
 
+const acheived = select('#acheived')[0];
+for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 4))) {
+    let div = makeElem('div', null, 'col my-4');
+
+    let imgFileName = itemInfo[0];
+    let [gender, part, num, _] = imgFileName.split('-');
+    let imgName = part;
+    let grade = itemInfo[1];
+
+    htmlStr = `<div class="card clip-corners text-white"> \
+    <img src="images/${imgFileName}" class="card-img" alt="..."> \
+    <div class="card-img-overlay bg-blur mt-auto" style="height: 40%; background-color: rgba(0, 0, 0, 0.42);"> \
+    <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
+    <h2 class="d-flex align-items-center"> \
+    ${imgName} \
+    <span id="${grade}-stars"></span> \
+    </h2> \
+    <span id="${grade}-stat"></span> \
+    </div> \
+    </div> \
+    </div>
+    `;
+
+    div.innerHTML = htmlStr;
+    acheived.append(div);
+}
+
 const GRADES = ['common', 'rare', 'epic', 'legendary'];
 const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
 
