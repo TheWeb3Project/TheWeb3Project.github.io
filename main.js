@@ -42,15 +42,6 @@ $(document).ready(function () {
         carousel.append(div);
     }
 
-    const acheived = select('#acheived')[0];
-    for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
-        let div = makeElem('div', null, 'col my-4');
-
-        let htmlStr = getItemCard(itemInfo);
-        div.innerHTML = htmlStr;
-        acheived.append(div);
-    }
-
     const GRADES = ['common', 'rare', 'epic', 'legendary'];
     const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
 
@@ -139,6 +130,15 @@ async function purchaseBox() {
     // txResult['events']
     console.log(txResult['events']);
 
+    const acheived = select('#acheived')[0];
+    for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
+        let div = makeElem('div', null, 'col my-4');
+
+        let htmlStr = getItemCard(itemInfo);
+        div.innerHTML = htmlStr;
+        acheived.append(div);
+    }
+    
     select('#purchaseBoxModal')[0].classList.add('show');
   }
 
