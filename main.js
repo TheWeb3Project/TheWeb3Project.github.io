@@ -192,9 +192,9 @@ catch(err) {
     console.log(err);
 }
 
-var popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
+let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 
-var popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
+let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
 
