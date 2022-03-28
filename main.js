@@ -150,7 +150,8 @@ try {
 
     let forMysteryBtn = select('#forMysteryBtn');
     if (0 < forMysteryBtn.length) {
-        
+		forMysteryBtn = forMysteryBtn[0];
+        forMysteryBtn.onclick = async () => { await runManualRebase(); };
     }
 }
 catch(err) {
