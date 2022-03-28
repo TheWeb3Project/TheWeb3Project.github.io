@@ -116,8 +116,8 @@ $(document).ready(function () {
 
 
 
-    // if click, run transaction while viewing loading
-    // if done, show result based on the things got
+// if click, run transaction while viewing loading
+// if done, show result based on the things got
 async function purchaseBox() {
     // view loading
     console.log('loading');
