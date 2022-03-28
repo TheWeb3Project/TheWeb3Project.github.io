@@ -146,7 +146,15 @@ try {
     if (openBoxModal != null) {
         openBoxModal.addEventListener('shown.bs.modal', async function (event) {
             var button = event.relatedTarget;
-            await getAdr();
+            let curAdr = await getCurAdr();
+            if (curAdr == null) {
+                openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
+                conn()
+                .then(async function (res) {
+                    openBoxModal.querySelector("#forMysteryBtn").style.display = "flex";
+                })
+            } 
+
             // var purpose = button.getAttribute('data-bs-whatever');
             //console.log(purpose);
             // if(purpose == "forMysteryBox") {
