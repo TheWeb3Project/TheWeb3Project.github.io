@@ -34,7 +34,7 @@ for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
 }
 
 const acheived = select('#acheived')[0];
-for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 4))) {
+for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
     let div = makeElem('div', null, 'col my-4');
 
     let imgFileName = itemInfo[0];
