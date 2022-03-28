@@ -129,6 +129,7 @@ $(document).ready(function () {
     // if done, show result based on the things got
 async function purchaseBox() {
     // view loading
+    console.log('loading');
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
         return;
@@ -136,6 +137,9 @@ async function purchaseBox() {
 
 	let txResult = data;
     // txResult['events']
+    console.log(txResult['events']);
+
+    select('#purchaseBoxModal')[0].classList.add('show'); 
   }
 
 
