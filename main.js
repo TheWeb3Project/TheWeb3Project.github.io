@@ -138,6 +138,7 @@ try {
             if (curAdr == null) {
                 openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
                 await conn();
+                console.log('loading');
                 if (CURADR == null) {
                     return;
                 }
