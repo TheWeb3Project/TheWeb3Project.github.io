@@ -45,7 +45,7 @@ $(document).ready(function () {
         let imgName = part;
         let grade = itemInfo[1];
 
-        htmlStr = `<div class="card clip-corners text-white"> \
+        let htmlStr = `<div class="card clip-corners text-white"> \
         <img src="images/${imgFileName}" class="card-img" alt="..."> \
         <div class="card-img-overlay bg-blur mt-auto" style="height: 40%; background-color: rgba(0, 0, 0, 0.42);"> \
         <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
