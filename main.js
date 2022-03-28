@@ -147,6 +147,11 @@ try {
             // openBoxModal.querySelector('#modal-body-video video').play();
         })
     }
+
+    let forMysteryBtn = select('#forMysteryBtn');
+    if (0 < forMysteryBtn.length) {
+        
+    }
 }
 catch(err) {
     console.log(err);
