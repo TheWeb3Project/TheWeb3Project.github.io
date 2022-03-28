@@ -174,15 +174,17 @@ catch(err) {
 }
 
 try {
-    let connectWalletModal = document.getElementById('purchaseBoxModal');
-    if (connectWalletModal != null) {
-        connectWalletModal.addEventListener('show.bs.modal', function (event) {
-            connectWalletModal.querySelector('#modal-body-text').classList.add('d-none');
-            connectWalletModal.querySelector('#modal-body-video').classList.remove('d-none');     
-            connectWalletModal.querySelector('#modal-body-video video').play();
+    
+    let purchaseBoxModal = select('#purchaseBoxModal');
+    if (0 < purchaseBoxModal.length) {
+        purchaseBoxModal = purchaseBoxModal[0];
+        purchaseBoxModal.addEventListener('show.bs.modal', function (event) {
+            purchaseBoxModal.querySelector('#modal-body-text').classList.add('d-none');
+            purchaseBoxModal.querySelector('#modal-body-video').classList.remove('d-none');     
+            purchaseBoxModal.querySelector('#modal-body-video video').play();
             setTimeout(function() {
-                connectWalletModal.querySelector('#modal-body-video').classList.add('d-none');
-                connectWalletModal.querySelector('#modal-body-text').classList.remove('d-none');
+                purchaseBoxModal.querySelector('#modal-body-video').classList.add('d-none');
+                purchaseBoxModal.querySelector('#modal-body-text').classList.remove('d-none');
             }, 3000);
         });
     }
