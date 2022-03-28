@@ -170,7 +170,7 @@ catch(err) {
 }
 
 try {
-    let connectWalletModal = document.getElementById('connectWalletModal');
+    let connectWalletModal = document.getElementById('purchaseBoxModal');
     if (connectWalletModal != null) {
         connectWalletModal.addEventListener('show.bs.modal', function (event) {
             connectWalletModal.querySelector('#modal-body-text').classList.add('d-none');
