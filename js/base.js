@@ -406,7 +406,11 @@ async function handleAccountsChanged(accounts) {
     displayText("connectResult", 'Please Connect Metamask');
     return;
   }
-
+  
+  if (accounts.length == 0) {
+    console.log('no acount');
+    CURADR = null;
+  }
   CURADR = ADR(accounts[0]);
   displayAccountInformation();
 }

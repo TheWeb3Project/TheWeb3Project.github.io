@@ -137,10 +137,12 @@ try {
             let curAdr = await getCurAdr();
             if (curAdr == null) {
                 openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
-                conn()
-                .then(async function (res) {
-                    openBoxModal.querySelector("#forMysteryBtn").style.display = "flex";
-                })
+                await conn();
+                if (CURADR == null) {
+                    return;
+                }
+
+                openBoxModal.querySelector("#forMysteryBtn").style.display = "flex";
             } 
 
             // var purpose = button.getAttribute('data-bs-whatever');
