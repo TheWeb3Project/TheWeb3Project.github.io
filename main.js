@@ -2,6 +2,8 @@ const ITEMINFOS = [
     ["male-horn-4-t.png", 'rare'],
     ["male-wig-1-t.png", 'epic'],
     ["male-wings-1-t.png", 'legendary'],
+    ["female-dress-1-t.png", 'epic'],
+    ["female-mask-3-t.png", 'rare'],
 ];
 
 const carousel = select('#carousel')[0];
