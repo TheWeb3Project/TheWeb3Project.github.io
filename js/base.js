@@ -427,10 +427,13 @@ async function conn() {
       return;
     }
     
-  	console.log(err);
-    // console.log(err['code']);
+    console.log(err);
+    if ('message' in err) {
+      err = err['message'];
+    }
+  	
+    alert(JSON.stringify(err));   
     
-    alert(JSON.stringify(err));
   }
 }
 
