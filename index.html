@@ -306,13 +306,15 @@
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
       
       // manual rebase
-      let curBlock = await PROVIDER.getBlock();
-      curBlock = curBlock['number'];
-      let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
-      lastRebaseBlock = INT(lastRebaseBlock);
-      let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
-      displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
       select('#rebase')[0].onclick = async () => { await runManualRebase(); };
+
+      // let curBlock = await PROVIDER.getBlock();
+      // curBlock = curBlock['number'];
+      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
+      // lastRebaseBlock = INT(lastRebaseBlock);
+      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
+      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
+      
 
 
       CURADR = await getCurAdr();
@@ -323,13 +325,13 @@
         // display address
       }
 
-      let [res, data] = await GAS('web3', 'manualRebase', []);
-      if (res == true) {
-        return;
-      } else {
-        gasEstimation = data;
-        displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
-      }
+      // let [res, data] = await GAS('web3', 'manualRebase', []);
+      // if (res == true) {
+      //   return;
+      // } else {
+      //   gasEstimation = data;
+      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
+      // }
     })();
 
 
