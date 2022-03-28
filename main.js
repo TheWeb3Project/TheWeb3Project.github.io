@@ -8,17 +8,13 @@ const ITEMINFOS = [
     ["female-mask-3-t.png", 'rare'],
 ];
 
-$(document).ready(function () {
-    const carousel = select('#carousel')[0];
-    for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
-        let div = makeElem('div', null, 'item col-12 col-md-11 mt-4 mb-4');
+function getItemCard(itemInfo) {
+	let imgFileName = itemInfo[0];
+    let [gender, part, num, _] = imgFileName.split('-');
+    let imgName = part;
+    let grade = itemInfo[1];
 
-        let imgFileName = itemInfo[0];
-        let [gender, part, num, _] = imgFileName.split('-');
-        let imgName = part;
-        let grade = itemInfo[1];
-
-        let htmlStr = `<div class="card clip-corners text-white"> \
+    let htmlStr = `<div class="card clip-corners text-white"> \
         <img src="images/${imgFileName}" class="card-img" alt="..."> \
         <div class="card-img-overlay bg-blur mt-auto" style="height: 32%; background-color: rgba(0, 0, 0, 0.42);"> \
         <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
@@ -31,6 +27,16 @@ $(document).ready(function () {
         </div> \
         </div>
         `;
+    
+    return htmlStr;
+}
+
+$(document).ready(function () {
+    const carousel = select('#carousel')[0];
+    for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
+        let div = makeElem('div', null, 'item col-12 col-md-11 mt-4 mb-4');
+
+        let htmlStr = getItemCard(itemInfo);
 
         div.innerHTML = htmlStr;
         carousel.append(div);
@@ -40,25 +46,7 @@ $(document).ready(function () {
     for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
         let div = makeElem('div', null, 'col my-4');
 
-        let imgFileName = itemInfo[0];
-        let [gender, part, num, _] = imgFileName.split('-');
-        let imgName = part;
-        let grade = itemInfo[1];
-
-        let htmlStr = `<div class="card clip-corners text-white"> \
-        <img src="images/${imgFileName}" class="card-img" alt="..."> \
-        <div class="card-img-overlay bg-blur mt-auto" style="height: 40%; background-color: rgba(0, 0, 0, 0.42);"> \
-        <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
-        <h2 class="d-flex align-items-center"> \
-        ${imgName} \
-        <span id="${grade}-stars"></span> \
-        </h2> \
-        <span id="${grade}-stat"></span> \
-        </div> \
-        </div> \
-        </div>
-        `;
-
+        let htmlStr = getItemCard(itemInfo);
         div.innerHTML = htmlStr;
         acheived.append(div);
     }
