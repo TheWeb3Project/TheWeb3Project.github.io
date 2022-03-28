@@ -18,7 +18,7 @@ $(document).ready(function () {
         let imgName = part;
         let grade = itemInfo[1];
 
-        htmlStr = `<div class="card clip-corners text-white"> \
+        let htmlStr = `<div class="card clip-corners text-white"> \
         <img src="images/${imgFileName}" class="card-img" alt="..."> \
         <div class="card-img-overlay bg-blur mt-auto" style="height: 32%; background-color: rgba(0, 0, 0, 0.42);"> \
         <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
@@ -70,7 +70,7 @@ $(document).ready(function () {
     for (const [idy, grade] of Object.entries(GRADES)) {
         elms = select(`#${grade}-stars`);
         for (const elm of elms) {
-            htmlStr = '';
+            let htmlStr = '';
             for (var idx = 0; idx < INT(idy) + 1; idx++) {
                 htmlStr += `<img src="images/star.png" alt="star"></img>`;    
             }
@@ -83,7 +83,7 @@ $(document).ready(function () {
             for (const tag of tags) {
                 elm.classList.add(tag);
             }
-            htmlStr = `${grade} - ${PERCENTAGES[idy]}`;
+            let htmlStr = `${grade} - ${PERCENTAGES[idy]}`;
             htmlStr += `<span id="${grade}-bonus" class="text-error">+0%</span>`;
             elm.innerHTML = htmlStr;
         }
@@ -142,10 +142,10 @@ $(document).ready(function () {
 
 
 try {
-    var openBoxModal = document.getElementById('openBoxModal');
+    let openBoxModal = document.getElementById('openBoxModal');
     if (openBoxModal != null) {
         openBoxModal.addEventListener('shown.bs.modal', async function (event) {
-            var button = event.relatedTarget;
+            let button = event.relatedTarget;
             let curAdr = await getCurAdr();
             if (curAdr == null) {
                 openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
@@ -175,7 +175,7 @@ catch(err) {
 }
 
 try {
-    var connectWalletModal = document.getElementById('connectWalletModal');
+    let connectWalletModal = document.getElementById('connectWalletModal');
     if (connectWalletModal != null) {
         connectWalletModal.addEventListener('show.bs.modal', function (event) {
             connectWalletModal.querySelector('#modal-body-text').classList.add('d-none');
