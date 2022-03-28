@@ -179,7 +179,7 @@ try {
             setTimeout(function() {
                 connectWalletModal.querySelector('#modal-body-video').classList.add('d-none');
                 connectWalletModal.querySelector('#modal-body-text').classList.remove('d-none');
-            }, 1200);
+            }, 3000);
         });
     }
 }
