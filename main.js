@@ -139,7 +139,7 @@ async function purchaseBox() {
     // txResult['events']
     console.log(txResult['events']);
 
-    select('#purchaseBoxModal')[0].classList.add('show'); 
+    select('#purchaseBoxModal')[0].classList.add('show');
   }
 
 
@@ -159,7 +159,6 @@ try {
 
                 openBoxModal.querySelector("#forMysteryBtn").style.display = "flex";
             }
-            // openBoxModal.querySelector('#modal-body-video video').play();
         })
     }
 
@@ -168,13 +167,7 @@ try {
 		forMysteryBtn = forMysteryBtn[0];
         forMysteryBtn.onclick = async () => { await purchaseBox(); };
     }
-}
-catch(err) {
-    console.log(err);
-}
 
-try {
-    
     let purchaseBoxModal = select('#purchaseBoxModal');
     if (0 < purchaseBoxModal.length) {
         purchaseBoxModal = purchaseBoxModal[0];
