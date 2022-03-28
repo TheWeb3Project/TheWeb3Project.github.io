@@ -1,3 +1,5 @@
+'use strict'
+
 const ITEMINFOS = [
     ["male-horn-4-t.png", 'rare'],
     ["male-wig-1-t.png", 'epic'],
@@ -142,18 +144,19 @@ $(document).ready(function () {
 try {
     var openBoxModal = document.getElementById('openBoxModal');
     if (openBoxModal != null) {
-        openBoxModal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget
-            var purpose = button.getAttribute('data-bs-whatever');
+        openBoxModal.addEventListener('shown.bs.modal', async function (event) {
+            var button = event.relatedTarget;
+            await getAdr();
+            // var purpose = button.getAttribute('data-bs-whatever');
             //console.log(purpose);
-            if(purpose == "forMysteryBox") {
-                openBoxModal.querySelector("#forMysteryBtn").style.display = "flex"
-                openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "none"
-            }
-            else {
-                openBoxModal.querySelector("#forMysteryBtn").style.display = "none"
-                openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "flex"
-            }
+            // if(purpose == "forMysteryBox") {
+            //     openBoxModal.querySelector("#forMysteryBtn").style.display = "flex"
+            //     openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "none"
+            // }
+            // else {
+            //     openBoxModal.querySelector("#forMysteryBtn").style.display = "none"
+            //     openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "flex"
+            // }
 
             // openBoxModal.querySelector('#modal-body-video video').play();
         })
