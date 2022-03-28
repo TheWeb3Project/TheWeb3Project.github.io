@@ -524,18 +524,13 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
 async function GAS(name, method, args, value = null) {
   let overrides;
   if (value != null) {
-    overrides = {
-      value: BIG(value),
-    };
+    overrides['value'] = BIG(value);
   }
+
 
   let result;
   try {
-    if (value != null) {
-      result = await SIGNS[name].estimateGas[method](...args, overrides);
-    } else {
-      result = await SIGNS[name].estimateGas[method](...args);
-    }
+    result = await SIGNS[name].estimateGas[method](...args, overrides);
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
@@ -547,9 +542,7 @@ async function GAS(name, method, args, value = null) {
 async function SEND_TX(name, method, args, value=null, check=true) {
   let overrides = {};
   if (value != null) {
-    overrides = {
-      value: BIG(value),
-    };
+    overrides['value'] = BIG(value);
   }
 
   if (check == true) {
@@ -566,11 +559,7 @@ async function SEND_TX(name, method, args, value=null, check=true) {
 
   try {
     let result;
-    if (value != null) {
-      result = await SIGNS[name][method](...args, overrides);
-    } else {
-      result = await SIGNS[name][method](...args);
-    }
+    result = await SIGNS[name][method](...args, overrides);
     console.log('result', result);
     return [ false, result ];
     /* console.log(tx.hash); */
