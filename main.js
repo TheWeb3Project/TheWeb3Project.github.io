@@ -354,14 +354,14 @@ function download(){
     link.href = image;
     link.click(); */
     
-    element = document.getElementById("combined-output-img");
+    let element = document.getElementById("combined-output-img");
     html2canvas(element).then(function(canvas) {
         saveCapture(canvas.toDataURL("image/png"));
     })
 }
   
 function saveCapture(url) {
-    var a = $("<a style='display:none' id='js-downloder'>")
+    let a = $("<a style='display:none' id='js-downloder'>")
     .attr("href", url)
     .attr("download", "test.png")
     .appendTo("body");
