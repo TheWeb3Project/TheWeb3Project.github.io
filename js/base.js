@@ -62,7 +62,7 @@ if (window.ethereum) {
   PROVIDER = new ethers.providers.JsonRpcProvider("https://bsc-dataseed.binance.org", {name: 'binance', 'chainId': 56});
 }
 
-const SIGNER =  PROVIDER.getSigner();
+const SIGNER = PROVIDER.getSigner();
 
 
 const ADRS = {};
