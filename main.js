@@ -6,130 +6,131 @@ const ITEMINFOS = [
     ["female-mask-3-t.png", 'rare'],
 ];
 
-const carousel = select('#carousel')[0];
-for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
-    let div = makeElem('div', null, 'item col-12 col-md-11 mt-4 mb-4');
+$(document).ready(function () {
+    const carousel = select('#carousel')[0];
+    for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
+        let div = makeElem('div', null, 'item col-12 col-md-11 mt-4 mb-4');
 
-    let imgFileName = itemInfo[0];
-    let [gender, part, num, _] = imgFileName.split('-');
-    let imgName = part;
-    let grade = itemInfo[1];
+        let imgFileName = itemInfo[0];
+        let [gender, part, num, _] = imgFileName.split('-');
+        let imgName = part;
+        let grade = itemInfo[1];
 
-    htmlStr = `<div class="card clip-corners text-white"> \
-    <img src="images/${imgFileName}" class="card-img" alt="..."> \
-    <div class="card-img-overlay bg-blur mt-auto" style="height: 32%; background-color: rgba(0, 0, 0, 0.42);"> \
-    <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
-    <h2 class="d-flex align-items-center"> \
-    ${imgName} \
-    <span id="${grade}-stars"></span> \
-    </h2> \
-    <span id="${grade}-stat"></span> \
-    </div> \
-    </div> \
-    </div>
-    `;
+        htmlStr = `<div class="card clip-corners text-white"> \
+        <img src="images/${imgFileName}" class="card-img" alt="..."> \
+        <div class="card-img-overlay bg-blur mt-auto" style="height: 32%; background-color: rgba(0, 0, 0, 0.42);"> \
+        <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
+        <h2 class="d-flex align-items-center"> \
+        ${imgName} \
+        <span id="${grade}-stars"></span> \
+        </h2> \
+        <span id="${grade}-stat"></span> \
+        </div> \
+        </div> \
+        </div>
+        `;
 
-    div.innerHTML = htmlStr;
-    carousel.append(div);
-}
-
-const acheived = select('#acheived')[0];
-for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
-    let div = makeElem('div', null, 'col my-4');
-
-    let imgFileName = itemInfo[0];
-    let [gender, part, num, _] = imgFileName.split('-');
-    let imgName = part;
-    let grade = itemInfo[1];
-
-    htmlStr = `<div class="card clip-corners text-white"> \
-    <img src="images/${imgFileName}" class="card-img" alt="..."> \
-    <div class="card-img-overlay bg-blur mt-auto" style="height: 40%; background-color: rgba(0, 0, 0, 0.42);"> \
-    <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
-    <h2 class="d-flex align-items-center"> \
-    ${imgName} \
-    <span id="${grade}-stars"></span> \
-    </h2> \
-    <span id="${grade}-stat"></span> \
-    </div> \
-    </div> \
-    </div>
-    `;
-
-    div.innerHTML = htmlStr;
-    acheived.append(div);
-}
-
-const GRADES = ['common', 'rare', 'epic', 'legendary'];
-const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
-
-let elms;
-for (const [idy, grade] of Object.entries(GRADES)) {
-    elms = select(`#${grade}-stars`);
-    for (const elm of elms) {
-        htmlStr = '';
-        for (var idx = 0; idx < INT(idy) + 1; idx++) {
-            htmlStr += `<img src="images/star.png" alt="star"></img>`;    
-        }
-        elm.innerHTML = htmlStr;
+        div.innerHTML = htmlStr;
+        carousel.append(div);
     }
 
-    elms = select(`#${grade}-stat`);
-    let tags = `bg-${grade} fw-bold px-4 py-2 rounded-pill me-3`.split(' ');
-    for (const elm of elms) {
-        for (const tag of tags) {
-        	elm.classList.add(tag);
-        }
-        htmlStr = `${grade} - ${PERCENTAGES[idy]}`;
-        htmlStr += `<span id="${grade}-bonus" class="text-error">+0%</span>`;
-        elm.innerHTML = htmlStr;
+    const acheived = select('#acheived')[0];
+    for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
+        let div = makeElem('div', null, 'col my-4');
+
+        let imgFileName = itemInfo[0];
+        let [gender, part, num, _] = imgFileName.split('-');
+        let imgName = part;
+        let grade = itemInfo[1];
+
+        htmlStr = `<div class="card clip-corners text-white"> \
+        <img src="images/${imgFileName}" class="card-img" alt="..."> \
+        <div class="card-img-overlay bg-blur mt-auto" style="height: 40%; background-color: rgba(0, 0, 0, 0.42);"> \
+        <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
+        <h2 class="d-flex align-items-center"> \
+        ${imgName} \
+        <span id="${grade}-stars"></span> \
+        </h2> \
+        <span id="${grade}-stat"></span> \
+        </div> \
+        </div> \
+        </div>
+        `;
+
+        div.innerHTML = htmlStr;
+        acheived.append(div);
     }
-}
 
-const slideTrack = select('#slide-track')[0];
+    const GRADES = ['common', 'rare', 'epic', 'legendary'];
+    const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
 
-for (var idx = 0; idx < 8; idx++) {
-    {
-        let div = makeElem('div', '', 'slide');
+    let elms;
+    for (const [idy, grade] of Object.entries(GRADES)) {
+        elms = select(`#${grade}-stars`);
+        for (const elm of elms) {
+            htmlStr = '';
+            for (var idx = 0; idx < INT(idy) + 1; idx++) {
+                htmlStr += `<img src="images/star.png" alt="star"></img>`;    
+            }
+            elm.innerHTML = htmlStr;
+        }
+
+        elms = select(`#${grade}-stat`);
+        let tags = `bg-${grade} fw-bold px-4 py-2 rounded-pill me-3`.split(' ');
+        for (const elm of elms) {
+            for (const tag of tags) {
+                elm.classList.add(tag);
+            }
+            htmlStr = `${grade} - ${PERCENTAGES[idy]}`;
+            htmlStr += `<span id="${grade}-bonus" class="text-error">+0%</span>`;
+            elm.innerHTML = htmlStr;
+        }
+    }
+
+    const slideTrack = select('#slide-track')[0];
+
+    for (var idx = 0; idx < 8; idx++) {
         {
-            let img = makeElem('img');
-            img.src = "images/star-icon.png";
-            img.alt = "";
-            div.append(img);
+            let div = makeElem('div', '', 'slide');
+            {
+                let img = makeElem('img');
+                img.src = "images/star-icon.png";
+                img.alt = "";
+                div.append(img);
+            }
+            slideTrack.append(div);
         }
-        slideTrack.append(div);
-    }
-    {
-        let div = makeElem('div', '', 'slide');
         {
-            let img = makeElem('img', null, 'img-fluid');
-            img.src = "images/mystery-box-sm.png";
-            img.alt = "mystery-box";
-            div.append(img);
+            let div = makeElem('div', '', 'slide');
+            {
+                let img = makeElem('img', null, 'img-fluid');
+                img.src = "images/mystery-box-sm.png";
+                img.alt = "mystery-box";
+                div.append(img);
+            }
+            slideTrack.append(div);
         }
-        slideTrack.append(div);
-    }
-    {
-        let div = makeElem('div', '', 'slide');
         {
-            let img = makeElem('img');
-            img.src = "images/star-icon.png";
-            img.alt = "";
-            div.append(img);
+            let div = makeElem('div', '', 'slide');
+            {
+                let img = makeElem('img');
+                img.src = "images/star-icon.png";
+                img.alt = "";
+                div.append(img);
+            }
+            slideTrack.append(div);
         }
-        slideTrack.append(div);
-    }
-    {
-        let div = makeElem('div', '', 'slide');
         {
-            let span = makeElem('span', null, 'text-uppercase text-info');
-            span.innerHTML = "Mystery Box";
-            div.append(span);
+            let div = makeElem('div', '', 'slide');
+            {
+                let span = makeElem('span', null, 'text-uppercase text-info');
+                span.innerHTML = "Mystery Box";
+                div.append(span);
+            }
+            slideTrack.append(div);
         }
-        slideTrack.append(div);
     }
-}
-
+});
 
 
 
