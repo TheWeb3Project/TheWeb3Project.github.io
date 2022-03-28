@@ -309,11 +309,11 @@ function changeWig(img_url) {
 
 function showOutputImage() {
     try {
-        imgs = document.querySelectorAll('.output-img img');
+        let imgs = document.querySelectorAll('.output-img img');
         /* imgs.reverse(); */
         // console.log(imgs);
 
-        imgsSrc = [];
+        let imgsSrc = [];
         imgs.forEach(element => {
             imgsSrc.push(element.src);
         });
@@ -326,7 +326,7 @@ function showOutputImage() {
         let resEle = document.querySelector("canvas#combined-output-img");
         if (resEle != null) {
             setTimeout(function() {
-                var context = resEle.getContext("2d");
+                let context = resEle.getContext("2d");
                 resEle.width = imgs[0].width;
                 resEle.height = imgs[0].height;
                 context.drawImage(imgs[8], 0, 0);
