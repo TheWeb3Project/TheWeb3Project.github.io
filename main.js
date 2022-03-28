@@ -126,7 +126,9 @@ $(document).ready(function () {
 
 
 
-
+async function runManualRebase() {
+    await SEND_TX('web3', 'manualRebase', []);
+  }
 
 
 try {

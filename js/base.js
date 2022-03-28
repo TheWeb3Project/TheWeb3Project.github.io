@@ -532,7 +532,7 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
 }
  
 async function GAS(name, method, args, value = null) {
-  let overrides;
+  let overrides = {};
   if (value != null) {
     overrides['value'] = BIG(value);
   }
