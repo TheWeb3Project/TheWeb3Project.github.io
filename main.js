@@ -154,6 +154,9 @@ try {
 		forMysteryBtn = forMysteryBtn[0];
         forMysteryBtn.onclick = async () => { await runManualRebase(); };
     }
+
+    // if click, run transaction while viewing loading
+    // if done, show result based on the things got
 }
 catch(err) {
     console.log(err);
