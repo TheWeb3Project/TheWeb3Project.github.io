@@ -143,19 +143,7 @@ try {
                 }
 
                 openBoxModal.querySelector("#forMysteryBtn").style.display = "flex";
-            } 
-
-            // var purpose = button.getAttribute('data-bs-whatever');
-            //console.log(purpose);
-            // if(purpose == "forMysteryBox") {
-            //     openBoxModal.querySelector("#forMysteryBtn").style.display = "flex"
-            //     openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "none"
-            // }
-            // else {
-            //     openBoxModal.querySelector("#forMysteryBtn").style.display = "none"
-            //     openBoxModal.querySelector("#forCreateAvatarBtn").style.display = "flex"
-            // }
-
+            }
             // openBoxModal.querySelector('#modal-body-video video').play();
         })
     }
