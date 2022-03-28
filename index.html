@@ -281,11 +281,11 @@
       let circulatingSupply = totalSupply - blackHoleAmount;
       displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
 
-      let trustFundBalance = await getBalance("0xe7F0704b198585B8777abe859C3126f57eB8C989");
+      let trustFundBalance = await getBalance("0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475");
       trustFundBalance = trustFundBalance / BNBDIV;
       displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance * bnbPrice, 3))}`);
 
-      let treasuryBalance = await getBalance("0xe710D22dcf97779EE598085d96B5DF60aA382f6B");
+      let treasuryBalance = await getBalance("0xcCa3C1D62C80834f8B303f45D89298866C097B1a");
       treasuryBalance = treasuryBalance / BNBDIV;
       displayText("#treasury", `$${COMMA(ROUND(treasuryBalance * bnbPrice, 3))}`);
 
