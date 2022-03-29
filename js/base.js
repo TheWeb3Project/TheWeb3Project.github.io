@@ -179,15 +179,6 @@ function HREF(link, txt) {
 }
 
 
-function select(el, all = true) {
-  el = el.trim()
-  if (all) {
-    return [...document.querySelectorAll(el)]
-  } else {
-    return document.querySelector(el)
-  }
-}
-
 function makeElem(elemType, elemId = null, elemClass = null) {
   let elem = document.createElement(elemType);
   if (elemId) {
@@ -198,6 +189,24 @@ function makeElem(elemType, elemId = null, elemClass = null) {
   }
 
   return elem;
+}
+let nullDiv = makeElem('div', 'NULL', null);
+nullDiv.style.width = '1px';
+nullDiv.style.display = 'none';
+document.body.append(nullDiv);
+
+function select(el, all=false) {
+  el = el.trim();
+  let elms = [...document.querySelectorAll(el)];
+  if (elms.length == 0) {
+    return document.querySelector('NULL');
+  }
+
+  if (all) {
+    return elms;
+  }
+
+  return elms[0];
 }
 
 function displayText(el, text) {
