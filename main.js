@@ -133,7 +133,7 @@ $(document).ready(function () {
 
 
 function getSpinHtml() {
-    return `<div class="spinner-border" role="status"></div>`;
+    return `<div class="spinner-border mx-2" role="status"></div>`;
 }
 
 // if click, run transaction while viewing loading
@@ -148,6 +148,7 @@ async function purchaseBox() {
     }
     let result = data;
     select('#connectWalletStatus').innerHTML = "Waiting for result";
+    select('#connectWalletStatus').innerHTML += getSpinHtml();
     let txResult = await result.wait();
 	
     // txResult['events']
