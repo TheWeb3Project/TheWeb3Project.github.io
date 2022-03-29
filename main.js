@@ -147,63 +147,43 @@ async function purchaseBox() {
 
 try {
     let connectWalletModal = select('#connectWalletModal');
-    if (0 < connectWalletModal.length) {
-		connectWalletModal = connectWalletModal[0];
-        let forMysteryBtn = select("#forMysteryBtn");
-        if (0 < forMysteryBtn.length) {
-            forMysteryBtn = forMysteryBtn[0];
-            forMysteryBtn.style.display = "none";
-            (async () => {
-                await getCurAdr();
-                if (CURADR != null) {
-                    let forMysteryBtn = select("#forMysteryBtn");
-                    if (0 < forMysteryBtn.length) {
-                        forMysteryBtn = forMysteryBtn[0];
-                        forMysteryBtn.style.display = "flex";
-                    }
-                }
-            });
+    let forMysteryBtn = select("#forMysteryBtn");
+    forMysteryBtn.style.display = "none";
+    (async () => {
+        await getCurAdr();
+        if (CURADR != null) {
+            forMysteryBtn.style.display = "flex";
         }
+    });
 
-        connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
-            let button = event.relatedTarget;
-            await getCurAdr();
+    connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
+        let button = event.relatedTarget;
+        await getCurAdr();
+        if (CURADR == null) {
+            await conn();
+            console.log('loading conn');
             if (CURADR == null) {
-                await conn();
-                console.log('loading conn');
-                if (CURADR == null) {
-                    alert('Connect Wallet!');
-                    return;
-                }
-                let forMysteryBtn = select("#forMysteryBtn");
-                if (0 < forMysteryBtn.length) {
-                    forMysteryBtn = forMysteryBtn[0];
-                    forMysteryBtn.style.display = "flex";
-                }
+                alert('Connect Wallet!');
+                return;
             }
-            
-        })
-    }
 
-    let forMysteryBtn = select('#forMysteryBtn');
-    if (0 < forMysteryBtn.length) {
-		forMysteryBtn = forMysteryBtn[0];
-        forMysteryBtn.onclick = async () => { await purchaseBox(); };
-    }
+            forMysteryBtn.style.display = "flex";
+        }
+        
+    });
+
+    select('#forMysteryBtn').onclick = async () => { await purchaseBox(); };
 
     let purchaseBoxModal = select('#purchaseBoxModal');
-    if (0 < purchaseBoxModal.length) {
-        purchaseBoxModal = purchaseBoxModal[0];
-        purchaseBoxModal.addEventListener('show.bs.modal', function (event) {
-            purchaseBoxModal.querySelector('#modal-body-text').classList.add('d-none');
-            purchaseBoxModal.querySelector('#modal-body-video').classList.remove('d-none');     
-            purchaseBoxModal.querySelector('#modal-body-video video').play();
-            setTimeout(function() {
-                purchaseBoxModal.querySelector('#modal-body-video').classList.add('d-none');
-                purchaseBoxModal.querySelector('#modal-body-text').classList.remove('d-none');
-            }, 3000);
-        });
-    }
+    purchaseBoxModal.addEventListener('show.bs.modal', function (event) {
+        purchaseBoxModal.querySelector('#modal-body-text').classList.add('d-none');
+        purchaseBoxModal.querySelector('#modal-body-video').classList.remove('d-none');     
+        purchaseBoxModal.querySelector('#modal-body-video video').play();
+        setTimeout(function() {
+            purchaseBoxModal.querySelector('#modal-body-video').classList.add('d-none');
+            purchaseBoxModal.querySelector('#modal-body-text').classList.remove('d-none');
+        }, 3000);
+    });
 }
 catch(err) {
     console.log(err);

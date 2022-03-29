@@ -211,6 +211,10 @@ function select(el, all=false) {
 
 function displayText(el, text) {
   let els = select(el, true);
+  if (els == null) {
+    return;
+  }
+  
   for (var idx = 0; idx < els.length; idx++) {
     els[idx].innerHTML = text;
   }
