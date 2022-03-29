@@ -154,7 +154,7 @@ try {
         if (CURADR != null) {
             forMysteryBtn.style.display = "flex";
         }
-    });
+    })();
 
     connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
         let button = event.relatedTarget;
