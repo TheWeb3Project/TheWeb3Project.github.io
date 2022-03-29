@@ -54,6 +54,7 @@ function displayAll() {
                 elm.classList.add(tag);
             }
             elm.setAttribute('data-toggle', 'tooltip');
+            elm.setAttribute('data-html', 'true');
             let tooltipStr = `${PERCENTAGES[idy]} <span id="${grade}-bonus" class="text-error">+0%</span>`;
             elm.setAttribute('title', tooltipStr);
             let htmlStr = `${grade}`;
