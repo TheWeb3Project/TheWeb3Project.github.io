@@ -427,7 +427,7 @@ async function handleAccountsChanged(accounts) {
   displayAccountInformation();
 }
 
-async function conn() {
+async function conn(popup=false) {
 	try {
   	/* CURADR = await PROVIDER.send("eth_requestAccounts", []) */;
     let accounts = await ethereum.request({ method: 'eth_requestAccounts' }); // eth_requestAccounts
@@ -444,8 +444,9 @@ async function conn() {
       err = err['message'];
     }
   	
-    alert(JSON.stringify(err));   
-    
+    if (popup) {
+    	alert(JSON.stringify(err));
+    }    
   }
 }
 
