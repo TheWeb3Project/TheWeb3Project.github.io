@@ -186,12 +186,12 @@ try {
         let boxCount = INT(select('#boxCount').innerHTML);
 		
         let cost;
-        if (targetCurrency) {
+        if (targetCurrency == 'bnb') {
             cost = 10 / bnbPrice * boxCount;
         } else {
             cost = 10 / price * boxCount;
         }
-        select('#boxCost').innerHTML = `Cost: ${cost}`;
+        select('#showDetails').innerHTML = `Cost: ${cost}`;
         select('#connectWalletStatus').innerHTML = `Purchase ${boxCount} Box`;
 
         select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
@@ -244,13 +244,13 @@ catch(err) {
     console.log(err);
 }
 
-let targetCurrency = false;
+let targetCurrency = 'bnb';
 function toggleBtnTab() {
     $('.toggleBtnTab').toggleClass('text-primary bg-white');
-    if (targetCurrency) {
-        targetCurrency = false;
+    if (targetCurrency == 'bnb') {
+        targetCurrency = 'web3';
     } else {
-        targetCurrency = true;
+        targetCurrency = 'bnb';
     }
 }
 
