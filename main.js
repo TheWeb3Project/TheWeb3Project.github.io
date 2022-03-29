@@ -121,14 +121,14 @@ function getSpinHtml() {
 // if click, run transaction while viewing loading
 // if done, show result based on the things got
 async function purchaseBox() {
-    select('#connectWalletStatus').innerHTML = "Confirm Transaction to purchase";
+    select('#connectWalletStatus').innerHTML = "Confirm in dapp";
     select('#forMysteryBtn').innerHTML += getSpinHtml();
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
         return;
     }
     let result = data;
-    select('#connectWalletStatus').innerHTML = "Waiting for transaction result";
+    select('#connectWalletStatus').innerHTML = "Waiting for result";
     let txResult = await result.wait();
 	
     // txResult['events']
@@ -151,13 +151,6 @@ async function purchaseBox() {
 try {
     let connectWalletModal = select('#connectWalletModal');
     let forMysteryBtn = select("#forMysteryBtn");
-    forMysteryBtn.style.display = "none";
-    (async () => {
-        await getCurAdr();
-        if (CURADR != null) {
-            forMysteryBtn.style.display = "flex";
-        }
-    })();
 
     connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
         let button = event.relatedTarget;
@@ -169,11 +162,8 @@ try {
                 alert('Connect Wallet!');
                 return;
             }
-            
-            select('#connectWalletStatus').innerHTML = "Click below to purchase box";
-            forMysteryBtn.style.display = "flex";
         }
-        
+        select('#connectWalletStatus').innerHTML = "Purchase N Box";
     });
 
     select('#forMysteryBtn').onclick = async () => { await purchaseBox(); };
