@@ -372,15 +372,14 @@ async function getPrice(adr) {
 
 
 
-let CURADR;
+let CURADR = null;
 async function getCurAdr() {
 	try {
   	CURADR = await SIGNER.getAddress();
   } catch (err) {
   	console.log('not connected yet');
+    CURADR = null;
   }
- 
-  return CURADR;
 }
 
 
@@ -409,6 +408,7 @@ async function handleAccountsChanged(accounts) {
   if (accounts.length == 0) {
     console.log('no acount');
     CURADR = null;
+    return;
   }
   CURADR = ADR(accounts[0]);
   displayAccountInformation();
@@ -621,19 +621,6 @@ await CONTS[name].balanceOf(adr)
  */
 // filter
 
-
-
-
-async function getCurAdr() {
-  let curAdr = null;
-  try {
-    curAdr = await SIGNER.getAddress();
-  } catch (err) {
-    console.log('not connected yet');
-  }
-
-  return curAdr;
-}
 
 
 

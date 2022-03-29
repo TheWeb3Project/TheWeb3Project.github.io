@@ -147,20 +147,33 @@ try {
     let connectWalletModal = select('#connectWalletModal');
     if (0 < connectWalletModal.length) {
 		connectWalletModal = connectWalletModal[0];
-        CURADR
-        connectWalletModal.querySelector("#forMysteryBtn").style.display = "none";
+        let forMysteryBtn = select("#forMysteryBtn");
+        if (0 < forMysteryBtn.length) {
+            forMysteryBtn = forMysteryBtn[0];
+            forMysteryBtn.style.display = "none";
+            await getCurAdr();
+            if (CURADR != null) {
+                forMysteryBtn.style.display = "flex";
+            }
+        }
 
         connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
             let button = event.relatedTarget;
-            let curAdr = await getCurAdr();
-            if (curAdr == null) {
+            await getCurAdr();
+            if (CURADR == null) {
                 await conn();
                 console.log('loading conn');
                 if (CURADR == null) {
+                    alert('Connect Wallet!');
                     return;
                 }
+                let forMysteryBtn = select("#forMysteryBtn");
+                if (0 < forMysteryBtn.length) {
+                    forMysteryBtn = forMysteryBtn[0];
+                    forMysteryBtn.style.display = "flex";
+                }
             }
-            connectWalletModal.querySelector("#forMysteryBtn").style.display = "flex";
+            
         })
     }
 
