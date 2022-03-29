@@ -376,3 +376,9 @@ function saveCapture(url) {
 console.log(document.querySelectorAll('.output-img img'));
 showOutputImage();
 setTimeout(showOutputImage, 3000);
+
+$(".modal").on("shown.bs.modal", function () {
+    if ($(".modal-backdrop").length > 1) {
+        $(".modal-backdrop").not(':first').remove();
+    }
+})
