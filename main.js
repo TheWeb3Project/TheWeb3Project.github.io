@@ -122,7 +122,7 @@ function getSpinHtml() {
 // if done, show result based on the things got
 async function purchaseBox() {
     select('#connectWalletStatus').innerHTML = "Confirm in dapp";
-    select('#forMysteryBtn').innerHTML += getSpinHtml();
+    select('#connectWalletStatus').innerHTML += getSpinHtml();
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
         select('#connectWalletStatus').innerHTML = "User Rejected";
