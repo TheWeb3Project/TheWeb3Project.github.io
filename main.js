@@ -156,10 +156,12 @@ try {
         if (0 < forMysteryBtn.length) {
             forMysteryBtn = forMysteryBtn[0];
             forMysteryBtn.style.display = "none";
-            await getCurAdr();
-            if (CURADR != null) {
-                forMysteryBtn.style.display = "flex";
-            }
+            (async () => {
+                await getCurAdr();
+                if (CURADR != null) {
+                    forMysteryBtn.style.display = "flex";
+                }
+            });
         }
 
         connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
