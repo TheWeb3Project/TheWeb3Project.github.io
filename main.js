@@ -140,7 +140,7 @@ async function purchaseBox() {
     }
     
     select('#purchaseBoxModal')[0].classList.add('show');
-  }
+}
 
 
 try {
