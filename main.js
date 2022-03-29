@@ -146,7 +146,7 @@ async function purchaseBox(boxCount) {
     console.log(txResult['events']);
 
     const acheived = select('#acheived');
-    for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
+    for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, boxCount))) {
         let div = makeElem('div', null, 'col my-4');
 
         let htmlStr = getItemCard(itemInfo);
@@ -154,6 +154,7 @@ async function purchaseBox(boxCount) {
         acheived.append(div);
     }
 	displayAll();
+    runScroll();
     select('#purchaseBoxModal').classList.add('show');
     select('#showResult').click();
 }
@@ -223,6 +224,7 @@ const carousel = select('#carousel');
         div.innerHTML = htmlStr;
         carousel.append(div);
     }
+    runScroll();
 
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 
@@ -230,9 +232,11 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
   return new bootstrap.Popover(popoverTriggerEl)
 })
 
-try {
+function runScroll() {
     let owl = $('.owl-carousel');
-    if (0 < owl.length) {
+    if (owl.length == 0) {
+        return;
+    }
         owl.owlCarousel({
             loop: true,
             margin: 10,
@@ -248,10 +252,6 @@ try {
                 }
             }
         });
-    }    
-}
-catch(err) {
-    console.log(err);
 }
 
 let targetCurrency = '$WEB3';
