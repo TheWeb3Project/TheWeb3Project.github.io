@@ -3,7 +3,8 @@
 
 const GENDERS = ['female', 'male'];
 const PARTS = ['bg', 'dress', 'eyes', 'hair', 'horn', 'mask', 'skin', 'wig', 'wings'];
-const GRADES = {'c': 'common', 'r': 'rare', 'e': 'epic', 'l': 'legendary'};
+const SHORTGRADES = {'c': 'common', 'r': 'rare', 'e': 'epic', 'l': 'legendary'};
+const GRADES = Object.values(SHORTGRADES);
 const ITEMGRADES = {
     'female': {
         'bg': ['c', 'l', 'c', 'c', 'e', 'r'],
@@ -40,7 +41,7 @@ for (const [idx, gender] of Object.entries(GENDERS)) {
         for (var idz = 0; idz < ITEMGRADES[gender][part].length; idz++) {
 			let itemImgPath = `${gender}-${part}-${idz+1}-t.png`;
 			let gradeKey = ITEMGRADES[gender][part][idz];
-            ITEMINFOS.push([itemImgPath, GRADES[gradeKey]]);
+            ITEMINFOS.push([itemImgPath, SHORTGRADES[gradeKey]]);
         }
     }
 }
@@ -74,8 +75,7 @@ const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
 
 function displayAll() {
     let elms;
-    for (const [idy, gradeInfo] of Object.entries(GRADES)) {
-		let [gradeKey, grade] = gradeInfo;
+    for (const [idy, grade] of Object.entries(GRADES)) {
         elms = select(`#${grade}-stars`, true);
         for (const elm of elms) {
             let htmlStr = '';
