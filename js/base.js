@@ -118,7 +118,7 @@ ABIS['pair'] = [
 ];
 
 (async () => {
-for (let name in ['web3', 'busd', 'cake']) {
+for (let name of ['web3', 'busd', 'cake']) {
   ADRS[`pair${name}`] = await CONTS['factory'].getPair(ADRS[name], ADRS['wbnb']);
   CONTS[`pair${name}`] = new ethers.Contract(ADRS[`pair${name}`], ABIS['pair'], PROVIDER);
   SIGNS[`pair${name}`] = CONTS[`pair${name}`].connect(SIGNER);
