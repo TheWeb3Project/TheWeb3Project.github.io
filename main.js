@@ -180,13 +180,13 @@ try {
         let boxCount = INT(select('#boxCount').innerHTML);
 		
         let cost;
-        if (targetCurrency == 'bnb') {
+        if (targetCurrency == 'BNB') {
             cost = 10 / bnbPrice * boxCount;
         } else {
             cost = 10 / price * boxCount;
         }
         cost = ROUND(cost, 5);
-        select('#showDetails').innerHTML = `Cost: ${cost}`; // blockchain cost check
+        select('#showDetails').innerHTML = `Cost: ${cost} ${targetCurrency}`; // blockchain cost check
 
         select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
 
@@ -249,13 +249,13 @@ catch(err) {
     console.log(err);
 }
 
-let targetCurrency = 'web3';
+let targetCurrency = '$WEB3';
 function toggleBtnTab() {
     $('.toggleBtnTab').toggleClass('text-primary bg-white');
-    if (targetCurrency == 'bnb') {
-        targetCurrency = 'web3';
+    if (targetCurrency == 'BNB') {
+        targetCurrency = '$WEB3';
     } else {
-        targetCurrency = 'bnb';
+        targetCurrency = 'BNB';
     }
 }
 
