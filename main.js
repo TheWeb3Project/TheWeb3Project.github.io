@@ -103,10 +103,10 @@ function displayAll() {
 	
     let descStr = ` \
     By holding each 1% of total supply, <br/> \
-    -0.1% to common, <br/> \
-	+0.09% to rare, <br/> \
-    +0.009% to epic, <br/> \
-    +0.001% to legendary, <br/> \
+    -10% to common, <br/> \
+	+9% to rare, <br/> \
+    +0.9% to epic, <br/> \
+    +0.1% to legendary, <br/> \
     `;
     select('#rateDesc').setAttribute('title', descStr);
 }
