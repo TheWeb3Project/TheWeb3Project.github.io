@@ -42,7 +42,7 @@ function displayAll() {
         for (const elm of elms) {
             let htmlStr = '';
             for (var idx = 0; idx < INT(idy) + 1; idx++) {
-                htmlStr += `<img src="images/star.png" alt="star"></img>`;    
+                htmlStr += `<img src='images/star.png' alt='star'></img>`;    
             }
             elm.innerHTML = htmlStr;
         }
@@ -55,7 +55,7 @@ function displayAll() {
             }
             elm.setAttribute('data-toggle', 'tooltip');
             elm.setAttribute('data-html', 'true');
-            let tooltipStr = `${PERCENTAGES[idy]} <span id="${grade}-bonus" class="text-error">+0%</span>`;
+            let tooltipStr = `${PERCENTAGES[idy]} <span id='${grade}-bonus' class='text-error'>+0%</span>`;
             elm.setAttribute('title', tooltipStr);
             let htmlStr = `${grade}`;
             elm.innerHTML = htmlStr;
