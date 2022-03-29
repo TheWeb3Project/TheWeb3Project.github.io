@@ -186,7 +186,9 @@ try {
             cost = 10 / price * boxCount;
         }
         select('#showDetails').innerHTML = `Cost: ${cost}`;
-		
+
+        select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
+
         async function setPurchaseBox() {
             select('#connectWalletStatus').innerHTML = `Purchase ${boxCount} Box`;
         }
@@ -194,10 +196,9 @@ try {
         await getCurAdr();
         if (CURADR == null) {
             select('#connectWalletStatus').onclick = async () => { await conn(setPurchaseBox); };
-            return;
         }
 
-        select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
+        
     });
 
     
