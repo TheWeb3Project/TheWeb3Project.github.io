@@ -120,7 +120,7 @@ $(document).ready(function () {
 // if done, show result based on the things got
 async function purchaseBox() {
     // view loading
-    console.log('loading');
+    console.log('loading purchaseBox');
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
         return;
@@ -148,13 +148,13 @@ try {
     if (0 < openBoxModal.length) {
 		openBoxModal = openBoxModal[0];
         openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
-        
+
         openBoxModal.addEventListener('shown.bs.modal', async function (event) {
             let button = event.relatedTarget;
             let curAdr = await getCurAdr();
             if (curAdr == null) {
                 await conn();
-                console.log('loading');
+                console.log('loading conn');
                 if (CURADR == null) {
                     return;
                 }
