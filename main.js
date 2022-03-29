@@ -185,7 +185,8 @@ try {
         } else {
             cost = 10 / price * boxCount;
         }
-        select('#showDetails').innerHTML = `Cost: ${cost}`;
+        cost = ROUND(cost, 5);
+        select('#showDetails').innerHTML = `Cost: ${cost}`; // blockchain cost check
 
         select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
 
@@ -248,7 +249,7 @@ catch(err) {
     console.log(err);
 }
 
-let targetCurrency = 'bnb';
+let targetCurrency = 'web3';
 function toggleBtnTab() {
     $('.toggleBtnTab').toggleClass('text-primary bg-white');
     if (targetCurrency == 'bnb') {
