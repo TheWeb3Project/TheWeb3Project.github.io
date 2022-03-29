@@ -9,7 +9,7 @@ const ITEMGRADES = {
     'female': {
         'bg': ['c', 'l', 'c', 'c', 'r', 'r'],
         'dress': ['e', 'e', 'e', 'e'],
-        'eyes': ['r', 'r', 'r', 'r'],
+        'eyes': ['r', 'c', 'r', 'r'],
         'hair': ['e', 'r', 'e', 'e', 'r'],
         'horn': ['l', 'l'],
         'mask': ['c', 'e', 'c', 'c', 'c'],
