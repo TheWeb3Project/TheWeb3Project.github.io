@@ -372,20 +372,19 @@ async function getPrice(adr) {
 
 
 
-
+let CURADR;
 async function getCurAdr() {
-	let curAdr = null;
 	try {
-  	curAdr = await SIGNER.getAddress();
+  	CURADR = await SIGNER.getAddress();
   } catch (err) {
   	console.log('not connected yet');
   }
  
-  return curAdr;
+  return CURADR;
 }
 
 
-let CURADR;
+
 function displayAccountInformation() {
   let shortAdrStr = SHORTADR(CURADR);
   

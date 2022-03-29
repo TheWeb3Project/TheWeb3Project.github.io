@@ -147,6 +147,7 @@ try {
     let connectWalletModal = select('#connectWalletModal');
     if (0 < connectWalletModal.length) {
 		connectWalletModal = connectWalletModal[0];
+        CURADR
         connectWalletModal.querySelector("#forMysteryBtn").style.display = "none";
 
         connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
