@@ -323,10 +323,9 @@
       await getCurAdr();
       if (CURADR == null) {
         // connect wallet button
-      } else {
-        doAfterConnect();
-        // display address
+        return;
       }
+      doAfterConnect();
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
       // if (res == true) {

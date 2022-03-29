@@ -279,7 +279,6 @@
     let bnbPrice;
     let price;
     (async () => {
-
       // do global
       select('#connect').onclick = async () => { await conn(); };
 
@@ -296,16 +295,19 @@
       let circulatingSupply = totalSupply - blackHoleAmount;
       displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
 
-      let trustFundBalance = await getBalance("0xe7F0704b198585B8777abe859C3126f57eB8C989");
-      trustFundBalance = trustFundBalance / BNBDIV;
-      displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance * bnbPrice, 3))}`);
+      let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
+      let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
+      trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
+      displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance, 3))}`);
 
-      let treasuryBalance = await getBalance("0xe710D22dcf97779EE598085d96B5DF60aA382f6B");
-      treasuryBalance = treasuryBalance / BNBDIV;
-      displayText("#treasury", `$${COMMA(ROUND(treasuryBalance * bnbPrice, 3))}`);
+      let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
+      let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
+      trustFundBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
 
-      let marketingBalance = await getBalance("0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175");
-      marketingBalance = marketingBalance / BNBDIV;
+      let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
+      let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
+      marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
+      displayText("#treasury", `$${COMMA(ROUND(trustFundBalance + treasuryBalance, 3))}`);
 
       let liqReserves = await CONTS['pairweb3'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
@@ -319,7 +321,36 @@
 
       let mcap = price * totalSupply;
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
+      
+      // manual rebase
+      select('#rebase').onclick = async () => { await runManualRebase(); };
 
+      // let curBlock = await PROVIDER.getBlock();
+      // curBlock = curBlock['number'];
+      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
+      // lastRebaseBlock = INT(lastRebaseBlock);
+      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
+      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
+      
+
+
+      await getCurAdr();
+      if (CURADR == null) {
+        // connect wallet button
+        return;
+      }
+      doAfterConnect();
+
+      // let [res, data] = await GAS('web3', 'manualRebase', []);
+      // if (res == true) {
+      //   return;
+      // } else {
+      //   gasEstimation = data;
+      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
+      // }
+    })();
+
+    (async () => {
 
       select('#curPrice').value = `${COMMA(ROUND(price, 3))}`;
       select('#futPrice').value = `${COMMA(ROUND(price, 3))}`;
