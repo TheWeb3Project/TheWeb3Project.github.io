@@ -144,12 +144,12 @@ async function purchaseBox() {
 
 
 try {
-    let openBoxModal = select('#openBoxModal');
-    if (0 < openBoxModal.length) {
-		openBoxModal = openBoxModal[0];
-        openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
+    let connectWalletModal = select('#connectWalletModal');
+    if (0 < connectWalletModal.length) {
+		connectWalletModal = connectWalletModal[0];
+        connectWalletModal.querySelector("#forMysteryBtn").style.display = "none";
 
-        openBoxModal.addEventListener('shown.bs.modal', async function (event) {
+        connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
             let button = event.relatedTarget;
             let curAdr = await getCurAdr();
             if (curAdr == null) {
@@ -159,7 +159,7 @@ try {
                     return;
                 }
 
-                openBoxModal.querySelector("#forMysteryBtn").style.display = "flex";
+                connectWalletModal.querySelector("#forMysteryBtn").style.display = "flex";
             }
         })
     }
