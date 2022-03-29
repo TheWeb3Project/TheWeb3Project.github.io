@@ -199,10 +199,10 @@ function select(el, all=false) {
   el = el.trim();
   let elms = [...document.querySelectorAll(el)];
   if (elms.length == 0) {
-    return document.querySelector('NULL');
+    elms = [document.querySelector('NULL')];
   }
 
-  if (all) {
+  if (all) {  
     return elms;
   }
 
