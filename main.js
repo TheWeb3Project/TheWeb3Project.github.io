@@ -159,7 +159,11 @@ try {
             (async () => {
                 await getCurAdr();
                 if (CURADR != null) {
-                    forMysteryBtn.style.display = "flex";
+                    let forMysteryBtn = select("#forMysteryBtn");
+                    if (0 < forMysteryBtn.length) {
+                        forMysteryBtn = forMysteryBtn[0];
+                        forMysteryBtn.style.display = "flex";
+                    }
                 }
             });
         }
