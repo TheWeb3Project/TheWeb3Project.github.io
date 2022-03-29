@@ -34,7 +34,7 @@ function getItemCard(itemInfo) {
 $(document).ready(function () {
     const carousel = select('#carousel');
     for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
-        let div = makeElem('div', null, 'item col-12 col-md-11 mt-4 mb-4');
+        let div = makeElem('div', null, 'item col-12 col-lg-4 mt-4 mb-4');
 
         let htmlStr = getItemCard(itemInfo);
 
