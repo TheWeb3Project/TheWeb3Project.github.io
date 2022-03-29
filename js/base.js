@@ -378,7 +378,7 @@ async function getBalance(adr) {
 
 async function getPrice(name) {
   let r = await CONTS[`pair${name}`].getReserves();
-  let t0 = await cont.token0();
+  let t0 = await CONTS[`pair${name}`].token0();
 
   if (t0 == ADRS[name]) {
     r = [r[1], r[0]]; // BNB, adr
