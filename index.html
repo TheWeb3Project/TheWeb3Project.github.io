@@ -281,16 +281,19 @@
       let circulatingSupply = totalSupply - blackHoleAmount;
       displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
 
-      let trustFundBalance = await getBalance("0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475");
-      trustFundBalance = trustFundBalance / BNBDIV;
-      displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance * bnbPrice, 3))}`);
+      let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
+      let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
+      trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
+      displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance, 3))}`);
 
-      let treasuryBalance = await getBalance("0xcCa3C1D62C80834f8B303f45D89298866C097B1a");
-      treasuryBalance = treasuryBalance / BNBDIV;
-      displayText("#treasury", `$${COMMA(ROUND(treasuryBalance * bnbPrice, 3))}`);
+      let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
+      let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
+      trustFundBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
 
-      let marketingBalance = await getBalance("0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175");
-      marketingBalance = marketingBalance / BNBDIV;
+      let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
+      let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
+      marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
+      displayText("#treasury", `$${COMMA(ROUND(trustFundBalance + treasuryBalance, 3))}`);
 
       let liqReserves = await CONTS['pairweb3'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
