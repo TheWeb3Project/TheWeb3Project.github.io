@@ -7,17 +7,17 @@ const SHORTGRADES = {'c': 'common', 'r': 'rare', 'e': 'epic', 'l': 'legendary'};
 const GRADES = Object.values(SHORTGRADES);
 const ITEMGRADES = {
     'female': {
-        'bg': ['c', 'l', 'c', 'c', 'e', 'r'],
+        'bg': ['c', 'l', 'c', 'c', 'r', 'r'],
         'dress': ['e', 'e', 'e', 'e'],
         'eyes': ['r', 'r', 'r', 'r'],
-        'hair': ['e', 'e', 'e', 'e', 'r'],
+        'hair': ['e', 'r', 'e', 'e', 'r'],
         'horn': ['l', 'l'],
         'mask': ['c', 'e', 'c', 'c', 'c'],
         'skin': ['c', 'c', 'c', 'c', 'c', 'c'],
 		
     },
     'male': {
-        'bg': ['c', 'c', 'e', 'c', 'r', 'c'],
+        'bg': ['c', 'c', 'r', 'c', 'r', 'c'],
         'dress': ['e', 'e', 'e'],
         'eyes': ['c', 'r', 'r', 'e'],
         'hair': ['r', 'l', 'r', 'r'],
