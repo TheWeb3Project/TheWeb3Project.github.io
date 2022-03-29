@@ -59,7 +59,7 @@ function getItemCard(itemInfo) {
         <div class="d-flex flex-column align-items-center justify-content-center h-100 w-100"> \
         <h2 class="d-flex align-items-center"> \
         ${imgName} \
-        <span id="${grade}-stars"></span> \
+        <span id="${grade}-stars" class="d-flex"></span> \
         </h2> \
         <span id="${grade}-stat"></span> \
         </div> \
