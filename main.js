@@ -188,15 +188,18 @@ try {
         cost = ROUND(cost, 5);
         select('#showDetails').innerHTML = `Cost: ${cost} ${targetCurrency}`; // blockchain cost check
 
-        select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
+        
 
         async function setPurchaseBox() {
             select('#connectWalletStatus').innerHTML = `Purchase ${boxCount} Box`;
+            select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
         }
 
         await getCurAdr();
         if (CURADR == null) {
-            select('#connectWalletStatus').onclick = async () => { await conn(setPurchaseBox); };
+            select('#forMysteryBtn').onclick = async () => { await conn(setPurchaseBox); };
+        } else {
+            await setPurchaseBox();
         }
 
         
