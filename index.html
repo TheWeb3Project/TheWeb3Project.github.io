@@ -268,7 +268,7 @@
       // do global
       select('#connect').onclick = async () => { await conn(); };
 
-      bnbPrice = 1 / (await getPrice(ADR['busd']));
+      bnbPrice = 1 / (await getPrice('busd'));
 
       let totalSupply = await CONTS['web3'].totalSupply();
       totalSupply = totalSupply / BNBDIV;
@@ -292,7 +292,7 @@
       let marketingBalance = await getBalance("0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175");
       marketingBalance = marketingBalance / BNBDIV;
 
-      let liqReserves = await CONTS['pair'].getReserves();
+      let liqReserves = await CONTS['pairweb3'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
       displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 0))}`);
       displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance + marketingBalance) / liqBnb * 100, 0))}%`);

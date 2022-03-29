@@ -93,11 +93,6 @@ ABIS['router'] = [
   "function swapExactETHForTokens(uint, address[], address, uint) payable returns (uint[])",
 ];
 
-ADRS['pair'] = "0x9f7d235b7d3f4403133A559b0968361687e4fC62";
-ABIS['pair'] = [
-  "function token0() view returns (address)",
-  "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
-];
 
 ADRS['nft'] = "0x933D6472131545BC742Cde7d051a443eA0683a85";
 ABIS['nft'] = [
@@ -116,6 +111,19 @@ for (let name in ABIS) {
   CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
   SIGNS[name] = CONTS[name].connect(SIGNER);
 }
+
+ABIS['pair'] = [
+  "function token0() view returns (address)",
+  "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
+];
+
+(async () => {
+for (let name in ['web3', 'busd', 'cake']) {
+  ADRS[`pair${name}`] = await CONTS['factory'].getPair(ADRS[name], ADRS['wbnb']);
+  CONTS[`pair${name}`] = new ethers.Contract(ADRS[`pair${name}`], ABIS['pair'], PROVIDER);
+  SIGNS[`pair${name}`] = CONTS[`pair${name}`].connect(SIGNER);
+}
+})();
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
 // https://bscscan.com/tx/0x3745eb92a39460e840aa5503872f7c2fe513f061e8e0e7c59b35fad7841b2896
@@ -368,18 +376,15 @@ async function getBalance(adr) {
   return balance;
 }
 
-async function getPrice(adr) {
-  adr = ADRS['busd'];
-  let pair = await CONTS['factory'].getPair(adr, ADRS['wbnb']);
-  let cont = new ethers.Contract(pair, ABIS['pair'], PROVIDER);
-  let r = await cont.getReserves();
+async function getPrice(name) {
+  let r = await CONTS[`pair${name}`].getReserves();
   let t0 = await cont.token0();
 
-  if (t0 == adr) {
-    r = [r[1], r[0]];
+  if (t0 == ADRS[name]) {
+    r = [r[1], r[0]]; // BNB, adr
   }
 
-  return r[0] / r[1];
+  return r[0] / r[1]; // BNB / adr
 }
 
 
