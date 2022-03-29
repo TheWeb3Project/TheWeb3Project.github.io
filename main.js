@@ -144,13 +144,15 @@ async function purchaseBox() {
 
 
 try {
-    let openBoxModal = document.getElementById('openBoxModal');
-    if (openBoxModal != null) {
+    let openBoxModal = select('#openBoxModal');
+    if (0 < openBoxModal.length) {
+		openBoxModal = openBoxModal[0];
+        openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
+        
         openBoxModal.addEventListener('shown.bs.modal', async function (event) {
             let button = event.relatedTarget;
             let curAdr = await getCurAdr();
             if (curAdr == null) {
-                openBoxModal.querySelector("#forMysteryBtn").style.display = "none";
                 await conn();
                 console.log('loading');
                 if (CURADR == null) {
