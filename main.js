@@ -53,8 +53,8 @@ function displayAll() {
             for (const tag of tags) {
                 elm.classList.add(tag);
             }
-            let htmlStr = `${grade} - ${PERCENTAGES[idy]}`;
-            htmlStr += `<span id="${grade}-bonus" class="text-error">+0%</span>`;
+            let htmlStr = `${grade}`;// - ${PERCENTAGES[idy]};
+            // htmlStr += <span id="${grade}-bonus" class="text-error">+0%</span>;
             elm.innerHTML = htmlStr;
         }
     }
