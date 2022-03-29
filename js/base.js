@@ -120,7 +120,7 @@ ABIS['token'] = [
 ADRS['wbnb'] = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
 ADRS['busd'] = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
 ADRS['cake'] = "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82";
-for (let name in ['busd', 'cake']) {
+for (let name of ['busd', 'cake']) {
   CONTS[name] = new ethers.Contract(ADRS[name], ABIS['token'], PROVIDER);
   SIGNS[name] = CONTS[name].connect(SIGNER);
 }
