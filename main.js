@@ -474,7 +474,7 @@ $(function () {
 
     bnbPrice = 1 / (await getPrice('busd'));
 
-    let liqReserves = await CONTS['pair'].getReserves();
+    let liqReserves = await CONTS['pairweb3'].getReserves();
     let liqBnb = liqReserves[1] / BNBDIV; 
 
     let liqWeb3 = liqReserves[0] / BNBDIV;
