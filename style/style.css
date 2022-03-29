@@ -11519,3 +11519,7 @@ canvas#combined-output-img {
 }
 
 /*# sourceMappingURL=style.css.map */
+
+.tooltip-inner {
+  max-width: 500px;
+}
