@@ -339,16 +339,13 @@
       };
       
 
-      CURADR = await getCurAdr();
+      await getCurAdr();
       if (CURADR == null) {
         // connect wallet button
+        return;
       } else {
         doAfterConnect();
         // display address
-      }
-      
-      if (CURADR == null) {
-        return;
       }
 
       // do personal

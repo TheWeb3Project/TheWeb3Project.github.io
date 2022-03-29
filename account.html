@@ -330,7 +330,7 @@
       let apy = 404092.65;
       displayText("#apy", `${COMMA(ROUND(apy, 2))}%`);
 
-      CURADR = await getCurAdr();
+      await getCurAdr();
 
       if (CURADR == null) {
         // connect wallet button
