@@ -145,6 +145,7 @@ async function purchaseBox() {
     }
     
     select('#purchaseBoxModal')[0].classList.add('show');
+    select('#showResult')[0].click();
 }
 
 
