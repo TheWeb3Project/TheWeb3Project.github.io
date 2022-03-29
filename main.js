@@ -55,7 +55,8 @@ function displayAll() {
             }
             elm.setAttribute('data-bs-toggle', 'tooltip');
             elm.setAttribute('data-bs-html', true);
-            let tooltipStr = `${PERCENTAGES[idy]} <span id='${grade}-bonus' class='text-error'>+0%</span>`;
+            let tooltipStr = `Drop Rate <br/> \
+            ${PERCENTAGES[idy]} <span id='${grade}-bonus' class='text-error'>+0%</span>`;
             elm.setAttribute('title', tooltipStr);
             let htmlStr = `${grade}`;
             elm.innerHTML = htmlStr;
@@ -231,7 +232,7 @@ let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
 try {
     let owl = $('.owl-carousel');
     if (0 < owl.length) {
-        $('.owl-carousel').owlCarousel({
+        owl.owlCarousel({
             loop: true,
             margin: 10,
             nav: true,
