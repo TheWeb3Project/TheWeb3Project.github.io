@@ -156,8 +156,8 @@ $(document).ready(function () {
             slideTrack.append(div);
         }
     }
-    displayAll();
     runScroll();
+    displayAll();
 });
 
 
@@ -191,8 +191,8 @@ async function purchaseBox(boxCount) {
         div.innerHTML = htmlStr;
         acheived.append(div);
     }
-	displayAll();
     runScroll();
+    displayAll();
     select('#purchaseBoxModal').classList.add('show');
     select('#showResult').click();
 }
@@ -262,8 +262,8 @@ const carousel = select('#carousel');
         div.innerHTML = htmlStr;
         carousel.append(div);
     }
-    displayAll();
     runScroll();
+    displayAll();
 
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 
