@@ -125,6 +125,7 @@ async function purchaseBox() {
     select('#forMysteryBtn').innerHTML += getSpinHtml();
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
+        select('#connectWalletStatus').innerHTML = "User Rejected";
         return;
     }
     let result = data;
