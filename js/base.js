@@ -199,7 +199,7 @@ function select(el, all=false) {
   el = el.trim();
   let elms = [...document.querySelectorAll(el)];
   if (elms.length == 0) {
-    elms = [document.querySelector('#NULL')];
+    elms = [document.querySelector('#NULL')]; // how to erase inner?
   }
 
   if (all) {  
