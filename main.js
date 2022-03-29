@@ -48,9 +48,6 @@ $(document).ready(function () {
     let elms;
     for (const [idy, grade] of Object.entries(GRADES)) {
         elms = select(`#${grade}-stars`, true);
-        if (elms == null) {
-            
-        }
         for (const elm of elms) {
             let htmlStr = '';
             for (var idx = 0; idx < INT(idy) + 1; idx++) {
