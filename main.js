@@ -158,9 +158,8 @@ try {
                 if (CURADR == null) {
                     return;
                 }
-
-                connectWalletModal.querySelector("#forMysteryBtn").style.display = "flex";
             }
+            connectWalletModal.querySelector("#forMysteryBtn").style.display = "flex";
         })
     }
 
