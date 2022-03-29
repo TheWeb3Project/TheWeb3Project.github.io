@@ -31,20 +31,11 @@ function getItemCard(itemInfo) {
     return htmlStr;
 }
 
-$(document).ready(function () {
-    const carousel = select('#carousel');
-    for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
-        let div = makeElem('div', null, 'item col-12 col-lg-4 mt-4 mb-4');
-
-        let htmlStr = getItemCard(itemInfo);
-
-        div.innerHTML = htmlStr;
-        carousel.append(div);
-    }
-
-    const GRADES = ['common', 'rare', 'epic', 'legendary'];
+const GRADES = ['common', 'rare', 'epic', 'legendary'];
     const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
 
+
+function displayAll() {
     let elms;
     for (const [idy, grade] of Object.entries(GRADES)) {
         elms = select(`#${grade}-stars`, true);
@@ -67,6 +58,21 @@ $(document).ready(function () {
             elm.innerHTML = htmlStr;
         }
     }
+}
+
+$(document).ready(function () {
+    const carousel = select('#carousel');
+    for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
+        let div = makeElem('div', null, 'item col-12 col-lg-4 mt-4 mb-4');
+
+        let htmlStr = getItemCard(itemInfo);
+
+        div.innerHTML = htmlStr;
+        carousel.append(div);
+    }
+
+    displayAll();
+    
 
     const slideTrack = select('#slide-track');
 
@@ -143,7 +149,7 @@ async function purchaseBox() {
         div.innerHTML = htmlStr;
         acheived.append(div);
     }
-    
+	displayAll();    
     select('#purchaseBoxModal').classList.add('show');
     select('#showResult').click();
 }
