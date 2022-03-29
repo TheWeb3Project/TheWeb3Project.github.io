@@ -74,16 +74,6 @@ function displayAll() {
 }
 
 $(document).ready(function () {
-    const carousel = select('#carousel');
-    for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
-        let div = makeElem('div', null, 'item col-12 col-lg-4 mt-4 mb-4');
-
-        let htmlStr = getItemCard(itemInfo);
-
-        div.innerHTML = htmlStr;
-        carousel.append(div);
-    }
-
     displayAll();
     
 
@@ -223,6 +213,17 @@ catch(err) {
     console.log(err);
 }
 
+
+const carousel = select('#carousel');
+    for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
+        let div = makeElem('div', null, 'item col-12 col-lg-4 mt-4 mb-4');
+
+        let htmlStr = getItemCard(itemInfo);
+
+        div.innerHTML = htmlStr;
+        carousel.append(div);
+    }
+    
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
 
 let popoverList = popoverTriggerList.map(function (popoverTriggerEl) {
