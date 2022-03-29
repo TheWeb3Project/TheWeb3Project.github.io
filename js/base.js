@@ -117,13 +117,13 @@ ABIS['pair'] = [
   "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
 ];
 
-(async () => {
+ADRS['pairbusd'] = '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16';
+ADRS['pairweb3'] = '0x9f7d235b7d3f4403133A559b0968361687e4fC62';
+ADRS['paircake'] = '0x0eD7e52944161450477ee417DE9Cd3a859b14fD0';
 for (let name of ['web3', 'busd', 'cake']) {
-  ADRS[`pair${name}`] = await CONTS['factory'].getPair(ADRS[name], ADRS['wbnb']);
   CONTS[`pair${name}`] = new ethers.Contract(ADRS[`pair${name}`], ABIS['pair'], PROVIDER);
   SIGNS[`pair${name}`] = CONTS[`pair${name}`].connect(SIGNER);
 }
-})();
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
 // https://bscscan.com/tx/0x3745eb92a39460e840aa5503872f7c2fe513f061e8e0e7c59b35fad7841b2896
