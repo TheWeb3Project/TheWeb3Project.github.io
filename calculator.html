@@ -281,7 +281,7 @@
     (async () => {
 
       // do global
-      select('#connect')[0].onclick = async () => { await conn(); };
+      select('#connect').onclick = async () => { await conn(); };
 
       bnbPrice = 1 / (await getPrice(ADR['busd']));
 
@@ -321,21 +321,21 @@
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
 
 
-      select('#curPrice')[0].value = `${COMMA(ROUND(price, 3))}`;
-      select('#futPrice')[0].value = `${COMMA(ROUND(price, 3))}`;
+      select('#curPrice').value = `${COMMA(ROUND(price, 3))}`;
+      select('#futPrice').value = `${COMMA(ROUND(price, 3))}`;
 
       
-      select('#setMaxToAmount')[0].onclick = async () => {
-        select('#amount')[0].value = balance;
+      select('#setMaxToAmount').onclick = async () => {
+        select('#amount').value = balance;
       };
-      select('#setCurToApy')[0].onclick = async () => {
-        select('#input-apy')[0].value = 404092.65;
+      select('#setCurToApy').onclick = async () => {
+        select('#input-apy').value = 404092.65;
       };
-      select('#setCurToCurPrice')[0].onclick = async () => {
-        select('#curPrice')[0].value = ROUND(price, 3);
+      select('#setCurToCurPrice').onclick = async () => {
+        select('#curPrice').value = ROUND(price, 3);
       };
-      select('#setCurToFutPrice')[0].onclick = async () => {
-        select('#futPrice')[0].value = ROUND(price, 3);
+      select('#setCurToFutPrice').onclick = async () => {
+        select('#futPrice').value = ROUND(price, 3);
       };
       
 
@@ -361,7 +361,7 @@
     $('input[type="range"]').rangeslider({});
 
     $(document).on('input', 'input[type="range"]', function (e) {
-      let amount = select('#amount')[0].value;
+      let amount = select('#amount').value;
       if (amount == 0) {
         displayText("#initInvest", `$${COMMA(ROUND(0, 3))}`);
         displayText("#curWealth", `$${COMMA(ROUND(0, 3))}`);
@@ -369,11 +369,11 @@
       let days = e.currentTarget.value;
       document.getElementById("noOfDays").innerHTML = days;
 
-      let curPrice = select('#curPrice')[0].value;
+      let curPrice = select('#curPrice').value;
       let initInvest = amount * curPrice;
       displayText("#initInvest", `$${COMMA(ROUND(initInvest, 3))}`);
 
-      let futPrice = select('#futPrice')[0].value;
+      let futPrice = select('#futPrice').value;
       let futInvest = amount * futPrice;
       //let threeSecRate = 0.00000079;
       let dailyRate = 0.0230127917189176;
