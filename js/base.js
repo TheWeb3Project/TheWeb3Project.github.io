@@ -561,7 +561,7 @@ async function GAS(name, method, args, value = null) {
   };
 }
  
-async function SEND_TX(name, method, args, value=null, check=true, wait=true) {
+async function SEND_TX(name, method, args, value=null, check=true) {
   let overrides = {};
   if (value != null) {
     overrides['value'] = BIG(value);
@@ -584,14 +584,16 @@ async function SEND_TX(name, method, args, value=null, check=true, wait=true) {
     result = await SIGNS[name][method](...args, overrides);
     console.log('hash', result['hash']);
     console.log('result', result);
-    if (wait == true) {
-      let txResult = await result.wait();
-      console.log('txResult', txResult);
-      return [ false, txResult ];
-      // event, eventSignature
-    } else {
-    	return [ false, result ];
-    }
+    return [ false, result ];
+
+    // if (wait == true) {
+    //   let txResult = await result.wait();
+    //   console.log('txResult', txResult);
+    //   return [ false, txResult ];
+    //   // event, eventSignature
+    // } else {
+    	
+    // }
     /* console.log(tx.hash); */
     // wait()
     // receipt.events

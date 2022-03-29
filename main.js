@@ -121,13 +121,16 @@ function getSpinHtml() {
 // if click, run transaction while viewing loading
 // if done, show result based on the things got
 async function purchaseBox() {
+    select('#connectWalletStatus').innerHTML = "Confirm Transaction to purchase";
     select('#forMysteryBtn').innerHTML += getSpinHtml();
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
         return;
     }
-
-	let txResult = data;
+    let result = data;
+    select('#connectWalletStatus').innerHTML = "Waiting for transaction result";
+    let txResult = await result.wait();
+	
     // txResult['events']
     console.log(txResult['events']);
 
@@ -166,7 +169,8 @@ try {
                 alert('Connect Wallet!');
                 return;
             }
-
+            
+            select('#connectWalletStatus').innerHTML = "Click below to purchase box";
             forMysteryBtn.style.display = "flex";
         }
         
