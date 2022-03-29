@@ -53,8 +53,8 @@ function displayAll() {
             for (const tag of tags) {
                 elm.classList.add(tag);
             }
-            elm.setAttribute('data-toggle', 'tooltip');
-            elm.setAttribute('data-html', 'true');
+            elm.setAttribute('data-bs-toggle', 'tooltip');
+            elm.setAttribute('data-bs-html', true);
             let tooltipStr = `${PERCENTAGES[idy]} <span id='${grade}-bonus' class='text-error'>+0%</span>`;
             elm.setAttribute('title', tooltipStr);
             let htmlStr = `${grade}`;
@@ -384,5 +384,5 @@ $(".modal").on("shown.bs.modal", function () {
 })
 
 $(function () {
-    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-bs-toggle="tooltip"]').tooltip();
   })
