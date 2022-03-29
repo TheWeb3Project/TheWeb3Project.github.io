@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     let elms;
     for (const [idy, grade] of Object.entries(GRADES)) {
-        elms = select(`#${grade}-stars`, all=true);
+        elms = select(`#${grade}-stars`, true);
         for (const elm of elms) {
             let htmlStr = '';
             for (var idx = 0; idx < INT(idy) + 1; idx++) {
@@ -56,7 +56,7 @@ $(document).ready(function () {
             elm.innerHTML = htmlStr;
         }
 
-        elms = select(`#${grade}-stat`, all=true);
+        elms = select(`#${grade}-stat`, true);
         let tags = `bg-${grade} fw-bold px-4 py-2 rounded-pill me-3`.split(' ');
         for (const elm of elms) {
             for (const tag of tags) {
@@ -121,11 +121,7 @@ function getSpinHtml() {
 // if click, run transaction while viewing loading
 // if done, show result based on the things got
 async function purchaseBox() {
-    let forMysteryBtn = select('#forMysteryBtn');
-    if (0 < forMysteryBtn.length) {
-		forMysteryBtn = forMysteryBtn[0];
-        forMysteryBtn.innerHTML += getSpinHtml();
-    }
+    select('#forMysteryBtn').innerHTML += getSpinHtml();
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
         return;
@@ -135,7 +131,7 @@ async function purchaseBox() {
     // txResult['events']
     console.log(txResult['events']);
 
-    const acheived = select('#acheived')[0];
+    const acheived = select('#acheived');
     for (const [idy, itemInfo] of Object.entries(ITEMINFOS.slice(0, 3))) {
         let div = makeElem('div', null, 'col my-4');
 
@@ -144,8 +140,8 @@ async function purchaseBox() {
         acheived.append(div);
     }
     
-    select('#purchaseBoxModal')[0].classList.add('show');
-    select('#showResult')[0].click();
+    select('#purchaseBoxModal').classList.add('show');
+    select('#showResult').click();
 }
 
 

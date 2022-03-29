@@ -210,7 +210,7 @@ function select(el, all=false) {
 }
 
 function displayText(el, text) {
-  let els = select(el, all=true);
+  let els = select(el, true);
   for (var idx = 0; idx < els.length; idx++) {
     els[idx].innerHTML = text;
   }
