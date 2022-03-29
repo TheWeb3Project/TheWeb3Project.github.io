@@ -288,7 +288,10 @@ function runScroll() {
                 },
                 600: {
                     items: 3
-                }
+                },
+                1200: {
+                    items: 5
+                },
             }
         });
 }
