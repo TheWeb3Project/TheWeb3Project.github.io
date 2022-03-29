@@ -126,7 +126,7 @@
                 <div class="col-sm-6">
                   <div class="p-4">
                     <span class="text-secondary">APY</span>
-                    <h4 id="apy" class="fw-bold my-2">0%</h4>
+                    <h4 id="apy" class="fw-bold my-2">404,092.65%</h4>
                     <span class="text-secondary">Daily ROI 2.301279%</span>
                   </div>
                 </div>
@@ -311,6 +311,7 @@
 
       await getCurAdr();
       if (CURADR == null) {
+        displayText("#totalEarnedInUsd", `Connect Wallet`);
         // connect wallet button
       } else {
         doAfterConnect();
@@ -324,55 +325,8 @@
       //   gasEstimation = data;
       //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
       // }
-    })();
 
-    let balance;
-    async function doAfterConnect() {
-      displayText('#connect', SHORTADR(CURADR));
 
-      balance = await CONTS['web3'].balanceOf(CURADR);
-      balance = balance / BNBDIV;
-      
-      bnbPrice = 1 / (await getPrice('busd'));
-
-      displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
-      displayText("#balanceInUsd", `$${COMMA(ROUND(balance * price, 3))}`);
-      
-      let dailyRate = 0.0230127917189176;
-      displayText("#nextDailyReward", `${COMMA(ROUND(balance * dailyRate, 3))} $WEB3`);
-      displayText("#nextDailyRewardInUsd", `$${COMMA(ROUND(balance * dailyRate * price, 3))}`);
-
-      let rebaseRate = 0.00000079;
-      displayText("#nextRebaseReward", `${COMMA(ROUND(balance * rebaseRate, 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `$${COMMA(ROUND(balance * rebaseRate * price, 3))}`);
-
-      let hourRate = 0.0009484491193146;
-      displayText("#nexthourReward", `${COMMA(ROUND(balance * hourRate, 3))} $WEB3`);
-      displayText("#nexthourRewardInUsd", `$${COMMA(ROUND(balance * hourRate * price, 3))}`);
-
-      let MonthRate = 0.978936799350339;
-      displayText("#nextMonthReward", `${COMMA(ROUND(balance * MonthRate, 3))} $WEB3`);
-      displayText("#nextMonthRewardInUsd", `$${COMMA(ROUND(balance * MonthRate * price, 3))}`);
-    }
-
-    
-    (async () => {
-      // do global
-      
-      let apy = 404092.65;
-      displayText("#apy", `${COMMA(ROUND(apy, 2))}%`);
-
-      await getCurAdr();
-
-      if (CURADR == null) {
-        // connect wallet button
-        displayText("#totalEarnedInUsd", `Connect Wallet`);
-        return;
-      }
-			// make these in the do after connect
-      doAfterConnect();
-        // display address
-			
       let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
       let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
       let amount = BigInt(0);
@@ -423,8 +377,38 @@
       displayText("#totalEarned", `${COMMA(ROUND(totalEarned, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
       displayText("#totalEarnedInUsd", `$${COMMA(ROUND(totalEarned * price, 3))}`);
       
-
     })();
+
+    let balance;
+    async function doAfterConnect() {
+      displayText('#connect', SHORTADR(CURADR));
+
+      balance = await CONTS['web3'].balanceOf(CURADR);
+      balance = balance / BNBDIV;
+      
+      bnbPrice = 1 / (await getPrice('busd'));
+
+      displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
+      displayText("#balanceInUsd", `$${COMMA(ROUND(balance * price, 3))}`);
+      
+      let dailyRate = 0.0230127917189176;
+      displayText("#nextDailyReward", `${COMMA(ROUND(balance * dailyRate, 3))} $WEB3`);
+      displayText("#nextDailyRewardInUsd", `$${COMMA(ROUND(balance * dailyRate * price, 3))}`);
+
+      let rebaseRate = 0.00000079;
+      displayText("#nextRebaseReward", `${COMMA(ROUND(balance * rebaseRate, 3))} $WEB3`);
+      displayText("#nextRebaseRewardInUsd", `$${COMMA(ROUND(balance * rebaseRate * price, 3))}`);
+
+      let hourRate = 0.0009484491193146;
+      displayText("#nexthourReward", `${COMMA(ROUND(balance * hourRate, 3))} $WEB3`);
+      displayText("#nexthourRewardInUsd", `$${COMMA(ROUND(balance * hourRate * price, 3))}`);
+
+      let MonthRate = 0.978936799350339;
+      displayText("#nextMonthReward", `${COMMA(ROUND(balance * MonthRate, 3))} $WEB3`);
+      displayText("#nextMonthRewardInUsd", `$${COMMA(ROUND(balance * MonthRate * price, 3))}`);
+    }
+
+
 
   </script>
 </body>
