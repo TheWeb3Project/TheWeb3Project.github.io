@@ -111,9 +111,7 @@ function displayAll() {
     select('#rateDesc').setAttribute('title', descStr);
 }
 
-$(document).ready(function () {
-    displayAll();
-    
+$(document).ready(function () {  
 
     const slideTrack = select('#slide-track');
 
@@ -158,6 +156,8 @@ $(document).ready(function () {
             slideTrack.append(div);
         }
     }
+    displayAll();
+    runScroll();
 });
 
 
