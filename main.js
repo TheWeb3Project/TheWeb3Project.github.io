@@ -114,13 +114,18 @@ $(document).ready(function () {
 });
 
 
-
+function getSpinHtml() {
+    return `<div class="spinner-border" role="status"></div>`;
+}
 
 // if click, run transaction while viewing loading
 // if done, show result based on the things got
 async function purchaseBox() {
-    // view loading
-    console.log('loading purchaseBox');
+    let forMysteryBtn = select('#forMysteryBtn');
+    if (0 < forMysteryBtn.length) {
+		forMysteryBtn = forMysteryBtn[0];
+        forMysteryBtn.innerHTML += getSpinHtml();
+    }
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
     if (res == true) {
         return;
