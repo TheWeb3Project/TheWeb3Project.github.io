@@ -184,6 +184,14 @@ try {
             }
         }
         let boxCount = INT(select('#boxCount').innerHTML);
+		
+        let cost;
+        if (targetCurrency) {
+            cost = 10 / bnbPrice * boxCount;
+        } else {
+            cost = 10 / price * boxCount;
+        }
+        select('#boxCost').innerHTML = `Cost: ${cost}`;
         select('#connectWalletStatus').innerHTML = `Purchase ${boxCount} Box`;
 
         select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
@@ -236,8 +244,14 @@ catch(err) {
     console.log(err);
 }
 
+let targetCurrency = false;
 function toggleBtnTab() {
     $('.toggleBtnTab').toggleClass('text-primary bg-white');
+    if (targetCurrency) {
+        targetCurrency = false;
+    } else {
+        targetCurrency = true;
+    }
 }
 
 function changeCount(state) {
@@ -399,3 +413,19 @@ $(".modal").on("shown.bs.modal", function () {
 $(function () {
     $('[data-bs-toggle="tooltip"]').tooltip();
   })
+
+  let bnbPrice;
+  let price;
+  (async () => {
+    // do global
+    select('#connect').onclick = async () => { await conn(); };
+
+    bnbPrice = 1 / (await getPrice(ADR['busd']));
+
+    let liqReserves = await CONTS['pair'].getReserves();
+    let liqBnb = liqReserves[1] / BNBDIV; 
+
+    let liqWeb3 = liqReserves[0] / BNBDIV;
+    let liqRate = liqBnb / liqWeb3;
+    price = liqRate * bnbPrice;
+  })();
