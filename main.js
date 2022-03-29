@@ -262,6 +262,7 @@ const carousel = select('#carousel');
         div.innerHTML = htmlStr;
         carousel.append(div);
     }
+    displayAll();
     runScroll();
 
 let popoverTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="popover"]'))
