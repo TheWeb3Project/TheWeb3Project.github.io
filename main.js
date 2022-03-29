@@ -1,12 +1,50 @@
 'use strict'
 
-const ITEMINFOS = [
-    ["male-horn-4-t.png", 'rare'],
-    ["male-wig-1-t.png", 'epic'],
-    ["male-wings-1-t.png", 'legendary'],
-    ["female-dress-1-t.png", 'epic'],
-    ["female-mask-3-t.png", 'rare'],
-];
+
+const GENDERS = ['female', 'male'];
+const PARTS = ['bg', 'dress', 'eyes', 'hair', 'horn', 'mask', 'skin', 'wig', 'wings'];
+const GRADES = {'c': 'common', 'r': 'rare', 'e': 'epic', 'l': 'legendary'};
+const ITEMGRADES = {
+    'female': {
+        'bg': ['c', 'l', 'c', 'c', 'e', 'r'],
+        'dress': ['e', 'e', 'e', 'e'],
+        'eyes': ['r', 'r', 'r', 'r'],
+        'hair': ['e', 'e', 'e', 'e', 'r'],
+        'horn': ['l', 'l'],
+        'mask': ['c', 'e', 'c', 'c', 'c'],
+        'skin': ['c', 'c', 'c', 'c', 'c', 'c'],
+		
+    },
+    'male': {
+        'bg': ['c', 'c', 'e', 'c', 'r', 'c'],
+        'dress': ['e', 'e', 'e'],
+        'eyes': ['c', 'r', 'r', 'e'],
+        'hair': ['r', 'l', 'r', 'r'],
+		'horn': ['e', 'e', 'e', 'e'],
+        'mask': ['c', 'l', 'c', 'r'],
+        'skin': ['c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'],
+        'wig': ['l'],
+        'wings': ['l'],
+    }
+}
+
+const ITEMINFOS = [];
+for (const [idx, gender] of Object.entries(GENDERS)) {
+    for (const [idy, part] of Object.entries(PARTS)) {
+        if (!(gender in ITEMGRADES)) {
+            continue;
+        }
+        if (!(part in ITEMGRADES[gender])) {
+            continue;
+        }
+        for (var idz = 0; idz < ITEMGRADES[gender][part].length; idz++) {
+			let itemImgPath = `${gender}-${part}-${idz+1}-t.png`;
+			let gradeKey = ITEMGRADES[gender][part][idz];
+            ITEMINFOS.push([itemImgPath, GRADES[gradeKey]]);
+        }
+    }
+}
+
 
 function getItemCard(itemInfo) {
 	let imgFileName = itemInfo[0];
@@ -31,13 +69,13 @@ function getItemCard(itemInfo) {
     return htmlStr;
 }
 
-const GRADES = ['common', 'rare', 'epic', 'legendary'];
-    const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
+const PERCENTAGES = ['80%', '8%', '0.8%', '0.1%'];
 
 
 function displayAll() {
     let elms;
-    for (const [idy, grade] of Object.entries(GRADES)) {
+    for (const [idy, gradeInfo] of Object.entries(GRADES)) {
+		let [gradeKey, grade] = gradeInfo;
         elms = select(`#${grade}-stars`, true);
         for (const elm of elms) {
             let htmlStr = '';
