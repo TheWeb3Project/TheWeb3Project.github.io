@@ -210,7 +210,7 @@ function select(el, all=false) {
 }
 
 function displayText(el, text) {
-  let els = select(el);
+  let els = select(el, all=true);
   for (var idx = 0; idx < els.length; idx++) {
     els[idx].innerHTML = text;
   }
@@ -299,7 +299,7 @@ let inputHandlerBuy = function (e) {
   (async function () {
     valueIn = e.target.value;
     valueIn = valueIn.replace(/,/g, '');
-    result = select('#buy-output')[0];
+    result = select('#buy-output');
     if (valueIn == 0) {
       result.value = 0;
       return;
@@ -600,16 +600,16 @@ async function SEND_TX(name, method, args, value=null, check=true, wait=true) {
 
 let buyTxhashData;
 async function privateBuy() {
-	let buyAmount = select('#buy-input')[0].value;
+	let buyAmount = select('#buy-input').value;
   let { res, data } = await SEND_ETH(CURADR, ADRS['fund'], buyAmount);
   if (res == true) {
   	// err
     return [ true, data ];
   }
   
-  let buyResult = select('#buy-result')[0];
+  let buyResult = select('#buy-result');
   buyResult.innerHTML = 'Success';
-  let buyTxhash = select('#buy-txhash')[0];
+  let buyTxhash = select('#buy-txhash');
   buyTxhash.innerHTML = HREF(BSC('tx', data.hash), SHORTADR(data.hash));
   buyTxhashData = data.hash;  
 }

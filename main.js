@@ -32,7 +32,7 @@ function getItemCard(itemInfo) {
 }
 
 $(document).ready(function () {
-    const carousel = select('#carousel')[0];
+    const carousel = select('#carousel');
     for (const [idy, itemInfo] of Object.entries(ITEMINFOS)) {
         let div = makeElem('div', null, 'item col-12 col-md-11 mt-4 mb-4');
 
@@ -47,7 +47,7 @@ $(document).ready(function () {
 
     let elms;
     for (const [idy, grade] of Object.entries(GRADES)) {
-        elms = select(`#${grade}-stars`);
+        elms = select(`#${grade}-stars`, all=true);
         for (const elm of elms) {
             let htmlStr = '';
             for (var idx = 0; idx < INT(idy) + 1; idx++) {
@@ -56,7 +56,7 @@ $(document).ready(function () {
             elm.innerHTML = htmlStr;
         }
 
-        elms = select(`#${grade}-stat`);
+        elms = select(`#${grade}-stat`, all=true);
         let tags = `bg-${grade} fw-bold px-4 py-2 rounded-pill me-3`.split(' ');
         for (const elm of elms) {
             for (const tag of tags) {
@@ -68,7 +68,7 @@ $(document).ready(function () {
         }
     }
 
-    const slideTrack = select('#slide-track')[0];
+    const slideTrack = select('#slide-track');
 
     for (var idx = 0; idx < 8; idx++) {
         {
