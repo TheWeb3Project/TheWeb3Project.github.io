@@ -53,8 +53,10 @@ function displayAll() {
             for (const tag of tags) {
                 elm.classList.add(tag);
             }
-            let htmlStr = `${grade}`;// - ${PERCENTAGES[idy]};
-            // htmlStr += <span id="${grade}-bonus" class="text-error">+0%</span>;
+            elm.setAttribute('data-toggle', 'tooltip');
+            let tooltipStr = `${PERCENTAGES[idy]} <span id="${grade}-bonus" class="text-error">+0%</span>`;
+            elm.setAttribute('title', tooltipStr);
+            let htmlStr = `${grade}`;
             elm.innerHTML = htmlStr;
         }
     }
@@ -379,3 +381,7 @@ $(".modal").on("shown.bs.modal", function () {
         $(".modal-backdrop").not(':first').remove();
     }
 })
+
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip();
+  })
