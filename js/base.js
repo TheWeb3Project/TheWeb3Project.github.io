@@ -101,14 +101,27 @@ ABIS['nft'] = [
   "function _itemById(uint) view returns (uint)",
 ];
 
+const CONTS = {};
+const SIGNS = {};
+
+for (let name in ABIS) {
+  CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
+  SIGNS[name] = CONTS[name].connect(SIGNER);
+}
+
+ABIS['token'] = [
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function transfer(address to, uint amount)",
+  "event Transfer(address indexed from, address indexed to, uint amount)",
+];
 ADRS['wbnb'] = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
 ADRS['busd'] = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
 ADRS['cake'] = "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82";
-
-const CONTS = {};
-const SIGNS = {};
-for (let name in ABIS) {
-  CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
+for (let name in ['busd', 'cake']) {
+  CONTS[name] = new ethers.Contract(ADRS[name], ABIS['token'], PROVIDER);
   SIGNS[name] = CONTS[name].connect(SIGNER);
 }
 
