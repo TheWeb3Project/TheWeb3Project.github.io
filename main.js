@@ -172,7 +172,7 @@ try {
     let connectWalletModal = select('#connectWalletModal');
     let forMysteryBtn = select("#forMysteryBtn");
 
-    connectWalletModal.addEventListener('shown.bs.modal', async function (event) {
+    connectWalletModal.addEventListener('show.bs.modal', async function (event) {
         let button = event.relatedTarget;
         await getCurAdr();
         if (CURADR == null) {
