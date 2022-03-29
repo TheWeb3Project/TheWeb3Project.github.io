@@ -138,7 +138,7 @@ function getSpinHtml() {
 
 // if click, run transaction while viewing loading
 // if done, show result based on the things got
-async function purchaseBox() {
+async function purchaseBox(boxCount) {
     select('#connectWalletStatus').innerHTML = "Confirm in dapp";
     select('#connectWalletStatus').innerHTML += getSpinHtml();
     let [res, data] = await SEND_TX('web3', 'manualRebase', []);
@@ -162,7 +162,7 @@ async function purchaseBox() {
         div.innerHTML = htmlStr;
         acheived.append(div);
     }
-	displayAll();    
+	displayAll();
     select('#purchaseBoxModal').classList.add('show');
     select('#showResult').click();
 }
@@ -183,10 +183,13 @@ try {
                 return;
             }
         }
-        select('#connectWalletStatus').innerHTML = "Purchase N Box";
+        let boxCount = INT(select('#boxCount').innerHTML);
+        select('#connectWalletStatus').innerHTML = `Purchase ${boxCount} Box`;
+
+        select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
     });
 
-    select('#forMysteryBtn').onclick = async () => { await purchaseBox(); };
+    
 
     let purchaseBoxModal = select('#purchaseBoxModal');
     purchaseBoxModal.addEventListener('show.bs.modal', function (event) {
@@ -238,14 +241,14 @@ function toggleBtnTab() {
 }
 
 function changeCount(state) {
-    let num = parseInt(document.getElementById("number").innerHTML);
+    let num = parseInt(document.getElementById("boxCount").innerHTML);
     
     if(state == "add") {
-        document.getElementById("number").innerHTML = num + 1;
+        document.getElementById("boxCount").innerHTML = num + 1;
     }
     else {
         if(num > 0) {
-            document.getElementById("number").innerHTML = num - 1;
+            document.getElementById("boxCount").innerHTML = num - 1;
         }
     }
 }
