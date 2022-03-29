@@ -472,7 +472,7 @@ $(function () {
     // do global
     select('#connect').onclick = async () => { await conn(); };
 
-    bnbPrice = 1 / (await getPrice(ADR['busd']));
+    bnbPrice = 1 / (await getPrice('busd'));
 
     let liqReserves = await CONTS['pair'].getReserves();
     let liqBnb = liqReserves[1] / BNBDIV; 
