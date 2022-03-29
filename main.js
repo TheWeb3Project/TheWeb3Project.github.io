@@ -168,21 +168,15 @@ async function purchaseBox(boxCount) {
 }
 
 
+
+
 try {
     let connectWalletModal = select('#connectWalletModal');
     let forMysteryBtn = select("#forMysteryBtn");
 
     connectWalletModal.addEventListener('show.bs.modal', async function (event) {
         let button = event.relatedTarget;
-        await getCurAdr();
-        if (CURADR == null) {
-            await conn();
-            console.log('loading conn');
-            if (CURADR == null) {
-                alert('Connect Wallet!');
-                return;
-            }
-        }
+
         let boxCount = INT(select('#boxCount').innerHTML);
 		
         let cost;
@@ -192,7 +186,16 @@ try {
             cost = 10 / price * boxCount;
         }
         select('#showDetails').innerHTML = `Cost: ${cost}`;
-        select('#connectWalletStatus').innerHTML = `Purchase ${boxCount} Box`;
+		
+        async function setPurchaseBox() {
+            select('#connectWalletStatus').innerHTML = `Purchase ${boxCount} Box`;
+        }
+
+        await getCurAdr();
+        if (CURADR == null) {
+            select('#connectWalletStatus').onclick = async () => { await conn(setPurchaseBox); };
+            return;
+        }
 
         select('#forMysteryBtn').onclick = async () => { await purchaseBox(boxCount); };
     });

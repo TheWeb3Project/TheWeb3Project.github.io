@@ -427,12 +427,16 @@ async function handleAccountsChanged(accounts) {
   displayAccountInformation();
 }
 
-async function conn(popup=false) {
+async function conn(func=null, popup=false) {
 	try {
   	/* CURADR = await PROVIDER.send("eth_requestAccounts", []) */;
     let accounts = await ethereum.request({ method: 'eth_requestAccounts' }); // eth_requestAccounts
     await handleAccountsChanged(accounts);
     await doAfterConnect();
+    if (func != null) {
+      await func();
+    }
+    
   } catch (err) {
     if (err == 'ReferenceError: ethereum is not defined') {
       alert('Use Dapp to connect wallet!');
