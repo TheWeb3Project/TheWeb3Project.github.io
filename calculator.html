@@ -333,24 +333,7 @@
       // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
       
 
-
-      await getCurAdr();
-      if (CURADR == null) {
-        // connect wallet button
-        return;
-      }
-      doAfterConnect();
-
-      // let [res, data] = await GAS('web3', 'manualRebase', []);
-      // if (res == true) {
-      //   return;
-      // } else {
-      //   gasEstimation = data;
-      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
-      // }
-    })();
-
-    (async () => {
+      ////////////////////////////////////////////////////////////////////////////
 
       select('#curPrice').value = `${COMMA(ROUND(price, 3))}`;
       select('#futPrice').value = `${COMMA(ROUND(price, 3))}`;
@@ -368,22 +351,25 @@
       select('#setCurToFutPrice').onclick = async () => {
         select('#futPrice').value = ROUND(price, 3);
       };
-      
+
+
+
 
       await getCurAdr();
       if (CURADR == null) {
         // connect wallet button
         return;
-      } else {
-        doAfterConnect();
-        // display address
       }
+      doAfterConnect();
 
-      // do personal
-
-      console.log('done');
+      // let [res, data] = await GAS('web3', 'manualRebase', []);
+      // if (res == true) {
+      //   return;
+      // } else {
+      //   gasEstimation = data;
+      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
+      // }
     })();
-
 
 
     $('input[type="range"]').rangeslider({});
