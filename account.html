@@ -329,20 +329,29 @@
 
       let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
       let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
-      let amount = BigInt(0);
+
+      let amount = getCookie('accountWeb3Amount');
+      if (amount == null) {
+        amount = BigInt(0);
+      }
+      let startBlock = getCookie('accountWeb3StartBlock');
+      if (startBlock == null) {
+        startBlock = STARTBLOCK;
+      }
+
       let txLogs;
-      let n = INT((CURBLOCK - STARTBLOCK) / 5000);
+      let n = INT((CURBLOCK - startBlock) / 5000);
       for (var idx = 0; idx < n; idx++) {
           displayText("#totalEarned", `Getting Updates.. ${ROUND(idx / n * 100, 1)}%`);
-          let startBlock = STARTBLOCK + 5000 * idx;
-          let endBlock = STARTBLOCK + 5000 * idx + 5000;
-          if (CURBLOCK < endBlock) {
-              endBlock = CURBLOCK;
+          let fromBlock = startBlock + 5000 * idx;
+          let toBlock = startBlock + 5000 * idx + 5000;
+          if (CURBLOCK < toBlock) {
+            toBlock = CURBLOCK;
           }
 
           for (var idy = 0; idy < 10; idy++) {
               try {
-                  txLogs = await CONTS['web3'].queryFilter(buyFilter, startBlock, endBlock);
+                  txLogs = await CONTS['web3'].queryFilter(buyFilter, fromBlock, toBlock);
                   break;
               } catch {
                   DELAY(100);
@@ -355,7 +364,7 @@
           
           for (var idy = 0; idy < 10; idy++) {
               try {
-                  txLogs = await CONTS['web3'].queryFilter(sellFilter, startBlock, endBlock);
+                  txLogs = await CONTS['web3'].queryFilter(sellFilter, fromBlock, toBlock);
                   break;
               } catch {
                   DELAY(100);
@@ -366,7 +375,7 @@
               amount -= BigInt(data);
           }
 
-          if (endBlock == CURBLOCK) {
+          if (toBlock == CURBLOCK) {
               break;
           }
       }
