@@ -345,7 +345,7 @@
                   txLogs = await CONTS['web3'].queryFilter(buyFilter, startBlock, endBlock);
                   break;
               } catch {
-                  DELAY(1);
+                  DELAY(100);
               }
           }
           for (var idy = 0; idy < txLogs.length; idy++) {
@@ -358,7 +358,7 @@
                   txLogs = await CONTS['web3'].queryFilter(sellFilter, startBlock, endBlock);
                   break;
               } catch {
-                  DELAY(1);
+                  DELAY(100);
               }
           }
           for (var idy = 0; idy < txLogs.length; idy++) {
