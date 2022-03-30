@@ -276,7 +276,7 @@
       let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
       blackHoleAmount = blackHoleAmount / BNBDIV;
       displayText("#burned", `${COMMA(ROUND(blackHoleAmount, 3))}`);
-      displayText("#theBlackHole", `$${COMMA(ROUND(blackHoleAmount * bnbPrice))}`);
+      displayText("#theBlackHole", `$${COMMA(ROUND(blackHoleAmount * price))}`);
 
       let circulatingSupply = totalSupply - blackHoleAmount;
       displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
