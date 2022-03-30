@@ -334,14 +334,14 @@
       if (amount == null) {
         amount = BigInt(0);
       }
-      amount = BIgInt(amount);
+      amount = BigInt(amount);
 
       let startBlock = getCookie('accountWeb3StartBlock');
       if (startBlock == null) {
         startBlock = STARTBLOCK;
       }
       startBlock = INT(startBlock);
-      
+
       let txLogs;
       let n = INT((CURBLOCK - startBlock) / 5000);
       for (var idx = 0; idx < n; idx++) {
