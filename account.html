@@ -378,6 +378,9 @@
           if (toBlock == CURBLOCK) {
               break;
           }
+
+          setCookie('accountWeb3Amount', amount, 10);
+          setCookie('accountWeb3StartBlock', toBlock, 10);
       }
       amount = INT(amount) / BNBDIV;
 
