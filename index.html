@@ -119,7 +119,9 @@
             <div class="card bg-light border border-primary text-center p-4">
               <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col mb-3">
-                  <div class="text-secondary mb-1">Market Cap</div>
+                  <div class="text-secondary mb-1">
+                    Market Cap <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="Mcap may different with other charts. Our project uses TBH for burn address."></i>
+                  </div>
                   <h4 id="mcap" class="fw-bold">$0</h4>
                 </div>
 
@@ -305,7 +307,7 @@
       displayText("#price", `$${COMMA(ROUND(price, 3))}`);
       displayText("#theBlackHole", `$${COMMA(ROUND(blackHoleAmount * price))}`);
 
-      let mcap = price * totalSupply;
+      let mcap = price * circulatingSupply;
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
       
       // manual rebase
