@@ -479,16 +479,12 @@ function showOutputImage() {
                 let context = resEle.getContext("2d");
                 resEle.width = imgs[0].width;
                 resEle.height = imgs[0].height;
-                context.drawImage(imgs[8], 0, 0);
-                context.drawImage(imgs[7], 0, 0);
-                context.drawImage(imgs[6], 0, 0);
-                context.drawImage(imgs[5], 0, 0);
-                context.drawImage(imgs[4], 0, 0);
-                context.drawImage(imgs[3], 0, 0);
-                context.drawImage(imgs[2], 0, 0);
-                context.drawImage(imgs[1], 0, 0);
-                context.drawImage(imgs[0], 0, 0);
-            }, 100);
+                for (let idx = 8; idx >= 0; idx--) {
+                    if (imgs[idx].complete && imgs[idx].naturalHeight !== 0) {
+                        context.drawImage(imgs[idx], 0, 0);
+                    }
+                }
+            }, 3000);
         }
     }
     catch(e) {
@@ -522,7 +518,6 @@ function saveCapture(url) {
 }
 
 
-console.log(document.querySelectorAll('.output-img img'));
 showOutputImage();
 setTimeout(showOutputImage, 3000);
 
