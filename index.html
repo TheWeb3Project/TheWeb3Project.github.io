@@ -120,7 +120,7 @@
               <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col mb-3">
                   <div class="text-secondary mb-1">
-                    Market Cap <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="Mcap may different with other charts. Our project uses TBH for burn address."></i>
+                    Market Cap <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" data-placement="bottom" title="Based on the circulating supply. Other chart may display differently."></i>
                   </div>
                   <h4 id="mcap" class="fw-bold">$0</h4>
                 </div>
@@ -131,12 +131,16 @@
                 </div>
 
                 <div class="col mb-3">
-                  <div class="text-secondary mb-1">Next Rebase</div>
+                  <div class="text-secondary mb-1">
+                    Next Rebase <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="rebase may get delayed due to blockchain traffic"></i>
+                  </div>
                   <h4 id="nextRebase" class="fw-bold">Every 3 Seconds</h4>
                 </div>
 
                 <div class="col mb-3">
-                  <div class="text-secondary mb-1">Circulating Supply</div>
+                  <div class="text-secondary mb-1">
+                    Circulating Supply <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="Excludes TBH and locked tokens"></i>
+                  </div>
                   <h4 id="cirSupply" class="fw-bold">0</h4>
                 </div>
 
@@ -275,11 +279,14 @@
       let totalSupply = await CONTS['web3'].totalSupply();
       totalSupply = totalSupply / BNBDIV;
       
+      let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
+      lockedAmount = lockedAmount / BNBDIV;
+      
       let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
       blackHoleAmount = blackHoleAmount / BNBDIV;
       displayText("#burned", `${COMMA(ROUND(blackHoleAmount, 3))}`);
 
-      let circulatingSupply = totalSupply - blackHoleAmount;
+      let circulatingSupply = totalSupply - blackHoleAmount - lockedAmount;
       displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
 
       let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
