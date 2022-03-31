@@ -389,7 +389,7 @@ function displayAvatarPage() {
     for (const [idx, gender] of Object.entries(GENDERS)) {
         for (const [idy, part] of Object.entries(PARTS)) {
             let itemPart = select(`#items-d-${gender}-${part}`);
-            for (var idz = 0; idz < ITEMGRADES['male'][part].length; idz++) {
+            for (var idz = 0; idz < ITEMGRADES[gender][part].length; idz++) {
                 let htmlStr = ` \
                     <div class="col-auto mb-4"> \
                     <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
