@@ -315,12 +315,14 @@ function displayAvatarPage() {
     for (const [idx, part] of Object.entries(PARTS)) {
         let htmlStr = `
         <button class="btn p-0 my-1 active" id="v-pills-${part}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-${part}" type="button" role="tab" aria-controls="v-pills-bg" aria-selected="false"> \
-            <img src="images/${part}-option.png" alt="${parts}-option" /> \
+            <img src="images/${part}-option.png" alt="${part}-option" /> \
         </button> \
         `;
         sidebar.innerHTML += htmlStr;
     }
     select('#v-pills-bg-tab').setAttribute('aria-selected', "true");
+
+
 }
 displayAvatarPage();
 
