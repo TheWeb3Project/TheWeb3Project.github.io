@@ -312,7 +312,7 @@
       let liqBalance = liqBnb * bnbPrice;
       displayText("#liquidity", `$${COMMA(ROUND(liqBalance, 0))}`);
 
-      let autoLiqBalance = (await geBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
+      let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
       displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
 
       let liqWeb3 = liqReserves[0] / BNBDIV;
