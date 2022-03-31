@@ -48,7 +48,9 @@
         <div class="d-flex">
             <div id="sidebar-container" class="h-100 bg-light d-none d-md-block">
                 <div id="sidebar" class="nav flex-column flex-nowrap position-fixed top-0 left-0 bg-light h-100" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    
+                    <button class="btn p-0 my-1 active" id="v-pills-bg-tab" data-bs-toggle="pill" data-bs-target="#v-pills-bg" type="button" role="tab" aria-controls="v-pills-bg" aria-selected="false">
+                        <img src="images/bg-option.png" alt="$bg-option" />
+                    </button>
                 </div>
             </div>
 
@@ -77,69 +79,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="v-pills-dress" role="tabpanel" aria-labelledby="v-pills-dress-tab">
-                            <div class="row">
-                                <div class="col-auto mb-4">
-                                    <button id="male-dress-1.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeDress(this.id)">
-                                        <img src="images/male-dress-1-t.png" alt="male-dress-1.png" class="img-fluid rounded-1" />
-                                        <span class="tooltiptext-custom py-3 px-2"><span class="bg-grey small fw-bold px-3 py-2 rounded-pill">Tax reduction (+x%)</span></span>
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button id="male-dress-2.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeDress(this.id)">
-                                        <img src="images/male-dress-2-t.png" alt="male-dress-2.png" class="img-fluid rounded-1" />
-                                        <span class="tooltiptext-custom py-3 px-2"><span class="bg-grey small fw-bold px-3 py-2 rounded-pill">Tax reduction (+x%)</span></span>
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button id="male-dress-3.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeDress(this.id)">
-                                        <img src="images/male-dress-3-t.png" alt="male-dress-3.png" class="img-fluid rounded-1" />
-                                        <span class="tooltiptext-custom py-3 px-2"><span class="bg-grey small fw-bold px-3 py-2 rounded-pill">Tax reduction (+x%)</span></span>
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button type="button" class="btn btn-secondary option-btn p-0 pe-none">
-                                        <img src="images/locked.png" alt="" class="img-fluid rounded-1" />
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button type="button" class="btn btn-secondary option-btn p-0 pe-none">
-                                        <img src="images/locked.png" alt="" class="img-fluid rounded-1" />
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button type="button" class="btn btn-secondary option-btn p-0 pe-none">
-                                        <img src="images/locked.png" alt="" class="img-fluid rounded-1" />
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button type="button" class="btn btn-secondary option-btn p-0 pe-none">
-                                        <img src="images/locked.png" alt="" class="img-fluid rounded-1" />
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button type="button" class="btn btn-secondary option-btn p-0 pe-none">
-                                        <img src="images/locked.png" alt="" class="img-fluid rounded-1" />
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button type="button" class="btn btn-secondary option-btn p-0 pe-none">
-                                        <img src="images/locked.png" alt="" class="img-fluid rounded-1" />
-                                    </button>
-                                </div>
-
-                                <div class="col-auto mb-4">
-                                    <button type="button" class="btn btn-secondary option-btn p-0 pe-none">
-                                        <img src="images/locked.png" alt="" class="img-fluid rounded-1" />
-                                    </button>
-                                </div>
+                            <div id="items-dress" class="row">
                             </div> <!-- 3 -->
                         </div>
 
