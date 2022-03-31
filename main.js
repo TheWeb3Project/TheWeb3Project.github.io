@@ -323,23 +323,25 @@ function displayAvatarPage() {
     select('#v-pills-bg-tab').classList.add("active");
     select('#v-pills-bg-tab').setAttribute('aria-selected', "true");
 	
-    let itemList = select('#v-pills-tabContent');
-    itemList.innerHTML = '';
-    for (const [idx, part] of Object.entries(PARTS)) {
-		let htmlStr = ` \
-        <div class="tab-pane fade" id="v-pills-${part}" role="tabpanel" aria-labelledby="v-pills-${part}-tab"> \
-        <div id="items-${part}" class="row"> \
-        </div> \
-        </div> \
-        `;
-        itemList.innerHTML += htmlStr;
+    for (const [idx, gender] of Object.entries(GENDERS)) {
+        let itemList = select(`#v-pills-tabContent-${gender}`);
+        itemList.innerHTML = '';
+        for (const [idx, part] of Object.entries(PARTS)) {
+            let htmlStr = ` \
+            <div class="tab-pane fade" id="v-pills-${part}" role="tabpanel" aria-labelledby="v-pills-${part}-tab"> \
+            <div id="items-${gender}-${part}" class="row"> \
+            </div> \
+            </div> \
+            `;
+            itemList.innerHTML += htmlStr;
+        }
+        select('#v-pills-bg').classList.add('show');
+        select('#v-pills-bg').classList.add('active');
     }
-	select('#v-pills-bg').classList.add('show');
-    select('#v-pills-bg').classList.add('active');
 
     for (const [idx, gender] of Object.entries(GENDERS)) {
         for (const [idy, part] of Object.entries(PARTS)) {
-            let itemPart = select(`#items-${part}`);
+            let itemPart = select(`#items-${gender}-${part}`);
             for (var idz = 0; idz < ITEMGRADES[gender][part].length; idz++) {
                 let htmlStr = ` \
                 <div class="col-auto mb-4"> \
