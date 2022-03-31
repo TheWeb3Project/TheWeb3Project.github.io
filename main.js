@@ -2,30 +2,31 @@
 
 
 const GENDERS = ['female', 'male'];
-const PARTS = ['bg', 'dress', 'eyes', 'hair', 'horn', 'mask', 'skin', 'wig', 'wings'];
+const PARTS = ['bg', 'wings', 'skin', 'eyes', 'dress', 'mask', 'hair', 'horn', 'wig'];
 const SHORTGRADES = {'c': 'common', 'r': 'rare', 'e': 'epic', 'l': 'legendary'};
 const GRADES = Object.values(SHORTGRADES);
 const ITEMGRADES = {
     'female': {
         'bg': ['c', 'l', 'c', 'c', 'r', 'r'],
-        'dress': ['e', 'e', 'e', 'e'],
+        'wings': [],
+        'skin': ['c', 'c', 'c', 'c', 'c', 'c'],
         'eyes': ['r', 'c', 'r', 'r'],
+        'dress': ['e', 'e', 'e', 'e'],
+        'mask': ['c', 'e', 'c', 'c', 'c'],
         'hair': ['e', 'r', 'e', 'e', 'r'],
         'horn': ['l', 'l'],
-        'mask': ['c', 'e', 'c', 'c', 'c'],
-        'skin': ['c', 'c', 'c', 'c', 'c', 'c'],
-		
+        'wig': [],
     },
     'male': {
         'bg': ['c', 'c', 'r', 'c', 'r', 'c'],
-        'dress': ['e', 'e', 'e'],
+        'wings': ['l'],
+        'skin': ['c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'],
         'eyes': ['c', 'r', 'r', 'e'],
+        'dress': ['e', 'e', 'e'],
+        'mask': ['c', 'l', 'c', 'r'],
         'hair': ['r', 'l', 'r', 'r'],
 		'horn': ['e', 'e', 'e', 'e'],
-        'mask': ['c', 'l', 'c', 'r'],
-        'skin': ['c', 'c', 'c', 'c', 'c', 'c', 'c', 'c'],
         'wig': ['l'],
-        'wings': ['l'],
     }
 }
 
