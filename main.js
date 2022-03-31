@@ -380,8 +380,8 @@ function displayAvatarPage() {
             `;
             tabContent.innerHTML += htmlStr;
         }
-        select('#v-pills-bg').classList.add('show');
-        select('#v-pills-bg').classList.add('active');
+        select('#v-pills-bg-sm').classList.add('show');
+        select('#v-pills-bg-sm').classList.add('active');
     }
 
 	
