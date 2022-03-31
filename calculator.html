@@ -358,7 +358,7 @@
       };
 
 
-
+      $('[data-bs-toggle="tooltip"]').tooltip();
 
       await getCurAdr();
       if (CURADR == null) {
@@ -374,6 +374,8 @@
       //   gasEstimation = data;
       //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
       // }
+      $('[data-bs-toggle="tooltip"]').tooltip();
+      
     })();
 
 

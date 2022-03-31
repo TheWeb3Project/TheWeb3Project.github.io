@@ -339,7 +339,9 @@
       // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
       
 
-
+			
+      $('[data-bs-toggle="tooltip"]').tooltip();
+      
       await getCurAdr();
       if (CURADR == null) {
         // connect wallet button
@@ -354,9 +356,8 @@
       //   gasEstimation = data;
       //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
       // }
-      $(function () {
-        $('[data-bs-toggle="tooltip"]').tooltip();
-      });
+      
+      $('[data-bs-toggle="tooltip"]').tooltip();
     })();
 
     
