@@ -416,6 +416,7 @@ function displayAvatarPage() {
     select('#v-pills-bg-sm-tab').classList.add("active");
     select('#v-pills-bg-sm-tab').setAttribute('aria-selected', "true");
 
+    
 }
 displayAvatarPage();
 
