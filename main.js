@@ -423,7 +423,7 @@ function displayAvatarPage() {
         <button class="btn p-0 my-1" id="v-pills-${part}-sm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-${part}-sm" type="button" role="tab" aria-controls="v-pills-${part}-sm" aria-selected="false">
         <img src="images/${part}-option.png" alt="${part}-option" />
         </button>`;
-        container.innerHTML += htmlStr;
+        sidebarSm.innerHTML += htmlStr;
     }
     select('#v-pills-bg-sm-tab').classList.add("active");
     select('#v-pills-bg-sm-tab').setAttribute('aria-selected', "true");
