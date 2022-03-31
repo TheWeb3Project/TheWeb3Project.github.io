@@ -356,7 +356,7 @@ function displayAvatarPage() {
                 </div>`;
                 itemPart.innerHTML += htmlStr;
             }
-            for (var idz =  ITEMGRADES[gender][part].length; idz < 8; idz++) {
+            for (var idz = ITEMGRADES[gender][part].length; idz < 8; idz++) {
                 let htmlStr = ` \
                 <div class="col-auto mb-4"> \
                 <button type="button" class="btn btn-secondary option-btn p-0 pe-none"> \
