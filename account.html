@@ -429,6 +429,9 @@
       displayText("#totalEarned", `${COMMA(ROUND(totalEarned, 3))} $WEB3 (+${COMMA(ROUND(earnRate, 3))}%)`);
       displayText("#totalEarnedInUsd", `$${COMMA(ROUND(totalEarned * price, 3))}`);
       
+      $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+      });
     })();
 
 
