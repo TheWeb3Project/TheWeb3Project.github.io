@@ -313,7 +313,7 @@ function displayAvatarPage() {
     let sidebar = select('#sidebar');
     sidebar.innerHTML = '';
     for (const [idx, part] of Object.entries(PARTS)) {
-        let htmlStr = `
+        let htmlStr = ` \
         <button class="btn p-0 my-1 active" id="v-pills-${part}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-${part}" type="button" role="tab" aria-controls="v-pills-bg" aria-selected="false"> \
             <img src="images/${part}-option.png" alt="${part}-option" /> \
         </button> \
@@ -321,8 +321,35 @@ function displayAvatarPage() {
         sidebar.innerHTML += htmlStr;
     }
     select('#v-pills-bg-tab').setAttribute('aria-selected', "true");
-
-
+	
+    for (const [idx, part] of Object.entries(PARTS)) {
+        let itemPart = select(`#items-${part}`);
+        for (var idy = 0; idy < ITEMGRADES['male'][part].length; idy++) {
+			let htmlStr = ` \
+        	<div class="col-auto mb-4"> \
+			<button id="male-${part}-${idy+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
+        	<img src="images/male-${part}-${idy+1}-t.png" alt="male-${part}-${idy+1}.png" class="img-fluid rounded-1" /> \
+        	<span class="tooltiptext-custom py-3 px-2"> \
+        	<span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
+        	Tax reduction (+x%) \
+        	</span> \
+        	</span> \
+   	 		</button> \
+        	</div>`;
+        	itemPart.innerHTML += htmlStr;
+        }
+        for (var idy =  ITEMGRADES['male'][part].length; idy < 8; idy++) {
+			let htmlStr = ` \
+        	<div class="col-auto mb-4"> \
+			<button type="button" class="btn btn-secondary option-btn p-0 pe-none"> \
+        	<img src="images/locked.png" alt="" class="img-fluid rounded-1" /> \
+   	 		</button> \
+        	</div>`;
+        	itemPart.innerHTML += htmlStr;
+        }
+    }
+    
+	
 }
 displayAvatarPage();
 
