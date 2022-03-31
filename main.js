@@ -337,30 +337,32 @@ function displayAvatarPage() {
 	select('#v-pills-bg').classList.add('show');
     select('#v-pills-bg').classList.add('active');
 
-    for (const [idx, part] of Object.entries(PARTS)) {
-        let itemPart = select(`#items-${part}`);
-        for (var idy = 0; idy < ITEMGRADES['male'][part].length; idy++) {
-			let htmlStr = ` \
-        	<div class="col-auto mb-4"> \
-			<button id="male-${part}-${idy+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
-        	<img src="images/male-${part}-${idy+1}-t.png" alt="male-${part}-${idy+1}.png" class="img-fluid rounded-1" /> \
-        	<span class="tooltiptext-custom py-3 px-2"> \
-        	<span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
-        	Tax reduction (+x%) \
-        	</span> \
-        	</span> \
-   	 		</button> \
-        	</div>`;
-        	itemPart.innerHTML += htmlStr;
-        }
-        for (var idy =  ITEMGRADES['male'][part].length; idy < 8; idy++) {
-			let htmlStr = ` \
-        	<div class="col-auto mb-4"> \
-			<button type="button" class="btn btn-secondary option-btn p-0 pe-none"> \
-        	<img src="images/locked.png" alt="" class="img-fluid rounded-1" /> \
-   	 		</button> \
-        	</div>`;
-        	itemPart.innerHTML += htmlStr;
+    for (const [idx, gender] of Object.entries(GENDERS)) {
+        for (const [idy, part] of Object.entries(PARTS)) {
+            let itemPart = select(`#items-${part}`);
+            for (var idz = 0; idz < ITEMGRADES[gender][part].length; idz++) {
+                let htmlStr = ` \
+                <div class="col-auto mb-4"> \
+                <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
+                <img src="images/${gender}-${part}-${idz+1}-t.png" alt="${gender}-${part}-${idz+1}.png" class="img-fluid rounded-1" /> \
+                <span class="tooltiptext-custom py-3 px-2"> \
+                <span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
+                Tax reduction (+x%) \
+                </span> \
+                </span> \
+                </button> \
+                </div>`;
+                itemPart.innerHTML += htmlStr;
+            }
+            for (var idz =  ITEMGRADES[gender][part].length; idz < 8; idz++) {
+                let htmlStr = ` \
+                <div class="col-auto mb-4"> \
+                <button type="button" class="btn btn-secondary option-btn p-0 pe-none"> \
+                <img src="images/locked.png" alt="" class="img-fluid rounded-1" /> \
+                </button> \
+                </div>`;
+                itemPart.innerHTML += htmlStr;
+            }
         }
     }
 
@@ -388,8 +390,8 @@ function displayAvatarPage() {
             for (var idz = 0; idz < ITEMGRADES['male'][part].length; idz++) {
                 let htmlStr = ` \
                     <div class="col-auto mb-4"> \
-                    <button id="male-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
-                    <img src="images/male-${part}-${idz+1}-t.png" alt="male-${part}-${idz+1}.png" class="img-fluid rounded-1" /> \
+                    <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
+                    <img src="images/${gender}-${part}-${idz+1}-t.png" alt="${gender}-${part}-${idz+1}.png" class="img-fluid rounded-1" /> \
                     <span class="tooltiptext-custom py-3 px-2"> \
                     <span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
                     Tax reduction (+x%) \
@@ -403,12 +405,14 @@ function displayAvatarPage() {
     }
 	
     let container = select('#output-img-container');
-	for (const [idx, part] of Object.entries(PARTS)) {
-		let htmlStr = ` \
-        <div class="output-img d-none"> \
-		<img id="${part}-output" src="images/male-${part}-1.png" alt="" class="img-fluid" /> \
-        </div>`;
-        container.innerHTML += htmlStr;
+    for (const [idx, gender] of Object.entries(GENDERS)) {
+	    for (const [idx, part] of Object.entries(PARTS)) {
+            let htmlStr = ` \
+            <div class="output-img d-none"> \
+            <img id="${part}-output" src="images/${gender}-${part}-1.png" alt="" class="img-fluid" /> \
+            </div>`;
+            container.innerHTML += htmlStr;
+        }
     }
 
     let sidebarSm = select('#sidebar-sm');
