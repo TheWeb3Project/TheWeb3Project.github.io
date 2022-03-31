@@ -326,7 +326,7 @@ function displayAvatarPage() {
     for (const [idx, gender] of Object.entries(GENDERS)) {
         let itemList = select(`#v-pills-tabContent-${gender}`);
         itemList.innerHTML = '';
-        for (const [idx, part] of Object.entries(PARTS)) {
+        for (const [idy, part] of Object.entries(PARTS)) {
             let htmlStr = ` \
             <div class="tab-pane fade" id="v-pills-${part}" role="tabpanel" aria-labelledby="v-pills-${part}-tab"> \
             <div id="items-${gender}-${part}" class="row"> \
@@ -368,7 +368,6 @@ function displayAvatarPage() {
         }
     }
 
-
     for (const [idx, gender] of Object.entries(GENDERS)) {
         let tabContent = select(`#v-pills-tabContent-sm-${gender}`);
         tabContent.innerHTML = '';
@@ -381,10 +380,11 @@ function displayAvatarPage() {
             `;
             tabContent.innerHTML += htmlStr;
         }
+        select('#v-pills-bg').classList.add('show');
+        select('#v-pills-bg').classList.add('active');
     }
 
-	select('#v-pills-bg').classList.add('show');
-    select('#v-pills-bg').classList.add('active');
+	
 
     for (const [idx, gender] of Object.entries(GENDERS)) {
         for (const [idy, part] of Object.entries(PARTS)) {
