@@ -314,7 +314,7 @@ function displayAvatarPage() {
     // sidebar.innerHTML = '';
     for (const [idx, part] of Object.entries(PARTS)) {
         let htmlStr = ` \
-        <button class="btn p-0 my-1 active" id="v-pills-${part}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-${part}" type="button" role="tab" aria-controls="v-pills-bg" aria-selected="false"> \
+        <button class="btn p-0 my-1 active" id="v-pills-${part}-tab" data-bs-toggle="pill" data-bs-target="#v-pills-${part}" type="button" role="tab" aria-controls="v-pills-${part}" aria-selected="false"> \
             <img src="images/${part}-option.png" alt="${part}-option" /> \
         </button> \
         `;
@@ -322,6 +322,20 @@ function displayAvatarPage() {
     }
     select('#v-pills-bg-tab').setAttribute('aria-selected', "true");
 	
+    let itemList = select('#item-list');
+    itemList.innerHTML = '';
+    for (const [idx, part] of Object.entries(PARTS)) {
+		let htmlStr = ` \
+        <div class="tab-pane fade" id="v-pills-${part}" role="tabpanel" aria-labelledby="v-pills-${part}-tab"> \
+        <div id="items-${part}" class="row"> \
+        </div> \
+        </div> \
+        `;
+        itemList.innerHTML += htmlStr;
+    }
+	select('#v-pills-bg').classList.add('show');
+    select('#v-pills-bg').classList.add('active');
+
     for (const [idx, part] of Object.entries(PARTS)) {
         let itemPart = select(`#items-${part}`);
         for (var idy = 0; idy < ITEMGRADES['male'][part].length; idy++) {
