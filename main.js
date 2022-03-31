@@ -531,9 +531,9 @@ function download(){
     link.click(); */
     
     let element = document.getElementById("combined-output-img");
-    html2canvas(element).then(function(canvas) {
-        saveCapture(canvas.toDataURL("image/png"));
-    })
+    let canvas = html2canvas(element);
+    let url = canvas.toDataURL("image/png");
+    saveCapture(url);
 }
   
 function saveCapture(url) {
