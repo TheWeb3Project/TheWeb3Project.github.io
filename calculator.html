@@ -405,6 +405,10 @@
       displayText("#potenReturn", `$${COMMA(ROUND(futInvest * totalRate, 3))}`);
 
       displayText("#spaceTravel", `${COMMA(INT(futInvest * totalRate / 250000))}`);
+
+      $(function () {
+        $('[data-bs-toggle="tooltip"]').tooltip();
+      });
     });
   </script>
 </body>
