@@ -317,7 +317,7 @@
       let mcap = price * circulatingSupply;
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
       
-      let corr = liqBnb * bnbPrice / mcap;
+      let corr = liqBnb * bnbPrice / mcap * 100;
       select('#corr').setAttribute('title', `Correlation: ${COMMA(ROUND(corr, 1))}`);
 
       
