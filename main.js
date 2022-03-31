@@ -323,7 +323,7 @@ function displayAvatarPage() {
     select('#v-pills-bg-tab').classList.add("active");
     select('#v-pills-bg-tab').setAttribute('aria-selected', "true");
 	
-    let itemList = select('#item-list');
+    let itemList = select('#v-pills-tabContent');
     itemList.innerHTML = '';
     for (const [idx, part] of Object.entries(PARTS)) {
 		let htmlStr = ` \
@@ -364,7 +364,7 @@ function displayAvatarPage() {
         }
     }
 
-    let tabContent = select('#v-pills-tabContent');
+    let tabContent = select('#v-pills-tabContent-sm');
     tabContent.innerHTML = '';
     for (const [idx, part] of Object.entries(PARTS)) {
 		let htmlStr = ` \
@@ -378,23 +378,43 @@ function displayAvatarPage() {
 	select('#v-pills-bg').classList.add('show');
     select('#v-pills-bg').classList.add('active');
 
+    for (const [idx, part] of Object.entries(PARTS)) {
+        let itemPart = select(`#items-d-${part}`);
+    	for (var idy = 0; idy < ITEMGRADES['male'][part].length; idy++) {
+	        let htmlStr = ` \
+        		<div class="col-auto mb-4"> \
+				<button id="male-${part}-${idy+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
+    	    	<img src="images/male-${part}-${idy+1}-t.png" alt="male-${part}-${idy+1}.png" class="img-fluid rounded-1" /> \
+	    		<span class="tooltiptext-custom py-3 px-2"> \
+        		<span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
+        		Tax reduction (+x%) \
+        		</span> \
+        		</span> \
+   	 			</button> \
+        		</div>`;
+        		itemPart.innerHTML += htmlStr;
+    	}	
+    }
+	
+    let container = select('#output-img-container');
+	for (const [idx, part] of Object.entries(PARTS)) {
+		let htmlStr = ` \
+        <div class="output-img d-none"> \
+		<img id="${part}-output" src="images/male-${part}-1.png" alt="" class="img-fluid" /> \
+        </div>`;
+        container.innerHTML += htmlStr;
+    }
 
-    let itemPart = select(`#items-d-${part}`);
-    for (var idy = 0; idy < ITEMGRADES['male'][part].length; idy++) {
-        let htmlStr = ` \
-        	<div class="col-auto mb-4"> \
-			<button id="male-${part}-${idy+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
-        	<img src="images/male-${part}-${idy+1}-t.png" alt="male-${part}-${idy+1}.png" class="img-fluid rounded-1" /> \
-        	<span class="tooltiptext-custom py-3 px-2"> \
-        	<span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
-        	Tax reduction (+x%) \
-        	</span> \
-        	</span> \
-   	 		</button> \
-        	</div>`;
-        	itemPart.innerHTML += htmlStr;
-    }	
-
+    let sidebarSm = select('#sidebar-sm');
+	for (const [idx, part] of Object.entries(PARTS)) {
+		let htmlStr = ` \
+        <button class="btn p-0 my-1" id="v-pills-${part}-sm-tab" data-bs-toggle="pill" data-bs-target="#v-pills-${part}-sm" type="button" role="tab" aria-controls="v-pills-${part}-sm" aria-selected="false">
+        <img src="images/${part}-option.png" alt="${part}-option" />
+        </button>`;
+        container.innerHTML += htmlStr;
+    }
+    select('#v-pills-bg-sm-tab').classList.add("active");
+    select('#v-pills-bg-sm-tab').setAttribute('aria-selected', "true");
 
 }
 displayAvatarPage();
