@@ -145,7 +145,11 @@
                 </div>
 
                 <div class="col mb-3">
-                  <div class="text-secondary mb-1">Backed Liquidity</div>
+                  <div class="text-secondary mb-1">
+                    Backed Liquidity <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    WTF + TWT + Marketing Fund + Auto-Liquidity Fund
+                    "></i>
+                  </div>
                   <h4 id="backedLiq" class="fw-bold">0</h4>
                 </div>
 
@@ -305,8 +309,11 @@
 
       let liqReserves = await CONTS['pairweb3'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
-      displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 0))}`);
-      displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance + marketingBalance) / (liqBnb * bnbPrice) * 100, 0))}%`);
+      let liqBalance = liqBnb * bnbPrice;
+      displayText("#liquidity", `$${COMMA(ROUND(liqBalance, 0))}`);
+
+      let autoLiqBalance = (await geBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
+      displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
 
       let liqWeb3 = liqReserves[0] / BNBDIV;
       let liqRate = liqBnb / liqWeb3;
@@ -317,7 +324,7 @@
       let mcap = price * circulatingSupply;
       displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
       
-      let corr = liqBnb * bnbPrice / mcap * 100;
+      let corr = liqBalance / mcap * 100;
       select('#corr').setAttribute('title', `Correlation: ${COMMA(ROUND(corr, 1))}%`);
 
       
