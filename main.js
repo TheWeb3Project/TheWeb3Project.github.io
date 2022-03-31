@@ -345,7 +345,7 @@ function displayAvatarPage() {
             for (var idz = 0; idz < ITEMGRADES[gender][part].length; idz++) {
                 let htmlStr = ` \
                 <div class="col-auto mb-4"> \
-                <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
+                <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick=changePart(${part}, this.id)"> \
                 <img src="images/${gender}-${part}-${idz+1}-t.png" alt="${gender}-${part}-${idz+1}.png" class="img-fluid rounded-1" /> \
                 <span class="tooltiptext-custom py-3 px-2"> \
                 <span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
@@ -392,7 +392,7 @@ function displayAvatarPage() {
             for (var idz = 0; idz < ITEMGRADES[gender][part].length; idz++) {
                 let htmlStr = ` \
                     <div class="col-auto mb-4"> \
-                    <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changeBg(this.id)"> \
+                    <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changePart(${part}, this.id)"> \
                     <img src="images/${gender}-${part}-${idz+1}-t.png" alt="${gender}-${part}-${idz+1}.png" class="img-fluid rounded-1" /> \
                     <span class="tooltiptext-custom py-3 px-2"> \
                     <span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
@@ -448,72 +448,13 @@ function changeCount(state) {
     }
 }
 
-function changeBg(img_url) {
+function changeParts(part, img_url) {
     img_url = "images/" + img_url;
-    console.log("changeBg", img_url);
-    document.getElementById("bg-output").setAttribute('src', img_url);
-    showOutputImage();
-}
-
-function changeWings(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeWings", img_url);
-    document.getElementById("wings-output").setAttribute('src', img_url);
-    showOutputImage();
-}
-
-function changeSkin(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeSkin", img_url);
-    document.getElementById("skin-output").setAttribute('src', img_url);
-    showOutputImage();
-}
-
-function changeEyes(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeEyes", img_url);
-    document.getElementById("eyes-output").setAttribute('src', img_url);
-    showOutputImage();
-
-}
-
-function changeDress(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeDress", img_url);
-    document.getElementById("dress-output").setAttribute('src', img_url);
-    showOutputImage();
-    
-}
-
-function changeMask(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeMask", img_url);
-    document.getElementById("mask-output").setAttribute('src', img_url);
-    showOutputImage();
-    
-}
-
-function changeHair(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeHair", img_url);
-    document.getElementById("hair-output").setAttribute('src', img_url);
-    showOutputImage();
-    
-}
-
-function changeHorn(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeHorn", img_url);
-    document.getElementById("horn-output").setAttribute('src', img_url);
-    showOutputImage();
-    
-}
-
-function changeWig(img_url) {
-    img_url = "images/" + img_url;
-    console.log("changeWig", img_url);
-    document.getElementById("wig-output").setAttribute('src', img_url);
-    showOutputImage();   
+    let output = select(`${part}-output`);
+    output.setAttribute('src', img_url);
+    output.onload = function () {
+        showOutputImage();
+    };
 }
 
 function showOutputImage() {
