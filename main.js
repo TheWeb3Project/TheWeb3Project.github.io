@@ -448,7 +448,7 @@ function changeCount(state) {
     }
 }
 
-function changeParts(part, img_url) {
+function changePart(part, img_url) {
     img_url = "images/" + img_url;
     let output = select(`${part}-output`);
     output.setAttribute('src', img_url);
