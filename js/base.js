@@ -74,16 +74,21 @@ ABIS['web3'] = [
   "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
-  "function transfer(address to, uint amount)",
+  "function transfer(address, uint)",
   "function manualRebase()",
   "function _lastRebaseBlock() view returns (uint256)",
   "event Transfer(address indexed from, address indexed to, uint amount)",
 ];
 
+ADRS['wweb3'] = "0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f";
+ABIS['wweb3'] = [
+  "function deposit(uint)",
+  "function withdraw(uint)",
+];
 
 ADRS['factory'] = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 ABIS['factory'] = [
-  "function getPair(address tokenA, address tokenB) view returns (address pair)",
+  "function getPair(address, address) view returns (address)",
 ];
 
 
@@ -114,7 +119,8 @@ ABIS['token'] = [
   "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
-  "function transfer(address to, uint amount)",
+  "function transfer(address, uint)",
+  "function approve(address, uint256) returns (bool)",
   "event Transfer(address indexed from, address indexed to, uint amount)",
 ];
 ADRS['wbnb'] = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
