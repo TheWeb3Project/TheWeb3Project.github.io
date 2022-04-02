@@ -222,6 +222,7 @@
 
 
     let balance;
+    let wweb3Balance;
     async function doAfterConnect() {
       displayText('#connect', SHORTADR(CURADR));
 
@@ -229,6 +230,11 @@
       balance = balance / BNBDIV;
 
       displayText("#balance", `${COMMA(ROUND(balance, 3))}`);
+
+      wweb3Balance = await CONTS['wweb3'].balanceOf(CURADR);
+      wweb3Balance = wweb3Balance / BNBDIV;
+
+      displayText("#wweb3Balance", `${COMMA(ROUND(wweb3Balance, 3))}`);
     }
 
     let bnbPrice;
