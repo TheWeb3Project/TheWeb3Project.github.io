@@ -236,7 +236,7 @@
       valueOut = valueIn.mul(BIG('100')).div(BIG(String(totalSupply)));
 
       valueOut_ = ETH(valueOut);
-      valueOut_ = ROUND(parseFloat(valueOut_), 8);
+      valueOut_ = INT(parseFloat(valueOut_), 8);
       result.value = valueOut_;
 
     })();
@@ -256,7 +256,7 @@
       valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG('100'));
 
       valueOut_ = ETH(valueOut);
-      valueOut_ = ROUND(parseFloat(valueOut_), 8);
+      valueOut_ = INT(parseFloat(valueOut_), 8);
       result.value = valueOut_;
     })();
   }
