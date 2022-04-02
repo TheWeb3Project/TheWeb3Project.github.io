@@ -82,6 +82,9 @@ ABIS['web3'] = [
 
 ADRS['wweb3'] = "0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f";
 ABIS['wweb3'] = [
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function approve(address, uint256) returns (bool)",
   "function deposit(uint)",
   "function withdraw(uint)",
 ];
