@@ -179,7 +179,7 @@
 
                 <div id="run-wrap" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
                   <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
-                    <span class="button__content">Wrap</span>
+                    <span id="run-name" class="button__content">Wrap</span>
                   </button>
                 </div>
 
@@ -265,18 +265,17 @@
       select('#wrap-input').removeEventListener('input', wrapInputHandle);
       select('#wrap-input').addEventListener('input', unwrapInputHandle);
 
+      select('#run-name').innerHTML = "Unwrap";
       select('#run-wrap').onclick = async () => { await runUnwrap(); };
       wrapState = 'unwrap';
     } else {
       select('#wrap-input').removeEventListener('input', unwrapInputHandle);
       select('#wrap-input').addEventListener('input', wrapInputHandle);
       
-
+      select('#run-name').innerHTML = "Wrap";
       select('#run-wrap').onclick = async () => { await runWrap(); };
       wrapState = 'wrap';
-    }
-    
-    
+    }    
   }
 
   async function runWrap() {
