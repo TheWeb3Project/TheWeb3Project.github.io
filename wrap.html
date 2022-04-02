@@ -259,10 +259,24 @@
     })();
   }
 
+  let wrapState = 'wrap';
   async function wrapChange() {
-    select('#wrap-input').addEventListener('input', unwrapInputHandle);
+    if (wrapState == 'wrap') {
+      select('#wrap-input').removeEventListener('input', wrapInputHandle);
+      select('#wrap-input').addEventListener('input', unwrapInputHandle);
 
-    select('#run-wrap').onclick = async () => { await runWrap(); };
+      select('#run-wrap').onclick = async () => { await runUnwrap(); };
+      wrapState = 'unwrap';
+    } else {
+      select('#wrap-input').removeEventListener('input', unwrapInputHandle);
+      select('#wrap-input').addEventListener('input', wrapInputHandle);
+      
+
+      select('#run-wrap').onclick = async () => { await runWrap(); };
+      wrapState = 'wrap';
+    }
+    
+    
   }
 
   async function runWrap() {
@@ -292,10 +306,8 @@
 
       displayText("#wweb3Balance", `${COMMA(ROUND(wweb3Balance, 3))}`);
 
-      select('#wrap-input').addEventListener('input', wrapInputHandle);
-
-      select('#run-wrap').onclick = async () => { await runWrap(); };
-
+      wrapState = 'unwrap';
+      await wrapChange();
       select('#wrap-change').onclick = async () => { await wrapChange(); };
     }
 
