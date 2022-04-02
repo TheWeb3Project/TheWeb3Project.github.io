@@ -265,7 +265,7 @@
       balance = await CONTS['web3'].balanceOf(CURADR);
       balance = balance / BNBDIV;
 
-      displayText("#balance", `${COMMA(ROUND(balance, 3))} $WEB3`);
+      displayText("#balance", `${COMMA(INT(balance, 3))} $WEB3`);
     }
 
     async function runManualRebase() {
@@ -288,15 +288,15 @@
       
       let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
       blackHoleAmount = blackHoleAmount / BNBDIV;
-      displayText("#burned", `${COMMA(ROUND(blackHoleAmount, 3))}`);
+      displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
 
       let circulatingSupply = totalSupply - blackHoleAmount - lockedAmount;
-      displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
+      displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
       let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
       let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
       trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
-      displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance, 3))}`);
+      displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
 
       let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
       let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
@@ -305,27 +305,27 @@
       let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
       let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
       marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
-      displayText("#treasury", `$${COMMA(ROUND(trustFundBalance + marketingBalance, 3))}`);
+      displayText("#treasury", `$${COMMA(INT(trustFundBalance + marketingBalance, 3))}`);
 
       let liqReserves = await CONTS['pairweb3'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
       let liqBalance = liqBnb * bnbPrice;
-      displayText("#liquidity", `$${COMMA(ROUND(liqBalance, 0))}`);
+      displayText("#liquidity", `$${COMMA(INT(liqBalance, 0))}`);
 
       let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
-      displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
+      displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
 
       let liqWeb3 = liqReserves[0] / BNBDIV;
       let liqRate = liqBnb / liqWeb3;
       price = liqRate * bnbPrice;
-      displayText("#price", `$${COMMA(ROUND(price, 3))}`);
-      displayText("#theBlackHole", `$${COMMA(ROUND(blackHoleAmount * price))}`);
+      displayText("#price", `$${COMMA(INT(price, 3))}`);
+      displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
 
       let mcap = price * circulatingSupply;
-      displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
+      displayText("#mcap", `$${COMMA(INT(mcap))}`);
       
       let corr = liqBalance / mcap * 100;
-      select('#corr').setAttribute('title', `Correlation: ${COMMA(ROUND(corr, 1))}%`);
+      select('#corr').setAttribute('title', `Correlation: ${COMMA(INT(corr, 1))}%`);
 
       
       // manual rebase

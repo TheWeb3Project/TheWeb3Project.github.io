@@ -278,7 +278,7 @@
       balance = await CONTS['web3'].balanceOf(CURADR);
       balance = balance / BNBDIV;
 
-      displayText("#balance", `${COMMA(ROUND(balance, 3))}`);
+      displayText("#balance", `${COMMA(INT(balance, 3))}`);
     }
 
     let bnbPrice;
@@ -294,16 +294,16 @@
       
       let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
       blackHoleAmount = blackHoleAmount / BNBDIV;
-      displayText("#burned", `${COMMA(ROUND(blackHoleAmount, 3))}`);
-      displayText("#theBlackHole", `$${COMMA(ROUND(blackHoleAmount * bnbPrice))}`);
+      displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
+      displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * bnbPrice))}`);
 
       let circulatingSupply = totalSupply - blackHoleAmount;
-      displayText("#cirSupply", `${COMMA(ROUND(circulatingSupply, 3))}`);
+      displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
       let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
       let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
       trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
-      displayText("#trustFund", `$${COMMA(ROUND(trustFundBalance, 3))}`);
+      displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
 
       let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
       let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
@@ -312,20 +312,20 @@
       let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
       let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
       marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
-      displayText("#treasury", `$${COMMA(ROUND(trustFundBalance + treasuryBalance, 3))}`);
+      displayText("#treasury", `$${COMMA(INT(trustFundBalance + treasuryBalance, 3))}`);
 
       let liqReserves = await CONTS['pairweb3'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
-      displayText("#liquidity", `$${COMMA(ROUND(liqBnb * bnbPrice, 0))}`);
-      displayText("#backedLiq", `${COMMA(ROUND((trustFundBalance + treasuryBalance + marketingBalance) / liqBnb * 100, 0))}%`);
+      displayText("#liquidity", `$${COMMA(INT(liqBnb * bnbPrice, 0))}`);
+      displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance) / liqBnb * 100, 0))}%`);
 
       let liqWeb3 = liqReserves[0] / BNBDIV;
       let liqRate = liqBnb / liqWeb3;
       price = liqRate * bnbPrice;
-      displayText("#price", `$${COMMA(ROUND(price, 3))}`);
+      displayText("#price", `$${COMMA(INT(price, 3))}`);
 
       let mcap = price * totalSupply;
-      displayText("#mcap", `$${COMMA(ROUND(mcap))}`);
+      displayText("#mcap", `$${COMMA(INT(mcap))}`);
       
       // manual rebase
       select('#rebase').onclick = async () => { await runManualRebase(); };
@@ -340,8 +340,8 @@
 
       ////////////////////////////////////////////////////////////////////////////
 
-      select('#curPrice').value = `${COMMA(ROUND(price, 3))}`;
-      select('#futPrice').value = `${COMMA(ROUND(price, 3))}`;
+      select('#curPrice').value = `${COMMA(INT(price, 3))}`;
+      select('#futPrice').value = `${COMMA(INT(price, 3))}`;
 
       
       select('#setMaxToAmount').onclick = async () => {
@@ -351,10 +351,10 @@
         select('#input-apy').value = 404092.65;
       };
       select('#setCurToCurPrice').onclick = async () => {
-        select('#curPrice').value = ROUND(price, 3);
+        select('#curPrice').value = INT(price, 3);
       };
       select('#setCurToFutPrice').onclick = async () => {
-        select('#futPrice').value = ROUND(price, 3);
+        select('#futPrice').value = INT(price, 3);
       };
 
 
@@ -384,15 +384,15 @@
     $(document).on('input', 'input[type="range"]', function (e) {
       let amount = select('#amount').value;
       if (amount == 0) {
-        displayText("#initInvest", `$${COMMA(ROUND(0, 3))}`);
-        displayText("#curWealth", `$${COMMA(ROUND(0, 3))}`);
+        displayText("#initInvest", `$${COMMA(INT(0, 3))}`);
+        displayText("#curWealth", `$${COMMA(INT(0, 3))}`);
       }
       let days = e.currentTarget.value;
       document.getElementById("noOfDays").innerHTML = days;
 
       let curPrice = select('#curPrice').value;
       let initInvest = amount * curPrice;
-      displayText("#initInvest", `$${COMMA(ROUND(initInvest, 3))}`);
+      displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
 
       let futPrice = select('#futPrice').value;
       let futInvest = amount * futPrice;
@@ -400,11 +400,11 @@
       let dailyRate = 0.0230127917189176;
       let totalRate = ((1 + dailyRate) ** days) - 1;
 
-      displayText("#curWealth", `$${COMMA(ROUND(futInvest * (1 + totalRate), 3))}`);
+      displayText("#curWealth", `$${COMMA(INT(futInvest * (1 + totalRate), 3))}`);
 
-      displayText("#rewardsEsti", `${COMMA(ROUND(amount * totalRate, 3))}`);
+      displayText("#rewardsEsti", `${COMMA(INT(amount * totalRate, 3))}`);
 
-      displayText("#potenReturn", `$${COMMA(ROUND(futInvest * totalRate, 3))}`);
+      displayText("#potenReturn", `$${COMMA(INT(futInvest * totalRate, 3))}`);
 
       displayText("#spaceTravel", `${COMMA(INT(futInvest * totalRate / 250000))}`);
 
