@@ -127,7 +127,7 @@
                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                             <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                                 <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                    <input id="web3-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 4ch;" />
+                                    <input id="wrap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 4ch;" />
                                 </div>
                                 <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button>
                             </div>
@@ -147,7 +147,7 @@
                             </div>
                         </button>
                     </div>
-                    <div class="swap-tokens-form__token-pair__switch">
+                    <div id="wrap-change" class="swap-tokens-form__token-pair__switch">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 275" width="320" height="275" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
                           <g clip-path="url(#__lottie_element_16)"><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M-0.9169999957084656,6.150000095367432 C-0.9169999957084656,6.150000095367432 -5.23799991607666,10.472000122070312 -5.23799991607666,10.472000122070312 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -9.5600004196167,6.150000095367432 -9.5600004196167,6.150000095367432 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -5.23799991607666,-1.0520000457763672 -5.23799991607666,-1.0520000457763672"></path></g></g><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M0.9169999957084656,-5.9079999923706055 C0.9169999957084656,-5.9079999923706055 5.23799991607666,-10.229999542236328 5.23799991607666,-10.229999542236328 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 9.559000015258789,-5.9079999923706055 9.559000015258789,-5.9079999923706055 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 5.23799991607666,1.2940000295639038 5.23799991607666,1.2940000295639038"></path></g></g></g>
                         </svg>
@@ -156,7 +156,7 @@
                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                             <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                                 <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                    <input id="wweb3-input" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                    <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                 </div>
                             </div>
                             <p class="token-amount-field__balance">Balance: <span id="wweb3Balance">0.000</span></p>
@@ -224,7 +224,7 @@
     (async function () {
       valueIn = e.target.value;
       valueIn = valueIn.replace(/,/g, '');
-      result = select('#wweb3-input');
+      result = select('#wrap-output');
       if (valueIn == 0) {
         result.value = 0;
         return;
@@ -240,10 +240,41 @@
     })();
   }
 
+  let unwrapInputHandle = function (e) {
+    (async function () {
+      valueIn = e.target.value;
+      valueIn = valueIn.replace(/,/g, '');
+      result = select('#wrap-output');
+      if (valueIn == 0) {
+        result.value = 0;
+        return;
+      }
+
+      valueIn = BIG(valueIn);
+      valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG('100'));
+
+      valueOut_ = ETH(valueOut);
+      valueOut_ = ROUND(parseFloat(valueOut_), 8);
+      result.value = valueOut_;
+    })();
+  }
+
+  async function wrapChange() {
+    select('#wrap-input').addEventListener('input', unwrapInputHandle);
+
+    select('#run-wrap').onclick = async () => { await runWrap(); };
+  }
+
   async function runWrap() {
-    let web3Input = select('#web3-input');
+    let web3Input = select('#wrap-input');
     let web3Amount = BIG(web3Input.value);
     await SEND_TX('wweb3', 'deposit', [web3Amount]);
+  }
+
+  async function runUnwrap() {
+    let web3Input = select('#wrap-input');
+    let web3Amount = BIG(web3Input.value);
+    await SEND_TX('wweb3', 'withdraw', [web3Amount]);
   }
 
     let balance;
@@ -261,9 +292,11 @@
 
       displayText("#wweb3Balance", `${COMMA(ROUND(wweb3Balance, 3))}`);
 
-      select('#web3-input').addEventListener('input', wrapInputHandle);
+      select('#wrap-input').addEventListener('input', wrapInputHandle);
 
       select('#run-wrap').onclick = async () => { await runWrap(); };
+
+      select('#wrap-change').onclick = async () => { await wrapChange(); };
     }
 
     let bnbPrice;
