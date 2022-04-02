@@ -152,8 +152,8 @@
 
                 <div class="col mb-3">
                   <div class="text-secondary mb-1">
-                    Backed Liquidity <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    WTF + TWT + Marketing Fund + Auto-Liquidity Fund
+                    Correlation <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    MCAP / Liquidity
                     "></i>
                   </div>
                   <h4 id="backedLiq" class="fw-bold">0</h4>
@@ -332,7 +332,7 @@
       
       let corr = liqBalance / mcap * 100;
       select('#corr').setAttribute('title', `Correlation: ${COMMA(INT(corr, 1))}%`);
-
+      displayText("#liquidity", `${COMMA(INT(corr, 1))}%`);
       
       // manual rebase
       select('#rebase').onclick = async () => { await runManualRebase(); };
