@@ -234,7 +234,7 @@
       valueOut = valueIn.mul(BIG('100')).div(BIG(String(totalSupply)));
 
       valueOut_ = ETH(valueOut);
-      valueOut_ = ROUND(valueOut_, 8);
+      valueOut_ = ROUND(parseFloat(valueOut_), 8);
       result.value = valueOut_;
 
     })();
