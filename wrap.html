@@ -131,7 +131,7 @@
                                 </div>
                                 <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button>
                             </div>
-                            <p class="token-amount-field__balance">Balance: <span id="balance">0.000</span></p>
+                            <p class="token-amount-field__balance">Balance: <span id="balance-input">0.000</span></p>
                         </div>
                         <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
@@ -159,7 +159,7 @@
                                     <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                 </div>
                             </div>
-                            <p class="token-amount-field__balance">Balance: <span id="wweb3Balance">0.000</span></p>
+                            <p class="token-amount-field__balance">Balance: <span id="balance-output">0.000</span></p>
                         </div>
                         <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
@@ -264,6 +264,9 @@
     if (wrapState == 'wrap') {
       select('#wrap-input').removeEventListener('input', wrapInputHandle);
       select('#wrap-input').addEventListener('input', unwrapInputHandle);
+      
+      displayText("#balance-input", `${COMMA(ROUND(wweb3Balance, 3))}`);
+      displayText("#balance-output", `${COMMA(ROUND(balance, 3))}`);
 
       select('#symbol-input').innerHTML = "wWEB3";
       select('#symbol-output').innerHTML = "WEB3";
@@ -274,6 +277,9 @@
       select('#wrap-input').removeEventListener('input', unwrapInputHandle);
       select('#wrap-input').addEventListener('input', wrapInputHandle);
       
+      displayText("#balance-input", `${COMMA(ROUND(balance, 3))}`);
+      displayText("#balance-output", `${COMMA(ROUND(wweb3Balance, 3))}`);
+
       select('#symbol-input').innerHTML = "WEB3";
       select('#symbol-output').innerHTML = "wWEB3";
       select('#run-name').innerHTML = "Wrap";
