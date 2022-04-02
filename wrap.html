@@ -231,7 +231,7 @@
       }
 
       valueIn = ethers.utils.parseEther(valueIn);
-      valueOut = valueIn.mul(100 * 10**18).div(totalSupply);
+      valueOut = valueIn.mul(100).div(totalSupply / 10**18);
 
       valueOut_ = ethers.utils.formatEther(valueOut);
       valueOut_ = parseInt(valueOut_);
