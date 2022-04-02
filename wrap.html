@@ -265,6 +265,10 @@
       select('#wrap-input').removeEventListener('input', wrapInputHandle);
       select('#wrap-input').addEventListener('input', unwrapInputHandle);
       
+      let tmp = select('#wrap-input').value;
+      select('#wrap-input').value = select('#wrap-output').value;
+      select('#wrap-output').value = tmp;
+
       displayText("#balance-input", `${COMMA(ROUND(wweb3Balance, 3))}`);
       displayText("#balance-output", `${COMMA(ROUND(balance, 3))}`);
 
@@ -277,6 +281,10 @@
       select('#wrap-input').removeEventListener('input', unwrapInputHandle);
       select('#wrap-input').addEventListener('input', wrapInputHandle);
       
+      let tmp = select('#wrap-input').value;
+      select('#wrap-input').value = select('#wrap-output').value;
+      select('#wrap-output').value = tmp;
+
       displayText("#balance-input", `${COMMA(ROUND(balance, 3))}`);
       displayText("#balance-output", `${COMMA(ROUND(wweb3Balance, 3))}`);
 
