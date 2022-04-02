@@ -230,12 +230,12 @@
         return;
       }
 
-      valueIn = ethers.utils.parseEther(valueIn);
-      valueOut = valueIn.mul(100).div(totalSupply / 10**18);
+      valueIn = BIG(valueIn);
+      valueOut = valueIn.div(INT(totalSupply * 10**18)).mul(BigInt(100 * 10**18));
 
-      valueOut_ = ethers.utils.formatEther(valueOut);
-      valueOut_ = parseInt(valueOut_);
-      valueOut_ = numberWithCommas(valueOut_);
+      valueOut_ = ETH(valueOut);
+      valueOut_ = INT(valueOut_);
+      valueOut_ = COMMA(valueOut_);
       result.value = valueOut_;
 
     })();
