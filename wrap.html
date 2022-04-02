@@ -156,7 +156,7 @@
                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                             <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                                 <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                    <input id="wweb3-input" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 4ch;" />
+                                    <input id="wweb3-input" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                 </div>
                             </div>
                             <p class="token-amount-field__balance">Balance: <span id="wweb3Balance">0.000</span></p>
@@ -234,7 +234,7 @@
       valueOut = valueIn.mul(BIG('100')).div(BIG(String(totalSupply)));
 
       valueOut_ = ETH(valueOut);
-      valueOut_ = COMMA(valueOut_);
+      valueOut_ = ROUND(valueOut_, 8);
       result.value = valueOut_;
 
     })();
