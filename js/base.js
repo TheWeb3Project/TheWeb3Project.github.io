@@ -159,6 +159,10 @@ let CURBLOCK;
 ////////////////////////////////// base
 
 function INT(v, n=0) {
+  if (n == 0) {
+    return parseInt(v);
+  }
+  
   return parseInt(v * 10**n) / 10**n;
 }
 
