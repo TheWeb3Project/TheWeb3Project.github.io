@@ -307,12 +307,12 @@
 
       let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
       let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
-      trustFundBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
+      treasuryBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
 
       let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
       let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
       marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
-      displayText("#treasury", `$${COMMA(INT(trustFundBalance + marketingBalance, 3))}`);
+      displayText("#treasury", `$${COMMA(INT(treasuryBalance + marketingBalance, 3))}`);
 
       let liqReserves = await CONTS['pairweb3'].getReserves();
       let liqBnb = liqReserves[1] / BNBDIV; 
