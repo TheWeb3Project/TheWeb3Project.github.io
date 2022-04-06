@@ -400,12 +400,11 @@
       let initInvest = amount * curPrice;
       displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
 
-      let futPrice = select('#futPrice').value;
-      let futInvest = amount * futPrice;
-
       let dailyPriceRate = 0.01801636;
       let totalPriceRate = ((1 + dailyPriceRate) ** days) - 1;
-      select('#futPrice').value = INT(curPrice * totalPriceRate, 3);
+      let futPrice = INT(curPrice * totalPriceRate, 3);
+      select('#futPrice').value = futPrice;
+      let futInvest = amount * futPrice;
 
       let dailyRate = 0.004908;
       let totalRate = ((1 + dailyRate) ** days) - 1;      
