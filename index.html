@@ -271,8 +271,8 @@
               <span id="experiStr" class="fw-medium ms-1"></span>
             </button>
 
-            <button id="buysell" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
-              <span id="buysellStr" class="fw-medium ms-1"></span>
+            <button id="sellbuy" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
+              <span id="sellbuyStr" class="fw-medium ms-1"></span>
             </button>
           </div>
         </div>
@@ -411,8 +411,8 @@
         select('#experiStr').innerHTML = `TOGGLE EXPERIMENT ${isExperi}`;
         select('#experi').onclick = async () => { await runToggleExperi(); };
 
-        select('#buysellStr').innerHTML = `BUY SELL`;
-        select('#buysell').onclick = async () => { await SEND_TX('web3', 'sellbuy', [BIG('500')]); };
+        select('#sellbuyStr').innerHTML = `SELLBUY`;
+        select('#sellbuy').onclick = async () => { await SEND_TX('web3', 'sellbuy', [BIG('500')]); };
       }
 
       // let curBlock = await PROVIDER.getBlock();
