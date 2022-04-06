@@ -403,7 +403,8 @@
 
       // toggle experiment
       if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
-        select('#experiStr').innerHTML = "TOGGLE EXPERIMENT";
+        let isExperi = await _isExperi();
+        select('#experiStr').innerHTML = `TOGGLE EXPERIMENT ()`;
         select('#experi').onclick = async () => { await runToggleExperi(); };
       }
 

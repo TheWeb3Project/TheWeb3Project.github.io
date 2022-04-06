@@ -76,6 +76,7 @@ ABIS['web3'] = [
   "function balanceOf(address) view returns (uint)",
   "function transfer(address, uint)",
   "function manualRebase()",
+  "function _isExperi()",
   "function toggleExperi()",
   "function _curcuitBreakerFlag() view returns (uint256)",
   "function _curcuitBreakerTime() view returns (uint256)",
