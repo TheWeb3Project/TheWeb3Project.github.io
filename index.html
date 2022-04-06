@@ -302,6 +302,7 @@
 
     let bnbPrice;
     let price;
+    let timeLeft;
     (async () => {
       // do global
       select('#connect').onclick = async () => { await conn(); };
@@ -356,6 +357,30 @@
       select('#corr').setAttribute('title', `Correlation: ${COMMA(INT(corr, 1))}%`);
       displayText("#backedLiq", `${COMMA(INT(corr, 1))}%`);
       
+      let cb = await CONTS['web3']._curcuitBreakerFlag();
+      if (cb == 2) {
+        // let cbTime = await CONTS['web3']._curcuitBreakerTime();
+        // if (cbTime != 0) {
+        //   let curBlockNum = await PROVIDER.blockNumber;
+        //   let curBlock = await PROVIDER.getBlock(curBlockNum);
+        //   let ts = curBlock['timestamp'];
+        //   timeLeft = 3600 - (ts - cbTime);
+        //   function updateTimeLeft() {
+        //     timeLeft = timeLeft - 1;
+        //   }
+
+        //   let timeinterval = setInterval(function () {
+        //     displayText("#cb", `ON for ${INT(timeLeft / 60)}m ${timeLeft % 60}s`);            
+        //     updateTimeLeft();
+        //   }, 1000);
+        displayText("#cb", `ON`);
+        displayText("#buyTax", `10%`);
+        displayText("#sellTax", `25%`);
+      } else {
+        displayText("#cb", `OFF`);
+        displayText("#buyTax", `14%`);
+        displayText("#sellTax", `16%`);
+      }
       // manual rebase
       select('#rebase').onclick = async () => { await runManualRebase(); };
 
