@@ -277,19 +277,19 @@
       displayText("#balanceInUsd", `$${COMMA(INT(balance * price, 3))}`);
 
       let rebaseRate = 1.00000017;
-      displayText("#nextRebaseReward", `${COMMA(INT(balance * rebaseRate, 3))} $WEB3`);
+      displayText("#nextRebaseReward", `${COMMA(INT(balance * rebaseRate - balance, 3))} $WEB3`);
       displayText("#nextRebaseRewardInUsd", `$${COMMA(INT(balance * rebaseRate * price * 1.00000062 - balance * price, 3))}`);
 
       let hourRate = 1.00020402;
-      displayText("#nexthourReward", `${COMMA(INT(balance * hourRate, 3))} $WEB3`);
+      displayText("#nexthourReward", `${COMMA(INT(balance * hourRate - balance, 3))} $WEB3`);
       displayText("#nexthourRewardInUsd", `$${COMMA(INT(balance * hourRate * price * 1.00074427 - balance * price, 3))}`);
       
       let dailyRate = 1.00490800;
-      displayText("#nextDailyReward", `${COMMA(INT(balance * dailyRate, 3))} $WEB3`);
+      displayText("#nextDailyReward", `${COMMA(INT(balance * dailyRate - balance, 3))} $WEB3`);
       displayText("#nextDailyRewardInUsd", `$${COMMA(INT(balance * dailyRate * price * 1.01801636 - balance * price, 3))}`);
 
       let MonthRate = 1.1582149;
-      displayText("#nextMonthReward", `${COMMA(INT(balance * MonthRate, 3))} $WEB3`);
+      displayText("#nextMonthReward", `${COMMA(INT(balance * MonthRate - balance, 3))} $WEB3`);
       displayText("#nextMonthRewardInUsd", `$${COMMA(INT(balance * MonthRate * price * 1.7086094 - balance * price, 3))}`);
     }
 
