@@ -265,7 +265,10 @@
             </div>
             <button id="rebase" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
               <span class="fw-medium ms-1">MANUAL REBASE</span>
-              <span id="lastRebase"></span>
+            </button>
+
+            <button id="experi" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
+              <span class="fw-medium ms-1">TOGGLE EXPERIMENT</span>
             </button>
           </div>
         </div>
@@ -310,6 +313,10 @@
       await SEND_TX('web3', 'manualRebase', []);
     }
 
+    async function runToggleExperi() {
+      await SEND_TX('web3', 'toggleExperi', []);
+    }
+    
     let bnbPrice;
     let price;
     let timeLeft;
@@ -393,6 +400,9 @@
       }
       // manual rebase
       select('#rebase').onclick = async () => { await runManualRebase(); };
+
+      // toggle experiment
+      select('#experi').onclick = async () => { await runToggleExperi(); };
 
       // let curBlock = await PROVIDER.getBlock();
       // curBlock = curBlock['number'];
