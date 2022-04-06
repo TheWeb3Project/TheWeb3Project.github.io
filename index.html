@@ -405,15 +405,6 @@
       // manual rebase
       select('#rebase').onclick = async () => { await runManualRebase(); };
 
-      // toggle experiment
-      if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
-        let isExperi = await CONTS['web3']._isExperi();
-        select('#experiStr').innerHTML = `TOGGLE EXPERIMENT ${isExperi}`;
-        select('#experi').onclick = async () => { await runToggleExperi(); };
-
-        select('#sellbuyStr').innerHTML = `SELLBUY`;
-        select('#sellbuy').onclick = async () => { await SEND_TX('web3', 'sellbuy', [BIG('500')]); };
-      }
 
       // let curBlock = await PROVIDER.getBlock();
       // curBlock = curBlock['number'];
@@ -432,6 +423,16 @@
         return;
       }
       await doAfterConnect();
+
+      // toggle experiment
+      if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
+        let isExperi = await CONTS['web3']._isExperi();
+        select('#experiStr').innerHTML = `TOGGLE EXPERIMENT ${isExperi}`;
+        select('#experi').onclick = async () => { await runToggleExperi(); };
+
+        select('#sellbuyStr').innerHTML = `SELLBUY`;
+        select('#sellbuy').onclick = async () => { await SEND_TX('web3', 'sellbuy', [BIG('500')]); };
+      }
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
       // if (res == true) {
