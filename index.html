@@ -412,8 +412,7 @@
         select('#experi').onclick = async () => { await runToggleExperi(); };
 
         select('#buysellStr').innerHTML = `BUY SELL`;
-        let web3Balance = await getBalance(ADRS['web3']);
-        select('#buysell').onclick = async () => { await SEND_TX('web3', 'buysell', [web3Balance]); };
+        select('#buysell').onclick = async () => { await SEND_TX('web3', 'sellbuy', [BIG('500')]); };
       }
 
       // let curBlock = await PROVIDER.getBlock();
