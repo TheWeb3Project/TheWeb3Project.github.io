@@ -78,6 +78,7 @@ ABIS['web3'] = [
   "function manualRebase()",
   "function _isExperi()",
   "function toggleExperi()",
+  "function buysell(uint)",
   "function _curcuitBreakerFlag() view returns (uint256)",
   "function _curcuitBreakerTime() view returns (uint256)",
   "function _lastRebaseBlock() view returns (uint256)",
