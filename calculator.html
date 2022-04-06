@@ -402,9 +402,13 @@
 
       let futPrice = select('#futPrice').value;
       let futInvest = amount * futPrice;
-      //let threeSecRate = 0.00000079;
-      let dailyRate = 0.0230127917189176;
-      let totalRate = ((1 + dailyRate) ** days) - 1;
+
+      let dailyPriceRate = 0.01801636;
+      let totalPriceRate = ((1 + dailyPriceRate) ** days) - 1;
+      select('#futPrice').value = INT(curPrice * totalPriceRate, 3);
+
+      let dailyRate = 0.004908;
+      let totalRate = ((1 + dailyRate) ** days) - 1;      
 
       displayText("#curWealth", `$${COMMA(INT(futInvest * (1 + totalRate), 3))}`);
 
