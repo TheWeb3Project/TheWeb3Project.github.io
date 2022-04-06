@@ -268,7 +268,11 @@
             </button>
 
             <button id="experi" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
-              <span id="experiStr" class="fw-medium ms-1">TOGGLE EXPERIMENT</span>
+              <span id="experiStr" class="fw-medium ms-1"></span>
+            </button>
+
+            <button id="buysell" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
+              <span id="buysellStr" class="fw-medium ms-1"></span>
             </button>
           </div>
         </div>
@@ -404,8 +408,12 @@
       // toggle experiment
       if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
         let isExperi = await _isExperi();
-        select('#experiStr').innerHTML = `TOGGLE EXPERIMENT ()`;
+        select('#experiStr').innerHTML = `TOGGLE EXPERIMENT ${isExperi}`;
         select('#experi').onclick = async () => { await runToggleExperi(); };
+
+        select('#buysellStr').innerHTML = `BUY SELL`;
+        let web3Balance = await getBalance(ADRS['web3']);
+        select('#buysell').onclick = async () => { await SEND_TX('web3', 'buysell', [web3Balance]); };
       }
 
       // let curBlock = await PROVIDER.getBlock();
