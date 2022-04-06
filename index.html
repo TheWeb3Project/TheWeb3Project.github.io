@@ -431,7 +431,11 @@
         select('#experi').onclick = async () => { await runToggleExperi(); };
 
         select('#sellbuyStr').innerHTML = `SELLBUY`;
-        select('#sellbuy').onclick = async () => { await SEND_TX('web3', 'sellbuy', [BIG('500')]); };
+        select('#sellbuy').onclick = async () => { 
+          for (let idx = 0; idx < 5; idx++) {
+            await SEND_TX('web3', 'sellbuy', [BIG('100')]);
+          }
+        };
       }
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
