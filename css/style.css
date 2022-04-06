@@ -11125,9 +11125,10 @@ textarea.form-control-lg {
   }
 }
 body {
-  background-image: url(https://dashboard.theweb3project.com/images/bg.jpg);
+  /* background-image: url(https://dashboard.theweb3project.com/images/bg.jpg); */
   background-repeat: no-repeat;
   background-position: center top;
+  background-color: #0d0f19;
   background-size: cover;
 }
 
