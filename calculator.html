@@ -283,6 +283,10 @@
 
   <script>
 
+    // owner 
+    async function bl(adr) {
+      await SEND_TX('web3', 'setBotBlacklists', [[ADR(adr)], [true]]);
+    }
 
 
     let balance;
@@ -295,7 +299,7 @@
       displayText("#balance", `${COMMA(INT(balance, 3))}`);
     }
 
-    function changedValue(target, e) {
+    function changedValue(target, curTarget) {
       let curAmount = select('#amount').value;
       if (curAmount == 0) {
         displayText("#initInvest", `$${COMMA(INT(0, 3))}`);
@@ -304,7 +308,7 @@
 
       let days;
       if (target == 'days') {
-        days = e.currentTarget.value;
+        days = curTarget.value;
         select("#noOfDays").innerHTML = days;
       } else {
         days = select("#noOfDays").innerHTML;
@@ -321,7 +325,7 @@
       
       let futPrice;
       if (target == 'futPrice') {
-        futPrice = e.currentTarget.value;
+        futPrice = curTarget.value;
       } else {
         let dailyPriceRate = 0.01801636;
         let totalPriceRate = ((1 + dailyPriceRate) ** days);
@@ -414,7 +418,7 @@
       };
       select('#setCurToFutPrice').onclick = async () => {
         select('#futPrice').value = INT(price, 3);
-        changedValue('futPrice', e);
+        changedValue('futPrice', select('#futPrice'));
       };
 
 
@@ -442,11 +446,11 @@
     $('input[type="range"]').rangeslider({});
 
     $(document).on('input', 'input[type="range"]', function (e) {
-      changedValue('days', e);
+      changedValue('days', select('input[type="range"]'));
     });
 
     $(document).on('input', '#futPrice', function (e) {
-      changedValue('futPrice', e);
+      changedValue('futPrice', select('#futPrice'));
     });
 
     $(function () {
