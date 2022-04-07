@@ -216,55 +216,10 @@
       displayText("#nextMonthRewardInUsd", `$${COMMA(INT(balance * MonthRate * price * 1.7086094 - balance * price, 3))}`);
     }
 
-    let bnbPrice;
-    let price;
     (async () => {
       // do global
-      select('#connect').onclick = async () => { await conn(); };
-
-      bnbPrice = 1 / (await getPrice('busd'));
-
-      let totalSupply = await CONTS['web3'].totalSupply();
-      totalSupply = totalSupply / BNBDIV;
+      await runGlobal();
       
-      let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
-      blackHoleAmount = blackHoleAmount / BNBDIV;
-      displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
-      displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * bnbPrice))}`);
-
-      let circulatingSupply = totalSupply - blackHoleAmount;
-      displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
-
-      let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
-      let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
-      trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
-      displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
-
-      let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
-      let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
-      trustFundBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
-
-      let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
-      let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
-      marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
-      displayText("#treasury", `$${COMMA(INT(trustFundBalance + treasuryBalance, 3))}`);
-
-      let liqReserves = await CONTS['pairweb3'].getReserves();
-      let liqBnb = liqReserves[1] / BNBDIV; 
-      displayText("#liquidity", `$${COMMA(INT(liqBnb * bnbPrice, 0))}`);
-      displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance) / liqBnb * 100, 0))}%`);
-
-      let liqWeb3 = liqReserves[0] / BNBDIV;
-      let liqRate = liqBnb / liqWeb3;
-      price = liqRate * bnbPrice;
-      displayText("#price", `$${COMMA(INT(price, 3))}`);
-
-      let mcap = price * totalSupply;
-      displayText("#mcap", `$${COMMA(INT(mcap))}`);
-      
-      // manual rebase
-      select('#rebase').onclick = async () => { await runManualRebase(); };
-
       // let curBlock = await PROVIDER.getBlock();
       // curBlock = curBlock['number'];
       // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
