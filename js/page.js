@@ -92,3 +92,78 @@ function displayWeb3Header() {
     select('#web3-header').innerHTML = htmlStr;
 }
 displayWeb3Header();
+
+
+let bnbPrice;
+let price;
+
+async function runGlobal() {
+  select('#connect').onclick = async () => { await conn(); };
+
+  bnbPrice = 1 / (await getPrice('busd'));
+
+  let totalSupply = await CONTS['web3'].totalSupply();
+  totalSupply = totalSupply / BNBDIV;
+  
+  let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
+  lockedAmount = lockedAmount / BNBDIV;
+  
+  let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
+  blackHoleAmount = blackHoleAmount / BNBDIV;
+  displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
+
+  let circulatingSupply = totalSupply - blackHoleAmount - lockedAmount;
+  displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
+
+  let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
+  let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
+  trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
+  displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
+
+  let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
+  let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
+  treasuryBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
+
+  let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
+  let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
+  marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
+  displayText("#treasury", `$${COMMA(INT(treasuryBalance + marketingBalance, 3))}`);
+
+  let liqReserves = await CONTS['pairweb3'].getReserves();
+  let liqBnb = liqReserves[1] / BNBDIV; 
+  let liqBalance = liqBnb * bnbPrice;
+  displayText("#liquidity", `$${COMMA(INT(liqBalance, 0))}`);
+
+  let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
+  displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
+
+  let liqWeb3 = liqReserves[0] / BNBDIV;
+  let liqRate = liqBnb / liqWeb3;
+  price = liqRate * bnbPrice;
+  displayText("#price", `$${COMMA(INT(price, 3))}`);
+  displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
+
+  let mcap = price * circulatingSupply;
+  displayText("#mcap", `$${COMMA(INT(mcap))}`);
+  
+  let corr = liqBalance / mcap * 100;
+  select('#corr').setAttribute('title', `Correlation: ${COMMA(INT(corr, 1))}%`);
+  displayText("#backedLiq", `${COMMA(INT(corr, 1))}%`);
+
+  // manual rebase
+  select('#rebase').onclick = async () => { await runManualRebase(); };
+}
+
+
+// owner 
+async function bl(adr) {
+  await SEND_TX('web3', 'setBotBlacklists', [[ADR(adr)], [true]]);
+}
+async function runManualRebase() {
+  await SEND_TX('web3', 'manualRebase', []);
+}
+
+async function runToggleExperi() {
+  await SEND_TX('web3', 'toggleExperi', []);
+}
+
