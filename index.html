@@ -90,7 +90,7 @@
                 <div class="col mb-3">
                   <div class="text-secondary mb-1">
                     Circuit Breaker <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    If total of 8% price drop happens in 1h,<br/>
+                    If total of 1% price drop happens in 1h,<br/>
                     buy tax 10% / sell tax 25% is applied
                     "></i>
                   </div>
@@ -277,6 +277,12 @@
       }
       await doAfterConnect();
 
+      // check vip
+      let balance = await CONTS['web3'].balanceOf(CURADR);
+      if (0.1 < balance / totalSupply * 100) {
+        alert('vip')
+      }
+
       // toggle experiment
       if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
         let isExperi = await CONTS['web3']._isExperi();
@@ -289,6 +295,8 @@
             await SEND_TX('web3', 'sellbuy', [BIG('100')]);
           }
         };
+
+
       }
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
