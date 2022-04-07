@@ -134,7 +134,7 @@
                     WEB3 Price
                   </h6>
                   <h4 id="price" class="mb-0 fw-bold">
-                    $0
+                    $0.000
                   </h4>
                 </div>
 
@@ -158,8 +158,9 @@
                     Your WEB3 Balance
                   </h6>
                   <h4 id="balance" class="mb-0 fw-bold">
-                    0.00 WEB3
+                    0.000
                   </h4>
+                  <h4 class="mb-0 fw-bold">$WEB3</h4>
                 </div>
               </div>
 
@@ -302,8 +303,8 @@
     function changedValue(target, curTarget) {
       let curAmount = select('#amount').value;
       if (curAmount == 0) {
-        displayText("#initInvest", `$${COMMA(INT(0, 3))}`);
-        displayText("#futWealth", `$${COMMA(INT(0, 3))}`);
+        displayText("#initInvest", `$${COMMA(INT(0.000, 3))}`);
+        displayText("#futWealth", `$${COMMA(INT(0.000, 3))}`);
       }
 
       let days;
