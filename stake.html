@@ -63,7 +63,7 @@
                         <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
                               <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
-                              <span id="symbol-input" class="token__symbol ellipsis">WEB3</span>
+                              <span id="symbol-input" class="token__symbol ellipsis">wWEB3</span>
                                 <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
                                     <path
                                         d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
@@ -83,15 +83,14 @@
                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                             <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                                 <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                    <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                    <input id="duration" class="input-field__input" placeholder="0" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                 </div>
                             </div>
-                            <p class="token-amount-field__balance">Balance: <span id="balance-output">0.000</span></p>
                         </div>
                         <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
                                 <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
-                                <span id="symbol-output" class="token__symbol ellipsis">wWEB3</span>
+                                <span id="symbol-output" class="token__symbol ellipsis">Days</span>
                                 <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
                                     <path
                                         d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
@@ -104,9 +103,9 @@
                     </div>
                 </div>
 
-                <div id="run-wrap" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
+                <div id="run-stake" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
                   <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
-                    <span id="run-name" class="button__content">Wrap</span>
+                    <span id="run-name" class="button__content">Stake</span>
                   </button>
                 </div>
 
