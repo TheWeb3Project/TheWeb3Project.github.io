@@ -224,7 +224,10 @@
       document.getElementById("overlay").style.display = "none"
     });
 
-
+    async function doAfterConnect() {
+      await _doAfterConnect();
+    }
+    
     let timeLeft;
     (async () => {
       // do global
