@@ -1,7 +1,7 @@
 'use strict'
 
 function displaySidebar() {
-    htmlStr = `
+    let htmlStr = `
         <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
           <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center ps-3 pe-2">
             <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
@@ -67,3 +67,28 @@ function displaySidebar() {
     select('#sidebarContainer').innerHTML = htmlStr;
 }
 displaySidebar();
+
+function displayWeb3Header() {
+    let htmlStr = `
+    <div class="d-flex pt-3 px-sm-3">
+            <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
+
+            <div class="dropdown ms-auto">
+              <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
+                <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="https://pancakeswap.finance/swap?outputCurrency=0x333FD139cAeF6Aa31056cC905987b77B1044d259">Buy on Pancakeswap</a></li>
+                <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
+              </ul>
+            </div>
+
+            <button id="connect" type="button" class="btn rounded-1 ms-3">
+              Connect Wallet
+            </button>
+          </div>
+          `;
+    select('#web3-header').innerHTML = htmlStr;
+}
+displayWeb3Header();
