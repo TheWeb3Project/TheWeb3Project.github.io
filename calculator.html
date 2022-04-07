@@ -207,67 +207,6 @@
 
   <script>
 
-    // owner 
-    async function bl(adr) {
-      await SEND_TX('web3', 'setBotBlacklists', [[ADR(adr)], [true]]);
-    }
-
-
-    let balance;
-    async function doAfterConnect() {
-      displayText('#connect', SHORTADR(CURADR));
-
-      balance = await CONTS['web3'].balanceOf(CURADR);
-      balance = balance / BNBDIV;
-
-      displayText("#balance", `${COMMA(INT(balance, 3))}`);
-    }
-
-    function changedValue(target, curTarget) {
-      let curAmount = select('#amount').value;
-      if (curAmount == 0) {
-        displayText("#initInvest", `$${COMMA(INT(0.000, 3))}`);
-        displayText("#futWealth", `$${COMMA(INT(0.000, 3))}`);
-      }
-
-      let days;
-      if (target == 'days') {
-        days = curTarget.value;
-        select("#noOfDays").innerHTML = days;
-      } else {
-        days = select("#noOfDays").innerHTML;
-      }
-
-      let curPrice = select('#curPrice').value;
-      let initInvest = curAmount * curPrice;
-      displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
-
-      let dailyRate = 0.004908;
-      let totalRate = ((1 + dailyRate) ** days);      
-      let futAmount = INT(curAmount * totalRate, 3);
-      select('#futAmount').value = futAmount;
-      
-      let futPrice;
-      if (target == 'futPrice') {
-        futPrice = curTarget.value;
-      } else {
-        let dailyPriceRate = 0.01801636;
-        let totalPriceRate = ((1 + dailyPriceRate) ** days);
-        futPrice = INT(curPrice * totalPriceRate, 3);
-        select('#futPrice').value = futPrice;
-      }
-
-      let futInvest = futAmount * futPrice;
-
-      displayText("#futWealth", `$${COMMA(INT(futInvest, 3))}`);
-
-      displayText("#rewardsEsti", `${COMMA(INT(futAmount - curAmount, 3))}`);
-
-      displayText("#potenReturn", `$${COMMA(INT(futInvest - initInvest, 3))}`);
-
-      displayText("#spaceTravel", `${COMMA(INT(futInvest / 250000))}`);
-    }
-
     let bnbPrice;
     let price;
     (async () => {
