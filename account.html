@@ -246,72 +246,7 @@
       //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
       // }
 
-
-      let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
-      let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
-
-      let amount = getCookie('accountWeb3Amount');
-      if (amount == null) {
-        amount = BigInt(0);
-      }
-      amount = BigInt(amount);
-
-      let startBlock = getCookie('accountWeb3StartBlock');
-      if (startBlock == null) {
-        startBlock = STARTBLOCK;
-      }
-      startBlock = INT(startBlock);
-
-      let txLogs;
-      let n = INT((CURBLOCK - startBlock) / 5000);
-      for (var idx = 0; idx < n; idx++) {
-          displayText("#totalEarned", `Getting Updates.. ${INT(idx / n * 100, 1)}%`);
-          let fromBlock = startBlock + 5000 * idx;
-          let toBlock = startBlock + 5000 * idx + 5000;
-          if (CURBLOCK < toBlock) {
-            toBlock = CURBLOCK;
-          }
-
-          for (var idy = 0; idy < 10; idy++) {
-              try {
-                  txLogs = await CONTS['web3'].queryFilter(buyFilter, fromBlock, toBlock);
-                  break;
-              } catch {
-                  DELAY(100);
-              }
-          }
-          for (var idy = 0; idy < txLogs.length; idy++) {
-              let data = txLogs[idy]['data'];
-              amount += BigInt(data);
-          }
-          
-          for (var idy = 0; idy < 10; idy++) {
-              try {
-                  txLogs = await CONTS['web3'].queryFilter(sellFilter, fromBlock, toBlock);
-                  break;
-              } catch {
-                  DELAY(100);
-              }
-          }
-          for (var idy = 0; idy < txLogs.length; idy++) {
-              let data = txLogs[idy]['data'];
-              amount -= BigInt(data);
-          }
-          
-          setCookie('accountWeb3Amount', amount, 10);
-          setCookie('accountWeb3StartBlock', toBlock, 10);
-
-          if (toBlock == CURBLOCK) {
-              break;
-          }  
-      }
-      amount = INT(amount) / BNBDIV;
-      
-      console.log(balance, amount);
-      let totalEarned = balance - amount; // little precision
-      let earnRate = totalEarned / balance * 100;
-      displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $WEB3 (+${COMMA(INT(earnRate, 3))}%)`);
-      displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * price, 3))}`);
+      await getTotalEarned();
       
       $('[data-bs-toggle="tooltip"]').tooltip();
     })();
