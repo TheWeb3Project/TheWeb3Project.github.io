@@ -170,7 +170,7 @@ async function runToggleExperi() {
 
 
 let balance;
-async function doAfterConnect() {
+async function _doAfterConnect() {
   displayText('#connect', SHORTADR(CURADR));
 
   balance = await CONTS['web3'].balanceOf(CURADR);
