@@ -207,6 +207,11 @@
 
   <script>
 
+    async function doAfterConnect() {
+      await _doAfterConnect();
+    }
+    
+
     (async () => {
       // do global
       await runGlobal();
