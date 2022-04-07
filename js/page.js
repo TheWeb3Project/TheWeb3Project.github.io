@@ -96,13 +96,13 @@ displayWeb3Header();
 
 let bnbPrice;
 let price;
-
+let totalSupply;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
   bnbPrice = 1 / (await getPrice('busd'));
 
-  let totalSupply = await CONTS['web3'].totalSupply();
+  totalSupply = await CONTS['web3'].totalSupply();
   totalSupply = totalSupply / BNBDIV;
   
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
