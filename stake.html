@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/style.css">
+
+  <title>The Web3 Project | Taking online further beyond</title>
+  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" name="description">
+  <meta content="The Web3 Project | Taking online further beyond" property="og:title">
+  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="og:description">
+  <meta content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png" property="og:image">
+  <meta content="The Web3 Project | Taking online further beyond" property="twitter:title">
+  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="twitter:description">
+  <meta content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png" property="twitter:image">
+  <meta property="og:type" content="website">
+  <meta content="summary_large_image" name="twitter:card">
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+   
+  <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524321551928e3d234161_circled.png" rel="shortcut icon" type="image/x-icon">
+  <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png" rel="apple-touch-icon">
+
+  <meta name="twitter:image" content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png">
+  <meta name="twitter:description" content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Web3 Project | Taking online further beyond">
+
+  <meta property="og:image" content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png">
+
+  <link rel="stylesheet" href="css/flooz.css">
+</head>
+
+<body id="titano-finance" style="margin-bottom: 100px; width: 100%;">
+  <div class="container-fluid">
+    <div class="row">
+      <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
+      </div>
+
+      <div id="overlay" style="z-index: 1000001;"></div>
+
+      <main class="col pt-4">
+        <div class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001; background-color: #0D0F19;">
+          <div class="d-flex pt-3 px-sm-3">
+            <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
+
+            <div class="dropdown ms-auto">
+              <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
+                <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="https://pancakeswap.finance/swap?outputCurrency=0x333FD139cAeF6Aa31056cC905987b77B1044d259">Buy on Pancakeswap</a></li>
+                <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
+              </ul>
+            </div>
+
+            <button id="connect" type="button" class="btn rounded-1 ms-3">
+              Connect Wallet
+            </button>
+          </div>
+        </div>
+        
+        <div class="container pt-3">
+            <div class="col-12 mx-auto">
+              <div class="card bg-light border border-primary p-3 p-sm-4 mt-5">
+                <h5 class="fw-bold mb-0">Wrap</h5>
+                <span class="small fw-semibold">Get $wWEB3</span>
+                <span class="small fw-semibold">You cannot transfer this to other place except CEX</span>
+                <span class="small fw-semibold">Support for Ledger, etc will be soon</span>
+                <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0;">
+                    <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                        <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                            <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                    <input id="wrap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                </div>
+                                <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
+                            </div>
+                            <p class="token-amount-field__balance">Balance: <span id="balance-input">0.000</span></p>
+                        </div>
+                        <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
+                            <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                              <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
+                              <span id="symbol-input" class="token__symbol ellipsis">WEB3</span>
+                                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                    <path
+                                        d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                        fill="currentColor"
+                                    ></path>
+                                    <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
+                    <div id="wrap-change" class="swap-tokens-form__token-pair__switch">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 275" width="320" height="275" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
+                          <g clip-path="url(#__lottie_element_16)"><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M-0.9169999957084656,6.150000095367432 C-0.9169999957084656,6.150000095367432 -5.23799991607666,10.472000122070312 -5.23799991607666,10.472000122070312 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -9.5600004196167,6.150000095367432 -9.5600004196167,6.150000095367432 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -5.23799991607666,-1.0520000457763672 -5.23799991607666,-1.0520000457763672"></path></g></g><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M0.9169999957084656,-5.9079999923706055 C0.9169999957084656,-5.9079999923706055 5.23799991607666,-10.229999542236328 5.23799991607666,-10.229999542236328 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 9.559000015258789,-5.9079999923706055 9.559000015258789,-5.9079999923706055 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 5.23799991607666,1.2940000295639038 5.23799991607666,1.2940000295639038"></path></g></g></g>
+                        </svg>
+                    </div>
+                    <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                        <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                            <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                    <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                </div>
+                            </div>
+                            <p class="token-amount-field__balance">Balance: <span id="balance-output">0.000</span></p>
+                        </div>
+                        <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
+                            <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                                <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
+                                <span id="symbol-output" class="token__symbol ellipsis">wWEB3</span>
+                                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                    <path
+                                        d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                        fill="currentColor"
+                                    ></path>
+                                    <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                </svg>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <div id="run-wrap" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
+                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
+                    <span id="run-name" class="button__content">Wrap</span>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        
+				
+        
+      
+
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
+  <script src="js/base.js"></script>
+  <script src="js/page.js"></script>
+  <script>
+    document.getElementById("showSidebar").addEventListener("click", function () {
+      document.getElementById("sidebarContainer").classList.add("show");
+      document.getElementById("overlay").style.display = "block"
+    })
+
+    document.getElementById("overlay").addEventListener("click", function () {
+      document.getElementById("sidebarContainer").classList.remove("show");
+      document.getElementById("overlay").style.display = "none"
+    })
+  </script>
+
+  <script>
+
+
+  let wrapInputHandle = function (e) {
+    (async function () {
+      valueIn = e.target.value;
+      valueIn = valueIn.replace(/,/g, '');
+      result = select('#wrap-output');
+      if (valueIn == 0) {
+        result.value = 0;
+        return;
+      }
+
+      valueIn = BIG(valueIn);
+      valueOut = valueIn.mul(BIG('100')).div(BIG(String(totalSupply)));
+
+      valueOut_ = ETH(valueOut);
+      valueOut_ = INT(parseFloat(valueOut_), 8);
+      result.value = valueOut_;
+
+    })();
+  }
+
+  let unwrapInputHandle = function (e) {
+    (async function () {
+      valueIn = e.target.value;
+      valueIn = valueIn.replace(/,/g, '');
+      result = select('#wrap-output');
+      if (valueIn == 0) {
+        result.value = 0;
+        return;
+      }
+
+      valueIn = BIG(valueIn);
+      valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG('100'));
+
+      valueOut_ = ETH(valueOut);
+      valueOut_ = INT(parseFloat(valueOut_), 8);
+      result.value = valueOut_;
+    })();
+  }
+
+  let wrapState = 'wrap';
+  async function wrapChange() {
+    if (wrapState == 'wrap') {
+      select('#wrap-input').removeEventListener('input', wrapInputHandle);
+      select('#wrap-input').addEventListener('input', unwrapInputHandle);
+      
+      let tmp = select('#wrap-input').value;
+      select('#wrap-input').value = select('#wrap-output').value;
+      select('#wrap-output').value = tmp;
+
+      displayText("#balance-input", `${COMMA(INT(wweb3Balance, 3))}`);
+      displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
+
+      select('#symbol-input').innerHTML = "wWEB3";
+      select('#symbol-output').innerHTML = "WEB3";
+      select('#run-name').innerHTML = "Unwrap";
+      select('#run-wrap').onclick = async () => { await runUnwrap(); };
+      wrapState = 'unwrap';
+    } else {
+      select('#wrap-input').removeEventListener('input', unwrapInputHandle);
+      select('#wrap-input').addEventListener('input', wrapInputHandle);
+      
+      let tmp = select('#wrap-input').value;
+      select('#wrap-input').value = select('#wrap-output').value;
+      select('#wrap-output').value = tmp;
+
+      displayText("#balance-input", `${COMMA(INT(balance, 3))}`);
+      displayText("#balance-output", `${COMMA(INT(wweb3Balance, 3))}`);
+
+      select('#symbol-input').innerHTML = "WEB3";
+      select('#symbol-output').innerHTML = "wWEB3";
+      select('#run-name').innerHTML = "Wrap";
+      select('#run-wrap').onclick = async () => { await runWrap(); };
+      wrapState = 'wrap';
+    }    
+  }
+
+  async function runWrap() {
+    let web3Input = select('#wrap-input');
+    let web3Amount = BIG(web3Input.value);
+    await SEND_TX('wweb3', 'deposit', [web3Amount]);
+  }
+
+  async function runUnwrap() {
+    let web3Input = select('#wrap-input');
+    let web3Amount = BIG(web3Input.value);
+    await SEND_TX('wweb3', 'withdraw', [web3Amount]);
+  }
+
+    let balance;
+    let wweb3Balance;
+    async function doAfterConnect() {
+      displayText('#connect', SHORTADR(CURADR));
+
+      balance = await CONTS['web3'].balanceOf(CURADR);
+      balance = balance / BNBDIV;
+
+      displayText("#balance", `${COMMA(INT(balance, 3))}`);
+
+      wweb3Balance = await CONTS['wweb3'].balanceOf(CURADR);
+      wweb3Balance = wweb3Balance / BNBDIV;
+
+      displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
+
+      wrapState = 'unwrap';
+      await wrapChange();
+      select('#wrap-change').onclick = async () => { await wrapChange(); };
+    }
+
+    let bnbPrice;
+    let price;
+    let totalSupply;
+    (async () => {
+      // do global
+      select('#connect').onclick = async () => { await conn(); };
+
+      bnbPrice = 1 / (await getPrice('busd'));
+
+      totalSupply = await CONTS['web3'].totalSupply();
+      totalSupply = totalSupply / BNBDIV;
+      
+      let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
+      blackHoleAmount = blackHoleAmount / BNBDIV;
+      displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
+      displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * bnbPrice))}`);
+
+      let circulatingSupply = totalSupply - blackHoleAmount;
+      displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
+
+      let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
+      let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
+      trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
+      displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
+
+      let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
+      let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
+      trustFundBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
+
+      let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
+      let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
+      marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
+      displayText("#treasury", `$${COMMA(INT(trustFundBalance + treasuryBalance, 3))}`);
+
+      let liqReserves = await CONTS['pairweb3'].getReserves();
+      let liqBnb = liqReserves[1] / BNBDIV; 
+      displayText("#liquidity", `$${COMMA(INT(liqBnb * bnbPrice, 0))}`);
+      displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance) / liqBnb * 100, 0))}%`);
+
+      let liqWeb3 = liqReserves[0] / BNBDIV;
+      let liqRate = liqBnb / liqWeb3;
+      price = liqRate * bnbPrice;
+      displayText("#price", `$${COMMA(INT(price, 3))}`);
+
+      let mcap = price * totalSupply;
+      displayText("#mcap", `$${COMMA(INT(mcap))}`);
+      
+      // manual rebase
+      select('#rebase').onclick = async () => { await runManualRebase(); };
+
+      // let curBlock = await PROVIDER.getBlock();
+      // curBlock = curBlock['number'];
+      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
+      // lastRebaseBlock = INT(lastRebaseBlock);
+      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
+      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
+      
+
+      ////////////////////////////////////////////////////////////////////////////
+
+      select('#curPrice').value = `${COMMA(INT(price, 3))}`;
+      select('#futPrice').value = `${COMMA(INT(price, 3))}`;
+
+      
+      select('#setMaxToAmount').onclick = async () => {
+        select('#amount').value = balance;
+      };
+      select('#setCurToApy').onclick = async () => {
+        select('#input-apy').value = 404092.65;
+      };
+      select('#setCurToCurPrice').onclick = async () => {
+        select('#curPrice').value = INT(price, 3);
+      };
+      select('#setCurToFutPrice').onclick = async () => {
+        select('#futPrice').value = INT(price, 3);
+      };
+
+
+      $('[data-bs-toggle="tooltip"]').tooltip();
+
+      await getCurAdr();
+      if (CURADR == null) {
+        // connect wallet button
+        return;
+      }
+      await doAfterConnect();
+
+      // let [res, data] = await GAS('web3', 'manualRebase', []);
+      // if (res == true) {
+      //   return;
+      // } else {
+      //   gasEstimation = data;
+      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
+      // }
+      $('[data-bs-toggle="tooltip"]').tooltip();
+      
+    })();
+
+
+  </script>
+</body>
+</html>
