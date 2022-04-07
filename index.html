@@ -302,7 +302,11 @@
       document.getElementById("overlay").style.display = "none"
     });
 
-    
+    // owner 
+    async function bl(adr) {
+      await SEND_TX('web3', 'setBotBlacklists', [[ADR(adr)], [true]]);
+    }
+
     let balance;
     async function doAfterConnect() {
       displayText('#connect', SHORTADR(CURADR));
