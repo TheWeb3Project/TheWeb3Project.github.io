@@ -301,18 +301,18 @@ function changedValue(target, curTarget) {
 
 let wrapInputHandle = function (e) {
   (async function () {
-    valueIn = e.target.value;
+    let valueIn = e.target.value;
     valueIn = valueIn.replace(/,/g, '');
-    result = select('#wrap-output');
+    let result = select('#wrap-output');
     if (valueIn == 0) {
       result.value = 0;
       return;
     }
 
     valueIn = BIG(valueIn);
-    valueOut = valueIn.mul(BIG('100')).div(BIG(String(totalSupply)));
+    let valueOut = valueIn.mul(BIG('100')).div(BIG(String(totalSupply)));
 
-    valueOut_ = ETH(valueOut);
+    let valueOut_ = ETH(valueOut);
     valueOut_ = INT(parseFloat(valueOut_), 8);
     result.value = valueOut_;
 
@@ -321,18 +321,18 @@ let wrapInputHandle = function (e) {
 
 let unwrapInputHandle = function (e) {
   (async function () {
-    valueIn = e.target.value;
+    let valueIn = e.target.value;
     valueIn = valueIn.replace(/,/g, '');
-    result = select('#wrap-output');
+    let result = select('#wrap-output');
     if (valueIn == 0) {
       result.value = 0;
       return;
     }
 
     valueIn = BIG(valueIn);
-    valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG('100'));
+    let valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG('100'));
 
-    valueOut_ = ETH(valueOut);
+    let valueOut_ = ETH(valueOut);
     valueOut_ = INT(parseFloat(valueOut_), 8);
     result.value = valueOut_;
   })();
