@@ -165,18 +165,10 @@
 
 
 
-    let balance;
     async function doAfterConnect() {
-      displayText('#connect', SHORTADR(CURADR));
-
-      balance = await CONTS['web3'].balanceOf(CURADR);
-      balance = balance / BNBDIV;
-
-      displayText("#balance", `${COMMA(ROUND(balance, 3))}`);
+      await _doAfterConnect();
     }
 
-    let bnbPrice;
-    let price;
     (async () => {
       // do global
       select('#connect').onclick = async () => { await conn(); };
