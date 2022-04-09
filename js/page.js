@@ -308,8 +308,8 @@ function changedValue(target, curTarget) {
 
 /////////////////////////////////////////////////////////////////////////// wrap
 
-async function approve() {
-  await SEND_TX('wweb3', 'approve', [ADRS['wweb3'], BIGINT(2**255)]);
+async function approve(name, target) {
+  await SEND_TX(name, 'approve', [target, BIGINT(2**255)]);
 }
 
 let wrapInputHandle = function (e) {
