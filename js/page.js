@@ -271,20 +271,27 @@ function changedValue(target, curTarget) {
   displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
 
   // let dailyRate = 0.004908;
+  // let dailyRate = 0.02301279;
+  
+  
   let dailyRate = 0.02301279;
   let totalRate = ((1 + dailyRate) ** days);      
-  let futAmount = INT(curAmount * totalRate, 3);
+  let futAmount = INT(curAmount * totalRate, 2);
   select('#futAmount').value = futAmount;
   
   let futPrice;
   if (target == 'futPrice') {
     futPrice = curTarget.value;
   } else {
+    
     // let dailyPriceRate = 0.01801636;
-    let dailyPriceRate = 0.02301279;
-    let totalPriceRate = ((1 + dailyPriceRate) ** days);
-    futPrice = INT(curPrice * totalPriceRate, 3);
-    // select('#futPrice').value = futPrice;
+    // let dailyPriceRate = 0.02301279;
+    
+    // let dailyPriceRate = 0.02301279;
+    // let totalPriceRate = ((1 + dailyPriceRate) ** days);
+    // futPrice = INT(curPrice * totalPriceRate, 2);
+    futPrice = INT(curPrice, 2);
+    select('#futPrice').value = curPrice;
   }
 
   let futInvest = futAmount * futPrice;
