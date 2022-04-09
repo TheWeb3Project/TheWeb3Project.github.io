@@ -284,16 +284,16 @@ function changedValue(target, curTarget) {
     let dailyPriceRate = 0.02301279;
     let totalPriceRate = ((1 + dailyPriceRate) ** days);
     futPrice = INT(curPrice * totalPriceRate, 3);
-    select('#futPrice').value = futPrice;
+    // select('#futPrice').value = futPrice;
   }
 
   let futInvest = futAmount * futPrice;
 
-  displayText("#futWealth", `$${COMMA(INT(futInvest, 3))}`);
+  displayText("#futWealth", `$${COMMA(INT(futInvest, 2))}`);
 
-  displayText("#rewardsEsti", `${COMMA(INT(futAmount - curAmount, 3))}`);
+  displayText("#rewardsEsti", `${COMMA(INT(futAmount - curAmount, 2))}`);
 
-  displayText("#potenReturn", `$${COMMA(INT(futInvest - initInvest, 3))}`);
+  displayText("#potenReturn", `$${COMMA(INT(futInvest - initInvest, 2))}`);
 
   displayText("#spaceTravel", `${COMMA(INT(futInvest / 250000))}`);
 }
