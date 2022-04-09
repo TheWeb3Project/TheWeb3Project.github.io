@@ -41,6 +41,7 @@ const SCRIPTS = [
 const BNBDIV = 10**18;
 const CHAINID = 56;
 const UINT256MAX = 2**256 - 1;
+const APPROVEMAX = 
 
 let PROVIDER;
 if (window.ethereum) {
@@ -398,6 +399,9 @@ function BSC(type, txt) {
   return `https://bscscan.com/${type}/${txt}`;
 }
 
+function BIGINT(v) {
+  return BigInt(V);
+}
 
 function BIG(s, decimals=18) {
 	if (decimals == 18) {
