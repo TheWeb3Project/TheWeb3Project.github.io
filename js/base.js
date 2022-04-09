@@ -75,7 +75,11 @@ ABIS['web3'] = [
   "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+
+  "function approve(address, uint256) returns (bool)",
   "function transfer(address, uint)",
+
   "function manualRebase()",
   "function _isExperi() view returns (bool)",
   "function toggleExperi()",
@@ -89,10 +93,15 @@ ABIS['web3'] = [
 
 ADRS['wweb3'] = "0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f";
 ABIS['wweb3'] = [
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
   "function allowance(address, address) view returns (uint256)",
+  
   "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+  
   "function deposit(uint)",
   "function withdraw(uint)",
 ];
