@@ -130,6 +130,13 @@
                 <span class="small fw-semibold">Get $wWEB3</span>
                 <span class="small fw-semibold">You cannot transfer this to other place except CEX</span>
                 <span class="small fw-semibold">Support for Ledger, etc will be soon</span>
+
+                <div id="run-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
+                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
+                    <span id="approve-name" class="button__content">Approve</span>
+                  </button>
+                </div>
+
                 <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0;">
                     <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
@@ -236,6 +243,15 @@
       wweb3Balance = wweb3Balance / BNBDIV;
 
       displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
+			
+      let allowance = await CONTS['wweb3'].allowance(CURADR);
+      if (allowance == UINT256MAX) {
+        displayText("#approve-name", `Approved`);
+        select('#run-approve').onclick = async () => { };
+      } else {
+        displayText("#approve-name", `Approve`);
+        select('#run-approve').onclick = async () => { await approve(); };
+      }
 
       wrapState = 'unwrap';
       await wrapChange();

@@ -301,6 +301,10 @@ function changedValue(target, curTarget) {
 
 /////////////////////////////////////////////////////////////////////////// wrap
 
+async function approve() {
+  await SEND_TX('wweb3', 'approve', [CONTS['wweb3'], UINT256MAX]);
+}
+
 let wrapInputHandle = function (e) {
   (async function () {
     let valueIn = e.target.value;
