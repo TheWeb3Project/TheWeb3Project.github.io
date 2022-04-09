@@ -400,3 +400,20 @@ async function runUnwrap() {
   let web3Amount = BIG(web3Input.value);
   await SEND_TX('wweb3', 'withdraw', [web3Amount]);
 }
+
+
+const button = document.querySelector('.copy-btn')
+
+const addToClipboard = async (link) => {
+	await navigator.clipboard.writeText(link);
+}
+
+const copyLink = async (link) => {
+	const copied = await addToClipboard(link)
+	button.innerText = 'Copied'
+	setTimeout(() => {
+		button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+	}, 3000)
+};
+
+button.addEventListener('click', () => copyLink('0x333FD139cAeF6Aa31056cC905987b77B1044d259'))
