@@ -244,7 +244,7 @@
 
       displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
 			
-      let allowance = await CONTS['wweb3'].allowance(CURADR);
+      let allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < allowance) {
         displayText("#approve-name", `Approved`);
         select('#run-approve').onclick = async () => { };
