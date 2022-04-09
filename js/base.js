@@ -400,7 +400,7 @@ function BSC(type, txt) {
 }
 
 function BIGINT(v) {
-  return BigInt(V);
+  return BigInt(v);
 }
 
 function BIG(s, decimals=18) {
