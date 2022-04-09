@@ -130,10 +130,18 @@
                 <span class="small fw-semibold">Get $wWEB3</span>
                 <span class="small fw-semibold">You cannot transfer this to other place except CEX</span>
                 <span class="small fw-semibold">Support for Ledger, etc will be soon</span>
-
-                <div id="run-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
+                
+                <div id="run-web3-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
+                  <span class="text-center">Approve to wrap</span>
                   <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
-                    <span id="approve-name" class="button__content">Approve</span>
+                    <span class="button__content">$WEB3 Approve</span>
+                  </button>
+                </div>
+
+                <div id="run-wweb3-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
+                  <span class="text-center">Approve to unwrap</span>
+                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
+                    <span class="button__content">$wWEB3 Approve</span>
                   </button>
                 </div>
 
@@ -244,13 +252,18 @@
 
       displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
 			
-      let allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
-      if (BIGINT(0) < allowance) {
-        displayText("#approve-name", `Approved`);
-        select('#run-approve').onclick = async () => { };
+      let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < web3Allowance) {
+        select('#run-web3-approve').classList.add('d-none');
       } else {
-        displayText("#approve-name", `Approve`);
-        select('#run-approve').onclick = async () => { await approve(); };
+        select('#run-web3-approve').onclick = async () => { await approve('web3', ADRS['wweb3']); };
+      }
+      
+      let wweb3Allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < wweb3Allowance) {
+        select('#run-wweb3-approve').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
 
       wrapState = 'unwrap';
