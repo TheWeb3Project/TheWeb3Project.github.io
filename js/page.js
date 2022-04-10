@@ -97,6 +97,7 @@ displayWeb3Header();
 let bnbPrice;
 let price;
 let totalSupply;
+let wweb3totalSupply;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
@@ -105,6 +106,9 @@ async function runGlobal() {
   totalSupply = await CONTS['web3'].totalSupply();
   totalSupply = totalSupply / BNBDIV;
   
+  wweb3totalSupply = await CONTS['wweb3'].totalSupply();
+  wweb3totalSupply = wweb3totalSupply / BNBDIV;
+
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
   
@@ -343,7 +347,7 @@ let unwrapInputHandle = function (e) {
     }
 
     valueIn = BIG(valueIn);
-    let valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG('100'));
+    let valueOut = valueIn.mul(BIG(String(totalSupply))).div(wweb3totalSupply);
 
     let valueOut_ = ETH(valueOut);
     valueOut_ = INT(parseFloat(valueOut_), 8);
