@@ -327,7 +327,7 @@ let wrapInputHandle = function (e) {
     }
 
     valueIn = BIG(valueIn);
-    let valueOut = valueIn.mul(BIG('100')).div(BIG(String(totalSupply)));
+    let valueOut = valueIn.mul(wweb3totalSupply).div(BIG(String(totalSupply)));
 
     let valueOut_ = ETH(valueOut);
     valueOut_ = INT(parseFloat(valueOut_), 8);
