@@ -6,7 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <link rel="stylesheet" href="css/style.css">
-
+  <link rel="stylesheet" href="css/fa.css">
+  
   <title>The Web3 Project | Taking online further beyond</title>
   <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" name="description">
   <meta content="The Web3 Project | Taking online further beyond" property="og:title">
@@ -36,69 +37,165 @@
   <div class="container-fluid">
     <div class="row">
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
+        <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
+          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center ps-3 pe-2">
+            <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
+            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-4" style="width: 100%;">
+          </a>
+
+          <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
+            <li class="mb-4 py-2 px-5 rounded-pill">
+              <a href="index.html" class="text-decoration-none text-reset d-flex align-items-center">
+                <span class="fs-5"><i class="bi bi-collection"></i></span>
+                <span class="ms-3">Dashboard</span>
+              </a>
+            </li>
+            <li class="mb-4 py-2 px-5 rounded-pill">
+              <a href="account.html" class="text-decoration-none text-reset d-flex align-items-center">
+                <span class="fs-5"><i class="bi bi-person-circle"></i></span>
+                <span class="ms-3">Account</span>
+              </a>
+            </li>
+            <li class="mb-4 py-2 px-5 rounded-pill">
+              <a href="calculator.html" class="text-decoration-none text-reset d-flex align-items-center">
+                <span class="fs-5"><i class="bi bi-calculator-fill"></i></span>
+                <span class="ms-3">Calculator</span>
+              </a>
+            </li>
+            <li class="mb-4 py-2 px-5 rounded-pill">
+              <a href="swap.html" class="text-decoration-none text-reset d-flex align-items-center">
+                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
+                <span class="ms-3">Swap</span>
+              </a>
+            </li>
+            <li class="mb-4 py-2 px-5 rounded-pill active">
+              <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center">
+                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
+                <span class="ms-3">Wrap</span>
+              </a>
+            </li>
+            <li class="mb-4 py-2 px-5 rounded-pill">
+              <a href="https://docs.theweb3project.com" class="text-decoration-none text-reset d-flex align-items-center">
+                <span class="fs-5"><i class="bi bi-journal-text"></i></span>
+                <span class="ms-3">Docs</span>
+              </a>
+            </li>
+          </ul>
+
+          <div class="d-flex justify-content-around w-100 px-4">
+            <a href="https://t.me/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
+              <i class="bi bi-send-fill"></i>
+            </a>
+            <a href="https://twitter.com/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
+              <i class="bi bi-twitter"></i>
+            </a>
+            <a href="https://discord.gg/crQkCE7Mn6" class="text-decoration-none text-reset fs-5 social-icon-hover">
+              <i class="bi bi-discord"></i>
+            </a>
+            <a href="https://www.youtube.com/c/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
+              <i class="bi bi-youtube"></i>
+            </a>
+
+          </div>
+        </div>
       </div>
 
       <div id="overlay" style="z-index: 1000001;"></div>
 
       <main class="col pt-4">
-        <div id="web3-header" class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001; background-color: #0D0F19;">
+        <div class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001; background-color: #0D0F19;">
+          <div class="d-flex pt-3 px-sm-3">
+            <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
+
+            <div class="dropdown ms-auto">
+              <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
+                <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
+              </button>
+
+              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+                <li><a class="dropdown-item" href="https://pancakeswap.finance/swap?outputCurrency=0x333FD139cAeF6Aa31056cC905987b77B1044d259">Buy on Pancakeswap</a></li>
+                <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
+              </ul>
+            </div>
+
+            <button id="connect" type="button" class="btn rounded-1 ms-3">
+              Connect Wallet
+            </button>
+          </div>
         </div>
         
         <div class="container pt-3">
-            <div class="col-12 mx-auto">
-              <div class="card bg-light border border-primary p-3 p-sm-4 mt-5">
-                <h5 class="fw-bold mb-0">Stake</h5>
-                <span class="small fw-semibold">Stake $wWEB3. Get Rewards</span>
-                <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0;">
-                    <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                        <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                            <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                    <input id="stake-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                </div>
-                                <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
-                            </div>
-                            <p class="token-amount-field__balance">Balance: <span id="balance-input">0.000</span></p>
-                        </div>
-                        <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
-                            <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                              <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
-                              <span id="symbol-input" class="token__symbol ellipsis">wWEB3</span>
-                                <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                    <path
-                                        d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                        fill="currentColor"
-                                    ></path>
-                                    <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
-                            </div>
-                        </button>
-                    </div>
-                    <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                        <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                            <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                    <input id="duration" class="input-field__input" placeholder="0" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
-                            <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                <span id="stake-days" class="token__symbol ellipsis">Days</span>
-                            </div>
-                        </button>
-                    </div>
-                </div>
-
-                <div id="run-stake" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
-                    <span id="stake-name" class="button__content">Stake</span>
-                  </button>
-                </div>
-
-              </div>
+          <div class="px-sm-3 my-5">
+            <div class="card bg-light border border-primary text-center p-4">
+              <span class="fw-medium ms-1">$wWEB3 Contract: 
+                <a href="https://bscscan.com/address/0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f">
+                  0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f
+                </a>
+              </span>
             </div>
           </div>
+        
+          <div class="col-12 mx-auto">
+            <div class="card bg-light border border-primary p-3 p-sm-4 mt-5">
+              <h5 class="fw-bold mb-0">Stkae</h5>
+              <span class="small fw-semibold">Stake $wWEB3. Get $pWEB3</span>
+
+              <div id="run-wweb3-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
+                  <span class="button__content">$wWEB3 Approve to stake</span>
+                </button>
+              </div>
+
+              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0;">
+                  <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                  <input id="wrap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                              </div>
+                              <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
+                          </div>
+                          <p class="token-amount-field__balance">Balance: <span id="balance-input">0.000</span></p>
+                      </div>
+                      <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
+                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                            <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
+                            <span id="symbol-input" class="token__symbol ellipsis">wWEB3</span>
+                              <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                  <path
+                                      d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                      fill="currentColor"
+                                  ></path>
+                                  <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                              </svg>
+                          </div>
+                      </button>
+                  </div>
+                  <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                  <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                              </div>
+                          </div>
+                      </div>
+                      <button type="button" class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon">
+                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                              <span id="symbol-output" class="token__symbol ellipsis">Days</span>
+                          </div>
+                      </button>
+                  </div>
+              </div>
+
+              <div id="run-stake" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
+                  <span id="run-name" class="button__content">Stake</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
         
 				
         
@@ -141,13 +238,23 @@
       wweb3Balance = wweb3Balance / BNBDIV;
 
       displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
+			
+      let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < web3Allowance) {
+        select('#run-web3-approve').classList.add('d-none');
+      } else {
+        select('#run-web3-approve').onclick = async () => { await approve('web3', ADRS['wweb3']); };
+      }
+      
+      let wweb3Allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < wweb3Allowance) {
+        select('#run-wweb3-approve').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
+      }
 
-      wrapState = 'unwrap';
-      await wrapChange();
-      select('#wrap-change').onclick = async () => { await wrapChange(); };
     }
-    
-    let totalSupply;
+
     (async () => {
       // do global
       await runGlobal();
@@ -180,6 +287,8 @@
       };
 
 
+      $('[data-bs-toggle="tooltip"]').tooltip();
+
       await getCurAdr();
       if (CURADR == null) {
         // connect wallet button
@@ -198,7 +307,7 @@
       
     })();
 
-
+    select('#sidebar-nav').children[4].classList.add('active');
   </script>
 </body>
 </html>
