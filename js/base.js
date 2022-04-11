@@ -596,21 +596,20 @@ async function ERR(err) {
     }
 
     let data = err['data'];
-    console.log(data);
     if (!('code' in data)) {
       console.log('no code data', err);
       return result;
     }
 
     if (data['code'] == 3) {
-      msg = data['message'];
+      let msg = data['message'];
       result = msg;
       alert(result);
       return result;
     }
 
     if (data['code'] == -32000) {
-      msg = data['message'];
+      let msg = data['message'];
       result = msg;
       alert(result);
       return result;
