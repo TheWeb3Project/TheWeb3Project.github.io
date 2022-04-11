@@ -240,6 +240,10 @@ function KEYS(dict) {
 	return Object.keys(dict);
 }
 
+function NOW() {
+  return Date.now();
+}
+
 function ADELAY(milSec) {
   return new Promise(r => setTimeout(r, milSec));
 }
@@ -250,6 +254,11 @@ function DELAY(milSec) {
   while ((end - start) < milSec) {
     end = new Date().getTime();
   }
+}
+
+let TICKS;
+function UPDATETICK() {
+  TICKS = TICKS - 1;
 }
 
 ///////////////////////////////// html
@@ -469,9 +478,6 @@ function ADR(address) {
   }
   return checksumAdr;
 }
-
-
-
 
 async function getBalance(adr) {
 	let balance = await PROVIDER.getBalance(adr);
