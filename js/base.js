@@ -106,6 +106,29 @@ ABIS['wweb3'] = [
   "function withdraw(uint)",
 ];
 
+ADRS['pweb3'] = "0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569";
+ABIS['pweb3'] = [
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+  
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+];
+
+ADRS['web3Stake'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
+ABIS['web3Stake'] = [  
+  "function stake(address, uint256)",
+  "function unstake()",
+  "function emergencyUnstake()",
+  "function claimReward()",
+
+  "function calculateReward(uint256, uint256) view returns (uint256)"
+];
+
+
 ADRS['factory'] = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 ABIS['factory'] = [
   "function getPair(address, address) view returns (address)",
