@@ -68,7 +68,7 @@
                 <span class="ms-3">Swap</span>
               </a>
             </li>
-            <li class="mb-4 py-2 px-5 rounded-pill active">
+            <li class="mb-4 py-2 px-5 rounded-pill">
               <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center">
                 <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
                 <span class="ms-3">Wrap</span>
@@ -321,6 +321,7 @@
       stakedAmount = stakedAmount / BNBDIV;
       displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
 
+
       let rewardLeft = await CONTS['web3Stake']._rewards(CURADR);
       rewardLeft = rewardLeft / BNBDIV;
       displayText("#rewardLeft", `$${COMMA(INT(rewardLeft, 3))}`);
@@ -330,7 +331,29 @@
       if (0 < unlockTime - lastClaim) {
         let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
         displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
+
+        let now = INT(NOW() / 1000);
+        TICKS = unlockTime - now;
+
+        let timeinterval = setInterval(function () {
+          displayText("#unlockTime", `${INT(TICKS / 86400)}d ${INT((TICKS % 86400) / 3600)}h ${INT((TICKS % 3600) / 60)}m ${TICKS % 60}s`);            
+          UPDATETICK();
+        }, 1000);
       }
+      
+      let cbTime = await CONTS['web3']._unlockTimes();
+        if (cbTime != 0) {
+          
+          timeLeft = 3600 - (ts - cbTime);
+          function updateTimeLeft() {
+            timeLeft = timeLeft - 1;
+          }
+
+          let timeinterval = setInterval(function () {
+            displayText("#cb", `ON for ${INT(timeLeft / 60)}m ${timeLeft % 60}s`);            
+            updateTimeLeft();
+          }, 1000);
+        }
 
       select('#run-stake').onclick = async () => { await runStake(); };
       select('#run-claim').onclick = async () => { await runClaim(); };
