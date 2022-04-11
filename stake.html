@@ -250,8 +250,16 @@
               </button>
             </div>
           </div>
+          
+          <div id="run-emerunstake" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
+              <span id="run-name" class="button__content">Emergency Unstake</span>
+            </button>
+          </div>
 
         </div>
+
+        
         
 				
         
@@ -325,6 +333,10 @@
       select('#run-stake').onclick = async () => { await runStake(); };
       select('#run-claim').onclick = async () => { await runClaim(); };
       select('#run-unstake').onclick = async () => { await runUnstake(); };
+      select('#run-emerunstake').onclick = async () => { 
+        alert("This is for the EMERGENCY unstake. you will get 10% of the staked amount. Confirm transaction if you really want to do the emergency unstake");
+        await runEmerUnstake();
+      };
 
     }
 
