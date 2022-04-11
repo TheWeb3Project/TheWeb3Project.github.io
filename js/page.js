@@ -420,6 +420,11 @@ async function runClaim() {
   await SEND_TX('web3Stake', 'claimReward', []);
 }
 
+async function runUnstake() {
+  await SEND_TX('web3Stake', 'unstake', []);
+}
+
+
 
 
 
