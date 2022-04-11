@@ -327,8 +327,10 @@
       
       let unlockTime = await CONTS['web3Stake']._unlockTimes(CURADR);
       let lastClaim = await CONTS['web3Stake']._lastClaims(CURADR);
-      let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
-      displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
+      if (0 < unlockTime - lastClaim) {
+        let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
+        displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
+      }
 
       select('#run-stake').onclick = async () => { await runStake(); };
       select('#run-claim').onclick = async () => { await runClaim(); };
