@@ -416,6 +416,14 @@ async function runStake() {
   await SEND_TX('web3Stake', 'stake', [web3Amount, duration]);
 }
 
+async function runClaim() {
+  await SEND_TX('web3Stake', 'claimReward', []);
+}
+
+
+
+
+
 
 
 const button = document.querySelector('.copy-btn')
