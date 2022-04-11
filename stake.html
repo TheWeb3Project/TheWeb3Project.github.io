@@ -233,7 +233,7 @@
                 <div class="text-secondary mb-1">
                   You can claim
                 </div>
-                <h4 id="claimLeft" class="fw-bold">0.000</h4><span class="fw-bold"> $pWEB3</span>
+                <h4 id="canClaim" class="fw-bold">0.000</h4><span class="fw-bold"> $pWEB3</span>
               </div>
             </div>
 
@@ -302,7 +302,19 @@
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
       
-      select('#stakedAmount')
+      let stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
+      stakedAmount = stakedAmount / BNBDIV;
+      displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
+
+      let rewardLeft = await CONTS['web3Stake']._rewards(CURADR);
+      rewardLeft = rewardLeft / BNBDIV;
+      displayText("#rewardLeft", `$${COMMA(INT(rewardLeft, 3))}`);
+      
+      let unlockTime = await CONTS['web3Stake']._unlockTimes(CURADR);
+      let lastClaim = await CONTS['web3Stake']._lastClaims(CURADR);
+      let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
+      displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
+
       select('#run-stake').onclick = async () => { await runStake(); };
       select('#run-claim').onclick = async () => { await runClaim(); };
 
