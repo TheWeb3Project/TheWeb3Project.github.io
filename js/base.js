@@ -450,10 +450,14 @@ function BIGINT(v) {
 }
 
 function BIG(s, decimals=18) {
-	if (decimals == 18) {
-		return ethers.utils.parseEther(s);
-  } else {
-  	return ethers.utils.parseUnits(s, decimals);
+  try {
+    if (decimals == 18) {
+      return ethers.utils.parseEther(s);
+    } else {
+      return ethers.utils.parseUnits(s, decimals);
+    }
+  } catch (e) {
+    alert(e);
   }
 }
  
