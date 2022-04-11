@@ -119,11 +119,17 @@ ABIS['pweb3'] = [
 ];
 
 ADRS['web3Stake'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
-ABIS['web3Stake'] = [  
+ABIS['web3Stake'] = [
   "function stake(address, uint256)",
   "function unstake()",
   "function emergencyUnstake()",
   "function claimReward()",
+
+  "function _amounts() view returns (uint256)",
+  "function _rewards() view returns (uint256)",
+  "function _unlockTimes() view returns (uint256)",
+  "function _lastClaims() view returns (uint256)",
+  
 
   "function calculateReward(uint256, uint256) view returns (uint256)"
 ];
