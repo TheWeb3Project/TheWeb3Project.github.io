@@ -144,21 +144,21 @@
                     Based on our actual circulating supply. Other chart may display differently.
                     "></i>
                   </div>
-                  <h4 id="staked" class="fw-bold">0.000<span class="fw-bold"> $wWEB3</span></h4>
+                  <h4 id="stakedAmount" class="fw-bold">0.000</h4><span class="fw-bold"> $wWEB3</span>
                 </div>
                 
                 <div class="col mb-3">
                   <div class="text-secondary mb-1">
                     Unlock Time
                   </div>
-                  <h4 id="unlock" class="fw-bold">0d 0h 0m 0s</h4>
+                  <h4 id="unlockTime" class="fw-bold">0d 0h 0m 0s</h4>
                 </div>
 
                 <div class="col mb-3">
                   <div class="text-secondary mb-1">
                     Reward Left
                   </div>
-                  <h4 id="reward" class="fw-bold">0.000<span class="fw-bold"> $pWEB3</span></h4>
+                  <h4 id="rewardLeft" class="fw-bold">0.000</h4><span class="fw-bold"> $pWEB3</span>
                 </div>
 
 
@@ -233,7 +233,7 @@
                 <div class="text-secondary mb-1">
                   You can claim
                 </div>
-                <h4 id="claim" class="fw-bold">0.000<span class="fw-bold"> $pWEB3</span></h4>
+                <h4 id="claimLeft" class="fw-bold">0.000</h4><span class="fw-bold"> $pWEB3</span>
               </div>
             </div>
 
@@ -301,7 +301,8 @@
       } else {
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
-
+      
+      select('#stakedAmount')
       select('#run-stake').onclick = async () => { await runStake(); };
       select('#run-claim').onclick = async () => { await runClaim(); };
 
