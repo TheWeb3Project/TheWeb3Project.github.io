@@ -125,10 +125,10 @@ ABIS['web3Stake'] = [
   "function emergencyUnstake()",
   "function claimReward()",
 
-  "function _amounts() view returns (uint256)",
-  "function _rewards() view returns (uint256)",
-  "function _unlockTimes() view returns (uint256)",
-  "function _lastClaims() view returns (uint256)",
+  "function _amounts(address) view returns (uint256)",
+  "function _rewards(address) view returns (uint256)",
+  "function _unlockTimes(address) view returns (uint256)",
+  "function _lastClaims(address) view returns (uint256)",
   
 
   "function calculateReward(uint256, uint256) view returns (uint256)"
