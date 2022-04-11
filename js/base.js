@@ -605,12 +605,14 @@ async function ERR(err) {
     if (data['code'] == 3) {
       msg = data['message'];
       result = msg;
+      alert(result);
       return result;
     }
 
     if (data['code'] == -32000) {
       msg = data['message'];
       result = msg;
+      alert(result);
       return result;
     }
   }
