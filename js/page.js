@@ -424,7 +424,9 @@ async function runUnstake() {
   await SEND_TX('web3Stake', 'unstake', []);
 }
 
-
+async function runEmerUnstake() {
+  await SEND_TX('web3Stake', 'emergencyUnstake', []);
+}
 
 
 
