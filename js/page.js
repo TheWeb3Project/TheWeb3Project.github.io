@@ -426,7 +426,7 @@ async function runClaim() {
 
 
 
-const button = document.querySelector('.copy-btn')
+const button = select('.copy-btn');
 
 const addToClipboard = async (link) => {
 	await navigator.clipboard.writeText(link);
