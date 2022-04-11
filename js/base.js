@@ -596,6 +596,7 @@ async function ERR(err) {
     }
 
     let data = err['data'];
+    console.log(data);
     if (!('code' in data)) {
       console.log('no code data', err);
       return result;
