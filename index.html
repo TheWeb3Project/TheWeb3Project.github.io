@@ -252,21 +252,20 @@
       
       let cb = await CONTS['web3']._curcuitBreakerFlag();
       if (cb == 2) {
-        // let cbTime = await CONTS['web3']._curcuitBreakerTime();
-        // if (cbTime != 0) {
-        //   let curBlockNum = await PROVIDER.blockNumber;
-        //   let curBlock = await PROVIDER.getBlock(curBlockNum);
-        //   let ts = curBlock['timestamp'];
-        //   timeLeft = 3600 - (ts - cbTime);
-        //   function updateTimeLeft() {
-        //     timeLeft = timeLeft - 1;
-        //   }
+        let cbTime = await CONTS['web3']._curcuitBreakerTime();
+        if (cbTime != 0) {
+          let now = INT(NOW() / 1000);
+          timeLeft = 3600 - (ts - cbTime);
+          function updateTimeLeft() {
+            timeLeft = timeLeft - 1;
+          }
 
-        //   let timeinterval = setInterval(function () {
-        //     displayText("#cb", `ON for ${INT(timeLeft / 60)}m ${timeLeft % 60}s`);            
-        //     updateTimeLeft();
-        //   }, 1000);
-        displayText("#cb", `ON`);
+          let timeinterval = setInterval(function () {
+            displayText("#cb", `ON for ${INT(timeLeft / 60)}m ${timeLeft % 60}s`);            
+            updateTimeLeft();
+          }, 1000);
+        }
+        // displayText("#cb", `ON`);
         displayText("#buyTax", `10%`);
         displayText("#sellTax", `25%`);
       } else {
