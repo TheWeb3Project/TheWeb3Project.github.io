@@ -144,7 +144,7 @@
                     Based on our actual circulating supply. Other chart may display differently.
                     "></i>
                   </div>
-                  <h4 id="staked" class="fw-bold">0.000</h4><h4 class="fw-bold"> $wWEB3</h4>
+                  <h4 id="staked" class="fw-bold">0.000<span class="fw-bold"> $wWEB3</span></h4>
                 </div>
                 
                 <div class="col mb-3">
@@ -158,7 +158,7 @@
                   <div class="text-secondary mb-1">
                     Reward Left
                   </div>
-                  <h4 id="reward" class="fw-bold">0.000</h4><h4 class="fw-bold"> $pWEB3</h4>
+                  <h4 id="reward" class="fw-bold">0.000<span class="fw-bold"> $pWEB3</span></h4>
                 </div>
 
 
@@ -182,7 +182,7 @@
                       <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                           <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                               <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                  <input id="wrap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                  <input id="value-input" class="input-field__input" placeholder="0" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                               </div>
                               <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
                           </div>
@@ -206,7 +206,7 @@
                       <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                           <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                               <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                  <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                  <input id="value-output" class="input-field__input" placeholder="0" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                               </div>
                           </div>
                       </div>
@@ -283,6 +283,8 @@
       } else {
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
+
+      select('#run-stake').onclick = async () => { await runStake(); };
 
     }
 

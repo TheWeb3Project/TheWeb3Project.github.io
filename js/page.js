@@ -406,6 +406,18 @@ async function runUnwrap() {
 }
 
 
+
+/////////////////////////////////////////////////////////////////////////// stake
+
+async function runStake() {
+  let valueInput = select('#value-input');
+  let wweb3Amount = BIG(valueInput.value);
+  let duration = select('#value-output');
+  await SEND_TX('web3Stake', 'stake', [web3Amount, duration]);
+}
+
+
+
 const button = document.querySelector('.copy-btn')
 
 const addToClipboard = async (link) => {
