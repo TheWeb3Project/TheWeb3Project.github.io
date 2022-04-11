@@ -340,20 +340,6 @@
           UPDATETICK();
         }, 1000);
       }
-      
-      let cbTime = await CONTS['web3']._unlockTimes();
-        if (cbTime != 0) {
-          
-          timeLeft = 3600 - (ts - cbTime);
-          function updateTimeLeft() {
-            timeLeft = timeLeft - 1;
-          }
-
-          let timeinterval = setInterval(function () {
-            displayText("#cb", `ON for ${INT(timeLeft / 60)}m ${timeLeft % 60}s`);            
-            updateTimeLeft();
-          }, 1000);
-        }
 
       select('#run-stake').onclick = async () => { await runStake(); };
       select('#run-claim').onclick = async () => { await runClaim(); };
