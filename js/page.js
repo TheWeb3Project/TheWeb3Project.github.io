@@ -183,8 +183,49 @@ async function _doAfterConnect() {
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 }
 
+let lastBlock;
+lastBlock = CURBLOCK;
+let lastSupply;
+lastSupply = 0;
+async function eventBoard() {
+  let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
+  let rebaseFilter = CONTS['web3'].filters.Rebased();
 
+  let txLogs;
+  let curBlock = await getCurBlock();
 
+      for (var idy = 0; idy < 10; idy++) {
+          try {
+              txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, curBlock);
+              break;
+          } catch {
+              DELAY(100);
+          }
+      }
+
+      for (var idy = 0; idy < txLogs.length; idy++) {
+          let amount = txLogs[idy].args[2];
+          console.log('buy', amount);
+      }
+      
+      for (var idy = 0; idy < 10; idy++) {
+          try {
+              txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, curBlock);
+              break;
+          } catch {
+              DELAY(100);
+          }
+      }
+      for (var idy = 0; idy < txLogs.length; idy++) {
+        let curSupply = txLogs[idy].args[1];
+        if (lastSupply == 0) {
+          continue;
+        }
+
+        console.log('rebase', lastSupply, curSupply);
+        lastSupply = curSupply;
+      }
+}
 /////////////////////////////////////////////////////////////////////////// account
 async function getTotalEarned() {
   let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
