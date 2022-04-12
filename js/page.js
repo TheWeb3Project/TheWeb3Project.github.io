@@ -245,8 +245,15 @@ async function eventBoard() {
   }
 
   for (var idy = 0; idy < txLogs.length; idy++) {
-    console.log(txLogs[idy].args);
     let adr = txLogs[idy].args[1];  
+    if (adr == '0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7') {
+      continue;
+    }
+
+    if (adr == ADRS['web3']) {
+      continue;
+    }
+    
     let amount = txLogs[idy].args[2];
     await addEvent('buy', [adr, amount]);
   }
