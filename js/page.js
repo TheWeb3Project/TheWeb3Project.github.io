@@ -183,7 +183,7 @@ async function _doAfterConnect() {
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 }
 
-let lastBlock = CURBLOCK;
+let lastBlock = await getCurBlock();
 let lastSupply = 0;
 async function eventBoard() {
   let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
