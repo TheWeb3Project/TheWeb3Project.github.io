@@ -658,7 +658,6 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
  
   try {
   	let result = await CONTS[name][method](...args, overrides);
-    console.log('result', result);
     return [ false, result ];
   } catch (err) {
   	err = await ERR(err);
