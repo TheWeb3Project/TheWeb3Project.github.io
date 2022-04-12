@@ -191,8 +191,12 @@ async function eventBoard() {
 
   let txLogs;
 	
-  lastBlock = CURBLOCK;
+  if (CURBLOCK == undefined) {
+    return;
+  }
+	
   if (lastBlock == undefined) {
+    lastBlock = CURBLOCK;
     return;
   }
 
