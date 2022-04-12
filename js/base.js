@@ -199,8 +199,13 @@ for (let name of ['web3', 'busd', 'cake']) {
 const STARTBLOCK = 16282771; 
 
 let CURBLOCK;
+async function getCurBlock() {
+	let curBlock = await PROVIDER.getBlockNumber();
+  
+  return curBlock;
+}
 (async () => {
-	CURBLOCK = await PROVIDER.getBlockNumber();
+	CURBLOCK = await getCurBlock();
 })();
 
 ////////////////////////////////// base
