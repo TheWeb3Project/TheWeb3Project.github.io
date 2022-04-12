@@ -189,7 +189,7 @@ async function addEvent(name, event_) {
     let adr = event_[0];
     let amount = event_[1];
     amount = amount / BNBDIV;
-    events.unshift(`${SHORTADR(adr)} buy ${INT(amount, 3)}`);
+    events.unshift(`${SHORTADR(adr)} buy ${INT(amount, 5)} $WEB3!`);
   }
   if (name == 'rebase') {
     let lastSupply = event_[0];
