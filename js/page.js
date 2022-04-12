@@ -195,7 +195,7 @@ async function eventBoard() {
   if (blockData == null) {
     return;
   }
-  
+  console.log(lastBlock);
    
       for (var idy = 0; idy < 10; idy++) {
           try {
