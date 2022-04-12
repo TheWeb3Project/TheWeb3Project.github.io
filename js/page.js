@@ -191,7 +191,7 @@ async function eventBoard() {
 
   let txLogs;
 	
-  let blockData = await PROVIDER.get(lastBlock);
+  let blockData = await PROVIDER.getBlock(lastBlock);
   if (blockData == null) {
     console.log('not yet', lastBlock);
     return;
