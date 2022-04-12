@@ -183,7 +183,7 @@ async function _doAfterConnect() {
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 }
 
-let lastBlock = await getCurBlock();
+let lastBlock;
 let lastSupply = 0;
 async function eventBoard() {
   let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
@@ -191,6 +191,11 @@ async function eventBoard() {
 
   let txLogs;
 	
+  lastBlock = CURBLOCK;
+  if (lastBlock == undefined) {
+    return;
+  }
+
   let blockData = await PROVIDER.getBlock(lastBlock);
   if (blockData == null) {
     console.log('not yet', lastBlock);
