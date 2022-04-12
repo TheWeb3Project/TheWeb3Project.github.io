@@ -232,8 +232,6 @@ async function eventBoard() {
     console.log('not yet', lastBlock);
     return;
   }
-
-  console.log(lastBlock);
    
   for (var idy = 0; idy < 10; idy++) {
       try {
@@ -253,7 +251,7 @@ async function eventBoard() {
     if (adr == ADRS['web3']) {
       continue;
     }
-    
+
     let amount = txLogs[idy].args[2];
     await addEvent('buy', [adr, amount]);
   }
