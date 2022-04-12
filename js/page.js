@@ -183,7 +183,7 @@ async function _doAfterConnect() {
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 }
 
-let lastBlock = 0;
+let lastBlock = CURBLOCK;
 let lastSupply = 0;
 async function eventBoard() {
   let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
@@ -191,16 +191,15 @@ async function eventBoard() {
 
   let txLogs;
 	
-  
-  let curBlock = await getCurBlock();
-	if (lastBlock == 0) {
-  	lastBlock = curBlock;
+  let blockData = await PROVIDER.get(lastBlock);
+  if (blockData == null) {
     return;
   }
   
+   
       for (var idy = 0; idy < 10; idy++) {
           try {
-              txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, curBlock);
+              txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, lastBlock+1);
               break;
           } catch {
               DELAY(100);
@@ -214,7 +213,7 @@ async function eventBoard() {
       
       for (var idy = 0; idy < 10; idy++) {
           try {
-              txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, curBlock);
+              txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, lastBlock+1);
               break;
           } catch {
               DELAY(100);
@@ -231,7 +230,7 @@ async function eventBoard() {
         console.log('rebase', INT(lastSupply / BNBDIV, 3), INT(curSupply / BNBDIV, 3), INT(rebaseRate, 5));
         lastSupply = curSupply;
       }
-      lastBlock = curBlock;
+      lastBlock += 1;
 }
 
 
