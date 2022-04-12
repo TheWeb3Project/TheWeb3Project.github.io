@@ -183,6 +183,27 @@ async function _doAfterConnect() {
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 }
 
+let events = [];
+async function addEvent(name, event_) {
+  if (name == 'buy') {
+    let adr = event_[0];
+    let amount = event_[1];
+    amount = amount / BNBDIV;
+    events.unshift(`${SHORTADR(adr)} buy ${INT(amount, 3)}`);
+  }
+
+  if (events.length == 10) {
+    events.pop();
+  }
+
+  let htmlStr = ``;
+  for (let event of events) {
+    htmlStr += event + '<br/>';
+  }
+  
+  select('#events').innerHTML = htmlStr;
+}
+
 let lastBlock;
 let lastSupply = 0;
 async function eventBoard() {
@@ -206,43 +227,44 @@ async function eventBoard() {
     return;
   }
 
-  
   console.log(lastBlock);
    
-      for (var idy = 0; idy < 10; idy++) {
-          try {
-              txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, lastBlock+1);
-              break;
-          } catch {
-              DELAY(100);
-          }
+  for (var idy = 0; idy < 10; idy++) {
+      try {
+          txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, lastBlock+1);
+          break;
+      } catch {
+          DELAY(100);
       }
+  }
 
-      for (var idy = 0; idy < txLogs.length; idy++) {
-          let amount = txLogs[idy].args[2];
-          console.log('buy', INT(amount / BNBDIV, 3));
+  for (var idy = 0; idy < txLogs.length; idy++) {
+    console.log(txLogs[idy].args);
+    let adr = txLogs[idy].args[1];  
+    let amount = txLogs[idy].args[2];
+    addEvent('buy', [adr, amount]);
+  }
+  
+  for (var idy = 0; idy < 10; idy++) {
+      try {
+          txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, lastBlock+1);
+          break;
+      } catch {
+          DELAY(100);
       }
-      
-      for (var idy = 0; idy < 10; idy++) {
-          try {
-              txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, lastBlock+1);
-              break;
-          } catch {
-              DELAY(100);
-          }
-      }
-      for (var idy = 0; idy < txLogs.length; idy++) {
-        let curSupply = txLogs[idy].args[1];
-        if (lastSupply == 0) {
-          lastSupply = curSupply;
-          continue;
-        }
-				
-        let rebaseRate = curSupply / lastSupply * 100;
-        console.log('rebase', INT(lastSupply / BNBDIV, 3), INT(curSupply / BNBDIV, 3), INT(rebaseRate, 5));
-        lastSupply = curSupply;
-      }
-      lastBlock += 1;
+  }
+  for (var idy = 0; idy < txLogs.length; idy++) {
+    let curSupply = txLogs[idy].args[1];
+    if (lastSupply == 0) {
+      lastSupply = curSupply;
+      continue;
+    }
+    
+    let rebaseRate = curSupply / lastSupply * 100;
+    console.log('rebase', INT(lastSupply / BNBDIV, 3), INT(curSupply / BNBDIV, 3), INT(rebaseRate, 5));
+    lastSupply = curSupply;
+  }
+  lastBlock += 1;
 }
 
 
