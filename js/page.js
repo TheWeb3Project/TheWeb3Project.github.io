@@ -184,7 +184,6 @@ async function _doAfterConnect() {
 }
 
 let lastBlock;
-lastBlock = CURBLOCK;
 let lastSupply;
 lastSupply = 0;
 async function eventBoard() {
@@ -192,8 +191,13 @@ async function eventBoard() {
   let rebaseFilter = CONTS['web3'].filters.Rebased();
 
   let txLogs;
+	
+  
   let curBlock = await getCurBlock();
-
+	if (lastBlock == 0) {
+  	lastBlock = curBlock;
+    return;
+  }
       for (var idy = 0; idy < 10; idy++) {
           try {
               txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, curBlock);
