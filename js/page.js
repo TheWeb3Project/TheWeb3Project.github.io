@@ -191,7 +191,13 @@ async function addEvent(name, event_) {
     amount = amount / BNBDIV;
     events.unshift(`${SHORTADR(adr)} buy ${INT(amount, 3)}`);
   }
-
+  if (name == 'rebase') {
+    let lastSupply = event_[0];
+    let curSupply = event_[1];
+    let rate = (curSupply - lastSupply) / lastSupply * 100;
+    events.unshift(`Rebase: your balance +${INT(rate, 6)}`);
+  }
+  
   if (events.length == 10) {
     events.pop();
   }
@@ -200,7 +206,7 @@ async function addEvent(name, event_) {
   for (let event of events) {
     htmlStr += event + '<br/>';
   }
-  
+
   select('#events').innerHTML = htmlStr;
 }
 
@@ -242,7 +248,7 @@ async function eventBoard() {
     console.log(txLogs[idy].args);
     let adr = txLogs[idy].args[1];  
     let amount = txLogs[idy].args[2];
-    addEvent('buy', [adr, amount]);
+    await addEvent('buy', [adr, amount]);
   }
   
   for (var idy = 0; idy < 10; idy++) {
@@ -260,8 +266,7 @@ async function eventBoard() {
       continue;
     }
     
-    let rebaseRate = curSupply / lastSupply * 100;
-    console.log('rebase', INT(lastSupply / BNBDIV, 3), INT(curSupply / BNBDIV, 3), INT(rebaseRate, 5));
+    await addEvent('rebase', [lastSupply, curSupply]);
     lastSupply = curSupply;
   }
   lastBlock += 1;
