@@ -197,6 +197,7 @@ async function eventBoard() {
   	lastBlock = curBlock;
     return;
   }
+  
       for (var idy = 0; idy < 10; idy++) {
           try {
               txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, curBlock);
@@ -232,6 +233,8 @@ async function eventBoard() {
       }
       lastBlock = curBlock;
 }
+
+
 /////////////////////////////////////////////////////////////////////////// account
 async function getTotalEarned() {
   let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
