@@ -205,7 +205,7 @@ async function eventBoard() {
 
       for (var idy = 0; idy < txLogs.length; idy++) {
           let amount = txLogs[idy].args[2];
-          console.log('buy', amount);
+          console.log('buy', INT(amount / BNBDIV, 3));
       }
       
       for (var idy = 0; idy < 10; idy++) {
@@ -219,12 +219,15 @@ async function eventBoard() {
       for (var idy = 0; idy < txLogs.length; idy++) {
         let curSupply = txLogs[idy].args[1];
         if (lastSupply == 0) {
+          lastSupply = curSupply;
           continue;
         }
-
-        console.log('rebase', lastSupply, curSupply);
+				
+        let rebaseRate = curSupply / lastSupply * 100;
+        console.log('rebase', INT(lastSupply / BNBDIV, 3), INT(curSupply / BNBDIV, 3), INT(rebaseRate, 5));
         lastSupply = curSupply;
       }
+      lastBlock = curBlock;
 }
 /////////////////////////////////////////////////////////////////////////// account
 async function getTotalEarned() {
