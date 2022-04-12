@@ -193,6 +193,7 @@ async function eventBoard() {
 	
   let blockData = await PROVIDER.get(lastBlock);
   if (blockData == null) {
+    console.log('not yet', lastBlock);
     return;
   }
   console.log(lastBlock);
