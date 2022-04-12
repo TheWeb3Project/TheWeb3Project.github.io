@@ -205,6 +205,8 @@ async function eventBoard() {
     console.log('not yet', lastBlock);
     return;
   }
+
+  
   console.log(lastBlock);
    
       for (var idy = 0; idy < 10; idy++) {
