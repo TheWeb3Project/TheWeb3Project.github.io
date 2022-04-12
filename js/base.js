@@ -89,6 +89,7 @@ ABIS['web3'] = [
   "function _curcuitBreakerTime() view returns (uint256)",
   "function _lastRebaseBlock() view returns (uint256)",
   "event Transfer(address indexed from, address indexed to, uint amount)",
+  "event Rebased(uint256 blockNumber, uint256 totalSupply)",
 ];
 
 ADRS['wweb3'] = "0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f";
