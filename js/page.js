@@ -152,6 +152,10 @@ async function runGlobal() {
   wPrice = price * totalSupply / wweb3totalSupply;
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
   
+  let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
+  let wCirculatingSupply = wweb3totalSupply - lockedAmount;
+  displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
+
   let mcap = price * circulatingSupply;
   displayText("#mcap", `$${COMMA(INT(mcap))}`);
   

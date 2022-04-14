@@ -238,8 +238,13 @@ function COMMA(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function SHORTADR(adr) {
-  return adr.slice(0, 6) + '..' + adr.slice(-4);;
+function SHORTADR(adr, x=true, n=4) {
+  let shortAdr = '';
+  if (x) {
+    shortAdr += adr.slice(0, 2);
+  }
+  shortAdr += adr.slice(2, 2 + n) + '..' + adr.slice(-n);
+  return shortAdr;
 }
 
 function KEYS(dict) {
