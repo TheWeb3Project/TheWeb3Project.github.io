@@ -96,6 +96,8 @@ displayWeb3Header();
 
 let bnbPrice;
 let price;
+let wPrice;
+
 let totalSupply;
 let wweb3totalSupply;
 async function runGlobal() {
@@ -147,6 +149,8 @@ async function runGlobal() {
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
 
+  wPrice = price * totalSupply / wweb3totalSupply;
+  displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
   let mcap = price * circulatingSupply;
   displayText("#mcap", `$${COMMA(INT(mcap))}`);
   
