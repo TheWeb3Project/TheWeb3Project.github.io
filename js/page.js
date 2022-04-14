@@ -151,6 +151,7 @@ async function runGlobal() {
 
   wPrice = price * totalSupply / wweb3totalSupply;
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
+  
   let mcap = price * circulatingSupply;
   displayText("#mcap", `$${COMMA(INT(mcap))}`);
   
