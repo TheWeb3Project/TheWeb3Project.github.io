@@ -482,13 +482,17 @@ function ETH(big, decimals=18) {
  
 
  
-function ADR(address) {
+function ADR(address, popup=true) {
   let checksumAdr;
   try {
     checksumAdr = ethers.utils.getAddress(address);
-  } catch (error) {
-    alert('Wrong Format Address: [' + address + ']');
-
+  } catch (e) {
+    let eStr = 'Wrong Format Address: [' + address + ']';
+    console.log(eStr);
+    if (popup) {
+      alert(eStr);
+    }
+    
     return '';
   }
   return checksumAdr;
