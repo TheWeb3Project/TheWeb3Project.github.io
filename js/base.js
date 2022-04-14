@@ -596,7 +596,7 @@ function handleChainChanged(_chainId) {
 
 ////////////////////////////////// tx
 
-async function ERR(err) {
+async function ERR(err, popup=true) {
   let result = err;
 
   if (!('code' in err)) {
@@ -642,7 +642,7 @@ async function SIGN(name, msg, bin=false) {
 }
  
  
-async function SEND_ETH(from=ADRS["fund"], to=ADRS["fund"], value='0.0') {
+async function SEND_ETH(from=ADRS["fund"], to=ADRS["fund"], value='0.0', popup=true) {
 	const data = {
   	from: from,
   	to: to,
@@ -657,12 +657,12 @@ async function SEND_ETH(from=ADRS["fund"], to=ADRS["fund"], value='0.0') {
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
-  	err = await ERR(err);
+  	err = await ERR(err, popup);
     return [ true, err ];
   }
 }
  
-async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C3126f57eB8C989") {
+async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C3126f57eB8C989", popup=true) {
 	const overrides = {
   	from: from,
   };
@@ -671,13 +671,13 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
   	let result = await CONTS[name][method](...args, overrides);
     return [ false, result ];
   } catch (err) {
-  	err = await ERR(err);
+  	err = await ERR(err, popup);
     return [ true, err ];
   }
  
 }
  
-async function GAS(name, method, args, value = null) {
+async function GAS(name, method, args, value = null, popup=true) {
   let overrides = {};
   if (value != null) {
     overrides['value'] = BIG(value);
@@ -690,12 +690,12 @@ async function GAS(name, method, args, value = null) {
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
-    result = await ERR(err);
+    result = await ERR(err, popup);
     return [ true, result ];
   };
 }
  
-async function SEND_TX(name, method, args, value=null, check=true) {
+async function SEND_TX(name, method, args, value=null, check=true, popup=true) {
   let overrides = {};
   if (value != null) {
     overrides['value'] = BIG(value);
@@ -732,7 +732,7 @@ async function SEND_TX(name, method, args, value=null, check=true) {
     // wait()
     // receipt.events
   } catch (err) {
-    err = await ERR(err);
+    err = await ERR(err, popup);
     return [ true, err ];
   }
 }
