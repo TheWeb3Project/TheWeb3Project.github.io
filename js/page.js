@@ -100,6 +100,9 @@ let wPrice;
 
 let totalSupply;
 let wweb3totalSupply;
+
+let liqWeb3;
+let liqBnb;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
@@ -136,15 +139,16 @@ async function runGlobal() {
   displayText("#treasury", `$${COMMA(INT(treasuryBalance + marketingBalance, 3))}`);
 
   let liqReserves = await CONTS['pairweb3'].getReserves();
-  let liqBnb = liqReserves[1] / BNBDIV; 
+  liqWeb3 = liqReserves[0] / BNBDIV;
+  liqBnb = liqReserves[1] / BNBDIV; 
+  let liqRate = liqBnb / liqWeb3;
+
   let liqBalance = liqBnb * bnbPrice;
   displayText("#liquidity", `$${COMMA(INT(liqBalance, 0))}`);
 
   let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
   displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
-
-  let liqWeb3 = liqReserves[0] / BNBDIV;
-  let liqRate = liqBnb / liqWeb3;
+  
   price = liqRate * bnbPrice;
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
@@ -418,6 +422,38 @@ function changedValue(target, curTarget) {
 async function approve(name, target) {
   await SEND_TX(name, 'approve', [target, BIGINT(2**255)]);
 }
+
+// async function inputHandleWrap(e) {
+// 	await inputHandle(e, 'wrap', totalSupply, wweb3totalSupply);  
+// }
+
+async function handleInputSwap(e) {
+  await handleInput(e, 'wrap-input', liqBnb, liqWeb3);
+}
+
+async function handleInput(e, name, inputSupply, outputSupply) {
+	let valueIn = e.target.value;
+  valueIn = valueIn.replace(/,/g, '');
+  let result = select(`#${name}`);
+  if (valueIn == 0) {
+    result.value = 0;
+    return;
+  }
+
+  valueIn = BIG(valueIn);
+  let valueOut = valueIn.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
+
+  let valueOut_ = ETH(valueOut);
+  valueOut_ = INT(parseFloat(valueOut_), 8);
+  result.value = valueOut_;
+}
+
+async function runWrap() {
+  let web3Input = select('#wrap-input');
+  let web3Amount = BIG(web3Input.value);
+  await SEND_TX('wweb3', 'deposit', [web3Amount]);
+}
+
 
 let wrapInputHandle = function (e) {
   (async function () {
