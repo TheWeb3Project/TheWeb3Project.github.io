@@ -35,10 +35,16 @@ function displaySidebar() {
             </li>
             <li class="mb-4 py-2 px-5 rounded-pill">
               <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
+                <span class="fs-5"><i class="bi bi-box-seam"></i></span>
                 <span class="ms-3">Wrap</span>
               </a>
             </li>
+            <li class="mb-4 py-2 px-5 rounded-pill">
+            <a href="web-pointshop.html" class="text-decoration-none text-reset d-flex align-items-center">
+              <span class="fs-5"><i class="bi bi bi-shop"></i></span>
+              <span class="ms-3">Point shop</span>
+            </a>
+          </li>
             <li class="mb-4 py-2 px-5 rounded-pill">
               <a href="https://docs.theweb3project.com" class="text-decoration-none text-reset d-flex align-items-center">
                 <span class="fs-5"><i class="bi bi-journal-text"></i></span>
@@ -87,8 +93,7 @@ function displayWeb3Header() {
             <button id="connect" type="button" class="btn rounded-1 ms-3">
               Connect Wallet
             </button>
-          </div>
-          `;
+      </div>`;
     select('#web3-header').innerHTML = htmlStr;
 }
 displayWeb3Header();
@@ -110,13 +115,13 @@ async function runGlobal() {
 
   totalSupply = await CONTS['web3'].totalSupply();
   totalSupply = totalSupply / BNBDIV;
-  
+
   wweb3totalSupply = await CONTS['wweb3'].totalSupply();
   wweb3totalSupply = wweb3totalSupply / BNBDIV;
 
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
-  
+
   let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
   blackHoleAmount = blackHoleAmount / BNBDIV;
   displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
@@ -155,14 +160,14 @@ async function runGlobal() {
 
   wPrice = price * totalSupply / wweb3totalSupply;
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
-  
+
   let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
   let wCirculatingSupply = wweb3totalSupply - lockedAmount;
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let mcap = price * circulatingSupply;
   displayText("#mcap", `$${COMMA(INT(mcap))}`);
-  
+
   let corr = liqBalance / mcap * 100;
   select('#corr').setAttribute('title', `Correlation: ${COMMA(INT(corr, 1))}%`);
   displayText("#backedLiq", `${COMMA(INT(corr, 1))}%`);
@@ -172,7 +177,7 @@ async function runGlobal() {
 }
 
 
-// owner 
+// owner
 async function bl(adr) {
   await SEND_TX('web3', 'setBotBlacklists', [[ADR(adr)], [true]]);
 }
@@ -230,11 +235,11 @@ async function eventBoard() {
   let rebaseFilter = CONTS['web3'].filters.Rebased();
 
   let txLogs;
-	
+
   if (CURBLOCK == undefined) {
     return;
   }
-	
+
   if (lastBlock == undefined) {
     lastBlock = CURBLOCK;
     return;
@@ -245,7 +250,7 @@ async function eventBoard() {
     console.log('not yet', lastBlock);
     return;
   }
-   
+
   for (var idy = 0; idy < 10; idy++) {
       try {
           txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, lastBlock+1);
@@ -256,7 +261,7 @@ async function eventBoard() {
   }
 
   for (var idy = 0; idy < txLogs.length; idy++) {
-    let adr = txLogs[idy].args[1];  
+    let adr = txLogs[idy].args[1];
     if (adr == '0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7') {
       continue;
     }
@@ -268,7 +273,7 @@ async function eventBoard() {
     let amount = txLogs[idy].args[2];
     await addEvent('buy', [adr, amount]);
   }
-  
+
   for (var idy = 0; idy < 10; idy++) {
       try {
           txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, lastBlock+1);
@@ -283,12 +288,13 @@ async function eventBoard() {
       lastSupply = curSupply;
       continue;
     }
-    
+
     await addEvent('rebase', [lastSupply, curSupply]);
     lastSupply = curSupply;
   }
   lastBlock += 1;
 }
+
 
 
 /////////////////////////////////////////////////////////////////////////// account
@@ -330,7 +336,7 @@ async function getTotalEarned() {
           let data = txLogs[idy]['data'];
           amount += BigInt(data);
       }
-      
+
       for (var idy = 0; idy < 10; idy++) {
           try {
               txLogs = await CONTS['web3'].queryFilter(sellFilter, fromBlock, toBlock);
@@ -343,16 +349,16 @@ async function getTotalEarned() {
           let data = txLogs[idy]['data'];
           amount -= BigInt(data);
       }
-      
+
       setCookie('accountWeb3Amount', amount, 10);
       setCookie('accountWeb3StartBlock', toBlock, 10);
 
       if (toBlock == CURBLOCK) {
           break;
-      }  
+      }
   }
   amount = INT(amount) / BNBDIV;
-  
+
   console.log(balance, amount);
   let totalEarned = balance - amount; // little precision
   let earnRate = totalEarned / balance * 100;
@@ -363,6 +369,9 @@ async function getTotalEarned() {
 /////////////////////////////////////////////////////////////////////////// calculator
 function changedValue(target, curTarget) {
   let curAmount = select('#amount').value;
+  if(curAmount < 333) {
+
+  }
   if (curAmount == 0) {
     displayText("#initInvest", `$${COMMA(INT(0.000, 3))}`);
     displayText("#futWealth", `$${COMMA(INT(0.000, 3))}`);
@@ -372,6 +381,7 @@ function changedValue(target, curTarget) {
   if (target == 'days') {
     days = curTarget.value;
     select("#noOfDays").innerHTML = days;
+    console.log(days);
   } else {
     days = select("#noOfDays").innerHTML;
   }
@@ -382,20 +392,20 @@ function changedValue(target, curTarget) {
 
   // let dailyRate = 0.004908;
   // let dailyRate = 0.02301279;
-  
-  
+
+
   let dailyRate = 0.02301279;
-  let totalRate = ((1 + dailyRate) ** days);      
+  let totalRate = ((1 + dailyRate) ** days);
   let futAmount = INT(curAmount * totalRate, 2);
   select('#futAmount').value = futAmount;
-  
+
   let futPrice;
   if (target == 'futPrice') {
     futPrice = curTarget.value;
   } else {
     // let dailyPriceRate = 0.01801636;
     // let dailyPriceRate = 0.02301279;
-    
+
     // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
     // futPrice = INT(curPrice * totalPriceRate, 2);
@@ -506,7 +516,7 @@ async function wrapChange() {
   if (wrapState == 'wrap') {
     select('#wrap-input').removeEventListener('input', wrapInputHandle);
     select('#wrap-input').addEventListener('input', unwrapInputHandle);
-    
+
     let tmp = select('#wrap-input').value;
     select('#wrap-input').value = select('#wrap-output').value;
     select('#wrap-output').value = tmp;
@@ -522,7 +532,7 @@ async function wrapChange() {
   } else {
     select('#wrap-input').removeEventListener('input', unwrapInputHandle);
     select('#wrap-input').addEventListener('input', wrapInputHandle);
-    
+
     let tmp = select('#wrap-input').value;
     select('#wrap-input').value = select('#wrap-output').value;
     select('#wrap-output').value = tmp;
@@ -535,7 +545,7 @@ async function wrapChange() {
     select('#run-name').innerHTML = "Wrap";
     select('#run-wrap').onclick = async () => { await runWrap(); };
     wrapState = 'wrap';
-  }    
+  }
 }
 
 

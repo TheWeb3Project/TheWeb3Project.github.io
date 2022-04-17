@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style=" background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -30,7 +30,7 @@
 
   <meta property="og:image" content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png">
 </head>
-<body id="titano-finance" style="margin-bottom: 100px;">
+<body id="titano-finance" style="margin-bottom: 100px;  background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
   <div class="container-fluid">
     <div class="row">
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">      
@@ -39,12 +39,12 @@
       <div id="overlay" style="z-index: 1000001;"></div>
 
       <main class="col pt-4">
-        <div id="web3-header" class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001; background-color: #0D0F19;">
+        <div id="web3-header" class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001; ">
         </div>
 
         <div class="container pt-3">
           <div class="col-xl-8 mx-auto">
-            <div class="card bg-light border border-primary p-3 p-sm-4 mt-5">
+            <div class="card bg-light p-3 p-sm-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
               <h5 class="fw-bold mb-0">Calculator</h5>
               <span class="small fw-semibold">Estimate your return</span>
               <span class="small fw-semibold" style="color: red;">If buy/sell is balanced, (even if there is no trade)</span>
@@ -60,7 +60,7 @@
                   </h4>
                 </div>
 
-                <div class="col mt-5">
+                <div class="col mt-5 ">
                   <h6 class="text-secondary mb-1">
                     APY <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     Combined with amount APY and price APY<br/>
@@ -89,23 +89,23 @@
               <div class="row mt-5">
                 <div class="col-sm-6">
                   <label for="amount" class="form-label fw-medium">WEB3 Amount</label>
-                  <div class="input-group border border-secondary rounded-1 mb-5">
-                    <input type="text" id="amount" class="form-control py-2 px-3 rounded-1 border-0 text-secondary" aria-describedby="amount-addon" value="10" placeholder="Amount">
-                    <span id="setMaxToAmount" class="input-group-text rounded-1 border-0">MAX</span>
+                  <div class="input-group  rounded-1 mb-5">
+                    <input type="text" id="amount" class="form-control py-2 px-3   text-secondary" aria-describedby="amount-addon" value="10" placeholder="Amount" style="background-color: #424750; border: none;">
+                    <span id="setMaxToAmount" class="input-group-text " style=" background-color: #424750; border:none;">MAX</span>
                   </div>
 
 
                   <label for="price" class="form-label fw-medium">WEB3 price at purchase ($)</label>
-                  <div class="input-group border border-secondary rounded-1 mb-5">
-                    <input type="text" id="curPrice" class="form-control py-2 px-3 rounded-1 border-0 text-secondary" aria-describedby="price-addon" value="0" placeholder="Amount">
-                    <span id="setCurToCurPrice" class="input-group-text rounded-1 border-0">Current</span>
+                  <div class="input-group  rounded-1 mb-5">
+                    <input type="text" id="curPrice" class="form-control py-2 px-3  text-secondary" aria-describedby="price-addon" value="0" placeholder="Amount" style="background-color: #424750; border:none;">
+                    <span id="setCurToCurPrice" class="input-group-text " style="background-color: #424750; border: none;">Current</span>
                   </div>
                 </div>
 
                 <div class="col-sm-6">
                   <label for="apy" class="form-label fw-medium">Future WEB3 Amount</label>
-                  <div class="input-group border border-secondary rounded-1 mb-5">
-                    <input type="text" id="futAmount" class="form-control py-2 px-3 rounded-1 border-0 text-secondary" aria-describedby="apy-addon" value="10" placeholder="Amount">
+                  <div class="input-group  rounded-1 mb-5">
+                    <input type="text" id="futAmount" class="form-control py-2 px-3 text-secondary" aria-describedby="apy-addon" value="10" placeholder="Amount" style="background-color: #424750; border:none;">
                     <!-- <span id="setCurToFutAmount" class="input-group-text rounded-1 border-0">Current</span> -->
                   </div>
 
@@ -116,9 +116,9 @@
                     it may go up or down from that price depending on the buy/sell amount.
                     "></i>
                   </label>
-                  <div class="input-group border border-secondary rounded-1 mb-5">
-                    <input type="text" id="futPrice" class="form-control py-2 px-3 rounded-1 border-0 text-secondary" aria-describedby="future-price-addon" value="0" placeholder="Amount">
-                    <span id="setCurToFutPrice" class="input-group-text rounded-1 border-0">Current</span>
+                  <div class="input-group rounded-1 mb-5">
+                    <input type="text" id="futPrice" class="form-control py-2 px-3  text-secondary" aria-describedby="future-price-addon" value="0" placeholder="Amount" style="background-color: #424750; border:none;">
+                    <span id="setCurToFutPrice" class="input-group-text " style="background-color: #424750; border:none;">Current</span>
                   </div>
                 </div>
               </div>
@@ -281,7 +281,21 @@
       $('[data-bs-toggle="tooltip"]').tooltip();
     });
 
-    select('#sidebar-nav').children[2].classList.add('active');
+    select('#sidebar-nav').children[2].classList.add('active-neumorphism');
   </script>
+      <style>
+        .active-neumorphism{
+          box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%); background-image: linear-gradient(160deg,#424750,#202326);
+        }
+
+
+        .form-control:focus {
+          color: #ffffff;
+          background-color: #fff;
+          border-color: none!important;
+          outline: none!important;
+          box-shadow: none;
+        }
+      </style>
 </body>
 </html>
