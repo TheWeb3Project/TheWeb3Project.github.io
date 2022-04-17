@@ -33,77 +33,11 @@
   <link rel="stylesheet" href="css/flooz.css">
 </head>
 
-<body id="titano-finance" style="margin-bottom: 100px; width: 100%; background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
+<body id="titano-finance" style="margin-bottom: 100px; width: 100%; background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326); font-weight: 400;">
   <div class="container-fluid">
     <div class="row">
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;  ">
-        <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
-          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center ps-3 pe-2">
-            <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
-            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-4" style="width: 100%;">
-          </a>
 
-          <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="index.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-collection"></i></span>
-                <span class="ms-3">Dashboard</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="account.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-person-circle"></i></span>
-                <span class="ms-3">Account</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="calculator.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-calculator-fill"></i></span>
-                <span class="ms-3">Calculator</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="swap.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
-                <span class="ms-3">Swap</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
-                <span class="ms-3">Wrap</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill ">
-            <a href="web-pointshop.html" class="text-decoration-none text-reset d-flex align-items-center">
-              <span class="fs-5"><i class="bi bi bi-shop"></i></span>
-              <span class="ms-3">Web Points <br> <div class="center-text"> shop </div> </span>
-            </a>
-          </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="https://docs.theweb3project.com" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-journal-text"></i></span>
-                <span class="ms-3">Docs</span>
-              </a>
-            </li>
-          </ul>
-
-          <div class="d-flex justify-content-around w-100 px-4">
-            <a href="https://t.me/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-send-fill"></i>
-            </a>
-            <a href="https://twitter.com/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-twitter"></i>
-            </a>
-            <a href="https://discord.gg/crQkCE7Mn6" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-discord"></i>
-            </a>
-            <a href="https://www.youtube.com/c/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-youtube"></i>
-            </a>
-
-          </div>
-        </div>
       </div>
 
       <div id="overlay" style="z-index: 1000001;"></div>
@@ -253,11 +187,6 @@
               </span>
             </div>
           </div>
-
-
-
-
-
 
       </main>
     </div>
@@ -411,11 +340,26 @@
     select('#sidebar-nav').children[5].classList.add('active-neumorphism');
   </script>
     <style>
-      .active-neumorphism{
-        box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%); background-image: linear-gradient(160deg,#424750,#202326);
+      .active-neumorphism {
+        box-shadow:  2px 2px 9px 0 rgb(17 19 20 / 90%),
+           -2px -2px 9px 0 rgb(93 100 112 / 90%);
+        background-image: linear-gradient(160deg, #424750, #202326);
+        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
+
       }
-      .card{
+      .card {
         border: none;
+      }
+      .neontext{
+        color: #fff;
+      }
+
+      #titano-finance #sidebar-nav li:hover {
+        color: #fff;
+      }
+      .neontext:hover{
+        color: #fff;
+        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
       }
     </style>
 </body>
