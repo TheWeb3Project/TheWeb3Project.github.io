@@ -448,6 +448,13 @@ async function handleInput(e, name, inputSupply, outputSupply) {
   result.value = valueOut_;
 }
 
+
+async function runSwap() {
+  let bnbInput = select('#wrap-input');
+  let bnbValue = String(bnbInput.value);
+  await SEND_TX('router', 'swapExactETHForTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, new Date()], value=bnbValue);
+}
+
 async function runWrap() {
   let web3Input = select('#wrap-input');
   let web3Amount = BIG(web3Input.value);

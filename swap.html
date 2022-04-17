@@ -188,7 +188,7 @@
 
                 <div id="run-wrap" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                   <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon">
-                    <span id="run-name" class="button__content">Wrap</span>
+                    <span id="run-name" class="button__content">Swap</span>
                   </button>
                 </div>
 
@@ -242,6 +242,8 @@
       bnbBalance = (await getBalance(CURADR)) / BNBDIV;
       displayText("#balance-input", `${COMMA(INT(bnbBalance, 3))}`);
       displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
+
+      select('#run-wrap').onclick = async () => { await wrapChange(); };
     }
 
     (async () => {
