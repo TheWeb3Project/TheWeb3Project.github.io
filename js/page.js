@@ -452,7 +452,7 @@ async function handleInput(e, name, inputSupply, outputSupply) {
 async function runSwap() {
   let bnbInput = select('#wrap-input');
   let bnbValue = String(bnbInput.value);
-  await SEND_TX('router', 'swapExactETHForTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], value=bnbValue);
+  await SEND_TX('router', 'swapExactETHForTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], bnbValue);
 }
 
 async function runWrap() {
