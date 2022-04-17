@@ -428,7 +428,7 @@ async function approve(name, target) {
 // }
 
 async function handleInputSwap(e) {
-  await handleInput(e, 'wrap-input', liqBnb, liqWeb3);
+  await handleInput(e, 'wrap-output', liqBnb, liqWeb3);
 }
 
 async function handleInput(e, name, inputSupply, outputSupply) {
