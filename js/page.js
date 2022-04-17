@@ -10,43 +10,43 @@ function displaySidebar() {
 
           <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
             <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="index.html" class="text-decoration-none text-reset d-flex align-items-center">
+              <a href="index.html" class="text-decoration-none text-reset d-flex align-items-center neontext ">
                 <span class="fs-5"><i class="bi bi-collection"></i></span>
-                <span class="ms-3">Dashboard</span>
+                <span class="ms-3 ">Dashboard</span>
               </a>
             </li>
             <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="account.html" class="text-decoration-none text-reset d-flex align-items-center">
+              <a href="account.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
                 <span class="fs-5"><i class="bi bi-person-circle"></i></span>
                 <span class="ms-3">Account</span>
               </a>
             </li>
             <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="calculator.html" class="text-decoration-none text-reset d-flex align-items-center">
+              <a href="calculator.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
                 <span class="fs-5"><i class="bi bi-calculator-fill"></i></span>
                 <span class="ms-3">Calculator</span>
               </a>
             </li>
             <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="swap.html" class="text-decoration-none text-reset d-flex align-items-center">
+              <a href="swap.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
                 <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
                 <span class="ms-3">Swap</span>
               </a>
             </li>
             <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center">
+              <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
                 <span class="fs-5"><i class="bi bi-box-seam"></i></span>
                 <span class="ms-3">Wrap</span>
               </a>
             </li>
             <li class="mb-4 py-2 px-5 rounded-1">
-            <a href="web-pointshop.html" class="text-decoration-none text-reset d-flex align-items-center">
+            <a href="web-pointshop.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
               <span class="fs-5"><i class="bi bi bi-shop"></i></span>
               <span class="ms-3">Point shop</span>
             </a>
           </li>
             <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="https://docs.theweb3project.com" class="text-decoration-none text-reset d-flex align-items-center">
+              <a href="https://docs.theweb3project.com" class="text-decoration-none text-reset d-flex align-items-center neontext">
                 <span class="fs-5"><i class="bi bi-journal-text"></i></span>
                 <span class="ms-3">Docs</span>
               </a>
