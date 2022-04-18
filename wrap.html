@@ -318,8 +318,6 @@
     async function doAfterConnect() {
       await _doAfterConnect();
 
-
-
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
         select('#run-web3-approve').classList.add('d-none');
@@ -346,6 +344,16 @@
 
         select('#run-claim').onclick = async () => { await runClaim(); };
       }
+
+      [res, data] = await READ_TX('web3Stake', '_amounts', [CURADR]);
+      let stakedAmount = data;
+      stakedAmount = stakedAmount / BNBDIV;
+      displayText('#stakedAmount', `${COMMA(INT(stakedAmount, 3))}`);
+
+      [res, data] = await READ_TX('web3Stake', '_durations', [CURADR]);
+      let stakedDuration = data;
+      displayText('#stakedDuration', `${COMMA(INT(stakedDuration, 0))}`);
+
       // [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
       // let unlockTime = data;
       // [res, data] = await READ_TX('web3Stake', '_lastClaims', [CURADR]);
