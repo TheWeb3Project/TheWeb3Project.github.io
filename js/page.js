@@ -192,6 +192,8 @@ async function runToggleExperi() {
 
 
 let balance;
+let wweb3Balance;
+let pweb3Balance;
 async function _doAfterConnect() {
   displayText('#connect', SHORTADR(CURADR));
 
@@ -199,6 +201,16 @@ async function _doAfterConnect() {
   balance = balance / BNBDIV;
 
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
+
+  wweb3Balance = await CONTS['wweb3'].balanceOf(CURADR);
+  wweb3Balance = wweb3Balance / BNBDIV;
+
+  displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
+
+  pweb3Balance = await CONTS['pweb3'].balanceOf(CURADR);
+  pweb3Balance = pweb3Balance / BNBDIV;
+
+  displayText("#pweb3Balance", `${COMMA(INT(pweb3Balance, 3))}`);
 }
 
 let events = [];
