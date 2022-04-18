@@ -312,11 +312,18 @@
       [res, data] = await READ_TX('web3Stake', '_lastClaims', [CURADR]);
       let lastClaim = data;
 
-      let claimAmount = rewardAmount * (NOW() / 1000 - lastClaim) / (unlockTime - lastClaim);
-      claimAmount = claimAmount;
-      displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
+      if (0 < rewardAmount) {
+        if (0 < unlockTime) {
+          if (0 < lastClaim) {
+            let claimAmount = rewardAmount * (NOW() / 1000 - lastClaim) / (unlockTime - lastClaim);
+            claimAmount = claimAmount;
+            displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
 
-      select('#run-claim').onclick = async () => { await runClaim(); };
+            select('#run-claim').onclick = async () => { await runClaim(); };
+          }
+        }
+      }
+      
     }
 
     async function runClaim() {
