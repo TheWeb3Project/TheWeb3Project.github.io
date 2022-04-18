@@ -226,7 +226,18 @@
                   <span id="stake-name" class="button__content">Stake</span>
                 </button>
               </div>
-
+              
+              <div>
+                <p>You can claim: <span id="claimAmount">0.000</span> pWEB3</p>
+              </div>
+              <div id="run-claim" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                border-radius: 20px;
+                background-image: linear-gradient(134deg,#48acef,#00436f);
+                box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                  <span id="claim-name" class="button__content">Claim</span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -290,6 +301,23 @@
       wrapState = 'unwrap';
       await wrapChange();
       select('#wrap-change').onclick = async () => { await wrapChange(); };
+
+      [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
+      let rewardAmount = data;
+      [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
+      let unlockTime = data;
+      [res, data] = await READ_TX('web3Stake', '_lastClaims', [CURADR]);
+      let lastClaim = data;
+
+      let claimAmount = rewardAmount * (NOW() / 1000 - lastClaim) / (unlockTime - lastClaim);
+      claimAmount = claimAmount / BNBDIV;
+      displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
+
+      select('#run-claim').onclick = async () => { await runClaim(); };
+    }
+
+    async function runClaim() {
+      await SEND_TX('web3Stake', 'claimReward', []);
     }
 
     async function runStake() {
@@ -324,6 +352,7 @@
         return;
       }
       await doAfterConnect();
+      
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
       // if (res == true) {
