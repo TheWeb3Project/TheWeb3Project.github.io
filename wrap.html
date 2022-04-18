@@ -190,7 +190,7 @@
                       <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                           <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                               <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                  <input id="wrap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                  <input id="stake-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                               </div>
                               <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
                           </div>
@@ -296,12 +296,13 @@
       // do global
 
       $(document).on('input', 'input[type="range"]', function (e) {
-        let days = select('input[type="range"]');
+        let days = select('input[type="range"]').value;
         select("#noOfDays").innerHTML = days;
-        let stakeAmount = select('#wrap-input').value;
+        displayText('#noOfDays', `${days}`);
+        let stakeAmount = select('#stake-input').value;
         let bonusRate = INT(days / 30) * 5;
         let rewardAmount = INT(wPrice) * stakeAmount * (1 + bonusRate / 100);
-        displayText('#rewardAmount', `$${COMMA(INT(rewardAmount, 3))}`);
+        displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
       });
 
       await runGlobal();
