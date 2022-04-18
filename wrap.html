@@ -301,7 +301,7 @@
         displayText('#noOfDays', `${days}`);
         let stakeAmount = select('#stake-input').value;
         let bonusRate = INT(days / 30) * 5;
-        let rewardAmount = INT(wPrice) * stakeAmount * (1 + bonusRate / 100);
+        let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100);
         displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
       });
 
