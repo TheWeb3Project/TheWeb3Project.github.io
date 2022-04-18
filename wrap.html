@@ -214,7 +214,7 @@
                   <label for="days-slider" class="fw-medium"><span id="noOfDays">14</span> days</label>
                   <input type="range" min="14" max="365" step="1" value="14" id="days-slider" class="mb-5">
                   <div>
-                    <p>Receive: ?? pWEB3</p>
+                    <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
                   </div>
               </div>
 
@@ -296,37 +296,15 @@
       // do global
 
       $(document).on('input', 'input[type="range"]', function (e) {
-      changedValue('days', select('input[type="range"]'));
-    });
+        let days = select('input[type="range"]');
+        select("#noOfDays").innerHTML = days;
+        let stakeAmount = select('#wrap-input').value;
+        let bonusRate = INT(days / 30) * 5;
+        let rewardAmount = INT(wPrice) * stakeAmount * (1 + bonusRate / 100);
+        displayText('#rewardAmount', `$${COMMA(INT(rewardAmount, 3))}`);
+      });
 
       await runGlobal();
-
-      // let curBlock = await PROVIDER.getBlock();
-      // curBlock = curBlock['number'];
-      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
-      // lastRebaseBlock = INT(lastRebaseBlock);
-      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
-      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
-      
-
-      ////////////////////////////////////////////////////////////////////////////
-
-      select('#curPrice').value = `${COMMA(INT(price, 3))}`;
-      select('#futPrice').value = `${COMMA(INT(price, 3))}`;
-
-      
-      select('#setMaxToAmount').onclick = async () => {
-        select('#amount').value = balance;
-      };
-      select('#setCurToApy').onclick = async () => {
-        select('#input-apy').value = 404092.65;
-      };
-      select('#setCurToCurPrice').onclick = async () => {
-        select('#curPrice').value = INT(price, 3);
-      };
-      select('#setCurToFutPrice').onclick = async () => {
-        select('#futPrice').value = INT(price, 3);
-      };
 
 
       $('[data-bs-toggle="tooltip"]').tooltip();
