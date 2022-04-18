@@ -228,7 +228,6 @@
               </div>
               
               <div>
-                <p>Reward Left: <span id="rewardLeft">0.000</span> pWEB3</p>
                 <p>You can claim: <span id="claimAmount">0.000</span> pWEB3</p>
               </div>
               <div id="run-claim" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -302,24 +301,28 @@
 
       [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
       let rewardAmount = data;
-      rewardAmount = rewardAmount / BNBDIV;
-      displayText('#rewardLeft', `${COMMA(INT(rewardAmount, 3))}`);
-      [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
-      let unlockTime = data;
-      [res, data] = await READ_TX('web3Stake', '_lastClaims', [CURADR]);
-      let lastClaim = data;
-
       if (0 < rewardAmount) {
-        if (0 < unlockTime) {
-          if (0 < lastClaim) {
-            let claimAmount = rewardAmount * (NOW() / 1000 - lastClaim) / (unlockTime - lastClaim);
-            claimAmount = claimAmount;
-            displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
+        rewardAmount = rewardAmount / BNBDIV;
+        displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
 
-            select('#run-claim').onclick = async () => { await runClaim(); };
-          }
-        }
+        select('#run-claim').onclick = async () => { await runClaim(); };
       }
+      // [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
+      // let unlockTime = data;
+      // [res, data] = await READ_TX('web3Stake', '_lastClaims', [CURADR]);
+      // let lastClaim = data;
+
+      // if (0 < rewardAmount) {
+      //   if (0 < unlockTime) {
+      //     if (0 < lastClaim) {
+      //       let claimAmount = rewardAmount * (NOW() / 1000 - lastClaim) / (unlockTime - lastClaim);
+      //       claimAmount = claimAmount;
+      //       displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
+
+            
+      //     }
+      //   }
+      // }
       
     }
 
