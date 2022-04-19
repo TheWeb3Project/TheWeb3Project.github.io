@@ -569,7 +569,7 @@ async function runStake() {
 }
 
 async function runUnstake() {
-  await SEND_TX('web3Stake', 'ubstake', []);
+  await SEND_TX('web3Stake', 'unstake', []);
 }
 
 async function runClaim() {
