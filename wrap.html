@@ -323,8 +323,8 @@
   <script>
 
 
-    async function doAfterConnect() {
-      await _doAfterConnect();
+    async function runPersonal() {
+      await _runPersonal();
 
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
@@ -418,7 +418,7 @@
         // connect wallet button
         return;
       }
-      await doAfterConnect();
+      await runPersonal();
 
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
