@@ -339,7 +339,7 @@
         select('#run-wweb3-approve2').classList.add('d-none');
       } else {
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
-        select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
+        select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['web3Stake']); };
       }
 
       wrapState = 'unwrap';
