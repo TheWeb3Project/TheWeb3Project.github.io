@@ -187,8 +187,8 @@
       document.getElementById("overlay").style.display = "none"
     })
 
-    async function doAfterConnect() {
-      await _doAfterConnect();
+    async function runPersonal() {
+      await _runPersonal();
       
       displayText("#balanceInUsd", `$${COMMA(INT(balance * price, 3))}`);
 
@@ -231,7 +231,7 @@
         displayText("#totalEarnedInUsd", `Connect Wallet`);
         // connect wallet button
       } else {
-        await doAfterConnect();
+        await runPersonal();
         // display address
       }
 
