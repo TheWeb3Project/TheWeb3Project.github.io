@@ -339,6 +339,7 @@
       } else {
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
+
       let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['web3Stake']);
       if (BIGINT(0) < wweb3Allowance2) {
         select('#run-wweb3-approve2').classList.add('d-none');
@@ -387,17 +388,6 @@
       
     }
 
-    async function runClaim() {
-      await SEND_TX('web3Stake', 'claimReward', []);
-    }
-
-    async function runStake() {
-      let stakeAmount = select('#stake-input').value;
-      let days = select("#noOfDays").innerHTML;
-
-      await SEND_TX('web3Stake', 'stake', [BIG(stakeAmount), days]);
-    }
-
     (async () => {
       // do global
 
@@ -414,7 +404,8 @@
       select('#run-stake').onclick = async () => { await runStake(); };
       await runGlobal();
 
-
+      wrapState = 'unwrap';
+      await wrapChange();
       $('[data-bs-toggle="tooltip"]').tooltip();
 
       await getCurAdr();
@@ -424,14 +415,6 @@
       }
       await runPersonal();
 
-
-      // let [res, data] = await GAS('web3', 'manualRebase', []);
-      // if (res == true) {
-      //   return;
-      // } else {
-      //   gasEstimation = data;
-      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
-      // }
       $('[data-bs-toggle="tooltip"]').tooltip();
       
     })();
