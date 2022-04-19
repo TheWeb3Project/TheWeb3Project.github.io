@@ -336,9 +336,13 @@
       let wweb3Allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < wweb3Allowance) {
         select('#run-wweb3-approve').classList.add('d-none');
-        select('#run-wweb3-approve2').classList.add('d-none');
       } else {
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
+      }
+      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['web3Stake']);
+      if (BIGINT(0) < wweb3Allowance2) {
+        select('#run-wweb3-approve2').classList.add('d-none');
+      } else {
         select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['web3Stake']); };
       }
 
