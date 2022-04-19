@@ -469,8 +469,8 @@
 
     <script>
       let bnbBalance;
-      async function doAfterConnect() {
-        await _doAfterConnect();
+      async function runPersonal() {
+        await _runPersonal();
 
         bnbBalance = (await getBalance(CURADR)) / BNBDIV;
         displayText("#balance-input", `${COMMA(INT(bnbBalance, 3))}`);
@@ -496,7 +496,7 @@
           // connect wallet button
           return;
         }
-        await doAfterConnect();
+        await runPersonal();
 
         $('[data-bs-toggle="tooltip"]').tooltip();
       })();
