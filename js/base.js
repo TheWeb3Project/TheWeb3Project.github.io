@@ -565,7 +565,7 @@ async function conn(func=null, popup=false) {
   	/* CURADR = await PROVIDER.send("eth_requestAccounts", []) */;
     let accounts = await ethereum.request({ method: 'eth_requestAccounts' }); // eth_requestAccounts
     await handleAccountsChanged(accounts);
-    await doAfterConnect();
+    await runPersonal();
     if (func != null) {
       await func();
     }
@@ -587,7 +587,7 @@ async function conn(func=null, popup=false) {
   }
 }
 
-async function doAfterConnect() { // dummy
+async function runPersonal() { // dummy
 }
 
 function handleChainChanged(_chainId) {
