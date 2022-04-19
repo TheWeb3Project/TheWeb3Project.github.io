@@ -169,26 +169,30 @@ async function runToggleExperi() {
 
 
 
+let bnbBalance;
 let balance;
-let wweb3Balance;
-let pweb3Balance;
+let wBalance;
+let pBalance;
 async function _runPersonal() {
   displayText('#connect', SHORTADR(CURADR));
+
+  bnbBalance = (await getBalance(CURADR)) / BNBDIV;
+  displayText("#bnbBalance", `${COMMA(INT(bnbBalance, 3))}`);
 
   balance = await CONTS['web3'].balanceOf(CURADR);
   balance = balance / BNBDIV;
 
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 
-  wweb3Balance = await CONTS['wweb3'].balanceOf(CURADR);
-  wweb3Balance = wweb3Balance / BNBDIV;
+  wBalance = await CONTS['wweb3'].balanceOf(CURADR);
+  wBalance = wBalance / BNBDIV;
 
-  displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
+  displayText("# wBalance", `${COMMA(INT( wBalance, 3))}`);
 
-  pweb3Balance = await CONTS['pweb3'].balanceOf(CURADR);
-  pweb3Balance = pweb3Balance / BNBDIV;
+  pBalance = await CONTS['pweb3'].balanceOf(CURADR);
+  pBalance = pBalance / BNBDIV;
 
-  displayText("#pweb3Balance", `${COMMA(INT(pweb3Balance, 3))}`);
+  displayText("#pBalance", `${COMMA(INT(pBalance, 3))}`);
 }
 
 let events = [];
@@ -511,7 +515,7 @@ async function wrapChange() {
     select('#wrap-input').value = select('#wrap-output').value;
     select('#wrap-output').value = tmp;
 
-    displayText("#balance-input", `${COMMA(INT(wweb3Balance, 3))}`);
+    displayText("#balance-input", `${COMMA(INT( wBalance, 3))}`);
     displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
 
     select('#symbol-input').innerHTML = "wWEB3";
@@ -528,7 +532,7 @@ async function wrapChange() {
     select('#wrap-output').value = tmp;
 
     displayText("#balance-input", `${COMMA(INT(balance, 3))}`);
-    displayText("#balance-output", `${COMMA(INT(wweb3Balance, 3))}`);
+    displayText("#balance-output", `${COMMA(INT( wBalance, 3))}`);
 
     select('#symbol-input').innerHTML = "WEB3";
     select('#symbol-output').innerHTML = "wWEB3";
