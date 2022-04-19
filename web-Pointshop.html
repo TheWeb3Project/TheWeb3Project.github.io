@@ -288,16 +288,16 @@
 
   <script>
 
-    let wweb3Balance;
+    let  wBalance;
     async function runPersonal() {
       await _runPersonal();
 
 
 
-      wweb3Balance = await CONTS['wweb3'].balanceOf(CURADR);
-      wweb3Balance = wweb3Balance / BNBDIV;
+       wBalance = await CONTS['wweb3'].balanceOf(CURADR);
+       wBalance =  wBalance / BNBDIV;
 
-      displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
+      displayText("# wBalance", `${COMMA(INT( wBalance, 3))}`);
 
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
