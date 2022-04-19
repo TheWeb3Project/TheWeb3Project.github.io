@@ -89,6 +89,7 @@ ABIS['web3'] = [
   "function _isExperi() view returns (bool)",
   "function toggleExperi()",
   "function setBotBlacklists(address[], bool[])",
+  "function setLifeSupports(address[], uint[])",
   "function sellbuy(uint)",
   "function _curcuitBreakerFlag() view returns (uint256)",
   "function _curcuitBreakerTime() view returns (uint256)",
