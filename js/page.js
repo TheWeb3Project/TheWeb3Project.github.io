@@ -82,7 +82,7 @@ let price;
 let wPrice;
 
 let totalSupply;
-let wweb3totalSupply;
+let wTotalSupply;
 
 let liqWeb3;
 let liqBnb;
@@ -94,8 +94,8 @@ async function runGlobal() {
   totalSupply = await CONTS['web3'].totalSupply();
   totalSupply = totalSupply / BNBDIV;
 
-  wweb3totalSupply = await CONTS['wweb3'].totalSupply();
-  wweb3totalSupply = wweb3totalSupply / BNBDIV;
+  wTotalSupply = await CONTS['wweb3'].totalSupply();
+  wTotalSupply = wTotalSupply / BNBDIV;
 
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
@@ -136,11 +136,11 @@ async function runGlobal() {
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
 
-  wPrice = price * totalSupply / wweb3totalSupply;
+  wPrice = price * totalSupply / wTotalSupply;
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
 
   let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
-  let wCirculatingSupply = wweb3totalSupply - lockedAmount;
+  let wCirculatingSupply = wTotalSupply - lockedAmount;
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let mcap = price * circulatingSupply;
@@ -424,7 +424,7 @@ async function approve(name, target) {
 }
 
 // async function inputHandleWrap(e) {
-// 	await inputHandle(e, 'wrap', totalSupply, wweb3totalSupply);  
+// 	await inputHandle(e, 'wrap', totalSupply, wTotalSupply);  
 // }
 
 async function handleInputSwap(e) {
@@ -473,7 +473,7 @@ let wrapInputHandle = function (e) {
     }
 
     valueIn = BIG(valueIn);
-    let valueOut = valueIn.mul(BIG(String(wweb3totalSupply))).div(BIG(String(totalSupply)));
+    let valueOut = valueIn.mul(BIG(String(wTotalSupply))).div(BIG(String(totalSupply)));
 
     let valueOut_ = ETH(valueOut);
     valueOut_ = INT(parseFloat(valueOut_), 8);
@@ -493,7 +493,7 @@ let unwrapInputHandle = function (e) {
     }
 
     valueIn = BIG(valueIn);
-    let valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG(String(wweb3totalSupply)));
+    let valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG(String(wTotalSupply)));
 
     let valueOut_ = ETH(valueOut);
     valueOut_ = INT(parseFloat(valueOut_), 8);
