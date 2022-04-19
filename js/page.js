@@ -434,6 +434,10 @@ async function runStake() {
   await SEND_TX('web3Stake', 'stake', [BIG(stakeAmount), days]);
 }
 
+async function runUnstake() {
+  await SEND_TX('web3Stake', 'ubstake', []);
+}
+
 async function runClaim() {
   await SEND_TX('web3Stake', 'claimReward', []);
 }
