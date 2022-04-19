@@ -468,13 +468,9 @@
     </script>
 
     <script>
-      let bnbBalance;
+      
       async function runPersonal() {
         await _runPersonal();
-
-        bnbBalance = (await getBalance(CURADR)) / BNBDIV;
-        displayText("#balance-input", `${COMMA(INT(bnbBalance, 3))}`);
-        displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
 
         select("#run-wrap").onclick = async () => {
           await runSwap();
