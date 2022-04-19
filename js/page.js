@@ -517,7 +517,7 @@ async function wrapChange() {
     select('#wrap-input').value = select('#wrap-output').value;
     select('#wrap-output').value = tmp;
 
-    displayText("#balance-input", `${COMMA(INT( wBalance, 3))}`);
+    displayText("#balance-input", `${COMMA(INT(wBalance, 3))}`);
     displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
 
     select('#symbol-input').innerHTML = "wWEB3";
@@ -534,7 +534,7 @@ async function wrapChange() {
     select('#wrap-output').value = tmp;
 
     displayText("#balance-input", `${COMMA(INT(balance, 3))}`);
-    displayText("#balance-output", `${COMMA(INT( wBalance, 3))}`);
+    displayText("#balance-output", `${COMMA(INT(wBalance, 3))}`);
 
     select('#symbol-input').innerHTML = "WEB3";
     select('#symbol-output').innerHTML = "wWEB3";
