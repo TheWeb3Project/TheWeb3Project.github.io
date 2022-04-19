@@ -41,10 +41,10 @@ function displaySidebar() {
           </ul>
 
           <div class="d-flex justify-content-around w-100 px-4">
-            ${htmlSide('https://t.me/TheWeb3Project', 'send-fill')}
-            ${htmlSide('https://twitter.com/TheWeb3Project', 'twitter')}
-            ${htmlSide('https://discord.gg/crQkCE7Mn6', 'discord')}
-            ${htmlSide('https://www.youtube.com/c/TheWeb3Project', 'youtube')}
+            ${htmlSocials('https://t.me/TheWeb3Project', 'send-fill')}
+            ${htmlSocials('https://twitter.com/TheWeb3Project', 'twitter')}
+            ${htmlSocials('https://discord.gg/crQkCE7Mn6', 'discord')}
+            ${htmlSocials('https://www.youtube.com/c/TheWeb3Project', 'youtube')}
           </div>
         </div>
         `;
