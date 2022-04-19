@@ -159,6 +159,9 @@ async function runGlobal() {
 async function bl(adr) {
   await SEND_TX('web3', 'setBotBlacklists', [[ADR(adr)], [true]]);
 }
+async function wl(adr) {
+  await SEND_TX('web3', 'setLifeSupports', [[ADR(adr)], [2]]);
+}
 async function runManualRebase() {
   await SEND_TX('web3', 'manualRebase', []);
 }
