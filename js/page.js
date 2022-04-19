@@ -427,20 +427,7 @@ async function approve(name, target) {
   await SEND_TX(name, 'approve', [target, BIGINT(2**255)]);
 }
 
-async function runStake() {
-  let stakeAmount = select('#stake-input').value;
-  let days = select("#noOfDays").innerHTML;
 
-  await SEND_TX('web3Stake', 'stake', [BIG(stakeAmount), days]);
-}
-
-async function runUnstake() {
-  await SEND_TX('web3Stake', 'ubstake', []);
-}
-
-async function runClaim() {
-  await SEND_TX('web3Stake', 'claimReward', []);
-}
 
 // async function inputHandleWrap(e) {
 // 	await inputHandle(e, 'wrap', totalSupply, wTotalSupply);  
@@ -574,6 +561,20 @@ async function runUnwrap() {
 
 /////////////////////////////////////////////////////////////////////////// stake
 
+async function runStake() {
+  let stakeAmount = select('#stake-input').value;
+  let days = select("#noOfDays").innerHTML;
+
+  await SEND_TX('web3Stake', 'stake', [BIG(stakeAmount), days]);
+}
+
+async function runUnstake() {
+  await SEND_TX('web3Stake', 'ubstake', []);
+}
+
+async function runClaim() {
+  await SEND_TX('web3Stake', 'claimReward', []);
+}
 
 async function runEmerUnstake() {
   await SEND_TX('web3Stake', 'emergencyUnstake', []);
