@@ -42,6 +42,11 @@ const BNBDIV = 10**18;
 const CHAINID = 56;
 const UINT256MAX = 2**256 - 1;
 
+let RPCS = [
+  "https://bsc-dataseed.binance.org",
+  "https://bsc-dataseed1.defibit.io",
+  "https://bsc-dataseed1.ninicoin.io",
+];
 let PROVIDER;
 if (window.ethereum) {
 	PROVIDER = new ethers.providers.Web3Provider(window.ethereum);
@@ -53,14 +58,14 @@ if (window.ethereum) {
         method: "wallet_addEthereumChain",
         params: [{
           chainId: "0x38",
-          rpcUrls: ["https://bsc-dataseed.binance.org"],
+          rpcUrls: [RPCS[1]],
         }],
       });
     }
   })();
   
 } else {
-  PROVIDER = new ethers.providers.JsonRpcProvider("https://bsc-dataseed.binance.org", {name: 'binance', 'chainId': 56});
+  PROVIDER = new ethers.providers.JsonRpcProvider(RPCS[1], {name: 'binance', 'chainId': 56});
 }
 
 const SIGNER = PROVIDER.getSigner();
