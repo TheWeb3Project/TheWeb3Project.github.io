@@ -187,7 +187,7 @@ async function _runPersonal() {
   wBalance = await CONTS['wweb3'].balanceOf(CURADR);
   wBalance = wBalance / BNBDIV;
 
-  displayText("# wBalance", `${COMMA(INT( wBalance, 3))}`);
+  displayText("#wBalance", `${COMMA(INT(wBalance, 3))}`);
 
   pBalance = await CONTS['pweb3'].balanceOf(CURADR);
   pBalance = pBalance / BNBDIV;
