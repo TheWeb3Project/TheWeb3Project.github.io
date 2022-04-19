@@ -348,7 +348,7 @@ function displayAvatarPage() {
                 <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick=changePart(${part}, this.id)"> \
                 <img src="images/${gender}-${part}-${idz+1}-t.png" alt="${gender}-${part}-${idz+1}.png" class="img-fluid rounded-1" /> \
                 <span class="tooltiptext-custom py-3 px-2"> \
-                <span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
+                <span class="bg-grey small fw-bold py-2 rounded-pill"> \
                 Tax reduction (+x%) \
                 </span> \
                 </span> \
@@ -395,7 +395,7 @@ function displayAvatarPage() {
                     <button id="${gender}-${part}-${idz+1}.png" type="button" class="btn btn-secondary option-btn p-0 tooltip-custom" onclick="changePart(${part}, this.id)"> \
                     <img src="images/${gender}-${part}-${idz+1}-t.png" alt="${gender}-${part}-${idz+1}.png" class="img-fluid rounded-1" /> \
                     <span class="tooltiptext-custom py-3 px-2"> \
-                    <span class="bg-grey small fw-bold px-3 py-2 rounded-pill"> \
+                    <span class="bg-grey small fw-bold py-2 rounded-pill"> \
                     Tax reduction (+x%) \
                     </span> \
                     </span> \
