@@ -289,8 +289,8 @@
   <script>
 
     let wweb3Balance;
-    async function doAfterConnect() {
-      await _doAfterConnect();
+    async function runPersonal() {
+      await _runPersonal();
 
 
 
@@ -395,7 +395,7 @@
         // connect wallet button
         return;
       }
-      await doAfterConnect();
+      await runPersonal();
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
       // if (res == true) {
