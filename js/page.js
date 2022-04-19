@@ -574,20 +574,6 @@ async function runUnwrap() {
 
 /////////////////////////////////////////////////////////////////////////// stake
 
-async function runStake() {
-  let valueInput = select('#value-input').value;
-  let wweb3Amount = BIG(valueInput.value);
-  let duration = select('#value-output');
-  await SEND_TX('web3Stake', 'stake', [web3Amount, duration]);
-}
-
-async function runClaim() {
-  await SEND_TX('web3Stake', 'claimReward', []);
-}
-
-async function runUnstake() {
-  await SEND_TX('web3Stake', 'unstake', []);
-}
 
 async function runEmerUnstake() {
   await SEND_TX('web3Stake', 'emergencyUnstake', []);
