@@ -1,5 +1,27 @@
 'use strict'
 
+function htmlSide(url, icon, name) {
+  let htmlStr = `
+    <li class="mb-4 py-2 px-5 rounded-1">
+      <a href="${url}" class="text-decoration-none text-reset d-flex align-items-center neontext">
+        <span class="fs-5"><i class="bi bi-${icon}"></i></span>
+        <span class="ms-3">${name}</span>
+      </a>
+    </li>
+  `;
+
+  return htmlStr;
+}
+function htmlSocials(url, icon) {
+  let htmlStr = `
+    <a href="${url}" class="text-decoration-none text-reset fs-5 social-icon-hover">
+      <i class="bi bi-${icon}"></i>
+    </a>
+  `;
+
+  return htmlStr;
+}
+
 function displaySidebar() {
     let htmlStr = `
         <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
@@ -9,64 +31,20 @@ function displaySidebar() {
           </a>
 
           <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
-            <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="index.html" class="text-decoration-none text-reset d-flex align-items-center neontext ">
-                <span class="fs-5"><i class="bi bi-collection"></i></span>
-                <span class="ms-3 ">Dashboard</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="account.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
-                <span class="fs-5"><i class="bi bi-person-circle"></i></span>
-                <span class="ms-3">Account</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="calculator.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
-                <span class="fs-5"><i class="bi bi-calculator-fill"></i></span>
-                <span class="ms-3">Calculator</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="swap.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
-                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
-                <span class="ms-3">Swap</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
-                <span class="fs-5"><i class="bi bi-box-seam"></i></span>
-                <span class="ms-3">Wrap</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-1">
-            <a href="web-pointshop.html" class="text-decoration-none text-reset d-flex align-items-center neontext">
-              <span class="fs-5"><i class="bi bi bi-shop"></i></span>
-              <span class="ms-3">Point shop</span>
-            </a>
-          </li>
-            <li class="mb-4 py-2 px-5 rounded-1">
-              <a href="https://docs.theweb3project.com" class="text-decoration-none text-reset d-flex align-items-center neontext">
-                <span class="fs-5"><i class="bi bi-journal-text"></i></span>
-                <span class="ms-3">Docs</span>
-              </a>
-            </li>
+            ${htmlSide('index.html', 'collection', 'Dashboard')}
+            ${htmlSide('account.html', 'person-circle', 'Account')}
+            ${htmlSide('calculator.html', 'calculator-fill', 'Calculator')}
+            ${htmlSide('swap.html', 'lightning-charge', 'Swap')}
+            ${htmlSide('wrap.html', 'box-seam', 'Wrap')}
+            ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
+            ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
           <div class="d-flex justify-content-around w-100 px-4">
-            <a href="https://t.me/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-send-fill"></i>
-            </a>
-            <a href="https://twitter.com/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-twitter"></i>
-            </a>
-            <a href="https://discord.gg/crQkCE7Mn6" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-discord"></i>
-            </a>
-            <a href="https://www.youtube.com/c/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-youtube"></i>
-            </a>
-
+            ${htmlSide('https://t.me/TheWeb3Project', 'send-fill')}
+            ${htmlSide('https://twitter.com/TheWeb3Project', 'twitter')}
+            ${htmlSide('https://discord.gg/crQkCE7Mn6', 'discord')}
+            ${htmlSide('https://www.youtube.com/c/TheWeb3Project', 'youtube')}
           </div>
         </div>
         `;
