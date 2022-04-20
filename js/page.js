@@ -440,21 +440,30 @@ async function handleInputSwap(e) {
   await handleInput(e, 'wrap-output', liqBnb, liqWeb3);
 }
 
+async function handleInputWrap(e) {
+  await handleInput(e, 'wrap-output', totalSupply, wTotalSupply);
+}
+
+async function handleInputUnwrap(e) {
+  await handleInput(e, 'wrap-output', wTotalSupply, totalSupply);
+}
+
 async function handleInput(e, name, inputSupply, outputSupply) {
 	let valueIn = e.target.value;
-  valueIn = valueIn.replace(/,/g, '');
-  let result = select(`#${name}`);
+  valueIn = valueIn.replace(/,/g, '.');
+  e.target.value = valueIn;
+  let ot = select(`#${outputName}`);
   if (valueIn == 0) {
-    result.value = 0;
+    ot.value = 0;
     return;
   }
 
-  valueIn = BIG(valueIn);
-  let valueOut = valueIn.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
+  let valueIn_ = BIG(valueIn);
+  let valueOut_ = valueIn_.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
 
-  let valueOut_ = ETH(valueOut);
-  valueOut_ = INT(parseFloat(valueOut_), 8);
-  result.value = valueOut_;
+  let valueOut = ETH(valueOut_);
+  valueOut = INT(parseFloat(valueOut, 8));
+  ot.value = valueOut;
 }
 
 
@@ -471,50 +480,11 @@ async function runWrap() {
 }
 
 
-let wrapInputHandle = function (e) {
-  (async function () {
-    let valueIn = e.target.value;
-    valueIn = valueIn.replace(/,/g, '');
-    let result = select('#wrap-output');
-    if (valueIn == 0) {
-      result.value = 0;
-      return;
-    }
-
-    valueIn = BIG(valueIn);
-    let valueOut = valueIn.mul(BIG(String(wTotalSupply))).div(BIG(String(totalSupply)));
-
-    let valueOut_ = ETH(valueOut);
-    valueOut_ = INT(parseFloat(valueOut_), 8);
-    result.value = valueOut_;
-
-  })();
-}
-
-let unwrapInputHandle = function (e) {
-  (async function () {
-    let valueIn = e.target.value;
-    valueIn = valueIn.replace(/,/g, '');
-    let result = select('#wrap-output');
-    if (valueIn == 0) {
-      result.value = 0;
-      return;
-    }
-
-    valueIn = BIG(valueIn);
-    let valueOut = valueIn.mul(BIG(String(totalSupply))).div(BIG(String(wTotalSupply)));
-
-    let valueOut_ = ETH(valueOut);
-    valueOut_ = INT(parseFloat(valueOut_), 8);
-    result.value = valueOut_;
-  })();
-}
-
 let wrapState = 'wrap';
 async function wrapChange() {
   if (wrapState == 'wrap') {
-    select('#wrap-input').removeEventListener('input', wrapInputHandle);
-    select('#wrap-input').addEventListener('input', unwrapInputHandle);
+    select('#wrap-input').removeEventListener('input', handleInputWrap);
+    select('#wrap-input').addEventListener('input', handleInputUnwrap);
 
     let tmp = select('#wrap-input').value;
     select('#wrap-input').value = select('#wrap-output').value;
@@ -529,8 +499,8 @@ async function wrapChange() {
     select('#run-wrap').onclick = async () => { await runUnwrap(); };
     wrapState = 'unwrap';
   } else {
-    select('#wrap-input').removeEventListener('input', unwrapInputHandle);
-    select('#wrap-input').addEventListener('input', wrapInputHandle);
+    select('#wrap-input').removeEventListener('input', handleInputUnwrap);
+    select('#wrap-input').addEventListener('input', handleInputWrap);
 
     let tmp = select('#wrap-input').value;
     select('#wrap-input').value = select('#wrap-output').value;
