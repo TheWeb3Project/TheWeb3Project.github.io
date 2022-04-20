@@ -452,7 +452,7 @@ async function handleInput(e, name, inputSupply, outputSupply) {
 	let valueIn = e.target.value;
   valueIn = valueIn.replace(/,/g, '.');
   e.target.value = valueIn;
-  let ot = select(`#${outputName}`);
+  let ot = select(`#${name}`);
   if (valueIn == 0) {
     ot.value = 0;
     return;
