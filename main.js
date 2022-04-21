@@ -531,18 +531,3 @@ $(function () {
     $('[data-bs-toggle="tooltip"]').tooltip();
   })
 
-  let bnbPrice;
-  let price;
-  (async () => {
-    // do global
-    select('#connect').onclick = async () => { await conn(); };
-
-    bnbPrice = 1 / (await getPrice('busd'));
-
-    let liqReserves = await CONTS['pairweb3'].getReserves();
-    let liqBnb = liqReserves[1] / BNBDIV; 
-
-    let liqWeb3 = liqReserves[0] / BNBDIV;
-    let liqRate = liqBnb / liqWeb3;
-    price = liqRate * bnbPrice;
-  })();
