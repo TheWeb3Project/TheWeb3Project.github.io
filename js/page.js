@@ -63,7 +63,7 @@ function displayWeb3Header() {
               </button>
 
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="https://pancakeswap.finance/swap?outputCurrency=0x333FD139cAeF6Aa31056cC905987b77B1044d259">Buy on Pancakeswap</a></li>
+
                 <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
               </ul>
             </div>
@@ -123,7 +123,7 @@ async function runGlobal() {
 
   let liqReserves = await CONTS['pairweb3'].getReserves();
   liqWeb3 = liqReserves[0] / BNBDIV;
-  liqBnb = liqReserves[1] / BNBDIV; 
+  liqBnb = liqReserves[1] / BNBDIV;
   let liqRate = liqBnb / liqWeb3;
 
   let liqBalance = liqBnb * bnbPrice;
@@ -131,7 +131,7 @@ async function runGlobal() {
 
   let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
   displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
-  
+
   price = liqRate * bnbPrice;
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
@@ -433,7 +433,7 @@ async function approve(name, target) {
 
 
 // async function inputHandleWrap(e) {
-// 	await inputHandle(e, 'wrap', totalSupply, wTotalSupply);  
+// 	await inputHandle(e, 'wrap', totalSupply, wTotalSupply);
 // }
 
 async function handleInputSwap(e) {
