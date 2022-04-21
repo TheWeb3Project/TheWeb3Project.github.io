@@ -495,7 +495,7 @@ async function wrapChange() {
 
 
 
-    select('#balance-outputsymbol-input').innerHTML = "wWEB3";
+    select('#symbol-input').innerHTML = "wWEB3";
     select('#symbol-output').innerHTML = "WEB3";
     select('#run-name').innerHTML = "Unwrap";
     select('#run-wrap').onclick = async () => { await runUnwrap(); };
@@ -590,4 +590,20 @@ const copyLinkpweb = async (link) => {
 	}, 3000)
 };
 
-buttonpweb.addEventListener('click', () => copyLinkpweb('0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569'))
+buttonpweb.addEventListener('click', () => copyLinkwrap('0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569'))
+
+const buttonpwrap = select('.copy-btn-wrap');
+
+const addToClipboardwrap = async (link) => {
+	await navigator.clipboard.writeText(link);
+}
+
+const copyLinkwrap = async (link) => {
+	const copiedwrap = await addToClipboardwrap(link)
+	buttonpwrap.innerText = 'Copied'
+	setTimeout(() => {
+		buttonpwrap.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+	}, 3000)
+};
+
+buttonpwrap.addEventListener('click', () => copyLinkwrap('0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f'))
