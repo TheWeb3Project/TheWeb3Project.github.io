@@ -493,7 +493,9 @@ async function wrapChange() {
     displayText("#balance-input", `${COMMA(INT(wBalance, 3))}`);
     displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
 
-    select('#symbol-input').innerHTML = "wWEB3";
+
+
+    select('#balance-outputsymbol-input').innerHTML = "wWEB3";
     select('#symbol-output').innerHTML = "WEB3";
     select('#run-name').innerHTML = "Unwrap";
     select('#run-wrap').onclick = async () => { await runUnwrap(); };
@@ -506,8 +508,8 @@ async function wrapChange() {
     select('#wrap-input').value = select('#wrap-output').value;
     select('#wrap-output').value = tmp;
 
-    displayText("#balance-input", `${COMMA(INT(balance, 3))}`);
-    displayText("#balance-output", `${COMMA(INT(wBalance, 3))}`);
+    displayText("#balance-input", `${COMMA(INT(balance, 2))}`);
+    displayText("#balance-output", `${COMMA(INT(wBalance, 2))}`);
 
     select('#symbol-input').innerHTML = "WEB3";
     select('#symbol-output').innerHTML = "wWEB3";
@@ -573,3 +575,19 @@ const copyLink = async (link) => {
 };
 
 button.addEventListener('click', () => copyLink('0x333FD139cAeF6Aa31056cC905987b77B1044d259'))
+
+const buttonpweb = select('.copy-btn-pweb');
+
+const addToClipboardpweb = async (link) => {
+	await navigator.clipboard.writeText(link);
+}
+
+const copyLinkpweb = async (link) => {
+	const copiedpweb = await addToClipboardpweb(link)
+	buttonpweb.innerText = 'Copied'
+	setTimeout(() => {
+		buttonpweb.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+	}, 3000)
+};
+
+buttonpweb.addEventListener('click', () => copyLinkpweb('0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569'))
