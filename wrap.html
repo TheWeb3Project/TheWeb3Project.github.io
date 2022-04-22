@@ -466,6 +466,9 @@
 
       unlockAfter = unlockTime - NOW() / 1000;
       let timeinterval = setInterval(function () {
+        		if (unlockAfter == 0) {
+              return;
+            }
             displayText("#unlockAfter", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) / 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);  
             unlockAfter = UPDATETICK(unlockAfter);
           }, 1000);
