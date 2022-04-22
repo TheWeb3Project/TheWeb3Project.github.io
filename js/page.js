@@ -462,7 +462,7 @@ async function handleInput(e, name, inputSupply, outputSupply) {
   let valueOut_ = valueIn_.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
 
   let valueOut = ETH(valueOut_);
-  valueOut = INT(parseFloat(valueOut, 8));
+  valueOut = INT(parseFloat(valueOut), 8);
   ot.value = valueOut;
 }
 
