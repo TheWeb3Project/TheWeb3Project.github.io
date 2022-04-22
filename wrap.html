@@ -467,7 +467,7 @@
       unlockAfter = unlockTime - NOW() / 1000;
       let timeinterval = setInterval(function () {
             displayText("#unlockAfter", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) / 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);  
-            UPDATETICK(unlockAfter);
+            unlockAfter = UPDATETICK(unlockAfter);
           }, 1000);
 
       // [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);

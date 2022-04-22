@@ -275,7 +275,7 @@ function DELAY(milSec) {
 }
 
 function UPDATETICK(ticks) {
-  ticks = ticks - 1;
+  return ticks - 1;
 }
 
 ///////////////////////////////// html
