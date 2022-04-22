@@ -266,7 +266,7 @@
           cbTimeLeft = cbTime + 3600 - now;
 
           let timeinterval = setInterval(function () {
-            displayText("#cb", `ON for ${INT(TICKS / 60)}m ${TICKS % 60}s`);            
+            displayText("#cb", `ON for ${INT(cbTimeLeft / 60)}m ${cbTimeLeft % 60}s`);            
             UPDATETICK(cbTimeLeft);
           }, 1000);
         }
