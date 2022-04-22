@@ -252,7 +252,7 @@
       await _runPersonal();
     }
     
-    let timeLeft;
+    let cbTimeLeft;
     (async () => {
       // do global
       await runGlobal();
@@ -263,11 +263,11 @@
         cbTime = INT(cbTime);
         if (cbTime != 0) {
           let now = INT(NOW() / 1000);
-          TICKS = cbTime + 3600 - now;
+          cbTimeLeft = cbTime + 3600 - now;
 
           let timeinterval = setInterval(function () {
             displayText("#cb", `ON for ${INT(TICKS / 60)}m ${TICKS % 60}s`);            
-            UPDATETICK();
+            UPDATETICK(cbTimeLeft);
           }, 1000);
         }
         // displayText("#cb", `ON`);
