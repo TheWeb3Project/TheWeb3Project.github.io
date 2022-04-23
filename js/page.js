@@ -371,9 +371,6 @@ async function getTotalEarned() {
 /////////////////////////////////////////////////////////////////////////// calculator
 function changedValue(target, curTarget) {
   let curAmount = select('#amount').value;
-  if(curAmount < 333) {
-
-  }
   if (curAmount == 0) {
     displayText("#initInvest", `$${COMMA(INT(0.000, 3))}`);
     displayText("#futWealth", `$${COMMA(INT(0.000, 3))}`);
@@ -395,10 +392,11 @@ function changedValue(target, curTarget) {
   // let dailyRate = 0.004908;
   // let dailyRate = 0.02301279;
 
-
-  let dailyRate = 0.02301279;
-  let totalRate = ((1 + dailyRate) ** days);
-  let futAmount = INT(curAmount * totalRate, 2);
+  
+  // let dailyRate = 0.02301279;
+  // let totalRate = ((1 + dailyRate) ** days);
+  // let futAmount = INT(curAmount * totalRate, 2);
+  let futAmount = INT(curAmount * (1 + 2880 / totalSupply), 3);
   select('#futAmount').value = futAmount;
 
   let futPrice;
