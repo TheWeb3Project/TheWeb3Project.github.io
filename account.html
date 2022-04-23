@@ -233,7 +233,7 @@
         await runPersonal();
         // display address
         let totalSupplyPercentage = document.getElementById('percentTotalSupply').innerHTML;
-        calcToken = 1440 * (totalSupplyPercentage / 100)
+        calcToken = 2880 * (totalSupplyPercentage / 100)
         console.log(calcToken)
 
               // let dailyRate = 1.00490800;
@@ -241,7 +241,7 @@
       // displayText("#nextDailyReward", `${COMMA(INT(balance * dailyRate - balance, 3))} $WEB3`);
       displayText("#nextDailyReward", `${COMMA(INT(calcToken, 3))} $WEB3`);
 
-      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * 1.01801636, 3))}`);
+      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * dailyRate, 3))}`);
       }
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
