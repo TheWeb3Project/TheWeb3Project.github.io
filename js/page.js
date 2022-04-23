@@ -396,7 +396,7 @@ function changedValue(target, curTarget) {
   // let dailyRate = 0.02301279;
   // let totalRate = ((1 + dailyRate) ** days);
   // let futAmount = INT(curAmount * totalRate, 2);
-  let futAmount = INT(curAmount * (1 + 2880 / totalSupply), 3);
+  let futAmount = curAmount + INT(curAmount * 2880 * days / (totalSupply + 2880 * days), 3);
   select('#futAmount').value = futAmount;
 
   let futPrice;
