@@ -244,14 +244,6 @@
       displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * dailyRate, 3))}`);
       }
 
-      // let [res, data] = await GAS('web3', 'manualRebase', []);
-      // if (res == true) {
-      //   return;
-      // } else {
-      //   gasEstimation = data;
-      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
-      // }
-
       await getTotalEarned();
 
       $('[data-bs-toggle="tooltip"]').tooltip();
