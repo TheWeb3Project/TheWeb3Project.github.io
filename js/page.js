@@ -110,6 +110,7 @@ async function runGlobal() {
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
   let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
   trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
+  trustFundBalance += 200000; // node invest
   displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
 
   let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
