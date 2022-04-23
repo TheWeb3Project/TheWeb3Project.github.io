@@ -33,77 +33,11 @@
   <link rel="stylesheet" href="css/flooz.css">
 </head>
 
-<body id="titano-finance" style="margin-bottom: 100px; width: 100%; background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
+<body id="titano-finance" style="margin-bottom: 100px; width: 100%; background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326); font-weight: 400;">
   <div class="container-fluid">
     <div class="row">
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;  ">
-        <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
-          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center ps-3 pe-2">
-            <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
-            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-4" style="width: 100%;">
-          </a>
 
-          <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="index.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-collection"></i></span>
-                <span class="ms-3">Dashboard</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="account.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-person-circle"></i></span>
-                <span class="ms-3">Account</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="calculator.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-calculator-fill"></i></span>
-                <span class="ms-3">Calculator</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="swap.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
-                <span class="ms-3">Swap</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="wrap.html" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-lightning-charge"></i></span>
-                <span class="ms-3">Wrap</span>
-              </a>
-            </li>
-            <li class="mb-4 py-2 px-5 rounded-pill ">
-            <a href="web-pointshop.html" class="text-decoration-none text-reset d-flex align-items-center">
-              <span class="fs-5"><i class="bi bi bi-shop"></i></span>
-              <span class="ms-3">Web Points <br> <div class="center-text"> shop </div> </span>
-            </a>
-          </li>
-            <li class="mb-4 py-2 px-5 rounded-pill">
-              <a href="https://docs.theweb3project.com" class="text-decoration-none text-reset d-flex align-items-center">
-                <span class="fs-5"><i class="bi bi-journal-text"></i></span>
-                <span class="ms-3">Docs</span>
-              </a>
-            </li>
-          </ul>
-
-          <div class="d-flex justify-content-around w-100 px-4">
-            <a href="https://t.me/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-send-fill"></i>
-            </a>
-            <a href="https://twitter.com/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-twitter"></i>
-            </a>
-            <a href="https://discord.gg/crQkCE7Mn6" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-discord"></i>
-            </a>
-            <a href="https://www.youtube.com/c/TheWeb3Project" class="text-decoration-none text-reset fs-5 social-icon-hover">
-              <i class="bi bi-youtube"></i>
-            </a>
-
-          </div>
-        </div>
       </div>
 
       <div id="overlay" style="z-index: 1000001;"></div>
@@ -119,7 +53,6 @@
               </button>
 
               <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="https://pancakeswap.finance/swap?outputCurrency=0x333FD139cAeF6Aa31056cC905987b77B1044d259">Buy on Pancakeswap</a></li>
                 <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
               </ul>
             </div>
@@ -127,7 +60,7 @@
               <button id="connect" type="button" class="btn rounded-1 ms-3">
                 Connect Wallet
               </button>
-              <!-- <div class="ms-3 d-flex flex-column font-weight-light" style="font-weight: 300;">
+              <!-- <div class="ms-3 d-flex flex-column px-3 font-weight-light" style="font-weight: 300;">
                 <div class="d-flex justify-content-between font-weight-light"><div>12</div><div>Web3</div></div>
                 <div class="d-flex justify-content-between"><div>3</div><div>wWeb3</div></div>
                 <div class="d-flex justify-content-between"><div>100</div><div>pWeb3</div></div>
@@ -140,11 +73,43 @@
         </div>
 
         <div class="container pt-3">
-          <div class=" my-5">
+
+
+
+
+
+          <div class=" my-5 col-12 mx-auto">
+            <div class="card bg-light text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+              <div class="row row-cols-1 row-cols-sm-3">
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    $WEB3 balance
+                  </div>
+                  <h4 id="balance" class="fw-bold">0.000</h4>
+                </div>
+
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    $wWEB3 balance
+                  </div>
+                  <h4 id="wBalance" class="fw-bold">0.000</h4>
+                </div>
+
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    $pWEB3 balance
+                  </div>
+                  <h4 id="pBalance" class="fw-bold">0.000</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class=" mt-5">
             <div class="card bg-light  text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-              <span class="fw-medium ms-1">$WEB3 Contract:
-                <a href="https://bscscan.com/address/0x333FD139cAeF6Aa31056cC905987b77B1044d259">
-                0x333FD139cAeF6Aa31056cC905987b77B1044d259
+              <span class="fw-medium ms-1">$pWEB3 Contract:
+                <a href="https://bscscan.com/token/0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569">
+                  0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569
                 </a>
                 <button style="font-size: 16px; 	background: none;
                 color: inherit;
@@ -152,10 +117,11 @@
                 padding: 0;
                 font: inherit;
                 cursor: pointer;
-                outline: inherit;" class="copy-btn"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
+                outline: inherit;" class="copy-btn-pweb"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
               </span>
             </div>
           </div>
+
           <div class="">
 
           <div class="d-flex gap-4 flex-sm-row flex-column pb-5">
@@ -168,20 +134,24 @@
                   "></i>
                 </div>
                   <img src="./images/armybox.png" class="col-12 mx-auto" alt="">
-                  <p class=" mt-4">Web3 army NFT</p>
-                  <p class=" mt-2">?? Pweb3</p>
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="margin-top: 3rem; border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span id="run-name" class="button__content" onclick="window.alert('Coming soon!');''">Buy a mystery box</span>
-                  </button>
+                  <p class="h5">Web3 army NFT</p>
+                  <div class="mb-4 pb-1"></div>
+                  <div class="mt-4 pt-3">
+                    <p class=" mt-2">?? pWEB3</p>
+                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="margin-top: 1.2rem; border: 3px solid #48acef;
+                    border-radius: 20px;
+                    background-image: linear-gradient(134deg,#48acef,#00436f);
+                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                      <span id="run-name" class="button__content" onclick="window.alert('Coming soon!');''">Buy a mystery box</span>
+                    </button>
+                  </div>
+
               </div>
             </div>
             <div class="mx-auto col-12 col-sm-4">
               <div class="card bg-light d-flex  p-3 p-sm-4 mt-5 h-100" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                <div class="d-flex">
-                  <h5 class="mx-auto">TW3P <br> Miner</h5>
+                <div class="d-flex mb-1">
+                  <h5 class="mx-auto fw-bold h4">TW3P <br> Miner</h5>
                   <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                   coming soon
                   "></i>
@@ -189,8 +159,8 @@
                   <img src="./images/Group_68.png" class="col-7 mb-4 pb-2   " id="minerImage" alt="" style="margin-left: 40px;">
                 <label for="days-slider" class="fw-medium"><span id="noOfDays">30</span> Miner</label>
                 <input type="range" min="1" max="1000" step="1" value="30" id="days-slider" class="">
-                <div class="d-flex flex-xl-row flex-column justify-content-between mt-4 pt-1">
-                  <div class="d-flex flex-column mt-4"> <div class="mx-auto ">?? PBWEB3</div>
+                <div class="d-flex flex-xl-row flex-column justify-content-between mt-2 pt-1">
+                  <div class="d-flex flex-column mt-4 col-5"> <div class="mx-auto mb-3">?? PBWEB3</div>
                   <div>
                     <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" onclick="window.alert('Coming soon!');''" style=" border: 3px solid #48acef;
                     border-radius: 20px;
@@ -199,17 +169,9 @@
                       <span id="run-name" class="button__content">Buy</span>
                     </button></div>
                   </div>
-                  <div class="d-flex flex-column  mt-4"><div class="mx-auto ">?? USD3</div>
-                  <div>
-                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" onclick="window.alert('Coming soon!');''" style=" border: 3px solid #48acef;
-                    border-radius: 20px;
-                    background-image: linear-gradient(134deg,#48acef,#00436f);
-                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                      <span id="run-name" class="button__content">Buy</span>
-                    </button></div>
-                  </div>
-                  <div>
-                    <div class="d-flex flex-column mt-4"><div class="mx-auto ">?? BUSD</div>
+
+                  <div class="col-5">
+                    <div class="d-flex flex-column mt-4"><div class="mx-auto  mb-3">?? BUSD</div>
                      <div>
                       <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100"onclick="window.alert('Coming soon!');''" style=" border: 3px solid #48acef;
                       border-radius: 20px;
@@ -232,31 +194,22 @@
                   Coming soon
                   "></i>
                 </div>
-                <img src="./images/Crown.png" class="col-12 mx-auto" alt="">
+                <img src="./images/Crown.png" class="col-8 mx-auto" alt="">
                   <p class="h5"> Quantum investing</p>
                   <p class="h5" style="margin-bottom: 80px;"> Share profit</p>
-                  <p class=""> ?? pWeb3</p>
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon mt-4" onclick="window.alert('Coming soon!');''" style=" border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span id="run-name" class="button__content">Buy</span>
-                  </button>
+                  <div class="mt-3">
+                    <p class=""> ?? pWeb3</p>
+                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" onclick="window.alert('Coming soon!');''" style=" border: 3px solid #48acef;
+                    border-radius: 20px;
+                    background-image: linear-gradient(134deg,#48acef,#00436f);
+                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                      <span id="run-name" class="button__content">Buy</span>
+                    </button>
+                  </div>
               </div>
             </div>
           </div>
         </div>
-          <div class=" my-5  ">
-            <div class="card bg-light col-4 mx-auto text-center p-4 col-12 " style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-              <span class="fw-medium ms-1">
-              You have  ?? points
-              </span>
-            </div>
-          </div>
-
-
-
-
 
 
       </main>
@@ -288,16 +241,16 @@
 
   <script>
 
-    let wBalance;
+    let wweb3Balance;
     async function runPersonal() {
       await _runPersonal();
 
 
 
-      wBalance = await CONTS['wweb3'].balanceOf(CURADR);
-      wBalance = wBalance / BNBDIV;
+      wweb3Balance = await CONTS['wweb3'].balanceOf(CURADR);
+      wweb3Balance = wweb3Balance / BNBDIV;
 
-      displayText("#wBalance", `${COMMA(INT(wBalance, 3))}`);
+      displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
 
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
@@ -411,11 +364,25 @@
     select('#sidebar-nav').children[5].classList.add('active-neumorphism');
   </script>
     <style>
-      .active-neumorphism{
-        box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%); background-image: linear-gradient(160deg,#424750,#202326);
+      .active-neumorphism {
+        box-shadow:  2px 2px 9px 0 rgb(17 19 20 / 90%),
+           -2px -2px 9px 0 rgb(93 100 112 / 90%);
+        background-image: linear-gradient(160deg, #424750, #202326);
+        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
       }
-      .card{
+      .card {
         border: none;
+      }
+      .neontext{
+        color: #fff;
+      }
+
+      #titano-finance #sidebar-nav li:hover {
+        color: #fff;
+      }
+      .neontext:hover{
+        color: #fff;
+        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
       }
     </style>
 </body>
