@@ -106,7 +106,6 @@ async function runGlobal() {
 
   let circulatingSupply = totalSupply - blackHoleAmount - lockedAmount;
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
-
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
   let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
   trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
@@ -177,6 +176,7 @@ let bnbBalance;
 let balance;
 let wBalance;
 let pBalance;
+let totalSupplyPercentage;
 async function _runPersonal() {
   displayText('#connect', SHORTADR(CURADR));
 
@@ -185,6 +185,8 @@ async function _runPersonal() {
 
   balance = await CONTS['web3'].balanceOf(CURADR);
   balance = balance / BNBDIV;
+  totalSupplyPercentage = (balance / totalSupply) * 100;
+
 
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 
@@ -197,6 +199,8 @@ async function _runPersonal() {
   pBalance = pBalance / BNBDIV;
 
   displayText("#pBalance", `${COMMA(INT(pBalance, 3))}`);
+  totalSupplyPercentage
+  displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
 }
 
 let events = [];
@@ -357,7 +361,7 @@ async function getTotalEarned() {
   }
   amount = INT(amount) / BNBDIV;
 
-  console.log(balance, amount);
+  // console.log(balance, amount);
   let totalEarned = balance - amount; // little precision
   let earnRate = totalEarned / balance * 100;
   displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $WEB3 (+${COMMA(INT(earnRate, 3))}%)`);
@@ -488,8 +492,8 @@ async function wrapChange() {
     select('#wrap-input').addEventListener('input', handleInputUnwrap);
 
     let tmp = select('#wrap-input').value;
-    select('#wrap-input').value = select('#wrap-output').value;
-    select('#wrap-output').value = tmp;
+    // select('#wrap-input').value = select('#wrap-output').value;
+    // select('#wrap-output').value = tmp;
 
     displayText("#balance-input", `${COMMA(INT(wBalance, 3))}`);
     displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
@@ -506,8 +510,8 @@ async function wrapChange() {
     select('#wrap-input').addEventListener('input', handleInputWrap);
 
     let tmp = select('#wrap-input').value;
-    select('#wrap-input').value = select('#wrap-output').value;
-    select('#wrap-output').value = tmp;
+    // select('#wrap-input').value = select('#wrap-output').value;
+    // select('#wrap-output').value = tmp;
 
     displayText("#balance-input", `${COMMA(INT(balance, 2))}`);
     displayText("#balance-output", `${COMMA(INT(wBalance, 2))}`);
@@ -608,3 +612,41 @@ const copyLinkwrap = async (link) => {
 };
 
 buttonpwrap.addEventListener('click', () => copyLinkwrap('0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f'))
+
+async function maxValuesSwapInput(clickedButton) {
+  console.log(clickedButton);
+  let bnbBalance = document.getElementById('bnbBalance').textContent;
+  console.log(bnbBalance);
+  document.getElementById("wrap-input").setAttribute('value', bnbBalance);
+  displayText("#wrap-input", bnbBalance);
+}
+
+async function maxValueSwapOutput(clickedButton) {
+  console.log(clickedButton);
+  let bnbBalance = document.getElementById('balance').textContent;
+  console.log(bnbBalance);
+  document.getElementById("wrap-output").setAttribute('value', bnbBalance);
+  displayText("#wrap-output ", bnbBalance);
+}
+
+
+async function maxValueWrapInput() {
+  let bnbBalance = document.getElementById('balance-input').textContent;
+  console.log(bnbBalance);
+  document.getElementById("wrap-input").setAttribute('value', bnbBalance);
+  displayText("#wrap-input", bnbBalance);
+}
+
+async function maxValueWrapOutput() {
+  let bnbBalance = document.getElementById('balance-output').textContent;
+  console.log(bnbBalance);
+  document.getElementById("wrap-output").setAttribute('value', bnbBalance);
+  displayText("#wrap-output ", bnbBalance);
+}
+
+async function maxValueStakeInput() {
+  let bnbBalance = document.getElementById('wBalance').textContent;
+  console.log(bnbBalance);
+  document.getElementById("stake-input").setAttribute('value', bnbBalance);
+  displayText("#stake-input", bnbBalance);
+}

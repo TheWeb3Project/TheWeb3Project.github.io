@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/fa.css">
-  
+
   <title>The Web3 Project | Taking online further beyond</title>
   <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" name="description">
   <meta content="The Web3 Project | Taking online further beyond" property="og:title">
@@ -19,7 +19,7 @@
   <meta property="og:type" content="website">
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
-   
+
   <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524321551928e3d234161_circled.png" rel="shortcut icon" type="image/x-icon">
   <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png" rel="apple-touch-icon">
 
@@ -52,21 +52,19 @@
 
             <div >
               <div class="d-flex flex-sm-row flex-column justify-content-between">
+                <!-- <div class="col-sm-5 card bg-light p-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                  <div class="p-4 mx-auto">
+                    <span class="text-secondary">Your Balance</span>
+
+                    <h4 class="my-2" id="percentTotalSupply">0%</h4>
+                  </div>
+                </div> -->
                 <div class="col-sm-5 card bg-light p-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                   <div class="p-4">
-                    <span class="text-secondary">
-                      APY <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                      0.000079% / 3 sec<br/>
-                      0.001580% / min<br/>
-                      0.094844% / hour<br/>
-                      2.301256% / day
-                      "></i>
-                    </span>
-                    <h4 id="apy" class="fw-bold my-2">404,092.65%</h4>
-                    <span class="text-secondary">Daily ROI 2.301279%</span>
+                    <span class="text-secondary">Your Total Supply %:</span>
+                    <h4 class="fw-bold my-2" id="percentTotalSupply"></h4>
                   </div>
                 </div>
-
                 <div class="col-sm-5 card bg-light p-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                   <div >
                     <span class="text-secondary">Your Balance</span>
@@ -186,10 +184,11 @@
       document.getElementById("sidebarContainer").classList.remove("show");
       document.getElementById("overlay").style.display = "none"
     })
+    let calcToken;
 
     async function runPersonal() {
       await _runPersonal();
-      
+
       displayText("#balanceInUsd", `$${COMMA(INT(balance * price, 3))}`);
 
       // let rebaseRate = 1.00000017;
@@ -201,11 +200,8 @@
       let hourRate = 1.00094844;
       displayText("#nexthourReward", `${COMMA(INT(balance * hourRate - balance, 3))} $WEB3`);
       displayText("#nexthourRewardInUsd", `$${COMMA(INT((balance * hourRate - balance) * price * 1.00074427, 3))}`);
-      
-      // let dailyRate = 1.00490800;
-      let dailyRate = 1.02301279;
-      displayText("#nextDailyReward", `${COMMA(INT(balance * dailyRate - balance, 3))} $WEB3`);
-      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((balance * dailyRate - balance) * price * 1.01801636, 3))}`);
+
+
 
       // let MonthRate = 1.1582149;
       let MonthRate = 1.9789369;
@@ -216,23 +212,36 @@
     (async () => {
       // do global
       await runGlobal();
-      
+
+
       // let curBlock = await PROVIDER.getBlock();
       // curBlock = curBlock['number'];
       // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
       // lastRebaseBlock = INT(lastRebaseBlock);
       // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
       // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
-      
+
 			$('[data-bs-toggle="tooltip"]').tooltip();
+
 
       await getCurAdr();
       if (CURADR == null) {
         displayText("#totalEarnedInUsd", `Connect Wallet`);
         // connect wallet button
       } else {
+
         await runPersonal();
         // display address
+        let totalSupplyPercentage = document.getElementById('percentTotalSupply').innerHTML;
+        calcToken = 1440 * (totalSupplyPercentage / 100)
+        console.log(calcToken)
+
+              // let dailyRate = 1.00490800;
+      let dailyRate = 1.02301279;
+      // displayText("#nextDailyReward", `${COMMA(INT(balance * dailyRate - balance, 3))} $WEB3`);
+      displayText("#nextDailyReward", `${COMMA(INT(calcToken, 3))} $WEB3`);
+
+      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * 1.01801636, 3))}`);
       }
 
       // let [res, data] = await GAS('web3', 'manualRebase', []);
@@ -244,7 +253,7 @@
       // }
 
       await getTotalEarned();
-      
+
       $('[data-bs-toggle="tooltip"]').tooltip();
     })();
 
