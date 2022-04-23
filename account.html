@@ -236,9 +236,7 @@
         calcToken = 2880 * (totalSupplyPercentage / 100)
         console.log(calcToken)
 
-              // let dailyRate = 1.00490800;
       let dailyRate = 1.02301279;
-      // displayText("#nextDailyReward", `${COMMA(INT(balance * dailyRate - balance, 3))} $WEB3`);
       displayText("#nextDailyReward", `${COMMA(INT(calcToken, 3))} $WEB3`);
 
       displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * dailyRate, 3))}`);
