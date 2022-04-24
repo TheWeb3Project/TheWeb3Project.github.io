@@ -228,21 +228,22 @@
       if (CURADR == null) {
         displayText("#totalEarnedInUsd", `Connect Wallet`);
         // connect wallet button
-      } else {
+        return;
+      }
+      
+      await runPersonal();
 
-        await runPersonal();
-        // display address
-        let totalSupplyPercentage = document.getElementById('percentTotalSupply').innerHTML;
-        calcToken = 2880 * (totalSupplyPercentage / 100)
-        console.log(calcToken)
+      await getTotalEarned();
+
+      // display address
+      let totalSupplyPercentage = document.getElementById('percentTotalSupply').innerHTML;
+      calcToken = 2880 * (totalSupplyPercentage / 100)
+      console.log(calcToken)
 
       let dailyRate = 1.02301279;
       displayText("#nextDailyReward", `${COMMA(INT(calcToken, 3))} $WEB3`);
 
-      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * dailyRate, 3))}`);
-      }
-
-      await getTotalEarned();
+      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * dailyRate, 3))}`);  
 
       $('[data-bs-toggle="tooltip"]').tooltip();
     })();
