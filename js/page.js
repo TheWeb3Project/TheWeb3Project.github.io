@@ -177,8 +177,8 @@ let balance;
 let wBalance;
 let pBalance;
 
-let stakedAmount;
-let stakedDuration;
+let lockedAmount;
+let lockedDuration;
 let totalSupplyPercentage;
 async function _runPersonal() {
   displayText('#connect', SHORTADR(CURADR));
@@ -199,9 +199,9 @@ async function _runPersonal() {
   pBalance = pBalance / BNBDIV;
   displayText("#pBalance", `${COMMA(INT(pBalance, 3))}`);
 
-  stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
-  stakedAmount = stakedAmount / BNBDIV;
-  stakedDuration = await CONTS['web3Stake']._durations(CURADR);
+  lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
+  lockedAmount = lockedAmount / BNBDIV;
+  lockedDuration = await CONTS['web3Stake']._durations(CURADR);
 
   totalSupplyPercentage = (balance / totalSupply) * 100;
   displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
