@@ -176,30 +176,34 @@ let bnbBalance;
 let balance;
 let wBalance;
 let pBalance;
+
+let stakedAmount;
+let stakedDuration;
 let totalSupplyPercentage;
 async function _runPersonal() {
   displayText('#connect', SHORTADR(CURADR));
 
-  bnbBalance = (await getBalance(CURADR)) / BNBDIV;
+  bnbBalance = await getBalance(CURADR)
+  bnbBalance = bnbBalance / BNBDIV;
   displayText("#bnbBalance", `${COMMA(INT(bnbBalance, 3))}`);
 
   balance = await CONTS['web3'].balanceOf(CURADR);
   balance = balance / BNBDIV;
-  totalSupplyPercentage = (balance / totalSupply) * 100;
-
-
   displayText("#balance", `${COMMA(INT(balance, 3))}`);
 
   wBalance = await CONTS['wweb3'].balanceOf(CURADR);
   wBalance = wBalance / BNBDIV;
-
   displayText("#wBalance", `${COMMA(INT(wBalance, 3))}`);
 
   pBalance = await CONTS['pweb3'].balanceOf(CURADR);
   pBalance = pBalance / BNBDIV;
-
   displayText("#pBalance", `${COMMA(INT(pBalance, 3))}`);
-  totalSupplyPercentage
+
+  stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
+  stakedAmount = stakedAmount / BNBDIV;
+  stakedDuration = await CONTS['web3Stake']._durations(CURADR);
+
+  totalSupplyPercentage = (balance / totalSupply) * 100;
   displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
 }
 
