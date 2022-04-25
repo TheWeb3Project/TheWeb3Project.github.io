@@ -336,7 +336,9 @@
       // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
       // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
       
-
+      setInterval(async () => {
+        await eventBoard();
+      }, 10000);
 			
       $('[data-bs-toggle="tooltip"]').tooltip();
       
@@ -379,7 +381,7 @@
       
       $('[data-bs-toggle="tooltip"]').tooltip();
 
-      setInterval(eventBoard, 10000);
+      
     })();
 
     select('#sidebar-nav').children[0].classList.add('active-neumorphism');
