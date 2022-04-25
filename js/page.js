@@ -76,6 +76,7 @@ function displayWeb3Header() {
 }
 displayWeb3Header();
 
+let now = INT(NOW() / 1000);
 
 let bnbPrice;
 let price;
