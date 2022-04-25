@@ -97,10 +97,10 @@ async function runGlobal() {
   wTotalSupply = await CONTS['wweb3'].totalSupply();
   wTotalSupply = wTotalSupply / BNBDIV;
 
-  jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
+  let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
   displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
 
-  lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
+  let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
   displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
 
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
