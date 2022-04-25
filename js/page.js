@@ -378,14 +378,14 @@ function changedValue(target, curTarget) {
 
   let days;
   if (target == 'days') {
-    days = curTarget.value;
+    days = INT(curTarget.value);
     select("#noOfDays").innerHTML = days;
     console.log(days);
   } else {
-    days = select("#noOfDays").innerHTML;
+    days = INT(select("#noOfDays").innerHTML);
   }
 
-  let curPrice = select('#curPrice').value;
+  let curPrice = INT(select('#curPrice').value);
   let initInvest = curAmount * curPrice;
   displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
 
@@ -396,12 +396,12 @@ function changedValue(target, curTarget) {
   // let dailyRate = 0.02301279;
   // let totalRate = ((1 + dailyRate) ** days);
   // let futAmount = INT(curAmount * totalRate, 2);
-  let futAmount = curAmount + INT(curAmount * 2880 * days / (totalSupply + 2880 * days), 3);
-  select('#futAmount').value = futAmount;
+  let futAmount = curAmount + curAmount * 2880 * days / (totalSupply + 2880 * days);
+  select('#futAmount').value = INT(futAmount, 3);
 
   let futPrice;
   if (target == 'futPrice') {
-    futPrice = curTarget.value;
+    futPrice = INT(curTarget.value);
   } else {
     // let dailyPriceRate = 0.01801636;
     // let dailyPriceRate = 0.02301279;
@@ -409,10 +409,8 @@ function changedValue(target, curTarget) {
     // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
     // futPrice = INT(curPrice * totalPriceRate, 2);
-  let futurePrice = select('#futPrice').value;
+    let futurePrice = INT(select('#futPrice').value);
 
-    futPrice = INT(futurePrice, 2);
-    select('#futPrice').value;
   }
 
   let futInvest = futAmount * futPrice;
