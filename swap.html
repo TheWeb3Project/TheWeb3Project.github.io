@@ -97,9 +97,11 @@
   >
     <div class="container-fluid">
       <div class="row">
-        <div id="sidebarContainer" class="col-auto" style="z-index: 1000002">
-
-        </div>
+        <div
+          id="sidebarContainer"
+          class="col-auto"
+          style="z-index: 1000002"
+        ></div>
 
         <div id="overlay" style="z-index: 1000001"></div>
 
@@ -130,7 +132,6 @@
                   class="dropdown-menu dropdown-menu-dark"
                   aria-labelledby="dropdownMenuButton1"
                 >
-
                   <li>
                     <a
                       class="dropdown-item"
@@ -203,7 +204,9 @@
                           Balance: <span id="bnbBalance">0.000</span>
                         </p>
                       </div>
+
                       <button
+                        onclick="maxValuesSwapInput(this.id)"
                         type="button"
                         class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon"
                         style="
@@ -215,6 +218,8 @@
                           border: none;
                         "
                       >
+                        <div style="margin-right: 6px">Max</div>
+
                         <div
                           class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis"
                         >
@@ -333,6 +338,7 @@
                         </p>
                       </div>
                       <button
+                        onclick="maxValueSwapOutput(this.id)"
                         type="button"
                         class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon"
                         style="
@@ -344,6 +350,7 @@
                           border: none;
                         "
                       >
+                        <div style="margin-right: 6px">Max</div>
                         <div
                           class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis"
                         >
@@ -403,16 +410,17 @@
                           inset 2px 2px 3px 0 #00436f;
                       "
                     >
-                      <span id="run-name" class="button__content ">Swap</span>
+                      <span id="run-name" class="button__content">Swap</span>
                     </button>
                   </div>
                 </div>
               </div>
 
-                <iframe
-                  class="mt-5 col-12 mx-auto" style="height: 90vh;"
-                  src="https://dexscreener.com/bsc/0x9f7d235b7d3f4403133A559b0968361687e4fC62?embed=1&theme=dark&info=0"
-                ></iframe>
+              <iframe
+                class="mt-5 col-12 mx-auto"
+                style="height: 90vh"
+                src="https://dexscreener.com/bsc/0x9f7d235b7d3f4403133A559b0968361687e4fC62?embed=1&theme=dark&info=0"
+              ></iframe>
               <!-- <div class="col-12 mx-auto">
               <div class="card bg-light border border-primary p-3 p-sm-4 mt-5">
                 <h5 class="fw-bold mb-0">Swap</h5>
@@ -462,7 +470,6 @@
     </script>
 
     <script>
-      
       async function runPersonal() {
         await _runPersonal();
 
@@ -494,43 +501,44 @@
       select("#sidebar-nav").children[3].classList.add("active-neumorphism");
     </script>
     <style>
-           .active-neumorphism {
-        box-shadow:  2px 2px 9px 0 rgb(17 19 20 / 90%),
-           -2px -2px 9px 0 rgb(93 100 112 / 90%);
+      .active-neumorphism {
+        box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%),
+          -2px -2px 9px 0 rgb(93 100 112 / 90%);
         background-image: linear-gradient(160deg, #424750, #202326);
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
+        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef,
+          5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
       }
       .card {
         border: none;
       }
-      .neontext{
+      .neontext {
         color: #fff;
       }
 
       #titano-finance #sidebar-nav li:hover {
         color: #fff;
       }
-      .neontext:hover{
+      .neontext:hover {
         color: #fff;
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
+        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef,
+          5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
       }
       #dexscreener-embed {
-                    position: relative;
-                    width: 100%;
-                    padding-bottom: 125%;
-                  }
-                  @media (min-width: 1400px) {
-                    #dexscreener-embed {
-                      padding-bottom: 65%;
-                    }
-                  }
-                   iframe {
-                    height: 55vh;
-                    top: 0;
-                    left: 0;
-                    border: 0;
-                  }
+        position: relative;
+        width: 100%;
+        padding-bottom: 125%;
+      }
+      @media (min-width: 1400px) {
+        #dexscreener-embed {
+          padding-bottom: 65%;
+        }
+      }
+      iframe {
+        height: 55vh;
+        top: 0;
+        left: 0;
+        border: 0;
+      }
     </style>
-
   </body>
 </html>
