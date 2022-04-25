@@ -403,13 +403,14 @@ function changedValue(target, curTarget) {
   if (target == 'futPrice') {
     futPrice = INT(curTarget.value);
   } else {
+    let dailyPriceRate = 0.01;
     // let dailyPriceRate = 0.01801636;
     // let dailyPriceRate = 0.02301279;
 
     // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
-    // futPrice = INT(curPrice * totalPriceRate, 2);
-    let futurePrice = INT(select('#futPrice').value);
+    futPrice = curPrice * (1 + dailyPriceRate * days);
+    futPrice = INT(futPrice, 2);
 
   }
 
