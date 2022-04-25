@@ -142,6 +142,12 @@ ABIS['web3Stake'] = [
   "function calculateReward(uint256, uint256) view returns (uint256)"
 ];
 
+ADRS['web3Jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
+ABIS['web3Jackpot'] = [
+  "function _lastBuyer() view returns (address)",
+  "function _lastBuyTime() view returns (uint256)",
+];
+
 
 ADRS['factory'] = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 ABIS['factory'] = [
