@@ -209,7 +209,10 @@ async function _runPersonal() {
 
   lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
+  displayText("#lockedAmount", `${COMMA(INT(lockedAmount, 3))}`);
+  
   lockedDuration = await CONTS['web3Stake']._durations(CURADR);
+  displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
   totalSupplyPercentage = (balance / totalSupply) * 100;
   displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
