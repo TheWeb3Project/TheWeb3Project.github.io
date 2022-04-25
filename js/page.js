@@ -370,7 +370,7 @@ async function getTotalEarned() {
 
 /////////////////////////////////////////////////////////////////////////// calculator
 function changedValue(target, curTarget) {
-  let curAmount = select('#amount').value;
+  let curAmount = INT(select('#amount').value);
   if (curAmount == 0) {
     displayText("#initInvest", `$${COMMA(INT(0.000, 3))}`);
     displayText("#futWealth", `$${COMMA(INT(0.000, 3))}`);
