@@ -318,7 +318,7 @@
       }
 
       let now = INT(NOW() / 1000);
-      let lastBuyTime = await CONTS['web3Jackpot']._lastBuyTime();
+      let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
       jackpotTimeLeft = lastBuyTime + 60 * 10 - now;
       setInterval(function () {
         if (jackpotTimeLeft == 0) {
