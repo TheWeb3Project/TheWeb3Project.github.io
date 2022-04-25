@@ -283,6 +283,7 @@
     }
     
     let cbTimeLeft;
+    let jackpotTimeLeft;
     (async () => {
       // do global
       await runGlobal();
@@ -312,7 +313,16 @@
         displayText("#sellTax", `16%`);
       }
 
-
+      let now = INT(NOW() / 1000);
+      let lastBuyTime = await CONTS['web3Jackpot']._lastBuyTime();
+      jackpotTimeLeft = lastBuyTime + 60 * 10 - now;
+      setInterval(function () {
+        if (jackpotTimeLeft == 0) {
+          return;
+        }
+        displayText("#jpTimer", `${INT(jackpotTimeLeft / 60)}m ${jackpotTimeLeft % 60}s`);            
+        jackpotTimeLeft = UPDATETICK(jackpotTimeLeft);
+      }, 1000);
       // let curBlock = await PROVIDER.getBlock();
       // curBlock = curBlock['number'];
       // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
