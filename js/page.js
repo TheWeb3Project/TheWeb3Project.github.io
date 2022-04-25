@@ -97,6 +97,12 @@ async function runGlobal() {
   wTotalSupply = await CONTS['wweb3'].totalSupply();
   wTotalSupply = wTotalSupply / BNBDIV;
 
+  jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
+  displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
+
+  lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
+  displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
+
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
 
@@ -106,6 +112,7 @@ async function runGlobal() {
 
   let circulatingSupply = totalSupply - blackHoleAmount - lockedAmount;
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
+
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
   let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
   trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
@@ -152,6 +159,7 @@ async function runGlobal() {
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
+  
 }
 
 
