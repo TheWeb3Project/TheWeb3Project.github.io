@@ -453,7 +453,7 @@ async function eventBoard() {
     let winner = txLogs[idy].args[1];
     let bnbAmount = txLogs[idy].args[2];
     bnbAmount = bnbAmount / BNBDIV;
-    alert(`JACKPOT!!!!!! ${SHORTADR(winner)} got ${INT(bnbAmount, 1)} BNB!`);
+    alert(`JACKPOT!!!!!! ${SHORTADR(winner)} got ${INT(bnbAmount, 3)} BNB!`);
   }
 
   lastBlock = CURBLOCK;
