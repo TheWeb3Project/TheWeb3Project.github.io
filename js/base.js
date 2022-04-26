@@ -86,14 +86,20 @@ ABIS['web3'] = [
   "function transfer(address, uint)",
 
   "function manualRebase()",
-  "function _isExperi() view returns (bool)",
   "function toggleExperi()",
+  "function setPriceRate(uint)",
+
+  "function _isExperi() view returns (bool)",
+  
   "function setBotBlacklists(address[], bool[])",
   "function setLifeSupports(address[], uint[])",
   "function sellbuy(uint)",
   "function _curcuitBreakerFlag() view returns (uint256)",
   "function _curcuitBreakerTime() view returns (uint256)",
   "function _lastRebaseBlock() view returns (uint256)",
+
+
+
   "event Transfer(address indexed from, address indexed to, uint amount)",
   "event Rebased(uint256 blockNumber, uint256 totalSupply)",
 ];
