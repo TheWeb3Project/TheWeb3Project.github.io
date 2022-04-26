@@ -323,9 +323,6 @@ async function addEvent(name, event_) {
 let lastBlock;
 let lastSupply = 0;
 async function eventBoard() {
-  let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
-  let rebaseFilter = CONTS['web3'].filters.Rebased();
-
   let txLogs;
 
   if (CURBLOCK == undefined) {
@@ -351,6 +348,7 @@ async function eventBoard() {
     return;
   }
   
+  let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
   for (var idy = 0; idy < 10; idy++) {
       try {
           txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, CURBLOCK);
@@ -374,6 +372,7 @@ async function eventBoard() {
     await addEvent('buy', [adr, amount]);
   }
 
+  let rebaseFilter = CONTS['web3'].filters.Rebased();
   for (var idy = 0; idy < 10; idy++) {
       try {
           txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
@@ -392,6 +391,27 @@ async function eventBoard() {
     await addEvent('rebase', [lastSupply, curSupply]);
     lastSupply = curSupply;
   }
+
+
+  // let jackpotFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
+  // for (var idy = 0; idy < 10; idy++) {
+  //     try {
+  //         txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
+  //         break;
+  //     } catch {
+  //         DELAY(100);
+  //     }
+  // }
+  // for (var idy = 0; idy < txLogs.length; idy++) {
+  //   let curSupply = txLogs[idy].args[1];
+  //   if (lastSupply == 0) {
+  //     lastSupply = curSupply;
+  //     continue;
+  //   }
+
+  //   await addEvent('rebase', [lastSupply, curSupply]);
+  //   lastSupply = curSupply;
+  // }
 
   lastBlock = CURBLOCK;
 }
