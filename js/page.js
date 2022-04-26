@@ -336,15 +336,22 @@ async function eventBoard() {
     return;
   }
 
-  let blockData = await PROVIDER.getBlock(lastBlock);
-  if (blockData == null) {
-    console.log('not yet', lastBlock);
-    return;
-  }
+  for (var idy = 0; idy < 100; idy++) {
+    let blockData = await PROVIDER.getBlock(lastBlock + idy);
+    if (blockData == null) {
+      if (idy == 0) {
+        console.log('not yet', lastBlock);
+        return;
+      }
 
+      CURBLOCK = lastBlock + idy - 1;
+      break;
+    }
+  }
+  
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, lastBlock+1);
+          txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
@@ -367,7 +374,7 @@ async function eventBoard() {
 
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, lastBlock+1);
+          txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
@@ -383,7 +390,8 @@ async function eventBoard() {
     await addEvent('rebase', [lastSupply, curSupply]);
     lastSupply = curSupply;
   }
-  lastBlock += 1;
+
+  lastBlock = CURBLOCK;
 }
 
 
