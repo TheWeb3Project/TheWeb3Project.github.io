@@ -179,7 +179,8 @@ async function runGlobal() {
   }, 10000);
 
   setInterval(function () {
-    if (jackpotTimeLeft == NaN) {
+    
+    if (isNaN(jackpotTimeLeft)) {
       return;
     }
 
@@ -209,7 +210,7 @@ async function runGlobal() {
       return;
     }
 
-    if (jackpotTimeLeft == NaN) {
+    if (isNaN(cbTimeLeft)) {
       return;
     }
 
