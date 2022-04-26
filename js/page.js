@@ -168,6 +168,8 @@ async function runGlobal() {
   
 
   setInterval(async () => {
+    now = INT(NOW() / 1000);
+    
     let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
     jackpotTimeLeft = lastBuyTime + 600 - now;
 
