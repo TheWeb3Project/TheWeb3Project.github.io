@@ -300,6 +300,11 @@
         if (jackpotTimeLeft == 0) {
           return;
         }
+
+        if (jackpotTimeLeft == 100) {
+          alert("100 seconds left for jackpot!");
+        }
+
         displayText("#jpTimer", `${INT(jackpotTimeLeft / 60)}m ${jackpotTimeLeft % 60}s`);            
         jackpotTimeLeft = UPDATETICK(jackpotTimeLeft);
       }, 1000);
