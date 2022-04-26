@@ -87,6 +87,11 @@ let wTotalSupply;
 
 let liqWeb3;
 let liqBnb;
+
+let cbTimeLeft;
+let jackpotTimeLeft;
+let jpAlarmed = false;
+let cb;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
@@ -161,6 +166,71 @@ async function runGlobal() {
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
   
+
+  setInterval(async () => {
+    let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
+    jackpotTimeLeft = lastBuyTime + 600 - now;
+
+    cb = await CONTS['web3']._curcuitBreakerFlag();
+    if (cb == 2) {
+      let cbTime = INT(await CONTS['web3']._curcuitBreakerTime());
+      cbTimeLeft = cbTime + 3600 - now;
+    }
+  }, 10000);
+
+  setInterval(function () {
+    if (jackpotTimeLeft == NaN) {
+      return;
+    }
+
+    if (jackpotTimeLeft == 0) {
+      return;
+    }
+    
+    if (jpAlarmed == false) {
+      if (jackpotTimeLeft < 100) {
+        alert("100 seconds left for jackpot!");
+        jpAlarmed = true;
+      }
+    }
+
+    displayText("#jpTimer", `${INT(jackpotTimeLeft / 60)}m ${jackpotTimeLeft % 60}s`);            
+    jackpotTimeLeft = UPDATETICK(jackpotTimeLeft);
+  }, 1000);
+
+  displayText("#cb", `OFF`);
+  displayText("#buyTax", `14%`);
+  displayText("#sellTax", `16%`);
+  setInterval(function () {
+    if (cb != 2) {
+      displayText("#cb", `OFF`);
+      displayText("#buyTax", `14%`);
+      displayText("#sellTax", `16%`);
+      return;
+    }
+
+    if (jackpotTimeLeft == NaN) {
+      return;
+    }
+
+    if (cbTimeLeft == 0) {
+      displayText("#cb", `OFF`);
+      displayText("#buyTax", `14%`);
+      displayText("#sellTax", `16%`);
+      return;
+    }
+
+    displayText("#cb", `ON for ${INT(cbTimeLeft / 60)}m ${cbTimeLeft % 60}s`);
+    displayText("#buyTax", `10%`);
+    displayText("#sellTax", `25%`);
+    cbTimeLeft = UPDATETICK(cbTimeLeft);
+  }, 1000);
+
+  setInterval(async () => {
+    await eventBoard();
+  }, 10000);
+
+
 }
 
 
