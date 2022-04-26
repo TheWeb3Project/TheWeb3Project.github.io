@@ -156,6 +156,12 @@ ABIS['web3Jackpot'] = [
   "event Jackpot(uint256, address, uint256)",
 ];
 
+ADRS['web3Miner'] = "0x6f17D0DCc709Ee57b9d8bB9846Ad740032dB8661";
+ABIS['web3Miner'] = [
+  "function _miners(address) view returns (uint256)",
+  "function _daimonds(address) view returns (uint256)",
+  "function _tDaimonds() view returns (uint256)",
+];
 
 ADRS['factory'] = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 ABIS['factory'] = [
