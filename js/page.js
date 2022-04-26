@@ -100,7 +100,7 @@ async function runGlobal() {
   totalSupply = await CONTS['web3'].totalSupply();
   totalSupply = totalSupply / BNBDIV;
 
-  wTotalSupply = await CONTS['wweb3'].totalSupply();
+  wTotalSupply = 100 * 10**3 * 10**18;
   wTotalSupply = wTotalSupply / BNBDIV;
 
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
@@ -254,7 +254,7 @@ async function runGlobal() {
     await eventBoard();
   }, 10000);
 
-
+  console.log('global done');
 }
 
 
@@ -335,6 +335,8 @@ async function _runPersonal() {
 
   totalSupplyPercentage = (balance / totalSupply) * 100;
   displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
+
+  console.log('personal done');
 }
 
 let events = [];
