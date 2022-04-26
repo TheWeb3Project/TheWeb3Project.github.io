@@ -163,6 +163,16 @@ async function runGlobal() {
     let imgData = await captureImg('#jpS');
     select('#jpCaptured').innerHTML = IMG(imgData);
   };
+  select('#imgCopy').onclick = async () => { 
+    let canvas = await html2canvas(select('#jpS'));
+    canvas.toBlob((blob) => {
+      navigator.clipboard.write([
+          new ClipboardItem({
+              'image/png': blob,
+          })
+      ]);
+    });
+  };
   
   setInterval(async () => {
     now = INT(NOW() / 1000);
