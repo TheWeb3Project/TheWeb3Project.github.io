@@ -175,7 +175,9 @@ async function runGlobal() {
     select('#imgCopy').innerHTML = `Click <a href="#" onclick="imgCopy('#dailySection');">here</a> to copy this image`;
   };
 
-  
+  let shareLink = encodeURIComponent("https://dashboard.theweb3project.com");
+  let shareText = encodeURIComponent("Join Jackpot of The Web3 Project!");
+  select('#shareTwit').href = `https://twitter.com/intent/tweet?url=${shareLink}&text=${shareText}`;
 
   setInterval(async () => {
     now = INT(NOW() / 1000);
@@ -262,9 +264,6 @@ async function imgCopy(targetId) {
         })
     ]);
   });
-  let shareLink = encodeURIComponent("https://dashboard.theweb3project.com");
-  let shareText = encodeURIComponent("Join Jackpot of The Web3 Project!");
-  select('#shareTwit').href = `https://twitter.com/intent/tweet?url=${shareLink}&text=${shareText}`;
 }
 
 
