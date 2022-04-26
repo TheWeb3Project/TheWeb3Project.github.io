@@ -163,6 +163,15 @@ async function runGlobal() {
     let imgData = await captureImg('#jpS');
     select('#jpCaptured').innerHTML = IMG(imgData);
   };
+  select('#totalShare').onclick = async () => { 
+    let imgData = await captureImg('#totalSection');
+    select('#jpCaptured').innerHTML = IMG(imgData);
+  };
+  select('#dailyShare').onclick = async () => { 
+    let imgData = await captureImg('#dailySection');
+    select('#jpCaptured').innerHTML = IMG(imgData);
+  };
+
   select('#imgCopy').onclick = async () => { 
     let canvas = await html2canvas(select('#jpS'));
     canvas.toBlob((blob) => {
