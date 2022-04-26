@@ -443,7 +443,7 @@ async function eventBoard() {
   let jackpotFilter = CONTS['web3Jackpot'].filters.Jackpot();
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
+          txLogs = await CONTS['web3Jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
