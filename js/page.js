@@ -172,8 +172,11 @@ async function runGlobal() {
           })
       ]);
     });
+    let shareLink = encodeURIComponent("https://dashboard.theweb3project.com");
+    let shareText = encodeURIComponent("Join Jackpot of The Web3 Project!");
+    select('#shareTwit').href = `https://twitter.com/intent/tweet?url=${shareLink}&text=${shareText}`;
   };
-  
+
   setInterval(async () => {
     now = INT(NOW() / 1000);
     
