@@ -37,7 +37,7 @@ function displaySidebar() {
             ${htmlSide('swap.html', 'lightning-charge', 'Swap')}
             ${htmlSide('wrap.html', 'box-seam', 'Wrap')}
             ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
-            ${htmlSide('miner.html', 'shop', 'Miner')}
+            ${htmlSide('miner.html', 'minecart-loaded', 'Miner')}
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
