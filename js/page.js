@@ -207,7 +207,7 @@ async function runGlobal() {
       return;
     }
 
-    if (jackpotTimeLeft == 0) {
+    if (jackpotTimeLeft <= 0) {
       return;
     }
     
@@ -237,7 +237,7 @@ async function runGlobal() {
       return;
     }
 
-    if (cbTimeLeft == 0) {
+    if (cbTimeLeft <= 0) {
       displayText("#cb", `OFF`);
       displayText("#buyTax", `14%`);
       displayText("#sellTax", `16%`);
