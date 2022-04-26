@@ -178,7 +178,9 @@ async function runGlobal() {
   let shareLink = encodeURIComponent("https://dashboard.theweb3project.com");
   let shareText = encodeURIComponent("Join Jackpot of The Web3 Project!");
   select('#shareTw').href = `https://twitter.com/intent/tweet?url=${shareLink}&text=${shareText}`;
+  select('#shareTw').target="_blank";
   select('#shareFb').href = `http://www.facebook.com/share.php?u=${shareLink}&t=${shareText}`;
+  select('#shareFb').target="_blank";
 
   setInterval(async () => {
     now = INT(NOW() / 1000);
