@@ -337,17 +337,18 @@ async function eventBoard() {
     return;
   }
 
-  for (var idy = 0; idy < 100; idy++) {
-    let blockData = await PROVIDER.getBlock(lastBlock + idy);
+  let latestBlock = await PROVIDER.getBlockNumber();
+  for (var idy = 1; idy < 100; idy++) {
+    let blockData = await PROVIDER.getBlock(latestBlock + idy);
     if (blockData == null) {
-      if (idy == 0) {
-        console.log('not yet', lastBlock);
-        return;
-      }
-
-      CURBLOCK = lastBlock + idy - 1;
+      CURBLOCK = latestBlock + idy - 1;
       break;
     }
+  }
+
+  if (lastBlock == CURBLOCK) {
+    console.log('not yet', CURBLOCK + 1);
+    return;
   }
   
   for (var idy = 0; idy < 10; idy++) {
