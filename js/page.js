@@ -694,7 +694,7 @@ async function runEmerUnstake() {
 
 
 function IMG(src) {
-	return `<img src="${src}">`;
+	return `<img src="${src}" style="width: 100%;">`;
 }
 
 async function captureImg(targetId) {
