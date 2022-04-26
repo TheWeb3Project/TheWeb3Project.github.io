@@ -77,6 +77,7 @@ function displayWeb3Header() {
 }
 displayWeb3Header();
 
+let now = INT(NOW() / 1000);
 
 let bnbPrice;
 let price;
@@ -87,6 +88,11 @@ let wTotalSupply;
 
 let liqWeb3;
 let liqBnb;
+
+let cbTimeLeft;
+let jackpotTimeLeft;
+let jpAlarmed = false;
+let cb;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
@@ -95,14 +101,8 @@ async function runGlobal() {
   totalSupply = await CONTS['web3'].totalSupply();
   totalSupply = totalSupply / BNBDIV;
 
-  wTotalSupply = await CONTS['wweb3'].totalSupply();
+  wTotalSupply = 100 * 10**3 * 10**18;
   wTotalSupply = wTotalSupply / BNBDIV;
-
-  let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
-  displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
-
-  let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
-  displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
 
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
@@ -160,7 +160,114 @@ async function runGlobal() {
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
+  select('#jpShare').onclick = async () => { 
+    let imgData = await captureImg('#jpS');
+    select('#jpCaptured').innerHTML = IMG(imgData);
+    select('#imgCopy').innerHTML = `Click <a href="#" onclick="imgCopy('#jpS');">here</a> to copy this image`;
+  };
+  select('#totalShare').onclick = async () => { 
+    let imgData = await captureImg('#totalSection');
+    select('#jpCaptured').innerHTML = IMG(imgData);
+    select('#imgCopy').innerHTML = `Click <a href="#" onclick="imgCopy('#totalSection');">here</a> to copy this image`;
+  };
+  select('#dailyShare').onclick = async () => { 
+    let imgData = await captureImg('#dailySection');
+    select('#jpCaptured').innerHTML = IMG(imgData);
+    select('#imgCopy').innerHTML = `Click <a href="#" onclick="imgCopy('#dailySection');">here</a> to copy this image`;
+  };
+
+  let shareLink = encodeURIComponent("https://dashboard.theweb3project.com");
+  let shareText = encodeURIComponent("Join Jackpot of The Web3 Project!");
+  select('#shareTw').href = `https://twitter.com/intent/tweet?url=${shareLink}&text=${shareText}`;
+  select('#shareTw').target="_blank";
+  select('#shareFb').href = `http://www.facebook.com/share.php?u=${shareLink}&t=${shareText}`;
+  select('#shareFb').target="_blank";
+
+  setInterval(async () => {
+    now = INT(NOW() / 1000);
+    
+    let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
+    displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
+    let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
+    displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
+    
+    let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
+    jackpotTimeLeft = lastBuyTime + 600 - now;
+
+    cb = await CONTS['web3']._curcuitBreakerFlag();
+    if (cb == 2) {
+      let cbTime = INT(await CONTS['web3']._curcuitBreakerTime());
+      cbTimeLeft = cbTime + 3600 - now;
+    }
+  }, 10000);
+
+  setInterval(function () {
+    
+    if (isNaN(jackpotTimeLeft)) {
+      return;
+    }
+
+    if (jackpotTimeLeft <= 0) {
+      return;
+    }
+    
+    if (jpAlarmed == false) {
+      if (jackpotTimeLeft < 100) {
+        alert("100 seconds left for jackpot!");
+        jpAlarmed = true;
+      }
+    }
+
+    displayText("#jpTimer", `${INT(jackpotTimeLeft / 60)}m ${jackpotTimeLeft % 60}s`);            
+    jackpotTimeLeft = UPDATETICK(jackpotTimeLeft);
+  }, 1000);
+
+  displayText("#cb", `OFF`);
+  displayText("#buyTax", `14%`);
+  displayText("#sellTax", `16%`);
+  setInterval(function () {
+    if (cb != 2) {
+      displayText("#cb", `OFF`);
+      displayText("#buyTax", `14%`);
+      displayText("#sellTax", `16%`);
+      return;
+    }
+
+    if (isNaN(cbTimeLeft)) {
+      return;
+    }
+
+    if (cbTimeLeft <= 0) {
+      displayText("#cb", `OFF`);
+      displayText("#buyTax", `14%`);
+      displayText("#sellTax", `16%`);
+      return;
+    }
+
+    displayText("#cb", `ON for ${INT(cbTimeLeft / 60)}m ${cbTimeLeft % 60}s`);
+    displayText("#buyTax", `10%`);
+    displayText("#sellTax", `25%`);
+    cbTimeLeft = UPDATETICK(cbTimeLeft);
+  }, 1000);
+
+  setInterval(async () => {
+    await eventBoard();
+  }, 10000);
+
+  console.log('global done');
+}
+
+
+async function imgCopy(targetId) { 
+  let canvas = await html2canvas(select(targetId));
+  canvas.toBlob((blob) => {
+    navigator.clipboard.write([
+        new ClipboardItem({
+            'image/png': blob,
+        })
+    ]);
+  });
 }
 
 
@@ -171,6 +278,15 @@ async function bl(adr) {
 async function wl(adr) {
   await SEND_TX('web3', 'setLifeSupports', [[ADR(adr)], [2]]);
 }
+async function pr(rate) {
+  alert(`
+  if want to price rebase 2.3%, type [await pr(10000);]
+  if want to price rebase 9.2%, type [await pr(40000);]
+  10000 * (multiple of 2.3%)
+  `);
+  await SEND_TX('web3', 'setPriceRate', [rate]);
+}
+
 async function runManualRebase() {
   await SEND_TX('web3', 'manualRebase', []);
 }
@@ -178,6 +294,9 @@ async function runManualRebase() {
 async function runToggleExperi() {
   await SEND_TX('web3', 'toggleExperi', []);
 }
+
+
+
 
 
 
@@ -210,10 +329,15 @@ async function _runPersonal() {
 
   lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
+  displayText("#lockedAmount", `${COMMA(INT(lockedAmount, 3))}`);
+  
   lockedDuration = await CONTS['web3Stake']._durations(CURADR);
+  displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
   totalSupplyPercentage = (balance / totalSupply) * 100;
   displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
+
+  console.log('personal done');
 }
 
 let events = [];
@@ -227,8 +351,9 @@ async function addEvent(name, event_) {
   if (name == 'rebase') {
     let lastSupply = event_[0];
     let curSupply = event_[1];
-    let rate = (curSupply - lastSupply) / lastSupply * 100;
-    events.unshift(`Rebase: your balance +${INT(rate, 8)}%`);
+    let diff = (curSupply - lastSupply) / BNBDIV;
+    console.log(lastSupply, curSupply, diff);
+    events.unshift(`Rebased: Total Supply +${INT(diff, 2)}!`);
   }
 
   if (events.length == 10) {
@@ -246,9 +371,6 @@ async function addEvent(name, event_) {
 let lastBlock;
 let lastSupply = 0;
 async function eventBoard() {
-  let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
-  let rebaseFilter = CONTS['web3'].filters.Rebased();
-
   let txLogs;
 
   if (CURBLOCK == undefined) {
@@ -260,15 +382,24 @@ async function eventBoard() {
     return;
   }
 
-  let blockData = await PROVIDER.getBlock(lastBlock);
-  if (blockData == null) {
-    console.log('not yet', lastBlock);
-    return;
+  let latestBlock = await PROVIDER.getBlockNumber();
+  for (var idy = 1; idy < 100; idy++) {
+    let blockData = await PROVIDER.getBlock(latestBlock + idy);
+    if (blockData == null) {
+      CURBLOCK = latestBlock + idy - 1;
+      break;
+    }
   }
 
+  if (lastBlock == CURBLOCK) {
+    console.log('not yet', CURBLOCK + 1);
+    return;
+  }
+  
+  let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, lastBlock+1);
+          txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
@@ -289,9 +420,10 @@ async function eventBoard() {
     await addEvent('buy', [adr, amount]);
   }
 
+  let rebaseFilter = CONTS['web3'].filters.Rebased();
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, lastBlock+1);
+          txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
@@ -307,7 +439,25 @@ async function eventBoard() {
     await addEvent('rebase', [lastSupply, curSupply]);
     lastSupply = curSupply;
   }
-  lastBlock += 1;
+
+
+  let jackpotFilter = CONTS['web3Jackpot'].filters.Jackpot();
+  for (var idy = 0; idy < 10; idy++) {
+      try {
+          txLogs = await CONTS['web3Jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
+          break;
+      } catch {
+          DELAY(100);
+      }
+  }
+  for (var idy = 0; idy < txLogs.length; idy++) {
+    let winner = txLogs[idy].args[1];
+    let bnbAmount = txLogs[idy].args[2];
+    bnbAmount = bnbAmount / BNBDIV;
+    alert(`JACKPOT!!!!!! ${SHORTADR(winner)} got ${INT(bnbAmount, 3)} BNB!`);
+  }
+
+  lastBlock = CURBLOCK;
 }
 
 
@@ -421,9 +571,8 @@ function changedValue(target, curTarget) {
 
     // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
-    futPrice = curPrice * (1 + dailyPriceRate * days);
-    futPrice = INT(futPrice, 2);
-
+    futPrice = curPrice * (1 + dailyPriceRate * days); 
+    select('#futPrice').value = INT(futPrice, 3);
   }
 
   let futInvest = futAmount * futPrice;
@@ -570,9 +719,18 @@ async function runEmerUnstake() {
 }
 
 
+function IMG(src) {
+	return `<img src="${src}" style="width: 100%;">`;
+}
+
+async function captureImg(targetId) {
+  let canvas = await html2canvas(select(targetId));
+  var imgData = canvas.toDataURL('image/png');
+  return imgData;
+}
 
 
-
+//////////////////////////////////////////////////////////////////////////////
 
 const button = select('.copy-btn');
 

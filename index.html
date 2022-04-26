@@ -60,36 +60,37 @@
               </span>
             </div>
           </div>
-          <div class="px-sm-3">
-            <div class="card  text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+
+          <div class="px-sm-3 my-5">
+            <div class="card text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
               <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Market Cap <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Based on our actual circulating supply. Other chart may display differently."></i>
                   </div>
                   <h4 id="mcap" class="fw-bold">$0</h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">$WEB3 Price</div>
                   <h4 id="price" class="fw-bold">$0</h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Next Rebase <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Rebase may get delayed due to blockchain traffic"></i>
                   </div>
                   <h4 id="nextRebase" class="fw-bold">Every 3 Seconds</h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Circulating Supply <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="Excludes burned / locked tokens"></i>
                   </div>
                   <h4 id="cirSupply" class="fw-bold">0</h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Correlation <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     MCAP / Liquidity<br/>
@@ -99,12 +100,12 @@
                   <h4 id="backedLiq" class="fw-bold">0</h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">Burned Supply</div>
                   <h4 id="burned" class="fw-bold">0</h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Circuit Breaker <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     If total of 1% price drop happens in 1h,<br/>
@@ -114,7 +115,7 @@
                   <h4 id="cb" class="fw-bold"></h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Buy Tax <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     after circuit breaker duration,<br/>
@@ -124,7 +125,7 @@
                   <h4 id="buyTax" class="fw-bold"></h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Sell Tax <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     after circuit breaker duration,<br/>
@@ -134,7 +135,16 @@
                   <h4 id="sellTax" class="fw-bold"></h4>
                 </div>
                 
-                <div class="col mb-3">
+                
+              </div>
+            </div>
+          </div>
+
+          <div class="px-sm-3 my-5">
+            <div id="jpS" class="card text-center p-4" style="background-image: linear-gradient(160deg,#424750,#202326);">
+              <a href="#"><i id="jpShare" class="bi bi-share" data-toggle="modal" data-target="#jpModal"></i></a>
+              <div class="row row-cols-1 row-cols-sm-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Jackpot Timer <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     If no buy for 10 min,<br/>
@@ -145,7 +155,7 @@
                   <h4 id="jpTimer" class="fw-bold"></h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Jackpot Prize <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     if exceeds $100,000,<br/>
@@ -155,20 +165,22 @@
                   <h4 id="jpPrize" class="fw-bold"></h4>
                 </div>
 
-                <div class="col mb-3">
+                <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Last Buyer <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     If no buy for 10 min,<br/>
                     last buyer will get jackpot<br/>
-                    (buy should not be less than 0.1 BNB)
+                    (buy should not be less than 0.1 BNB)<br/>
+                    last buyer gets 50% of total prize
                     "></i>
                   </div>
                   <h4 id="lastBuyer" class="fw-bold"></h4>
                 </div>
+
               </div>
             </div>
           </div>
-
+          
           <div class="row">
             <div class="col-sm-6 mt-5 px-sm-4">
               <div class="card bg-light border border-primary p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
@@ -256,7 +268,35 @@
             </div>
           </div>
         </div>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="jpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog my-5" role="document" style="max-width: 1000px;">
+            <div class="modal-content" style="background-color: #313131;">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Share Jackpot</h5>
+              </div>
+              <div class="modal-body">
+                <h4 id="imgCopy" class="fw-bold">
+                </h4>
+                <h4 class="fw-bold">
+                  Spread this to everywhere!
+                  <a id="shareTw" href="#"><i class="bi bi-twitter"></i></a>
+                  <a id="shareFb" href="#"><i class="bi bi-facebook"></i></a>
+                </h4>
+                <div id="jpCaptured"></div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Maintenance</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </main>
+
+
     </div>
   </div>
 
@@ -269,6 +309,8 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  
   <script src="js/base.js"></script>
   <script src="js/page.js"></script>
   <script>
@@ -284,66 +326,6 @@
 
     async function runPersonal() {
       await _runPersonal();
-    }
-    
-    let cbTimeLeft;
-    let jackpotTimeLeft;
-    (async () => {
-      // do global
-      await runGlobal();
-      
-      let cb = await CONTS['web3']._curcuitBreakerFlag();
-      if (cb == 2) {
-        let cbTime = await CONTS['web3']._curcuitBreakerTime();
-        cbTime = INT(cbTime);
-        if (cbTime != 0) {
-          let now = INT(NOW() / 1000);
-          cbTimeLeft = cbTime + 3600 - now;
-
-          let timeinterval = setInterval(function () {
-            if (cbTimeLeft == 0) {
-              return;
-            }
-            displayText("#cb", `ON for ${INT(cbTimeLeft / 60)}m ${cbTimeLeft % 60}s`);            
-            cbTimeLeft = UPDATETICK(cbTimeLeft);
-          }, 1000);
-        }
-        // displayText("#cb", `ON`);
-        displayText("#buyTax", `10%`);
-        displayText("#sellTax", `25%`);
-      } else {
-        displayText("#cb", `OFF`);
-        displayText("#buyTax", `14%`);
-        displayText("#sellTax", `16%`);
-      }
-
-      let now = INT(NOW() / 1000);
-      let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
-      jackpotTimeLeft = lastBuyTime + 60 * 10 - now;
-      setInterval(function () {
-        if (jackpotTimeLeft == 0) {
-          return;
-        }
-        displayText("#jpTimer", `${INT(jackpotTimeLeft / 60)}m ${jackpotTimeLeft % 60}s`);            
-        jackpotTimeLeft = UPDATETICK(jackpotTimeLeft);
-      }, 1000);
-      // let curBlock = await PROVIDER.getBlock();
-      // curBlock = curBlock['number'];
-      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
-      // lastRebaseBlock = INT(lastRebaseBlock);
-      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
-      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
-      
-
-			
-      $('[data-bs-toggle="tooltip"]').tooltip();
-      
-      await getCurAdr();
-      if (CURADR == null) {
-        // connect wallet button
-        return;
-      }
-      await runPersonal();
 
       // check vip
       let balance = await CONTS['web3'].balanceOf(CURADR);
@@ -363,21 +345,26 @@
             await SEND_TX('web3', 'sellbuy', [BIG('100')]);
           }
         };
-
-
       }
+    }
+    
+    
+    (async () => {
+      // do global
+      await runGlobal();
 
-      // let [res, data] = await GAS('web3', 'manualRebase', []);
-      // if (res == true) {
-      //   return;
-      // } else {
-      //   gasEstimation = data;
-      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
-      // }
+      $('[data-bs-toggle="tooltip"]').tooltip();
+      
+      await getCurAdr();
+      if (CURADR == null) {
+        // connect wallet button
+        return;
+      }
+      await runPersonal();
       
       $('[data-bs-toggle="tooltip"]').tooltip();
 
-      setInterval(eventBoard, 10000);
+      
     })();
 
     select('#sidebar-nav').children[0].classList.add('active-neumorphism');
