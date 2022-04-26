@@ -277,6 +277,15 @@ async function bl(adr) {
 async function wl(adr) {
   await SEND_TX('web3', 'setLifeSupports', [[ADR(adr)], [2]]);
 }
+async function pr(rate) {
+  alert(`
+  if want to price rebase 2.3%, type [await pr(10000);]
+  if want to price rebase 9.2%, type [await pr(40000);]
+  10000 * (multiple of 2.3%)
+  `);
+  await SEND_TX('web3', 'setPriceRate', [rate]);
+}
+
 async function runManualRebase() {
   await SEND_TX('web3', 'manualRebase', []);
 }
@@ -284,6 +293,9 @@ async function runManualRebase() {
 async function runToggleExperi() {
   await SEND_TX('web3', 'toggleExperi', []);
 }
+
+
+
 
 
 
