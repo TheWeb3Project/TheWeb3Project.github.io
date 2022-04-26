@@ -658,8 +658,15 @@ async function runEmerUnstake() {
 
 
 
+async function captureImg(targetId) {
+  let canvas = await html2canvas(select(targetId));
+  var img = canvas.toDataURL('image/png');
+  img = `<img src="${img}">`;
+  return img;
+}
 
 
+//////////////////////////////////////////////////////////////////////////////
 
 const button = select('.copy-btn');
 
