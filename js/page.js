@@ -37,6 +37,7 @@ function displaySidebar() {
             ${htmlSide('swap.html', 'lightning-charge', 'Swap')}
             ${htmlSide('wrap.html', 'box-seam', 'Wrap')}
             ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
+            ${htmlSide('miner.html', 'shop', 'Miner')}
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
@@ -392,7 +393,6 @@ function changedValue(target, curTarget) {
   if (target == 'days') {
     days = INT(curTarget.value);
     select("#noOfDays").innerHTML = days;
-    console.log(days);
   } else {
     days = INT(select("#noOfDays").innerHTML);
   }
