@@ -230,8 +230,8 @@ async function addEvent(name, event_) {
   if (name == 'rebase') {
     let lastSupply = event_[0];
     let curSupply = event_[1];
-    let rate = (curSupply - lastSupply) / lastSupply * 100;
-    events.unshift(`Rebase: your balance +${INT(rate, 8)}%`);
+    let diff = (curSupply - lastSupply) / BNBDIV;
+    events.unshift(`Rebased: Total Supply +${INT(diff, 2)}!`);
   }
 
   if (events.length == 10) {
