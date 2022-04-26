@@ -438,25 +438,21 @@ async function eventBoard() {
   }
 
 
-  // let jackpotFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
-  // for (var idy = 0; idy < 10; idy++) {
-  //     try {
-  //         txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
-  //         break;
-  //     } catch {
-  //         DELAY(100);
-  //     }
-  // }
-  // for (var idy = 0; idy < txLogs.length; idy++) {
-  //   let curSupply = txLogs[idy].args[1];
-  //   if (lastSupply == 0) {
-  //     lastSupply = curSupply;
-  //     continue;
-  //   }
-
-  //   await addEvent('rebase', [lastSupply, curSupply]);
-  //   lastSupply = curSupply;
-  // }
+  let jackpotFilter = CONTS['web3Jackpot'].filters.Jackpot();
+  for (var idy = 0; idy < 10; idy++) {
+      try {
+          txLogs = await CONTS['web3'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
+          break;
+      } catch {
+          DELAY(100);
+      }
+  }
+  for (var idy = 0; idy < txLogs.length; idy++) {
+    let winner = txLogs[idy].args[1];
+    let bnbAmount = txLogs[idy].args[2];
+    bnbAmount = bnbAmount / BNBDIV;
+    alert(`JACKPOT!!!!!! ${SHORTADR(winner)} got ${INT(bnbAmount, 1)} BNB!`);
+  }
 
   lastBlock = CURBLOCK;
 }
