@@ -159,8 +159,11 @@ async function runGlobal() {
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
+  select('#jpShare').onclick = async () => { 
+    let jpImg = await captureImg('#jpS');
+    select('#jpCaptured').innerHTML = jpImg;
+  };
   
-
   setInterval(async () => {
     now = INT(NOW() / 1000);
     
