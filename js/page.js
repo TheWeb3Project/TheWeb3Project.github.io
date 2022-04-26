@@ -532,7 +532,6 @@ function changedValue(target, curTarget) {
   if (target == 'days') {
     days = INT(curTarget.value);
     select("#noOfDays").innerHTML = days;
-    console.log(days);
   } else {
     days = INT(select("#noOfDays").innerHTML);
   }
@@ -561,9 +560,8 @@ function changedValue(target, curTarget) {
 
     // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
-    futPrice = curPrice * (1 + dailyPriceRate * days);
-    futPrice = INT(futPrice, 2);
-
+    futPrice = curPrice * (1 + dailyPriceRate * days); 
+    select('#futPrice').value = INT(futPrice, 3);
   }
 
   let futInvest = futAmount * futPrice;
