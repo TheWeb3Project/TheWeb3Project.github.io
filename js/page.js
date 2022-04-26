@@ -162,29 +162,20 @@ async function runGlobal() {
   select('#jpShare').onclick = async () => { 
     let imgData = await captureImg('#jpS');
     select('#jpCaptured').innerHTML = IMG(imgData);
+    select('#imgCopy').innerHTML = `Click <a href="#" onclick="imgCopy('#jpS');">here</a> to copy this image`;
   };
   select('#totalShare').onclick = async () => { 
     let imgData = await captureImg('#totalSection');
     select('#jpCaptured').innerHTML = IMG(imgData);
+    select('#imgCopy').innerHTML = `Click <a href="#" onclick="imgCopy('#totalSection');">here</a> to copy this image`;
   };
   select('#dailyShare').onclick = async () => { 
     let imgData = await captureImg('#dailySection');
     select('#jpCaptured').innerHTML = IMG(imgData);
+    select('#imgCopy').innerHTML = `Click <a href="#" onclick="imgCopy('#dailySection');">here</a> to copy this image`;
   };
 
-  select('#imgCopy').onclick = async () => { 
-    let canvas = await html2canvas(select('#jpS'));
-    canvas.toBlob((blob) => {
-      navigator.clipboard.write([
-          new ClipboardItem({
-              'image/png': blob,
-          })
-      ]);
-    });
-    let shareLink = encodeURIComponent("https://dashboard.theweb3project.com");
-    let shareText = encodeURIComponent("Join Jackpot of The Web3 Project!");
-    select('#shareTwit').href = `https://twitter.com/intent/tweet?url=${shareLink}&text=${shareText}`;
-  };
+  
 
   setInterval(async () => {
     now = INT(NOW() / 1000);
@@ -259,6 +250,21 @@ async function runGlobal() {
   }, 10000);
 
 
+}
+
+
+async function imgCopy(targetId) { 
+  let canvas = await html2canvas(select(targetId));
+  canvas.toBlob((blob) => {
+    navigator.clipboard.write([
+        new ClipboardItem({
+            'image/png': blob,
+        })
+    ]);
+  });
+  let shareLink = encodeURIComponent("https://dashboard.theweb3project.com");
+  let shareText = encodeURIComponent("Join Jackpot of The Web3 Project!");
+  select('#shareTwit').href = `https://twitter.com/intent/tweet?url=${shareLink}&text=${shareText}`;
 }
 
 
