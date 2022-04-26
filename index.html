@@ -290,6 +290,7 @@
     
     let cbTimeLeft;
     let jackpotTimeLeft;
+    let jpAlarmed = false;
     (async () => {
       // do global
       await runGlobal();
@@ -300,11 +301,18 @@
         if (jackpotTimeLeft == 0) {
           return;
         }
-
-        if (jackpotTimeLeft == 100) {
-          alert("100 seconds left for jackpot!");
+        
+        if (jpAlarmed == false) {
+          if (jackpotTimeLeft < 100) {
+            let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
+            jackpotTimeLeft = lastBuyTime + 600 - now;
+            if (jackpotTimeLeft < 100) {
+              alert("100 seconds left for jackpot!");
+              jpAlarmed = true;
+            }
+          }
         }
-
+        
         displayText("#jpTimer", `${INT(jackpotTimeLeft / 60)}m ${jackpotTimeLeft % 60}s`);            
         jackpotTimeLeft = UPDATETICK(jackpotTimeLeft);
       }, 1000);
