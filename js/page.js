@@ -160,8 +160,8 @@ async function runGlobal() {
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
   select('#jpShare').onclick = async () => { 
-    let jpImg = await captureImg('#jpS');
-    select('#jpCaptured').innerHTML = jpImg;
+    let imgData = await captureImg('#jpS');
+    select('#jpCaptured').innerHTML = IMG(imgData);
   };
   
   setInterval(async () => {
@@ -680,12 +680,14 @@ async function runEmerUnstake() {
 }
 
 
+function IMG(src) {
+	return `<img src="${src}">`;
+}
 
 async function captureImg(targetId) {
   let canvas = await html2canvas(select(targetId));
-  var img = canvas.toDataURL('image/png');
-  img = `<img src="${img}">`;
-  return img;
+  var imgData = canvas.toDataURL('image/png');
+  return imgData;
 }
 
 
