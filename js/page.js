@@ -352,7 +352,6 @@ async function addEvent(name, event_) {
     let lastSupply = event_[0];
     let curSupply = event_[1];
     let diff = (curSupply - lastSupply) / BNBDIV;
-    console.log(lastSupply, curSupply, diff);
     events.unshift(`Rebased: Total Supply +${INT(diff, 2)}!`);
   }
 
@@ -438,7 +437,7 @@ async function eventBoard() {
     if (lastSupply == curSupply) {
       continue;
     }
-    
+
     await addEvent('rebase', [lastSupply, curSupply]);
     lastSupply = curSupply;
   }
