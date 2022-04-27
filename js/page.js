@@ -435,7 +435,10 @@ async function eventBoard() {
       lastSupply = curSupply;
       continue;
     }
-
+    if (lastSupply == curSupply) {
+      continue;
+    }
+    
     await addEvent('rebase', [lastSupply, curSupply]);
     lastSupply = curSupply;
   }
