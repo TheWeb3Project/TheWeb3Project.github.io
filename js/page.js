@@ -535,7 +535,7 @@ async function getTotalEarned() {
 
 /////////////////////////////////////////////////////////////////////////// calculator
 function changedValue(target, curTarget) {
-  let curAmount = INT(select('#amount').value);
+  let curAmount = select('#amount').value / 1;
   if (curAmount == 0) {
     displayText("#initInvest", `$${COMMA(INT(0.000, 3))}`);
     displayText("#futWealth", `$${COMMA(INT(0.000, 3))}`);
@@ -549,7 +549,7 @@ function changedValue(target, curTarget) {
     days = INT(select("#noOfDays").innerHTML);
   }
 
-  let curPrice = INT(select('#curPrice').value);
+  let curPrice = select('#curPrice').value / 1;
   let initInvest = curAmount * curPrice;
   displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
 
@@ -565,7 +565,7 @@ function changedValue(target, curTarget) {
 
   let futPrice;
   if (target == 'futPrice') {
-    futPrice = INT(curTarget.value);
+    futPrice = curTarget.value / 1;
   } else {
     let dailyPriceRate = 0.01;
     // let dailyPriceRate = 0.01801636;
