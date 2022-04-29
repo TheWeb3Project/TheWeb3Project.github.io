@@ -93,6 +93,8 @@ let cbTimeLeft;
 let jackpotTimeLeft;
 let jpAlarmed = false;
 let cb;
+let bigbuyTimeLeft;
+let bigbuyAlarmed = false;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
@@ -195,6 +197,12 @@ async function runGlobal() {
     let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
     jackpotTimeLeft = lastBuyTime + 600 - now;
 
+    let topBuyer = await CONTS['web3Jackpot']._topBuyer(); 
+    displayText("#biggestBuyer", `${SHORTADR(topBuyer)}`);
+    
+    let bigbuyTime = INT(await CONTS['web3Jackpot']._dailyPrizeTime());
+    bigbuyTimeLeft = bigbuyTime + 60*60*24 - now;
+
     cb = await CONTS['web3']._curcuitBreakerFlag();
     if (cb == 2) {
       let cbTime = INT(await CONTS['web3']._curcuitBreakerTime());
@@ -221,6 +229,26 @@ async function runGlobal() {
 
     displayText("#jpTimer", `${INT(jackpotTimeLeft / 60)}m ${jackpotTimeLeft % 60}s`);            
     jackpotTimeLeft = UPDATETICK(jackpotTimeLeft);
+  }, 1000);
+
+  setInterval(function () {
+    if (isNaN(bigbuyTimeLeft)) {
+      return;
+    }
+
+    if (bigbuyTimeLeft <= 0) {
+      return;
+    }
+    
+    if (bigbuyAlarmed == false) {
+      if (bigbuyTimeLeft < 600) {
+        alert("10 minutes left for big buy jackpot!");
+        bigbuyAlarmed = true;
+      }
+    }
+    
+    displayText("#biggestTimer", `TEST ${INT((bigbuyTimeLeft % 86400) / 3600)}h ${INT((bigbuyTimeLeft % 3600) / 60)}m ${bigbuyTimeLeft % 60}s`);            
+    bigbuyTimeLeft = UPDATETICK(bigbuyTimeLeft);
   }, 1000);
 
   displayText("#cb", `OFF`);

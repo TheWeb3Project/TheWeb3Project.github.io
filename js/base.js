@@ -152,6 +152,8 @@ ADRS['web3Jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
 ABIS['web3Jackpot'] = [
   "function _lastBuyer() view returns (address)",
   "function _lastBuyTime() view returns (uint256)",
+  "function _topBuyer() view returns (address)",
+  "function _dailyPrizeTime() view returns (uint256)",
 
   "event Jackpot(uint256, address, uint256)",
 ];
