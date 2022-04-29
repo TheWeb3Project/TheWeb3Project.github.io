@@ -197,9 +197,13 @@ async function runGlobal() {
     let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
     jackpotTimeLeft = lastBuyTime + 600 - now;
 
+
     let topBuyer = await CONTS['web3Jackpot']._topBuyer(); 
     displayText("#biggestBuyer", `${SHORTADR(topBuyer)}`);
     
+    let bigbuyAmount = INT(await CONTS['web3Jackpot']._dailyBuyAmounts(topBuyer));
+    displayText("#bigbuyAmount", `${INT(bigbuyAmount, 1)}`);
+
     let bigbuyTime = INT(await CONTS['web3Jackpot']._dailyPrizeTime());
     bigbuyTimeLeft = bigbuyTime + 60*60*24 - now;
 
