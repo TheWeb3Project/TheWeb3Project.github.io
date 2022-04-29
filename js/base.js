@@ -154,7 +154,8 @@ ABIS['web3Jackpot'] = [
   "function _lastBuyTime() view returns (uint256)",
   "function _topBuyer() view returns (address)",
   "function _dailyPrizeTime() view returns (uint256)",
-
+  "function _dailyBuyAmounts() view returns (uint256)",
+  
   "event Jackpot(uint256, address, uint256)",
 ];
 
