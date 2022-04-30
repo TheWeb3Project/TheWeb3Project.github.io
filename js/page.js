@@ -252,7 +252,7 @@ async function runGlobal() {
       }
     }
     
-    displayText("#biggestTimer", `TEST ${INT((bigbuyTimeLeft % 86400) / 3600)}h ${INT((bigbuyTimeLeft % 3600) / 60)}m ${bigbuyTimeLeft % 60}s`);            
+    displayText("#biggestTimer", `${INT((bigbuyTimeLeft % 86400) / 3600)}h ${INT((bigbuyTimeLeft % 3600) / 60)}m ${bigbuyTimeLeft % 60}s`);            
     bigbuyTimeLeft = UPDATETICK(bigbuyTimeLeft);
   }, 1000);
 
