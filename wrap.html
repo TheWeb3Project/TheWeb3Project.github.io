@@ -221,11 +221,23 @@
               </div>
 
             </div>
-            <div class="card  bg-light p-3 p-sm-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-             <div class="mb-4">
+            <div class="card bg-light p-3 p-sm-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+            <div class="d-flex justify-content-between">
+              <div class="mb-4">
               <h5 class="fw-bold mb-0">Lock $wWEB3</h5>
+
               <span class="small fw-semibold"><div>And get $pWEB3</div> <div> Which will unlock many things!</div>  <div> you can lock it for 14 days up to 1 years and receive pWEB3</div></span>
              </div>
+             <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+             Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.
+             Non transferable NFT obtained by locking your web3 for 365 days.
+              Different tiers based on amounts of total supply:
+              <br>
+              0.001% to 0.0099% = Tier 1
+              0.01% - 0.099% = Tier 2
+              0.1% or above = Tier 3
+             "></i>
+            </div>
 
              <div id="run-wweb3-approve2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
               <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
@@ -306,21 +318,27 @@
                 <p>Unlock After: <span id="unlockAfter">0</span></p>
                 <p>You can claim: <span id="claimAmount">0.000</span> pWEB3</p>
               </div>
-              <div id="run-claim" class="stack-layout stack-layout--gap-50 stack-layout--direction-column d-flex flex-row swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-50" style="font-size: 15px; border: 3px solid #48acef;
+              <div id="run-claim" class="stack-layout stack-layout--gap-50 stack-layout--direction-column  swap-tokens-form-submit my-1">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid #48acef;
                 border-radius: 20px;
                 background-image: linear-gradient(134deg,#48acef,#00436f);
                 box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
                   <span id="claim-name" class="button__content">Claim</span>
                 </button>
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-50" style="font-size: 15px; border: 3px solid #48acef;
-                border-radius: 20px;
-                background-image: linear-gradient(134deg,#48acef,#00436f);
-                box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
-                  <span id="claim-name" class="button__content">Claim Hall Of Fame NFT</span>
-                </button>
+
               </div>
+             <div class="mt-5">
+               <div class="info my-4 col-12">
+
+               </div>
+              <button id="hof-claim" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
+              border-radius: 20px;
+             background-color: gray;">
+                <span id="claim-name" class="button__content">Claim Hall Of Fame NFT</span>
+              </button>
+             </div>
             </div>
+
           </div>
           <div class="mt-5">
             <table class="table table-no-more">
@@ -379,7 +397,7 @@
                         border-radius: 20px;
                         background-image: linear-gradient(134deg,#48acef,#00436f);
                         box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
-                          <span id="claim-name" class="button__content">Claim</span>
+                          <span id="claim-name-hof" class="button__content">Claim</span>
                         </button>
                       </div></td>
 
@@ -426,7 +444,6 @@
 		let unlockAfter;
     async function runPersonal() {
       await _runPersonal();
-
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
         select('#run-web3-approve').classList.add('d-none');
@@ -468,6 +485,7 @@
 
       [res, data] = await READ_TX('web3Stake', '_durations', [CURADR]);
       let stakedDuration = data;
+
       displayText('#stakedDuration', `${COMMA(INT(stakedDuration, 0))}`);
 			
       [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
@@ -481,6 +499,13 @@
             displayText("#unlockAfter", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
             unlockAfter = UPDATETICK(unlockAfter);
           }, 1000);
+      // if(param) {
+        console.log(stakedDuration.toString())
+        if(stakedDuration.toString() == 365) {
+          document.getElementById('hof-claim').style.border = '3px solid #48acef'
+          document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
+        }
+      // }
 
       // [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
       // let unlockTime = data;
@@ -538,6 +563,10 @@
     select('#sidebar-nav').children[4].classList.add('active-neumorphism');
   </script>
     <style>
+      .tooltip{
+        width: 200px;
+      }
+
       .active-neumorphism {
         box-shadow:  2px 2px 9px 0 rgb(17 19 20 / 90%),
            -2px -2px 9px 0 rgb(93 100 112 / 90%);
