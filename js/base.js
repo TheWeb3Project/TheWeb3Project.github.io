@@ -106,8 +106,6 @@ ABIS['web3'] = [
 
 ADRS['wweb3'] = "0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f";
 ABIS['wweb3'] = [
-  "function name() view returns (string)",
-  "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
   "function allowance(address, address) view returns (uint256)",
@@ -121,8 +119,6 @@ ABIS['wweb3'] = [
 
 ADRS['pweb3'] = "0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569";
 ABIS['pweb3'] = [
-  "function name() view returns (string)",
-  "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
   "function allowance(address, address) view returns (uint256)",
@@ -130,6 +126,27 @@ ABIS['pweb3'] = [
   "function approve(address, uint256) returns (bool)",
   "function transfer(address, uint)",
 ];
+
+ADRS['xweb3'] = "0x0f995Dc1200f03127502b853d9e18F50733df4E4";
+ABIS['xweb3'] = [
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+  
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+];
+
+ADRS['wusd'] = "0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16";
+ABIS['wusd'] = [
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+  
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+];
+
 
 ADRS['web3Stake'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
 ABIS['web3Stake'] = [
