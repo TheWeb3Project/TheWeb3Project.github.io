@@ -255,18 +255,18 @@
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
 
-      let pweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['miner']);
+      let pweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['web3Miner']);
       if (BIGINT(0) < pweb3Allowance) {
         select('#run-pweb3-approve-miner').classList.add('d-none');
       } else {
-        select('#run-pweb3-approve-miner').onclick = async () => { await approve('pweb3', ADRS['miner']); };
+        select('#run-pweb3-approve-miner').onclick = async () => { await approve('pweb3', ADRS['web3Miner']); };
       }
 
-      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['miner']);
+      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['web3Miner']);
       if (BIGINT(0) < busdAllowance) {
         select('#run-busd-approve-miner').classList.add('d-none');
       } else {
-        select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['miner']); };
+        select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['web3Miner']); };
       }
 
 			console.log('aaa');
