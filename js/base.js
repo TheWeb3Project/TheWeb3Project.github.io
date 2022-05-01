@@ -230,6 +230,8 @@ ABIS['token'] = [
   "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint)",
+  
   "function transfer(address, uint)",
   "function approve(address, uint256) returns (bool)",
   "event Transfer(address indexed from, address indexed to, uint amount)",
