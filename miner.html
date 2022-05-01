@@ -269,6 +269,7 @@
         select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['miner']); };
       }
 
+      
 
       let stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
       stakedAmount = stakedAmount / BNBDIV;
