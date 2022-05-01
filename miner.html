@@ -156,9 +156,9 @@
                     </button>
                   </div>
                   <div class="info d-flex flex-column gap-3 mt-5">
-                    <div class="d-flex justify-content-between"><div>Your active miners:</div> <div>??</div></div>
-                    <div class="d-flex justify-content-between"><div>Ore in the mines:</div> <div>??</div></div>
-                    <div class="d-flex justify-content-between"><div>Ore produced</div> <div>??</div></div>
+                    <div class="d-flex justify-content-between"><div>Your active miners:</div> <div id="_miners">??</div></div>
+                    <div class="d-flex justify-content-between"><div>Ore in the mines:</div> <div id="_tDaimonds">??</div></div>
+                    <div class="d-flex justify-content-between"><div>Ore produced</div> <div id="_daimonds">??</div></div>
                   </div>
                   <hr>
                   <div class="buying">
@@ -357,6 +357,9 @@
       // }
     });
 
+      let _tDaimonds = await CONTS['web3Miner']._tDaimonds();
+      select('#_tDaimonds').innerHTML = `${COMMA(INT(_tDaimonds))}`;
+
       $('[data-bs-toggle="tooltip"]').tooltip();
 
 		
@@ -367,13 +370,12 @@
       }
       await runPersonal();
 
-      // let [res, data] = await GAS('web3', 'manualRebase', []);
-      // if (res == true) {
-      //   return;
-      // } else {
-      //   gasEstimation = data;
-      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
-      // }
+      let _miners = await CONTS['web3Miner']._miners(CURADR);
+      select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
+
+      let _daimonds = await CONTS['web3Miner']._daimonds(CURADR);
+      select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
+
       $('[data-bs-toggle="tooltip"]').tooltip();
 
     })();
