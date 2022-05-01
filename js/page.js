@@ -188,16 +188,18 @@ async function runGlobal() {
   setInterval(async () => {
     now = INT(NOW() / 1000);
     
+    let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
+    jackpotTimeLeft = lastBuyTime + 600 - now;
+    if (jackpotTimeLeft < 0) {
+      displayText("#lastBuyer", `No buyer yet. Join!`);
+    } else {
+      let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
+      displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
+    }
     let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
-    let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
-    displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
     
-    let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
-    jackpotTimeLeft = lastBuyTime + 600 - now;
-
-
     let topBuyer = await CONTS['web3Jackpot']._topBuyer(); 
     displayText("#biggestBuyer", `${SHORTADR(topBuyer)}`);
     
