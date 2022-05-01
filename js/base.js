@@ -133,6 +133,10 @@ ABIS['xweb3'] = [
   "function balanceOf(address) view returns (uint)",
   "function allowance(address, address) view returns (uint256)",
   
+  "function buyPay() payable",
+  "function buy(address, uint)",
+	"function claim()",
+  
   "function approve(address, uint256) returns (bool)",
   "function transfer(address, uint)",
 ];
@@ -143,6 +147,9 @@ ABIS['wusd'] = [
   "function balanceOf(address) view returns (uint)",
   "function allowance(address, address) view returns (uint256)",
   
+  "function wusdToBusd(uint amount)",
+  "function busdToWusd(uint amount)",
+
   "function approve(address, uint256) returns (bool)",
   "function transfer(address, uint)",
 ];
