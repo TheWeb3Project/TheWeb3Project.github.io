@@ -271,7 +271,7 @@
 
 			console.log('aaa');
 
-      
+
       let stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
       stakedAmount = stakedAmount / BNBDIV;
       displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
@@ -345,13 +345,10 @@
       $(document).on('input', 'input[type="range"]', function (e) {
       changedValue('days', select('input[type="range"]'));
       if(document.getElementById('noOfDays').innerHTML < 33) {
-        console.log('bruh')
         document.getElementById('minerImage').src = '/images/Group_68.png'
       } if(document.getElementById('noOfDays').innerHTML > 33) {
-        console.log('bigbruh')
         document.getElementById('minerImage').src = '/images/Group_67.png'
       } if(document.getElementById('noOfDays').innerHTML >= 66){
-        console.log('biggerbruh')
         document.getElementById('minerImage').src = '/images/Group_66.png'
       }
       // if(e >= 33) {
