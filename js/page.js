@@ -196,9 +196,9 @@ async function runGlobal() {
     
     let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
     jackpotTimeLeft = lastBuyTime + 600 - now;
-    if (jackpotTimeLeft < 0) {
-      displayText("#jpTimer", `Winner is chosen! Wait for result!`);            
-    }
+    // if (jackpotTimeLeft < 0) {
+    //   displayText("#jpTimer", `Winner is chosen! Wait for result!`);            
+    // }
     
     let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
     displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
