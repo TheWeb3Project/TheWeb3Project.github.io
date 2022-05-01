@@ -82,6 +82,7 @@ let now = INT(NOW() / 1000);
 let bnbPrice;
 let price;
 let wPrice;
+let xPrice;
 
 let totalSupply;
 let wTotalSupply;
