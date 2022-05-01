@@ -191,11 +191,12 @@ async function runGlobal() {
     let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
     jackpotTimeLeft = lastBuyTime + 600 - now;
     if (jackpotTimeLeft < 0) {
-      displayText("#lastBuyer", `No buyer yet. Join!`);
-    } else {
-      let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
-      displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
+      displayText("#jpTimer", `Winner is chosen! Wait for result!`);            
     }
+    
+    let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
+    displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
+    
     let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
