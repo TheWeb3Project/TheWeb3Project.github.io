@@ -106,6 +106,9 @@ async function runGlobal() {
   wTotalSupply = 100 * 10**3 * 10**18;
   wTotalSupply = wTotalSupply / BNBDIV;
 
+  // xTotalSupply = await CONTS['xweb3'].totalSupply();
+  // xTotalSupply = xTotalSupply / BNBDIV;
+
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
 
@@ -148,6 +151,9 @@ async function runGlobal() {
 
   wPrice = price * totalSupply / wTotalSupply;
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
+
+  // xPrice = wPrice + xTotalSupply;
+  // displayText("#xPrice", `$${COMMA(INT(xPrice, 3))}`);
 
   let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
   let wCirculatingSupply = wTotalSupply - lockedAmount;
@@ -196,7 +202,7 @@ async function runGlobal() {
     
     let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
     displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
-    
+
     let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
