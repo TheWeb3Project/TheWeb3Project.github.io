@@ -360,6 +360,13 @@
       let _tDaimonds = await CONTS['web3Miner']._tDaimonds();
       select('#_tDaimonds').innerHTML = `${COMMA(INT(_tDaimonds))}`;
 
+      let ref = getRef();
+      if (ref == '') {
+
+      } else {
+        select('#ref').value = ref;
+      }
+      
       $('[data-bs-toggle="tooltip"]').tooltip();
 
 		

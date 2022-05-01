@@ -777,6 +777,22 @@ async function captureImg(targetId) {
   return imgData;
 }
 
+function getRef() {
+  let href = location.href;
+  let hrefSplit = href.split('ref=');
+  if (hrefSplit.length <= 1) {
+    return '';
+  }
+
+  let ref = hrefSplit[1];
+  try {
+    ref = ADR(ref);
+  } catch {
+    return '';
+  }
+
+  return ref;
+}
 
 //////////////////////////////////////////////////////////////////////////////
 
