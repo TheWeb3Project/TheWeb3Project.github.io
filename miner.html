@@ -271,6 +271,7 @@
 
 			console.log('aaa');
 
+      
       let stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
       stakedAmount = stakedAmount / BNBDIV;
       displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
