@@ -304,6 +304,8 @@ async function runGlobal() {
   select('#buy-box').onclick = async () => { await SEND_TX('nft', 'getArmyBox', []); };
   select('#buy-miner').onclick = async () => { await buyMiner(); };
   select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
+  select('#hire-miner-bnb').onclick = async () => { await buyXweb3Bnb(); };
+  select('#hire-miner-busd').onclick = async () => { await buyXweb3Busd(); };
 
   console.log('global done');
 }
