@@ -1,10 +1,52 @@
+
 'use strict'
+
+
+function loadScript(url, callback) {
+  let body = document.body;
+  let script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src = url;
+
+  script.onreadystatechange = callback;
+  script.onload = callback;
+  script.async = false;
+
+  body.appendChild(script);
+}
+
+
+let isScriptLoaded = 0;
+function loadScriptDone() {
+	isScriptLoaded += 1;
+}
+
+const SCRIPTS = [
+  "https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js",
+	"https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js",
+	"https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js",
+	"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js",
+  "https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js",
+  "https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js",
+  "https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js",
+  "https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js",
+];
+
+// for (const script of SCRIPTS) {
+// 	loadScript(script, loadScriptDone);
+// } 
 
 /////////////////////////////////////////////////////////// consts
 
 const BNBDIV = 10**18;
 const CHAINID = 56;
+const UINT256MAX = 2**256 - 1;
 
+let RPCS = [
+  "https://bsc-dataseed.binance.org",
+  "https://bsc-dataseed1.defibit.io",
+  "https://bsc-dataseed1.ninicoin.io",
+];
 let PROVIDER;
 if (window.ethereum) {
 	PROVIDER = new ethers.providers.Web3Provider(window.ethereum);
@@ -16,16 +58,17 @@ if (window.ethereum) {
         method: "wallet_addEthereumChain",
         params: [{
           chainId: "0x38",
-          rpcUrls: ["https://bsc-dataseed.binance.org"],
+          rpcUrls: [RPCS[1]],
         }],
       });
     }
   })();
   
 } else {
-  PROVIDER = new ethers.providers.JsonRpcProvider("https://bsc-dataseed.binance.org", {name: 'binance', 'chainId': 56});
+  PROVIDER = new ethers.providers.JsonRpcProvider(RPCS[1], {name: 'binance', 'chainId': 56});
 }
-const SIGNER =  PROVIDER.getSigner();
+
+const SIGNER = PROVIDER.getSigner();
 
 
 const ADRS = {};
@@ -37,16 +80,126 @@ ABIS['web3'] = [
   "function symbol() view returns (string)",
   "function totalSupply() view returns (uint256)",
   "function balanceOf(address) view returns (uint)",
-  "function transfer(address to, uint amount)",
+  "function allowance(address, address) view returns (uint256)",
+
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+
   "function manualRebase()",
+  "function toggleExperi()",
+  "function setPriceRate(uint)",
+
+  "function _isExperi() view returns (bool)",
+  
+  "function setBotBlacklists(address[], bool[])",
+  "function setLifeSupports(address[], uint[])",
+  "function sellbuy(uint)",
+  "function _curcuitBreakerFlag() view returns (uint256)",
+  "function _curcuitBreakerTime() view returns (uint256)",
   "function _lastRebaseBlock() view returns (uint256)",
+
+
+
   "event Transfer(address indexed from, address indexed to, uint amount)",
+  "event Rebased(uint256 blockNumber, uint256 totalSupply)",
+];
+
+ADRS['wweb3'] = "0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f";
+ABIS['wweb3'] = [
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+  
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+  
+  "function deposit(uint)",
+  "function withdraw(uint)",
+];
+
+ADRS['pweb3'] = "0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569";
+ABIS['pweb3'] = [
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+  
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+];
+
+ADRS['xweb3'] = "0x0f995Dc1200f03127502b853d9e18F50733df4E4";
+ABIS['xweb3'] = [
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+  
+  "function buyPay() payable",
+  "function buy(address, uint)",
+	"function claim()",
+  
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+];
+
+ADRS['wusd'] = "0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16";
+ABIS['wusd'] = [
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+  
+  "function wusdToBusd(uint amount)",
+  "function busdToWusd(uint amount)",
+
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
 ];
 
 
+ADRS['web3Stake'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
+ABIS['web3Stake'] = [
+  "function stake(uint256, uint256)",
+  "function unstake()",
+  "function emergencyUnstake()",
+  "function claimReward()",
+
+  "function _amounts(address) view returns (uint256)",
+  "function _durations(address) view returns (uint256)",
+  "function _rewards(address) view returns (uint256)",
+  "function _unlockTimes(address) view returns (uint256)",
+  "function _lastClaims(address) view returns (uint256)",
+  
+
+  "function calculateReward(uint256, uint256) view returns (uint256)"
+];
+
+ADRS['web3Jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
+ABIS['web3Jackpot'] = [
+  "function _lastBuyer() view returns (address)",
+  "function _lastBuyTime() view returns (uint256)",
+  "function _topBuyer() view returns (address)",
+  "function _dailyPrizeTime() view returns (uint256)",
+  "function _dailyBuyAmounts(address) view returns (uint256)",
+  
+  "event Jackpot(uint256, address, uint256)",
+];
+
+ADRS['web3Miner'] = "0x6f17D0DCc709Ee57b9d8bB9846Ad740032dB8661";
+ABIS['web3Miner'] = [
+  "function Hire(address)",
+  "function HireMore(address)",
+  "function Receive()",
+
+  "function _miners(address) view returns (uint256)",
+  "function _daimonds(address) view returns (uint256)",
+  "function _tDaimonds() view returns (uint256)",
+  "function calculateWusdRewards(address) view returns (uint256)",
+  "function getMyDaimonds(address) view returns (uint256)",
+  
+];
+
 ADRS['factory'] = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 ABIS['factory'] = [
-  "function getPair(address tokenA, address tokenB) view returns (address pair)",
+  "function getPair(address, address) view returns (address)",
 ];
 
 
@@ -56,11 +209,6 @@ ABIS['router'] = [
   "function swapExactETHForTokens(uint, address[], address, uint) payable returns (uint[])",
 ];
 
-ADRS['pair'] = "0x9f7d235b7d3f4403133A559b0968361687e4fC62";
-ABIS['pair'] = [
-  "function token0() view returns (address)",
-  "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
-];
 
 ADRS['nft'] = "0x933D6472131545BC742Cde7d051a443eA0683a85";
 ABIS['nft'] = [
@@ -69,15 +217,44 @@ ABIS['nft'] = [
   "function _itemById(uint) view returns (uint)",
 ];
 
-ADRS['wbnb'] = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
-ADRS['busd'] = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
-ADRS['cake'] = "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82";
-
 const CONTS = {};
 const SIGNS = {};
+
 for (let name in ABIS) {
   CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
   SIGNS[name] = CONTS[name].connect(SIGNER);
+}
+
+ABIS['token'] = [
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint)",
+  
+  "function transfer(address, uint)",
+  "function approve(address, uint256) returns (bool)",
+  "event Transfer(address indexed from, address indexed to, uint amount)",
+];
+ADRS['wbnb'] = "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c";
+ADRS['busd'] = "0xe9e7CEA3DedcA5984780Bafc599bD69ADd087D56";
+ADRS['cake'] = "0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82";
+for (let name of ['busd', 'cake']) {
+  CONTS[name] = new ethers.Contract(ADRS[name], ABIS['token'], PROVIDER);
+  SIGNS[name] = CONTS[name].connect(SIGNER);
+}
+
+ABIS['pair'] = [
+  "function token0() view returns (address)",
+  "function getReserves() view returns (uint112 reserve0, uint112 reserve1, uint32 blockTimestampLast)",
+];
+
+ADRS['pairbusd'] = '0x58F876857a02D6762E0101bb5C46A8c1ED44Dc16';
+ADRS['pairweb3'] = '0x9f7d235b7d3f4403133A559b0968361687e4fC62';
+ADRS['paircake'] = '0x0eD7e52944161450477ee417DE9Cd3a859b14fD0';
+for (let name of ['web3', 'busd', 'cake']) {
+  CONTS[`pair${name}`] = new ethers.Contract(ADRS[`pair${name}`], ABIS['pair'], PROVIDER);
+  SIGNS[`pair${name}`] = CONTS[`pair${name}`].connect(SIGNER);
 }
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
@@ -85,19 +262,28 @@ for (let name in ABIS) {
 const STARTBLOCK = 16282771; 
 
 let CURBLOCK;
+async function getCurBlock() {
+	let curBlock = await PROVIDER.getBlockNumber();
+  
+  return curBlock;
+}
 (async () => {
-	CURBLOCK = await PROVIDER.getBlockNumber();
+	CURBLOCK = await getCurBlock();
 })();
 
 ////////////////////////////////// base
 
-function INT(n) {
-  return parseInt(n);
+function INT(v, n=0) {
+  if (n == 0) {
+    return parseInt(v);
+  }
+  
+  return parseInt(v * 10**n) / 10**n;
 }
+
 function STR(s) {
 	return String(s);
 }
-
 function ROUND(v, n=0) {
   return v.toFixed(n);
 }
@@ -115,8 +301,13 @@ function COMMA(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 }
 
-function SHORTADR(adr) {
-  return adr.slice(0, 6) + '..' + adr.slice(-4);;
+function SHORTADR(adr, x=true, n=4) {
+  let shortAdr = '';
+  if (x) {
+    shortAdr += adr.slice(0, 2);
+  }
+  shortAdr += adr.slice(2, 2 + n) + '..' + adr.slice(-n);
+  return shortAdr;
 }
 
 function KEYS(dict) {
@@ -139,21 +330,15 @@ function DELAY(milSec) {
   }
 }
 
+function UPDATETICK(ticks) {
+  return ticks - 1;
+}
+
 ///////////////////////////////// html
 
 function HREF(link, txt) {
 	return `<a href="${link}">${txt}</a>`;
 }
-
-function select(el, all = true) {
-  el = el.trim()
-  if (all) {
-    return [...document.querySelectorAll(el)]
-  } else {
-    return document.querySelector(el)
-  }
-}
-
 
 
 function makeElem(elemType, elemId = null, elemClass = null) {
@@ -167,13 +352,62 @@ function makeElem(elemType, elemId = null, elemClass = null) {
 
   return elem;
 }
+let nullDiv = makeElem('div', 'NULL', null);
+nullDiv.style.width = '1px';
+nullDiv.style.display = 'none';
+document.body.append(nullDiv);
+
+function select(el, all=false) {
+  el = el.trim();
+  let elms = [...document.querySelectorAll(el)];
+  if (elms.length == 0) {
+    elms = [document.querySelector('#NULL')]; // how to erase inner?
+  }
+
+  if (all) {  
+    return elms;
+  }
+
+  return elms[0];
+}
 
 function displayText(el, text) {
-  let els = select(el);
+  let els = select(el, true);
+  if (els == null) {
+    return;
+  }
+  
   for (var idx = 0; idx < els.length; idx++) {
     els[idx].innerHTML = text;
   }
 }
+
+
+
+function setCookie(name, value, expDays) {
+  let date = new Date();
+  date.setTime(date.getTime() + (expDays * 24 * 60 * 60 * 1000));
+  const expires = "expires=" + date.toUTCString();
+  document.cookie = name + "=" + value + "; " + expires + "; path=/";
+}
+
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          // Does this cookie string begin with the name we want?
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
+
+
 
 
 function copy(value) {
@@ -258,7 +492,7 @@ let inputHandlerBuy = function (e) {
   (async function () {
     valueIn = e.target.value;
     valueIn = valueIn.replace(/,/g, '');
-    result = select('#buy-output')[0];
+    result = select('#buy-output');
     if (valueIn == 0) {
       result.value = 0;
       return;
@@ -284,12 +518,19 @@ function BSC(type, txt) {
   return `https://bscscan.com/${type}/${txt}`;
 }
 
+function BIGINT(v) {
+  return BigInt(v);
+}
 
 function BIG(s, decimals=18) {
-	if (decimals == 18) {
-		return ethers.utils.parseEther(s);
-  } else {
-  	return ethers.utils.parseUnits(s, decimals);
+  try {
+    if (decimals == 18) {
+      return ethers.utils.parseEther(s);
+    } else {
+      return ethers.utils.parseUnits(s, decimals);
+    }
+  } catch (e) {
+    alert(e);
   }
 }
  
@@ -303,20 +544,21 @@ function ETH(big, decimals=18) {
  
 
  
-function ADR(address) {
+function ADR(address, popup=true) {
   let checksumAdr;
   try {
     checksumAdr = ethers.utils.getAddress(address);
-  } catch (error) {
-    alert('Wrong Format Address: [' + address + ']');
-
+  } catch (e) {
+    let eStr = 'Wrong Format Address: [' + address + ']';
+    console.log(eStr);
+    if (popup) {
+      alert(eStr);
+    }
+    
     return '';
   }
   return checksumAdr;
 }
-
-
-
 
 async function getBalance(adr) {
 	let balance = await PROVIDER.getBalance(adr);
@@ -324,36 +566,31 @@ async function getBalance(adr) {
   return balance;
 }
 
-async function getPrice(adr) {
-  adr = ADRS['busd'];
-  let pair = await CONTS['factory'].getPair(adr, ADRS['wbnb']);
-  let cont = new ethers.Contract(pair, ABIS['pair'], PROVIDER);
-  let r = await cont.getReserves();
-  let t0 = await cont.token0();
+async function getPrice(name) {
+  let r = await CONTS[`pair${name}`].getReserves();
+  let t0 = await CONTS[`pair${name}`].token0();
 
-  if (t0 == adr) {
-    r = [r[1], r[0]];
+  if (t0 == ADRS[name]) {
+    r = [r[1], r[0]]; // BNB, adr
   }
 
-  return r[0] / r[1];
+  return r[0] / r[1]; // BNB / adr
 }
 
 
 
-
+let CURADR = null;
 async function getCurAdr() {
-	let curAdr = null;
 	try {
-  	curAdr = await SIGNER.getAddress();
+  	CURADR = await SIGNER.getAddress();
   } catch (err) {
   	console.log('not connected yet');
+    CURADR = null;
   }
- 
-  return curAdr;
 }
 
 
-let CURADR;
+
 function displayAccountInformation() {
   let shortAdrStr = SHORTADR(CURADR);
   
@@ -374,28 +611,44 @@ async function handleAccountsChanged(accounts) {
     displayText("connectResult", 'Please Connect Metamask');
     return;
   }
-
+  
+  if (accounts.length == 0) {
+    console.log('no acount');
+    CURADR = null;
+    return;
+  }
   CURADR = ADR(accounts[0]);
   displayAccountInformation();
 }
 
-async function conn() {
+async function conn(func=null, popup=false) {
 	try {
   	/* CURADR = await PROVIDER.send("eth_requestAccounts", []) */;
     let accounts = await ethereum.request({ method: 'eth_requestAccounts' }); // eth_requestAccounts
     await handleAccountsChanged(accounts);
-    await doAfterConnect();
+    await runPersonal();
+    if (func != null) {
+      await func();
+    }
+    
   } catch (err) {
-  	console.log(err);
     if (err == 'ReferenceError: ethereum is not defined') {
       alert('Use Dapp to connect wallet!');
       return;
     }
-    alert(err);
+    
+    console.log(err);
+    if ('message' in err) {
+      err = err['message'];
+    }
+  	
+    if (popup) {
+    	alert(JSON.stringify(err));
+    }    
   }
 }
 
-async function doAfterConnect() { // dummy
+async function runPersonal() { // dummy
 }
 
 function handleChainChanged(_chainId) {
@@ -409,7 +662,7 @@ function handleChainChanged(_chainId) {
 
 ////////////////////////////////// tx
 
-async function ERR(err) {
+async function ERR(err, popup=true) {
   let result = err;
 
   if (!('code' in err)) {
@@ -430,14 +683,16 @@ async function ERR(err) {
     }
 
     if (data['code'] == 3) {
-      msg = data['message'];
+      let msg = data['message'];
       result = msg;
+      alert(result);
       return result;
     }
 
     if (data['code'] == -32000) {
-      msg = data['message'];
+      let msg = data['message'];
       result = msg;
+      alert(result);
       return result;
     }
   }
@@ -453,7 +708,7 @@ async function SIGN(name, msg, bin=false) {
 }
  
  
-async function SEND_ETH(from=ADRS["fund"], to=ADRS["fund"], value='0.0') {
+async function SEND_ETH(from=ADRS["fund"], to=ADRS["fund"], value='0.0', popup=true) {
 	const data = {
   	from: from,
   	to: to,
@@ -468,56 +723,48 @@ async function SEND_ETH(from=ADRS["fund"], to=ADRS["fund"], value='0.0') {
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
-  	err = await ERR(err);
+  	err = await ERR(err, popup);
     return [ true, err ];
   }
 }
  
-async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C3126f57eB8C989") {
+async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C3126f57eB8C989", popup=true) {
 	const overrides = {
   	from: from,
   };
  
   try {
   	let result = await CONTS[name][method](...args, overrides);
-    console.log('result', result);
     return [ false, result ];
   } catch (err) {
-  	err = await ERR(err);
+  	err = await ERR(err, popup);
     return [ true, err ];
   }
  
 }
  
-async function GAS(name, method, args, value = null) {
-  let overrides;
+async function GAS(name, method, args, value = null, popup=true) {
+  let overrides = {};
   if (value != null) {
-    overrides = {
-      value: BIG(value),
-    };
+    overrides['value'] = BIG(value);
   }
+
 
   let result;
   try {
-    if (value != null) {
-      result = await SIGNS[name].estimateGas[method](...args, overrides);
-    } else {
-      result = await SIGNS[name].estimateGas[method](...args);
-    }
+    result = await SIGNS[name].estimateGas[method](...args, overrides);
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
-    result = await ERR(err);
+    result = await ERR(err, popup);
     return [ true, result ];
   };
 }
  
-async function SEND_TX(name, method, args, value=null, check=true) {
+async function SEND_TX(name, method, args, value=null, check=true, popup=true) {
   let overrides = {};
   if (value != null) {
-    overrides = {
-      value: BIG(value),
-    };
+    overrides['value'] = BIG(value);
   }
 
   if (check == true) {
@@ -534,18 +781,24 @@ async function SEND_TX(name, method, args, value=null, check=true) {
 
   try {
     let result;
-    if (value != null) {
-      result = await SIGNS[name][method](...args, overrides);
-    } else {
-      result = await SIGNS[name][method](...args);
-    }
+    result = await SIGNS[name][method](...args, overrides);
+    console.log('hash', result['hash']);
     console.log('result', result);
     return [ false, result ];
+
+    // if (wait == true) {
+    //   let txResult = await result.wait();
+    //   console.log('txResult', txResult);
+    //   return [ false, txResult ];
+    //   // event, eventSignature
+    // } else {
+    	
+    // }
     /* console.log(tx.hash); */
     // wait()
     // receipt.events
   } catch (err) {
-    err = await ERR(err);
+    err = await ERR(err, popup);
     return [ true, err ];
   }
 }
@@ -553,16 +806,16 @@ async function SEND_TX(name, method, args, value=null, check=true) {
 
 let buyTxhashData;
 async function privateBuy() {
-	let buyAmount = select('#buy-input')[0].value;
+	let buyAmount = select('#buy-input').value;
   let { res, data } = await SEND_ETH(CURADR, ADRS['fund'], buyAmount);
   if (res == true) {
   	// err
     return [ true, data ];
   }
   
-  let buyResult = select('#buy-result')[0];
+  let buyResult = select('#buy-result');
   buyResult.innerHTML = 'Success';
-  let buyTxhash = select('#buy-txhash')[0];
+  let buyTxhash = select('#buy-txhash');
   buyTxhash.innerHTML = HREF(BSC('tx', data.hash), SHORTADR(data.hash));
   buyTxhashData = data.hash;  
 }
@@ -586,16 +839,16 @@ await CONTS[name].balanceOf(adr)
 
 
 
-async function getCurAdr() {
-  let curAdr = null;
-  try {
-    curAdr = await SIGNER.getAddress();
-  } catch (err) {
-    console.log('not connected yet');
-  }
 
-  return curAdr;
-}
+
+// while (true) {
+// 	if (isScriptLoaded == SCRIPTS.length) {
+//     break;
+//   }
+
+//   DELAY(100);
+// }
+
 
 
 (async () => {
