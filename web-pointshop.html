@@ -355,7 +355,7 @@
       }
 
       let ppweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['xweb3']);
-      if (BIGINT(0) < pweb3Allowance) {
+      if (BIGINT(0) < ppweb3Allowance) {
         select('#run-pweb3-approve-xweb3').classList.add('d-none');
       } else {
         select('#approved-xweb3').classList.add('d-none');
@@ -363,7 +363,7 @@
       }
 
       let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['xweb3']);
-      if (BIGINT(0) < pweb3Allowance) {
+      if (BIGINT(0) < busdAllowance) {
         select('#run-busd-approve-xweb3').classList.add('d-none');
       } else {
         select('#run-busd-approve-xweb3').onclick = async () => { await approve('busd', ADRS['xweb3']); };
