@@ -256,7 +256,7 @@
                   <div class="">
                     <div class="d-flex flex-column ">
                       <label for="xWEB3-slider" class="fw-medium"></label>
-                      <input type="range" min="0" max="100" step="0.01" value="0.01" id="xWEB3-slider" class="mb-5">
+                      <input type="range" min="0" max="10000" step="1" value="1" id="xWEB3-slider" class="mb-5">
                     </div>
                     <p class="">1 xWEB3 = <span id="xPrice">$</p>
                     <p class="">1 xWEB3 = <span id="xPriceWithPweb3">pWEB3</p>
@@ -418,9 +418,11 @@
 
     $(document).on('input', '#xWEB3-slider', function (e) {
       changedValue('xWEB3', select('#xWEB3-slider'));
-      
       let xweb3Amount = select('#noOfxWEB3').innerHTML;
-      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount * xPrice * 1769), 3)}`);
+      displayText('#noOfxWEB3', `${INT(xweb3Amount / 100, 3)}`);
+
+      
+      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 100 * xPrice * 1769), 3)}`);
     });
       // do global
       await runGlobal();
