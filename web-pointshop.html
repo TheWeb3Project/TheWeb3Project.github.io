@@ -405,6 +405,8 @@
       changedValue('days', select('input[type="range"]'));
       
       let minerAmount = select('#noOfDays').innerHTML;
+      displayText('#noOfDays', `${COMMA(INT(minerAmount))}`);
+      
       displayText('#miner-pweb3', `${COMMA(INT(minerAmount * 8845))}`);
 
       if(document.getElementById('noOfDays').innerHTML < 29483333) {
