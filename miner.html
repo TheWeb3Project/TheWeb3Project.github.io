@@ -380,8 +380,8 @@
       let _daimonds = await CONTS['web3Miner']._daimonds(CURADR);
       select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
       
-      // why error?
-      let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(ADRS['busd'], 100 * 10**18);
+
+      let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(CURADR);
       select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards))}`;
       
 
