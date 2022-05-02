@@ -416,6 +416,7 @@
       
 			if (0 < _daimonds) {
       	let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(CURADR);
+        calculateWusdRewards = calculateWusdRewards / BNBDIV;
       	select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards))}`;
       }
 
