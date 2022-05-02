@@ -259,7 +259,7 @@
                       <input type="range" min="0" max="10000" step="0.01" value="0.01" id="xWEB3-slider" class="mb-5">
                     </div>
                     <p class="">1 xWEB3 = <span id="xPrice">$</p>
-                    <p class="">1 xWEB3 = <span id="xPriceWithWeb3">pWEB3</p>
+                    <p class="">1 xWEB3 = <span id="xPriceWithPweb3">pWEB3</p>
                     <p class="">Buy <span id="noOfxWEB3"></span> xWEB3 with <span id="xweb3-pweb3"></span> pWEB3</p>
                     
                     <div id="approved-xweb3">
@@ -420,7 +420,7 @@
       changedValue('xWEB3', select('#xWEB3-slider'));
       
       let xweb3Amount = select('#noOfxWEB3').innerHTML;
-      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount * xPrice))}`);
+      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount * xPrice * 1769), 3)}`);
     });
       // do global
       await runGlobal();
