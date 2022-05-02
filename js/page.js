@@ -818,7 +818,9 @@ async function buyMiner() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  await SEND_TX('web3Miner', 'Hire', [ref]);
+  let amount = select('#noOfDays').innerHTML;
+  amount = amount.replace(/,/g, '');
+  await SEND_TX('web3Miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
 }
 
 async function buyMinerMore() {
