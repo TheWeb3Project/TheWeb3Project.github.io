@@ -304,8 +304,8 @@ async function runGlobal() {
   select('#buy-box').onclick = async () => { await SEND_TX('nft', 'getArmyBox', []); };
   select('#buy-miner').onclick = async () => { await buyMiner(); };
   select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
-  select('#hire-miner-bnb').onclick = async () => { await buyXweb3Bnb(); };
-  select('#hire-miner-busd').onclick = async () => { await buyXweb3Busd(); };
+  select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
+  select('#hire-miner-busd').onclick = async () => { await buyMinerBusd(); };
 
   select('#hireMore').onclick = async () => { await buyMinerMore(); };
   select('#sellOre').onclick = async () => { await sellOre(); };
@@ -812,6 +812,28 @@ function getRef() {
 }
 
 
+async function buyMinerBnb() {
+  let ref = getRef();
+  if (ref == '') {
+    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
+  }
+
+  let amount = select('#noOfDays').innerHTML;
+  amount = amount.replace(/,/g, '');
+  await SEND_TX('web3miner', 'HirePay', [ref], value=amount);
+}
+
+async function buyMinerBusd() {
+  let ref = getRef();
+  if (ref == '') {
+    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
+  }
+
+  let amount = select('#noOfDays').innerHTML;
+  amount = amount.replace(/,/g, '');
+  await SEND_TX('web3miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
+}
+
 async function buyMiner() {
   let ref = getRef();
   if (ref == '') {
@@ -843,27 +865,7 @@ async function buyXweb3() {
 }
 
 
-async function buyXweb3Bnb() {
-  let ref = getRef();
-  if (ref == '') {
-    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
-  }
 
-  let amount = select('#noOfDays').innerHTML;
-  amount = amount.replace(/,/g, '');
-  await SEND_TX('web3miner', 'HirePay', [ref], value=amount);
-}
-
-async function buyXweb3Busd() {
-  let ref = getRef();
-  if (ref == '') {
-    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
-  }
-
-  let amount = select('#noOfDays').innerHTML;
-  amount = amount.replace(/,/g, '');
-  await SEND_TX('web3miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
-}
 
 
 //////////////////////////////////////////////////////////////////////////////
