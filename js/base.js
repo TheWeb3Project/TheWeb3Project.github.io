@@ -216,6 +216,8 @@ ABIS['nft'] = [
   "function _ownedTotalItemCount(address) view returns (uint)",
   "function tokenOfOwnerByIndex(address, uint) view returns (uint)",
   "function _itemById(uint) view returns (uint)",
+
+  "function getArmyBox()",
 ];
 
 const CONTS = {};

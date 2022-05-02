@@ -301,6 +301,10 @@ async function runGlobal() {
     await eventBoard();
   }, 10000);
 
+  select('#open-box').onclick = async () => { await SEND_TX('nft', 'getArmyBox', []); };
+  select('#buy-miner').onclick = async () => { await hireMiner(); };
+
+
   console.log('global done');
 }
 
@@ -800,6 +804,16 @@ function getRef() {
   }
 
   return ref;
+}
+
+
+async function hireMiner() {
+  let ref = getRef();
+  if (ref == '') {
+    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
+  }
+
+  await SEND_TX('web3Miner', 'Hire', [ref]);
 }
 
 //////////////////////////////////////////////////////////////////////////////
