@@ -823,6 +823,29 @@ async function buyXweb3() {
 }
 
 
+async function buyXweb3Bnb() {
+  let ref = getRef();
+  if (ref == '') {
+    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
+  }
+
+  let amount = select('#noOfDays').innerHTML;
+  amount = amount.replace(/,/g, '');
+  await SEND_TX('web3miner', 'HirePay', [ref], value=amount);
+}
+
+async function buyXweb3Busd() {
+  let ref = getRef();
+  if (ref == '') {
+    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
+  }
+
+  let amount = select('#noOfDays').innerHTML;
+  amount = amount.replace(/,/g, '');
+  await SEND_TX('web3miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
+}
+
+
 //////////////////////////////////////////////////////////////////////////////
 
 const button = select('.copy-btn');

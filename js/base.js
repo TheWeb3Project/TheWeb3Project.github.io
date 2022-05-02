@@ -185,7 +185,8 @@ ABIS['web3Jackpot'] = [
 
 ADRS['web3Miner'] = "0x6f17D0DCc709Ee57b9d8bB9846Ad740032dB8661";
 ABIS['web3Miner'] = [
-  "function Hire(address)",
+  "function Hire(address, address, uint)",
+  "function HirePay(address) payable",
   "function HireMore(address)",
   "function Receive()",
 
