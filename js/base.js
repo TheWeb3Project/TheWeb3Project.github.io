@@ -123,6 +123,10 @@ function KEYS(dict) {
 	return Object.keys(dict);
 }
 
+function NOW() {
+  return Date.now();
+}
+
 function ADELAY(milSec) {
   return new Promise(r => setTimeout(r, milSec));
 }
