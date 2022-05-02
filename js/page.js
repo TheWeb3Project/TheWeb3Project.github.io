@@ -861,18 +861,18 @@ async function buyMiner() {
   await SEND_TX('web3Miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
 }
 
-async function buyMinerMore() {
-  let ref = getRef();
-  if (ref == '') {
-    ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
-  }
+// async function buyMinerMore() {
+//   let ref = getRef();
+//   if (ref == '') {
+//     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
+//   }
 
-  await SEND_TX('web3Miner', 'HireMore', [ref]);
-}
+//   await SEND_TX('web3Miner', 'HireMore', [ref]);
+// }
 
-async function sellOre() {
-  await SEND_TX('web3Miner', 'Receive', []);
-}
+// async function sellOre() {
+//   await SEND_TX('web3Miner', 'Receive', []);
+// }
 
 async function buyXweb3() {
   let amount = select('#xweb3-pweb3').innerHTML;
