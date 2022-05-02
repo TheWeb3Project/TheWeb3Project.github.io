@@ -180,7 +180,9 @@ async function purchaseBox(boxCount) {
     select('#connectWalletStatus').innerHTML = "Waiting for result";
     select('#connectWalletStatus').innerHTML += getSpinHtml();
     let txResult = await result.wait();
-	
+    // let hash = (await PROVIDER.getBlockWithTransactions(17454309))['transactions'][145]['hash'];
+	// (await (await PROVIDER.getBlockWithTransactions(17454309))['transactions'][145].wait())['logs']
+    
     // txResult['events']
     console.log(txResult['events']);
 

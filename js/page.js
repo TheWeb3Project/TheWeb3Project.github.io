@@ -309,9 +309,11 @@ async function runGlobal() {
 
     let result = data;
     let txResult = await result.wait();
-	
-    // txResult['events']
-    console.log(txResult['events']);
+    
+    // CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
+
+    // emit MintedNFT(tokenId, user, tokenItem);
+    // console.log(txResult['events']);
 
     displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link));
 

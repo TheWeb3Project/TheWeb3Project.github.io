@@ -219,6 +219,8 @@ ABIS['nft'] = [
   "function _itemById(uint) view returns (uint)",
 
   "function getArmyBox()",
+
+  "event MintedNFT(uint, address, uint)",
 ];
 
 const CONTS = {};
