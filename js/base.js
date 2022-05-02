@@ -192,7 +192,7 @@ ABIS['web3Miner'] = [
   "function _miners(address) view returns (uint256)",
   "function _daimonds(address) view returns (uint256)",
   "function _tDaimonds() view returns (uint256)",
-  "function calculateWusdRewards(address) view returns (uint256)",
+  "function calculateWusdRewards(address, uint) view returns (uint256)",
   "function getMyDaimonds(address) view returns (uint256)",
   
 ];
