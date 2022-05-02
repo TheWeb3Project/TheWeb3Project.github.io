@@ -820,7 +820,7 @@ async function buyMinerBnb() {
 
   let amount = select('#noOfDays').innerHTML;
   amount = amount.replace(/,/g, '');
-  await SEND_TX('web3miner', 'HirePay', [ref], value=amount);
+  await SEND_TX('web3miner', 'HirePay', [ref], amount);
 }
 
 async function buyMinerBusd() {
