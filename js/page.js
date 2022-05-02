@@ -818,8 +818,8 @@ async function buyMiner() {
 
 async function buyXweb3() {
   let amount = select('#xweb3-pweb3').innerHTML;
-
-  await SEND_TX('xweb3', 'buy', [ADRS['pweb3'], amount]);
+  amount = amount.replace(/,/g, '');
+  await SEND_TX('xweb3', 'buy', [ADRS['pweb3'], BIG(amount)]);
 }
 
 
