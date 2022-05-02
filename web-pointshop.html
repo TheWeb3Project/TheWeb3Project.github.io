@@ -36,7 +36,12 @@
 <body id="titano-finance" style="margin-bottom: 100px; width: 100%; background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326); font-weight: 400;">
   <div class="container-fluid">
     <div class="row">
+      <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;  ">
+
+      </div>
+
       <div id="overlay" style="z-index: 1000001;"></div>
+
       <main class="col pt-4">
         <div class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001; ">
           <div class="d-flex pt-3 px-sm-3">
@@ -208,7 +213,7 @@
                 <div style="margin-left: 70px;">
                   <img src="./images/Group_68.png" id="minerImage" class="col-8 mx-auto" alt="">
                 </div>
-                <div class="">
+                  <div class="mt-3">
                     <div class="d-flex flex-column mb-3">
                       <label for="days-slider" class="fw-medium"><span id="noOfDays">1</span> miner</label>
                       <input type="range" min="1" max="100" step="1" value="1" id="days-slider" class="mb-5">
@@ -233,34 +238,14 @@
                   "></i>
                 </div>
                 <img src="./images/Crown.png" class="col-8 mx-auto" alt="">
-
-                <!-- <div id="run-pweb3-approve-xweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span class="button__content">$pWEB3 Approve to Buy</span>
-                  </button>
-                </div> -->
-
-                <!-- <div id="run-busd-approve-xweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span class="button__content">$BUSD Approve to Buy</span>
-                  </button>
-                </div> -->
-
-
                 <div>
                   <p class="h5"> Quantum investing</p>
                   <p class="h5" style="margin-bottom: 80px;"> Share profit</p>
                 </div>
-                  <div class="mt-3">
+                  <div class="">
                     <div class="d-flex flex-column ">
-                      <label for="xWEB3-slider" class="fw-medium"><span id="noOfxWEB3">1</span> miner</label>
-                      <input type="range" min="1" max="100" step="1" value="1" id="xWEB3-slider" class="mb-5">
+                      <label for="xWEB3-slider" class="fw-medium"><span id="noOfxWEB3">10</span> xWEB3</label>
+                      <input type="range" min="10" max="10000" step="10" value="10" id="xWEB3-slider" class="mb-5">
                     </div>
                     <p class=""><span id="xPrice">$</p>
                     <p class=""><span id="xPriceWithWeb3">pWeb3</p>
@@ -355,15 +340,14 @@
       }
 
       let ppweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['xweb3']);
-      if (BIGINT(0) < ppweb3Allowance) {
+      if (BIGINT(0) < pweb3Allowance) {
         select('#run-pweb3-approve-xweb3').classList.add('d-none');
       } else {
-        select('#approved-xweb3').classList.add('d-none');
         select('#run-pweb3-approve-xweb3').onclick = async () => { await approve('pweb3', ADRS['xweb3']); };
       }
 
       let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['xweb3']);
-      if (BIGINT(0) < busdAllowance) {
+      if (BIGINT(0) < pweb3Allowance) {
         select('#run-busd-approve-xweb3').classList.add('d-none');
       } else {
         select('#run-busd-approve-xweb3').onclick = async () => { await approve('busd', ADRS['xweb3']); };
@@ -405,17 +389,13 @@
 
     (async () => {
 
-      $(document).on('input', '#days-slider', function (e) {
+      $(document).on('input', 'input[type="range"]', function (e) {
       changedValue('days', select('input[type="range"]'));
-      console.log(select('#xWEB3-slider'))
       if(document.getElementById('noOfDays').innerHTML < 33) {
-        console.log('bruh')
         document.getElementById('minerImage').src = '/images/Group_68.png'
       } if(document.getElementById('noOfDays').innerHTML > 33) {
-        console.log('bigbruh')
         document.getElementById('minerImage').src = '/images/Group_67.png'
       } if(document.getElementById('noOfDays').innerHTML >= 66){
-        console.log('biggerbruh')
         document.getElementById('minerImage').src = '/images/Group_66.png'
       }
     });
@@ -424,17 +404,8 @@
       changedValue('xWEB3', select('#xWEB3-slider'));
 
     });
-
       // do global
       await runGlobal();
-
-
-      // let curBlock = await PROVIDER.getBlock();
-      // curBlock = curBlock['number'];
-      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
-      // lastRebaseBlock = INT(lastRebaseBlock);
-      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
-      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
 
 
       ////////////////////////////////////////////////////////////////////////////
@@ -455,11 +426,7 @@
       select('#setCurToFutPrice').onclick = async () => {
         select('#futPrice').value = INT(price, 3);
       };
-
-
-
       $('[data-bs-toggle="tooltip"]').tooltip();
-
 
       await getCurAdr();
       if (CURADR == null) {
@@ -467,14 +434,6 @@
         return;
       }
       await runPersonal();
-
-      // let [res, data] = await GAS('web3', 'manualRebase', []);
-      // if (res == true) {
-      //   return;
-      // } else {
-      //   gasEstimation = data;
-      //   displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}, ${gasEstimation}`);
-      // }
       $('[data-bs-toggle="tooltip"]').tooltip();
 
     })();
@@ -502,24 +461,6 @@
         color: #fff;
         text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
       }
-    </style>
-</body>
-<!-- x #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      }
-      .card {
-        border: none;
-      }
-      .neontext{
-        color: #fff;
-      }
-
-      #titano-finance #sidebar-nav li:hover {
-        color: #fff;
-      }
-      .neontext:hover{
-        color: #fff;
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      } -->
     </style>
 </body>
 </html>
