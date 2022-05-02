@@ -301,29 +301,29 @@ async function runGlobal() {
     await eventBoard();
   }, 10000);
 
-  select('#buy-box').onclick = async () => { 
-    let [res, data] = await SEND_TX('nft', 'getArmyBox', []);
-    if (res == true) {
-      return;
-    }
+  // select('#buy-box').onclick = async () => {
+  //   let [res, data] = await SEND_TX('nft', 'getArmyBox', []);
+  //   if (res == true) {
+  //     return;
+  //   }
 
-    let result = data;
-    let txResult = await result.wait();
+  //   let result = data;
+  //   let txResult = await result.wait();
     
-    // CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
+  //   // CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
 
-    // emit MintedNFT(tokenId, user, tokenItem);
-    // console.log(txResult['events']);
+  //   // emit MintedNFT(tokenId, user, tokenItem);
+  //   // console.log(txResult['events']);
 
-    displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link));
+  //   displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link));
 
-  };
-  select('#buy-miner').onclick = async () => { await buyMiner(); };
+  // };
+  // select('#buy-miner').onclick = async () => { await buyMiner(); };
   select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
-  select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
-  select('#hire-miner-busd').onclick = async () => { await buyMinerBusd(); };
+  // select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
+  // select('#hire-miner-busd').onclick = async () => { await buyMinerBusd(); };
 
-  select('#hireMore').onclick = async () => { await buyMinerMore(); };
+  // select('#hireMore').onclick = async () => { await buyMinerMore(); };
   select('#sellOre').onclick = async () => { await sellOre(); };
 
   console.log('global done');
