@@ -301,7 +301,21 @@ async function runGlobal() {
     await eventBoard();
   }, 10000);
 
-  select('#buy-box').onclick = async () => { await SEND_TX('nft', 'getArmyBox', []); };
+  select('#buy-box').onclick = async () => { 
+    let [res, data] = await SEND_TX('nft', 'getArmyBox', []);
+    if (res == true) {
+      return;
+    }
+
+    let result = data;
+    let txResult = await result.wait();
+	
+    // txResult['events']
+    console.log(txResult['events']);
+
+    displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link);
+
+  };
   select('#buy-miner').onclick = async () => { await buyMiner(); };
   select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
   select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
