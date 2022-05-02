@@ -301,9 +301,9 @@ async function runGlobal() {
     await eventBoard();
   }, 10000);
 
-  select('#open-box').onclick = async () => { await SEND_TX('nft', 'getArmyBox', []); };
-  select('#buy-miner').onclick = async () => { await hireMiner(); };
-
+  select('#buy-box').onclick = async () => { await SEND_TX('nft', 'getArmyBox', []); };
+  select('#buy-miner').onclick = async () => { await buyMiner(); };
+  select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
 
   console.log('global done');
 }
@@ -807,7 +807,7 @@ function getRef() {
 }
 
 
-async function hireMiner() {
+async function buyMiner() {
   let ref = getRef();
   if (ref == '') {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
@@ -815,6 +815,13 @@ async function hireMiner() {
 
   await SEND_TX('web3Miner', 'Hire', [ref]);
 }
+
+async function buyXweb3() {
+  let amount = select('#xweb3-pweb3').innerHTML;
+
+  await SEND_TX('xweb3', 'buy', [ADRS['pweb3'], amount]);
+}
+
 
 //////////////////////////////////////////////////////////////////////////////
 
