@@ -251,7 +251,7 @@
                     </div>
                     <p class="">1 xWEB3 = <span id="xPrice">$</p>
                     <p class="">1 xWEB3 = <span id="xPriceWithWeb3">pWEB3</p>
-                    <p class="">Buy <span id="noOfxWEB3"></span> xWEB3 with <span id="xweb3-pweb3"></span> pWE3</p>
+                    <p class="">Buy <span id="noOfxWEB3"></span> xWEB3 with <span id="xweb3-pweb3"></span> pWEB3</p>
                     <div id="run-pweb3-approve-xweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                       <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon mt-3" style="border: 3px solid #48acef;
                       border-radius: 20px;
@@ -413,7 +413,7 @@
       changedValue('xWEB3', select('#xWEB3-slider'));
       
       let xweb3Amount = select('#noOfxWEB3').innerHTML;
-      displayText('xweb3-pweb3', `${COMMA(INT(xweb3Amount * xPrice))}`);
+      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount * xPrice))}`);
     });
       // do global
       await runGlobal();
