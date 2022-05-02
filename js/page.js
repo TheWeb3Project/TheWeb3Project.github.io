@@ -313,7 +313,7 @@ async function runGlobal() {
     // txResult['events']
     console.log(txResult['events']);
 
-    displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link);
+    displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link));
 
   };
   select('#buy-miner').onclick = async () => { await buyMiner(); };
