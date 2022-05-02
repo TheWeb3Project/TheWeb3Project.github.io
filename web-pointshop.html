@@ -215,7 +215,7 @@
                 </div>
                   <div class="mt-3">
                     <div class="d-flex flex-column mb-3">
-                      <label for="days-slider" class="fw-medium"><span id="minerAmount">1</span> miner</label>
+                      <label for="days-slider" class="fw-medium"><span id="noOfDays">1</span> miner</label>
                       <input type="range" min="1" max="100" step="1" value="1" id="days-slider" class="mb-5">
                     </div>
                     <p class=""><span id="miner-pweb3"></span> pWEB3</p>
@@ -391,13 +391,19 @@
 
       $(document).on('input', 'input[type="range"]', function (e) {
       changedValue('days', select('input[type="range"]'));
-      if(document.getElementById('minerAmount').innerHTML < 33) {
+      
+      let minerAmount = select('#noOfDays').innerHTML;
+      displayText('#miner-pweb3', `${COMMA(INT(minerAmount) * 8845)}`);
+
+      if(document.getElementById('noOfDays').innerHTML < 33) {
         document.getElementById('minerImage').src = '/images/Group_68.png'
-      } if(document.getElementById('minerAmount').innerHTML > 33) {
+      } if(document.getElementById('noOfDays').innerHTML > 33) {
         document.getElementById('minerImage').src = '/images/Group_67.png'
-      } if(document.getElementById('minerAmount').innerHTML >= 66){
+      } if(document.getElementById('noOfDays').innerHTML >= 66){
         document.getElementById('minerImage').src = '/images/Group_66.png'
       }
+
+      
     });
 
     $(document).on('input', '#xWEB3-slider', function (e) {
