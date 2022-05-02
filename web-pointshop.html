@@ -249,8 +249,9 @@
                       <label for="xWEB3-slider" class="fw-medium"><span id="noOfxWEB3">10</span> xWEB3</label>
                       <input type="range" min="0" max="10000" step="0.01" id="xWEB3-slider" class="mb-5">
                     </div>
-                    <p class=""><span id="xPrice">$</p>
-                    <p class=""><span id="xPriceWithWeb3">pWeb3</p>
+                    <p class="">1 xWEB3 = <span id="xPrice">$</p>
+                    <p class="">1 xWEB3 = <span id="xPriceWithWeb3">pWEB3</p>
+                    <p class=""><span id="xweb3-pweb3"></span></p>
                     <div id="run-pweb3-approve-xweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                       <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon mt-3" style="border: 3px solid #48acef;
                       border-radius: 20px;
@@ -395,7 +396,7 @@
       changedValue('days', select('input[type="range"]'));
       
       let minerAmount = select('#noOfDays').innerHTML;
-      displayText('#miner-pweb3', `${COMMA(INT(minerAmount) * 8845)}`);
+      displayText('#miner-pweb3', `${COMMA(INT(minerAmount * 8845))}`);
 
       if(document.getElementById('noOfDays').innerHTML < 33) {
         document.getElementById('minerImage').src = '/images/Group_68.png'
@@ -410,7 +411,9 @@
 
     $(document).on('input', '#xWEB3-slider', function (e) {
       changedValue('xWEB3', select('#xWEB3-slider'));
-
+      
+      let xweb3Amount = select('#noOfxWEB3').innerHTML;
+      displayText('xweb3-pweb3', `${COMMA(INT(xweb3Amount * xPrice))}`);
     });
       // do global
       await runGlobal();
