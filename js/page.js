@@ -595,6 +595,14 @@ function changedValue(target, curTarget) {
     days = INT(select("#noOfDays").innerHTML);
   }
 
+
+  if (target == 'xWEB3') {
+    days = INT(curTarget.value);
+    select("#noOfxWEB3").innerHTML = days;
+  } else {
+    days = INT(select("#noOfxWEB3").innerHTML);
+  }
+
   let curPrice = select('#curPrice').value / 1;
   let initInvest = curAmount * curPrice;
   displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
