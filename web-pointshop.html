@@ -216,7 +216,8 @@
                   <div class="mt-3">
                     <div class="d-flex flex-column mb-4 pb-2">
                       <label for="days-slider" class="fw-medium"></label>
-                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="days-slider" class="mb-5">
+                      <input type="number" min="8845" max="8845000" step="8845" value="8845" id="days-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
+                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="days-slider" oninput="changeInputValue(this.value)"  class="mb-5">
                     </div>
                     <p class="">Buy miners with <span id="noOfDays"></span> pWEB3</p>
                     <button id="buy-miner" type="submit" onclick="alert('Coming soon')" class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
@@ -256,7 +257,8 @@
                   <div class="">
                     <div class="d-flex flex-column ">
                       <label for="xWEB3-slider" class="fw-medium"></label>
-                      <input type="range" min="0" max="1000" step="1" value="1" id="xWEB3-slider" class="mb-5">
+                      <input type="number" min="0" max="10000" step="1" value="1" id="xWEB3-sliders" oninput="changeRangeValues(this.value)" class="mb-2">
+                      <input type="range" min="0" max="10000" step="1" value="1" id="xWEB3-slider"  oninput="changeInputValues(this.value)" class="mb-5">
                     </div>
                     <p class="">1 xWEB3 = <span id="xPrice">$</p>
                     <p class="">1 xWEB3 = <span id="xPriceWithPweb3">pWEB3</p>
@@ -305,6 +307,38 @@
   <script>
 
     let wweb3Balance;
+
+
+
+    function showValue1(newValue) {
+        document.getElementById("noOfDays").innerHTML= newValue;
+      }
+
+      function changeRangeValue(val){
+          document.getElementById("days-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+          showValue1(val);
+      }
+
+      function changeInputValue(val){
+          document.getElementById("days-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+          showValue1(val);
+      }
+
+      function showValues1(newValue) {
+        document.getElementById("noOfxWEB3").innerHTML= newValue;
+      }
+
+      function changeRangeValues(val){
+          document.getElementById("xWEB3-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+          showValues1(val);
+      }
+
+      function changeInputValues(val){
+          document.getElementById("xWEB3-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+          showValues1(val);
+      }
+
+
 
     async function boxOpening() {
       document.getElementById("unBox").style.display = 'none';
@@ -401,9 +435,17 @@
 
     (async () => {
 
+
+
       $(document).on('input', '#days-slider', function (e) {
+        // var x = document.getElementById("days-slider").value
+        // var y =  document.getElementById('days-sliders').value = x
+        // x = y
+        // console.log(x);
+        // console.log(y);
+
       changedValue('days', select('input[type="range"]'));
-      
+
       let minerAmount = select('#noOfDays').innerHTML;
       displayText('#noOfDays', `${COMMA(INT(minerAmount))}`);
 
@@ -430,7 +472,7 @@
       await runGlobal();
 
 
-      ////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////
 
       select('#curPrice').value = `${COMMA(INT(price, 3))}`;
       select('#futPrice').value = `${COMMA(INT(price, 3))}`;
