@@ -318,10 +318,10 @@ async function runGlobal() {
   //   displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link));
 
   // };
-  select('#buy-miner').onclick = async () => { await buyMiner(); };
-  select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
-  select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
-  select('#hire-miner-busd').onclick = async () => { await buyMinerBusd(); };
+  // select('#buy-miner').onclick = async () => { await buyMiner(); };
+  // select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
+  // select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
+  // select('#hire-miner-busd').onclick = async () => { await buyMinerBusd(); };
 
   select('#hireMore').onclick = async () => { await buyMinerMore(); };
   select('#sellOre').onclick = async () => { await sellOre(); };
