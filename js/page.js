@@ -323,8 +323,8 @@ async function runGlobal() {
   // select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
   // select('#hire-miner-busd').onclick = async () => { await buyMinerBusd(); };
 
-  select('#hireMore').onclick = async () => { await buyMinerMore(); };
-  select('#sellOre').onclick = async () => { await sellOre(); };
+  // select('#hireMore').onclick = async () => { await buyMinerMore(); };
+  // select('#sellOre').onclick = async () => { await sellOre(); };
 	
   select('#hof-claim').onclick = async () => { await SEND_TX('nft', 'hallOfFame', [])};
   console.log('global done');
