@@ -354,17 +354,14 @@
 
       $(document).on('input', 'input[type="range"]', function (e) {
       changedValue('days', select('input[type="range"]'));
-      if(document.getElementById('noOfDays').innerHTML < 33) {
+      if(document.getElementById('noOfDays').innerHTML < 3333) {
         document.getElementById('minerImage').src = '/images/Group_68.png'
-      } if(document.getElementById('noOfDays').innerHTML > 33) {
+      } if(document.getElementById('noOfDays').innerHTML > 3333) {
         document.getElementById('minerImage').src = '/images/Group_67.png'
-      } if(document.getElementById('noOfDays').innerHTML >= 66){
+      } if(document.getElementById('noOfDays').innerHTML >= 6666){
         document.getElementById('minerImage').src = '/images/Group_66.png'
       }
-      // if(e >= 33) {
-      //   console.log(document.getElementById('minerImage').src);
-      //   document.getElementById('minerImage').src = 'group_67.png';
-      // }
+
     });
 
       let _tDaimonds = await CONTS['web3Miner']._tDaimonds();
