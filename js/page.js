@@ -325,7 +325,8 @@ async function runGlobal() {
 
   // select('#hireMore').onclick = async () => { await buyMinerMore(); };
   // select('#sellOre').onclick = async () => { await sellOre(); };
-
+	
+  select('#hof-claim').onclick = async () => { await SEND_TX('nft', 'hallOfFame', [])};
   console.log('global done');
 }
 
