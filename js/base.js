@@ -214,6 +214,7 @@ ABIS['router'] = [
 
 ADRS['nft'] = "0x933D6472131545BC742Cde7d051a443eA0683a85";
 ABIS['nft'] = [
+  "function tokenURI(uint) view returns (string)",
   "function _ownedTotalItemCount(address) view returns (uint)",
   "function tokenOfOwnerByIndex(address, uint) view returns (uint)",
   "function _itemById(uint) view returns (uint)",
