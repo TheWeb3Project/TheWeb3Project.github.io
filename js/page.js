@@ -79,6 +79,26 @@ displayWeb3Header();
 
 let now = INT(NOW() / 1000);
 
+let F = {};
+let V = {};
+let P = {};
+async function getV(k) {
+  if (!(k in V)) {
+    if (!(k in F)) {
+      alert(k);
+      return [true, null];
+    }
+
+    if (!(k in P)) {
+      P[k] = null;  
+    }
+
+    V[k] = await F[k](P[k]);
+  }
+
+  return V[k];  
+}
+
 let bnbPrice;
 let price;
 let wPrice;
@@ -100,17 +120,20 @@ let bigbuyAlarmed = false;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
-  bnbPrice = 1 / (await getPrice('busd'));
-
-  totalSupply = await CONTS['web3'].totalSupply();
-  totalSupply = totalSupply / BNBDIV;
-
-  wTotalSupply = 100 * 10**3 * 10**18;
-  wTotalSupply = wTotalSupply / BNBDIV;
-
-  xTotalSupply = await CONTS['xweb3'].totalSupply();
-  xTotalSupply = xTotalSupply / BNBDIV;
-
+  F['bnbPrice'] = async () => { return 1 / (await getPrice('busd')); };
+  F['totalSupply'] = async () => { 
+    totalSupply = await CONTS['web3'].totalSupply();
+    totalSupply = totalSupply / BNBDIV;
+  };
+  F['wTotalSupply'] = async () => { 
+    wTotalSupply = 100 * 10**3 * 10**18;
+    wTotalSupply = wTotalSupply / BNBDIV;
+  };
+  F['xTotalSupply'] = async () => { 
+    xTotalSupply = await CONTS['xweb3'].totalSupply();
+    xTotalSupply = xTotalSupply / BNBDIV;
+  };
+  
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
 
