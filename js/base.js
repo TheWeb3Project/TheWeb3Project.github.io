@@ -177,6 +177,15 @@ ABIS['web3Jackpot'] = [
   "function _lastBuyer() view returns (address)",
   "function _lastBuyTime() view returns (uint256)",
   "function _topBuyer() view returns (address)",
+
+  "function _lastWinner() view returns (address)",
+  "function _lastWinnerAmount() view returns (uint256)",
+  "function _lastWinnerTime() view returns (uint256)",
+
+  "function _topWinner() view returns (address)",
+  "function _topWinnerAmount() view returns (uint256)",
+  "function _topWinnerTime() view returns (uint256)",
+
   "function _dailyPrizeTime() view returns (uint256)",
   "function _dailyBuyAmounts(address) view returns (uint256)",
   
