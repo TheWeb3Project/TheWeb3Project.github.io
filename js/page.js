@@ -293,7 +293,7 @@ async function runGlobal() {
       let cbTime = INT(await CONTS['web3']._curcuitBreakerTime());
       cbTimeLeft = cbTime + 3600 - now;
     }
-  }, 10000);
+  }, 5000);
 
   setInterval(function () {
     
