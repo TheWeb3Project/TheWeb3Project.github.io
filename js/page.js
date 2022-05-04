@@ -165,18 +165,26 @@ async function runGlobal() {
     return v;
   };
 
-  
+  F['liqReserves'] = async() => {
+    return await CONTS['pairweb3'].getReserves();
+  };
+
+  F['liqWeb3'] = async() => {
+    return (await gV('liqReserves'))[0] / BNBDIV;
+  };
+
+  F['liqBnb'] = async() => {
+    return (await gV('liqReserves'))[1] / BNBDIV;
+  };
+
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
   displayText("#treasury", `$${COMMA(INT((await gV('treasuryBalance')) + (await gV('marketingBalance')), 3))}`);
 
-  let liqReserves = await CONTS['pairweb3'].getReserves();
-  liqWeb3 = liqReserves[0] / BNBDIV;
-  liqBnb = liqReserves[1] / BNBDIV;
-  let liqRate = liqBnb / liqWeb3;
+  let liqRate = (await gV('liqBnb')) / (await gV('liqWeb3'));
 
-  let liqBalance = liqBnb * (await gV('bnbPrice'));
+  let liqBalance = (await gV('liqBnb')) * (await gV('bnbPrice'));
   displayText("#liquidity", `$${COMMA(INT(liqBalance, 0))}`);
 
   let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * (await gV('bnbPrice'));
@@ -717,7 +725,7 @@ async function approve(name, target) {
 // }
 
 async function handleInputSwap(e) {
-  await handleInput(e, 'wrap-output', liqBnb, liqWeb3);
+  await handleInput(e, 'wrap-output', (await gV('liqBnb')), (await gV('liqWeb3')));
 }
 
 async function handleInputWrap(e) {
