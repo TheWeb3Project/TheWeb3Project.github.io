@@ -344,6 +344,24 @@
 
 
     function boxOpening() {
+      let [res, data] = await SEND_TX('nft', 'getArmyBox', []);
+      if (res == true) {
+        return;
+      }
+
+      let result = data;
+      let txResult = await result.wait();
+      let txLogs = txResult['logs'];
+      let mintEvent = INTFS['nft'].getEventTopic("MintedNFT(uint, address, uint256)");
+      let armyImgUrl;
+      for (txLog of txLogs) {
+        let topics = txLog['topics'];
+        if (topics[0] == mintEvent) {
+          let decodedData = INTFS['nft'].decodeEventLog("MintedNFT(uint, address, uint256)", txLog['data'], [mintEvent]);
+          let tokenId = decodedData[0];
+          armyImgUrl = await CONTS['nft'].tokenURI(tokenId);
+        }
+      }
       document.getElementById("unBox").style.display = 'none';
       document.getElementById("video").style.display = 'block';
       vid = document.getElementById("vid");
