@@ -384,7 +384,7 @@ function displayText(el, text) {
     return;
   }
 
-  if (els.id = 'NULL') {
+  if (els.id == 'NULL') {
     return;
   }
   
