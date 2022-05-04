@@ -359,6 +359,8 @@
         if (topics[0] == mintEvent) {
           let decodedData = INTFS['nft'].decodeEventLog("MintedNFT(uint, address, uint256)", txLog['data'], [mintEvent]);
           let tokenId = decodedData[0];
+          let itemId = decodedData[2];
+          displayText('#nftId', tokenId);
           let armyJsonUrl = await CONTS['nft'].tokenURI(tokenId);
           let armyJsonData = await getUrlData(armyJsonUrl);
           armyImgUrl = armyJsonData['image']
