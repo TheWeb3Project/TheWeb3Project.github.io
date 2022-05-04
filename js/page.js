@@ -99,14 +99,9 @@ async function gV(k) {
   return V[k];  
 }
 
-let bnbPrice;
 let price;
 let wPrice;
 let xPrice;
-
-let totalSupply;
-let wTotalSupply;
-let xTotalSupply;
 
 let liqWeb3;
 let liqBnb;
@@ -122,15 +117,17 @@ async function runGlobal() {
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
   F['totalSupply'] = async() => {
-    let tS = await CONTS['web3'].totalSupply();
-    return tS / BNBDIV;
-  }
-
-  wTotalSupply = 100 * 10**3 * 10**18;
-  wTotalSupply = wTotalSupply / BNBDIV;
-  
-  xTotalSupply = await CONTS['xweb3'].totalSupply();
-  xTotalSupply = xTotalSupply / BNBDIV;
+    let v = await CONTS['web3'].totalSupply();
+    return v / BNBDIV;
+  };
+  F['wTotalSupply'] = async() => {
+    let v = 100 * 10**3 * 10**18;
+    return v / BNBDIV;
+  };
+  F['xTotalSupply'] = async() => {
+    let v = await CONTS['xweb3'].totalSupply();
+    return v / BNBDIV;
+  };
   
   let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
   lockedAmount = lockedAmount / BNBDIV;
@@ -172,16 +169,16 @@ async function runGlobal() {
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
 
-  wPrice = price * (await gV('totalSupply')) / wTotalSupply;
+  wPrice = price * (await gV('totalSupply')) / (await gV('wTotalSupply'));
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
 
-  xPrice = wPrice + xTotalSupply;
+  xPrice = wPrice + (await gV('xTotalSupply'));
   displayText("#xPrice", `$${COMMA(INT(xPrice, 3))}`);
 	
   displayText("#xPriceWithPweb3", `${COMMA(INT(xPrice * 1769, 3))} pWEB3`);
 
   let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
-  let wCirculatingSupply = wTotalSupply - lockedAmount;
+  let wCirculatingSupply = (await gV('wTotalSupply')) - lockedAmount;
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let mcap = price * circulatingSupply;
@@ -699,7 +696,7 @@ async function approve(name, target) {
 
 
 // async function inputHandleWrap(e) {
-// 	await inputHandle(e, 'wrap', (await gV('totalSupply')), wTotalSupply);
+// 	await inputHandle(e, 'wrap', (await gV('totalSupply')), (await gV('wTotalSupply')));
 // }
 
 async function handleInputSwap(e) {
@@ -707,11 +704,11 @@ async function handleInputSwap(e) {
 }
 
 async function handleInputWrap(e) {
-  await handleInput(e, 'wrap-output', (await gV('totalSupply')), wTotalSupply);
+  await handleInput(e, 'wrap-output', (await gV('totalSupply')), (await gV('wTotalSupply')));
 }
 
 async function handleInputUnwrap(e) {
-  await handleInput(e, 'wrap-output', wTotalSupply, (await gV('totalSupply')));
+  await handleInput(e, 'wrap-output', (await gV('wTotalSupply')), (await gV('totalSupply')));
 }
 
 async function handleInput(e, name, inputSupply, outputSupply) {
