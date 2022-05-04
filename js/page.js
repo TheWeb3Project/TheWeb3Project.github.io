@@ -198,7 +198,23 @@ async function runGlobal() {
   };
 
   F['xPrice'] = async() => {
-    return (await gV('wPrice')) + (await gV('xTotalSupply'));;
+    return (await gV('wPrice')) + (await gV('xTotalSupply'));
+  };
+
+  F['wLockedAmount'] = async() => {
+    return (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
+  };
+
+  F['wCirculatingSupply'] = async() => {
+    return (await gV('wTotalSupply')) - (await gV('wLockedAmount'));
+  };
+
+  F['mcap'] = async() => {
+    return (await gV('price')) * (await gV('circulatingSupply'));
+  };
+
+  F['corr'] = async() => {
+    return (await gV('liqBalance')) / (await gV('mcap')) * 100;
   };
 
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
@@ -218,16 +234,12 @@ async function runGlobal() {
 
   displayText("#xPriceWithPweb3", `${COMMA(INT((await gV('xPrice')) * 1769, 3))} pWEB3`);
 
-  let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
-  let wCirculatingSupply = (await gV('wTotalSupply')) - wLockedAmount;
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
 
-  let mcap = (await gV('price')) * (await gV('circulatingSupply'));
-  displayText("#mcap", `$${COMMA(INT(mcap))}`);
+  displayText("#mcap", `$${COMMA(INT((await gV('mcap'))))}`);
 
-  let corr = (await gV('liqBalance')) / mcap * 100;
-  select('#corr').setAttribute('title', `Correlation: ${COMMA(INT(corr, 1))}%`);
-  displayText("#backedLiq", `${COMMA(INT(corr, 1))}%`);
+  select('#corr').setAttribute('title', `Correlation: ${COMMA(INT((await gV('corr')), 1))}%`);
+  displayText("#backedLiq", `${COMMA(INT((await gV('corr')), 1))}%`);
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
