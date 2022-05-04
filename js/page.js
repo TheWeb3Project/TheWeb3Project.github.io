@@ -134,11 +134,13 @@ async function runGlobal() {
     return v / BNBDIV;
   };
 
-  let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
-  blackHoleAmount = blackHoleAmount / BNBDIV;
-  displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
+  F['blackHoleAmount'] = async() => {
+    let v = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
+    return v / BNBDIV;
+  };
+  displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
 
-  let circulatingSupply = (await gV('totalSupply')) - blackHoleAmount - (await gV('lockedAmount'));
+  let circulatingSupply = (await gV('totalSupply')) - (await gV('blackHoleAmount')) - (await gV('lockedAmount'));
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
@@ -169,7 +171,7 @@ async function runGlobal() {
 
   price = liqRate * (await gV('bnbPrice'));
   displayText("#price", `$${COMMA(INT(price, 3))}`);
-  displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
+  displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * price))}`);
 
   wPrice = price * (await gV('totalSupply')) / (await gV('wTotalSupply'));
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
