@@ -193,6 +193,10 @@ async function runGlobal() {
     return (await gV('liqRate')) * (await gV('bnbPrice'));
   };
 
+  F['wPrice'] = async() => {
+    return (await gV('price')) * (await gV('totalSupply')) / (await gV('wTotalSupply'));
+  };
+
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
@@ -202,11 +206,10 @@ async function runGlobal() {
 
   displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * (await gV('price'))))}`);
-
-  wPrice = (await gV('price')) * (await gV('totalSupply')) / (await gV('wTotalSupply'));
-  displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
-
-  xPrice = wPrice + (await gV('xTotalSupply'));
+  displayText("#wPrice", `$${COMMA(INT((await gV('wPrice')), 3))}`);
+  wPrice = (await gV('wPrice'));
+  
+  xPrice = (await gV('wPrice')) + (await gV('xTotalSupply'));
   displayText("#xPrice", `$${COMMA(INT(xPrice, 3))}`);
 	
   displayText("#xPriceWithPweb3", `${COMMA(INT(xPrice * 1769, 3))} pWEB3`);
