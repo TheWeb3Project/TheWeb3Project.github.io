@@ -479,7 +479,7 @@
       displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
 
       
-      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
+      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * (await gV('xPrice')) * 1769))}`);
     });
 
     $(document).on('input', '#xWEB3-sliders', function (e) {
@@ -488,7 +488,7 @@
       displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
 
 
-      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
+      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * (await gV('xPrice')) * 1769))}`);
     });
       // do global
       await runGlobal();
