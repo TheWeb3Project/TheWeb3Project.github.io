@@ -262,6 +262,18 @@ async function runGlobal() {
   select('#shareFb').href = `http://www.facebook.com/share.php?u=${shareLink}&t=${shareText}`;
   select('#shareFb').target="_blank";
 
+  let _lastWinnerTime = INT(await CONTS['web3Jackpot']._lastWinnerTime());
+  _lastWinnerTime = new Date(_lastWinnerTime * 1000);
+  displayText("#_lastWinnerTime", _lastWinnerTime);
+
+  let _lastWinnerAmount = await CONTS['web3Jackpot']._lastWinnerAmount();
+  _lastWinnerAmount = _lastWinnerAmount / BNBDIV * (await gV('bnbPrice'));
+  displayText("#_lastWinnerAmount", `$${COMMA(INT(_lastWinnerAmount, 0))}`);
+
+  let _lastWinner = await CONTS['web3Jackpot']._lastWinner();
+  displayText("#_lastWinner", `${HREF(BSC('address', _lastWinner), SHORTADR(_lastWinner))}`);
+
+
   let _topWinnerTime = INT(await CONTS['web3Jackpot']._topWinnerTime());
   _topWinnerTime = new Date(_topWinnerTime * 1000);
   displayText("#_topWinnerTime", _topWinnerTime);
