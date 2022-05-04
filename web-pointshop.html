@@ -446,52 +446,51 @@
     }
 
     (async () => {
-
-
-
-      $(document).on('input', '#days-slider', function (e) {
-        // var x = document.getElementById("days-slider").value
-        // var y =  document.getElementById('days-sliders').value = x
-        // x = y
-        // console.log(x);
-        // console.log(y);
-
-      changedValue('days', select('input[type="range"]'));
-
-      let minerAmount = select('#noOfDays').innerHTML;
-      displayText('#noOfDays', `${COMMA(INT(minerAmount))}`);
-
-      displayText('#miner-pweb3', `${COMMA(INT(minerAmount * 8845))}`);
-
-      if(document.getElementById('noOfDays').innerHTML < 29483333) {
-        document.getElementById('minerImage').src = '/images/Group_68.png'
-      } if(document.getElementById('noOfDays').innerHTML > 29483333) {
-        document.getElementById('minerImage').src = '/images/Group_67.png'
-      } if(document.getElementById('noOfDays').innerHTML >= 58966666){
-        document.getElementById('minerImage').src = '/images/Group_66.png'
-      }
-    });
-
-    $(document).on('input', '#xWEB3-slider', function (e) {
-      changedValue('xWEB3', select('#xWEB3-slider'));
-      changedValue('xWEB3', select('#xWEB3-sliders'));
-      let xweb3Amount = select('#noOfxWEB3').innerHTML;
-      displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
-
-      
-      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
-    });
-
-    $(document).on('input', '#xWEB3-sliders', function (e) {
-      changedValue('xWEB3', select('#xWEB3-sliders'));
-      let xweb3Amount = select('#noOfxWEB3').innerHTML;
-      displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
-
-
-      displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
-    });
       // do global
       await runGlobal();
+
+      $(document).on('input', '#days-slider', function (e) {
+          // var x = document.getElementById("days-slider").value
+          // var y =  document.getElementById('days-sliders').value = x
+          // x = y
+          // console.log(x);
+          // console.log(y);
+
+        changedValue('days', select('input[type="range"]'));
+
+        let minerAmount = select('#noOfDays').innerHTML;
+        displayText('#noOfDays', `${COMMA(INT(minerAmount))}`);
+
+        displayText('#miner-pweb3', `${COMMA(INT(minerAmount * 8845))}`);
+
+        if(document.getElementById('noOfDays').innerHTML < 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(document.getElementById('noOfDays').innerHTML > 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(document.getElementById('noOfDays').innerHTML >= 58966666){
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+      });
+
+      $(document).on('input', '#xWEB3-slider', function (e) {
+        changedValue('xWEB3', select('#xWEB3-slider'));
+        changedValue('xWEB3', select('#xWEB3-sliders'));
+        let xweb3Amount = select('#noOfxWEB3').innerHTML;
+        displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
+
+        
+        displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
+      });
+
+      $(document).on('input', '#xWEB3-sliders', function (e) {
+        changedValue('xWEB3', select('#xWEB3-sliders'));
+        let xweb3Amount = select('#noOfxWEB3').innerHTML;
+        displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
+
+
+        displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
+      });
+      
 
 
             ////////////////////////////////////////////////////////////////////////////
