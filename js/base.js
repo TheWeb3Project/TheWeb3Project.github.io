@@ -399,6 +399,11 @@ function displayText(el, text) {
 }
 
 
+async function getUrlData(url) {
+  let v = await fetch(url);
+  v = await v.json();
+  return v;
+}
 
 function setCookie(name, value, expDays) {
   let date = new Date();
