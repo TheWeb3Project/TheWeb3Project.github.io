@@ -138,10 +138,13 @@ async function runGlobal() {
     let v = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
     return v / BNBDIV;
   };
-  displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
 
-  let circulatingSupply = (await gV('totalSupply')) - (await gV('blackHoleAmount')) - (await gV('lockedAmount'));
-  displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
+  F['circulatingSupply'] = async() => {
+    return (await gV('totalSupply')) - (await gV('blackHoleAmount')) - (await gV('lockedAmount'));
+  };
+
+  displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
+  displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
 
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
   let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * (await gV('bnbPrice'));
@@ -183,9 +186,9 @@ async function runGlobal() {
 
   let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
   let wCirculatingSupply = (await gV('wTotalSupply')) - wLockedAmount;
-  displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
+  displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
 
-  let mcap = price * circulatingSupply;
+  let mcap = price * (await gV('circulatingSupply'));
   displayText("#mcap", `$${COMMA(INT(mcap))}`);
 
   let corr = liqBalance / mcap * 100;
