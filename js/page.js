@@ -264,7 +264,7 @@ async function runGlobal() {
 
   let _lastWinnerTime = INT(await CONTS['web3Jackpot']._lastWinnerTime());
   _lastWinnerTime = new Date(_lastWinnerTime * 1000);
-  displayText("#_lastWinnerTime", _lastWinnerTime);
+  displayText("#_lastWinnerTime", `${_lastWinnerTime.getUTCMonth() + 1}/${_lastWinnerTime.getUTCDate()} ${_lastWinnerTime.getUTCHours()}:${_lastWinnerTime.getUTCMinutes()}:${_lastWinnerTime.getUTCSeconds()}`);
 
   let _lastWinnerAmount = await CONTS['web3Jackpot']._lastWinnerAmount();
   _lastWinnerAmount = _lastWinnerAmount / BNBDIV * (await gV('bnbPrice'));
@@ -276,7 +276,7 @@ async function runGlobal() {
 
   let _topWinnerTime = INT(await CONTS['web3Jackpot']._topWinnerTime());
   _topWinnerTime = new Date(_topWinnerTime * 1000);
-  displayText("#_topWinnerTime", _topWinnerTime);
+  displayText("#_topWinnerTime", `${_topWinnerTime.getUTCMonth() + 1}/${_topWinnerTime.getUTCDate()} ${_topWinnerTime.getUTCHours()}:${_topWinnerTime.getUTCMinutes()}:${_topWinnerTime.getUTCSeconds()}`);
 
   let _topWinnerAmount = await CONTS['web3Jackpot']._topWinnerAmount();
   _topWinnerAmount = _topWinnerAmount / BNBDIV * (await gV('bnbPrice'));
