@@ -177,20 +177,26 @@ async function runGlobal() {
     return (await gV('liqReserves'))[1] / BNBDIV;
   };
 
+  F['liqRate'] = async() => {
+    return (await gV('liqBnb')) / (await gV('liqWeb3'));
+  };
+
+  F['liqBalance'] = async() => {
+    return (await gV('liqBnb')) * (await gV('bnbPrice'));
+  };
+
+  F['autoLiqBalance'] = async() => {
+    return (await getBalance(ADRS['web3'])) / BNBDIV * (await gV('bnbPrice'));
+  };
+
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
   displayText("#treasury", `$${COMMA(INT((await gV('treasuryBalance')) + (await gV('marketingBalance')), 3))}`);
+  displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
+  displayText("#backedLiq", `${COMMA(INT(((await gV('trustFundBalance')) + (await gV('treasuryBalance')) + (await gV('marketingBalance')) + (await gV('autoLiqBalance'))) / (await gV('liqBalance')) * 100, 0))}%`);
 
-  let liqRate = (await gV('liqBnb')) / (await gV('liqWeb3'));
-
-  let liqBalance = (await gV('liqBnb')) * (await gV('bnbPrice'));
-  displayText("#liquidity", `$${COMMA(INT(liqBalance, 0))}`);
-
-  let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * (await gV('bnbPrice'));
-  displayText("#backedLiq", `${COMMA(INT(((await gV('trustFundBalance')) + (await gV('treasuryBalance')) + (await gV('marketingBalance')) + autoLiqBalance) / liqBalance * 100, 0))}%`);
-
-  price = liqRate * (await gV('bnbPrice'));
+  price = (await gV('liqRate')) * (await gV('bnbPrice'));
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * price))}`);
 
@@ -209,7 +215,7 @@ async function runGlobal() {
   let mcap = price * (await gV('circulatingSupply'));
   displayText("#mcap", `$${COMMA(INT(mcap))}`);
 
-  let corr = liqBalance / mcap * 100;
+  let corr = (await gV('liqBalance')) / mcap * 100;
   select('#corr').setAttribute('title', `Correlation: ${COMMA(INT(corr, 1))}%`);
   displayText("#backedLiq", `${COMMA(INT(corr, 1))}%`);
 
