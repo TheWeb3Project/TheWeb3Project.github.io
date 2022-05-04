@@ -216,7 +216,7 @@ try {
         if (targetCurrency == 'BNB') {
             cost = 10 / (await gV('bnbPrice')) * boxCount;
         } else {
-            cost = 10 / price * boxCount;
+            cost = 10 / (await gV('price')) * boxCount;
         }
         cost = ROUND(cost, 5);
         select('#showDetails').innerHTML = `Cost: ${cost} ${targetCurrency}`; // blockchain cost check
