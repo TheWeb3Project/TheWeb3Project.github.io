@@ -265,7 +265,7 @@ ADRS['paircake'] = '0x0eD7e52944161450477ee417DE9Cd3a859b14fD0';
 for (let name of ['web3', 'busd', 'cake']) {
   CONTS[`pair${name}`] = new ethers.Contract(ADRS[`pair${name}`], ABIS['pair'], PROVIDER);
   SIGNS[`pair${name}`] = CONTS[`pair${name}`].connect(SIGNER);
-  INTFS[name] = new ethers.utils.Interface(ABIS[`pair${name}`]);
+  INTFS[name] = new ethers.utils.Interface(ABIS[`pair`]);
 }
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
