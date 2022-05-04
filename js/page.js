@@ -82,7 +82,7 @@ let now = INT(NOW() / 1000);
 let F = {};
 let V = {};
 let P = {};
-async function getV(k) {
+async function gV(k) {
   if (!(k in V)) {
     if (!(k in F)) {
       alert(k);
@@ -120,8 +120,8 @@ let bigbuyAlarmed = false;
 async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
-  bnbPrice = 1 / (await getPrice('busd'));
-  
+  F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
+
   totalSupply = await CONTS['web3'].totalSupply();
   totalSupply = totalSupply / BNBDIV;
 
@@ -142,17 +142,17 @@ async function runGlobal() {
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
-  let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * bnbPrice;
+  let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * gV('gV('bnbPrice')');
   trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
   trustFundBalance += 200000; // node invest
   displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
 
   let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
-  let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * bnbPrice;
+  let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * gV('bnbPrice');
   treasuryBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
 
   let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
-  let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * bnbPrice;
+  let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * gV('bnbPrice');
   marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
   displayText("#treasury", `$${COMMA(INT(treasuryBalance + marketingBalance, 3))}`);
 
@@ -161,13 +161,13 @@ async function runGlobal() {
   liqBnb = liqReserves[1] / BNBDIV;
   let liqRate = liqBnb / liqWeb3;
 
-  let liqBalance = liqBnb * bnbPrice;
+  let liqBalance = liqBnb * gV('bnbPrice');
   displayText("#liquidity", `$${COMMA(INT(liqBalance, 0))}`);
 
-  let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * bnbPrice;
+  let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * gV('bnbPrice');
   displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
 
-  price = liqRate * bnbPrice;
+  price = liqRate * gV('bnbPrice');
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
 
@@ -227,7 +227,7 @@ async function runGlobal() {
     let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
     displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
 
-    let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * bnbPrice;
+    let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * gV('bnbPrice');
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
     
