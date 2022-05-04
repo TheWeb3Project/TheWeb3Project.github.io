@@ -142,7 +142,7 @@ async function runGlobal() {
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
-  let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * gV('gV('bnbPrice')');
+  let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * gV('bnbPrice');
   trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
   trustFundBalance += 200000; // node invest
   displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
