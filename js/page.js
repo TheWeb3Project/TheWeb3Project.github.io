@@ -270,16 +270,16 @@ async function runGlobal() {
     // if (jackpotTimeLeft < 0) {
     //   displayText("#jpTimer", `Winner is chosen! Wait for result!`);            
     // }
-    
-    let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
-    displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
+
+    let lastBuyer = await CONTS['web3Jackpot']._lastBuyer();
+    displayText("#lastBuyer", `${HREF(BSC('address', lastBuyer), SHORTADR(lastBuyer))}`);
 
     let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * (await gV('bnbPrice'));
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
     
     let topBuyer = await CONTS['web3Jackpot']._topBuyer(); 
-    displayText("#biggestBuyer", `${SHORTADR(topBuyer)}`);
+    displayText("#biggestBuyer", `${HREF(BSC('address', topBuyer), SHORTADR(topBuyer))}`);
     
     let bigbuyAmount = INT(await CONTS['web3Jackpot']._dailyBuyAmounts(topBuyer));
     bigbuyAmount = bigbuyAmount / BNBDIV;
