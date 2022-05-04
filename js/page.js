@@ -129,14 +129,16 @@ async function runGlobal() {
     return v / BNBDIV;
   };
   
-  let lockedAmount = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
-  lockedAmount = lockedAmount / BNBDIV;
+  F['lockedAmount'] = async() => {
+    let v = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
+    return v / BNBDIV;
+  };
 
   let blackHoleAmount = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
   blackHoleAmount = blackHoleAmount / BNBDIV;
   displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
 
-  let circulatingSupply = (await gV('totalSupply')) - blackHoleAmount - lockedAmount;
+  let circulatingSupply = (await gV('totalSupply')) - blackHoleAmount - (await gV('lockedAmount'));
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
@@ -178,7 +180,7 @@ async function runGlobal() {
   displayText("#xPriceWithPweb3", `${COMMA(INT(xPrice * 1769, 3))} pWEB3`);
 
   let wLockedAmount = (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
-  let wCirculatingSupply = (await gV('wTotalSupply')) - lockedAmount;
+  let wCirculatingSupply = (await gV('wTotalSupply')) - wLockedAmount;
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let mcap = price * circulatingSupply;
