@@ -99,12 +99,8 @@ async function gV(k) {
   return V[k];  
 }
 
-let price;
 let wPrice;
 let xPrice;
-
-let liqWeb3;
-let liqBnb;
 
 let cbTimeLeft;
 let jackpotTimeLeft;
