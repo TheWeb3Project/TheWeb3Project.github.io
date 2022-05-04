@@ -121,9 +121,10 @@ async function runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
-
-  totalSupply = await CONTS['web3'].totalSupply();
-  totalSupply = totalSupply / BNBDIV;
+  F['totalSupply'] = async() => {
+    let tS = await CONTS['web3'].totalSupply();
+    return tS / BNBDIV;
+  }
 
   wTotalSupply = 100 * 10**3 * 10**18;
   wTotalSupply = wTotalSupply / BNBDIV;
@@ -138,21 +139,21 @@ async function runGlobal() {
   blackHoleAmount = blackHoleAmount / BNBDIV;
   displayText("#burned", `${COMMA(INT(blackHoleAmount, 3))}`);
 
-  let circulatingSupply = totalSupply - blackHoleAmount - lockedAmount;
+  let circulatingSupply = (await gV('totalSupply')) - blackHoleAmount - lockedAmount;
   displayText("#cirSupply", `${COMMA(INT(circulatingSupply, 3))}`);
 
   let trustFundAdr = "0x5060E2fBB789c021C9b510e2eFd9Bf965e6a2475";
-  let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * gV('bnbPrice');
+  let trustFundBalance = (await getBalance(trustFundAdr)) / BNBDIV * (await gV('bnbPrice'));
   trustFundBalance += (await CONTS['busd'].balanceOf(trustFundAdr)) / BNBDIV;
   trustFundBalance += 200000; // node invest
   displayText("#trustFund", `$${COMMA(INT(trustFundBalance, 3))}`);
 
   let treasuryAdr = "0xcCa3C1D62C80834f8B303f45D89298866C097B1a";
-  let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * gV('bnbPrice');
+  let treasuryBalance = (await getBalance(treasuryAdr)) / BNBDIV * (await gV('bnbPrice'));
   treasuryBalance += (await CONTS['busd'].balanceOf(treasuryAdr)) / BNBDIV;
 
   let marketingAdr = "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175";
-  let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * gV('bnbPrice');
+  let marketingBalance = (await getBalance(marketingAdr)) / BNBDIV * (await gV('bnbPrice'));
   marketingBalance += (await CONTS['busd'].balanceOf(marketingAdr)) / BNBDIV;
   displayText("#treasury", `$${COMMA(INT(treasuryBalance + marketingBalance, 3))}`);
 
@@ -161,17 +162,17 @@ async function runGlobal() {
   liqBnb = liqReserves[1] / BNBDIV;
   let liqRate = liqBnb / liqWeb3;
 
-  let liqBalance = liqBnb * gV('bnbPrice');
+  let liqBalance = liqBnb * (await gV('bnbPrice'));
   displayText("#liquidity", `$${COMMA(INT(liqBalance, 0))}`);
 
-  let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * gV('bnbPrice');
+  let autoLiqBalance = (await getBalance(ADRS['web3'])) / BNBDIV * (await gV('bnbPrice'));
   displayText("#backedLiq", `${COMMA(INT((trustFundBalance + treasuryBalance + marketingBalance + autoLiqBalance) / liqBalance * 100, 0))}%`);
 
-  price = liqRate * gV('bnbPrice');
+  price = liqRate * (await gV('bnbPrice'));
   displayText("#price", `$${COMMA(INT(price, 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT(blackHoleAmount * price))}`);
 
-  wPrice = price * totalSupply / wTotalSupply;
+  wPrice = price * (await gV('totalSupply')) / wTotalSupply;
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
 
   xPrice = wPrice + xTotalSupply;
@@ -227,7 +228,7 @@ async function runGlobal() {
     let lastBuyer = await CONTS['web3Jackpot']._lastBuyer(); 
     displayText("#lastBuyer", `${SHORTADR(lastBuyer)}`);
 
-    let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * gV('bnbPrice');
+    let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * (await gV('bnbPrice'));
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
     
@@ -426,7 +427,7 @@ async function _runPersonal() {
   lockedDuration = await CONTS['web3Stake']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
-  totalSupplyPercentage = (balance / totalSupply) * 100;
+  totalSupplyPercentage = (balance / (await gV('totalSupply'))) * 100;
   displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
 
   console.log('personal done');
@@ -660,7 +661,7 @@ function changedValue(target, curTarget) {
   // let dailyRate = 0.02301279;
   // let totalRate = ((1 + dailyRate) ** days);
   // let futAmount = INT(curAmount * totalRate, 2);
-  let futAmount = curAmount + curAmount * 2880 * days / (totalSupply + 2880 * days);
+  let futAmount = curAmount + curAmount * 2880 * days / ((await gV('totalSupply')) + 2880 * days);
   select('#futAmount').value = INT(futAmount, 3);
 
   let futPrice;
@@ -698,7 +699,7 @@ async function approve(name, target) {
 
 
 // async function inputHandleWrap(e) {
-// 	await inputHandle(e, 'wrap', totalSupply, wTotalSupply);
+// 	await inputHandle(e, 'wrap', (await gV('totalSupply')), wTotalSupply);
 // }
 
 async function handleInputSwap(e) {
@@ -706,11 +707,11 @@ async function handleInputSwap(e) {
 }
 
 async function handleInputWrap(e) {
-  await handleInput(e, 'wrap-output', totalSupply, wTotalSupply);
+  await handleInput(e, 'wrap-output', (await gV('totalSupply')), wTotalSupply);
 }
 
 async function handleInputUnwrap(e) {
-  await handleInput(e, 'wrap-output', wTotalSupply, totalSupply);
+  await handleInput(e, 'wrap-output', wTotalSupply, (await gV('totalSupply')));
 }
 
 async function handleInput(e, name, inputSupply, outputSupply) {
