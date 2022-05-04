@@ -359,7 +359,9 @@
         if (topics[0] == mintEvent) {
           let decodedData = INTFS['nft'].decodeEventLog("MintedNFT(uint, address, uint256)", txLog['data'], [mintEvent]);
           let tokenId = decodedData[0];
-          armyImgUrl = await CONTS['nft'].tokenURI(tokenId);
+          let armyJsonUrl = await CONTS['nft'].tokenURI(tokenId);
+          let armyJsonData = await getUrlData(armyJsonUrl);
+          armyImgUrl = armyJsonData['image']
         }
       }
       document.getElementById("unBox").style.display = 'none';
@@ -371,7 +373,7 @@
       // var createNft = document.createElement('img');
       // createNft.src = './images/circledlogo.png';
       // console.log(createNft);
-      document.getElementById("showNFT").src = './images/circled.png';
+      document.getElementById("showNFT").src = armyImgUrl;
 
       document.getElementById("video").style.display = 'none';
       }, 2000);
