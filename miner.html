@@ -334,8 +334,8 @@
 
       ////////////////////////////////////////////////////////////////////////////
 
-      select('#curPrice').value = `${COMMA(INT(price, 3))}`;
-      select('#futPrice').value = `${COMMA(INT(price, 3))}`;
+      select('#curPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
+      select('#futPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
 
 
       select('#setMaxToAmount').onclick = async () => {
@@ -345,10 +345,10 @@
         select('#input-apy').value = 404092.65;
       };
       select('#setCurToCurPrice').onclick = async () => {
-        select('#curPrice').value = INT(price, 3);
+        select('#curPrice').value = INT((await gV('price')), 3);
       };
       select('#setCurToFutPrice').onclick = async () => {
-        select('#futPrice').value = INT(price, 3);
+        select('#futPrice').value = INT((await gV('price')), 3);
       };
 
 
