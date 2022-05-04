@@ -189,6 +189,10 @@ async function runGlobal() {
     return (await getBalance(ADRS['web3'])) / BNBDIV * (await gV('bnbPrice'));
   };
 
+  F['price'] = async() => {
+    return (await gV('liqRate')) * (await gV('bnbPrice'));
+  };
+
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
@@ -196,11 +200,10 @@ async function runGlobal() {
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
   displayText("#backedLiq", `${COMMA(INT(((await gV('trustFundBalance')) + (await gV('treasuryBalance')) + (await gV('marketingBalance')) + (await gV('autoLiqBalance'))) / (await gV('liqBalance')) * 100, 0))}%`);
 
-  price = (await gV('liqRate')) * (await gV('bnbPrice'));
-  displayText("#price", `$${COMMA(INT(price, 3))}`);
-  displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * price))}`);
+  displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
+  displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * (await gV('price'))))}`);
 
-  wPrice = price * (await gV('totalSupply')) / (await gV('wTotalSupply'));
+  wPrice = (await gV('price')) * (await gV('totalSupply')) / (await gV('wTotalSupply'));
   displayText("#wPrice", `$${COMMA(INT(wPrice, 3))}`);
 
   xPrice = wPrice + (await gV('xTotalSupply'));
@@ -212,7 +215,7 @@ async function runGlobal() {
   let wCirculatingSupply = (await gV('wTotalSupply')) - wLockedAmount;
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
 
-  let mcap = price * (await gV('circulatingSupply'));
+  let mcap = (await gV('price')) * (await gV('circulatingSupply'));
   displayText("#mcap", `$${COMMA(INT(mcap))}`);
 
   let corr = (await gV('liqBalance')) / mcap * 100;
@@ -651,7 +654,7 @@ async function getTotalEarned() {
   let totalEarned = balance - amount; // little precision
   let earnRate = totalEarned / balance * 100;
   displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $WEB3 (+${COMMA(INT(earnRate, 3))}%)`);
-  displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * price, 3))}`);
+  displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * (await gV('price')), 3))}`);
 }
 
 /////////////////////////////////////////////////////////////////////////// calculator
