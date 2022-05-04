@@ -234,24 +234,24 @@
     async function runPersonal() {
       await _runPersonal();
 
-      displayText("#balanceInUsd", `$${COMMA(INT(balance * price, 3))}`);
+      displayText("#balanceInUsd", `$${COMMA(INT(balance * (await gV('price')), 3))}`);
 
       // let rebaseRate = 1.00000017;
       let rebaseRate = 1.00000079;
       displayText("#nextRebaseReward", `${COMMA(INT(balance * rebaseRate - balance, 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `$${COMMA(INT((balance * rebaseRate - balance) * price * 1.00000062, 3))}`);
+      displayText("#nextRebaseRewardInUsd", `$${COMMA(INT((balance * rebaseRate - balance) * (await gV('price')) * 1.00000062, 3))}`);
 
       // let hourRate = 1.00020402;
       let hourRate = 1.00094844;
       displayText("#nexthourReward", `${COMMA(INT(balance * hourRate - balance, 3))} $WEB3`);
-      displayText("#nexthourRewardInUsd", `$${COMMA(INT((balance * hourRate - balance) * price * 1.00074427, 3))}`);
+      displayText("#nexthourRewardInUsd", `$${COMMA(INT((balance * hourRate - balance) * (await gV('price')) * 1.00074427, 3))}`);
 
 
 
       // let MonthRate = 1.1582149;
       let MonthRate = 1.9789369;
       displayText("#nextMonthReward", `${COMMA(INT(balance * MonthRate - balance, 3))} $WEB3`);
-      displayText("#nextMonthRewardInUsd", `$${COMMA(INT((balance * MonthRate - balance) * price * 1.7086094, 3))}`);
+      displayText("#nextMonthRewardInUsd", `$${COMMA(INT((balance * MonthRate - balance) * (await gV('price')) * 1.7086094, 3))}`);
     }
 
     (async () => {
@@ -288,7 +288,7 @@
       let dailyRate = 1.02301279;
       displayText("#nextDailyReward", `${COMMA(INT(calcToken, 3))} $WEB3`);
 
-      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * price * dailyRate, 3))}`);  
+      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * (await gV('price')) * dailyRate, 3))}`);  
 
       $('[data-bs-toggle="tooltip"]').tooltip();
     })();
