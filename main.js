@@ -214,7 +214,7 @@ try {
 		
         let cost;
         if (targetCurrency == 'BNB') {
-            cost = 10 / bnbPrice * boxCount;
+            cost = 10 / gV('bnbPrice') * boxCount;
         } else {
             cost = 10 / price * boxCount;
         }
