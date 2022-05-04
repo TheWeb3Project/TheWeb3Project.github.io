@@ -383,6 +383,10 @@ function displayText(el, text) {
   if (els == null) {
     return;
   }
+
+  if (els.id = 'NULL') {
+    return;
+  }
   
   for (var idx = 0; idx < els.length; idx++) {
     els[idx].innerHTML = text;
