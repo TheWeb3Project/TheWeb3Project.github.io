@@ -385,6 +385,9 @@ async function runGlobal() {
   //   displayText('#nftLink', HREF(BSC(address, CURADR + '#tokentxnsErc721'), Link));
 
   // };
+
+  select('#buy-box').onclick = async () => { await boxOpening(); };
+  
   select('#buy-miner').onclick = async () => { await buyMiner(); };
   select('#buy-xweb3').onclick = async () => { await buyXweb3(); };
   select('#hire-miner-bnb').onclick = async () => { await buyMinerBnb(); };
