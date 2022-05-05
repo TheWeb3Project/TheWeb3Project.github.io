@@ -198,7 +198,8 @@ ABIS['web3Miner'] = [
   "function HirePay(address) payable",
   "function HireMore(address)",
   "function Receive()",
-
+	
+  "function totalSupply() view returns (uint)",
   "function _miners(address) view returns (uint256)",
   "function _daimonds(address) view returns (uint256)",
   "function _tDaimonds() view returns (uint256)",
