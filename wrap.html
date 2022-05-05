@@ -334,7 +334,7 @@
                       <th>Time</th>
                       <th>Claim</th>
                       <th style="width: 200px;">
-                        <div id="run-claim" class="stack-layout  stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                        <div id="run-claim0" class="stack-layout  stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                           <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
                           border-radius: 20px;
                           background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -351,7 +351,7 @@
                       <td><span id="stakedAmount">0.000</span> wWEB3</td>
                       <td><span id="unlockAfter"></span></td>
                       <td><span id="claimAmount">0.000</span> pWEB3</td>
-                      <td><div id="run-claim" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                      <td><div id="run-claim1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                         <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
                         border-radius: 20px;
                         background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -457,12 +457,10 @@
 
       [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
       let rewardAmount = data;
-      if (0 < rewardAmount) {
-        rewardAmount = rewardAmount / BNBDIV;
-        displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
+      rewardAmount = rewardAmount / BNBDIV;
+      displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
 
-        select('#run-claim').onclick = async () => { await runClaim(); };
-      }
+      select('#run-claim1').onclick = async () => { await runClaim(); };
 
       [res, data] = await READ_TX('web3Stake', '_amounts', [CURADR]);
       let stakedAmount = data;

@@ -469,6 +469,8 @@ let bnbBalance;
 let balance;
 let wBalance;
 let pBalance;
+let xBalance;
+let busdBalance;
 
 let lockedAmount;
 let lockedDuration;
@@ -491,6 +493,15 @@ async function _runPersonal() {
   pBalance = await CONTS['pweb3'].balanceOf(CURADR);
   pBalance = pBalance / BNBDIV;
   displayText("#pBalance", `${COMMA(INT(pBalance, 3))}`);
+
+  
+  xBalance = await CONTS['xweb3'].balanceOf(CURADR);
+  xBalance = xBalance / BNBDIV;
+  displayText("#xBalance", `${COMMA(INT(xBalance, 3))}`);
+
+  busdBalance = await CONTS['busd'].balanceOf(CURADR);
+  busdBalance = busdBalance / BNBDIV;
+  displayText("#busdBalance", `${COMMA(INT(busdBalance, 3))}`);
 
   lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
@@ -952,6 +963,11 @@ async function buyMiner() {
 
   let amount = select('#noOfDays').innerHTML;
   amount = amount.replace(/,/g, '');
+  if (amount < 8845) {
+    alert('input more than 8845 pWEB3');
+    return;
+  }
+  
   await SEND_TX('web3Miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
 }
 

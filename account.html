@@ -38,13 +38,13 @@
 
       <div id="overlay" style="z-index: 1000001;"></div>
 
-      <main class="col pt-4">
+      <main class="col">
         <div id="web3-header" class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001;">
         </div>
 
-        <div class="container pt-3">
-          <div class="col-xl-8 mx-auto">
-            <div id="totalSection" class="card bg-light  p-4 mt-5" style="background-image: linear-gradient(160deg,#424750,#202326);">
+        <div class="container p-3 mt-5">
+          <div class="col-12">
+            <div id="totalSection" class="card bg-light my-3 p-3" style="background-image: linear-gradient(160deg,#424750,#202326);">
               <span class="text-secondary">
                 Total Earned
                 <a href="#"><i id="totalShare" class="bi bi-share" data-toggle="modal" data-target="#jpModal"></i></a>
@@ -53,8 +53,8 @@
               <span id="totalEarned" class="text-secondary">0.000 $WEB3 (+0.000%)</span>
             </div>
 
-            <div >
-              <div class="d-flex flex-sm-row flex-column justify-content-between">
+            <div class="my-3 p-3">
+              <div class="d-flex flex-sm-row flex-column justify-content-between gap-5">
                 <!-- <div class="col-sm-5 card bg-light p-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                   <div class="p-4 mx-auto">
                     <span class="text-secondary">Your Balance</span>
@@ -62,13 +62,13 @@
                     <h4 class="my-2" id="percentTotalSupply">0%</h4>
                   </div>
                 </div> -->
-                <div class="col-sm-5 card bg-light p-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                  <div class="p-4">
+                <div class="col-12 col-lg-6 card bg-light p-3" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                  <div class="p-3">
                     <span class="text-secondary">Your Total Supply %:</span>
                     <h4 class="fw-bold my-2" id="percentTotalSupply"></h4>
                   </div>
                 </div>
-                <div class="col-sm-5 card bg-light p-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                <div class="col-12 col-lg-6 card bg-light p-3" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                   <div >
                     <span class="text-secondary">Your Balance</span>
                     <h4 id="balanceInUsd" class="fw-bold my-2">$0.000</h4>
@@ -78,9 +78,9 @@
               </div>
             </div>
 
-            <div class="">
-              <div class="d-flex justify-content-between flex-sm-row flex-column">
-                <div class="col-sm-5 card bg-light p-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+            <div class="my-3 p-3">
+              <div class="d-flex justify-content-between flex-sm-row flex-column gap-5">
+                <div class="col-12 col-lg-6 card bg-light p-3" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                   <div>
                     <span class="text-secondary">
                       Other Balances <br/>
@@ -94,7 +94,7 @@
                   </div>
                 </div>
 
-                <div id="dailySection" class="col-sm-5 card bg-light p-4 mt-5" style="background-image: linear-gradient(160deg,#424750,#202326);">
+                <div id="dailySection" class="col-12 col-lg-6 card bg-light p-3" style="background-image: linear-gradient(160deg,#424750,#202326);">
                   <div >
                     <span class="text-secondary">
                       Your Earnings / Daily 
@@ -111,7 +111,7 @@
               </div>
             </div>
 
-            <div class="card bg-light  p-3 p-sm-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+            <div class="card bg-light my-3 p-3" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
               <div class="row justify-centent-between">
                 <div class="col">
                   Current $WEB3 Price

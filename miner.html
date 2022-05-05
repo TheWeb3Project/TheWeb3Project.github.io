@@ -124,7 +124,7 @@
 
 
           <div class="">
-            <div class="card col-8  mx-auto d-flex p-3 p-sm-4 mt-5 h-100" style="background-color: transparent;">
+            <div class="card col-12  mx-auto d-flex p-3 p-sm-4 mt-5 h-100" style="background-color: transparent;">
               
               <div id="run-busd-approve-miner" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                 <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
@@ -136,7 +136,7 @@
               </div>
 
 
-            	<img src="./images/Group_68.png" class="col-5 mx-auto mb-4 pb-2" id="minerImage" alt="" style="padding-right: 50px;">
+            	<img src="./images/Group_68.png" class="col-12 mx-auto mb-4 pb-2" id="minerImage" alt="" style="width: 50%;">
               
               <label for="days-slider" class="fw-medium">Hire miners with <span id="noOfDays">1</span> BUSD or BNB</label>
               <input type="number" min="1" max="10000" step="1" value="100" id="days-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
@@ -145,6 +145,11 @@
               <div class="d-flex flex-xl-row flex-column justify-content-between mt-2 pt-1">
                 <div class="d-flex flex-column mt-4 col-12">
                 	<p class="">You get x5 more reward by paying with BNB/BUSD</p>
+                  <div class="info d-flex flex-column gap-3 mt-5">
+                    <div class="d-flex justify-content-between"><div>Your BNB</div> <div id="bnbBalance"></div></div>
+                    <div class="d-flex justify-content-between"><div>Your BUSD</div> <div id="busdBalance"></div></div>
+                  </div>
+
                   <div class="d-flex flex-column flex-sm-row gap-3 mt-3">
                     <button id="hire-miner-bnb" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style=" border: 3px solid #48acef;
                     border-radius: 20px;
@@ -161,9 +166,9 @@
                     </button>
                   </div>
                   <div class="info d-flex flex-column gap-3 mt-5">
-                    <div class="d-flex justify-content-between"><div>Your active miners:</div> <div id="_miners"></div></div>
-                    <div class="d-flex justify-content-between"><div>Ore in the mines:</div> <div id="_tDaimonds"></div></div>
-                    <div class="d-flex justify-content-between"><div>Ore produced</div> <div id="_daimonds"></div></div>
+                    <div class="d-flex justify-content-between"><div>Total Miners</div> <div id="totalMiners"></div></div>
+                    <div class="d-flex justify-content-between"><div>Your Miners</div> <div id="_miners"></div></div>
+                    <div class="d-flex justify-content-between"><div>WUSD Rewards</div> <div id="calculateWusdRewards"></div></div>
                   </div>
                   <hr>
                   <div class="buying">
@@ -179,11 +184,18 @@
                       box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">Get WUSD</button>
                     </div>
                   </div>
-                  <div class="mx-auto mt-4">You can get: <span id="calculateWusdRewards">0.000</span> WUSD</div>
                   <hr>
                   <div class="more_stats d-flex flex-column gap-3">
                     <div>Miner stats</div>
-                    <div class="d-flex justify-content-between"><div>Daily production:</div> <div>6.9%</div></div>
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        Daily production:  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                        this will decrease as you get WSUD<br/>
+                        Hire more for 6 days <br/>
+                        and get WUSD at 7th day<br/>
+                        to sustain this.
+                        "></i>
+                      </div> <div>6.9%</div></div>
                     <div class="d-flex justify-content-between"><div>APR:</div> <div>2518.5%</div></div>
                     <div class="d-flex justify-content-between"><div>Hiring Fee:</div> <div>3%</div></div>
                   </div>
@@ -426,15 +438,17 @@
 
       let _miners = await CONTS['web3Miner']._miners(CURADR);
       select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
+			
+      let totalMiners = await CONTS['web3Miner'].totalSupply();
+      totalMiners = totalMiners / BNBDIV;
+      displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
 
       let _daimonds = await CONTS['web3Miner']._daimonds(CURADR);
       select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
       
-			if (0 < _daimonds) {
-      	let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(CURADR);
-        calculateWusdRewards = calculateWusdRewards / BNBDIV;
-      	select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
-      }
+      let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(CURADR);
+      calculateWusdRewards = calculateWusdRewards / BNBDIV;
+      select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
 
       $('[data-bs-toggle="tooltip"]').tooltip();
 
