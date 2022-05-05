@@ -420,6 +420,7 @@
       select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
 			
       let totalMiners = await CONTS['web3Miner'].totalSupply();
+      totalMiners = totalMiners / BNBDIV;
       displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
 
       let _daimonds = await CONTS['web3Miner']._daimonds(CURADR);
