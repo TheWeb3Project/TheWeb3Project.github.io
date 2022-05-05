@@ -457,12 +457,10 @@
 
       [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
       let rewardAmount = data;
-      if (0 < rewardAmount) {
-        rewardAmount = rewardAmount / BNBDIV;
-        displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
+      rewardAmount = rewardAmount / BNBDIV;
+      displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
 
-        select('#run-claim1').onclick = async () => { await runClaim(); };
-      }
+      select('#run-claim1').onclick = async () => { await runClaim(); };
 
       [res, data] = await READ_TX('web3Stake', '_amounts', [CURADR]);
       let stakedAmount = data;
