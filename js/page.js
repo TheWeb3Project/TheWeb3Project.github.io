@@ -469,6 +469,7 @@ let bnbBalance;
 let balance;
 let wBalance;
 let pBalance;
+let xBalance;
 let busdBalance;
 
 let lockedAmount;
@@ -492,6 +493,11 @@ async function _runPersonal() {
   pBalance = await CONTS['pweb3'].balanceOf(CURADR);
   pBalance = pBalance / BNBDIV;
   displayText("#pBalance", `${COMMA(INT(pBalance, 3))}`);
+
+  
+  xBalance = await CONTS['xweb3'].balanceOf(CURADR);
+  xBalance = xBalance / BNBDIV;
+  displayText("#xBalance", `${COMMA(INT(xBalance, 3))}`);
 
   busdBalance = await CONTS['busd'].balanceOf(CURADR);
   busdBalance = busdBalance / BNBDIV;
