@@ -144,6 +144,11 @@
               <div class="d-flex flex-xl-row flex-column justify-content-between mt-2 pt-1">
                 <div class="d-flex flex-column mt-4 col-12">
                 	<p class="">You get x5 more reward by paying with BNB/BUSD</p>
+                  <div class="info d-flex flex-column gap-3 mt-5">
+                    <div class="d-flex justify-content-between"><div>Your BNB:</div> <div id="bnbBalance"></div></div>
+                    <div class="d-flex justify-content-between"><div>Your BUSD:</div> <div id="busdBalance"></div></div>
+                  </div>
+
                   <div class="d-flex flex-column flex-sm-row gap-3 mt-3">
                     <button id="hire-miner-bnb" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style=" border: 3px solid #48acef;
                     border-radius: 20px;
@@ -160,9 +165,8 @@
                     </button>
                   </div>
                   <div class="info d-flex flex-column gap-3 mt-5">
-                    <div class="d-flex justify-content-between"><div>Your active miners:</div> <div id="_miners"></div></div>
-                    <div class="d-flex justify-content-between"><div>Ore in the mines:</div> <div id="_tDaimonds"></div></div>
-                    <div class="d-flex justify-content-between"><div>Ore produced</div> <div id="_daimonds"></div></div>
+                    <div class="d-flex justify-content-between"><div>Your Miners:</div> <div id="_miners"></div></div>
+                    <div class="d-flex justify-content-between"><div>Your Rewards</div> <div id="calculateWusdRewards"></div> WUSD</div>
                   </div>
                   <hr>
                   <div class="buying">
@@ -178,7 +182,6 @@
                       box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">Get WUSD</button>
                     </div>
                   </div>
-                  <div class="mx-auto mt-4">You can get: <span id="calculateWusdRewards">0.000</span> WUSD</div>
                   <hr>
                   <div class="more_stats d-flex flex-column gap-3">
                     <div>Miner stats</div>
