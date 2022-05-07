@@ -27,7 +27,7 @@ function displaySidebar() {
         <div id="sidebar" class="d-flex flex-column align-items-center py-4">
           <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none d-flex align-items-center p-3">
             <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
-            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-1" style="width: 100%;">
+            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-1" style="width: 80%;">
           </a>
 
           <ul id="sidebar-nav" class="list-unstyled py-1">
