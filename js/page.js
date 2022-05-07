@@ -14,7 +14,7 @@ function htmlSide(url, icon, name) {
 }
 function htmlSocials(url, icon) {
   let htmlStr = `
-    <a href="${url}" class="text-decoration-none text-reset fs-5 social-icon-hover">
+    <a href="${url}" class="text-decoration-none text-reset fs-5 social-icon-hover m-2">
       <i class="bi bi-${icon}"></i>
     </a>
   `;
