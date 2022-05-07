@@ -25,9 +25,9 @@ function htmlSocials(url, icon) {
 function displaySidebar() {
     let htmlStr = `
         <div id="sidebar" class="d-flex flex-column align-items-center py-4">
-          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center p-3">
+          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 d-flex align-items-center p-3">
             <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
-            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-4" style="width: 100%;">
+            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-1" style="width: 100%;">
           </a>
 
           <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
@@ -41,7 +41,7 @@ function displaySidebar() {
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
-          <div class="d-flex justify-content-around w-100 px-4">
+          <div class="d-flex justify-content-around px-4">
             ${htmlSocials('https://t.me/TheWeb3Project', 'send-fill')}
             ${htmlSocials('https://twitter.com/TheWeb3Project', 'twitter')}
             ${htmlSocials('https://discord.gg/crQkCE7Mn6', 'discord')}
