@@ -506,7 +506,11 @@ async function _runPersonal() {
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
   totalSupplyPercentage = (balance / (await gV('totalSupply'))) * 100;
-  displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
+  if (totalSupplyPercentage < 0.001) {
+    displayText("#percentTotalSupply", `< 0.001`);
+  } else {
+    displayText("#percentTotalSupply", `${COMMA(INT(totalSupplyPercentage, 3))}`);
+  }
 
   console.log('personal done');
 }
