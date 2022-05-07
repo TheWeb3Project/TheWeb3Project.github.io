@@ -58,6 +58,11 @@
                 1.3% daily amount increase<br/>
                 "></i>
               </span>
+              <span class="fw-medium ms-1">
+                Fastest APY = Rebase happens every 3 seconds <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                Theoretical Maximum in BSC
+                "></i>
+              </span>
             </div>
             
             <div class="card text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
@@ -76,29 +81,15 @@
 
               <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Market Cap <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Based on our actual circulating supply. Other chart may display differently."></i>
-                  </div>
-                  <h4 id="mcap" class="fw-bold">$0</h4>
-                </div>
-
-                <div class="col my-3">
                   <div class="text-secondary mb-1">$WEB3 Price</div>
                   <h4 id="price" class="fw-bold">$0</h4>
                 </div>
 
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
-                    Next Rebase <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Rebase may get delayed due to blockchain traffic"></i>
+                    Market Cap <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Based on our actual circulating supply. Other chart may display differently."></i>
                   </div>
-                  <h4 id="nextRebase" class="fw-bold">Every 3 Seconds</h4>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Circulating Supply <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="Excludes burned / locked tokens"></i>
-                  </div>
-                  <h4 id="cirSupply" class="fw-bold">0</h4>
+                  <h4 id="mcap" class="fw-bold">$0</h4>
                 </div>
 
                 <div class="col my-3">
@@ -108,7 +99,14 @@
                     More % makes healthy stable project
                     "></i>
                   </div>
-                  <h4 id="backedLiq" class="fw-bold">0</h4>
+                  <h4 id="corr2" class="fw-bold">0</h4>
+                </div>
+
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">
+                    Circulating Supply <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="Excludes burned / locked tokens"></i>
+                  </div>
+                  <h4 id="cirSupply" class="fw-bold">0</h4>
                 </div>
 
                 <div class="col my-3">
@@ -120,32 +118,12 @@
                   <div class="text-secondary mb-1">
                     Circuit Breaker <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     If total of 1% price drop happens in 1h,<br/>
-                    buy tax 10% / sell tax 25% is applied
+                    buy tax 10% / sell tax 25% is applied<br/>
+                    (14% / 16% in normal situation)
                     "></i>
                   </div>
                   <h4 id="cb" class="fw-bold"></h4>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Buy Tax <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    after circuit breaker duration,<br/>
-                    buy tax 14% / sell tax 16% is applied
-                    "></i>
-                  </div>
-                  <h4 id="buyTax" class="fw-bold"></h4>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Sell Tax <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    after circuit breaker duration,<br/>
-                    buy tax 14% / sell tax 16% is applied
-                    "></i>
-                  </div>
-                  <h4 id="sellTax" class="fw-bold"></h4>
-                </div>
-                
+                </div>                
                 
               </div>
             </div>
@@ -282,6 +260,22 @@
             </div>
           </div>
           
+          <div class="card text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+            <div class="row row-cols-1 row-cols-sm-3">
+              <div class="col my-3">
+                <div class="text-secondary mb-1">$wWEB3 Price</div>
+                <h4 id="wPrice" class="fw-bold">$0</h4>
+              </div>
+
+              <div class="col my-3">
+                <div class="text-secondary mb-1">$xWEB3 Price</div>
+                <h4 id="xPrice" class="fw-bold">$0</h4>
+              </div>           
+              
+            </div>
+          </div>
+        </div>
+
           <div class="row">
             <div class="col-sm-6 mt-5 px-sm-4">
               <div class="card bg-light border border-primary p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">

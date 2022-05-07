@@ -2,7 +2,7 @@
 
 function htmlSide(url, icon, name) {
   let htmlStr = `
-    <li class="mb-4 py-2 px-5 rounded-1">
+    <li class="m-2 p-2 rounded-1">
       <a href="${url}" class="text-decoration-none text-reset d-flex align-items-center neontext">
         <span class="fs-5"><i class="bi bi-${icon}"></i></span>
         <span class="ms-3">${name}</span>
@@ -14,7 +14,7 @@ function htmlSide(url, icon, name) {
 }
 function htmlSocials(url, icon) {
   let htmlStr = `
-    <a href="${url}" class="text-decoration-none text-reset fs-5 social-icon-hover">
+    <a href="${url}" class="text-decoration-none text-reset fs-5 social-icon-hover m-2">
       <i class="bi bi-${icon}"></i>
     </a>
   `;
@@ -24,13 +24,13 @@ function htmlSocials(url, icon) {
 
 function displaySidebar() {
     let htmlStr = `
-        <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
-          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center ps-3 pe-2">
+        <div id="sidebar" class="d-flex flex-column align-items-center py-4">
+          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none d-flex align-items-center p-3">
             <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
-            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-4" style="width: 100%;">
+            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-1" style="width: 80%;">
           </a>
 
-          <ul id="sidebar-nav" class="list-unstyled p-0 py-5">
+          <ul id="sidebar-nav" class="list-unstyled py-1">
             ${htmlSide('index.html', 'collection', 'Dashboard')}
             ${htmlSide('account.html', 'person-circle', 'Account')}
             ${htmlSide('calculator.html', 'calculator-fill', 'Calculator')}
@@ -41,7 +41,7 @@ function displaySidebar() {
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
-          <div class="d-flex justify-content-around w-100 px-4">
+          <div class="d-flex justify-content-around px-4">
             ${htmlSocials('https://t.me/TheWeb3Project', 'send-fill')}
             ${htmlSocials('https://twitter.com/TheWeb3Project', 'twitter')}
             ${htmlSocials('https://discord.gg/crQkCE7Mn6', 'discord')}
@@ -218,7 +218,6 @@ async function runGlobal() {
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
   displayText("#treasury", `$${COMMA(INT((await gV('treasuryBalance')) + (await gV('marketingBalance')), 3))}`);
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
-  displayText("#backedLiq", `${COMMA(INT(((await gV('trustFundBalance')) + (await gV('treasuryBalance')) + (await gV('marketingBalance')) + (await gV('autoLiqBalance'))) / (await gV('liqBalance')) * 100, 0))}%`);
 
   displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * (await gV('price'))))}`);
@@ -235,7 +234,7 @@ async function runGlobal() {
   displayText("#mcap", `$${COMMA(INT((await gV('mcap'))))}`);
 
   select('#corr').setAttribute('title', `Correlation: ${COMMA(INT((await gV('corr')), 1))}%`);
-  displayText("#backedLiq", `${COMMA(INT((await gV('corr')), 1))}%`);
+  displayText("#corr2", `${COMMA(INT((await gV('corr')), 1))}%`);
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
@@ -360,13 +359,11 @@ async function runGlobal() {
   }, 1000);
 
   displayText("#cb", `OFF`);
-  displayText("#buyTax", `14%`);
-  displayText("#sellTax", `16%`);
+  displayText("#tax", `14%/16%`);
   setInterval(function () {
     if (cb != 2) {
       displayText("#cb", `OFF`);
-      displayText("#buyTax", `14%`);
-      displayText("#sellTax", `16%`);
+      displayText("#tax", `10%/25%`);
       return;
     }
 
@@ -376,14 +373,12 @@ async function runGlobal() {
 
     if (cbTimeLeft <= 0) {
       displayText("#cb", `OFF`);
-      displayText("#buyTax", `14%`);
-      displayText("#sellTax", `16%`);
+      displayText("#tax", `14%/16%`);
       return;
     }
 
     displayText("#cb", `ON for ${INT(cbTimeLeft / 60)}m ${cbTimeLeft % 60}s`);
-    displayText("#buyTax", `10%`);
-    displayText("#sellTax", `25%`);
+    displayText("#tax", `10%/25%`);
     cbTimeLeft = UPDATETICK(cbTimeLeft);
   }, 1000);
 
@@ -511,7 +506,11 @@ async function _runPersonal() {
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
   totalSupplyPercentage = (balance / (await gV('totalSupply'))) * 100;
-  displayText('#percentTotalSupply', `${totalSupplyPercentage.toString().substring(0,6) }`)
+  if (totalSupplyPercentage < 0.001) {
+    displayText("#percentTotalSupply", `< 0.001`);
+  } else {
+    displayText("#percentTotalSupply", `${COMMA(INT(totalSupplyPercentage, 3))}`);
+  }
 
   console.log('personal done');
 }
