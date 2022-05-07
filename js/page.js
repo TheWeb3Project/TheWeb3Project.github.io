@@ -359,13 +359,11 @@ async function runGlobal() {
   }, 1000);
 
   displayText("#cb", `OFF`);
-  displayText("#buyTax", `14%`);
-  displayText("#sellTax", `16%`);
+  displayText("#tax", `14%/16%`);
   setInterval(function () {
     if (cb != 2) {
       displayText("#cb", `OFF`);
-      displayText("#buyTax", `14%`);
-      displayText("#sellTax", `16%`);
+      displayText("#tax", `10%/25%`);
       return;
     }
 
@@ -375,14 +373,12 @@ async function runGlobal() {
 
     if (cbTimeLeft <= 0) {
       displayText("#cb", `OFF`);
-      displayText("#buyTax", `14%`);
-      displayText("#sellTax", `16%`);
+      displayText("#tax", `14%/16%`);
       return;
     }
 
     displayText("#cb", `ON for ${INT(cbTimeLeft / 60)}m ${cbTimeLeft % 60}s`);
-    displayText("#buyTax", `10%`);
-    displayText("#sellTax", `25%`);
+    displayText("#tax", `10%/25%`);
     cbTimeLeft = UPDATETICK(cbTimeLeft);
   }, 1000);
 
