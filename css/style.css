@@ -11224,9 +11224,9 @@ body {
 }
 
 .tooltip-inner {
-  max-width: 300px;
+  max-width: 400px;
   /* If max-width does not work, try using width instead */
-  width: 300px; 
+  width: 400px; 
 }
 
 /*# sourceMappingURL=style.css.map */
