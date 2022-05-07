@@ -218,7 +218,6 @@ async function runGlobal() {
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
   displayText("#treasury", `$${COMMA(INT((await gV('treasuryBalance')) + (await gV('marketingBalance')), 3))}`);
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
-  displayText("#backedLiq", `${COMMA(INT(((await gV('trustFundBalance')) + (await gV('treasuryBalance')) + (await gV('marketingBalance')) + (await gV('autoLiqBalance'))) / (await gV('liqBalance')) * 100, 0))}%`);
 
   displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * (await gV('price'))))}`);
@@ -235,7 +234,7 @@ async function runGlobal() {
   displayText("#mcap", `$${COMMA(INT((await gV('mcap'))))}`);
 
   select('#corr').setAttribute('title', `Correlation: ${COMMA(INT((await gV('corr')), 1))}%`);
-  displayText("#backedLiq", `${COMMA(INT((await gV('corr')), 1))}%`);
+  displayText("#corr2", `${COMMA(INT((await gV('corr')), 1))}%`);
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
