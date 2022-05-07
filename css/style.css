@@ -25,8 +25,8 @@
   --bs-gray-200: #e9ecef;
   --bs-gray-300: #dee2e6;
   --bs-gray-400: #ced4da;
-  --bs-gray-500: #adb5bd;
   --bs-gray-600: #6c757d;
+  --bs-gray-500: #adb5bd;
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
@@ -11221,6 +11221,12 @@ body {
   /* For Firefox 3.6 to 15 */
   background: linear-gradient(to right, #abe0ed, #46b7d5);
   /* Standard syntax (must be last) */
+}
+
+.tooltip-inner {
+  max-width: 300px;
+  /* If max-width does not work, try using width instead */
+  width: 300px; 
 }
 
 /*# sourceMappingURL=style.css.map */
