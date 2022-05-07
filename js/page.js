@@ -2,7 +2,7 @@
 
 function htmlSide(url, icon, name) {
   let htmlStr = `
-    <li class="mb-4 py-2 px-5 rounded-1">
+    <li class="m-2 p-2 rounded-1">
       <a href="${url}" class="text-decoration-none text-reset d-flex align-items-center neontext">
         <span class="fs-5"><i class="bi bi-${icon}"></i></span>
         <span class="ms-3">${name}</span>
@@ -24,8 +24,8 @@ function htmlSocials(url, icon) {
 
 function displaySidebar() {
     let htmlStr = `
-        <div id="sidebar" class="d-flex flex-column align-items-center pe-2 py-4">
-          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center ps-3 pe-2">
+        <div id="sidebar" class="d-flex flex-column align-items-center py-4">
+          <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none mb-5 w-100 d-flex align-items-center p-3">
             <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
             <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-4" style="width: 100%;">
           </a>
