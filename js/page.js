@@ -817,10 +817,10 @@ async function handleInput(e, name, inputSupply, outputSupply) {
 
 
 let STATES = {};
-async function switchTarget(states, target, handleInput, handleOutput, balanceInput, balanceOutput, symbolInput, symbolOutput, runInput, runOutput) {
+async function switchTarget(states, target, listenInput, listenOutput, balanceInput, balanceOutput, symbolInput, symbolOutput, runInput, runOutput) {
   if (STATES[target] == states[0]) {
-    select(`#${target}-input`).removeEventListener('input', handleInput);
-    select(`#${target}-input`).addEventListener('input', handleOutput);
+    select(`#${target}-input`).removeEventListener('input', listenInput);
+    select(`#${target}-input`).addEventListener('input', listenOutput);
 
     let tmp = select(`#${target}-input`).value;
 
@@ -833,8 +833,8 @@ async function switchTarget(states, target, handleInput, handleOutput, balanceIn
     select(`#{target}-run`).onclick = async () => { await runInput(); };
     STATES[target] = states[1];
   } else {
-    select(`#${target}-input`).removeEventListener('input', handleOutput);
-    select(`#${target}-input`).addEventListener('input', handleInput);
+    select(`#${target}-input`).removeEventListener('input', listenOutput);
+    select(`#${target}-input`).addEventListener('input', listenInput);
 
     let tmp = select(`#${target}-input`).value;
 
