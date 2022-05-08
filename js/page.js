@@ -829,11 +829,13 @@ async function handleInput(e, name, inputSupply, outputSupply) {
 
 let STATES = {};
 async function switchTarget(states, target, listenInput, listenOutput, balanceInput, balanceOutput, symbolInput, symbolOutput, runInput, runOutput) {
+  let tmp = select(`#${target}-input`).value;
+  select(`#${target}-input`).value = select(`#${target}-output`).value;
+  select(`#${target}-output`).value = tmp;
+
   if (STATES[target] == states[0]) {
     select(`#${target}-input`).removeEventListener('input', listenInput);
     select(`#${target}-input`).addEventListener('input', listenOutput);
-
-    let tmp = select(`#${target}-input`).value;
 
     displayText(`#${target}-balance-input`, `${COMMA(INT(balanceOutput, 3))}`);
     displayText(`#${target}-balance-output`, `${COMMA(INT(balanceInput, 3))}`);
@@ -846,8 +848,6 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
   } else {
     select(`#${target}-input`).removeEventListener('input', listenOutput);
     select(`#${target}-input`).addEventListener('input', listenInput);
-
-    let tmp = select(`#${target}-input`).value;
 
     displayText(`#${target}-balance-input`, `${COMMA(INT(balanceInput, 3))}`);
     displayText(`#${target}-balance-output`, `${COMMA(INT(balanceOutput, 3))}`);
