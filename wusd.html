@@ -90,21 +90,21 @@
               <h5 class="fw-bold mb-0">Swap $WUSD - $BUSD</h5>
            
  
-              <div id="run-web3-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+              <div id="run-wusd-approve-wusd" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                 <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                 border-radius: 20px;
                 background-image: linear-gradient(134deg,#48acef,#00436f);
                 box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                  <span class="button__content">$WEB3 Approve to wrap</span>
+                  <span class="button__content">$WUSD Approve to swap</span>
                 </button>
               </div>
 
-              <div id="run-wweb3-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+              <div id="run-busd-approve-wusd" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                 <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                 border-radius: 20px;
                 background-image: linear-gradient(134deg,#48acef,#00436f);
                 box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                  <span class="button__content">$wWEB3 Approve to unwrap</span>
+                  <span class="button__content">$BUSD Approve to swap</span>
                 </button>
               </div>
 
@@ -537,6 +537,20 @@ document.addEventListener("DOMContentLoaded", function() {
 		let unlockAfter;
     async function runPersonal() {
       await _runPersonal();
+      let wusdAllowance = await CONTS['wusd'].allowance(CURADR, ADRS['wusd']);
+      if (BIGINT(0) < wusdAllowance) {
+        select('#run-wusd-approve-wusd').classList.add('d-none');
+      } else {
+        select('#run-wusd-approve-wusd').onclick = async () => { await approve('wusd', ADRS['wusd']); };
+      }
+
+      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['wusd']);
+      if (BIGINT(0) < wusdAllowance) {
+        select('#run-busd-approve-wusd').classList.add('d-none');
+      } else {
+        select('#run-busd-approve-wusd').onclick = async () => { await approve('busd', ADRS['wusd']); };
+      }
+      
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
         select('#run-web3-approve').classList.add('d-none');
