@@ -329,7 +329,102 @@
 
           </div>
           <div class="mt-5">
-            <table class="table table-no-more">
+            <div class='tabbed skin-turquoise round' id='skinable'>
+              <ul>
+                <li id="li3" onclick="switchLock(this.id)">Lock 3</li>
+                <li id="li2" onclick="switchLock(this.id)">Lock 2</li>
+                <li id="li1" onclick="switchLock(this.id)" class='active'>Lock 1</li>
+              </ul>
+            </div>
+            <div class="tabinator">
+              <div id="content">
+              <table class="table table-no-more">
+                <thead>
+                    <tr>
+                        <th>Amount lock</th>
+                        <th>Time</th>
+                        <th>Claim</th>
+                        <th style="width: 200px;">
+                        </th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td class="td"><span id="stakedAmount">0.000</span> wWEB3</td>
+                        <td class="td"><span id="unlockAfter"></span></td>
+                        <td class="td"><span id="claimAmount">0.000</span> pWEB3</td>
+                        <td class="td"><div id="run-claim1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                          border-radius: 20px;
+                          background-image: linear-gradient(134deg,#48acef,#00436f);
+                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <span id="claim-name" class="button__content">Claim</span>
+                          </button>
+                        </div></td>
+                    </tr>
+                </tbody>
+              </table>
+              </div>
+            </div>
+              <div id="content2">
+                <table class="table table-no-more">
+                  <thead>
+                      <tr>
+                          <th>Amount lock</th>
+                          <th>Time</th>
+                          <th>Claim</th>
+                          <th style="width: 200px;">
+                          </th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>?? wWEB3</td>
+                      <td>?? Days ?? Hours ?? Minutes </td>
+                      <td>?? pWEB3</td>
+                      <td><div id="run-claim3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                        <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                        border-radius: 20px;
+                        background-image: linear-gradient(134deg,#48acef,#00436f);
+                        box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                          <span id="claim-name-hof" class="button__content">Claim</span>
+                        </button>
+                      </div></td>
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+              <div id="content3">
+                <table class="table table-no-more">
+                  <thead>
+                      <tr>
+                          <th>Amount lock</th>
+                          <th>Time</th>
+                          <th>Claim</th>
+                          <th style="width: 200px;"></th>
+                      </tr>
+                  </thead>
+
+                  <tbody>
+                    <tr>
+                      <td>?? wWEB3</td>
+                      <td>?? Days ?? Hours ?? Minutes </td>
+                      <td>?? pWEB3</td>
+                      <td><div id="run-claim3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                        <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                        border-radius: 20px;
+                        background-image: linear-gradient(134deg,#48acef,#00436f);
+                        box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                          <span id="claim-name-hof" class="button__content">Claim</span>
+                        </button>
+                      </div></td>
+                  </tr>
+                  </tbody>
+              </table>
+              </div>
+            <!-- <table class="table table-no-more">
               <thead>
                   <tr>
                       <th>Amount lock</th>
@@ -388,11 +483,10 @@
                           <span id="claim-name-hof" class="button__content">Claim</span>
                         </button>
                       </div></td>
-
                   </tr>
 
               </tbody>
-          </table>
+          </table> -->
           </div>
         </div>
 
@@ -416,6 +510,7 @@
   <script src="js/base.js"></script>
   <script src="js/page.js"></script>
   <script>
+
     document.getElementById("showSidebar").addEventListener("click", function () {
       document.getElementById("sidebarContainer").classList.add("show");
       document.getElementById("overlay").style.display = "block"
@@ -428,6 +523,64 @@
   </script>
 
   <script>
+
+
+document.addEventListener("DOMContentLoaded", function() {
+  var tabs = document.querySelectorAll('.tabbed li');
+  var switchers = document.querySelectorAll('.switcher-box a');
+  var skinable = document.getElementById('skinable');
+
+  for (var i = 0, len = tabs.length; i < len; i++) {
+    tabs[i].addEventListener("click", function() {
+      if (this.classList.contains('active'))
+        return;
+
+      var parent = this.parentNode,
+          innerTabs = parent.querySelectorAll('li');
+
+      for (var index = 0, iLen = innerTabs.length; index < iLen; index++) {
+        innerTabs[index].classList.remove('active');
+      }
+
+      this.classList.add('active');
+    });
+  }
+
+  for (var i = 0, len = switchers.length; i < len; i++) {
+    switchers[i].addEventListener("click", function() {
+      if (this.classList.contains('active'))
+        return;
+
+      var parent = this.parentNode,
+          innerSwitchers = parent.querySelectorAll('a'),
+          skinName = this.getAttribute('skin');
+
+      for (var index = 0, iLen = innerSwitchers.length; index < iLen; index++) {
+        innerSwitchers[index].classList.remove('active');
+      }
+
+      this.classList.add('active');
+      skinable.className = 'tabbed round ' + skinName;
+    });
+  }
+});
+
+        function switchLock (id) {
+          console.log(id)
+          if(id == 'li3') {
+            document.getElementById('content3').style.display = 'block'
+            document.getElementById('content').style.display = 'none'
+            document.getElementById('content2').style.display = 'none'
+          } else if (id == 'li2') {
+            document.getElementById('content3').style.display = 'none'
+            document.getElementById('content').style.display = 'none'
+            document.getElementById('content2').style.display = 'block'
+          } else if(id == 'li1') {
+            document.getElementById('content3').style.display = 'none'
+            document.getElementById('content').style.display = 'block'
+            document.getElementById('content2').style.display = 'none'
+          }
+        }
 
 		let unlockAfter;
     async function runPersonal() {
@@ -510,11 +663,12 @@
       //     }
       //   }
       // }
-      
+
     }
 
     (async () => {
       // do global
+
 
       $(document).on('input', 'input[type="range"]', function (e) {
         let days = select('input[type="range"]').value;
@@ -545,7 +699,11 @@
 
       $('[data-bs-toggle="tooltip"]').tooltip();
       
+
+
     })();
+
+
 
     select('#sidebar-nav').children[4].classList.add('active-neumorphism');
   </script>
@@ -592,6 +750,8 @@
     .table > thead > tr > td,
     .table > thead > tr > th {
         padding: 15px;
+        vertical-align: middle;
+
         background-color: #424750;
         border-top-color: #EEEEEE;
     }
@@ -651,10 +811,259 @@
             border-right: 1px solid #EEEEEE;
         }
 
-        .table-no-more > tbody > tr > td:nth-of-type(1):before {content: "Amount Locked";}
-        .table-no-more > tbody > tr > td:nth-of-type(2):before {content: "Time";}
-        .table-no-more > tbody > tr > td:nth-of-type(3):before {content: "Claim";}
+        .table-no-more > tbody > tr > td:nth-of-type(1):before {font-size: 13px; margin-top: 12px; content: "Amount Locked";}
+        .table-no-more > tbody > tr > td:nth-of-type(2):before {font-size: 13px; margin-top: 12px; content: "Time";}
+        .table-no-more > tbody > tr > td:nth-of-type(3):before {font-size: 13px; margin-top: 12px; content: "Claim";}
     }
+
+    .tabinator h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+
+.tabinator input {
+  display: none;
+}
+.tabinator label {
+  box-sizing: border-box;
+  display: inline-block;
+  padding: 15px 25px;
+  color: #ccc;
+  margin-bottom: -1px;
+  margin-left: -1px;
+}
+/* .tabinator label:before {
+  content:'';
+  display:block;
+  width:100%;
+  height:15px;
+  background-color:#fff;
+  position:absolute;
+  bottom:-11px;
+  left:0;
+  z-index:10;
+} */
+.tabinator label:hover {
+  color: #888;
+  cursor: pointer;
+}
+.tabinator input:checked + label {
+  position: relative;
+  color: #000;
+  background: #fff;
+  border: 1px solid #bbb;
+  border-bottom: 1px solid #fff;
+  border-radius: 5px 5px 0 0;
+}
+.tabinator input:checked + label:after {
+  display: block;
+  content: '';
+  position: absolute;
+  top: 0; right: 0; bottom: 0; left: 0;
+  box-shadow: 0 0 15px #939393;
+}
+#content1, #content2, #content3, #content4 {
+  display: none;
+  border-top: 1px solid #bbb;
+}
+#tab1:checked ~ #content1,
+#tab2:checked ~ #content2,
+#tab3:checked ~ #content3,
+#tab4:checked ~ #content4 {
+  display: block;
+  box-shadow: 0 0 15px #939393;
+}
+
+.tabbed {
+  width: 100%;
+  min-width: 400px;
+  margin: 0 auto;
+  border-bottom: 4px solid #000;
+  overflow: hidden;
+  transition: border 250ms ease;
+}
+.tabbed ul {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  float: left;
+  padding-left: 48px;
+  list-style-type: none;
+}
+.tabbed ul * {
+  margin: 0px;
+  padding: 0px;
+}
+.tabbed ul li {
+  display: block;
+  float: right;
+  padding: 10px 24px 8px;
+  background-color: #FFF;
+  margin-right: 46px;
+  z-index: 2;
+  position: relative;
+  cursor: pointer;
+  color: #777;
+
+  text-transform: uppercase;
+  font: 600 13px/20px roboto, "Open Sans", Helvetica, sans-serif;
+
+  transition: all 250ms ease;
+}
+.tabbed ul li:before,
+.tabbed ul li:after {
+  display: block;
+  content: " ";
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 44px;
+  background-color: #FFF;
+  transition: all 250ms ease;
+}
+.tabbed ul li:before {
+  right: -24px;
+  transform: skew(30deg, 0deg);
+  box-shadow: rgba(0,0,0,.1) 3px 2px 5px, inset rgba(255,255,255,.09) -1px 0;
+}
+.tabbed ul li:after {
+  left: -24px;
+  transform: skew(-30deg, 0deg);
+  box-shadow: rgba(0,0,0,.1) -3px 2px 5px, inset rgba(255,255,255,.09) 1px 0;
+}
+.tabbed ul li:hover,
+.tabbed ul li:hover:before,
+.tabbed ul li:hover:after {
+  background-color: #F4F7F9;
+  color: #444;
+}
+.tabbed ul li.active {
+  z-index: 3;
+}
+.tabbed ul li.active,
+.tabbed ul li.active:before,
+.tabbed ul li.active:after {
+  background-color: #000;
+  color: #fff;
+}
+
+/*----- Round Tabs -----*/
+.tabbed.round ul li {
+  border-radius: 8px 8px 0 0;
+}
+.tabbed.round ul li:before {
+  border-radius: 0 8px 0 0;
+}
+.tabbed.round ul li:after {
+  border-radius: 8px 0 0 0;
+}
+
+/*----- Skins -----*/
+.tabbed[class*="skin-"] ul li {
+  color: #FFF;
+  text-shadow: rgba(0,0,0,.1) 0 1px;
+}
+
+.tabbed.skin-turquoise {
+  border-bottom-color: #3988bc;
+}
+.tabbed.skin-turquoise ul li,
+.tabbed.skin-turquoise ul li:before,
+.tabbed.skin-turquoise ul li:after {
+  background-color: #48acef;
+}
+.tabbed.skin-turquoise ul li:hover,
+.tabbed.skin-turquoise ul li:hover:before,
+.tabbed.skin-turquoise ul li:hover:after {
+  background-color: #48acef;
+}
+.tabbed.skin-turquoise ul li.active,
+.tabbed.skin-turquoise ul li.active:before,
+.tabbed.skin-turquoise ul li.active:after {
+  background-color: #3988bc;
+}
+
+@media screen and (max-width: 425px) {
+  .tabbed ul li {
+    display: block;
+    float: right;
+    padding: 10px 24px 8px;
+    background-color: #FFF;
+    margin-right: 6px;
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+    color: #777;
+
+    text-transform: uppercase;
+    font: 600 13px/20px roboto, "Open Sans", Helvetica, sans-serif;
+
+    transition: all 250ms ease;
+  }
+
+  .tabbed ul {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    float: left;
+
+    padding-right: 30px;
+
+    list-style-type: none;
+}
+
+    .tabbed {
+    width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    border-bottom: 4px solid #000;
+    overflow: hidden;
+    transition: border 250ms ease;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .tabbed ul li {
+    display: block;
+    float: right;
+    padding: 10px 20px 8px;
+    background-color: #FFF;
+    margin-right: 15px;
+    z-index: 2;
+    position: relative;
+    cursor: pointer;
+    color: #777;
+
+    text-transform: uppercase;
+    font: 600 10px/20px roboto, "Open Sans", Helvetica, sans-serif;
+
+    transition: all 250ms ease;
+  }
+
+  .tabbed ul {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+    float: left;
+
+    padding-right: 20px;
+
+    list-style-type: none;
+}
+
+    .tabbed {
+    width: 100%;
+    min-width: 300px;
+    margin: 0 auto;
+    border-bottom: 4px solid #000;
+    overflow: hidden;
+    transition: border 250ms ease;
+  }
+}
+
 
     </style>
 </body>
