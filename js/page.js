@@ -860,7 +860,7 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
     displayText(`#${target}-symbol-output`, symbolOutput);
     displayText(`#${target}-run-name`, states[0]);
     select(`#${target}-run`).onclick = async () => { await runOutput(); };
-    STATES[target] = states[1];
+    STATES[target] = states[0];
   }
 }
 
