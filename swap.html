@@ -300,17 +300,12 @@
         await switchSwap();
         select('#swap-change').onclick = async () => { await switchSwap(); };
 
-
-        
-        select("#run-wrap").onclick = async () => {
-          await runSwap();
-        };
       }
 
       (async () => {
         // do global
         await runGlobal();
-        
+
         ////////////////////////////////////////////////////////////////////////////
 
         $('[data-bs-toggle="tooltip"]').tooltip();
