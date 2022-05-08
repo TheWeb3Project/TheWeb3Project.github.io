@@ -466,13 +466,6 @@ async function runToggleExperi() {
 }
 
 
-
-
-
-
-let xBalance;
-let busdBalance;
-
 let lockedAmount;
 let lockedDuration;
 let totalSupplyPercentage;
@@ -499,19 +492,22 @@ async function _runPersonal() {
     return v / BNBDIV;
   };
 
+  F['xBalance'] = async() => {
+    let v = await CONTS['xweb3'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
+
+  F['busdBalance'] = async() => {
+    let v = await CONTS['busd'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
+
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
   displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
   displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
   displayText("#pBalance", `${COMMA(INT((await gV('pBalance')), 3))}`);
-
-  
-  xBalance = await CONTS['xweb3'].balanceOf(CURADR);
-  xBalance = xBalance / BNBDIV;
-  displayText("#xBalance", `${COMMA(INT(xBalance, 3))}`);
-
-  busdBalance = await CONTS['busd'].balanceOf(CURADR);
-  busdBalance = busdBalance / BNBDIV;
-  displayText("#busdBalance", `${COMMA(INT(busdBalance, 3))}`);
+  displayText("#xBalance", `${COMMA(INT((await gV('xBalance')), 3))}`);
+  displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
   lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
