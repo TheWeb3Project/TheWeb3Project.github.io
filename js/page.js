@@ -1013,7 +1013,7 @@ select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['w
 //////////////////////////////////////////////////////////////////////////////
 
 
-async function maxValuesSwapInput(clickedButton) {
+async function maxValueSwapInput(clickedButton) {
   let bal = select('#swap-balance-input').innerHTML;
   select("#swap-input").value = bal;
 }
