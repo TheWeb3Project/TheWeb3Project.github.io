@@ -842,8 +842,8 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
 
     displayText(`#${target}-symbol-input`, symbolOutput);
     displayText(`#${target}-symbol-output`, symbolInput);
-    displayText(`#{target}-run-name`, states[1]);
-    select(`#{target}-run`).onclick = async () => { await runInput(); };
+    displayText(`#${target}-run-name`, states[1]);
+    select(`#${target}-run`).onclick = async () => { await runInput(); };
     STATES[target] = states[1];
   } else {
     select(`#${target}-input`).removeEventListener('input', listenOutput);
@@ -856,8 +856,8 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
 
     displayText(`#${target}-symbol-input`, symbolInput);
     displayText(`#${target}-symbol-output`, symbolOutput);
-    displayText(`#{target}-run-name`, states[0]);
-    select(`#{target}-run`).onclick = async () => { await runOutput(); };
+    displayText(`#${target}-run-name`, states[0]);
+    select(`#${target}-run`).onclick = async () => { await runOutput(); };
     STATES[target] = states[1];
   }
 }
