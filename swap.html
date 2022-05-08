@@ -151,215 +151,88 @@
           <div class="container pt-3">
             <div class="row">
               <div class="col-12 mx-auto">
-                <div
-                  class="card bg-light p-3 p-sm-4 mt-5"
-                  style="
-                    box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%),
-                      -2px -2px 9px 0 rgb(93 100 112 / 90%);
-                    background-image: linear-gradient(160deg, #424750, #202326);
-                  "
-                >
-                  <h5 class="fw-bold mb-0">Swap</h5>
-                  <span class="small fw-semibold">Get $WEB3</span>
 
-                  <div
-                    class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair"
-                    style="
-                      margin: 10px 0;
-                      box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%),
-                        inset -2px -2px 9px 0 rgb(93 100 112 / 90%);
-                      background-image: linear-gradient(
-                        160deg,
-                        #424750,
-                        #202326
-                      );
-                    "
-                  >
-                    <div
-                      class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field"
-                    >
-                      <div
-                        class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field"
-                      >
-                        <div
-                          class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline"
-                        >
-                          <div
-                            class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field"
-                          >
-                            <input
-                              id="wrap-input"
-                              class="input-field__input"
-                              placeholder="0.00"
-                              name="fromTokenAmount"
-                              inputmode="decimal"
-                              autocomplete="off"
-                              value=""
-                              style="max-width: 16ch"
-                            />
-                          </div>
-                          <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
-                        </div>
-                        <p class="token-amount-field__balance">
-                          Balance: <span id="bnbBalance">0.000</span>
-                        </p>
-                      </div>
+                <div class="card  bg-light p-3 p-sm-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                  <h5 class="fw-bold mb-0">Swap $WEB3</h5>
+                  <span class="small fw-semibold">Buy/Sell $wWEB3</span>
 
-                      <button
-                        onclick="maxValuesSwapInput(this.id)"
-                        type="button"
-                        class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon"
-                        style="
-                          background-image: linear-gradient(
-                            160deg,
-                            #424750,
-                            #202326
-                          );
-                          border: none;
-                        "
-                      >
-                        <div style="margin-right: 6px">Max</div>
-
-                        <div
-                          class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis"
-                        >
-                          <div class="token-logo">
-                            <img
-                              src="images/bnb-icon.png"
-                              class="token-logo__image"
-                              alt="Token logo"
-                            />
-                          </div>
-                          <span id="symbol-input" class="token__symbol ellipsis"
-                            >BNB</span
-                          >
-                          <svg
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 17 18"
-                            class="icon token__verified"
-                          >
-                            <path
-                              d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                              fill="currentColor"
-                            ></path>
-                            <path
-                              d="m5.599 8.777 2.168 2.119 3.767-4.279"
-                              stroke="#fff"
-                              stroke-width="1.159"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                          </svg>
-                        </div>
-                      </button>
-                    </div>
-                    
-                    <div
-                      class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field"
-                    >
-                      <div
-                        class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field"
-                      >
-                        <div
-                          class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline"
-                        >
-                          <div
-                            class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field"
-                          >
-                            <input
-                              id="wrap-output"
-                              class="input-field__input"
-                              placeholder="0.00"
-                              name="toTokenAmount"
-                              inputmode="decimal"
-                              autocomplete="off"
-                              value=""
-                              style="max-width: 16ch"
-                            />
-                          </div>
-                        </div>
-                        <p class="token-amount-field__balance">
-                          Balance: <span id="balance">0.000</span>
-                        </p>
-                      </div>
-                      <button
-                        onclick="maxValueSwapOutput(this.id)"
-                        type="button"
-                        class="button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon"
-                        style="
-                          background-image: linear-gradient(
-                            160deg,
-                            #424750,
-                            #202326
-                          );
-                          border: none;
-                        "
-                      >
-                        <div style="margin-right: 6px">Max</div>
-                        <div
-                          class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis"
-                        >
-                          <div class="token-logo">
-                            <img
-                              src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg"
-                              class="token-logo__image"
-                              alt="Token logo"
-                            />
-                          </div>
-                          <span
-                            id="symbol-output"
-                            class="token__symbol ellipsis"
-                            >WEB3</span
-                          >
-                          <svg
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 17 18"
-                            class="icon token__verified"
-                          >
-                            <path
-                              d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                              fill="currentColor"
-                            ></path>
-                            <path
-                              d="m5.599 8.777 2.168 2.119 3.767-4.279"
-                              stroke="#fff"
-                              stroke-width="1.159"
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                            ></path>
-                          </svg>
-                        </div>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div
-                    id="run-wrap"
-                    class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1"
-                  >
-                    <button
-                      type="submit"
-                      class="button button--primary button--size-default button--icon-left button--with-icon"
-                      style="
-                        border: 3px solid #48acef;
-                        border-radius: 20px;
-                        background-image: linear-gradient(
-                          134deg,
-                          #48acef,
-                          #00436f
-                        );
-                        box-shadow: inset 0 0 1px 0 #001e32,
-                          -2px -2px 10px 0 rgb(93 100 112 / 85%),
-                          2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef,
-                          inset 2px 2px 3px 0 #00436f;
-                      "
-                    >
-                      <span id="run-name" class="button__content">Swap</span>
+                  <div id="run-web3-approve-router" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                    border-radius: 20px;
+                    background-image: linear-gradient(134deg,#48acef,#00436f);
+                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                      <span class="button__content">$WEB3 Approve to sell</span>
                     </button>
                   </div>
+    
+                  <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; margin-top: 65px; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                      <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                              <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                  <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                      <input id="swap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                  </div>
+                                  <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
+                              </div>
+                              <p class="token-amount-field__balance">Balance: <span id="swap-balance-input">0.000</span></p>
+                          </div>
+                          <button type="button" onclick="maxValueSwapInput()" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
+                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                                <div>Max</div>
+                                <div class="token-logo"><img src="images/bnb-icon.png" class="token-logo__image" alt="Token logo"></div>
+                                <span id="swap-symbol-input" class="token__symbol ellipsis">BNB</span>
+                                  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                      <path
+                                          d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                          fill="currentColor"
+                                      ></path>
+                                      <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                      </div>
+                      <div id="swap-change" class="swap-tokens-form__token-pair__switch">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 275" width="320" height="275" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
+                            <g clip-path="url(#__lottie_element_16)"><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M-0.9169999957084656,6.150000095367432 C-0.9169999957084656,6.150000095367432 -5.23799991607666,10.472000122070312 -5.23799991607666,10.472000122070312 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -9.5600004196167,6.150000095367432 -9.5600004196167,6.150000095367432 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -5.23799991607666,-1.0520000457763672 -5.23799991607666,-1.0520000457763672"></path></g></g><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M0.9169999957084656,-5.9079999923706055 C0.9169999957084656,-5.9079999923706055 5.23799991607666,-10.229999542236328 5.23799991607666,-10.229999542236328 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 9.559000015258789,-5.9079999923706055 9.559000015258789,-5.9079999923706055 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 5.23799991607666,1.2940000295639038 5.23799991607666,1.2940000295639038"></path></g></g></g>
+                          </svg>
+                      </div>
+                      <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field" >
+                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                              <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                  <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                      <input id="swap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                  </div>
+                              </div>
+                              <p class="token-amount-field__balance">Balance: <span id="swap-balance-output">0.000</span></p>
+                          </div>
+                          <button type="button" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
+                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                                <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo"  /></div>
+                                  <span id="swap-symbol-output" class="token__symbol ellipsis">WEB3</span>
+                                  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                      <path
+                                          d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                          fill="currentColor"
+                                      ></path>
+                                      <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                      </div>
+                  </div>
+    
+                  <div id="swap-run" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                    border-radius: 20px;
+                    background-image: linear-gradient(134deg,#48acef,#00436f);
+                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                      <span id="swap-run-name" class="button__content">Buy</span>
+                    </button>
+                  </div>
+    
                 </div>
+
+
               </div>
 
               <iframe
@@ -409,9 +282,26 @@
     </script>
 
     <script>
+      async function switchSwap() {
+        await switchTarget(['buy', 'sell'], 'swap', handleInputBuy, handleInputSell, (await gV('bnbBalance')), (await gV('balance')), "BNB", "WEB3", runBuy, runSell);
+      }
+
       async function runPersonal() {
         await _runPersonal();
+        
+        let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['router']);
+        if (BIGINT(0) < web3Allowance) {
+          select('#run-web3-approve-router').classList.add('d-none');
+        } else {
+          select('#run-web3-approve-router').onclick = async () => { await approve('web3', ADRS['router']); };
+        }
+        
+        STATES['swap'] = 'sell';
+        await switchSwap();
+        select('#swap-change').onclick = async () => { await switchSwap(); };
 
+
+        
         select("#run-wrap").onclick = async () => {
           await runSwap();
         };

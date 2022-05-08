@@ -791,12 +791,12 @@ async function approve(name, target) {
 
 
 
-// async function inputHandleWrap(e) {
-// 	await inputHandle(e, 'wrap', (await gV('totalSupply')), (await gV('wTotalSupply')));
-// }
+async function handleInputBuy(e) {
+  await handleInput(e, 'swap-output', (await gV('liqWeb3')), (await gV('liqBnb')));
+}
 
-async function handleInputSwap(e) {
-  await handleInput(e, 'wrap-output', (await gV('liqBnb')), (await gV('liqWeb3')));
+async function handleInputSell(e) {
+  await handleInput(e, 'swap-output', (await gV('liqBnb')), (await gV('liqWeb3')));
 }
 
 async function handleInputWrap(e) {
@@ -861,12 +861,17 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
 }
 
 
-async function runSwap() {
-  let bnbInput = select('#wrap-input');
-  let bnbValue = String(bnbInput.value);
-  await SEND_TX('router', 'swapExactETHForTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], bnbValue);
-}
 
+async function runBuy() {
+  let bnbInput = select('#swap-input');
+  let bnbValue = BIG(bnbInput.value);
+  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], bnbValue);
+}
+async function runSell() {
+  let web3Input = select('#swap-input');
+  let web3Amount = BIG(web3Input.value);
+  await SEND_TX('router', 'swapExactTokensForETHSupportingFeeOnTransferTokens', [web3Amount, 0, [ADRS['web3'], ADRS['wbnb']], CURADR, NOW() + 10**6]);
+}
 
 
 async function runWrap() {

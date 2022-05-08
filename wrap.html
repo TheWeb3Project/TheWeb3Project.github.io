@@ -112,7 +112,7 @@
               <span class="small fw-semibold">Get $wWEB3</span>
               <span class="small fw-semibold">Support for CEX, ledger, etc</span>
 
-              <div id="run-web3-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+              <div id="run-web3-approve-wweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                 <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                 border-radius: 20px;
                 background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -121,7 +121,7 @@
                 </button>
               </div>
 
-              <div id="run-wweb3-approve" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+              <div id="run-wweb3-approve-wweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                 <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                 border-radius: 20px;
                 background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -196,6 +196,8 @@
               </div>
 
             </div>
+
+
             <div class="card bg-light p-3 p-sm-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
             <div class="d-flex justify-content-between">
               <div class="mb-4">
@@ -561,16 +563,16 @@ document.addEventListener("DOMContentLoaded", function() {
       await _runPersonal();
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
-        select('#run-web3-approve').classList.add('d-none');
+        select('#run-web3-approve-wweb3').classList.add('d-none');
       } else {
-        select('#run-web3-approve').onclick = async () => { await approve('web3', ADRS['wweb3']); };
+        select('#run-web3-approve-wweb3').onclick = async () => { await approve('web3', ADRS['wweb3']); };
       }
 
       let wweb3Allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < wweb3Allowance) {
-        select('#run-wweb3-approve').classList.add('d-none');
+        select('#run-wweb3-approve-wweb3').classList.add('d-none');
       } else {
-        select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
+        select('#run-wweb3-approve-wweb3').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
 
       let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['web3Stake']);
