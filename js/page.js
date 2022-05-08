@@ -864,8 +864,7 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
 
 async function runBuy() {
   let bnbInput = select('#swap-input');
-  let bnbValue = BIG(bnbInput.value);
-  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], bnbValue);
+  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], String(bnbInput.value));
 }
 async function runSell() {
   let web3Input = select('#swap-input');
