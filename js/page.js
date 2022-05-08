@@ -990,58 +990,25 @@ async function buyXweb3() {
 }
 
 
+async function addCopy(id, adr) {
+  let button = select(id);
+  
+  await addToClipboard(adr);
+  button.innerText = 'Copied';
+  setTimeout(() => {
+		button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+	}, 3000)
+}
+
+select('#copy-web3').onclick = async () => { await addCopy('#copy-web3', ADRS['web3']); };
+select('#copy-wweb3').onclick = async () => { await addCopy('#copy-wweb3', ADRS['wweb3']); };
+select('#copy-pweb3').onclick = async () => { await addCopy('#copy-pweb3', ADRS['pweb3']); };
+select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['wusd']); };
 
 
 
 //////////////////////////////////////////////////////////////////////////////
 
-const button = select('.copy-btn');
-
-const addToClipboard = async (link) => {
-	await navigator.clipboard.writeText(link);
-}
-
-const copyLink = async (link) => {
-	const copied = await addToClipboard(link)
-	button.innerText = 'Copied'
-	setTimeout(() => {
-		button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-	}, 3000)
-};
-
-button.addEventListener('click', () => copyLink('0x333FD139cAeF6Aa31056cC905987b77B1044d259'))
-
-const buttonpweb = select('.copy-btn-pweb');
-
-const addToClipboardpweb = async (link) => {
-	await navigator.clipboard.writeText(link);
-}
-
-const copyLinkpweb = async (link) => {
-	const copiedpweb = await addToClipboardpweb(link)
-	buttonpweb.innerText = 'Copied'
-	setTimeout(() => {
-		buttonpweb.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-	}, 3000)
-};
-
-buttonpweb.addEventListener('click', () => copyLinkwrap('0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569'))
-
-const buttonpwrap = select('.copy-btn-wrap');
-
-const addToClipboardwrap = async (link) => {
-	await navigator.clipboard.writeText(link);
-}
-
-const copyLinkwrap = async (link) => {
-	const copiedwrap = await addToClipboardwrap(link)
-	buttonpwrap.innerText = 'Copied'
-	setTimeout(() => {
-		buttonpwrap.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-	}, 3000)
-};
-
-buttonpwrap.addEventListener('click', () => copyLinkwrap('0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f'))
 
 async function maxValuesSwapInput(clickedButton) {
   console.log(clickedButton);
