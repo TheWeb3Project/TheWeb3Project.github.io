@@ -485,6 +485,10 @@
   <script src="js/page.js"></script>
   <script>
 
+    async function runGlobal() {
+      await _runGlobal();
+    }
+    
     document.getElementById("showSidebar").addEventListener("click", function () {
       document.getElementById("sidebarContainer").classList.add("show");
       document.getElementById("overlay").style.display = "block"
@@ -539,22 +543,22 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 });
 
-        function switchLock (id) {
-          console.log(id)
-          if(id == 'li3') {
-            document.getElementById('content3').style.display = 'block'
-            document.getElementById('content').style.display = 'none'
-            document.getElementById('content2').style.display = 'none'
-          } else if (id == 'li2') {
-            document.getElementById('content3').style.display = 'none'
-            document.getElementById('content').style.display = 'none'
-            document.getElementById('content2').style.display = 'block'
-          } else if(id == 'li1') {
-            document.getElementById('content3').style.display = 'none'
-            document.getElementById('content').style.display = 'block'
-            document.getElementById('content2').style.display = 'none'
-          }
-        }
+    function switchLock (id) {
+      console.log(id)
+      if(id == 'li3') {
+        document.getElementById('content3').style.display = 'block'
+        document.getElementById('content').style.display = 'none'
+        document.getElementById('content2').style.display = 'none'
+      } else if (id == 'li2') {
+        document.getElementById('content3').style.display = 'none'
+        document.getElementById('content').style.display = 'none'
+        document.getElementById('content2').style.display = 'block'
+      } else if(id == 'li1') {
+        document.getElementById('content3').style.display = 'none'
+        document.getElementById('content').style.display = 'block'
+        document.getElementById('content2').style.display = 'none'
+      }
+    }
 
 		let unlockAfter;
     async function runPersonal() {
@@ -579,7 +583,7 @@ document.addEventListener("DOMContentLoaded", function() {
       } else {
         select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['web3Stake']); };
       }
-      
+
       [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
       let rewardAmount = data;
       rewardAmount = rewardAmount / BNBDIV;

@@ -108,7 +108,7 @@ let jpAlarmed = false;
 let cb;
 let bigbuyTimeLeft;
 let bigbuyAlarmed = false;
-async function runGlobal() {
+async function _runGlobal() {
   select('#connect').onclick = async () => { await conn(); };
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };

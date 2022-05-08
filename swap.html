@@ -402,6 +402,10 @@
     <script src="js/base.js"></script>
     <script src="js/page.js"></script>
     <script>
+      async function runGlobal() {
+        await _runGlobal();
+      }
+      
       document
         .getElementById("showSidebar")
         .addEventListener("click", function () {
