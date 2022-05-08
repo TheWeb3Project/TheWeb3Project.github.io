@@ -993,7 +993,7 @@ async function buyXweb3() {
 async function addCopy(id, adr) {
   let button = select(id);
   
-  await addToClipboard(adr);
+  await navigator.clipboard.writeText(adr);
   button.innerText = 'Copied';
   setTimeout(() => {
 		button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
@@ -1004,8 +1004,6 @@ select('#copy-web3').onclick = async () => { await addCopy('#copy-web3', ADRS['w
 select('#copy-wweb3').onclick = async () => { await addCopy('#copy-wweb3', ADRS['wweb3']); };
 select('#copy-pweb3').onclick = async () => { await addCopy('#copy-pweb3', ADRS['pweb3']); };
 select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['wusd']); };
-
-
 
 //////////////////////////////////////////////////////////////////////////////
 
