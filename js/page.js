@@ -470,8 +470,6 @@ async function runToggleExperi() {
 
 
 
-let bnbBalance;
-let balance;
 let wBalance;
 let pBalance;
 let xBalance;
@@ -494,9 +492,6 @@ async function _runPersonal() {
   };
 
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
-
-  balance = await CONTS['web3'].balanceOf(CURADR);
-  balance = balance / BNBDIV;
   displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
 
   wBalance = await CONTS['wweb3'].balanceOf(CURADR);
