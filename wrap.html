@@ -642,8 +642,8 @@ document.addEventListener("DOMContentLoaded", function() {
       await runPersonal();
 
       STATES['wrap'] = 'unwrap';
-      await switchTarget(['wrap, unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), wBalance, "WEB3", "wWEB3", runWrap, runUnwrap);
-      select('#wrap-change').onclick = async () => { await switchTarget(['wrap, unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), wBalance, "WEB3", "wWEB3", runWrap, runUnwrap); };
+      await switchTarget(['wrap, unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap);
+      select('#wrap-change').onclick = async () => { await switchTarget(['wrap, unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap); };
 
       $('[data-bs-toggle="tooltip"]').tooltip();
 

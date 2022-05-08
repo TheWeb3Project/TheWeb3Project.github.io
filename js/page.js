@@ -491,12 +491,14 @@ async function _runPersonal() {
     return v / BNBDIV;
   };
 
+  F['wBalance'] = async() => {
+    let v = await CONTS['wweb3'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
+
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
   displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
-
-  wBalance = await CONTS['wweb3'].balanceOf(CURADR);
-  wBalance = wBalance / BNBDIV;
-  displayText("#wBalance", `${COMMA(INT(wBalance, 3))}`);
+  displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
 
   pBalance = await CONTS['pweb3'].balanceOf(CURADR);
   pBalance = pBalance / BNBDIV;
