@@ -483,9 +483,12 @@ let totalSupplyPercentage;
 async function _runPersonal() {
   displayText('#connect', SHORTADR(CURADR));
 
-  bnbBalance = await getBalance(CURADR)
-  bnbBalance = bnbBalance / BNBDIV;
-  displayText("#bnbBalance", `${COMMA(INT(bnbBalance, 3))}`);
+  F['bnbBalance'] = async() => {
+    let v = await getBalance(CURADR)
+    return v / BNBDIV;
+  };
+
+  displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
 
   balance = await CONTS['web3'].balanceOf(CURADR);
   balance = balance / BNBDIV;

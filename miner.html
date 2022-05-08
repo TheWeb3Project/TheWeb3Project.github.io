@@ -272,11 +272,6 @@
       await _runGlobal();
     }
 
-
-    let wweb3Balance;
-
-
-
     function showValue1(newValue) {
         document.getElementById("noOfDays").innerHTML= newValue;
       }
@@ -296,12 +291,6 @@
     async function runPersonal() {
       await _runPersonal();
 
-
-
-      wweb3Balance = await CONTS['wweb3'].balanceOf(CURADR);
-      wweb3Balance = wweb3Balance / BNBDIV;
-
-      displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
 
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
