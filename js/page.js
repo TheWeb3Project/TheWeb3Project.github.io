@@ -488,11 +488,16 @@ async function _runPersonal() {
     return v / BNBDIV;
   };
 
+  F['balance'] = async() => {
+    let v = await CONTS['web3'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
+
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
 
   balance = await CONTS['web3'].balanceOf(CURADR);
   balance = balance / BNBDIV;
-  displayText("#balance", `${COMMA(INT(balance, 3))}`);
+  displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
 
   wBalance = await CONTS['wweb3'].balanceOf(CURADR);
   wBalance = wBalance / BNBDIV;
@@ -518,7 +523,7 @@ async function _runPersonal() {
   lockedDuration = await CONTS['web3Stake']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
-  totalSupplyPercentage = (balance / (await gV('totalSupply'))) * 100;
+  totalSupplyPercentage = ((await gV('balance')) / (await gV('totalSupply'))) * 100;
   if (totalSupplyPercentage < 0.001) {
     displayText("#percentTotalSupply", `< 0.001`);
   } else {
@@ -715,8 +720,8 @@ async function getTotalEarned() {
   amount = INT(amount) / BNBDIV;
 
   // console.log(balance, amount);
-  let totalEarned = balance - amount; // little precision
-  let earnRate = totalEarned / balance * 100;
+  let totalEarned = (await gV('balance')) - amount; // little precision
+  let earnRate = totalEarned / (await gV('balance')) * 100;
   displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $WEB3 (+${COMMA(INT(earnRate, 3))}%)`);
   displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * (await gV('price')), 3))}`);
 }

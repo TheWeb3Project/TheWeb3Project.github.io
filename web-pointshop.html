@@ -505,7 +505,7 @@
 
 
       select('#setMaxToAmount').onclick = async () => {
-        select('#amount').value = balance;
+        select('#amount').value = (await gV('balance'));
       };
 
       select('#setCurToApy').onclick = async () => {
