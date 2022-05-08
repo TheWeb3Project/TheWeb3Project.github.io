@@ -1051,30 +1051,28 @@ select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['w
 
 
 async function maxValuesSwapInput(clickedButton) {
-  console.log(clickedButton);
+  // let bal = select('wrap-balance-input');
   select("#wrap-input").value = (await gV('bnbBalance'));
   displayText("#wrap-input", (await gV('bnbBalance')));
 }
 
 async function maxValueSwapOutput(clickedButton) {
-  console.log(clickedButton);
-  select("#wrap-output").value = (await gV('bnbBalance'));
-  displayText("#wrap-output", (await gV('bnbBalance')));
+  // console.log(clickedButton);
+  // select("#wrap-output").value = (await gV('bnbBalance'));
+  // displayText("#wrap-output", (await gV('bnbBalance')));
 }
 
 
 async function maxValueWrapInput() {
-  let bnbBalance = document.getElementById('balance-input').textContent;
-  console.log(bnbBalance);
-  document.getElementById("wrap-input").setAttribute('value', bnbBalance);
-  displayText("#wrap-input", bnbBalance);
+  let bal = select('wrap-balance-input');
+  select("#wrap-input").value = bal;
 }
 
 async function maxValueWrapOutput() {
-  let bnbBalance = document.getElementById('balance-output').textContent;
-  console.log(bnbBalance);
-  document.getElementById("wrap-output").setAttribute('value', bnbBalance);
-  displayText("#wrap-output ", bnbBalance);
+  // let bnbBalance = document.getElementById('balance-output').textContent;
+  // console.log(bnbBalance);
+  // document.getElementById("wrap-output").setAttribute('value', bnbBalance);
+  // displayText("#wrap-output ", bnbBalance);
 }
 
 async function maxValueStakeInput() {
