@@ -580,9 +580,9 @@ document.addEventListener("DOMContentLoaded", function() {
         select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['web3Stake']); };
       }
 
-      wrapState = 'unwrap';
-      await wrapChange();
-      select('#wrap-change').onclick = async () => { await wrapChange(); };
+      STATES['wrap'] = 'unwrap';
+      await switchTarget(['wrap, unwrap'], handleInputWrap, handleInputUnwrap, balance, wBalance, "WEB3", "wWEB3", runWrap, runUnwrap);
+      select('#wrap-change').onclick = async () => { await switchTarget(['wrap, unwrap'], handleInputWrap, handleInputUnwrap, balance, wBalance, "WEB3", "wWEB3", runWrap, runUnwrap); };
 
       [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
       let rewardAmount = data;
