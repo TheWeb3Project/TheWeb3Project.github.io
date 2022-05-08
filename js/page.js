@@ -909,61 +909,6 @@ async function runUnwrap() {
 }
 
 
-
-let wrapState = 'wrap';
-async function swapChange() {
-  if (wrapState == 'wrap') {
-    select('#wrap-input').removeEventListener('input', handleInputWrap);
-    select('#wrap-input').addEventListener('input', handleInputUnwrap);
-
-    let tmp = select('#wrap-input').value;
-    // select('#wrap-input').value = select('#wrap-output').value;
-    // select('#wrap-output').value = tmp;
-
-    displayText("#balance-input", `${COMMA(INT(wBalance, 3))}`);
-    displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
-
-
-
-    select('#symbol-input').innerHTML = "wWEB3";
-    select('#symbol-output').innerHTML = "WEB3";
-    select('#run-name').innerHTML = "Unwrap";
-    select('#run-wrap').onclick = async () => { await runUnwrap(); };
-    wrapState = 'unwrap';
-  } else {
-    select('#wrap-input').removeEventListener('input', handleInputUnwrap);
-    select('#wrap-input').addEventListener('input', handleInputWrap);
-
-    let tmp = select('#wrap-input').value;
-    // select('#wrap-input').value = select('#wrap-output').value;
-    // select('#wrap-output').value = tmp;
-
-    displayText("#balance-input", `${COMMA(INT(balance, 2))}`);
-    displayText("#balance-output", `${COMMA(INT(wBalance, 2))}`);
-
-    select('#symbol-input').innerHTML = "WEB3";
-    select('#symbol-output').innerHTML = "wWEB3";
-    select('#run-name').innerHTML = "Wrap";
-    select('#run-wrap').onclick = async () => { await runWrap(); };
-    wrapState = 'wrap';
-  }
-}
-
-
-async function runWrap() {
-  let web3Input = select('#wrap-input');
-  let web3Amount = BIG(web3Input.value);
-  await SEND_TX('wweb3', 'deposit', [web3Amount]);
-}
-
-async function runUnwrap() {
-  let web3Input = select('#wrap-input');
-  let web3Amount = BIG(web3Input.value);
-  await SEND_TX('wweb3', 'withdraw', [web3Amount]);
-}
-
-
-
 /////////////////////////////////////////////////////////////////////////// stake
 
 async function runStake() {
