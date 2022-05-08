@@ -834,8 +834,8 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
 
     let tmp = select(`#${target}-input`).value;
 
-    displayText(`#${target}-balance-input`, `${COMMA(INT(bOutput, 3))}`);
-    displayText(`#${target}-balance-output`, `${COMMA(INT(bInput, 3))}`);
+    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceOutput, 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceInput, 3))}`);
 
     displayText(`#${target}-symbol-input`, symbolOutput);
     displayText(`#${target}-symbol-output`, symbolInput);
@@ -848,8 +848,8 @@ async function switchTarget(states, target, listenInput, listenOutput, balanceIn
 
     let tmp = select(`#${target}-input`).value;
 
-    displayText(`#${target}-balance-input`, `${COMMA(INT(bInput, 3))}`);
-    displayText(`#${target}-balance-output`, `${COMMA(INT(bOutput, 3))}`);
+    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceInput, 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceOutput, 3))}`);
 
     displayText(`#${target}-symbol-input`, symbolInput);
     displayText(`#${target}-symbol-output`, symbolOutput);
