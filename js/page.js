@@ -109,6 +109,16 @@ let cb;
 let bigbuyTimeLeft;
 let bigbuyAlarmed = false;
 async function _runGlobal() {
+  document.getElementById("showSidebar").addEventListener("click", function () {
+    document.getElementById("sidebarContainer").classList.add("show");
+    document.getElementById("overlay").style.display = "block"
+  })
+
+  document.getElementById("overlay").addEventListener("click", function () {
+    document.getElementById("sidebarContainer").classList.remove("show");
+    document.getElementById("overlay").style.display = "none"
+  })
+  
   select('#connect').onclick = async () => { await conn(); };
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };

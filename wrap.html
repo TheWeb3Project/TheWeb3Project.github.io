@@ -487,20 +487,18 @@
 
     async function runGlobal() {
       await _runGlobal();
+
+      $(document).on('input', 'input[type="range"]', function (e) {
+        let days = select('input[type="range"]').value;
+        select("#noOfDays").innerHTML = days;
+        displayText('#noOfDays', `${days}`);
+        let stakeAmount = select('#stake-input').value;
+        let bonusRate = INT(days / 30) * 5;
+        let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;
+        displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
+      });
     }
 
-    document.getElementById("showSidebar").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.add("show");
-      document.getElementById("overlay").style.display = "block"
-    })
-
-    document.getElementById("overlay").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.remove("show");
-      document.getElementById("overlay").style.display = "none"
-    })
-  </script>
-
-  <script>
 
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -607,36 +605,18 @@ document.addEventListener("DOMContentLoaded", function() {
       unlockAfter = unlockTime - NOW() / 1000;
       let timeinterval = setInterval(function () {
         		
-        		if (unlockAfter <= 0) {
-              unlockAfter = 0;
-            }
-            displayText("#unlockAfter", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
-            unlockAfter = UPDATETICK(unlockAfter);
-          }, 1000);
-      // if(param) {
-        console.log(stakedDuration.toString())
-        if(stakedDuration.toString() == 365) {
-          document.getElementById('hof-claim').style.border = '3px solid #48acef'
-          document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
+        if (unlockAfter <= 0) {
+          unlockAfter = 0;
         }
-      // }
+        displayText("#unlockAfter", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
+        unlockAfter = UPDATETICK(unlockAfter);
+      }, 1000);
 
-      // [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
-      // let unlockTime = data;
-      // [res, data] = await READ_TX('web3Stake', '_lastClaims', [CURADR]);
-      // let lastClaim = data;
-
-      // if (0 < rewardAmount) {
-      //   if (0 < unlockTime) {
-      //     if (0 < lastClaim) {
-      //       let claimAmount = rewardAmount * (NOW() / 1000 - lastClaim) / (unlockTime - lastClaim);
-      //       claimAmount = claimAmount;
-      //       displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
-
-
-      //     }
-      //   }
-      // }
+      console.log(stakedDuration.toString())
+      if(stakedDuration.toString() == 365) {
+        document.getElementById('hof-claim').style.border = '3px solid #48acef'
+        document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
+      }
 
     }
 
@@ -644,15 +624,7 @@ document.addEventListener("DOMContentLoaded", function() {
       // do global
 
 
-      $(document).on('input', 'input[type="range"]', function (e) {
-        let days = select('input[type="range"]').value;
-        select("#noOfDays").innerHTML = days;
-        displayText('#noOfDays', `${days}`);
-        let stakeAmount = select('#stake-input').value;
-        let bonusRate = INT(days / 30) * 5;
-        let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;
-        displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
-      });
+      
       
       await runGlobal();
 
@@ -674,8 +646,6 @@ document.addEventListener("DOMContentLoaded", function() {
       await runPersonal();
 
       $('[data-bs-toggle="tooltip"]').tooltip();
-      
-
 
     })();
 
