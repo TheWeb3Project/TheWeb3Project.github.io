@@ -70,7 +70,7 @@
                 <a href="https://bscscan.com/address/0x333FD139cAeF6Aa31056cC905987b77B1044d259">
                 0x333FD139cAeF6Aa31056cC905987b77B1044d259
                 </a>
-                <button style="font-size: 16px; 	background: none;
+                <button id='copy-web3' style="font-size: 16px; 	background: none;
                 color: inherit;
                 border: none;
                 padding: 0;
@@ -409,22 +409,16 @@
   <script src="js/base.js"></script>
   <script src="js/page.js"></script>
   <script>
-    document.getElementById("showSidebar").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.add("show");
-      document.getElementById("overlay").style.display = "block"
-    });
-
-    document.getElementById("overlay").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.remove("show");
-      document.getElementById("overlay").style.display = "none"
-    });
+    async function runGlobal() {
+      await _runGlobal();
+    }
 
     async function runPersonal() {
       await _runPersonal();
 
       // check vip
       let balance = await CONTS['web3'].balanceOf(CURADR);
-      if (0.1 < balance / (await gV('totalSupply')) * 100) {
+      if (0.1 < (await gV('balance')) / (await gV('totalSupply')) * 100) {
        // alert('vip')
       }
 

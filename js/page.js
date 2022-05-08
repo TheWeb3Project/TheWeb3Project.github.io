@@ -108,7 +108,17 @@ let jpAlarmed = false;
 let cb;
 let bigbuyTimeLeft;
 let bigbuyAlarmed = false;
-async function runGlobal() {
+async function _runGlobal() {
+  document.getElementById("showSidebar").addEventListener("click", function () {
+    document.getElementById("sidebarContainer").classList.add("show");
+    document.getElementById("overlay").style.display = "block"
+  })
+
+  document.getElementById("overlay").addEventListener("click", function () {
+    document.getElementById("sidebarContainer").classList.remove("show");
+    document.getElementById("overlay").style.display = "none"
+  })
+  
   select('#connect').onclick = async () => { await conn(); };
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
@@ -456,47 +466,48 @@ async function runToggleExperi() {
 }
 
 
-
-
-
-
-let bnbBalance;
-let balance;
-let wBalance;
-let pBalance;
-let xBalance;
-let busdBalance;
-
 let lockedAmount;
 let lockedDuration;
 let totalSupplyPercentage;
 async function _runPersonal() {
   displayText('#connect', SHORTADR(CURADR));
 
-  bnbBalance = await getBalance(CURADR)
-  bnbBalance = bnbBalance / BNBDIV;
-  displayText("#bnbBalance", `${COMMA(INT(bnbBalance, 3))}`);
+  F['bnbBalance'] = async() => {
+    let v = await getBalance(CURADR)
+    return v / BNBDIV;
+  };
 
-  balance = await CONTS['web3'].balanceOf(CURADR);
-  balance = balance / BNBDIV;
-  displayText("#balance", `${COMMA(INT(balance, 3))}`);
+  F['balance'] = async() => {
+    let v = await CONTS['web3'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
 
-  wBalance = await CONTS['wweb3'].balanceOf(CURADR);
-  wBalance = wBalance / BNBDIV;
-  displayText("#wBalance", `${COMMA(INT(wBalance, 3))}`);
+  F['wBalance'] = async() => {
+    let v = await CONTS['wweb3'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
 
-  pBalance = await CONTS['pweb3'].balanceOf(CURADR);
-  pBalance = pBalance / BNBDIV;
-  displayText("#pBalance", `${COMMA(INT(pBalance, 3))}`);
+  F['pBalance'] = async() => {
+    let v = await CONTS['pweb3'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
 
-  
-  xBalance = await CONTS['xweb3'].balanceOf(CURADR);
-  xBalance = xBalance / BNBDIV;
-  displayText("#xBalance", `${COMMA(INT(xBalance, 3))}`);
+  F['xBalance'] = async() => {
+    let v = await CONTS['xweb3'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
 
-  busdBalance = await CONTS['busd'].balanceOf(CURADR);
-  busdBalance = busdBalance / BNBDIV;
-  displayText("#busdBalance", `${COMMA(INT(busdBalance, 3))}`);
+  F['busdBalance'] = async() => {
+    let v = await CONTS['busd'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
+
+  displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
+  displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
+  displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
+  displayText("#pBalance", `${COMMA(INT((await gV('pBalance')), 3))}`);
+  displayText("#xBalance", `${COMMA(INT((await gV('xBalance')), 3))}`);
+  displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
   lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
@@ -505,7 +516,7 @@ async function _runPersonal() {
   lockedDuration = await CONTS['web3Stake']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
-  totalSupplyPercentage = (balance / (await gV('totalSupply'))) * 100;
+  totalSupplyPercentage = ((await gV('balance')) / (await gV('totalSupply'))) * 100;
   if (totalSupplyPercentage < 0.001) {
     displayText("#percentTotalSupply", `< 0.001`);
   } else {
@@ -702,8 +713,8 @@ async function getTotalEarned() {
   amount = INT(amount) / BNBDIV;
 
   // console.log(balance, amount);
-  let totalEarned = balance - amount; // little precision
-  let earnRate = totalEarned / balance * 100;
+  let totalEarned = (await gV('balance')) - amount; // little precision
+  let earnRate = totalEarned / (await gV('balance')) * 100;
   displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $WEB3 (+${COMMA(INT(earnRate, 3))}%)`);
   displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * (await gV('price')), 3))}`);
 }
@@ -780,12 +791,12 @@ async function approve(name, target) {
 
 
 
-// async function inputHandleWrap(e) {
-// 	await inputHandle(e, 'wrap', (await gV('totalSupply')), (await gV('wTotalSupply')));
-// }
+async function handleInputBuy(e) {
+  await handleInput(e, 'swap-output', (await gV('liqWeb3')), (await gV('liqBnb')));
+}
 
-async function handleInputSwap(e) {
-  await handleInput(e, 'wrap-output', (await gV('liqBnb')), (await gV('liqWeb3')));
+async function handleInputSell(e) {
+  await handleInput(e, 'swap-output', (await gV('liqBnb')), (await gV('liqWeb3')));
 }
 
 async function handleInputWrap(e) {
@@ -815,56 +826,50 @@ async function handleInput(e, name, inputSupply, outputSupply) {
 }
 
 
-async function runSwap() {
-  let bnbInput = select('#wrap-input');
-  let bnbValue = String(bnbInput.value);
-  await SEND_TX('router', 'swapExactETHForTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], bnbValue);
-}
 
-async function runWrap() {
-  let web3Input = select('#wrap-input');
-  let web3Amount = BIG(web3Input.value);
-  await SEND_TX('wweb3', 'deposit', [web3Amount]);
-}
+let STATES = {};
+async function switchTarget(states, target, listenInput, listenOutput, balanceInput, balanceOutput, symbolInput, symbolOutput, runInput, runOutput) {
+  let tmp = select(`#${target}-input`).value;
+  select(`#${target}-input`).value = select(`#${target}-output`).value;
+  select(`#${target}-output`).value = tmp;
 
+  if (STATES[target] == states[0]) {
+    select(`#${target}-input`).removeEventListener('input', listenInput);
+    select(`#${target}-input`).addEventListener('input', listenOutput);
 
-let wrapState = 'wrap';
-async function wrapChange() {
-  if (wrapState == 'wrap') {
-    select('#wrap-input').removeEventListener('input', handleInputWrap);
-    select('#wrap-input').addEventListener('input', handleInputUnwrap);
+    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceOutput, 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceInput, 3))}`);
 
-    let tmp = select('#wrap-input').value;
-    // select('#wrap-input').value = select('#wrap-output').value;
-    // select('#wrap-output').value = tmp;
-
-    displayText("#balance-input", `${COMMA(INT(wBalance, 3))}`);
-    displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
-
-
-
-    select('#symbol-input').innerHTML = "wWEB3";
-    select('#symbol-output').innerHTML = "WEB3";
-    select('#run-name').innerHTML = "Unwrap";
-    select('#run-wrap').onclick = async () => { await runUnwrap(); };
-    wrapState = 'unwrap';
+    displayText(`#${target}-symbol-input`, symbolOutput);
+    displayText(`#${target}-symbol-output`, symbolInput);
+    displayText(`#${target}-run-name`, states[1]);
+    select(`#${target}-run`).onclick = async () => { await runInput(); };
+    STATES[target] = states[1];
   } else {
-    select('#wrap-input').removeEventListener('input', handleInputUnwrap);
-    select('#wrap-input').addEventListener('input', handleInputWrap);
+    select(`#${target}-input`).removeEventListener('input', listenOutput);
+    select(`#${target}-input`).addEventListener('input', listenInput);
 
-    let tmp = select('#wrap-input').value;
-    // select('#wrap-input').value = select('#wrap-output').value;
-    // select('#wrap-output').value = tmp;
+    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceInput, 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceOutput, 3))}`);
 
-    displayText("#balance-input", `${COMMA(INT(balance, 2))}`);
-    displayText("#balance-output", `${COMMA(INT(wBalance, 2))}`);
-
-    select('#symbol-input').innerHTML = "WEB3";
-    select('#symbol-output').innerHTML = "wWEB3";
-    select('#run-name').innerHTML = "Wrap";
-    select('#run-wrap').onclick = async () => { await runWrap(); };
-    wrapState = 'wrap';
+    displayText(`#${target}-symbol-input`, symbolInput);
+    displayText(`#${target}-symbol-output`, symbolOutput);
+    displayText(`#${target}-run-name`, states[0]);
+    select(`#${target}-run`).onclick = async () => { await runOutput(); };
+    STATES[target] = states[0];
   }
+}
+
+
+
+async function runBuy() {
+  let bnbInput = select('#swap-input');
+  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], String(bnbInput.value));
+}
+async function runSell() {
+  let web3Input = select('#swap-input');
+  let web3Amount = BIG(web3Input.value);
+  await SEND_TX('router', 'swapExactTokensForETHSupportingFeeOnTransferTokens', [web3Amount, 0, [ADRS['web3'], ADRS['wbnb']], CURADR, NOW() + 10**6]);
 }
 
 
@@ -879,7 +884,6 @@ async function runUnwrap() {
   let web3Amount = BIG(web3Input.value);
   await SEND_TX('wweb3', 'withdraw', [web3Amount]);
 }
-
 
 
 /////////////////////////////////////////////////////////////////////////// stake
@@ -990,88 +994,39 @@ async function buyXweb3() {
 }
 
 
+async function addCopy(id, adr) {
+  let button = select(id);
+  
+  await navigator.clipboard.writeText(adr);
+  button.innerText = 'Copied';
+  setTimeout(() => {
+		button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+	}, 3000)
+}
 
-
+select('#copy-web3').onclick = async () => { await addCopy('#copy-web3', ADRS['web3']); };
+select('#copy-wweb3').onclick = async () => { await addCopy('#copy-wweb3', ADRS['wweb3']); };
+select('#copy-pweb3').onclick = async () => { await addCopy('#copy-pweb3', ADRS['pweb3']); };
+select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['wusd']); };
 
 //////////////////////////////////////////////////////////////////////////////
 
-const button = select('.copy-btn');
 
-const addToClipboard = async (link) => {
-	await navigator.clipboard.writeText(link);
-}
-
-const copyLink = async (link) => {
-	const copied = await addToClipboard(link)
-	button.innerText = 'Copied'
-	setTimeout(() => {
-		button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-	}, 3000)
-};
-
-button.addEventListener('click', () => copyLink('0x333FD139cAeF6Aa31056cC905987b77B1044d259'))
-
-const buttonpweb = select('.copy-btn-pweb');
-
-const addToClipboardpweb = async (link) => {
-	await navigator.clipboard.writeText(link);
-}
-
-const copyLinkpweb = async (link) => {
-	const copiedpweb = await addToClipboardpweb(link)
-	buttonpweb.innerText = 'Copied'
-	setTimeout(() => {
-		buttonpweb.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-	}, 3000)
-};
-
-buttonpweb.addEventListener('click', () => copyLinkwrap('0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569'))
-
-const buttonpwrap = select('.copy-btn-wrap');
-
-const addToClipboardwrap = async (link) => {
-	await navigator.clipboard.writeText(link);
-}
-
-const copyLinkwrap = async (link) => {
-	const copiedwrap = await addToClipboardwrap(link)
-	buttonpwrap.innerText = 'Copied'
-	setTimeout(() => {
-		buttonpwrap.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-	}, 3000)
-};
-
-buttonpwrap.addEventListener('click', () => copyLinkwrap('0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f'))
-
-async function maxValuesSwapInput(clickedButton) {
-  console.log(clickedButton);
-  let bnbBalance = document.getElementById('bnbBalance').textContent;
-  console.log(bnbBalance);
-  document.getElementById("wrap-input").setAttribute('value', bnbBalance);
-  displayText("#wrap-input", bnbBalance);
+async function maxValueSwapInput(clickedButton) {
+  let bal = select('#swap-balance-input').innerHTML;
+  select("#swap-input").value = bal;
 }
 
 async function maxValueSwapOutput(clickedButton) {
-  console.log(clickedButton);
-  let bnbBalance = document.getElementById('balance').textContent;
-  console.log(bnbBalance);
-  document.getElementById("wrap-output").setAttribute('value', bnbBalance);
-  displayText("#wrap-output ", bnbBalance);
 }
 
 
 async function maxValueWrapInput() {
-  let bnbBalance = document.getElementById('balance-input').textContent;
-  console.log(bnbBalance);
-  document.getElementById("wrap-input").setAttribute('value', bnbBalance);
-  displayText("#wrap-input", bnbBalance);
+  let bal = select('#wrap-balance-input').innerHTML;
+  select("#wrap-input").value = bal;
 }
 
 async function maxValueWrapOutput() {
-  let bnbBalance = document.getElementById('balance-output').textContent;
-  console.log(bnbBalance);
-  document.getElementById("wrap-output").setAttribute('value', bnbBalance);
-  displayText("#wrap-output ", bnbBalance);
 }
 
 async function maxValueStakeInput() {
