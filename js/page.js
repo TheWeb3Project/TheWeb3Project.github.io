@@ -871,44 +871,6 @@ async function runSwap() {
   await SEND_TX('router', 'swapExactETHForTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], bnbValue);
 }
 
-// let wrapState = 'wrap';
-// async function wrapChange() {
-//   if (wrapState == 'wrap') {
-//     select('#wrap-input').removeEventListener('input', handleInputWrap);
-//     select('#wrap-input').addEventListener('input', handleInputUnwrap);
-
-//     let tmp = select('#wrap-input').value;
-//     // select('#wrap-input').value = select('#wrap-output').value;
-//     // select('#wrap-output').value = tmp;
-
-//     displayText("#balance-input", `${COMMA(INT(wBalance, 3))}`);
-//     displayText("#balance-output", `${COMMA(INT(balance, 3))}`);
-
-
-
-//     select('#symbol-input').innerHTML = "wWEB3";
-//     select('#symbol-output').innerHTML = "WEB3";
-//     select('#run-name').innerHTML = "Unwrap";
-//     select('#run-wrap').onclick = async () => { await runUnwrap(); };
-//     wrapState = 'unwrap';
-//   } else {
-//     select('#wrap-input').removeEventListener('input', handleInputUnwrap);
-//     select('#wrap-input').addEventListener('input', handleInputWrap);
-
-//     let tmp = select('#wrap-input').value;
-//     // select('#wrap-input').value = select('#wrap-output').value;
-//     // select('#wrap-output').value = tmp;
-
-//     displayText("#balance-input", `${COMMA(INT(balance, 2))}`);
-//     displayText("#balance-output", `${COMMA(INT(wBalance, 2))}`);
-
-//     select('#symbol-input').innerHTML = "WEB3";
-//     select('#symbol-output').innerHTML = "wWEB3";
-//     select('#run-name').innerHTML = "Wrap";
-//     select('#run-wrap').onclick = async () => { await runWrap(); };
-//     wrapState = 'wrap';
-//   }
-// }
 
 
 async function runWrap() {
@@ -1064,7 +1026,7 @@ async function maxValueSwapOutput(clickedButton) {
 
 
 async function maxValueWrapInput() {
-  let bal = select('wrap-balance-input');
+  let bal = select('#wrap-balance-input').innerHTML;
   select("#wrap-input").value = bal;
 }
 
