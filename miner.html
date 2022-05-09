@@ -369,7 +369,7 @@
       }
 
       const copyLinkref = async (link) => {
-        const copiedref = await addToClipboardwrap(link)
+        const copiedref = await addToClipboardref(link)
         buttonpref.innerText = 'Copied'
         setTimeout(() => {
           buttonpref.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
