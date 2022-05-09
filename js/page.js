@@ -1079,22 +1079,26 @@ select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['w
 //////////////////////////////////////////////////////////////////////////////
 
 
-async function maxValueSwapInput(clickedButton) {
+async function maxValueSwapInput() {
   let bal = select('#swap-balance-input').innerHTML;
   select("#swap-input").value = bal;
 }
-
-async function maxValueSwapOutput(clickedButton) {
-}
-
 
 async function maxValueWrapInput() {
   let bal = select('#wrap-balance-input').innerHTML;
   select("#wrap-input").value = bal;
 }
 
-async function maxValueWrapOutput() {
+async function maxValueWrapInput() {
+  let bal = select('#wrap-balance-input').innerHTML;
+  select("#wrap-input").value = bal;
 }
+
+async function maxValueWusdInput() {
+  let bal = select('#wusd-balance-input').innerHTML;
+  select("#wusd-input").value = bal;
+}
+
 
 async function maxValueStakeInput() {
   let bnbBalance = document.getElementById('wBalance').textContent;
