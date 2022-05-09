@@ -188,7 +188,7 @@
     }
 
     async function switchWusd() {
-      await switchTarget(['buy', 'sell'], 'wusd', [handleInputToWusd, handleInputToBusd], [(await gV('liqBusd')), (await gV('liqWusd'))], [BUSDICONURL, TOKENICONURL], ["BUSD", "WUSD"], [runToWusd, runToBusd]);
+      await switchTarget(['buy', 'sell'], 'wusd', [handleInputToWusd, handleInputToBusd], [(await gV('busdBalance')), (await gV('wusdBalance'))], [BUSDICONURL, TOKENICONURL], ["BUSD", "WUSD"], [runToWusd, runToBusd]);
     }
 
     async function runPersonal() {
