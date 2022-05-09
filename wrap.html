@@ -757,7 +757,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     async function switchwrap() {
-      await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('balance')), (await gV('wBalance'))], [TOKENICONURL, TOKENICONURL], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
+      await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('web3Balance')), (await gV('wweb3Balance'))], [TOKENICONURL, TOKENICONURL], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
     }
 
 		let unlockAfter;
