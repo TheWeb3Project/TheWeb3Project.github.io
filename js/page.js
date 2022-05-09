@@ -798,11 +798,20 @@ async function approve(name, target) {
   await SEND_TX(name, 'approve', [target, BIGINT(2**255)]);
 }
 
-async function funcRate(v, inputSupply, outputSupply) {
-  return v.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
+async function funcRate(v, rI, rO) {
+  let a = BIG(String(rI));
+  let b = BIG(String(rO));
+
+  return v.mul(b).div(a);
 }
 
-async function swapRate(v, inputSupply, outputSupply) {
+async function swapRate(v, rI, rO) {
+  let a = BIG(String(rI));
+  let b = BIG(String(rO));
+
+  let nume = v.mul(b);
+  let deno = v.add(a);
+  return nume.div(deno);
 }
 
 async function handleInputBuy(e) {
@@ -831,13 +840,17 @@ async function handleInputUnwrap(e) {
 
 async function handleInputToWusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    return await swapRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+    let oV = await swapRate(v, (await gV('liqBusd')), (await gV('liqWusd')));
+    return oV;
   });
 }
 
 async function handleInputToBusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    return await swapRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+    let oV = await swapRate(v, (await gV('liqWusd')), (await gV('liqBusd')));
+    if (v < oV) { // busd max 1:1
+      v = oV;
+    }
   });
 }
 
