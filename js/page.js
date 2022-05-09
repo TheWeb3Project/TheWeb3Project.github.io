@@ -542,11 +542,11 @@ async function _runPersonal() {
 
   displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
 
-  lockedAmount = await CONTS['web3Lock']._amounts(CURADR);
+  lockedAmount = await CONTS['lock']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
   displayText("#lockedAmount", `${COMMA(INT(lockedAmount, 3))}`);
   
-  lockedDuration = await CONTS['web3Lock']._durations(CURADR);
+  lockedDuration = await CONTS['lock']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
   totalSupplyPercentage = ((await gV('balance')) / (await gV('totalSupply'))) * 100;
@@ -984,19 +984,19 @@ async function runLock() {
   let lockAmount = select('#lock-input').value;
   let days = select("#noOfDays").innerHTML;
 
-  await SEND_TX('web3Lock', 'stake', [BIG(lockAmount), days]);
+  await SEND_TX('lock', 'stake', [BIG(lockAmount), days]);
 }
 
 async function runUnlock() {
-  await SEND_TX('web3Lock', 'unstake', []);
+  await SEND_TX('lock', 'unstake', []);
 }
 
 async function runClaim() {
-  await SEND_TX('web3Lock', 'claimReward', []);
+  await SEND_TX('lock', 'claimReward', []);
 }
 
 async function runEmerUnstake() {
-  await SEND_TX('web3Lock', 'emergencyUnstake', []);
+  await SEND_TX('lock', 'emergencyUnstake', []);
 }
 
 
@@ -1036,7 +1036,7 @@ async function buyMinerBnb() {
 
   let amount = select('#noOfDays').innerHTML;
   amount = amount.replace(/,/g, '');
-  await SEND_TX('web3Miner', 'HirePay', [ref], amount);
+  await SEND_TX('miner', 'HirePay', [ref], amount);
 }
 
 async function buyMinerBusd() {
@@ -1047,7 +1047,7 @@ async function buyMinerBusd() {
 
   let amount = select('#noOfDays').innerHTML;
   amount = amount.replace(/,/g, '');
-  await SEND_TX('web3Miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
+  await SEND_TX('miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
 }
 
 async function buyMiner() {
@@ -1063,7 +1063,7 @@ async function buyMiner() {
     return;
   }
   
-  await SEND_TX('web3Miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
+  await SEND_TX('miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
 }
 
 async function buyMinerMore() {
@@ -1072,11 +1072,11 @@ async function buyMinerMore() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  await SEND_TX('web3Miner', 'HireMore', [ref]);
+  await SEND_TX('miner', 'HireMore', [ref]);
 }
 
 async function sellOre() {
-  await SEND_TX('web3Miner', 'Receive', []);
+  await SEND_TX('miner', 'Receive', []);
 } 
 
 async function buyXweb3() {

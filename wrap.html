@@ -587,31 +587,31 @@ document.addEventListener("DOMContentLoaded", function() {
         select('#run-wweb3-approve-wweb3').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
 
-      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['web3Lock']);
+      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
       if (BIGINT(0) < wweb3Allowance2) {
         select('#run-wweb3-approve2').classList.add('d-none');
       } else {
-        select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['web3Lock']); };
+        select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['lock']); };
       }
 
-      [res, data] = await READ_TX('web3Lock', '_rewards', [CURADR]);
+      [res, data] = await READ_TX('lock', '_rewards', [CURADR]);
       let claimAmount = data;
       claimAmount = claimAmount / BNBDIV;
       displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
 
       select('#run-claim1').onclick = async () => { await runClaim(); };
 
-      [res, data] = await READ_TX('web3Lock', '_amounts', [CURADR]);
+      [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
       let stakedAmount = data;
       stakedAmount = stakedAmount / BNBDIV;
       displayText('#stakedAmount', `${COMMA(INT(stakedAmount, 3))}`);
 
-      [res, data] = await READ_TX('web3Lock', '_durations', [CURADR]);
+      [res, data] = await READ_TX('lock', '_durations', [CURADR]);
       let stakedDuration = data;
 
       displayText('#stakedDuration', `${COMMA(INT(stakedDuration, 0))}`);
 			
-      [res, data] = await READ_TX('web3Lock', '_unlockTimes', [CURADR]);
+      [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
       let unlockTime = data;
 
       unlockAfter = unlockTime - NOW() / 1000;

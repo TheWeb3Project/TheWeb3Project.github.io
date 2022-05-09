@@ -155,8 +155,8 @@ ABIS['wusd'] = [
 ];
 
 
-ADRS['web3Lock'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
-ABIS['web3Lock'] = [
+ADRS['lock'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
+ABIS['lock'] = [
   "function stake(uint256, uint256)",
   "function unstake()",
   "function emergencyUnstake()",
@@ -192,8 +192,8 @@ ABIS['jackpot'] = [
   "event Jackpot(uint256, address, uint256)",
 ];
 
-ADRS['web3Miner'] = "0x6f17D0DCc709Ee57b9d8bB9846Ad740032dB8661";
-ABIS['web3Miner'] = [
+ADRS['miner'] = "0x6f17D0DCc709Ee57b9d8bB9846Ad740032dB8661";
+ABIS['miner'] = [
   "function Hire(address, address, uint)",
   "function HirePay(address) payable",
   "function HireMore(address)",
