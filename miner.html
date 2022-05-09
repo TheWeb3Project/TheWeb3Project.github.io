@@ -359,8 +359,8 @@
       select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
 
 
-      let refUrl = location.href.split('?ref=').split[0] + '?ref=' + CURADR;
-      select('#ref').value = location.href.split('?ref=').split[0] + '?ref=' + SHORTADR(CURADR, true, 2);
+      let refUrl = location.href.split('?ref=')[0] + '?ref=' + CURADR;
+      select('#ref').value = location.href.split('?ref=')[0] + '?ref=' + SHORTADR(CURADR, true, 2);
 
       const buttonpref = select('.copy-btn-ref');
 
