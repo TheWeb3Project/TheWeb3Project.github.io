@@ -938,6 +938,18 @@ async function runUnwrap() {
   await SEND_TX('wweb3', 'withdraw', [web3Amount]);
 }
 
+async function runToWusd() {
+  let busdInput = select('#wusd-input');
+  let busdAmount = BIG(busdInput.value);
+  await SEND_TX('wusd', 'wusdToBusd', [busdAmount]);
+}
+
+async function runToBusd() {
+  let wusdInput = select('#wusd-input');
+  let wusdAmount = BIG(wusdInput.value);
+  await SEND_TX('wusd', 'busdToWusd', [wusdAmount]);
+}
+
 
 /////////////////////////////////////////////////////////////////////////// stake
 
