@@ -246,6 +246,9 @@ async function _runGlobal() {
     return (await CONTS['busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
   }; 
 
+  F['xFund'] = async() => {
+    return (await getBalance(ADRS['xweb3'])) / BNBDIV * (await gV('bnbPrice'));
+  };
 
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
@@ -271,6 +274,8 @@ async function _runGlobal() {
 
   select('#corr').setAttribute('title', `Correlation: ${COMMA(INT((await gV('corr')), 1))}%`);
   displayText("#corr2", `${COMMA(INT((await gV('corr')), 1))}%`);
+
+  displayText("#xFund", `$${COMMA(INT((await gV('xFund'))))}`);
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
@@ -533,6 +538,11 @@ async function _runPersonal() {
     return v;
   };
 
+  F['xReward'] = async() => {
+    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding'));
+    return v;
+  };
+
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
   displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
   displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
@@ -541,6 +551,8 @@ async function _runPersonal() {
   displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
   displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
+  displayText("#xReward", `${COMMA(INT((await gV('xFund')), 3))} BNB`);
+  
 
   lockedAmount = await CONTS['lock']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
