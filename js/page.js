@@ -228,7 +228,7 @@ async function _runGlobal() {
   }; 
 
   F['liqBusd'] = async() => {
-    return (await CONTS['Busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
   }; 
 
 
