@@ -558,6 +558,10 @@ document.addEventListener("DOMContentLoaded", function() {
       }
     }
 
+    async function switchwrap() {
+      await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('balance')), (await gV('wBalance'))], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
+    }
+
 		let unlockAfter;
     async function runPersonal() {
       await _runPersonal();
@@ -618,10 +622,11 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
       }
       
-      STATES['wrap'] = 'unwrap';
-      await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap);
-      select('#wrap-change').onclick = async () => { await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap); };
 
+        
+      STATES['wrap'] = 'unwrap';
+      await switchwrap();
+      select('#wrap-change').onclick = async () => { await switchwrap(); };
     }
 
     (async () => {

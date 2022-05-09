@@ -277,7 +277,7 @@
 
     <script>
       async function switchSwap() {
-        await switchTarget(['buy', 'sell'], 'swap', handleInputBuy, handleInputSell, (await gV('bnbBalance')), (await gV('balance')), "BNB", "WEB3", runBuy, runSell);
+        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('balance'))], ["BNB", "WEB3"], [runBuy, runSell]);
       }
 
       async function runPersonal() {

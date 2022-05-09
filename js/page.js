@@ -843,7 +843,7 @@ async function handleInput(e, name, func) {
   let valueIn_ = BIG(valueIn);
   let valueOut_ = await func(valueIn_);
   let valueOut = ETH(valueOut_);
-  
+
   valueOut = INT(parseFloat(valueOut), 8);
   ot.value = valueOut;
 }
@@ -851,35 +851,35 @@ async function handleInput(e, name, func) {
 
 
 let STATES = {};
-async function switchTarget(states, target, listenInput, listenOutput, balanceInput, balanceOutput, symbolInput, symbolOutput, runInput, runOutput) {
+async function switchTarget(states, target, handleFs, bals, syms, runFs) {
   let tmp = select(`#${target}-input`).value;
   select(`#${target}-input`).value = select(`#${target}-output`).value;
   select(`#${target}-output`).value = tmp;
 
   if (STATES[target] == states[0]) {
-    select(`#${target}-input`).removeEventListener('input', listenInput);
-    select(`#${target}-input`).addEventListener('input', listenOutput);
+    select(`#${target}-input`).removeEventListener('input', handleFs[0]);
+    select(`#${target}-input`).addEventListener('input', handleFs[1]);
 
-    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceOutput, 3))}`);
-    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceInput, 3))}`);
+    displayText(`#${target}-balance-input`, `${COMMA(INT(bals[1], 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(bals[0], 3))}`);
 
-    displayText(`#${target}-symbol-input`, symbolOutput);
-    displayText(`#${target}-symbol-output`, symbolInput);
+    displayText(`#${target}-symbol-input`, syms[1]);
+    displayText(`#${target}-symbol-output`, syms[0]);
     displayText(`#${target}-run-name`, states[1]);
     console.log(`#${target}-run`, runInput);
-    select(`#${target}-run`).onclick = async () => { await runOutput(); };
+    select(`#${target}-run`).onclick = async () => { await runFs[1](); };
     STATES[target] = states[1];
   } else {
-    select(`#${target}-input`).removeEventListener('input', listenOutput);
-    select(`#${target}-input`).addEventListener('input', listenInput);
+    select(`#${target}-input`).removeEventListener('input', handleFs[1]);
+    select(`#${target}-input`).addEventListener('input', handleFs[0]);
 
-    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceInput, 3))}`);
-    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceOutput, 3))}`);
+    displayText(`#${target}-balance-input`, `${COMMA(INT(bals[0], 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(bals[1], 3))}`);
 
-    displayText(`#${target}-symbol-input`, symbolInput);
-    displayText(`#${target}-symbol-output`, symbolOutput);
+    displayText(`#${target}-symbol-input`, syms[0]);
+    displayText(`#${target}-symbol-output`, syms[1]);
     displayText(`#${target}-run-name`, states[0]);
-    select(`#${target}-run`).onclick = async () => { await runInput(); };
+    select(`#${target}-run`).onclick = async () => { await runFs[0](); };
     STATES[target] = states[0];
   }
 }
