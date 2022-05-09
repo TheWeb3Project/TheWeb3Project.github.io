@@ -174,7 +174,14 @@
                   </div>
                   <div class="info d-flex flex-column gap-3 mt-5">
                     <div class="d-flex justify-content-between"><div>Total Miners</div> <div id="totalMiners"></div></div>
-                    <div class="d-flex justify-content-between"><div>Your Miners</div> <div id="_miners"></div></div>
+                    <div class="d-flex justify-content-between">
+                      <div>Your Miners  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                        There is no direct price for miner<br/>
+                        It is determined when you do the hire<br/>
+                        "></i>
+                      </div> 
+                      <div id="_miners"></div>
+                    </div>
                     <div class="d-flex justify-content-between"><div>WUSD Rewards</div> <div id="calculateWusdRewards"></div></div>
                   </div>
                   <hr>
@@ -203,6 +210,10 @@
                       </button>
                     </div>
                   </div>
+                  <div class="info d-flex flex-column gap-3 mt-5">
+                    <div class="d-flex justify-content-between">
+                      <div>Referral Address</div> <div id="refAdr"></div></div>
+                    </div>
                   <hr>
                   <div class="more_stats d-flex flex-column gap-3">
                     <div>Miner stats</div>
@@ -348,6 +359,32 @@
       select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
 
 
+      let refUrl = location.href + '?ref=' + CURADR;
+      select('#ref').value = location.href + '?ref=' + SHORTADR(CURADR, true, 2);
+
+      const buttonpref = select('.copy-btn-ref');
+
+      const addToClipboardref = async (link) => {
+        await navigator.clipboard.writeText(link);
+      }
+
+      const copyLinkref = async (link) => {
+        const copiedref = await addToClipboardwrap(link)
+        buttonpref.innerText = 'Copied'
+        setTimeout(() => {
+          buttonpref.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+        }, 3000)
+      };
+      let copied = document.getElementById('ref').innerHTML;
+      buttonpref.addEventListener('click', () => copyLinkref(refUrl))
+
+      let ref = getRef();
+      if (ref == '') {
+
+      } else {
+       select('#refAdr').innerHTML = ref;
+      }
+      
     }
 
     (async () => {
@@ -367,32 +404,6 @@
         return;
       }
 
-      select('#ref').value = location.href + '?ref=' + CURADR;
-
-      const buttonpref = select('.copy-btn-ref');
-
-      const addToClipboardref = async (link) => {
-        await navigator.clipboard.writeText(link);
-      }
-
-      const copyLinkref = async (link) => {
-        const copiedref = await addToClipboardwrap(link)
-        buttonpref.innerText = 'Copied'
-        setTimeout(() => {
-          buttonpref.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-        }, 3000)
-      };
-      let copied = document.getElementById('ref').innerHTML;
-      buttonpref.addEventListener('click', () => copyLinkref(location.href + '?ref=' + CURADR))
-      // buttonpref.addEventListener('click', () => console.log(copied))
-
-
-      let ref = getRef();
-      if (ref == '') {
-
-      } else {
-       select('#ref').value = ref;
-      }
       await runPersonal();
 
       
