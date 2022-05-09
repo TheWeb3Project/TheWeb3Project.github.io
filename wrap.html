@@ -493,7 +493,7 @@
         let days = select('input[type="range"]').value;
         select("#noOfDays").innerHTML = days;
         displayText('#noOfDays', `${days}`);
-        let stakeAmount = select('#stake-input').value;
+        let stakeAmount = select('#lock-input').value;
         let bonusRate = INT(days / 30) * 5;
         let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;
         displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
@@ -584,31 +584,31 @@ document.addEventListener("DOMContentLoaded", function() {
         select('#run-wweb3-approve-wweb3').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
 
-      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['web3Stake']);
+      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['web3Lock']);
       if (BIGINT(0) < wweb3Allowance2) {
         select('#run-wweb3-approve2').classList.add('d-none');
       } else {
-        select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['web3Stake']); };
+        select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['web3Lock']); };
       }
 
-      [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
+      [res, data] = await READ_TX('web3Lock', '_rewards', [CURADR]);
       let rewardAmount = data;
       rewardAmount = rewardAmount / BNBDIV;
       displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
 
       select('#run-claim1').onclick = async () => { await runClaim(); };
 
-      [res, data] = await READ_TX('web3Stake', '_amounts', [CURADR]);
+      [res, data] = await READ_TX('web3Lock', '_amounts', [CURADR]);
       let stakedAmount = data;
       stakedAmount = stakedAmount / BNBDIV;
       displayText('#stakedAmount', `${COMMA(INT(stakedAmount, 3))}`);
 
-      [res, data] = await READ_TX('web3Stake', '_durations', [CURADR]);
+      [res, data] = await READ_TX('web3Lock', '_durations', [CURADR]);
       let stakedDuration = data;
 
       displayText('#stakedDuration', `${COMMA(INT(stakedDuration, 0))}`);
 			
-      [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
+      [res, data] = await READ_TX('web3Lock', '_unlockTimes', [CURADR]);
       let unlockTime = data;
 
       unlockAfter = unlockTime - NOW() / 1000;

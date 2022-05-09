@@ -518,11 +518,11 @@ async function _runPersonal() {
   displayText("#xBalance", `${COMMA(INT((await gV('xBalance')), 3))}`);
   displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
-  lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
+  lockedAmount = await CONTS['web3Lock']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
   displayText("#lockedAmount", `${COMMA(INT(lockedAmount, 3))}`);
   
-  lockedDuration = await CONTS['web3Stake']._durations(CURADR);
+  lockedDuration = await CONTS['web3Lock']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
   totalSupplyPercentage = ((await gV('balance')) / (await gV('totalSupply'))) * 100;
@@ -959,19 +959,19 @@ async function runStake() {
   let stakeAmount = select('#stake-input').value;
   let days = select("#noOfDays").innerHTML;
 
-  await SEND_TX('web3Stake', 'stake', [BIG(stakeAmount), days]);
+  await SEND_TX('web3Lock', 'stake', [BIG(stakeAmount), days]);
 }
 
 async function runUnstake() {
-  await SEND_TX('web3Stake', 'unstake', []);
+  await SEND_TX('web3Lock', 'unstake', []);
 }
 
 async function runClaim() {
-  await SEND_TX('web3Stake', 'claimReward', []);
+  await SEND_TX('web3Lock', 'claimReward', []);
 }
 
 async function runEmerUnstake() {
-  await SEND_TX('web3Stake', 'emergencyUnstake', []);
+  await SEND_TX('web3Lock', 'emergencyUnstake', []);
 }
 
 

@@ -434,17 +434,17 @@
         select('#run-busd-approve-xweb3').onclick = async () => { await approve('busd', ADRS['xweb3']); };
       }
 
-      let stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
+      let stakedAmount = await CONTS['web3Lock']._amounts(CURADR);
       stakedAmount = stakedAmount / BNBDIV;
       displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
 
 
-      let rewardLeft = await CONTS['web3Stake']._rewards(CURADR);
+      let rewardLeft = await CONTS['web3Lock']._rewards(CURADR);
       rewardLeft = rewardLeft / BNBDIV;
       displayText("#rewardLeft", `$${COMMA(INT(rewardLeft, 3))}`);
 
-      let unlockTime = await CONTS['web3Stake']._unlockTimes(CURADR);
-      let lastClaim = await CONTS['web3Stake']._lastClaims(CURADR);
+      let unlockTime = await CONTS['web3Lock']._unlockTimes(CURADR);
+      let lastClaim = await CONTS['web3Lock']._lastClaims(CURADR);
       if (0 < unlockTime - lastClaim) {
         let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
         displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
