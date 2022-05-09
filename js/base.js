@@ -219,7 +219,7 @@ ADRS['router'] = "0x10ED43C718714eb63d5aA57B78B54704E256024E";
 ABIS['router'] = [
   "function getAmountsOut(uint, address[]) view returns (uint[])",
   "function swapExactETHForTokensSupportingFeeOnTransferTokens(uint, address[], address, uint) payable",
-  "function swapExactTokensForETHSupportingFeeOnTransferTokens(uint, uint, address[], address[], uint)",
+  "function swapExactTokensForETHSupportingFeeOnTransferTokens(uint, uint, address[], address, uint)",
 ];
 
 
