@@ -857,8 +857,9 @@ async function handleInputToBusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
     let oV = await swapRate(v, (await gV('liqWusd')), (await gV('liqBusd')));
     if (v < oV) { // busd max 1:1
-      v = oV;
+      oV = v;
     }
+    return oV;
   });
 }
 
