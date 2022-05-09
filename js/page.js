@@ -223,6 +223,15 @@ async function _runGlobal() {
     return (await gV('liqBalance')) / (await gV('mcap')) * 100;
   };
 
+  F['liqWusd'] = async() => {
+    return (await CONTS['wusd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+  }; 
+
+  F['liqBusd'] = async() => {
+    return (await CONTS['Busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+  }; 
+
+
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
