@@ -987,7 +987,7 @@ async function captureImg(targetId) {
 
 function getRef() {
   let href = location.href;
-  let hrefSplit = href.split('ref=');
+  let hrefSplit = href.split('?ref=');
   if (hrefSplit.length <= 1) {
     return '';
   }
