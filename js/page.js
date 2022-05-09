@@ -74,6 +74,8 @@ function displayWeb3Header() {
       </button>
     </div>`;
     select('#web3-header').innerHTML = htmlStr;
+    select('#web3-header').classList = "w-100 position-fixed end-0 top-0";
+    select('#web3-header').style = "height: 68px; z-index: 100001;"
 }
 displayWeb3Header();
 
