@@ -38,6 +38,7 @@ function displaySidebar() {
             ${htmlSide('wrap.html', 'box-seam', 'Wrap')}
             ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
             ${htmlSide('miner.html', 'minecart-loaded', 'Miner')}
+            ${htmlSide('xweb.html', 'minecart-loaded', 'xWEB3')}
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
@@ -528,6 +529,11 @@ async function _runPersonal() {
     return v / BNBDIV;
   };
 
+  F['wusdBalance'] = async() => {
+    let v = await CONTS['wusd'].balanceOf(CURADR);
+    return v / BNBDIV;
+  };
+
   F['busdBalance'] = async() => {
     let v = await CONTS['busd'].balanceOf(CURADR);
     return v / BNBDIV;
@@ -548,6 +554,7 @@ async function _runPersonal() {
   displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
   displayText("#pBalance", `${COMMA(INT((await gV('pBalance')), 3))}`);
   displayText("#xBalance", `${COMMA(INT((await gV('xBalance')), 3))}`);
+  displayText("#wusdBalance", `${COMMA(INT((await gV('wusdBalance')), 3))}`);
   displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
   displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
