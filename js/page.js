@@ -796,13 +796,13 @@ async function funcRate(v, inputSupply, outputSupply) {
 
 async function handleInputBuy(e) {
   await handleInput(e, 'swap-output', async (v) => {
-    await funcRate(v, (await gV('liqWeb3')), (await gV('liqBnb')));
+    await funcRate(v, (await gV('liqBnb')), (await gV('liqWeb3')));
   });
 }
 
 async function handleInputSell(e) {
   await handleInput(e, 'swap-output', async (v) => {
-    await funcRate(v, (await gV('liqBnb')), (await gV('liqWeb3')));
+    await funcRate(v, (await gV('liqWeb3')), (await gV('liqBnb')));
   });
 }
 
