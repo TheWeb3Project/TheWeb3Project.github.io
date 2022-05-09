@@ -818,17 +818,17 @@ async function handleInputUnwrap(e) {
   });
 }
 
-// async function handleInputToWusd(e) {
-//   await handleInput(e, 'wusd-output', async (v) => {
-//     return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
-//   });
-// }
+async function handleInputToWusd(e) {
+  await handleInput(e, 'wusd-output', async (v) => {
+    return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+  });
+}
 
-// async function handleInputTobusd(e) {
-//   await handleInput(e, 'wusd-output', async (v) => {
-//     return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
-//   });
-// }
+async function handleInputTobusd(e) {
+  await handleInput(e, 'wusd-output', async (v) => {
+    return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+  });
+}
 
 async function handleInput(e, name, func) {
 	let valueIn = e.target.value;
@@ -851,7 +851,7 @@ async function handleInput(e, name, func) {
 
 
 let STATES = {};
-async function switchTarget(states, target, handleFs, bals, syms, runFs) {
+async function switchTarget(states, target, handleFs, bals, logos, syms, runFs) {
   let tmp = select(`#${target}-input`).value;
   select(`#${target}-input`).value = select(`#${target}-output`).value;
   select(`#${target}-output`).value = tmp;
@@ -863,10 +863,12 @@ async function switchTarget(states, target, handleFs, bals, syms, runFs) {
     displayText(`#${target}-balance-input`, `${COMMA(INT(bals[1], 3))}`);
     displayText(`#${target}-balance-output`, `${COMMA(INT(bals[0], 3))}`);
 
+    displayText(`#${target}-logo-input`, logos[1]);
+    displayText(`#${target}-logo-output`, logos[0]);
     displayText(`#${target}-symbol-input`, syms[1]);
     displayText(`#${target}-symbol-output`, syms[0]);
+
     displayText(`#${target}-run-name`, states[1]);
-    console.log(`#${target}-run`, runInput);
     select(`#${target}-run`).onclick = async () => { await runFs[1](); };
     STATES[target] = states[1];
   } else {
@@ -876,8 +878,11 @@ async function switchTarget(states, target, handleFs, bals, syms, runFs) {
     displayText(`#${target}-balance-input`, `${COMMA(INT(bals[0], 3))}`);
     displayText(`#${target}-balance-output`, `${COMMA(INT(bals[1], 3))}`);
 
+    displayText(`#${target}-logo-input`, logos[0]);
+    displayText(`#${target}-logo-output`, logos[1]);
     displayText(`#${target}-symbol-input`, syms[0]);
     displayText(`#${target}-symbol-output`, syms[1]);
+
     displayText(`#${target}-run-name`, states[0]);
     select(`#${target}-run`).onclick = async () => { await runFs[0](); };
     STATES[target] = states[0];

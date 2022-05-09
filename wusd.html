@@ -205,6 +205,10 @@
       await _runGlobal();
     }
 
+    async function switchWusd() {
+      await switchTarget(['buy', 'sell'], 'buy', [handleInputToWusd, handleInputUnwrap], [(await gV('balance')), (await gV('wBalance'))], [TOKENICONURL, TOKENICONURL], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
+    }
+
     async function runPersonal() {
       await _runPersonal();
       let wusdAllowance = await CONTS['wusd'].allowance(CURADR, ADRS['wusd']);
