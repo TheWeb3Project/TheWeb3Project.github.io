@@ -796,25 +796,25 @@ async function funcRate(v, inputSupply, outputSupply) {
 
 async function handleInputBuy(e) {
   await handleInput(e, 'swap-output', async (v) => {
-    await funcRate(v, (await gV('liqBnb')), (await gV('liqWeb3')));
+    return await funcRate(v, (await gV('liqBnb')), (await gV('liqWeb3')));
   });
 }
 
 async function handleInputSell(e) {
   await handleInput(e, 'swap-output', async (v) => {
-    await funcRate(v, (await gV('liqWeb3')), (await gV('liqBnb')));
+    return await funcRate(v, (await gV('liqWeb3')), (await gV('liqBnb')));
   });
 }
 
 async function handleInputWrap(e) {
   await handleInput(e, 'wrap-output', async (v) => {
-    await funcRate(v, (await gV('totalSupply')), (await gV('wTotalSupply')));
+    return await funcRate(v, (await gV('totalSupply')), (await gV('wTotalSupply')));
   });
 }
 
 async function handleInputUnwrap(e) {
   await handleInput(e, 'wrap-output', async (v) => {
-    await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+    return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
   });
 }
 
