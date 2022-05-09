@@ -802,6 +802,8 @@ async function funcRate(v, inputSupply, outputSupply) {
   return v.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
 }
 
+async function swapRate(v, inputSupply, outputSupply) {
+}
 
 async function handleInputBuy(e) {
   await handleInput(e, 'swap-output', async (v) => {
@@ -829,13 +831,13 @@ async function handleInputUnwrap(e) {
 
 async function handleInputToWusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+    return await swapRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
   });
 }
 
 async function handleInputToBusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+    return await swapRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
   });
 }
 
