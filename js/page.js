@@ -791,23 +791,46 @@ async function approve(name, target) {
 
 
 
+async function funcRate(v, inputSupply, outputSupply) {
+  return v.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
+}
 async function handleInputBuy(e) {
-  await handleInput(e, 'swap-output', (await gV('liqWeb3')), (await gV('liqBnb')));
+  await handleInput(e, 'swap-output', async (v) => {
+    await funcRate(v, (await gV('liqWeb3')), (await gV('liqBnb')));
+  });
 }
 
-async function handleInputSell(e) {
-  await handleInput(e, 'swap-output', (await gV('liqBnb')), (await gV('liqWeb3')));
+async function handleInputBuy(e) {
+  await handleInput(e, 'swap-output', async (v) => {
+    await funcRate(v, (await gV('liqBnb')), (await gV('liqWeb3')));
+  });
 }
 
 async function handleInputWrap(e) {
-  await handleInput(e, 'wrap-output', (await gV('totalSupply')), (await gV('wTotalSupply')));
+  await handleInput(e, 'wrap-output', async (v) => {
+    await funcRate(v, (await gV('totalSupply')), (await gV('wTotalSupply')));
+  });
 }
 
 async function handleInputUnwrap(e) {
-  await handleInput(e, 'wrap-output', (await gV('wTotalSupply')), (await gV('totalSupply')));
+  await handleInput(e, 'wrap-output', async (v) => {
+    await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+  });
 }
 
-async function handleInput(e, name, inputSupply, outputSupply) {
+async function handleInputUnwrap(e) {
+  await handleInput(e, 'wrap-output', async (v) => {
+    await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+  });
+}
+
+async function handleInputUnwrap(e) {
+  await handleInput(e, 'wrap-output', async (v) => {
+    await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+  });
+}
+
+async function handleInput(e, name, func) {
 	let valueIn = e.target.value;
   valueIn = valueIn.replace(/,/g, '.');
   e.target.value = valueIn;
@@ -818,7 +841,7 @@ async function handleInput(e, name, inputSupply, outputSupply) {
   }
 
   let valueIn_ = BIG(valueIn);
-  let valueOut_ = valueIn_.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
+  let valueOut_ = await func(valueIn_);
 
   let valueOut = ETH(valueOut_);
   valueOut = INT(parseFloat(valueOut), 8);

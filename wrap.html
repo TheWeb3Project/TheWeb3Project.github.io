@@ -617,6 +617,10 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('hof-claim').style.border = '3px solid #48acef'
         document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
       }
+      
+      STATES['wrap'] = 'unwrap';
+      await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap);
+      select('#wrap-change').onclick = async () => { await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap); };
 
     }
 
@@ -641,9 +645,6 @@ document.addEventListener("DOMContentLoaded", function() {
       }
       await runPersonal();
 
-      STATES['wrap'] = 'unwrap';
-      await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap);
-      select('#wrap-change').onclick = async () => { await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap); };
 
       $('[data-bs-toggle="tooltip"]').tooltip();
 

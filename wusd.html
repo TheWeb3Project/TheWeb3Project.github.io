@@ -221,16 +221,16 @@
         select('#run-busd-approve-wusd').onclick = async () => { await approve('busd', ADRS['wusd']); };
       }
 
+      STATES['wusd'] = 'sell';
+      await switchTarget(['buy', 'sell'], 'buy', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap);
+      select('#wrap-change').onclick = async () => { await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap); };
+
     }
 
     (async () => {
       await runGlobal();
 
-      select('#run-stake').onclick = async () => { await runStake(); };
-
-      select('#run-unstake').onclick = async () => { await runUnstake(); };
-
-      wrapState = 'unwrap';
+      wrapState = '';
       await wrapChange();
       $('[data-bs-toggle="tooltip"]').tooltip();
 
