@@ -880,6 +880,8 @@ async function switchTarget(states, target, handleFs, bals, logos, syms, runFs) 
   select(`#${target}-input`).value = select(`#${target}-output`).value;
   select(`#${target}-output`).value = tmp;
 
+  select(`#${target}-output`).style.pointerEvents = "none";
+
   if (STATES[target] == states[0]) {
     select(`#${target}-input`).removeEventListener('input', handleFs[0]);
     select(`#${target}-input`).addEventListener('input', handleFs[1]);
