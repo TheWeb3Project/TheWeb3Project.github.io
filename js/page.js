@@ -789,18 +789,18 @@ async function approve(name, target) {
   await SEND_TX(name, 'approve', [target, BIGINT(2**255)]);
 }
 
-
-
 async function funcRate(v, inputSupply, outputSupply) {
   return v.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
 }
+
+
 async function handleInputBuy(e) {
   await handleInput(e, 'swap-output', async (v) => {
     await funcRate(v, (await gV('liqWeb3')), (await gV('liqBnb')));
   });
 }
 
-async function handleInputBuy(e) {
+async function handleInputSell(e) {
   await handleInput(e, 'swap-output', async (v) => {
     await funcRate(v, (await gV('liqBnb')), (await gV('liqWeb3')));
   });
@@ -818,17 +818,17 @@ async function handleInputUnwrap(e) {
   });
 }
 
-async function handleInputUnwrap(e) {
-  await handleInput(e, 'wrap-output', async (v) => {
-    await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
-  });
-}
+// async function handleInputToWusd(e) {
+//   await handleInput(e, 'wusd-output', async (v) => {
+//     await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+//   });
+// }
 
-async function handleInputUnwrap(e) {
-  await handleInput(e, 'wrap-output', async (v) => {
-    await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
-  });
-}
+// async function handleInputTobusd(e) {
+//   await handleInput(e, 'wusd-output', async (v) => {
+//     await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+//   });
+// }
 
 async function handleInput(e, name, func) {
 	let valueIn = e.target.value;
