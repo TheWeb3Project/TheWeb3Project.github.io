@@ -497,6 +497,10 @@
         let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;
         displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
       });
+
+      select('#run-stake').onclick = async () => { await runStake(); };
+
+      select('#run-unstake').onclick = async () => { await runUnstake(); };
     }
 
 
@@ -621,9 +625,7 @@ document.addEventListener("DOMContentLoaded", function() {
         document.getElementById('hof-claim').style.border = '3px solid #48acef'
         document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
       }
-      
-
-        
+ 
       STATES['wrap'] = 'unwrap';
       await switchwrap();
       select('#wrap-change').onclick = async () => { await switchwrap(); };
@@ -632,14 +634,9 @@ document.addEventListener("DOMContentLoaded", function() {
     (async () => {
       // do global
 
-
-      
-      
       await runGlobal();
 
-      select('#run-stake').onclick = async () => { await runStake(); };
 
-      select('#run-unstake').onclick = async () => { await runUnstake(); };
 
       $('[data-bs-toggle="tooltip"]').tooltip();
 
