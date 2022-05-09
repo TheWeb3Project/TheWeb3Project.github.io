@@ -270,6 +270,10 @@
   <script>
     async function runGlobal() {
       await _runGlobal();
+      
+      $(document).on('input', 'input[type="range"]', function (e) {
+        changedValue('days', select('input[type="range"]'));
+      });
     }
 
     function showValue1(newValue) {
@@ -320,55 +324,26 @@
         select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['web3Miner']); };
       }
 
-      let stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
-      stakedAmount = stakedAmount / BNBDIV;
-      displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
+      let _miners = await CONTS['web3Miner']._miners(CURADR);
+      select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
+			
+      let totalMiners = await CONTS['web3Miner'].totalSupply();
+      totalMiners = totalMiners / BNBDIV;
+      displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
 
+      let _daimonds = await CONTS['web3Miner']._daimonds(CURADR);
+      select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
+      
+      let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(CURADR);
+      calculateWusdRewards = calculateWusdRewards / BNBDIV;
+      select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
 
-      let rewardLeft = await CONTS['web3Stake']._rewards(CURADR);
-      rewardLeft = rewardLeft / BNBDIV;
-      displayText("#rewardLeft", `$${COMMA(INT(rewardLeft, 3))}`);
-
-      let unlockTime = await CONTS['web3Stake']._unlockTimes(CURADR);
-      let lastClaim = await CONTS['web3Stake']._lastClaims(CURADR);
-      if (0 < unlockTime - lastClaim) {
-        let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
-        displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
-
-        let now = INT(NOW() / 1000);
-        TICKS = unlockTime - now;
-
-        let timeinterval = setInterval(function () {
-          displayText("#unlockTime", `${INT(TICKS / 86400)}d ${INT((TICKS % 86400) / 3600)}h ${INT((TICKS % 3600) / 60)}m ${TICKS % 60}s`);
-          UPDATETICK();
-        }, 1000);
-      }
-
-      select('#run-stake').onclick = async () => { await runStake(); };
-      select('#run-claim').onclick = async () => { await runClaim(); };
-      select('#run-unstake').onclick = async () => { await runUnstake(); };
-      select('#run-emerunstake').onclick = async () => {
-        alert("This is for the EMERGENCY unstake. you will get 10% of the staked amount. Confirm transaction if you really want to do the emergency unstake");
-        await runEmerUnstake();
-      };
 
     }
 
     (async () => {
-
-      $(document).on('input', 'input[type="range"]', function (e) {
-      changedValue('days', select('input[type="range"]'));
-    });
       // do global
       await runGlobal();
-
-      // let curBlock = await PROVIDER.getBlock();
-      // curBlock = curBlock['number'];
-      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
-      // lastRebaseBlock = INT(lastRebaseBlock);
-      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
-      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
-
 
       ////////////////////////////////////////////////////////////////////////////
 
@@ -442,20 +417,7 @@
       }
       await runPersonal();
 
-      let _miners = await CONTS['web3Miner']._miners(CURADR);
-      select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
-			
-      let totalMiners = await CONTS['web3Miner'].totalSupply();
-      totalMiners = totalMiners / BNBDIV;
-      displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
-
-      let _daimonds = await CONTS['web3Miner']._daimonds(CURADR);
-      select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
       
-      let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(CURADR);
-      calculateWusdRewards = calculateWusdRewards / BNBDIV;
-      select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
-
       $('[data-bs-toggle="tooltip"]').tooltip();
 
     })();

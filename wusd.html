@@ -196,82 +196,15 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
+  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
   <script src="js/base.js"></script>
   <script src="js/page.js"></script>
-  <script>
-
-    document.getElementById("showSidebar").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.add("show");
-      document.getElementById("overlay").style.display = "block"
-    })
-
-    document.getElementById("overlay").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.remove("show");
-      document.getElementById("overlay").style.display = "none"
-    })
-  </script>
 
   <script>
+    async function runGlobal() {
+      await _runGlobal();
+    }
 
-
-document.addEventListener("DOMContentLoaded", function() {
-  var tabs = document.querySelectorAll('.tabbed li');
-  var switchers = document.querySelectorAll('.switcher-box a');
-  var skinable = document.getElementById('skinable');
-
-  for (var i = 0, len = tabs.length; i < len; i++) {
-    tabs[i].addEventListener("click", function() {
-      if (this.classList.contains('active'))
-        return;
-
-      var parent = this.parentNode,
-          innerTabs = parent.querySelectorAll('li');
-
-      for (var index = 0, iLen = innerTabs.length; index < iLen; index++) {
-        innerTabs[index].classList.remove('active');
-      }
-
-      this.classList.add('active');
-    });
-  }
-
-  for (var i = 0, len = switchers.length; i < len; i++) {
-    switchers[i].addEventListener("click", function() {
-      if (this.classList.contains('active'))
-        return;
-
-      var parent = this.parentNode,
-          innerSwitchers = parent.querySelectorAll('a'),
-          skinName = this.getAttribute('skin');
-
-      for (var index = 0, iLen = innerSwitchers.length; index < iLen; index++) {
-        innerSwitchers[index].classList.remove('active');
-      }
-
-      this.classList.add('active');
-      skinable.className = 'tabbed round ' + skinName;
-    });
-  }
-});
-
-        function switchLock (id) {
-          console.log(id)
-          if(id == 'li3') {
-            document.getElementById('content3').style.display = 'block'
-            document.getElementById('content').style.display = 'none'
-            document.getElementById('content2').style.display = 'none'
-          } else if (id == 'li2') {
-            document.getElementById('content3').style.display = 'none'
-            document.getElementById('content').style.display = 'none'
-            document.getElementById('content2').style.display = 'block'
-          } else if(id == 'li1') {
-            document.getElementById('content3').style.display = 'none'
-            document.getElementById('content').style.display = 'block'
-            document.getElementById('content2').style.display = 'none'
-          }
-        }
-
-		let unlockAfter;
     async function runPersonal() {
       await _runPersonal();
       let wusdAllowance = await CONTS['wusd'].allowance(CURADR, ADRS['wusd']);
@@ -288,80 +221,9 @@ document.addEventListener("DOMContentLoaded", function() {
         select('#run-busd-approve-wusd').onclick = async () => { await approve('busd', ADRS['wusd']); };
       }
 
-      wrapState = 'unwrap';
-      await wrapChange();
-      select('#wrap-change').onclick = async () => { await wrapChange(); };
-
-      [res, data] = await READ_TX('web3Stake', '_rewards', [CURADR]);
-      let rewardAmount = data;
-      rewardAmount = rewardAmount / BNBDIV;
-      displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
-
-      select('#run-claim1').onclick = async () => { await runClaim(); };
-
-      [res, data] = await READ_TX('web3Stake', '_amounts', [CURADR]);
-      let stakedAmount = data;
-      stakedAmount = stakedAmount / BNBDIV;
-      displayText('#stakedAmount', `${COMMA(INT(stakedAmount, 3))}`);
-
-      [res, data] = await READ_TX('web3Stake', '_durations', [CURADR]);
-      let stakedDuration = data;
-
-      displayText('#stakedDuration', `${COMMA(INT(stakedDuration, 0))}`);
-			
-      [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
-      let unlockTime = data;
-
-      unlockAfter = unlockTime - NOW() / 1000;
-      let timeinterval = setInterval(function () {
-        		
-        		if (unlockAfter <= 0) {
-              unlockAfter = 0;
-            }
-            displayText("#unlockAfter", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
-            unlockAfter = UPDATETICK(unlockAfter);
-          }, 1000);
-      // if(param) {
-        console.log(stakedDuration.toString())
-        if(stakedDuration.toString() == 365) {
-          document.getElementById('hof-claim').style.border = '3px solid #48acef'
-          document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
-        }
-      // }
-
-      // [res, data] = await READ_TX('web3Stake', '_unlockTimes', [CURADR]);
-      // let unlockTime = data;
-      // [res, data] = await READ_TX('web3Stake', '_lastClaims', [CURADR]);
-      // let lastClaim = data;
-
-      // if (0 < rewardAmount) {
-      //   if (0 < unlockTime) {
-      //     if (0 < lastClaim) {
-      //       let claimAmount = rewardAmount * (NOW() / 1000 - lastClaim) / (unlockTime - lastClaim);
-      //       claimAmount = claimAmount;
-      //       displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
-
-
-      //     }
-      //   }
-      // }
-
     }
 
     (async () => {
-      // do global
-
-
-      $(document).on('input', 'input[type="range"]', function (e) {
-        let days = select('input[type="range"]').value;
-        select("#noOfDays").innerHTML = days;
-        displayText('#noOfDays', `${days}`);
-        let stakeAmount = select('#stake-input').value;
-        let bonusRate = INT(days / 30) * 5;
-        let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;
-        displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
-      });
-      
       await runGlobal();
 
       select('#run-stake').onclick = async () => { await runStake(); };
