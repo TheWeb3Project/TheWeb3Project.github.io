@@ -40,11 +40,11 @@
       <div id="overlay" style="z-index: 1000001;"></div>
 
       <main class="col pt-4">
-        <div id="web3-header" class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001;">
+        <div id="web3-header">
         </div>
 
-        <div class="container pt-3">
-          <div class="px-sm-3 my-5">
+        <div class="container">
+          <div class="my-5 col-12">
             <div class="card bg-light mt-5 text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
               <span class="fw-medium ms-1">
                 Highest APY = 103,864,155,400.73% APY <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
@@ -66,9 +66,10 @@
             </div>
             
             <div class="card text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-              <span class="fw-medium ms-1">$WEB3 Contract: 
-                <a href="https://bscscan.com/address/0x333FD139cAeF6Aa31056cC905987b77B1044d259">
-                0x333FD139cAeF6Aa31056cC905987b77B1044d259
+              <span class="fw-medium ms-1">
+                $WEB3
+                <a id="web3-link" target="_blank">
+                  <span id="web3"></span>
                 </a>
                 <button id='copy-web3' style="font-size: 16px; 	background: none;
                 color: inherit;
@@ -129,11 +130,12 @@
             </div>
           </div>
 
-          <div class="px-sm-3 my-5">
+          <div class="my-5 col-12">
             <div id="jpS" class="card text-center p-4" style="background-image: linear-gradient(160deg,#424750,#202326);">
-              <span class="fw-medium ms-1">Jackpot Contract: 
-                <a href="https://bscscan.com/token/0x59e4a7c380e9aa63f24873ebd185d13b0ee76dba#balances">
-                0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba
+              <span class="fw-medium ms-1">
+                Jackpot
+                <a id="jackpot-link" target="_blank">
+                  <span id="jackpot"></span>
                 </a>
               </span>
               <a href="#"><i id="jpShare" class="bi bi-share" data-toggle="modal" data-target="#jpModal"></i></a>
@@ -260,24 +262,25 @@
             </div>
           </div>
           
-          <div class="card text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-            <div class="row row-cols-1 row-cols-sm-3">
-              <div class="col my-3">
-                <div class="text-secondary mb-1">$wWEB3 Price</div>
-                <h4 id="wPrice" class="fw-bold">$0</h4>
-              </div>
+          <div class="my-5 col-12">
+            <div class="card text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+              <div class="row row-cols-1 row-cols-sm-3">
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">$wWEB3 Price</div>
+                  <h4 id="wPrice" class="fw-bold">$0</h4>
+                </div>
 
-              <div class="col my-3">
-                <div class="text-secondary mb-1">$xWEB3 Price</div>
-                <h4 id="xPrice" class="fw-bold">$0</h4>
-              </div>           
-              
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">$xWEB3 Price</div>
+                  <h4 id="xPrice" class="fw-bold">$0</h4>
+                </div>           
+                
+              </div>
             </div>
           </div>
-        </div>
 
           <div class="row">
-            <div class="col-sm-6 mt-5 px-sm-4">
+            <div class="my-3 col-12 col-lg-6">
               <div class="card bg-light border border-primary p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-secondary">
@@ -293,7 +296,7 @@
               </div>
             </div>
 
-            <div class="col-sm-6 mt-5 px-sm-4">
+            <div class="my-3 col-12 col-lg-6">
               <div class="card bg-light p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-secondary">
@@ -309,7 +312,7 @@
               </div>
             </div>
 
-            <div class="col-sm-6 mt-5 px-sm-4">
+            <div class="my-3 col-12 col-lg-6">
               <div class="card bg-light p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-secondary">
@@ -325,7 +328,7 @@
               </div>
             </div>
 
-            <div class="col-sm-6 my-5 px-sm-4">
+            <div class="my-3 col-12 col-lg-6">
               <div class="card bg-light p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                 <div class="d-flex justify-content-between align-items-center">
                   <span class="text-secondary">

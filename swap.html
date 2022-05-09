@@ -106,55 +106,16 @@
         <div id="overlay" style="z-index: 1000001"></div>
 
         <main class="col pt-4">
-          <div
-            class="w-100 position-fixed end-0 top-0"
-            style="height: 68px; z-index: 100001"
-          >
-            <div class="d-flex pt-3 px-sm-3">
-              <button type="button" id="showSidebar" class="d-lg-none btn fs-5">
-                <i class="bi bi-list"></i>
-              </button>
-
-              <div class="dropdown ms-auto">
-                <button
-                  class="btn rounded-1"
-                  type="button"
-                  id="dropdownMenuButton1"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                  data-bs-offset="0,14"
-                >
-                  <span class="fw-medium ms-1">WEB3</span>
-                  <span id="price" class="ms-1 small text-secondary">$0</span>
-                </button>
-
-                <ul
-                  class="dropdown-menu dropdown-menu-dark"
-                  aria-labelledby="dropdownMenuButton1"
-                >
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259"
-                      >Chart</a
-                    >
-                  </li>
-                </ul>
-              </div>
-
-              <button id="connect" type="button" class="btn rounded-1 ms-3">
-                Connect Wallet
-              </button>
-            </div>
+          <div id="web3-header">
           </div>
 
-          <div class="container pt-3">
-            <div class="row">
-              <div class="col-12 mx-auto">
+          <div class="container">
+            <div class="row px-3 my-5">
+              <div class="col-6">
 
                 <div class="card  bg-light p-3 p-sm-4 mt-5" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
                   <h5 class="fw-bold mb-0">Swap $WEB3</h5>
-                  <span class="small fw-semibold">Buy/Sell $wWEB3</span>
+                  <span class="small fw-semibold">Buy/Sell $WEB3 in instance</span>
 
                   <div id="run-web3-approve-router" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                     <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
@@ -179,7 +140,7 @@
                           <button type="button" onclick="maxValueSwapInput()" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
                               <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
                                 <div>Max</div>
-                                <div class="token-logo"><img src="images/bnb-icon.png" class="token-logo__image" alt="Token logo"></div>
+                                <div class="token-logo"><img id="swap-logo-input" src="images/bnb-icon.png" class="token-logo__image" alt="Token logo"></div>
                                 <span id="swap-symbol-input" class="token__symbol ellipsis">BNB</span>
                                   <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
                                       <path
@@ -207,7 +168,7 @@
                           </div>
                           <button type="button" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
                               <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo"  /></div>
+                                <div class="token-logo"><img id="swap-logo-output" src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo"  /></div>
                                   <span id="swap-symbol-output" class="token__symbol ellipsis">WEB3</span>
                                   <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
                                       <path
@@ -234,21 +195,15 @@
 
 
               </div>
-
+            </div>
+            <div class="row px-3 my-5">
+              <div class="col-12">
               <iframe
                 class="mt-5 col-12 mx-auto"
                 style="height: 90vh"
                 src="https://dexscreener.com/bsc/0x9f7d235b7d3f4403133A559b0968361687e4fC62?embed=1&theme=dark&info=0"
               ></iframe>
-              <!-- <div class="col-12 mx-auto">
-              <div class="card bg-light border border-primary p-3 p-sm-4 mt-5">
-                <h5 class="fw-bold mb-0">Swap</h5>
-                <span class="small fw-semibold">Get $WEB3</span>
-                <iframe width="400" height="570" src="https://moonpay.com"
-                title="Flooz Trade" frameborder="0" 
-                allow="clipboard-read; clipboard-write; web-share; autoplay *; payment *"> </iframe>
               </div>
-            </div> -->
             </div>
           </div>
         </main>
@@ -258,22 +213,16 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
-
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
-      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-      crossorigin="anonymous"
-    ></script>
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <script src="js/base.js"></script>
     <script src="js/page.js"></script>
+  
     <script>
       async function runGlobal() {
         await _runGlobal();
@@ -283,7 +232,7 @@
 
     <script>
       async function switchSwap() {
-        await switchTarget(['buy', 'sell'], 'swap', handleInputBuy, handleInputSell, (await gV('bnbBalance')), (await gV('balance')), "BNB", "WEB3", runBuy, runSell);
+        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('balance'))], [BNBICONURL, TOKENICONURL], ["BNB", "WEB3"], [runBuy, runSell]);
       }
 
       async function runPersonal() {
@@ -300,6 +249,7 @@
         await switchSwap();
         select('#swap-change').onclick = async () => { await switchSwap(); };
 
+        
       }
 
       (async () => {

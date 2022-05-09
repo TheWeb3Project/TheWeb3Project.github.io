@@ -11149,7 +11149,7 @@ body {
 }
 @media (min-width: 992px) {
   #titano-finance #sidebarContainer, #titano-finance #sidebar {
-    width: 280px;
+    width: 200px;
   }
 }
 #titano-finance #overlay {
@@ -11176,7 +11176,7 @@ body {
   }
 }
 #titano-finance #sidebar {
-  width: 280px;
+  width: 200px;
   height: 100vh;
   position: fixed;
   left: 0;

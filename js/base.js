@@ -155,8 +155,8 @@ ABIS['wusd'] = [
 ];
 
 
-ADRS['web3Stake'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
-ABIS['web3Stake'] = [
+ADRS['lock'] = "0xDEF348ebAff60614baF88E9AAAAC1FAaf2113601";
+ABIS['lock'] = [
   "function stake(uint256, uint256)",
   "function unstake()",
   "function emergencyUnstake()",
@@ -172,8 +172,8 @@ ABIS['web3Stake'] = [
   "function calculateReward(uint256, uint256) view returns (uint256)"
 ];
 
-ADRS['web3Jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
-ABIS['web3Jackpot'] = [
+ADRS['jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
+ABIS['jackpot'] = [
   "function _lastBuyer() view returns (address)",
   "function _lastBuyTime() view returns (uint256)",
   "function _topBuyer() view returns (address)",
@@ -192,8 +192,8 @@ ABIS['web3Jackpot'] = [
   "event Jackpot(uint256, address, uint256)",
 ];
 
-ADRS['web3Miner'] = "0x6f17D0DCc709Ee57b9d8bB9846Ad740032dB8661";
-ABIS['web3Miner'] = [
+ADRS['miner'] = "0x6f17D0DCc709Ee57b9d8bB9846Ad740032dB8661";
+ABIS['miner'] = [
   "function Hire(address, address, uint)",
   "function HirePay(address) payable",
   "function HireMore(address)",
@@ -219,7 +219,7 @@ ADRS['router'] = "0x10ED43C718714eb63d5aA57B78B54704E256024E";
 ABIS['router'] = [
   "function getAmountsOut(uint, address[]) view returns (uint[])",
   "function swapExactETHForTokensSupportingFeeOnTransferTokens(uint, address[], address, uint) payable",
-  "function swapExactTokensForETHSupportingFeeOnTransferTokens(uint, uint, address[], address[], uint)",
+  "function swapExactTokensForETHSupportingFeeOnTransferTokens(uint, uint, address[], address, uint)",
 ];
 
 
@@ -358,6 +358,10 @@ function UPDATETICK(ticks) {
 }
 
 ///////////////////////////////// html
+
+const BNBICONURL = "images/bnb-icon.png";
+const BUSDICONURL = "images/busd.png";
+const TOKENICONURL = "https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg";
 
 function HREF(link, txt) {
 	return `<a href="${link}">${txt}</a>`;

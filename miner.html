@@ -43,42 +43,11 @@
       <div id="overlay" style="z-index: 1000001;"></div>
 
       <main class="col pt-4">
-        <div class="w-100 position-fixed end-0 top-0" style="height: 68px; z-index: 100001; ">
-          <div class="d-flex pt-3 px-sm-3">
-            <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
-
-            <div class="dropdown ms-auto">
-              <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
-                <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
-              </button>
-
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
-              </ul>
-            </div>
-            <div class="d-flex flex-column">
-              <button id="connect" type="button" class="btn rounded-1 ms-3">
-                Connect Wallet
-              </button>
-              <!-- <div class="ms-3 d-flex flex-column px-3 font-weight-light" style="font-weight: 300;">
-                <div class="d-flex justify-content-between font-weight-light"><div>12</div><div>Web3</div></div>
-                <div class="d-flex justify-content-between"><div>3</div><div>wWeb3</div></div>
-                <div class="d-flex justify-content-between"><div>100</div><div>pWeb3</div></div>
-                <div class="d-flex justify-content-between"><div>2</div><div>xWeb3</div></div>
-                <div class="d-flex justify-content-between"><div>70</div><div>wUSD3</div></div>
-              </div> -->
-            </div>
-
-          </div>
+        <div id="web3-header">
         </div>
 
-        <div class="container pt-3">
-
-
-
-
-
-          <div class=" my-5 col-12 mx-auto">
+        <div class="container">
+          <div class="px-3 my-5 col-12">
             <div class="card bg-light text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
               <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col">
@@ -105,21 +74,20 @@
             </div>
           </div>
 
-          <div class=" mt-5">
-            <div class="card bg-light  text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-              <span class="fw-medium ms-1">$pWEB3 Contract:
-                <a href="https://bscscan.com/token/0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569">
-                  0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569
-                </a>
-                <button style="font-size: 16px; 	background: none;
-                color: inherit;
-                border: none;
-                padding: 0;
-                font: inherit;
-                cursor: pointer;
-                outline: inherit;" class="copy-btn-pweb"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
-              </span>
-            </div>
+          <div class="card bg-light mt-5 text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+            <span class="fw-medium ms-1">
+              Miner
+              <a id="miner-link" target="_blank">
+                <span id="miner"></span>
+              </a>
+              <button id='copy-miner' style="font-size: 16px; 	background: none;
+              color: inherit;
+              border: none;
+              padding: 0;
+              font: inherit;
+              cursor: pointer;
+              outline: inherit;"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
+            </span>
           </div>
 
 
@@ -173,8 +141,19 @@
                     </button>
                   </div>
                   <div class="info d-flex flex-column gap-3 mt-5">
-                    <div class="d-flex justify-content-between"><div>Total Miners</div> <div id="totalMiners"></div></div>
-                    <div class="d-flex justify-content-between"><div>Your Miners</div> <div id="_miners"></div></div>
+                    <div class="d-flex justify-content-between"><div>Total Miners</div> 
+                    <a href="https://bscscan.com/token/0x6f17d0dcc709ee57b9d8bb9846ad740032db8661#balances" target="_blank">
+                      <div id="totalMiners"></div>
+                    </a>
+                  </div>
+                    <div class="d-flex justify-content-between">
+                      <div>Your Miners  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                        There is no direct price for miner<br/>
+                        It is determined when you do the hire<br/>
+                        "></i>
+                      </div> 
+                      <div id="_miners"></div>
+                    </div>
                     <div class="d-flex justify-content-between"><div>WUSD Rewards</div> <div id="calculateWusdRewards"></div></div>
                   </div>
                   <hr>
@@ -203,6 +182,10 @@
                       </button>
                     </div>
                   </div>
+                  <div class="info d-flex flex-column gap-3 mt-5">
+                    <div class="d-flex justify-content-between">
+                      <div>Referral Address</div> <div id="refAdr"></div></div>
+                    </div>
                   <hr>
                   <div class="more_stats d-flex flex-column gap-3">
                     <div>Miner stats</div>
@@ -270,21 +253,34 @@
   <script>
     async function runGlobal() {
       await _runGlobal();
+      
+      $(document).on('input', 'input[type="range"]', function (e) {
+        changedValue('days', select('input[type="range"]'));
+
+        if(document.getElementById('noOfDays').innerHTML < 3333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(document.getElementById('noOfDays').innerHTML > 3333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(document.getElementById('noOfDays').innerHTML >= 6666){
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+      });
+
     }
 
     function showValue1(newValue) {
         document.getElementById("noOfDays").innerHTML= newValue;
       }
 
-      function changeRangeValue(val){
-          document.getElementById("days-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
-          showValue1(val);
-      }
+    function changeRangeValue(val){
+        document.getElementById("days-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+        showValue1(val);
+    }
 
-      function changeInputValue(val){
-          document.getElementById("days-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
-          showValue1(val);
-      }
+    function changeInputValue(val){
+        document.getElementById("days-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+        showValue1(val);
+    }
 
 
 
@@ -306,104 +302,69 @@
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
       }
 
-      let pweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['web3Miner']);
+      let pweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['miner']);
       if (BIGINT(0) < pweb3Allowance) {
         select('#run-pweb3-approve-miner').classList.add('d-none');
       } else {
-        select('#run-pweb3-approve-miner').onclick = async () => { await approve('pweb3', ADRS['web3Miner']); };
+        select('#run-pweb3-approve-miner').onclick = async () => { await approve('pweb3', ADRS['miner']); };
       }
 
-      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['web3Miner']);
+      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['miner']);
       if (BIGINT(0) < busdAllowance) {
         select('#run-busd-approve-miner').classList.add('d-none');
       } else {
-        select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['web3Miner']); };
+        select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['miner']); };
       }
 
-      let stakedAmount = await CONTS['web3Stake']._amounts(CURADR);
-      stakedAmount = stakedAmount / BNBDIV;
-      displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
+      let _miners = await CONTS['miner']._miners(CURADR);
+      select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
+			
+      let totalMiners = await CONTS['miner'].totalSupply();
+      totalMiners = totalMiners / BNBDIV;
+      displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
+
+      let _daimonds = await CONTS['miner']._daimonds(CURADR);
+      select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
+      
+      let calculateWusdRewards = await CONTS['miner'].calculateWusdRewards(CURADR);
+      calculateWusdRewards = calculateWusdRewards / BNBDIV;
+      select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
 
 
-      let rewardLeft = await CONTS['web3Stake']._rewards(CURADR);
-      rewardLeft = rewardLeft / BNBDIV;
-      displayText("#rewardLeft", `$${COMMA(INT(rewardLeft, 3))}`);
+      let refUrl = location.href.split('?ref=')[0] + '?ref=' + CURADR;
+      select('#ref').value = location.href.split('?ref=')[0] + '?ref=' + SHORTADR(CURADR, true, 2);
 
-      let unlockTime = await CONTS['web3Stake']._unlockTimes(CURADR);
-      let lastClaim = await CONTS['web3Stake']._lastClaims(CURADR);
-      if (0 < unlockTime - lastClaim) {
-        let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
-        displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
+      const buttonpref = select('.copy-btn-ref');
 
-        let now = INT(NOW() / 1000);
-        TICKS = unlockTime - now;
-
-        let timeinterval = setInterval(function () {
-          displayText("#unlockTime", `${INT(TICKS / 86400)}d ${INT((TICKS % 86400) / 3600)}h ${INT((TICKS % 3600) / 60)}m ${TICKS % 60}s`);
-          UPDATETICK();
-        }, 1000);
+      const addToClipboardref = async (link) => {
+        await navigator.clipboard.writeText(link);
       }
 
-      select('#run-stake').onclick = async () => { await runStake(); };
-      select('#run-claim').onclick = async () => { await runClaim(); };
-      select('#run-unstake').onclick = async () => { await runUnstake(); };
-      select('#run-emerunstake').onclick = async () => {
-        alert("This is for the EMERGENCY unstake. you will get 10% of the staked amount. Confirm transaction if you really want to do the emergency unstake");
-        await runEmerUnstake();
+      const copyLinkref = async (link) => {
+        const copiedref = await addToClipboardref(link);
+        buttonpref.innerText = 'Copied';
+        setTimeout(() => {
+          buttonpref.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+        }, 3000)
       };
+
+      buttonpref.addEventListener('click', () => copyLinkref(refUrl))
+
+      let ref = getRef();
+      if (ref == '') {
+      } else {
+       select('#refAdr').innerHTML = ref;
+      }
 
     }
 
     (async () => {
-
-      $(document).on('input', 'input[type="range"]', function (e) {
-      changedValue('days', select('input[type="range"]'));
-    });
       // do global
       await runGlobal();
 
-      // let curBlock = await PROVIDER.getBlock();
-      // curBlock = curBlock['number'];
-      // let lastRebaseBlock = await CONTS['web3']._lastRebaseBlock();
-      // lastRebaseBlock = INT(lastRebaseBlock);
-      // let lastRebaseTime = (curBlock - lastRebaseBlock) * 3;
-      // displayText("#lastRebase", `${lastRebaseBlock}, ${curBlock}, ${lastRebaseTime}`);
-
-
       ////////////////////////////////////////////////////////////////////////////
 
-      select('#curPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
-      select('#futPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
 
-
-      select('#setMaxToAmount').onclick = async () => {
-        select('#amount').value = (await gV('balance'));
-      };
-      select('#setCurToApy').onclick = async () => {
-        select('#input-apy').value = 404092.65;
-      };
-      select('#setCurToCurPrice').onclick = async () => {
-        select('#curPrice').value = INT((await gV('price')), 3);
-      };
-      select('#setCurToFutPrice').onclick = async () => {
-        select('#futPrice').value = INT((await gV('price')), 3);
-      };
-
-
-      $(document).on('input', 'input[type="range"]', function (e) {
-      changedValue('days', select('input[type="range"]'));
-      if(document.getElementById('noOfDays').innerHTML < 3333) {
-        document.getElementById('minerImage').src = '/images/Group_68.png'
-      } if(document.getElementById('noOfDays').innerHTML > 3333) {
-        document.getElementById('minerImage').src = '/images/Group_67.png'
-      } if(document.getElementById('noOfDays').innerHTML >= 6666){
-        document.getElementById('minerImage').src = '/images/Group_66.png'
-      }
-
-    });
-
-      let _tDaimonds = await CONTS['web3Miner']._tDaimonds();
-      select('#_tDaimonds').innerHTML = `${COMMA(INT(_tDaimonds))}`;
 
       $('[data-bs-toggle="tooltip"]').tooltip();
 
@@ -414,48 +375,8 @@
         return;
       }
 
-      select('#ref').value = location.href + '?ref=' + CURADR;
-
-      const buttonpref = select('.copy-btn-ref');
-
-      const addToClipboardref = async (link) => {
-        await navigator.clipboard.writeText(link);
-      }
-
-      const copyLinkref = async (link) => {
-        const copiedref = await addToClipboardwrap(link)
-        buttonpref.innerText = 'Copied'
-        setTimeout(() => {
-          buttonpref.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-        }, 3000)
-      };
-      let copied = document.getElementById('ref').innerHTML;
-      buttonpref.addEventListener('click', () => copyLinkref(location.href + '?ref=' + CURADR))
-      // buttonpref.addEventListener('click', () => console.log(copied))
-
-
-      let ref = getRef();
-      if (ref == '') {
-
-      } else {
-       select('#ref').value = ref;
-      }
       await runPersonal();
-
-      let _miners = await CONTS['web3Miner']._miners(CURADR);
-      select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
-			
-      let totalMiners = await CONTS['web3Miner'].totalSupply();
-      totalMiners = totalMiners / BNBDIV;
-      displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
-
-      let _daimonds = await CONTS['web3Miner']._daimonds(CURADR);
-      select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
       
-      let calculateWusdRewards = await CONTS['web3Miner'].calculateWusdRewards(CURADR);
-      calculateWusdRewards = calculateWusdRewards / BNBDIV;
-      select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
-
       $('[data-bs-toggle="tooltip"]').tooltip();
 
     })();

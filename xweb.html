@@ -47,208 +47,78 @@
         </div>
 
         <div class="container">
-          <div class="px-3 my-5 col-12">
-            <div class="card bg-light text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                    $WEB3 balance
-                  </div>
-                  <h4 id="balance" class="fw-bold">0.000</h4>
-                </div>
-
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                    $wWEB3 balance
-                  </div>
-                  <h4 id="wBalance" class="fw-bold">0.000</h4>
-                </div>
-
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                    $pWEB3 balance
-                  </div>
-                  <h4 id="pBalance" class="fw-bold">0.000</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class=" mt-5">
+          <div class="my-5 col-12">
             <div class="card bg-light  text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
               <span class="fw-medium ms-1">
-                $pWEB3
-                <a id="pweb3-link" target="_blank">
-                  <span id="pweb3"></span>
+                $xWEB3
+                <a id="xweb3-link" target="_blank">
+                  <span id="xweb3"></span>
                 </a>
-                <button style="font-size: 16px; 	background: none;
+                <button id='copy-pweb3' style="font-size: 16px; 	background: none;
                 color: inherit;
                 border: none;
                 padding: 0;
                 font: inherit;
                 cursor: pointer;
-                outline: inherit;" class="copy-btn-pweb"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
+                outline: inherit;"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
               </span>
-              <p class="h5">1749 pWEB3 = roughly 1$</p>
             </div>
           </div>
 
-          <div class="d-flex flex-column col-11 flex-sm-row gap-5">
-<!--
-            <div class="d-flex flex-column justify-content-between pb-5">
-            <div class=" mx-auto ">
-              <div class="card bg-light  px-3 px-sm-4 mt-5 h-100" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                <div class="d-flex">
-                  <img src="./images/twep.png" class="col-4 mb-4 mx-auto" alt="">
-                  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                  coming soon
-                  "></i>
-                </div>
-                  <img src="./images/armybox.png" class="col-12 mx-auto" alt="">
-                  <p class="h5">Web3 army NFT</p>
-                   <div>
-                    <p class=" mt-2">?? pWEB3</p>
-                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="margin-top: 1.2rem; border: 3px solid #48acef;
-                    border-radius: 20px;
-                    background-image: linear-gradient(134deg,#48acef,#00436f);
-                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                      <span id="run-name" class="button__content" onclick="window.alert('Coming soon!');''">Buy a mystery box</span>
-                    </button>
-                   </div>
+          <div class="my-5 col-12">
+            <div class="card bg-light text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+              <div class="row row-cols-1 row-cols-sm-3">
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    $xWEB3 Total Supply
                   </div>
+                  <h4 id="xTotalSupply" class="fw-bold">0.000</h4>
+                </div>
 
-              </div>
-            </div>
-             -->
-            <div class=" mx-auto  col-sm-4">
-              <div class="card bg-light d-flex flex-column justify-content-between  p-3 p-sm-4 mt-5 h-100" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                <div class=" d-flex ">
-                  <div class="mx-auto">
-                    <h4>The Web3 Project</h4> <p>army NFT</p>
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    $xWEB3 Price
                   </div>
-                </div>
-                <div id="run-pweb3-approve-nft" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span class="button__content">$pWEB3 Approve to Buy</span>
-                  </button>
+                  <h4 id="xPrice" class="fw-bold">0.000</h4>
                 </div>
 
-                <div id="video" style="display: none;">
-                  <video id="vid" class="col-12" style="margin-top: -180px;" >
-                    <source src="./images/box.webm" type="video/mp4">
-                  Your browser does not support the video tag. <!-- Text to be shown incase browser doesnt support html5 -->
-                  </video>
-                </div>
-                <div class="col-3" style="margin-left: 50px;">
-                  <img id="showNFT" src="" alt="">
-                </div>
-                <img src="./images/armybox.png" id="unBox" class="col-10 mx-auto" alt="">
-
-
-
-                <div>
-                  <p class="h5" style="margin-bottom: 120px;">Web3 army NFT</p>
-                </div>
-                  <div class="mt-3">
-                    <p class="">Buy NFT with 5,307,000 pWEB3</p>
-                    <p>Your NFT ID: <span id="nftId"></span><span id="nftLink"></span></p>
-                    <button id="buy-box" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
-                    border-radius: 20px;
-                    background-image: linear-gradient(134deg,#48acef,#00436f);
-                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                      <span id="run-name" class="button__content">Buy</span>
-                    </button>
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    $xWEB3 Balance
                   </div>
-              </div>
-            </div>
-
-
-            <div class=" mx-auto   col-sm-4">
-              <div class="card bg-light d-flex flex-column justify-content-between  p-3 p-sm-4 mt-5 h-100" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                <div class=" d-flex ">
-                  <div class="mx-auto">
-                    <h4>The Web3 Project</h4> <p>Miner</p>
-                  </div>
+                  <h4 id="xBalance" class="fw-bold">0.000</h4>
                 </div>
-                
-                <div id="run-pweb3-approve-miner" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span class="button__content">$pWEB3 Approve to Buy</span>
-                  </button>
-                </div>
-
-                <div style="margin-left: 70px;">
-                  <img src="./images/Group_68.png" id="minerImage" class="col-8 mx-auto" alt="">
-                </div>
-                  <div class="mt-3">
-                    <div class="d-flex flex-column mb-4 pb-2">
-                      <label for="days-slider" class="fw-medium"></label>
-                      <input type="number" min="8845" max="8845000" step="8845" value="8845" id="days-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
-                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="days-slider" oninput="changeInputValue(this.value)"  class="mb-5">
-                    </div>
-                    <p class="">Buy miners with <span id="noOfDays"></span> pWEB3</p>
-                    <button id="buy-miner" type="submit"  class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
-                    border-radius: 20px;
-                    background-image: linear-gradient(134deg,#48acef,#00436f);
-                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                      <span class="button__content">Buy</span>
-                    </button>
-                  </div>
-              </div>
-            </div>
-
-            <div class=" mx-auto  col-sm-4 ">
-              <div class="card bg-light d-flex flex-column justify-content-between  p-3 p-sm-4 mt-5 h-100" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                <div class=" d-flex ">
-                  <h5 class="fw-bold mb-0 mx-auto h4"><div class="center-text ">xWeb3</div> Governance</h5>
-                  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                  Coming soon
-                  "></i>
-                </div>
-
-                <div id="run-pweb3-approve-xweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span class="button__content">$pWEB3 Approve to Buy</span>
-                  </button>
-                </div>
-
-
-                <img src="./images/Crown.png" class="col-8 mx-auto" alt="">
-                <div>
-                  <p class="h5"> Quantum investing</p>
-                  <p class="h5" style="margin-bottom: 80px;"> Share profit</p>
-                </div>
-                  <div class="">
-                    <div class="d-flex flex-column ">
-                      <label for="xWEB3-slider" class="fw-medium"></label>
-                      <input type="number" min="0" max="10000" step="1" value="1" id="xWEB3-sliders" oninput="changeRangeValues(this.value)" class="mb-2">
-                      <input type="range" min="0" max="10000" step="1" value="1" id="xWEB3-slider"  oninput="changeInputValues(this.value)" class="mb-5">
-                    </div>
-                    <p class="">1 xWEB3 = <span id="xPrice">$</p>
-                    <p class="">1 xWEB3 = <span id="xPriceWithPweb3">pWEB3</p>
-                    <p class="">Buy <span id="noOfxWEB3"></span> xWEB3 with <span id="xweb3-pweb3"></span> pWEB3</p>
-                    
-                    <div id="approved-xweb3">
-                      <button id="buy-xweb3" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
-                    border-radius: 20px;
-                    background-image: linear-gradient(134deg,#48acef,#00436f);
-                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                      <span class="button__content">Buy</span>
-                    </button>
-                  </div>
-                  </div>
               </div>
             </div>
           </div>
+
+          <div class="my-5 col-12">
+            <div class="card bg-light text-center p-4" style="box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+              <div class="row row-cols-1 row-cols-sm-3">
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    Quantum Invest Fund
+                  </div>
+                  <h4 id="xFund" class="fw-bold">$0</h4>
+                </div>
+
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    $xWEB3 Holding %
+                  </div>
+                  <h4 id="xHolding" class="fw-bold">0.000 %</h4>
+                </div>
+
+                <div class="col">
+                  <div class="text-secondary mb-1">
+                    Daily Reward
+                  </div>
+                  <h4 id="xReward" class="fw-bold">0 BNB</h4>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
       </main>
     </div>
@@ -266,18 +136,9 @@
   <script src="js/base.js"></script>
   <script src="js/page.js"></script>
   <script>
-    document.getElementById("showSidebar").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.add("show");
-      document.getElementById("overlay").style.display = "block"
-    })
-
-    document.getElementById("overlay").addEventListener("click", function () {
-      document.getElementById("sidebarContainer").classList.remove("show");
-      document.getElementById("overlay").style.display = "none"
-    })
-  </script>
-
-  <script >
+    async function runGlobal() {
+      await _runGlobal();
+    }
 
     let wweb3Balance;
 
@@ -363,6 +224,8 @@
       displayText("#wweb3Balance", `${COMMA(INT(wweb3Balance, 3))}`);
 
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
+
+
       if (BIGINT(0) < web3Allowance) {
         select('#run-web3-approve').classList.add('d-none');
       } else {
@@ -404,10 +267,37 @@
         select('#run-busd-approve-xweb3').onclick = async () => { await approve('busd', ADRS['xweb3']); };
       }
 
+      let stakedAmount = await CONTS['lock']._amounts(CURADR);
+      stakedAmount = stakedAmount / BNBDIV;
+      displayText("#stakedAmount", `$${COMMA(INT(stakedAmount, 3))}`);
+
+
+      let rewardLeft = await CONTS['lock']._rewards(CURADR);
+      rewardLeft = rewardLeft / BNBDIV;
+      displayText("#rewardLeft", `$${COMMA(INT(rewardLeft, 3))}`);
+
+      let unlockTime = await CONTS['lock']._unlockTimes(CURADR);
+      let lastClaim = await CONTS['lock']._lastClaims(CURADR);
+      if (0 < unlockTime - lastClaim) {
+        let canClaim = rewardLeft * (Date.now() - lastClaim) / (unlockTime - lastClaim);
+        displayText("#canClaim", `$${COMMA(INT(canClaim, 3))}`);
+
+        let now = INT(NOW() / 1000);
+        TICKS = unlockTime - now;
+
+        let timeinterval = setInterval(function () {
+          displayText("#unlockTime", `${INT(TICKS / 86400)}d ${INT((TICKS % 86400) / 3600)}h ${INT((TICKS % 3600) / 60)}m ${TICKS % 60}s`);
+          UPDATETICK();
+        }, 1000);
+      }
+
     }
 
     (async () => {
       // do global
+
+
+
       await runGlobal();
 
       $(document).on('input', '#days-slider', function (e) {
@@ -424,23 +314,20 @@
 
         displayText('#miner-pweb3', `${COMMA(INT(minerAmount * 8845))}`);
 
-        if(document.getElementById('noOfDays').innerHTML < 29483333) {
-          document.getElementById('minerImage').src = '/images/Group_68.png'
-        } if(document.getElementById('noOfDays').innerHTML > 29483333) {
-          document.getElementById('minerImage').src = '/images/Group_67.png'
-        } if(document.getElementById('noOfDays').innerHTML >= 58966666){
-          document.getElementById('minerImage').src = '/images/Group_66.png'
-        }
+
       });
 
       $(document).on('input', '#xWEB3-slider', function (e) {
         changedValue('xWEB3', select('#xWEB3-slider'));
         changedValue('xWEB3', select('#xWEB3-sliders'));
         let xweb3Amount = select('#noOfxWEB3').innerHTML;
+
+
         displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
 
         
         displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
+
       });
 
       $(document).on('input', '#xWEB3-sliders', function (e) {
@@ -453,6 +340,20 @@
       });
       
 
+      $(document).on('input', 'input[type="range"]', function (e) {
+      changedValue('days', select('input[type="range"]'));
+      if(document.getElementById('noOfDays').innerHTML < 2948333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(document.getElementById('noOfDays').innerHTML > 2948333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(document.getElementById('noOfDays').innerHTML >= 5896666){
+          console.log('dsa')
+
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+
+    });
+
 
             ////////////////////////////////////////////////////////////////////////////
 
@@ -463,12 +364,15 @@
       select('#setMaxToAmount').onclick = async () => {
         select('#amount').value = (await gV('balance'));
       };
+
       select('#setCurToApy').onclick = async () => {
         select('#input-apy').value = 404092.65;
       };
+
       select('#setCurToCurPrice').onclick = async () => {
         select('#curPrice').value = INT((await gV('price')), 3);
       };
+
       select('#setCurToFutPrice').onclick = async () => {
         select('#futPrice').value = INT((await gV('price')), 3);
       };

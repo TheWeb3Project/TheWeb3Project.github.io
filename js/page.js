@@ -27,7 +27,7 @@ function displaySidebar() {
         <div id="sidebar" class="d-flex flex-column align-items-center py-4">
           <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none d-flex align-items-center p-3">
             <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
-            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-1" style="width: 80%;">
+            <img src="https://raw.githubusercontent.com/TheWeb3Project/TheWeb3ProjectAssets/main/imgs/logotext.png" alt="TheWeb3Project" class="col ms-1" style="width: 85%;">
           </a>
 
           <ul id="sidebar-nav" class="list-unstyled py-1">
@@ -56,24 +56,26 @@ displaySidebar();
 function displayWeb3Header() {
     let htmlStr = `
     <div class="d-flex pt-3 px-sm-3">
-            <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
+      <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
 
-            <div class="dropdown ms-auto">
-              <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
-                <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
-              </button>
+      <div class="dropdown ms-auto">
+        <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
+          <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
+        </button>
 
-              <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
 
-                <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
-              </ul>
-            </div>
+          <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
+        </ul>
+      </div>
 
-            <button id="connect" type="button" class="btn rounded-1 ms-3">
-              Connect Wallet
-            </button>
-      </div>`;
+      <button id="connect" type="button" class="btn rounded-1 ms-3">
+        Connect Wallet
+      </button>
+    </div>`;
     select('#web3-header').innerHTML = htmlStr;
+    select('#web3-header').classList = "w-100 position-fixed end-0 top-0";
+    select('#web3-header').style = "height: 68px; z-index: 100001;"
 }
 displayWeb3Header();
 
@@ -120,6 +122,15 @@ async function _runGlobal() {
   })
   
   select('#connect').onclick = async () => { await conn(); };
+
+  for (let name in ADRS) {
+    displayText(`#${name}`, ADRS[name]);
+    select(`#${name}-link`).href = BSC('address', ADRS[name]);
+  }
+
+  F['xWeb3'] = async() => {
+    return ADRS['xweb3'];
+  };
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
   F['totalSupply'] = async() => {
@@ -207,6 +218,10 @@ async function _runGlobal() {
     return (await gV('wPrice')) + (await gV('xTotalSupply'));
   };
 
+  F['wRate'] = async() => {
+    return (await gV('wPrice')) / (await gV('price'));
+  };
+
   F['wLockedAmount'] = async() => {
     return (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
   };
@@ -223,6 +238,18 @@ async function _runGlobal() {
     return (await gV('liqBalance')) / (await gV('mcap')) * 100;
   };
 
+  F['liqWusd'] = async() => {
+    return (await CONTS['wusd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+  }; 
+
+  F['liqBusd'] = async() => {
+    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+  }; 
+
+  F['xFund'] = async() => {
+    return (await getBalance(ADRS['xweb3'])) / BNBDIV * (await gV('bnbPrice'));
+  };
+
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
@@ -237,6 +264,8 @@ async function _runGlobal() {
   displayText("#xPrice", `$${COMMA(INT((await gV('xPrice')), 3))}`);
 	xPrice = V['xPrice'];
 
+  displayText("#wRate", `${COMMA(INT((await gV('wRate')), 2))} $WEB3`);
+
   displayText("#xPriceWithPweb3", `${COMMA(INT((await gV('xPrice')) * 1769, 3))} pWEB3`);
 
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
@@ -245,6 +274,8 @@ async function _runGlobal() {
 
   select('#corr').setAttribute('title', `Correlation: ${COMMA(INT((await gV('corr')), 1))}%`);
   displayText("#corr2", `${COMMA(INT((await gV('corr')), 1))}%`);
+
+  displayText("#xFund", `$${COMMA(INT((await gV('xFund'))))}`);
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
@@ -271,53 +302,53 @@ async function _runGlobal() {
   select('#shareFb').href = `http://www.facebook.com/share.php?u=${shareLink}&t=${shareText}`;
   select('#shareFb').target="_blank";
 
-  let _topWinnerTime = INT(await CONTS['web3Jackpot']._topWinnerTime());
+  let _topWinnerTime = INT(await CONTS['jackpot']._topWinnerTime());
   _topWinnerTime = new Date(_topWinnerTime * 1000);
   displayText("#_topWinnerTime", `${_topWinnerTime.getUTCMonth() + 1}/${_topWinnerTime.getUTCDate()} ${_topWinnerTime.getUTCHours()}:${_topWinnerTime.getUTCMinutes()}:${_topWinnerTime.getUTCSeconds()}`);
 
-  let _topWinnerAmount = await CONTS['web3Jackpot']._topWinnerAmount();
+  let _topWinnerAmount = await CONTS['jackpot']._topWinnerAmount();
   _topWinnerAmount = _topWinnerAmount / BNBDIV * (await gV('bnbPrice'));
   displayText("#_topWinnerAmount", `$${COMMA(INT(_topWinnerAmount, 0))}`);
 
-  let _topWinner = await CONTS['web3Jackpot']._topWinner();
+  let _topWinner = await CONTS['jackpot']._topWinner();
   displayText("#_topWinner", `${HREF(BSC('address', _topWinner), SHORTADR(_topWinner))}`);
 
   setInterval(async () => {
     now = INT(NOW() / 1000);
     
-    let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
+    let lastBuyTime = INT(await CONTS['jackpot']._lastBuyTime());
     jackpotTimeLeft = lastBuyTime + 600 - now;
     // if (jackpotTimeLeft < 0) {
     //   displayText("#jpTimer", `Winner is chosen! Wait for result!`);            
     // }
 
-    let lastBuyer = await CONTS['web3Jackpot']._lastBuyer();
+    let lastBuyer = await CONTS['jackpot']._lastBuyer();
     displayText("#lastBuyer", `${HREF(BSC('address', lastBuyer), SHORTADR(lastBuyer))}`);
 
-    let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * (await gV('bnbPrice'));
+    let jpPrize = (await getBalance(ADRS['jackpot'])) / BNBDIV * (await gV('bnbPrice'));
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
     
-    let topBuyer = await CONTS['web3Jackpot']._topBuyer(); 
+    let topBuyer = await CONTS['jackpot']._topBuyer(); 
     displayText("#biggestBuyer", `${HREF(BSC('address', topBuyer), SHORTADR(topBuyer))}`);
     
-    let bigbuyAmount = INT(await CONTS['web3Jackpot']._dailyBuyAmounts(topBuyer));
+    let bigbuyAmount = INT(await CONTS['jackpot']._dailyBuyAmounts(topBuyer));
     bigbuyAmount = bigbuyAmount / BNBDIV;
     displayText("#bigbuyAmount", `${INT(bigbuyAmount, 1)} BNB`);
     
-    let _lastWinnerTime = INT(await CONTS['web3Jackpot']._lastWinnerTime());
+    let _lastWinnerTime = INT(await CONTS['jackpot']._lastWinnerTime());
     _lastWinnerTime = new Date(_lastWinnerTime * 1000);
     displayText("#_lastWinnerTime", `${_lastWinnerTime.getUTCMonth() + 1}/${_lastWinnerTime.getUTCDate()} ${_lastWinnerTime.getUTCHours()}:${_lastWinnerTime.getUTCMinutes()}:${_lastWinnerTime.getUTCSeconds()}`);
   
-    let _lastWinnerAmount = await CONTS['web3Jackpot']._lastWinnerAmount();
+    let _lastWinnerAmount = await CONTS['jackpot']._lastWinnerAmount();
     _lastWinnerAmount = _lastWinnerAmount / BNBDIV * (await gV('bnbPrice'));
     displayText("#_lastWinnerAmount", `$${COMMA(INT(_lastWinnerAmount, 0))}`);
   
-    let _lastWinner = await CONTS['web3Jackpot']._lastWinner();
+    let _lastWinner = await CONTS['jackpot']._lastWinner();
     displayText("#_lastWinner", `${HREF(BSC('address', _lastWinner), SHORTADR(_lastWinner))}`);
 
     
-    let bigbuyTime = INT(await CONTS['web3Jackpot']._dailyPrizeTime());
+    let bigbuyTime = INT(await CONTS['jackpot']._dailyPrizeTime());
     bigbuyTimeLeft = bigbuyTime + 60*60*24 - now;
 
     cb = await CONTS['web3']._curcuitBreakerFlag();
@@ -502,6 +533,16 @@ async function _runPersonal() {
     return v / BNBDIV;
   };
 
+  F['xHolding'] = async() => {
+    let v = (await gV('xBalance')) / (await gV('xTotalSupply')) * 100;
+    return v;
+  };
+
+  F['xReward'] = async() => {
+    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding'));
+    return v;
+  };
+
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
   displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
   displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
@@ -509,11 +550,15 @@ async function _runPersonal() {
   displayText("#xBalance", `${COMMA(INT((await gV('xBalance')), 3))}`);
   displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
-  lockedAmount = await CONTS['web3Stake']._amounts(CURADR);
+  displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
+  displayText("#xReward", `${COMMA(INT((await gV('xReward')), 3))} BNB`);
+  
+
+  lockedAmount = await CONTS['lock']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
   displayText("#lockedAmount", `${COMMA(INT(lockedAmount, 3))}`);
   
-  lockedDuration = await CONTS['web3Stake']._durations(CURADR);
+  lockedDuration = await CONTS['lock']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
   totalSupplyPercentage = ((await gV('balance')) / (await gV('totalSupply'))) * 100;
@@ -629,10 +674,10 @@ async function eventBoard() {
   }
 
 
-  let jackpotFilter = CONTS['web3Jackpot'].filters.Jackpot();
+  let jackpotFilter = CONTS['jackpot'].filters.Jackpot();
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3Jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
+          txLogs = await CONTS['jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
@@ -789,25 +834,64 @@ async function approve(name, target) {
   await SEND_TX(name, 'approve', [target, BIGINT(2**255)]);
 }
 
+async function funcRate(v, rI, rO) {
+  let a = BIG(String(rI));
+  let b = BIG(String(rO));
 
+  return v.mul(b).div(a);
+}
+
+async function swapRate(v, rI, rO) {
+  let a = BIG(String(rI));
+  let b = BIG(String(rO));
+
+  let nume = v.mul(b);
+  let deno = v.add(a);
+  return nume.div(deno);
+}
 
 async function handleInputBuy(e) {
-  await handleInput(e, 'swap-output', (await gV('liqWeb3')), (await gV('liqBnb')));
+  await handleInput(e, 'swap-output', async (v) => {
+    return await funcRate(v, (await gV('liqBnb')), (await gV('liqWeb3')));
+  });
 }
 
 async function handleInputSell(e) {
-  await handleInput(e, 'swap-output', (await gV('liqBnb')), (await gV('liqWeb3')));
+  await handleInput(e, 'swap-output', async (v) => {
+    return await funcRate(v, (await gV('liqWeb3')), (await gV('liqBnb')));
+  });
 }
 
 async function handleInputWrap(e) {
-  await handleInput(e, 'wrap-output', (await gV('totalSupply')), (await gV('wTotalSupply')));
+  await handleInput(e, 'wrap-output', async (v) => {
+    return await funcRate(v, (await gV('totalSupply')), (await gV('wTotalSupply')));
+  });
 }
 
 async function handleInputUnwrap(e) {
-  await handleInput(e, 'wrap-output', (await gV('wTotalSupply')), (await gV('totalSupply')));
+  await handleInput(e, 'wrap-output', async (v) => {
+    return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+  });
 }
 
-async function handleInput(e, name, inputSupply, outputSupply) {
+async function handleInputToWusd(e) {
+  await handleInput(e, 'wusd-output', async (v) => {
+    let oV = await swapRate(v, (await gV('liqBusd')), (await gV('liqWusd')));
+    return oV;
+  });
+}
+
+async function handleInputToBusd(e) {
+  await handleInput(e, 'wusd-output', async (v) => {
+    let oV = await swapRate(v, (await gV('liqWusd')), (await gV('liqBusd')));
+    if (v < oV / BNBDIV) { // busd max 1:1
+      oV = v;
+    }
+    return oV;
+  });
+}
+
+async function handleInput(e, name, func) {
 	let valueIn = e.target.value;
   valueIn = valueIn.replace(/,/g, '.');
   e.target.value = valueIn;
@@ -818,9 +902,9 @@ async function handleInput(e, name, inputSupply, outputSupply) {
   }
 
   let valueIn_ = BIG(valueIn);
-  let valueOut_ = valueIn_.mul(BIG(String(outputSupply))).div(BIG(String(inputSupply)));
-
+  let valueOut_ = await func(valueIn_);
   let valueOut = ETH(valueOut_);
+
   valueOut = INT(parseFloat(valueOut), 8);
   ot.value = valueOut;
 }
@@ -828,34 +912,42 @@ async function handleInput(e, name, inputSupply, outputSupply) {
 
 
 let STATES = {};
-async function switchTarget(states, target, listenInput, listenOutput, balanceInput, balanceOutput, symbolInput, symbolOutput, runInput, runOutput) {
+async function switchTarget(states, target, handleFs, bals, logos, syms, runFs) {
   let tmp = select(`#${target}-input`).value;
   select(`#${target}-input`).value = select(`#${target}-output`).value;
   select(`#${target}-output`).value = tmp;
 
+  select(`#${target}-output`).style.pointerEvents = "none";
+
   if (STATES[target] == states[0]) {
-    select(`#${target}-input`).removeEventListener('input', listenInput);
-    select(`#${target}-input`).addEventListener('input', listenOutput);
+    select(`#${target}-input`).removeEventListener('input', handleFs[0]);
+    select(`#${target}-input`).addEventListener('input', handleFs[1]);
 
-    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceOutput, 3))}`);
-    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceInput, 3))}`);
+    displayText(`#${target}-balance-input`, `${COMMA(INT(bals[1], 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(bals[0], 3))}`);
 
-    displayText(`#${target}-symbol-input`, symbolOutput);
-    displayText(`#${target}-symbol-output`, symbolInput);
+    select(`#${target}-logo-input`).src = logos[1];
+    select(`#${target}-logo-output`).src = logos[0];
+    displayText(`#${target}-symbol-input`, syms[1]);
+    displayText(`#${target}-symbol-output`, syms[0]);
+
     displayText(`#${target}-run-name`, states[1]);
-    select(`#${target}-run`).onclick = async () => { await runInput(); };
+    select(`#${target}-run`).onclick = async () => { await runFs[1](); };
     STATES[target] = states[1];
   } else {
-    select(`#${target}-input`).removeEventListener('input', listenOutput);
-    select(`#${target}-input`).addEventListener('input', listenInput);
+    select(`#${target}-input`).removeEventListener('input', handleFs[1]);
+    select(`#${target}-input`).addEventListener('input', handleFs[0]);
 
-    displayText(`#${target}-balance-input`, `${COMMA(INT(balanceInput, 3))}`);
-    displayText(`#${target}-balance-output`, `${COMMA(INT(balanceOutput, 3))}`);
+    displayText(`#${target}-balance-input`, `${COMMA(INT(bals[0], 3))}`);
+    displayText(`#${target}-balance-output`, `${COMMA(INT(bals[1], 3))}`);
 
-    displayText(`#${target}-symbol-input`, symbolInput);
-    displayText(`#${target}-symbol-output`, symbolOutput);
+    select(`#${target}-logo-input`).src = logos[0];
+    select(`#${target}-logo-output`).src = logos[1];
+    displayText(`#${target}-symbol-input`, syms[0]);
+    displayText(`#${target}-symbol-output`, syms[1]);
+
     displayText(`#${target}-run-name`, states[0]);
-    select(`#${target}-run`).onclick = async () => { await runOutput(); };
+    select(`#${target}-run`).onclick = async () => { await runFs[0](); };
     STATES[target] = states[0];
   }
 }
@@ -885,26 +977,38 @@ async function runUnwrap() {
   await SEND_TX('wweb3', 'withdraw', [web3Amount]);
 }
 
+async function runToWusd() {
+  let busdInput = select('#wusd-input');
+  let busdAmount = BIG(busdInput.value);
+  await SEND_TX('wusd', 'wusdToBusd', [busdAmount]);
+}
+
+async function runToBusd() {
+  let wusdInput = select('#wusd-input');
+  let wusdAmount = BIG(wusdInput.value);
+  await SEND_TX('wusd', 'busdToWusd', [wusdAmount]);
+}
+
 
 /////////////////////////////////////////////////////////////////////////// stake
 
-async function runStake() {
-  let stakeAmount = select('#stake-input').value;
+async function runLock() {
+  let lockAmount = select('#lock-input').value;
   let days = select("#noOfDays").innerHTML;
 
-  await SEND_TX('web3Stake', 'stake', [BIG(stakeAmount), days]);
+  await SEND_TX('lock', 'stake', [BIG(lockAmount), days]);
 }
 
-async function runUnstake() {
-  await SEND_TX('web3Stake', 'unstake', []);
+async function runUnlock() {
+  await SEND_TX('lock', 'unstake', []);
 }
 
 async function runClaim() {
-  await SEND_TX('web3Stake', 'claimReward', []);
+  await SEND_TX('lock', 'claimReward', []);
 }
 
 async function runEmerUnstake() {
-  await SEND_TX('web3Stake', 'emergencyUnstake', []);
+  await SEND_TX('lock', 'emergencyUnstake', []);
 }
 
 
@@ -920,7 +1024,7 @@ async function captureImg(targetId) {
 
 function getRef() {
   let href = location.href;
-  let hrefSplit = href.split('ref=');
+  let hrefSplit = href.split('?ref=');
   if (hrefSplit.length <= 1) {
     return '';
   }
@@ -944,7 +1048,7 @@ async function buyMinerBnb() {
 
   let amount = select('#noOfDays').innerHTML;
   amount = amount.replace(/,/g, '');
-  await SEND_TX('web3Miner', 'HirePay', [ref], amount);
+  await SEND_TX('miner', 'HirePay', [ref], amount);
 }
 
 async function buyMinerBusd() {
@@ -955,7 +1059,7 @@ async function buyMinerBusd() {
 
   let amount = select('#noOfDays').innerHTML;
   amount = amount.replace(/,/g, '');
-  await SEND_TX('web3Miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
+  await SEND_TX('miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
 }
 
 async function buyMiner() {
@@ -971,7 +1075,7 @@ async function buyMiner() {
     return;
   }
   
-  await SEND_TX('web3Miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
+  await SEND_TX('miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
 }
 
 async function buyMinerMore() {
@@ -980,11 +1084,11 @@ async function buyMinerMore() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  await SEND_TX('web3Miner', 'HireMore', [ref]);
+  await SEND_TX('miner', 'HireMore', [ref]);
 }
 
 async function sellOre() {
-  await SEND_TX('web3Miner', 'Receive', []);
+  await SEND_TX('miner', 'Receive', []);
 } 
 
 async function buyXweb3() {
@@ -1012,26 +1116,27 @@ select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['w
 //////////////////////////////////////////////////////////////////////////////
 
 
-async function maxValueSwapInput(clickedButton) {
+async function maxValueSwapInput() {
   let bal = select('#swap-balance-input').innerHTML;
   select("#swap-input").value = bal;
 }
-
-async function maxValueSwapOutput(clickedButton) {
-}
-
 
 async function maxValueWrapInput() {
   let bal = select('#wrap-balance-input').innerHTML;
   select("#wrap-input").value = bal;
 }
 
-async function maxValueWrapOutput() {
+async function maxValueWrapInput() {
+  let bal = select('#wrap-balance-input').innerHTML;
+  select("#wrap-input").value = bal;
 }
 
-async function maxValueStakeInput() {
-  let bnbBalance = document.getElementById('wBalance').textContent;
-  console.log(bnbBalance);
-  document.getElementById("stake-input").setAttribute('value', bnbBalance);
-  displayText("#stake-input", bnbBalance);
+async function maxValueWusdInput() {
+  let bal = select('#wusd-balance-input').innerHTML;
+  select("#wusd-input").value = bal;
+}
+
+async function maxValueLockInput() {
+  let bal = select('#wBalance').innerHTML;
+  select("#lock-input").value = bal;
 }
