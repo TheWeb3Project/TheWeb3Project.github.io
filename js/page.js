@@ -207,6 +207,10 @@ async function _runGlobal() {
     return (await gV('wPrice')) + (await gV('xTotalSupply'));
   };
 
+  F['wRate'] = async() => {
+    return (await gV('wPrice')) / (await gV('price'));
+  };
+
   F['wLockedAmount'] = async() => {
     return (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
   };
@@ -245,6 +249,8 @@ async function _runGlobal() {
 
   displayText("#xPrice", `$${COMMA(INT((await gV('xPrice')), 3))}`);
 	xPrice = V['xPrice'];
+
+  displayText("#wRate", `${COMMA(INT((await gV('wRate')), 2))} $WEB3`);
 
   displayText("#xPriceWithPweb3", `${COMMA(INT((await gV('xPrice')) * 1769, 3))} pWEB3`);
 
