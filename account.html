@@ -106,7 +106,7 @@
                 </div>
   
                 <h4 id="balanceInUsd" class="fw-bold my-2">$0.000</h4>
-                <span id="balance" class="text-secondary">0.000</span><span> $WEB3</span>
+                <span id="web3Balance" class="text-secondary">0.000</span><span> $WEB3</span>
               </div>
             </div>
 
@@ -122,12 +122,12 @@
                   </span> -->
                 </div>
   
-                <span id="wBalance" class="text-secondary">0.000</span><span> $wWEB3<br/></span>
+                <span id="wweb3Balance" class="text-secondary">0.000</span><span> $wWEB3<br/></span>
                 <span id="lockedAmount" class="text-secondary">0.000</span><span> $wWEB3 (</span>
                   <span id="lockedDuration" class="text-secondary">0</span><span> days lock)<br/></span>
                 
-                <span id="pBalance" class="text-secondary">0.000</span><span> $pWEB3<br/></span>
-                <span id="xBalance" class="text-secondary">0.000</span><span> $xWEB3<br/></span>
+                <span id="pweb3Balance" class="text-secondary">0.000</span><span> $pWEB3<br/></span>
+                <span id="xweb3Balance" class="text-secondary">0.000</span><span> $xWEB3<br/></span>
               </div>
             </div>
 
@@ -271,24 +271,24 @@
     async function runPersonal() {
       await _runPersonal();
 
-      displayText("#balanceInUsd", `$${COMMA(INT((await gV('balance')) * (await gV('price')), 3))}`);
+      displayText("#balanceInUsd", `$${COMMA(INT((await gV('web3Balance')) * (await gV('price')), 3))}`);
 
       // let rebaseRate = 1.00000017;
       let rebaseRate = 1.00000079;
-      displayText("#nextRebaseReward", `${COMMA(INT((await gV('balance')) * rebaseRate - (await gV('balance')), 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `$${COMMA(INT(((await gV('balance')) * rebaseRate - (await gV('balance'))) * (await gV('price')) * 1.00000062, 3))}`);
+      displayText("#nextRebaseReward", `${COMMA(INT((await gV('web3Balance')) * rebaseRate - (await gV('web3Balance')), 3))} $WEB3`);
+      displayText("#nextRebaseRewardInUsd", `$${COMMA(INT(((await gV('web3Balance')) * rebaseRate - (await gV('web3Balance'))) * (await gV('price')) * 1.00000062, 3))}`);
 
       // let hourRate = 1.00020402;
       let hourRate = 1.00094844;
-      displayText("#nexthourReward", `${COMMA(INT((await gV('balance')) * hourRate - (await gV('balance')), 3))} $WEB3`);
-      displayText("#nexthourRewardInUsd", `$${COMMA(INT(((await gV('balance')) * hourRate - (await gV('balance'))) * (await gV('price')) * 1.00074427, 3))}`);
+      displayText("#nexthourReward", `${COMMA(INT((await gV('web3Balance')) * hourRate - (await gV('web3Balance')), 3))} $WEB3`);
+      displayText("#nexthourRewardInUsd", `$${COMMA(INT(((await gV('web3Balance')) * hourRate - (await gV('web3Balance'))) * (await gV('price')) * 1.00074427, 3))}`);
 
 
 
       // let MonthRate = 1.1582149;
       let MonthRate = 1.9789369;
-      displayText("#nextMonthReward", `${COMMA(INT((await gV('balance')) * MonthRate - (await gV('balance')), 3))} $WEB3`);
-      displayText("#nextMonthRewardInUsd", `$${COMMA(INT(((await gV('balance')) * MonthRate - (await gV('balance'))) * (await gV('price')) * 1.7086094, 3))}`);
+      displayText("#nextMonthReward", `${COMMA(INT((await gV('web3Balance')) * MonthRate - (await gV('web3Balance')), 3))} $WEB3`);
+      displayText("#nextMonthRewardInUsd", `$${COMMA(INT(((await gV('web3Balance')) * MonthRate - (await gV('web3Balance'))) * (await gV('price')) * 1.7086094, 3))}`);
     }
 
     (async () => {

@@ -509,22 +509,22 @@ async function _runPersonal() {
     return v / BNBDIV;
   };
 
-  F['balance'] = async() => {
+  F['web3Balance'] = async() => {
     let v = await CONTS['web3'].balanceOf(CURADR);
     return v / BNBDIV;
   };
 
-  F['wBalance'] = async() => {
+  F['wweb3Balance'] = async() => {
     let v = await CONTS['wweb3'].balanceOf(CURADR);
     return v / BNBDIV;
   };
 
-  F['pBalance'] = async() => {
+  F['pweb3Balance'] = async() => {
     let v = await CONTS['pweb3'].balanceOf(CURADR);
     return v / BNBDIV;
   };
 
-  F['xBalance'] = async() => {
+  F['xweb3Balance'] = async() => {
     let v = await CONTS['xweb3'].balanceOf(CURADR);
     return v / BNBDIV;
   };
@@ -540,7 +540,7 @@ async function _runPersonal() {
   };
 
   F['xHolding'] = async() => {
-    let v = (await gV('xBalance')) / (await gV('xTotalSupply')) * 100;
+    let v = (await gV('xweb3Balance')) / (await gV('xTotalSupply')) * 100;
     return v;
   };
 
@@ -550,10 +550,10 @@ async function _runPersonal() {
   };
 
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
-  displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
-  displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
-  displayText("#pBalance", `${COMMA(INT((await gV('pBalance')), 3))}`);
-  displayText("#xBalance", `${COMMA(INT((await gV('xBalance')), 3))}`);
+  displayText("#web3Balance", `${COMMA(INT((await gV('web3Balance')), 3))}`);
+  displayText("#wweb3Balance", `${COMMA(INT((await gV('wweb3Balance')), 3))}`);
+  displayText("#pweb3Balance", `${COMMA(INT((await gV('pweb3Balance')), 3))}`);
+  displayText("#xweb3Balance", `${COMMA(INT((await gV('xweb3Balance')), 3))}`);
   displayText("#wusdBalance", `${COMMA(INT((await gV('wusdBalance')), 3))}`);
   displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
@@ -568,7 +568,7 @@ async function _runPersonal() {
   lockedDuration = await CONTS['lock']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
-  totalSupplyPercentage = ((await gV('balance')) / (await gV('totalSupply'))) * 100;
+  totalSupplyPercentage = ((await gV('web3Balance')) / (await gV('totalSupply'))) * 100;
   if (totalSupplyPercentage < 0.001) {
     displayText("#percentTotalSupply", `< 0.001`);
   } else {
@@ -764,9 +764,9 @@ async function getTotalEarned() {
   }
   amount = INT(amount) / BNBDIV;
 
-  // console.log(balance, amount);
-  let totalEarned = (await gV('balance')) - amount; // little precision
-  let earnRate = totalEarned / (await gV('balance')) * 100;
+  // console.log(web3Balance, amount);
+  let totalEarned = (await gV('web3Balance')) - amount; // little precision
+  let earnRate = totalEarned / (await gV('web3Balance')) * 100;
   displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $WEB3 (+${COMMA(INT(earnRate, 3))}%)`);
   displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * (await gV('price')), 3))}`);
 }
@@ -1144,6 +1144,6 @@ async function maxValueWusdInput() {
 }
 
 async function maxValueLockInput() {
-  let bal = select('#wBalance').innerHTML;
+  let bal = select('#wweb3Balance').innerHTML;
   select("#lock-input").value = bal;
 }

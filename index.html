@@ -420,8 +420,8 @@
       await _runPersonal();
 
       // check vip
-      let balance = await CONTS['web3'].balanceOf(CURADR);
-      if (0.1 < (await gV('balance')) / (await gV('totalSupply')) * 100) {
+      let web3Balance = await CONTS['web3'].balanceOf(CURADR);
+      if (0.1 < (await gV('web3Balance')) / (await gV('totalSupply')) * 100) {
        // alert('vip')
       }
 
