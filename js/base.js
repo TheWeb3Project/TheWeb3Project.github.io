@@ -172,8 +172,8 @@ ABIS['web3Lock'] = [
   "function calculateReward(uint256, uint256) view returns (uint256)"
 ];
 
-ADRS['web3Jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
-ABIS['web3Jackpot'] = [
+ADRS['jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
+ABIS['jackpot'] = [
   "function _lastBuyer() view returns (address)",
   "function _lastBuyTime() view returns (uint256)",
   "function _topBuyer() view returns (address)",

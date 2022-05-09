@@ -297,53 +297,53 @@ async function _runGlobal() {
   select('#shareFb').href = `http://www.facebook.com/share.php?u=${shareLink}&t=${shareText}`;
   select('#shareFb').target="_blank";
 
-  let _topWinnerTime = INT(await CONTS['web3Jackpot']._topWinnerTime());
+  let _topWinnerTime = INT(await CONTS['jackpot']._topWinnerTime());
   _topWinnerTime = new Date(_topWinnerTime * 1000);
   displayText("#_topWinnerTime", `${_topWinnerTime.getUTCMonth() + 1}/${_topWinnerTime.getUTCDate()} ${_topWinnerTime.getUTCHours()}:${_topWinnerTime.getUTCMinutes()}:${_topWinnerTime.getUTCSeconds()}`);
 
-  let _topWinnerAmount = await CONTS['web3Jackpot']._topWinnerAmount();
+  let _topWinnerAmount = await CONTS['jackpot']._topWinnerAmount();
   _topWinnerAmount = _topWinnerAmount / BNBDIV * (await gV('bnbPrice'));
   displayText("#_topWinnerAmount", `$${COMMA(INT(_topWinnerAmount, 0))}`);
 
-  let _topWinner = await CONTS['web3Jackpot']._topWinner();
+  let _topWinner = await CONTS['jackpot']._topWinner();
   displayText("#_topWinner", `${HREF(BSC('address', _topWinner), SHORTADR(_topWinner))}`);
 
   setInterval(async () => {
     now = INT(NOW() / 1000);
     
-    let lastBuyTime = INT(await CONTS['web3Jackpot']._lastBuyTime());
+    let lastBuyTime = INT(await CONTS['jackpot']._lastBuyTime());
     jackpotTimeLeft = lastBuyTime + 600 - now;
     // if (jackpotTimeLeft < 0) {
     //   displayText("#jpTimer", `Winner is chosen! Wait for result!`);            
     // }
 
-    let lastBuyer = await CONTS['web3Jackpot']._lastBuyer();
+    let lastBuyer = await CONTS['jackpot']._lastBuyer();
     displayText("#lastBuyer", `${HREF(BSC('address', lastBuyer), SHORTADR(lastBuyer))}`);
 
-    let jpPrize = (await getBalance(ADRS['web3Jackpot'])) / BNBDIV * (await gV('bnbPrice'));
+    let jpPrize = (await getBalance(ADRS['jackpot'])) / BNBDIV * (await gV('bnbPrice'));
     displayText("#jpPrize", `$${COMMA(INT(jpPrize, 0))}`);
   
     
-    let topBuyer = await CONTS['web3Jackpot']._topBuyer(); 
+    let topBuyer = await CONTS['jackpot']._topBuyer(); 
     displayText("#biggestBuyer", `${HREF(BSC('address', topBuyer), SHORTADR(topBuyer))}`);
     
-    let bigbuyAmount = INT(await CONTS['web3Jackpot']._dailyBuyAmounts(topBuyer));
+    let bigbuyAmount = INT(await CONTS['jackpot']._dailyBuyAmounts(topBuyer));
     bigbuyAmount = bigbuyAmount / BNBDIV;
     displayText("#bigbuyAmount", `${INT(bigbuyAmount, 1)} BNB`);
     
-    let _lastWinnerTime = INT(await CONTS['web3Jackpot']._lastWinnerTime());
+    let _lastWinnerTime = INT(await CONTS['jackpot']._lastWinnerTime());
     _lastWinnerTime = new Date(_lastWinnerTime * 1000);
     displayText("#_lastWinnerTime", `${_lastWinnerTime.getUTCMonth() + 1}/${_lastWinnerTime.getUTCDate()} ${_lastWinnerTime.getUTCHours()}:${_lastWinnerTime.getUTCMinutes()}:${_lastWinnerTime.getUTCSeconds()}`);
   
-    let _lastWinnerAmount = await CONTS['web3Jackpot']._lastWinnerAmount();
+    let _lastWinnerAmount = await CONTS['jackpot']._lastWinnerAmount();
     _lastWinnerAmount = _lastWinnerAmount / BNBDIV * (await gV('bnbPrice'));
     displayText("#_lastWinnerAmount", `$${COMMA(INT(_lastWinnerAmount, 0))}`);
   
-    let _lastWinner = await CONTS['web3Jackpot']._lastWinner();
+    let _lastWinner = await CONTS['jackpot']._lastWinner();
     displayText("#_lastWinner", `${HREF(BSC('address', _lastWinner), SHORTADR(_lastWinner))}`);
 
     
-    let bigbuyTime = INT(await CONTS['web3Jackpot']._dailyPrizeTime());
+    let bigbuyTime = INT(await CONTS['jackpot']._dailyPrizeTime());
     bigbuyTimeLeft = bigbuyTime + 60*60*24 - now;
 
     cb = await CONTS['web3']._curcuitBreakerFlag();
@@ -662,10 +662,10 @@ async function eventBoard() {
   }
 
 
-  let jackpotFilter = CONTS['web3Jackpot'].filters.Jackpot();
+  let jackpotFilter = CONTS['jackpot'].filters.Jackpot();
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3Jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
+          txLogs = await CONTS['jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
