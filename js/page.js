@@ -1099,10 +1099,7 @@ async function maxValueWusdInput() {
   select("#wusd-input").value = bal;
 }
 
-
-async function maxValueStakeInput() {
-  let bnbBalance = document.getElementById('wBalance').textContent;
-  console.log(bnbBalance);
-  document.getElementById("stake-input").setAttribute('value', bnbBalance);
-  displayText("#stake-input", bnbBalance);
+async function maxValueLockInput() {
+  let bal = select('#wBalance').innerHTML;
+  select("#lock-input").value = bal;
 }
