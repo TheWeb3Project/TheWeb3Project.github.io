@@ -592,9 +592,9 @@ document.addEventListener("DOMContentLoaded", function() {
       }
 
       [res, data] = await READ_TX('web3Lock', '_rewards', [CURADR]);
-      let rewardAmount = data;
-      rewardAmount = rewardAmount / BNBDIV;
-      displayText('#claimAmount', `${COMMA(INT(rewardAmount, 3))}`);
+      let claimAmount = data;
+      claimAmount = claimAmount / BNBDIV;
+      displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
 
       select('#run-claim1').onclick = async () => { await runClaim(); };
 
