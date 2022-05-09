@@ -820,13 +820,13 @@ async function handleInputUnwrap(e) {
 
 // async function handleInputToWusd(e) {
 //   await handleInput(e, 'wusd-output', async (v) => {
-//     await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+//     return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
 //   });
 // }
 
 // async function handleInputTobusd(e) {
 //   await handleInput(e, 'wusd-output', async (v) => {
-//     await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
+//     return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
 //   });
 // }
 
@@ -842,8 +842,8 @@ async function handleInput(e, name, func) {
 
   let valueIn_ = BIG(valueIn);
   let valueOut_ = await func(valueIn_);
-
   let valueOut = ETH(valueOut_);
+  
   valueOut = INT(parseFloat(valueOut), 8);
   ot.value = valueOut;
 }
