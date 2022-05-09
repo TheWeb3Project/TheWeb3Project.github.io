@@ -824,7 +824,7 @@ async function handleInputToWusd(e) {
   });
 }
 
-async function handleInputTobusd(e) {
+async function handleInputToBusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
     return await funcRate(v, (await gV('wTotalSupply')), (await gV('totalSupply')));
   });

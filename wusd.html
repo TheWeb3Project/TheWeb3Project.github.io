@@ -206,7 +206,7 @@
     }
 
     async function switchWusd() {
-      await switchTarget(['buy', 'sell'], 'buy', [handleInputToWusd, handleInputUnwrap], [(await gV('balance')), (await gV('wBalance'))], [TOKENICONURL, TOKENICONURL], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
+      await switchTarget(['buy', 'sell'], 'buy', [handleInputToWusd, handleInputToBusd], [(await gV('balance')), (await gV('wBalance'))], [TOKENICONURL, TOKENICONURL], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
     }
 
     async function runPersonal() {
@@ -226,8 +226,8 @@
       }
 
       STATES['wusd'] = 'sell';
-      await switchTarget(['buy', 'sell'], 'buy', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap);
-      select('#wrap-change').onclick = async () => { await switchTarget(['wrap', 'unwrap'], 'wrap', handleInputWrap, handleInputUnwrap, (await gV('balance')), (await gV('wBalance')), "WEB3", "wWEB3", runWrap, runUnwrap); };
+      await switchWusd();
+      select('#wrap-change').onclick = async () => { await switchWusd(); };
 
     }
 
