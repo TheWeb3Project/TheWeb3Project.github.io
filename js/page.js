@@ -519,12 +519,19 @@ async function _runPersonal() {
     return v / BNBDIV;
   };
 
+  F['xHolding'] = async() => {
+    let v = (await gV('xBalance')) / (await gV('xTotalSupply')) * 100;
+    return v;
+  };
+
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
   displayText("#balance", `${COMMA(INT((await gV('balance')), 3))}`);
   displayText("#wBalance", `${COMMA(INT((await gV('wBalance')), 3))}`);
   displayText("#pBalance", `${COMMA(INT((await gV('pBalance')), 3))}`);
   displayText("#xBalance", `${COMMA(INT((await gV('xBalance')), 3))}`);
   displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
+
+  displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
 
   lockedAmount = await CONTS['web3Lock']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
