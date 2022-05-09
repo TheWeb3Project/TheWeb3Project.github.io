@@ -508,36 +508,15 @@ async function _runPersonal() {
     let v = await getBalance(CURADR)
     return v / BNBDIV;
   };
+  displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
 
-  F['web3Balance'] = async() => {
-    let v = await CONTS['web3'].balanceOf(CURADR);
-    return v / BNBDIV;
-  };
-
-  F['wweb3Balance'] = async() => {
-    let v = await CONTS['wweb3'].balanceOf(CURADR);
-    return v / BNBDIV;
-  };
-
-  F['pweb3Balance'] = async() => {
-    let v = await CONTS['pweb3'].balanceOf(CURADR);
-    return v / BNBDIV;
-  };
-
-  F['xweb3Balance'] = async() => {
-    let v = await CONTS['xweb3'].balanceOf(CURADR);
-    return v / BNBDIV;
-  };
-
-  F['wusdBalance'] = async() => {
-    let v = await CONTS['wusd'].balanceOf(CURADR);
-    return v / BNBDIV;
-  };
-
-  F['busdBalance'] = async() => {
-    let v = await CONTS['busd'].balanceOf(CURADR);
-    return v / BNBDIV;
-  };
+  for (let name of ['web3', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd']) {
+    F[`${name}Balance`] = async() => {
+      let v = await CONTS[name].balanceOf(CURADR);
+      return v / BNBDIV;
+    };
+    displayText(`#${name}Balance`, `${COMMA(INT((await gV(`${name}Balance`)), 3))}`);
+  }
 
   F['xHolding'] = async() => {
     let v = (await gV('xweb3Balance')) / (await gV('xTotalSupply')) * 100;
@@ -548,14 +527,6 @@ async function _runPersonal() {
     let v = (await gV('xFund')) * 0.05 * (await gV('xHolding'));
     return v;
   };
-
-  displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
-  displayText("#web3Balance", `${COMMA(INT((await gV('web3Balance')), 3))}`);
-  displayText("#wweb3Balance", `${COMMA(INT((await gV('wweb3Balance')), 3))}`);
-  displayText("#pweb3Balance", `${COMMA(INT((await gV('pweb3Balance')), 3))}`);
-  displayText("#xweb3Balance", `${COMMA(INT((await gV('xweb3Balance')), 3))}`);
-  displayText("#wusdBalance", `${COMMA(INT((await gV('wusdBalance')), 3))}`);
-  displayText("#busdBalance", `${COMMA(INT((await gV('busdBalance')), 3))}`);
 
   displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
   displayText("#xReward", `${COMMA(INT((await gV('xReward')), 3))} BNB`);
