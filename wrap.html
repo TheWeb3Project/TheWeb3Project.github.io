@@ -500,6 +500,10 @@
 
       select('#run-lock').onclick = async () => { await runLock(); };
       select('#run-unlock').onclick = async () => { await runUnlock(); };
+      select('#run-emerunstake').onclick = async () => {
+        alert("This is for the EMERGENCY unstake. you will get 10% of the staked amount. Confirm transaction if you really want to do the emergency unstake");
+        await runEmerUnstake();
+      };
     }
 
 

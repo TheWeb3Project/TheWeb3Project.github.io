@@ -400,14 +400,6 @@
         }, 1000);
       }
 
-      select('#run-stake').onclick = async () => { await runStake(); };
-      select('#run-claim').onclick = async () => { await runClaim(); };
-      select('#run-unstake').onclick = async () => { await runUnstake(); };
-      select('#run-emerunstake').onclick = async () => {
-        alert("This is for the EMERGENCY unstake. you will get 10% of the staked amount. Confirm transaction if you really want to do the emergency unstake");
-        await runEmerUnstake();
-      };
-
     }
 
     (async () => {
