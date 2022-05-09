@@ -874,8 +874,8 @@ async function switchTarget(states, target, handleFs, bals, logos, syms, runFs) 
     displayText(`#${target}-balance-input`, `${COMMA(INT(bals[1], 3))}`);
     displayText(`#${target}-balance-output`, `${COMMA(INT(bals[0], 3))}`);
 
-    displayText(`#${target}-logo-input`, logos[1]);
-    displayText(`#${target}-logo-output`, logos[0]);
+    select(`#${target}-logo-input`).src = logos[1];
+    select(`#${target}-logo-output`).src = logos[0];
     displayText(`#${target}-symbol-input`, syms[1]);
     displayText(`#${target}-symbol-output`, syms[0]);
 
@@ -889,8 +889,8 @@ async function switchTarget(states, target, handleFs, bals, logos, syms, runFs) 
     displayText(`#${target}-balance-input`, `${COMMA(INT(bals[0], 3))}`);
     displayText(`#${target}-balance-output`, `${COMMA(INT(bals[1], 3))}`);
 
-    displayText(`#${target}-logo-input`, logos[0]);
-    displayText(`#${target}-logo-output`, logos[1]);
+    select(`#${target}-logo-input`).src = logos[0];
+    select(`#${target}-logo-output`).src = logos[1];
     displayText(`#${target}-symbol-input`, syms[0]);
     displayText(`#${target}-symbol-output`, syms[1]);
 
