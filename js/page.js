@@ -963,14 +963,14 @@ async function runToBusd() {
 
 /////////////////////////////////////////////////////////////////////////// stake
 
-async function runStake() {
+async function runLock() {
   let stakeAmount = select('#stake-input').value;
   let days = select("#noOfDays").innerHTML;
 
   await SEND_TX('web3Lock', 'stake', [BIG(stakeAmount), days]);
 }
 
-async function runUnstake() {
+async function runUnlock() {
   await SEND_TX('web3Lock', 'unstake', []);
 }
 

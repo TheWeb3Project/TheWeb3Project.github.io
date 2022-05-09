@@ -263,7 +263,7 @@
                     </div>
                 </div>
 
-                <div id="run-stake" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                <div id="run-lock" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                   <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                   border-radius: 20px;
                   background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -272,7 +272,7 @@
                   </button>
                 </div>
 
-                <div id="run-unstake" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                <div id="run-unlock" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                   <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                   border-radius: 20px;
                   background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -498,9 +498,8 @@
         displayText('#rewardAmount', `${COMMA(INT(rewardAmount, 3))}`);
       });
 
-      select('#run-stake').onclick = async () => { await runStake(); };
-
-      select('#run-unstake').onclick = async () => { await runUnstake(); };
+      select('#run-lock').onclick = async () => { await runLock(); };
+      select('#run-unlock').onclick = async () => { await runUnlock(); };
     }
 
 
