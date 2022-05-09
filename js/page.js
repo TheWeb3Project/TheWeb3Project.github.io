@@ -123,6 +123,15 @@ async function _runGlobal() {
   
   select('#connect').onclick = async () => { await conn(); };
 
+  for (let name in ADRS) {
+    displayText(`#${name}`, ADRS[name]);
+    select(`#${name}-link`).href = BSC('address', ADRS[name]);
+  }
+
+  F['xWeb3'] = async() => {
+    return ADRS['xweb3'];
+  };
+
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
   F['totalSupply'] = async() => {
     let v = await CONTS['web3'].totalSupply();
