@@ -964,7 +964,7 @@ async function runToBusd() {
 /////////////////////////////////////////////////////////////////////////// stake
 
 async function runLock() {
-  let stakeAmount = select('#stake-input').value;
+  let stakeAmount = select('#lock-input').value;
   let days = select("#noOfDays").innerHTML;
 
   await SEND_TX('web3Lock', 'stake', [BIG(stakeAmount), days]);
