@@ -86,7 +86,7 @@
                   <div class="text-secondary mb-1">
                     $xWEB3 Balance
                   </div>
-                  <h4 id="xBalance" class="fw-bold">0.000</h4>
+                  <h4 id="xweb3Balance" class="fw-bold">0.000</h4>
                 </div>
               </div>
             </div>
@@ -362,7 +362,7 @@
 
 
       select('#setMaxToAmount').onclick = async () => {
-        select('#amount').value = (await gV('balance'));
+        select('#amount').value = (await gV('web3Balance'));
       };
 
       select('#setCurToApy').onclick = async () => {

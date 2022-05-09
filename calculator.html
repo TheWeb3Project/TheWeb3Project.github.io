@@ -78,7 +78,7 @@
                   <h6 class="text-secondary mb-1">
                     Your WEB3 Balance
                   </h6>
-                  <h4 id="balance" class="mb-0 fw-bold">
+                  <h4 id="web3Balance" class="mb-0 fw-bold">
                     0.000
                   </h4>
                 </div>
@@ -237,7 +237,7 @@
 
       
       select('#setMaxToAmount').onclick = async () => {
-        select('#amount').value = (await gV('balance'));
+        select('#amount').value = (await gV('web3Balance'));
       };
       select('#setCurToApy').onclick = async () => {
         select('#input-apy').value = 404092.65;
