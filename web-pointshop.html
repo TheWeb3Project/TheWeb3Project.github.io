@@ -442,16 +442,12 @@
           document.getElementById('minerImage').src = '/images/Group_66.png'
         }
     }
-		function setXweb3Value(e) {
-      let val = e.target.value;
+		function setXweb3Value(val) {
       val = checkValue(val);
-			
-      select('#xweb3-slider').value = `${COMMA(INT(val))}`;
-        select('#xweb3-sliders').value = `${COMMA(INT(val))}`;
-        displayText('#xweb3Amount', `${COMMA(INT(val))}`);
 
-      displayText('#xweb3-pweb3', `${COMMA(INT(val * xPrice * 1769))}`);
+      select('#xweb3-output').value = val / 1769 / (await gV('xPrice'));
     }
+
     (async () => {
       // do global
       await runGlobal();
@@ -473,8 +469,7 @@
       });
 
       select(`#xweb3-input`).addEventListener('input', async function (e) {
-        let pweb3Amount = e.target.value;
-        select('#xweb3-output').value = pweb3Amount / 1769 / (await gV('xPrice'));
+        setXweb3Value(e.target.value);
       });
       
       ////////////////////////////////////////////////////////////////////////////

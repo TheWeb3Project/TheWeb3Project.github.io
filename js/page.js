@@ -1124,5 +1124,7 @@ async function maxValueLockInput() {
 }
 
 async function maxPweb3Input(id) {
-  select(id).value = (await gV('pweb3Balance'));
+  let v = (await gV('pweb3Balance'));
+  select(id).value = v;
+  setXweb3Value(v);
 }
