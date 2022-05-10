@@ -975,18 +975,18 @@ async function runToBusd() {
 
 /////////////////////////////////////////////////////////////////////////// stake
 
-async function runLock() {
+async function runLock(idx) {
   let lockAmount = select('#lock-input').value;
   let days = select("#days").innerHTML;
 
   await SEND_TX('lock', 'stake', [BIG(lockAmount), days]);
 }
 
-async function runUnlock() {
+async function runUnlock(idx) {
   await SEND_TX('lock', 'unstake', []);
 }
 
-async function runClaim() {
+async function runClaim(idx) {
   await SEND_TX('lock', 'claimReward', []);
 }
 
