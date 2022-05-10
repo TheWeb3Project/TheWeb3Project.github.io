@@ -777,8 +777,8 @@ function changedValue(target, curTarget) {
   // let dailyRate = 0.02301279;
   // let totalRate = ((1 + dailyRate) ** days);
   // let futAmount = INT(curAmount * totalRate, 2);
-  let futAmount = curAmount + curAmount * 2880 * days / (V['totalSupply'] + 2880 * days);
-  select('#futAmount').value = INT(futAmount, 3);
+  let futAmount = curAmount + curAmount * 1728 * days / (V['totalSupply'] + 1728 * days);
+  select('#futAmount').value = `${COMMA(INT(futAmount, 3))}`;
 
   let futPrice;
   if (target == 'futPrice') {
