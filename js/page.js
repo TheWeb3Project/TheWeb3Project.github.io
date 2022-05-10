@@ -744,55 +744,52 @@ async function getTotalEarned() {
 
 /////////////////////////////////////////////////////////////////////////// calculator
 function changedValue(target, curTarget) {
+  // let tV = curTarget.value;
+  // displayText(`#${target}`, tV);
+
+  let days;
+  if (target == 'days') {
+    days = curTarget.value;
+  } else {
+    days = INT(select("#days").innerHTML);
+  }
+
   let curAmount = select('#amount').value / 1;
   if (curAmount == 0) {
     displayText("#initInvest", `$${COMMA(INT(0.000, 3))}`);
     displayText("#futWealth", `$${COMMA(INT(0.000, 3))}`);
   }
 
-  let days;
-  if (target == 'days') {
-    days = INT(curTarget.value);
-    select("#noOfDays").innerHTML = days;
-  } else {
-    days = INT(select("#noOfDays").innerHTML);
-  }
-
-
-  // if (target == 'xWEB3') {
-  //   days = INT(curTarget.value);
-  //   select("#noOfxWEB3").innerHTML = days;
-  // } else {
-  //   days = INT(select("#noOfxWEB3").innerHTML);
-  // }
-
   let curPrice = select('#curPrice').value / 1;
   let initInvest = curAmount * curPrice;
   displayText("#initInvest", `$${COMMA(INT(initInvest, 3))}`);
 
-  // let dailyRate = 0.004908;
-  // let dailyRate = 0.02301279;
-
-  
+  // let dailyRate = 0.004908;  
   // let dailyRate = 0.02301279;
   // let totalRate = ((1 + dailyRate) ** days);
   // let futAmount = INT(curAmount * totalRate, 2);
   let futAmount = curAmount + curAmount * 1728 * days / (V['totalSupply'] + 1728 * days);
   select('#futAmount').value = `${COMMA(INT(futAmount, 3))}`;
 
-  let futPrice;
-  if (target == 'futPrice') {
-    futPrice = curTarget.value / 1;
-  } else {
+  if (target == 'days') {
     let dailyPriceRate = 0.01;
     // let dailyPriceRate = 0.01801636;
     // let dailyPriceRate = 0.02301279;
-
-    // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
-    futPrice = curPrice * (1 + dailyPriceRate * days); 
+    futPrice = curPrice * (1 + dailyPriceRate * days);
     select('#futPrice').value = INT(futPrice, 3);
+  } else if (target == 'futPrice') {
+    futPrice = curTarget.value;
   }
+
+  let xweb3;
+  if (target == 'xweb3') {
+    xweb3 = curTarget.value;
+  }
+
+
+
+
 
   let futInvest = futAmount * futPrice;
 
@@ -972,7 +969,7 @@ async function runToBusd() {
 
 async function runLock() {
   let lockAmount = select('#lock-input').value;
-  let days = select("#noOfDays").innerHTML;
+  let days = select("#days").innerHTML;
 
   await SEND_TX('lock', 'stake', [BIG(lockAmount), days]);
 }
@@ -1024,7 +1021,7 @@ async function buyMinerBnb() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  let amount = select('#noOfDays').innerHTML;
+  let amount = select('#days').innerHTML;
   amount = amount.replace(/,/g, '');
   await SEND_TX('miner', 'HirePay', [ref], amount);
 }
@@ -1035,7 +1032,7 @@ async function buyMinerBusd() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  let amount = select('#noOfDays').innerHTML;
+  let amount = select('#days').innerHTML;
   amount = amount.replace(/,/g, '');
   await SEND_TX('miner', 'Hire', [ref, ADRS['busd'], BIG(amount)]);
 }
@@ -1046,7 +1043,7 @@ async function buyMiner() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  let amount = select('#noOfDays').innerHTML;
+  let amount = select('#days').innerHTML;
   amount = amount.replace(/,/g, '');
   if (amount < 8845) {
     alert('input more than 8845 pWEB3');

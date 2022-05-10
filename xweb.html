@@ -145,7 +145,7 @@
 
 
     function showValue1(newValue) {
-        document.getElementById("noOfDays").innerHTML= newValue;
+        document.getElementById("days").innerHTML= newValue;
       }
 
       function changeRangeValue(val){
@@ -159,7 +159,7 @@
       }
 
       function showValues1(newValue) {
-        document.getElementById("noOfxWEB3").innerHTML= newValue;
+        document.getElementById("xweb3Amount").innerHTML= newValue;
       }
 
       function changeRangeValues(val){
@@ -309,8 +309,8 @@
 
         changedValue('days', select('input[type="range"]'));
 
-        let minerAmount = select('#noOfDays').innerHTML;
-        displayText('#noOfDays', `${COMMA(INT(minerAmount))}`);
+        let minerAmount = select('#days').innerHTML;
+        displayText('#days', `${COMMA(INT(minerAmount))}`);
 
         displayText('#miner-pweb3', `${COMMA(INT(minerAmount * 8845))}`);
 
@@ -320,10 +320,10 @@
       $(document).on('input', '#xWEB3-slider', function (e) {
         changedValue('xWEB3', select('#xWEB3-slider'));
         changedValue('xWEB3', select('#xWEB3-sliders'));
-        let xweb3Amount = select('#noOfxWEB3').innerHTML;
+        let xweb3Amount = select('#xweb3Amount').innerHTML;
 
 
-        displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
+        displayText('#xweb3Amount', `${INT(xweb3Amount / 1000, 3)}`);
 
         
         displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
@@ -332,8 +332,8 @@
 
       $(document).on('input', '#xWEB3-sliders', function (e) {
         changedValue('xWEB3', select('#xWEB3-sliders'));
-        let xweb3Amount = select('#noOfxWEB3').innerHTML;
-        displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
+        let xweb3Amount = select('#xweb3Amount').innerHTML;
+        displayText('#xweb3Amount', `${INT(xweb3Amount / 1000, 3)}`);
 
 
         displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
@@ -342,11 +342,11 @@
 
       $(document).on('input', 'input[type="range"]', function (e) {
       changedValue('days', select('input[type="range"]'));
-      if(document.getElementById('noOfDays').innerHTML < 2948333) {
+      if(document.getElementById('days').innerHTML < 2948333) {
           document.getElementById('minerImage').src = '/images/Group_68.png'
-        } if(document.getElementById('noOfDays').innerHTML > 2948333) {
+        } if(document.getElementById('days').innerHTML > 2948333) {
           document.getElementById('minerImage').src = '/images/Group_67.png'
-        } if(document.getElementById('noOfDays').innerHTML >= 5896666){
+        } if(document.getElementById('days').innerHTML >= 5896666){
           console.log('dsa')
 
           document.getElementById('minerImage').src = '/images/Group_66.png'

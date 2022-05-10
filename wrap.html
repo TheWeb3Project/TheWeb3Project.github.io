@@ -268,7 +268,7 @@
                                     </button>
                                 </div>
 
-                                <label for="days-slider" class="fw-medium"><span id="noOfDays">14</span> days</label>
+                                <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
                                 <input type="range" min="14" max="365" step="1" value="14" id="days-slider" class="mb-5">
                                 <div>
                                   <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
@@ -372,7 +372,7 @@
                                     </button>
                                 </div>
 
-                                <label for="days-slider" class="fw-medium"><span id="noOfDays">14</span> days</label>
+                                <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
                                 <input type="range" min="14" max="365" step="1" value="14" id="days-slider" class="mb-5">
                                 <div>
                                   <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
@@ -476,7 +476,7 @@
                                     </button>
                                 </div>
 
-                                <label for="days-slider" class="fw-medium"><span id="noOfDays">14</span> days</label>
+                                <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
                                 <input type="range" min="14" max="365" step="1" value="14" id="days-slider" class="mb-5">
                                 <div>
                                   <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
@@ -681,8 +681,8 @@ activateTab(opentab)
 
       $(document).on('input', 'input[type="range"]', function (e) {
         let days = select('input[type="range"]').value;
-        select("#noOfDays").innerHTML = days;
-        displayText('#noOfDays', `${days}`);
+        select("#days").innerHTML = days;
+        displayText('#days', `${days}`);
         let stakeAmount = select('#lock-input').value;
         let bonusRate = INT(days / 30) * 5;
         let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;

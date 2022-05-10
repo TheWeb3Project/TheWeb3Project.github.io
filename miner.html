@@ -106,7 +106,7 @@
 
             	<img src="./images/Group_68.png" class="col-12 mx-auto mb-4 pb-2" id="minerImage" alt="" style="width: 20%;">
               
-              <label for="days-slider" class="fw-medium">Hire miners with <span id="noOfDays">100</span> BUSD or BNB</label>
+              <label for="days-slider" class="fw-medium">Hire miners with <span id="days">100</span> BUSD or BNB</label>
               <input type="number" min="1" max="10000" step="1" value="100" id="days-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
               <input type="range" min="1" max="10000" step="1" value="100" id="days-slider" oninput="changeInputValue(this.value)" class="">
               
@@ -257,11 +257,11 @@
       $(document).on('input', 'input[type="range"]', function (e) {
         changedValue('days', select('input[type="range"]'));
 
-        if(document.getElementById('noOfDays').innerHTML < 3333) {
+        if(document.getElementById('days').innerHTML < 3333) {
           document.getElementById('minerImage').src = '/images/Group_68.png'
-        } if(document.getElementById('noOfDays').innerHTML > 3333) {
+        } if(document.getElementById('days').innerHTML > 3333) {
           document.getElementById('minerImage').src = '/images/Group_67.png'
-        } if(document.getElementById('noOfDays').innerHTML >= 6666){
+        } if(document.getElementById('days').innerHTML >= 6666){
           document.getElementById('minerImage').src = '/images/Group_66.png'
         }
       });
@@ -269,7 +269,7 @@
     }
 
     function showValue1(newValue) {
-        document.getElementById("noOfDays").innerHTML= newValue;
+        document.getElementById("days").innerHTML= newValue;
       }
 
     function changeRangeValue(val){

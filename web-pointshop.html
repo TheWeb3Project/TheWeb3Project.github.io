@@ -188,11 +188,11 @@
                 </div>
                   <div class="mt-3">
                     <div class="d-flex flex-column mb-4 pb-2">
-                      <label for="days-slider" class="fw-medium"></label>
-                      <input type="number" min="8845" max="8845000" step="8845" value="8845" id="days-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
-                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="days-slider" oninput="changeInputValue(this.value)"  class="mb-5">
+                      <label for="pweb3-slider" class="fw-medium"></label>
+                      <input type="number" min="8845" max="8845000" step="8845" value="8845" id="pweb3-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
+                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="pweb3-slider" oninput="changeInputValue(this.value)"  class="mb-5">
                     </div>
-                    <p class="">Buy miners with <span id="noOfDays"></span> pWEB3</p>
+                    <p class="">Buy miners with <span id="pweb3Amount"></span> pWEB3</p>
                     <button id="buy-miner" type="submit"  class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
                     border-radius: 20px;
                     background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -235,7 +235,7 @@
                     </div>
                     <p class="">1 xWEB3 = <span id="xPrice">$</p>
                     <p class="">1 xWEB3 = <span id="xPriceWithPweb3">pWEB3</p>
-                    <p class="">Buy <span id="noOfxWEB3"></span> xWEB3 with <span id="xweb3-pweb3"></span> pWEB3</p>
+                    <p class="">Buy <span id="xweb3Amount"></span> xWEB3 with <span id="xweb3-pweb3"></span> pWEB3</p>
                     
                     <div id="approved-xweb3">
                       <button id="buy-xweb3" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
@@ -283,7 +283,7 @@
     }
 
     function showValue1(newValue) {
-        document.getElementById("noOfDays").innerHTML= newValue;
+        document.getElementById("days").innerHTML= newValue;
       }
 
       function changeRangeValue(val){
@@ -297,7 +297,7 @@
       }
 
       function showValues1(newValue) {
-        document.getElementById("noOfxWEB3").innerHTML= newValue;
+        document.getElementById("xweb3Amount").innerHTML= newValue;
       }
 
       function changeRangeValues(val){
@@ -402,45 +402,30 @@
       // do global
       await runGlobal();
 
-      $(document).on('input', '#days-slider', function (e) {
-          // var x = document.getElementById("days-slider").value
-          // var y =  document.getElementById('days-sliders').value = x
-          // x = y
-          // console.log(x);
-          // console.log(y);
+      $(document).on('input', '#pweb3-slider', function (e) {
+        changedValue('pweb3', select('#pweb3-slider'));
 
-        changedValue('days', select('input[type="range"]'));
-
-        let minerAmount = select('#noOfDays').innerHTML;
-        displayText('#noOfDays', `${COMMA(INT(minerAmount))}`);
+        let pweb3Amount = select('#pweb3').innerHTML;
+        displayText('#pweb3Amount', `${COMMA(INT(pweb3Amount))}`);
 
         displayText('#miner-pweb3', `${COMMA(INT(minerAmount * 8845))}`);
 
-        if(document.getElementById('noOfDays').innerHTML < 29483333) {
+        if(document.getElementById('pweb3').innerHTML < 29483333) {
           document.getElementById('minerImage').src = '/images/Group_68.png'
-        } if(document.getElementById('noOfDays').innerHTML > 29483333) {
+        } if(document.getElementById('pweb3').innerHTML > 29483333) {
           document.getElementById('minerImage').src = '/images/Group_67.png'
-        } if(document.getElementById('noOfDays').innerHTML >= 58966666){
+        } if(document.getElementById('pweb3').innerHTML >= 58966666){
           document.getElementById('minerImage').src = '/images/Group_66.png'
         }
       });
 
       $(document).on('input', '#xWEB3-slider', function (e) {
-        changedValue('xWEB3', select('#xWEB3-slider'));
-        changedValue('xWEB3', select('#xWEB3-sliders'));
-        let xweb3Amount = select('#noOfxWEB3').innerHTML;
-        displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
+        changedValue('xweb3', select('#xWEB3-slider'));
+        changedValue('xweb3', select('#xWEB3-sliders'));
+        let xweb3Amount = select('#xweb3Amount').innerHTML;
+        displayText('#xweb3Amount', `${INT(xweb3Amount / 1000, 3)}`);
 
         
-        displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
-      });
-
-      $(document).on('input', '#xWEB3-sliders', function (e) {
-        changedValue('xWEB3', select('#xWEB3-sliders'));
-        let xweb3Amount = select('#noOfxWEB3').innerHTML;
-        displayText('#noOfxWEB3', `${INT(xweb3Amount / 1000, 3)}`);
-
-
         displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
       });
       

@@ -125,8 +125,8 @@
                 </div>
               </div>
 
-              <label for="days-slider" class="fw-medium"><span id="noOfDays">30</span> days</label>
-              <input type="range" min="1" max="90" step="1" value="30" id="days-slider" class="mb-5">
+              <label for="days-slider" class="fw-medium"><span id="days">30</span> days</label>
+              <input id="days-slider" type="range" min="1" max="90" step="1" value="30" class="mb-5">
 
               <div class="row justify-centent-between text-secondary">
                 <div class="col">
@@ -274,8 +274,8 @@
 
     $('input[type="range"]').rangeslider({});
 
-    $(document).on('input', 'input[type="range"]', function (e) {
-      changedValue('days', select('input[type="range"]'));
+    $(document).on('input', '#days-slider', function (e) {
+      changedValue('days', select('#days-slider'));
     });
 
     $(document).on('input', '#futPrice', function (e) {
