@@ -1050,14 +1050,14 @@ async function buyMiner() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  let amount = select('#days').innerHTML;
-  amount = amount.replace(/,/g, '');
-  if (amount < 8845) {
+  let pweb3Amount = select('#miner-input').innerHTML;
+  pweb3Amount = pweb3Amount.replace(/,/g, '');
+  if (pweb3Amount < 8845) {
     alert('input more than 8845 pWEB3');
     return;
   }
   
-  await SEND_TX('miner', 'Hire', [ref, ADRS['pweb3'], BIG(amount)]);
+  await SEND_TX('miner', 'Hire', [ref, ADRS['pweb3'], BIG(pweb3Amount)]);
 }
 
 async function buyMinerMore() {
@@ -1121,4 +1121,9 @@ async function maxValueWusdInput() {
 async function maxValueLockInput() {
   let bal = select('#wweb3Balance').innerHTML;
   select("#lock-input").value = bal;
+}
+
+async function maxValueMinerInput() {
+  let bal = select('pweb3Balance').innerHTML;
+  select("#miner-input").value = bal;
 }
