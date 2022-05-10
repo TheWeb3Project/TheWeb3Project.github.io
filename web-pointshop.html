@@ -407,8 +407,6 @@
 
         let pweb3Amount = select('#pweb3Amount').innerHTML;
 
-        displayText('#miner-pweb3', `${COMMA(INT(pweb3Amount * 8845))}`);
-
         if(document.getElementById('pweb3').innerHTML < 29483333) {
           document.getElementById('minerImage').src = '/images/Group_68.png'
         } if(document.getElementById('pweb3').innerHTML > 29483333) {
