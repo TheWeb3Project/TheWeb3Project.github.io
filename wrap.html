@@ -675,7 +675,7 @@ activateTab(opentab)
         $(document).on('input', `#days-slider`, function (e) {
           let days = select(`#days-slider`).value;
           displayText('#days', `${days}`);
-          let lockAmount = select(`#lock-input$`).value;
+          let lockAmount = select(`#lock-input`).value;
           let bonusRate = INT(days / 30) * 5;
           let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;
           displayText(`#rewardAmount`, `${COMMA(INT(rewardAmount, 3))}`);
