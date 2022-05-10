@@ -645,7 +645,7 @@ tabs.forEach(tab => {
 
 darkModeSwitch.addEventListener('change', () => {
     document.querySelector('body').classList.toggle('darkmode')
-    localStorage.setItem('jstabs-darkmode', JSON.stringify(!darkmode))
+    // localStorage.setItem('jstabs-darkmode', JSON.stringify(!darkmode))
 })
 
 // Retrieve stored data
@@ -654,7 +654,7 @@ const opentab =  JSON.parse(localStorage.getItem('jstabs-opentab')) || '3'
 
 // and..... Action!
 if (darkmode === null) {
-    darkmode = window.matchMedia("(prefers-color-scheme: dark)").matches // match to OS theme
+  document.querySelector('body').classList.add('darkmode')
 }
 if (darkmode) {
     document.querySelector('body').classList.add('darkmode')
