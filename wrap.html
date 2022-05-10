@@ -779,9 +779,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
       let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
       if (BIGINT(0) < wweb3Allowance2) {
-        select('#run-wweb3-approve-lock').classList.add('d-none');
+        select('#run-wweb3-approve-lock1').classList.add('d-none');
       } else {
-        select('#run-wweb3-approve-lock').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+        select('#run-wweb3-approve-lock1').onclick = async () => { await approve('wweb3', ADRS['lock']); };
       }
 
       let wweb3Allowance3 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
