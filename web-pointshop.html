@@ -460,16 +460,8 @@
         setMinerValue(e);
       });
 
-      $(document).on('input', '#xweb3-slider', function (e) {
-        setXweb3Value(e);  
-      });
-      
-      $(document).on('input', '#xweb3-sliders', function (e) {
-        setXweb3Value(e);  
-      });
-
       select(`#xweb3-input`).addEventListener('input', async function (e) {
-        setXweb3Value(e.target.value);
+        await setXweb3Value(e.target.value);
       });
       
       ////////////////////////////////////////////////////////////////////////////
