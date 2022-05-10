@@ -102,6 +102,9 @@ async function gV(k) {
   return V[k];  
 }
 
+let AMOUNTADDED = 1728;
+
+
 let wPrice;
 let xPrice;
 
@@ -122,6 +125,7 @@ async function _runGlobal() {
     document.getElementById("overlay").style.display = "none"
   })
   
+  select('#AMOUNTADDED').innerHTML = AMOUNTADDED;
   select('#connect').onclick = async () => { await conn(); };
 
   for (let name in ADRS) {
