@@ -1067,6 +1067,13 @@ async function buyMinerMore() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
+  let daimonds = await CONTS['miner'].getMyDaimonds(CURADR);
+  let miners = daimonds / (await CONTS['miner'].DAIMONDS_TO_HIRE_MINER());
+  if (miners < 2) {
+    alert('wait more to hire miners');
+    return;
+  }
+  
   await SEND_TX('miner', 'HireMore', [ref]);
 }
 
