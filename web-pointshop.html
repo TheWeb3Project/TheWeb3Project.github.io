@@ -228,8 +228,8 @@
                 </div>
                   <div class="">
                     <div class="d-flex flex-column ">
-                      <input type="number" min="0" max="1000" step="1" value="1" id="xweb3-sliders" oninput="changeRangeValues(this.value)" class="mb-2">
-                      <input type="range" min="0.01" max="1000" step="0.01" value="1" id="xweb3-slider"  oninput="changeInputValues(this.value)" class="mb-5">
+                      <input type="number" min="0" max="1000" step="1" value="1" id="xweb3-sliders" class="mb-2">
+                      <input type="range" min="0.01" max="1000" step="0.01" value="1" id="xweb3-slider" class="mb-5">
                     </div>
                     <p class="">1 xWEB3 = <span id="xPrice">$</p>
                     <p class="">1 xWEB3 = <span id="xPriceWithPweb3">pWEB3</p>
@@ -280,24 +280,6 @@
       await _runGlobal();
     }
 
-      function changeInputValue(val){
-          document.getElementById("pweb3-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
-          showValue1(val);
-      }
-
-      function showValues1(newValue) {
-        document.getElementById("xweb3Amount").innerHTML= newValue;
-      }
-
-      function changeRangeValues(val){
-          document.getElementById("xWEB3-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
-          showValues1(val);
-      }
-
-      function changeInputValues(val){
-          document.getElementById("xWEB3-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
-          showValues1(val);
-      }
 
 
 
@@ -401,11 +383,11 @@
         select('#pweb3-sliders').value = `${COMMA(INT(val))}`;
         displayText('#pweb3Amount', `${COMMA(INT(val))}`);
 
-        if(Val < 29483333) {
+        if(val < 29483333) {
           document.getElementById('minerImage').src = '/images/Group_68.png'
-        } if(Val > 29483333) {
+        } if(val > 29483333) {
           document.getElementById('minerImage').src = '/images/Group_67.png'
-        } if(Val >= 58966666){
+        } if(val >= 58966666){
           document.getElementById('minerImage').src = '/images/Group_66.png'
         }
     }
