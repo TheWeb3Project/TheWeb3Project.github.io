@@ -1050,7 +1050,7 @@ async function buyMiner() {
     ref = '0xcCa3C1D62C80834f8B303f45D89298866C097B1a';
   }
 
-  let pweb3Amount = select('#miner-input').innerHTML;
+  let pweb3Amount = select('#miner-input').value;
   pweb3Amount = pweb3Amount.replace(/,/g, '');
   if (pweb3Amount < 8845) {
     alert('input more than 8845 pWEB3');
