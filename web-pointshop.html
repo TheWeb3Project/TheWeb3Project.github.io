@@ -474,7 +474,7 @@
 
       select(`#xweb3-input`).addEventListener('input', async function (e) {
         let pweb3Amount = e.target.value;
-        select('#xweb3-output').value = pweb3Amount / 1769 / (await gV['xPrice']);
+        select('#xweb3-output').value = pweb3Amount / 1769 / (await gV('xPrice'));
       });
       
       ////////////////////////////////////////////////////////////////////////////
