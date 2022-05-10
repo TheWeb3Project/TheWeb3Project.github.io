@@ -784,7 +784,9 @@ document.addEventListener("DOMContentLoaded", function() {
       claimAmount = claimAmount / BNBDIV;
       displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
 
-      select('#run-claim1').onclick = async () => { await runClaim(); };
+      for (let idx of ['1', '2', '3']) {
+        select(`#run-claim${idx}`).onclick = async () => { await runClaim(idx); };
+      }
 
       [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
       let stakedAmount = data;
