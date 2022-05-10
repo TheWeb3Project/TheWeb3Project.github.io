@@ -467,12 +467,17 @@
       $(document).on('input', '#xweb3-slider', function (e) {
         setXweb3Value(e);  
       });
+      
       $(document).on('input', '#xweb3-sliders', function (e) {
         setXweb3Value(e);  
       });
 
-
-            ////////////////////////////////////////////////////////////////////////////
+      select(`#xweb3-input`).addEventListener('input', async function (e) {
+        let pweb3Amount = e.target.value;
+        select('#xweb3-output').value = pweb3Amount / 1769 / (await gV['xPrice']);
+      });
+      
+      ////////////////////////////////////////////////////////////////////////////
 
       select('#curPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
       select('#futPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
