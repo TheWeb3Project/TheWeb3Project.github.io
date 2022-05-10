@@ -442,7 +442,7 @@
           document.getElementById('minerImage').src = '/images/Group_66.png'
         }
     }
-		function setXweb3Value(val) {
+		async function setXweb3Value(val) {
       val = checkValue(val);
 
       select('#xweb3-output').value = val / 1769 / (await gV('xPrice'));
