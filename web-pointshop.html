@@ -143,37 +143,83 @@
 
             <div class=" mx-auto   col-sm-4">
               <div id='card'>
-                <div class=" d-flex ">
-                  <div class="mx-auto">
-                    <h4>The Web3 Project</h4> <p>Miner</p>
-                  </div>
-                </div>
-                
-                <div id="run-pweb3-approve-miner" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                    <span class="button__content">$pWEB3 Approve to Buy</span>
-                  </button>
-                </div>
-
-                <div style="margin-left: 70px;">
-                  <img src="./images/Group_68.png" id="minerImage" class="col-8 mx-auto" alt="">
-                </div>
-                  <div class="mt-3">
-                    <div class="d-flex flex-column mb-4 pb-2">
-                      <input type="number" min="8845" max="8845000" step="8845" value="8845" id="pweb3-sliders" class="mb-2">
-                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="pweb3-slider" class="mb-5">
-                    </div>
-                    <p class="">Buy miners with <span id="pweb3Amount"></span> pWEB3</p>
-                    <button id="buy-miner" type="submit"  class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
+                <div id='card'>
+                  <h5 class="fw-bold mb-0">Hire Miner</h5>
+  
+                  <div id="run-pweb3-approve-miner" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                     border-radius: 20px;
                     background-image: linear-gradient(134deg,#48acef,#00436f);
                     box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                      <span class="button__content">Buy</span>
+                      <span class="button__content">$pWEB3 Approve to Buy</span>
                     </button>
                   </div>
+                  
+                  <div style="margin-left: 70px;">
+                    <img src="./images/Group_68.png" id="minerImage" class="col-8 mx-auto" alt="">
+                  </div>
+
+                  <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; margin-top: 65px; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                      <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                              <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                  <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                      <input id="wrap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                  </div>
+                                  <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
+                              </div>
+                              <p class="token-amount-field__balance">Balance: <span id="wrap-balance-input">0.000</span></p>
+                          </div>
+                          <button type="button" onclick="maxValueWrapInput()" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
+                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                                <div>Max</div>
+                                <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo"  /></div>
+                                <span id="wrap-symbol-input" class="token__symbol ellipsis">WEB3</span>
+                                  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                      <path
+                                          d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                          fill="currentColor"
+                                      ></path>
+                                      <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                      </div>
+                      <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field" >
+                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                              <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                  <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                      <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                  </div>
+                              </div>
+                              <p class="token-amount-field__balance">Balance: <span id="wrap-balance-output">0.000</span></p>
+                          </div>
+                          <button type="button" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
+                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                                <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo"  /></div>
+                                  <span id="wrap-symbol-output" class="token__symbol ellipsis">wWEB3</span>
+                                  <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                      <path
+                                          d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                          fill="currentColor"
+                                      ></path>
+                                      <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                  </svg>
+                              </div>
+                          </button>
+                      </div>
+                  </div>
+  
+                  <div id="buy-miner" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                    border-radius: 20px;
+                    background-image: linear-gradient(134deg,#48acef,#00436f);
+                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                      <span id="" class="button__content">Buy</span>
+                    </button>
+                  </div>
+  
+                </div>
               </div>
             </div>
 

@@ -199,7 +199,9 @@ ABIS['miner'] = [
   "function HireMore(address)",
   "function Receive()",
 	
+  "function balanceOf(address) view returns (uint)",
   "function totalSupply() view returns (uint)",
+  
   "function _miners(address) view returns (uint256)",
   "function _daimonds(address) view returns (uint256)",
   "function _tDaimonds() view returns (uint256)",

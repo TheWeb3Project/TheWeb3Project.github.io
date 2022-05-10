@@ -525,7 +525,7 @@ async function _runPersonal() {
   };
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
 
-  for (let name of ['web3', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd']) {
+  for (let name of ['web3', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
     F[`${name}Balance`] = async() => {
       let v = await CONTS[name].balanceOf(CURADR);
       return v / BNBDIV;
