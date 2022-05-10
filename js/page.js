@@ -791,18 +791,7 @@ function changedValue(target, curTarget) {
 
   displayText("#potenReturn", `$${COMMA(INT(futInvest - initInvest, 2))}`);
 
-  displayText("#spaceTravel", `${COMMA(INT(futInvest / 250000))}`);
-  
-  let xweb3;
-  if (target == 'xweb3') {
-    xweb3 = curTarget.value;
-  }
-
-
-
-
-
-  
+  displayText("#spaceTravel", `${COMMA(INT(futInvest / 250000))}`); 
 }
 
 

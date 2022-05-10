@@ -188,9 +188,8 @@
                 </div>
                   <div class="mt-3">
                     <div class="d-flex flex-column mb-4 pb-2">
-                      <label for="pweb3-slider" class="fw-medium"></label>
-                      <input type="number" min="8845" max="8845000" step="8845" value="8845" id="pweb3-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
-                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="pweb3-slider" oninput="changeInputValue(this.value)"  class="mb-5">
+                      <input type="number" min="8845" max="8845000" step="8845" value="8845" id="pweb3-sliders" class="mb-2">
+                      <input type="range" min="8845" max="8845000" step="8845" value="8845" id="pweb3-slider" class="mb-5">
                     </div>
                     <p class="">Buy miners with <span id="pweb3Amount"></span> pWEB3</p>
                     <button id="buy-miner" type="submit"  class="button button--primary button--size-default button--icon-left button--with-icon mt-4 w-100" style=" border: 3px solid #48acef;
@@ -229,9 +228,8 @@
                 </div>
                   <div class="">
                     <div class="d-flex flex-column ">
-                      <label for="xWEB3-slider" class="fw-medium"></label>
-                      <input type="number" min="0" max="10000" step="1" value="1" id="xWEB3-sliders" oninput="changeRangeValues(this.value)" class="mb-2">
-                      <input type="range" min="0" max="10000" step="1" value="1" id="xWEB3-slider"  oninput="changeInputValues(this.value)" class="mb-5">
+                      <input type="number" min="0" max="1000" step="1" value="1" id="xweb3-sliders" oninput="changeRangeValues(this.value)" class="mb-2">
+                      <input type="range" min="0.01" max="1000" step="0.01" value="1" id="xweb3-slider"  oninput="changeInputValues(this.value)" class="mb-5">
                     </div>
                     <p class="">1 xWEB3 = <span id="xPrice">$</p>
                     <p class="">1 xWEB3 = <span id="xPriceWithPweb3">pWEB3</p>
@@ -281,15 +279,6 @@
     async function runGlobal() {
       await _runGlobal();
     }
-
-    function showValue1(newValue) {
-        document.getElementById("pweb3Amount").innerHTML= newValue;
-      }
-
-      function changeRangeValue(val){
-          document.getElementById("pweb3-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
-          showValue1(val);
-      }
 
       function changeInputValue(val){
           document.getElementById("pweb3-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
@@ -397,35 +386,57 @@
       }
 
     }
+		
+    function checkValue(val) {
+			val = INT(val);
+        if (isNaN(val)) {
+          val = 0;
+        }
+      return val;
+    }
+    function setMinerValue(e) {
+      let val = e.target.value;
+      val = checkValue(val);
+        select('#pweb3-slider').value = `${COMMA(INT(val))}`;
+        select('#pweb3-sliders').value = `${COMMA(INT(val))}`;
+        displayText('#pweb3Amount', `${COMMA(INT(val))}`);
 
+        if(Val < 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(Val > 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(Val >= 58966666){
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+    }
+		function setXweb3Value(e) {
+      let val = e.target.value;
+      val = checkValue(val);
+			
+      select('#xweb3-slider').value = `${COMMA(INT(val))}`;
+        select('#xweb3-sliders').value = `${COMMA(INT(val))}`;
+        displayText('#xweb3Amount', `${COMMA(INT(val))}`);
+
+      displayText('#xweb3-pweb3', `${COMMA(INT(val * xPrice * 1769))}`);
+    }
     (async () => {
       // do global
       await runGlobal();
 
       $(document).on('input', '#pweb3-slider', function (e) {
-        changedValue('pweb3', select('#pweb3-slider'));
-
-        let pweb3Amount = select('#pweb3Amount').innerHTML;
-
-        if(document.getElementById('pweb3').innerHTML < 29483333) {
-          document.getElementById('minerImage').src = '/images/Group_68.png'
-        } if(document.getElementById('pweb3').innerHTML > 29483333) {
-          document.getElementById('minerImage').src = '/images/Group_67.png'
-        } if(document.getElementById('pweb3').innerHTML >= 58966666){
-          document.getElementById('minerImage').src = '/images/Group_66.png'
-        }
+    		setMinerValue(e);    
       });
 
-      $(document).on('input', '#xWEB3-slider', function (e) {
-        changedValue('xweb3', select('#xWEB3-slider'));
-        changedValue('xweb3', select('#xWEB3-sliders'));
-        let xweb3Amount = select('#xweb3Amount').innerHTML;
-        displayText('#xweb3Amount', `${INT(xweb3Amount / 1000, 3)}`);
-
-        
-        displayText('#xweb3-pweb3', `${COMMA(INT(xweb3Amount / 1000 * xPrice * 1769))}`);
+      $(document).on('input', '#pweb3-sliders', function (e) {
+        setMinerValue(e);
       });
-      
+
+      $(document).on('input', '#xweb3-slider', function (e) {
+        setXweb3Value(e);  
+      });
+      $(document).on('input', '#xweb3-sliders', function (e) {
+        setXweb3Value(e);  
+      });
 
 
             ////////////////////////////////////////////////////////////////////////////
