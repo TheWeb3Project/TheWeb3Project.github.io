@@ -1123,6 +1123,6 @@ async function maxValueLockInput() {
   select("#lock-input").value = bal;
 }
 
-async function maxPweb3Input() {
-  select("#miner-input").value = pweb3Balance;
+async function maxPweb3Input(id) {
+  select(id).value = pweb3Balance;
 }
