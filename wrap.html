@@ -234,7 +234,7 @@
                                     <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                                <input id="lock-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                                <input id="lock-input1" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                             </div>
                                             <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
                                         </div>
@@ -270,7 +270,7 @@
                                   </div>
 
                                   <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
-                                  <input type="range" min="14" max="365" step="1" value="14" id="days-slider" class="mb-5">
+                                  <input type="range" min="14" max="365" step="1" value="14" id="days-slider1" class="mb-5">
                                   <div>
                                     <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
                                   </div>
@@ -339,7 +339,7 @@
                                     <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                                <input id="lock-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                                <input id="lock-input2" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                             </div>
                                             <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
                                         </div>
@@ -374,7 +374,7 @@
                                 </div>
 
                                 <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
-                                <input type="range" min="14" max="365" step="1" value="14" id="days-slider" class="mb-5">
+                                <input type="range" min="14" max="365" step="1" value="14" id="days-slider2" class="mb-5">
                                 <div>
                                   <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
                                 </div>
@@ -434,7 +434,7 @@
                                     <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
                                         <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
                                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                                <input id="lock-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                                <input id="lock-input3" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                             </div>
                                             <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
                                         </div>
@@ -469,7 +469,7 @@
                                 </div>
 
                                 <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
-                                <input type="range" min="14" max="365" step="1" value="14" id="days-slider" class="mb-5">
+                                <input type="range" min="14" max="365" step="1" value="14" id="days-slider3" class="mb-5">
                                 <div>
                                   <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
                                 </div>
@@ -673,9 +673,9 @@ activateTab(opentab)
       
       for (let idx of ['1', '2', '3']) {
         $(document).on('input', `#days-slider`, function (e) {
-          let days = select(`#days-slider`).value;
+          let days = select(`#days-slider${idx}`).value;
           displayText('#days', `${days}`);
-          let lockAmount = select(`#lock-input`).value;
+          let lockAmount = select(`#lock-input{idx}`).value;
           let bonusRate = INT(days / 30) * 5;
           let rewardAmount = INT(wPrice) * lockAmount * days * (1 + bonusRate / 100) * 0.8;
           displayText(`#rewardAmount`, `${COMMA(INT(rewardAmount, 3))}`);
