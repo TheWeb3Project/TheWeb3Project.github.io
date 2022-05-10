@@ -770,7 +770,8 @@ function changedValue(target, curTarget) {
   // let futAmount = INT(curAmount * totalRate, 2);
   let futAmount = curAmount + curAmount * 1728 * days / (V['totalSupply'] + 1728 * days);
   select('#futAmount').value = `${COMMA(INT(futAmount, 3))}`;
-
+	
+  let futPrice;
   if (target == 'days') {
     let dailyPriceRate = 0.01;
     // let dailyPriceRate = 0.01801636;
@@ -782,15 +783,6 @@ function changedValue(target, curTarget) {
     futPrice = curTarget.value;
   }
 
-  let xweb3;
-  if (target == 'xweb3') {
-    xweb3 = curTarget.value;
-  }
-
-
-
-
-
   let futInvest = futAmount * futPrice;
 
   displayText("#futWealth", `$${COMMA(INT(futInvest, 2))}`);
@@ -800,6 +792,17 @@ function changedValue(target, curTarget) {
   displayText("#potenReturn", `$${COMMA(INT(futInvest - initInvest, 2))}`);
 
   displayText("#spaceTravel", `${COMMA(INT(futInvest / 250000))}`);
+  
+  let xweb3;
+  if (target == 'xweb3') {
+    xweb3 = curTarget.value;
+  }
+
+
+
+
+
+  
 }
 
 
