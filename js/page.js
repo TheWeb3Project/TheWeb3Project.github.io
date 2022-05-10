@@ -765,6 +765,7 @@ function changedValue(target, curTarget) {
   let days;
   if (target == 'days') {
     days = curTarget.value;
+    displayText('#days', days);
   } else {
     days = INT(select("#days").innerHTML);
   }
