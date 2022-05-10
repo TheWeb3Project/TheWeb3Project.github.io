@@ -791,12 +791,12 @@ document.addEventListener("DOMContentLoaded", function() {
       [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
       let stakedAmount = data;
       stakedAmount = stakedAmount / BNBDIV;
-      displayText('#stakedAmount', `${COMMA(INT(stakedAmount, 3))}`);
+      displayText('#stakedAmount1', `${COMMA(INT(stakedAmount, 3))}`);
 
       [res, data] = await READ_TX('lock', '_durations', [CURADR]);
       let stakedDuration = data;
 
-      displayText('#stakedDuration', `${COMMA(INT(stakedDuration, 0))}`);
+      displayText('#stakedDuration1', `${COMMA(INT(stakedDuration, 0))}`);
 			
       [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
       let unlockTime = data;
@@ -807,7 +807,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (unlockAfter <= 0) {
           unlockAfter = 0;
         }
-        displayText("#unlockAfter", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
+        displayText("#unlockAfter1", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
         unlockAfter = UPDATETICK(unlockAfter);
       }, 1000);
 
