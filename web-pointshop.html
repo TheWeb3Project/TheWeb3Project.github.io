@@ -405,8 +405,7 @@
       $(document).on('input', '#pweb3-slider', function (e) {
         changedValue('pweb3', select('#pweb3-slider'));
 
-        let pweb3Amount = select('#pweb3').innerHTML;
-        displayText('#pweb3Amount', `${COMMA(INT(pweb3Amount))}`);
+        let pweb3Amount = select('#pweb3Amount').innerHTML;
 
         displayText('#miner-pweb3', `${COMMA(INT(pweb3Amount * 8845))}`);
 
