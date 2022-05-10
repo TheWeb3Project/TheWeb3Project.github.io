@@ -80,6 +80,12 @@ function displayWeb3Header() {
 }
 displayWeb3Header();
 
+function setCss() {
+  select('#main').classList = 'col';
+  select('#container').classList = 'container mt-5';
+}
+setCss();
+
 let now = INT(NOW() / 1000);
 
 let F = {};
