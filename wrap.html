@@ -204,8 +204,8 @@
 
                   <div class="tabs col-9 mx-auto">
                       <a id="tab1" data-tab="1" class="tab">Lock 1</a>
-                      <a id="tab2" data-tab="2" class="tab">Lock 2</a>
-                      <a id="tab3" data-tab="3" class="tab">Lock 3</a>
+                      <a id="tab2" data-tab="2" class="tab">Lock 2 (TEST)</a>
+                      <a id="tab3" data-tab="3" class="tab">Lock 3 (TEST)</a>
                   </div>
 
                   <div class="content">
@@ -220,12 +220,12 @@
 
                           </div>
 
-                           <div id="run-wweb3-approve2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                           <div id="run-wweb3-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                             <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                             border-radius: 20px;
                             background-image: linear-gradient(134deg,#48acef,#00436f);
                             box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
-                              <span class="button__content">$wWEB3 Approve to stake</span>
+                              <span class="button__content">$wWEB3 Approve to Lock</span>
                             </button>
                           </div>
 
@@ -324,7 +324,7 @@
 
                           </div>
 
-                           <div id="run-wweb3-approve2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                           <div id="run-wweb3-approve-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                             <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                             border-radius: 20px;
                             background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -428,7 +428,7 @@
 
                           </div>
 
-                           <div id="run-wweb3-approve2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                           <div id="run-wweb3-approve-lock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                             <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                             border-radius: 20px;
                             background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -779,9 +779,23 @@ document.addEventListener("DOMContentLoaded", function() {
 
       let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
       if (BIGINT(0) < wweb3Allowance2) {
-        select('#run-wweb3-approve2').classList.add('d-none');
+        select('#run-wweb3-approve-lock').classList.add('d-none');
       } else {
-        select('#run-wweb3-approve2').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+        select('#run-wweb3-approve-lock').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+      }
+
+      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
+      if (BIGINT(0) < wweb3Allowance2) {
+        select('#run-wweb3-approve-lock2').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve-lock2').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+      }
+
+      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
+      if (BIGINT(0) < wweb3Allowance2) {
+        select('#run-wweb3-approve-lock3').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve-lock3').onclick = async () => { await approve('wweb3', ADRS['lock']); };
       }
 
       [res, data] = await READ_TX('lock', '_rewards', [CURADR]);
