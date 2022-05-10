@@ -672,7 +672,7 @@ activateTab(opentab)
       await _runGlobal();
       
       for (let idx of ['1', '2', '3']) {
-        $(document).on('input', `#days-slider`, function (e) {
+        $(document).on('input', `#days-slider${idx}`, function (e) {
           let days = select(`#days-slider${idx}`).value;
           displayText('#days', `${days}`);
           let lockAmount = select(`#lock-input{idx}`).value;
