@@ -759,12 +759,12 @@ function changedValue(target, curTarget) {
   }
 
 
-  if (target == 'xWEB3') {
-    days = INT(curTarget.value);
-    select("#noOfxWEB3").innerHTML = days;
-  } else {
-    days = INT(select("#noOfxWEB3").innerHTML);
-  }
+  // if (target == 'xWEB3') {
+  //   days = INT(curTarget.value);
+  //   select("#noOfxWEB3").innerHTML = days;
+  // } else {
+  //   days = INT(select("#noOfxWEB3").innerHTML);
+  // }
 
   let curPrice = select('#curPrice').value / 1;
   let initInvest = curAmount * curPrice;
