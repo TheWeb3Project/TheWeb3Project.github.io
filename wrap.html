@@ -677,7 +677,7 @@ activateTab(opentab)
           displayText('#days', `${days}`);
           let lockAmount = select(`#lock-input`).value;
           let bonusRate = INT(days / 30) * 5;
-          let rewardAmount = INT(wPrice) * stakeAmount * days * (1 + bonusRate / 100) * 0.8;
+          let rewardAmount = INT(wPrice) * lockAmount * days * (1 + bonusRate / 100) * 0.8;
           displayText(`#rewardAmount`, `${COMMA(INT(rewardAmount, 3))}`);
         });
 
