@@ -39,6 +39,7 @@ function displaySidebar() {
             ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
             ${htmlSide('miner.html', 'minecart-loaded', 'Miner')}
             ${htmlSide('xweb.html', 'minecart-loaded', 'xWEB3')}
+            ${htmlSide('faq.html', 'minecart-loaded', 'FAQ')}
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
