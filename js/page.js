@@ -267,6 +267,18 @@ async function _runGlobal() {
     return (await getBalance(ADRS['xweb3'])) / BNBDIV * (await gV('bnbPrice'));
   };
 
+  F['liqMinerBnb'] = async() => {
+    return (await getBalance(ADRS['miner'])) / BNBDIV;
+  }; 
+
+  F['liqMinerBusd'] = async() => {
+    return (await CONTS['busd'].balanceOf(ADRS['miner'])) / BNBDIV;
+  }; 
+
+  F['liqMinerWusd'] = async() => {
+    return (await CONTS['wusd'].balanceOf(ADRS['miner'])) / BNBDIV;
+  }; 
+
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
@@ -293,6 +305,10 @@ async function _runGlobal() {
   displayText("#corr2", `${COMMA(INT((await gV('corr')), 1))}%`);
 
   displayText("#xFund", `$${COMMA(INT((await gV('xFund'))))}`);
+
+  displayText("#liqMinerBnb", `${COMMA(INT((await gV('liqMinerBnb')), 3))}`);
+  displayText("#liqMinerBusd", `${COMMA(INT((await gV('liqMinerBusd')), 3))}`);
+  displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
