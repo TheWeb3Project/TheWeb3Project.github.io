@@ -579,7 +579,7 @@
 
               <tbody>
                   <tr>
-                      <td><span id="stakedAmount1">0.000</span> wWEB3</td>
+                      <td><span id="lockedAmount1">0.000</span> wWEB3</td>
                       <td><span id="unlockAfter1"></span></td>
                       <td><span id="claimAmount1">0.000</span> pWEB3</td>
                       <td><div id="run-claim1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -592,7 +592,7 @@
                       </div></td>
                   </tr>
                   <tr>
-                    <td><span id="stakedAmount2">0.000</span> wWEB3</td>
+                    <td><span id="lockedAmount2">0.000</span> wWEB3</td>
                     <td><span id="unlockAfter2"></span></td>
                     <td><span id="claimAmount2">0.000</span> pWEB3</td>
                       <td><div id="run-claim2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -606,7 +606,7 @@
 
                   </tr>
                   <tr>
-                    <td><span id="stakedAmount3">0.000</span> wWEB3</td>
+                    <td><span id="lockedAmount3">0.000</span> wWEB3</td>
                     <td><span id="unlockAfter3"></span></td>
                     <td><span id="claimAmount3">0.000</span> pWEB3</td>
                       <td><div id="run-claim3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -828,16 +828,16 @@ document.addEventListener("DOMContentLoaded", function() {
         select(`#run-claim${idx}`).onclick = async () => { await runClaim(idx); };
 
         [res, data] = await READ_TX('lock', '_amountsMulti', [idx, CURADR]);
-        let stakedAmount = data;
-        stakedAmount = stakedAmount / BNBDIV;
-        displayText('#stakedAmount1', `${COMMA(INT(stakedAmount, 3))}`);
+        let lockedAmount = data;
+        lockedAmount = lockedAmount / BNBDIV;
+        displayText(`#lockedAmount${idx}`, `${COMMA(INT(lockedAmount, 3))}`);
 
-        [res, data] = await READ_TX('lock', '_durations', [CURADR]);
-        let stakedDuration = data;
+        [res, data] = await READ_TX('lock', '_durationsMulti', [idx, CURADR]);
+        let lockedDuration = data;
 
-        displayText('#stakedDuration1', `${COMMA(INT(stakedDuration, 0))}`);
+        displayText(`#lockedDuration${idx}`, `${COMMA(INT(lockedDuration, 0))}`);
         
-        [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
+        [res, data] = await READ_TX('lock', '_unlockTimesMulti', [idx, CURADR]);
         let unlockTime = data;
 
         unlockAfter = unlockTime - NOW() / 1000;
@@ -846,19 +846,17 @@ document.addEventListener("DOMContentLoaded", function() {
           if (unlockAfter <= 0) {
             unlockAfter = 0;
           }
-          displayText("#unlockAfter1", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
+          displayText(`#unlockAfter${idx}`, `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
           unlockAfter = UPDATETICK(unlockAfter);
         }, 1000);
         
+        if(lockedDuration.toString() >= 360) {
+          document.getElementById('hof-claim').style.border = '3px solid #48acef'
+          document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
+        }
       }
 
       
-
-      console.log(stakedDuration.toString())
-      if(stakedDuration.toString() == 365) {
-        document.getElementById('hof-claim').style.border = '3px solid #48acef'
-        document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
-      }
  
       STATES['wrap'] = 'unwrap';
       await switchwrap();
