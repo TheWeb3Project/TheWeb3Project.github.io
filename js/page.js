@@ -990,7 +990,7 @@ async function runLock(idx) {
   if (idx == 1) {
     await SEND_TX('lock', 'stake', [BIG(lockAmount), days]);
   } else {
-    await SEND_TX('lock', 'stakeMulti', [idx - 2, BIG(lockAmount), days]);
+    await SEND_TX('lock', 'stakeMulti', [idx - 1, BIG(lockAmount), days]);
   }
 }
 
@@ -1003,7 +1003,7 @@ async function runUnlock(idx) {
   if (idx == 1) {
     await SEND_TX('lock', 'unstake', []);
   } else {
-    await SEND_TX('lock', 'unstakeMulti', [idx - 2]);
+    await SEND_TX('lock', 'unstakeMulti', [idx - 1]);
   }
 }
 
@@ -1016,7 +1016,7 @@ async function runClaim(idx) {
   if (idx == 1) {
     await SEND_TX('lock', 'claimReward', []);
   } else {
-    await SEND_TX('lock', 'claimRewardMulti', [idx - 2]);
+    await SEND_TX('lock', 'claimRewardMulti', [idx - 1]);
   }
 }
 
@@ -1029,7 +1029,7 @@ async function runEmerUnstake(idx) {
   if (idx == 1) {
     await SEND_TX('lock', 'emergencyUnstake', []);
   } else {
-    await SEND_TX('lock', 'emergencyUnstakeMulti', [idx - 2]);
+    await SEND_TX('lock', 'emergencyUnstakeMulti', [idx - 1]);
   }
 }
 
