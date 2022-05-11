@@ -773,7 +773,6 @@ document.addEventListener("DOMContentLoaded", function() {
       await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('web3Balance')), (await gV('wweb3Balance'))], [TOKENICONURL, TOKENICONURL], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
     }
 
-		let unlockAfter;
     async function runPersonal() {
       await _runPersonal();
       let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
@@ -832,7 +831,7 @@ document.addEventListener("DOMContentLoaded", function() {
         [res, data] = await READ_TX('lock', '_unlockTimesMulti', [idx, CURADR]);
         let unlockTime = data;
 
-        unlockAfter = unlockTime - NOW() / 1000;
+        let unlockAfter = unlockTime - NOW() / 1000;
         let timeinterval = setInterval(function () {
               
           if (unlockAfter <= 0) {
