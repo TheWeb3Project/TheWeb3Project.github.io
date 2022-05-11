@@ -697,7 +697,7 @@ activateTab(opentab)
     async function runGlobal() {
       await _runGlobal();
       
-      for (let idx of ['1', '2', '3']) {
+      for (let idx of [1, 2, 3]) {
         $(document).on('input', `#days-slider${idx}`, function (e) {
           let days = select(`#days-slider${idx}`).value;
           displayText('#days', `${days}`);
@@ -824,32 +824,35 @@ document.addEventListener("DOMContentLoaded", function() {
       claimAmount = claimAmount / BNBDIV;
       displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
 
-      for (let idx of ['1', '2', '3']) {
+      for (let idx of [1, 2, 3]) {
         select(`#run-claim${idx}`).onclick = async () => { await runClaim(idx); };
+
+        [res, data] = await READ_TX('lock', '_amountsMulti', [idx, CURADR]);
+        let stakedAmount = data;
+        stakedAmount = stakedAmount / BNBDIV;
+        displayText('#stakedAmount1', `${COMMA(INT(stakedAmount, 3))}`);
+
+        [res, data] = await READ_TX('lock', '_durations', [CURADR]);
+        let stakedDuration = data;
+
+        displayText('#stakedDuration1', `${COMMA(INT(stakedDuration, 0))}`);
+        
+        [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
+        let unlockTime = data;
+
+        unlockAfter = unlockTime - NOW() / 1000;
+        let timeinterval = setInterval(function () {
+              
+          if (unlockAfter <= 0) {
+            unlockAfter = 0;
+          }
+          displayText("#unlockAfter1", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
+          unlockAfter = UPDATETICK(unlockAfter);
+        }, 1000);
+        
       }
 
-      [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
-      let stakedAmount = data;
-      stakedAmount = stakedAmount / BNBDIV;
-      displayText('#stakedAmount1', `${COMMA(INT(stakedAmount, 3))}`);
-
-      [res, data] = await READ_TX('lock', '_durations', [CURADR]);
-      let stakedDuration = data;
-
-      displayText('#stakedDuration1', `${COMMA(INT(stakedDuration, 0))}`);
-			
-      [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
-      let unlockTime = data;
-
-      unlockAfter = unlockTime - NOW() / 1000;
-      let timeinterval = setInterval(function () {
-        		
-        if (unlockAfter <= 0) {
-          unlockAfter = 0;
-        }
-        displayText("#unlockAfter1", `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
-        unlockAfter = UPDATETICK(unlockAfter);
-      }, 1000);
+      
 
       console.log(stakedDuration.toString())
       if(stakedDuration.toString() == 365) {
