@@ -976,22 +976,58 @@ async function runToBusd() {
 /////////////////////////////////////////////////////////////////////////// stake
 
 async function runLock(idx) {
-  let lockAmount = select('#lock-input').value;
+  let lockAmount = select(`#lock-input${idx}`).value;
   let days = select("#days").innerHTML;
 
-  await SEND_TX('lock', 'stake', [BIG(lockAmount), days]);
+  if (idx > 3) {
+    alert('wrong idx');
+    return;
+  }
+
+  if (idx == 1) {
+    await SEND_TX('lock', 'stake', [BIG(lockAmount), days]);
+  } else {
+    await SEND_TX('lock', 'stakeMulti', [idx - 1, BIG(lockAmount), days]);
+  }
 }
 
 async function runUnlock(idx) {
-  await SEND_TX('lock', 'unstake', []);
+  if (idx > 3) {
+    alert('wrong idx');
+    return;
+  }
+
+  if (idx == 1) {
+    await SEND_TX('lock', 'unstake', []);
+  } else {
+    await SEND_TX('lock', 'unstakeMulti', [idx - 1]);
+  }
 }
 
 async function runClaim(idx) {
-  await SEND_TX('lock', 'claimReward', []);
+  if (idx > 3) {
+    alert('wrong idx');
+    return;
+  }
+
+  if (idx == 1) {
+    await SEND_TX('lock', 'claimReward', []);
+  } else {
+    await SEND_TX('lock', 'claimRewardMulti', [idx - 1]);
+  }
 }
 
-async function runEmerUnstake() {
-  await SEND_TX('lock', 'emergencyUnstake', []);
+async function runEmerUnstake(idx) {
+  if (idx > 3) {
+    alert('wrong idx');
+    return;
+  }
+
+  if (idx == 1) {
+    await SEND_TX('lock', 'emergencyUnstake', []);
+  } else {
+    await SEND_TX('lock', 'emergencyUnstakeMulti', [idx - 1]);
+  }
 }
 
 
