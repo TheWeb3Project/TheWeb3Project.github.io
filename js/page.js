@@ -1139,6 +1139,10 @@ async function sellOre() {
 
 async function buyXweb3() {
   let amount = select('#xweb3-output').value;
+  if (amount < 10000) {
+    alert('use more than 10000 pweb3');
+    return;
+  }
   amount = amount.replace(/,/g, '');
   await SEND_TX('xweb3', 'buy', [ADRS['pweb3'], BIG(amount)]);
 }
