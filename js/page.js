@@ -115,7 +115,7 @@ async function gV(k) {
 }
 
 let AMOUNTADDED = 1728;
-
+let PRICEMULED = 0.058;
 
 let wPrice;
 let xPrice;

@@ -240,29 +240,39 @@
       await _runGlobal();
     }
 
-    let calcToken;
-
     async function runPersonal() {
       await _runPersonal();
 
-      displayText("#balanceInUsd", `$${COMMA(INT((await gV('web3Balance')) * (await gV('price')), 3))}`);
+      await getTotalEarned();
 
+      displayText("#balanceInUsd", `$${COMMA(INT((await gV('web3Balance')) * (await gV('price')), 3))}`);
+      
+      let dailyEarning = (await gV('web3Blanace')) / (await gV('totalSupply')) * AMOUNTADDED;
       // let rebaseRate = 1.00000017;
       let rebaseRate = 1.00000079;
-      displayText("#nextRebaseReward", `${COMMA(INT((await gV('web3Balance')) * rebaseRate - (await gV('web3Balance')), 3))} $WEB3`);
-      displayText("#nextRebaseRewardInUsd", `$${COMMA(INT(((await gV('web3Balance')) * rebaseRate - (await gV('web3Balance'))) * (await gV('price')) * 1.00000062, 3))}`);
+      displayText("#nextRebaseReward", `${COMMA(INT(dailyEarning / (20 * 60 * 24), 3))}`);
+      displayText("#nextRebaseRewardInUsd", `${COMMA(INT(dailyEarning/ (20 * 60 * 24) * (await gV('price')), 3))}`);
 
       // let hourRate = 1.00020402;
       let hourRate = 1.00094844;
-      displayText("#nexthourReward", `${COMMA(INT((await gV('web3Balance')) * hourRate - (await gV('web3Balance')), 3))} $WEB3`);
-      displayText("#nexthourRewardInUsd", `$${COMMA(INT(((await gV('web3Balance')) * hourRate - (await gV('web3Balance'))) * (await gV('price')) * 1.00074427, 3))}`);
+      displayText("#nexthourReward", `${COMMA(INT(dailyEarning / (24), 3))}`);
+      displayText("#nexthourRewardInUsd", `${COMMA(INT(dailyEarning / (24) * (await gV('price')), 3))}`);
 
+      // let hourRate = 1.00020402;
+      let hourRate = 1.00094844;
+      displayText("#nextDailyReward", `${COMMA(INT(dailyEarning, 3))}`);
+      displayText("#nextDailyRewardInUsd", `${COMMA(INT(dailyEarning * (await gV('price')), 3))}`);
 
 
       // let MonthRate = 1.1582149;
       let MonthRate = 1.9789369;
-      displayText("#nextMonthReward", `${COMMA(INT((await gV('web3Balance')) * MonthRate - (await gV('web3Balance')), 3))} $WEB3`);
-      displayText("#nextMonthRewardInUsd", `$${COMMA(INT(((await gV('web3Balance')) * MonthRate - (await gV('web3Balance'))) * (await gV('price')) * 1.7086094, 3))}`);
+      displayText("#nextMonthReward", `${COMMA(INT(dailyEarning * 30, 3))}`);
+      displayText("#nextMonthRewardInUsd", `${COMMA(INT(dailyEarning * 30 * (await gV('price')), 3))}`);
+
+
+    
+
+
     }
 
     (async () => {
@@ -280,17 +290,6 @@
       }
       
       await runPersonal();
-
-      await getTotalEarned();
-
-      // display address
-      calcToken = AMOUNTADDED * (totalSupplyPercentage / 100)
-      console.log(calcToken)
-
-      let dailyRate = 1.02301279;
-      displayText("#nextDailyReward", `${COMMA(INT(calcToken, 3))} $WEB3`);
-
-      displayText("#nextDailyRewardInUsd", `$${COMMA(INT((calcToken) * (await gV('price')) * dailyRate, 3))}`);  
 
       $('[data-bs-toggle="tooltip"]').tooltip();
     })();
