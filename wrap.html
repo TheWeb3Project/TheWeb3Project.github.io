@@ -236,7 +236,6 @@
                                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
                                                 <input id="lock-input1" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                                             </div>
-                                            <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
                                         </div>
                                         <p class="token-amount-field__balance">Balance: <span id="wweb3Balance">0.000</span></p>
                                         <button type="button" class="d-sm-none d-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
@@ -304,20 +303,21 @@
 
                             <div class="mt-5">
                              <div class="info  col-12 d-flex justify-content-end">
-                              <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                              Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.<br/>
-                              Non transferable NFT obtained by locking your web3 for 365 days.<br/>
-                              Different tiers based on amounts of total supply:<br/>
-                              <br/>
-                              1 <= x < 10 = Tier 1<br/>
-                              10 <= x < 100 = Tier 2<br/>
-                              100 < x = Tier 3<br/>
-                              "></i>
                              </div>
                             <button id="hof-claim" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
                             border-radius: 20px;
                            background-color: gray;">
-                              <span id="claim-name" class="button__content">Claim Hall Of Fame NFT</span>
+                              <span id="claim-name" class="button__content">
+                                Claim Hall Of Fame NFT <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                                Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.<br/>
+                                Non transferable NFT obtained by locking your web3 for 365 days.<br/>
+                                Different tiers based on amounts of total supply:<br/>
+                                <br/>
+                                1 <= x < 10 = Tier 1<br/>
+                                10 <= x < 100 = Tier 2<br/>
+                                100 < x = Tier 3<br/>
+                                "></i>
+                              </span>
                             </button>
                            </div>
                           </div>
