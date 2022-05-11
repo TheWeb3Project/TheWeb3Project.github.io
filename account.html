@@ -247,7 +247,7 @@
 
       displayText("#balanceInUsd", `$${COMMA(INT((await gV('web3Balance')) * (await gV('price')), 3))}`);
 
-      let dailyEarning = (await gV('web3Blanace')) / (await gV('totalSupply')) * AMOUNTADDED;
+      let dailyEarning = (await gV('web3Balance')) / (await gV('totalSupply')) * AMOUNTADDED;
       
       // let rebaseRate = 1.00000017;
       let rebaseRate = 1.00000079;
