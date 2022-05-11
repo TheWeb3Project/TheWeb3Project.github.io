@@ -709,7 +709,7 @@ activateTab(opentab)
 
         select(`#run-lock${idx}`).onclick = async () => { await runLock(idx); };
         select(`#run-unlock${idx}`).onclick = async () => { await runUnlock(idx); };
-        select(`#run-emerunstake${idx}`).onclick = async () => {
+        select(`#run-eunlock${idx}`).onclick = async () => {
           alert("This is for the EMERGENCY unstake. you will get 10% of the staked amount. Confirm transaction if you REALLY want to do the emergency unstake");
           await runEmerUnstake(idx);
         };
