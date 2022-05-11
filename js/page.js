@@ -1138,7 +1138,7 @@ async function sellOre() {
 } 
 
 async function buyXweb3() {
-  let amount = select('#xweb3-output').value;
+  let amount = select('#xweb3-input').value;
   if (amount < 10000) {
     alert('use more than 10000 pweb3');
     return;
