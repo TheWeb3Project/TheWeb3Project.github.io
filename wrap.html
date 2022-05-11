@@ -810,29 +810,46 @@ document.addEventListener("DOMContentLoaded", function() {
         select('#run-wweb3-approve-lock3').onclick = async () => { await approve('wweb3', ADRS['lock']); };
       }
 
-      [res, data] = await READ_TX('lock', '_rewards', [CURADR]);
-      let claimAmount = data;
-      claimAmount = claimAmount / BNBDIV;
-      displayText('#claimAmount', `${COMMA(INT(claimAmount, 3))}`);
-
       for (let idx of [1, 2, 3]) {
+        if (idx == 1) {
+          [res, data] = await READ_TX('lock', '_rewards', [CURADR]);
+        } else {
+          [res, data] = await READ_TX('lock', '_rewardsMulti', [idx - 1, CURADR]);
+        }
+        let claimAmount = data;
+        claimAmount = claimAmount / BNBDIV;
+        displayText(`#claimAmount${idx}`, `${COMMA(INT(claimAmount, 3))}`);
+        
         select(`#run-claim${idx}`).onclick = async () => { await runClaim(idx); };
 
-        [res, data] = await READ_TX('lock', '_amountsMulti', [idx, CURADR]);
+        if (idx == 1) {
+          [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
+        } else {
+          [res, data] = await READ_TX('lock', '_amountsMulti', [idx - 1, CURADR]);
+        }
+
         let lockedAmount = data;
         lockedAmount = lockedAmount / BNBDIV;
         displayText(`#lockedAmount${idx}`, `${COMMA(INT(lockedAmount, 3))}`);
 
-        [res, data] = await READ_TX('lock', '_durationsMulti', [idx, CURADR]);
+        if (idx == 1) {
+          [res, data] = await READ_TX('lock', '_durations', [CURADR]);
+        } else {
+          [res, data] = await READ_TX('lock', '_durationsMulti', [idx - 1, CURADR]);
+        }
         let lockedDuration = data;
 
         displayText(`#lockedDuration${idx}`, `${COMMA(INT(lockedDuration, 0))}`);
         
-        [res, data] = await READ_TX('lock', '_unlockTimesMulti', [idx, CURADR]);
+        if (idx == 1) {
+          [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
+        } else {
+          [res, data] = await READ_TX('lock', '_unlockTimesMulti', [idx - 1, CURADR]);
+        }
         let unlockTime = data;
 
         let unlockAfter = unlockTime - NOW() / 1000;
-        let timeinterval = setInterval(function () {
+        setInterval(function () {
               
           if (unlockAfter <= 0) {
             unlockAfter = 0;
