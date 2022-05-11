@@ -169,7 +169,22 @@ ABIS['lock'] = [
   "function _lastClaims(address) view returns (uint256)",
   
 
-  "function calculateReward(uint256, uint256) view returns (uint256)"
+  "function calculateReward(uint256, uint256) view returns (uint256)",
+
+  "function stakeMulti(uint, uint256, uint256)",
+  "function unstakeMulti(uint)",
+  "function emergencyUnstakeMulti(uint)",
+  "function claimRewardMulti(uint)",
+
+  "function _amountsMulti(uint, address) view returns (uint256)",
+  "function _durationsMulti(uint, address) view returns (uint256)",
+  "function _rewardsMulti(uint, address) view returns (uint256)",
+  "function _unlockTimesMulti(uint, address) view returns (uint256)",
+  "function _lastClaimsMulti(uint, address) view returns (uint256)",
+  
+
+  "function calculateRewardMulti(uint, uint256, uint256) view returns (uint256)"
+
 ];
 
 ADRS['jackpot'] = "0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba";
