@@ -2,7 +2,7 @@ let now = INT(NOW() / 1000);
 
 let reAmBase = 1440;
 let reAmCur = 1728;
-let rePrBase = 0.05;
+let rePrBase = 0.026;
 let rePrCur = 0.07;
 
 let wPrice;
