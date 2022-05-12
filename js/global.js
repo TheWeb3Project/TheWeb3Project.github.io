@@ -203,14 +203,20 @@ async function _runGlobal() {
   displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
 
-//   for (let k in F) {
-//     let els = isExist(el);
-//     if (els == null) {
-//       continue;
-//     }
+  // let dollarElms = [];
+  // for (let k in F) {
+  //   let els = isExist(el);
+  //   if (els == null) {
+  //     continue;
+  //   }
 
-
-//   }
+  //   vStr = ``;
+  //   if (dollarElms.includes(k)) {
+  //       vStr = `$${vStr}`;
+  //   }
+  //   vStr = `${vStr}${COMMA(INT((await gV(k))))}`;
+  //   if ()
+  // }
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
