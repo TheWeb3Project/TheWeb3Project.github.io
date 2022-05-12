@@ -162,7 +162,7 @@ async function _runPersonal() {
   };
 
   displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
-  displayText("#xReward", `${COMMA(INT((await gV('xReward')), 3))} BNB`);
+  displayText("#xReward", `$${COMMA(INT((await gV('xReward')), 3))}`);
   
 
   lockedAmount = await CONTS['lock']._amounts(CURADR);
