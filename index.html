@@ -148,9 +148,16 @@
 
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
+                    Liquidity <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" data-bs-placement="bottom" title="Based on our actual circulating supply. Other chart may display differently."></i>
+                  </div>
+                  <h4 id="liquidity" class="fw-bold">$0</h4>
+                </div>
+
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">
                     Correlation <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    MCAP / Liquidity<br/>
-                    More % makes healthy stable project
+                    Liquidity / Market Cap<br/>
+                    Higher % makes healthy stable project
                     "></i>
                   </div>
                   <h4 id="corr" class="fw-bold">0</h4>
@@ -158,13 +165,20 @@
 
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
-                    Circulating Supply <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="Excludes burned / locked tokens"></i>
+                    Circulating Supply <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    Excludes burn / locked tokens
+                    "></i>
                   </div>
                   <h4 id="cirSupply" class="fw-bold">0</h4>
                 </div>
 
                 <div class="col my-3">
-                  <div class="text-secondary mb-1">Burned Supply</div>
+                  <div class="text-secondary mb-1">
+                    Burned Supply <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    We use renounced contract for the burn<br/>
+                    Check The Black Hole (TBH) in whitepaper
+                    "></i>
+                  </div>
                   <h4 id="burned" class="fw-bold">0</h4>
                 </div>
 
@@ -315,73 +329,52 @@
             </div>
           </div>
           
-          
-
-          
-
-          <div class="row">
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
+          <div class="my-5 col-12">
+            <div id='card'>
+              <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
-                    TBH Market Value <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    TBH Value <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     TBH: The Black Hole
                     "></i>
                   </div>
-                  <h4 id="theBlackHole">$0</h3>
+                  <h4 id="theBlackHole" class="fw-bold">$0</h4>
                 </div>
-              </div>
-            </div>
 
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
-                    TWT Market Value <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    TWT: The $WEB3 Treasury
-                    "></i>
-                  </div>
-                  <h4 id="treasury">$0</h3>
-                </div>
-              </div>
-            </div>
-
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    BNB Liquidity Value
-                  </div>
-                  <h4 id="liquidity">$0</h3>
-                </div>
-              </div>
-            </div>
-
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    WTF Market Value <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    WTF Value <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                     WTF: $WEB3 Trust Fund<br/>
                     $200K for Node (<span class='text-success'>+10%</span> / month) <br/>
                     "></i>
                   </div>
-                  <h4 id="trustFund">$0</h3>
+                  <h4 id="trustFund" class="fw-bold">$0</h4>
                 </div>
+
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">
+                    TWT Value <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    TWT: The $WEB3 Treasury                   
+                    "></i>
+                  </div>
+                  <h4 id="treasury" class="fw-bold">$0</h4>
+                </div>           
+                
               </div>
             </div>
-            <button id="rebase" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
-              <span class="fw-medium ms-1">MANUAL REBASE</span>
-            </button>
-
-            <button id="experi" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
-              <span id="experiStr" class="fw-medium ms-1"></span>
-            </button>
-
-            <button id="sellbuy" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
-              <span id="sellbuyStr" class="fw-medium ms-1"></span>
-            </button>
           </div>
+
+          <button id="rebase" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
+            <span class="fw-medium ms-1">MANUAL REBASE</span>
+          </button>
+
+          <button id="experi" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
+            <span id="experiStr" class="fw-medium ms-1"></span>
+          </button>
+
+          <button id="sellbuy" class="btn rounded-1 show" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="true" data-bs-offset="0,14">
+            <span id="sellbuyStr" class="fw-medium ms-1"></span>
+          </button>
 
           <div class="px-sm-3 my-5">
             <div id='card'>
@@ -445,7 +438,6 @@
       await _runPersonal();
 
       // check vip
-      let web3Balance = await CONTS['web3'].balanceOf(CURADR);
       if (0.1 < (await gV('web3Balance')) / (await gV('totalSupply')) * 100) {
        // alert('vip')
       }
