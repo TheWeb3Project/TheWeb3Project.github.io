@@ -43,7 +43,7 @@
         </div>
 
         <div id="container">
-          <div class="my-5 col-12">
+          <div class="my-5 col-12 col-lg-6">
             <div id="totalSection" class="card bg-light p-4" style="background-image: linear-gradient(160deg,#424750,#202326);">
               <span class="text-secondary">
                 Total Earned
@@ -53,70 +53,76 @@
               <span id="totalEarned" class="text-secondary">0.000 $WEB3 (+0.000%)</span>
             </div>
           </div>
+          
+          <div class="my-5 col-12 col-lg-6">
+            <div id="dailySection" class="card bg-light p-4" style="background-image: linear-gradient(160deg,#424750,#202326);">
+              <div class="col my-3">
+                <span class="text-secondary">
+                  Your Daily Earning<i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                  excluding wWEB3<br/>
+                  "></i>
+                  <a href="#"><i id="dailyShare" class="bi bi-share" data-toggle="modal" data-target="#jpModal"></i></a>
+                </span>
+              </div>
 
-          <div class="row">
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
+              <h4><span>$</span><span id="nextDailyRewardInUsd" class="fw-bold my-2">0.000</span></h4>
+              <span id="nextDailyReward" class="text-secondary">0.000</span><span> $WEB3</span>
+            </div>
+          </div>
+            
+          <div class="my-5 col-12">
+            <div id='card'>
+              <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
-                    Your Total Supply % <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    "></i>
+                    Total Supply
                   </div>
-                  <h4 id="percentTotalSupply">0.000</h3>
+                  <h4 id="totalSupply" class="fw-bold">$0</h4>
+                </div>
+
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">
+                    Your Balance
+                  </div>
+                  <h4 id="balanceInUsd" class="fw-bold my-2">$0.000</h4>
+                  <span id="web3Balance" class="text-secondary">0.000</span><span> $WEB3</span>
+                </div>
+
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">
+                    Your Holding %
+                  </div>
+                  <h4 id="percentTotalSupply" class="fw-bold">$0</h4>
                 </div>
               </div>
             </div>
+          </div>
 
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
+          <div class="my-5 col-12">
+            <div id='card'>
+              <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
-                    Your Balance <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    $wWEB3 Balance <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    excluding locked
                     "></i>
                   </div>
-
+                  <span id="wweb3Balance" class="text-secondary">0.000</span><span> $wWEB3<br/></span>
                 </div>
-  
-                <h4 id="balanceInUsd" class="fw-bold my-2">$0.000</h4>
-                <span id="web3Balance" class="text-secondary">0.000</span><span> $WEB3</span>
-              </div>
-            </div>
 
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
-                    Other Balances <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    "></i>
+                    $pWEB3 Balance
                   </div>
+                  <span id="pweb3Balance" class="text-secondary">0.000</span><span> $pWEB3<br/></span>
                 </div>
-  
-                <span id="wweb3Balance" class="text-secondary">0.000</span><span> $wWEB3<br/></span>
-                <span id="lockedAmount" class="text-secondary">0.000</span><span> $wWEB3 (</span>
-                  <span id="lockedDuration" class="text-secondary">0</span><span> days lock)<br/></span>
-                
-                <span id="pweb3Balance" class="text-secondary">0.000</span><span> $pWEB3<br/></span>
-                <span id="xweb3Balance" class="text-secondary">0.000</span><span> $xWEB3<br/></span>
-              </div>
-            </div>
 
-            <div class="my-3 col-12 col-lg-6">
-              <div id='card'>
                 <div class="col my-3">
-                  <span class="text-secondary">
-                    Your Earnings / Daily<i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    excluding wWEB3<br/>
-                    "></i>
-                    <a href="#"><i id="dailyShare" class="bi bi-share" data-toggle="modal" data-target="#jpModal"></i></a>
-                  </span>
-  
-                  <!-- <span class="text-primary border border-primary shadow rounded-pill py-2 small">
-                    +0.00%
-                  </span> -->
+                  <div class="text-secondary mb-1">
+                    $xWEB3 Balance
+                  </div>
+                  <span id="xweb3Balance" class="text-secondary">0.000</span><span> $xWEB3<br/></span>
                 </div>
-  
-                <h4><span>$</span><span id="nextDailyRewardInUsd" class="fw-bold my-2">0.000</span></h4>
-                <span id="nextDailyReward" class="text-secondary">0.000</span><span> $WEB3</span>
               </div>
             </div>
           </div>
