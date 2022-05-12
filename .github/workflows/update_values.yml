@@ -26,9 +26,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: |
-        npm https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
-        npm https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js
-        npm https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js
-        npm base.js
-        npm global.js
-        npm page.js
+        node https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js
+        node https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js
+        node https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js
+        node base.js
+        node global.js
+        node page.js
