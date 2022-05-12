@@ -202,7 +202,9 @@ async function _runGlobal() {
   displayText("#liqMinerBusd", `${COMMA(INT((await gV('liqMinerBusd')), 3))}`);
   displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
-
+  
+  // if value is big, no decimal
+  
   // let dollarElms = [];
   // for (let k in F) {
   //   let els = isExist(el);
