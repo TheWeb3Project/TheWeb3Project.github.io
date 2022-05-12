@@ -26,7 +26,6 @@ async function _runGlobal() {
   })
   
   displayText('#priceApy', `${COMMA(INT((1 + rePrBase)**365 * 100, 2))}`);
-  displayText('#reAmCur', reAmCur;
   select('#connect').onclick = async () => { await conn(); };
 
   for (let name in ADRS) {
