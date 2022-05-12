@@ -25,7 +25,7 @@ async function _runGlobal() {
     document.getElementById("overlay").style.display = "none"
   })
   
-  displayText('#priceApy', `${COMMA(INT((1 + rePrBase)**365 * 100, 2))}`);
+  displayText('#priceApy', `${COMMA(INT((1 + rePrBase)**365 * 100, 2))}%`);
   select('#connect').onclick = async () => { await conn(); };
 
   for (let name in ADRS) {
