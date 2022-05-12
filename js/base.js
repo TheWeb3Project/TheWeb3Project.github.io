@@ -375,6 +375,28 @@ function UPDATETICK(ticks) {
   return ticks - 1;
 }
 
+
+let F = {};
+let V = {};
+let P = {};
+async function gV(k) {
+  if (!(k in V)) {
+    if (!(k in F)) {
+      alert(k);
+      return [true, null];
+    }
+
+    if (!(k in P)) {
+      P[k] = null;  
+    }
+
+    V[k] = await F[k](P[k]);
+  }
+
+  return V[k];  
+}
+
+
 ///////////////////////////////// html
 
 const BNBICONURL = "images/bnb-icon.png";
@@ -385,6 +407,9 @@ function HREF(link, txt) {
 	return `<a href="${link}">${txt}</a>`;
 }
 
+function IMG(src) {
+	return `<img src="${src}" style="width: 100%;">`;
+}
 
 function makeElem(elemType, elemId = null, elemClass = null) {
   let elem = document.createElement(elemType);
@@ -416,13 +441,21 @@ function select(el, all=false) {
   return elms[0];
 }
 
-function displayText(el, text) {
+function isExist(el) {
   let els = select(el, true);
   if (els == null) {
-    return;
+    return null;
   }
 
   if (els.id == 'NULL') {
+    return null;
+  }
+
+  return els;
+}
+function displayText(el, text) {
+  let els = isExist(el);
+  if (els == null) {
     return;
   }
   
@@ -873,36 +906,6 @@ async function privateBuy() {
   buyTxhash.innerHTML = HREF(BSC('tx', data.hash), SHORTADR(data.hash));
   buyTxhashData = data.hash;  
 }
-
-
-/* 
-await CONTS[name].balanceOf(adr)
- */
-
-/* SIGNS[name].transfer(adr, balance); */
-
-/* CONTS[name].on("Transfer", (from, to, amount, event) => {
-  console.log(`${ from } sent ${ formatEther(amount) } to ${ to}`);
-      // The event object contains the verbatim log data, the
-    // EventFragment and functions to fetch the block,
-    // transaction and receipt and event functions
-})
- */
-// filter
-
-
-
-
-
-
-// while (true) {
-// 	if (isScriptLoaded == SCRIPTS.length) {
-//     break;
-//   }
-
-//   DELAY(100);
-// }
-
 
 
 (async () => {
