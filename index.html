@@ -47,15 +47,26 @@
           <div class="my-5 col-12">
             <div id='card'>
               <div class="text-secondary mb-1">
-                Highest APY = 103,864,155,400.73% APY <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                5.85% Daily price increase<br/>
-                If 6% price drops, 0.15% drops happen instead<br/>
-                If 6% price rises, 11.85% rises happen instead
+                Dual Rebase = Price Rebase + Balance Rebase
+                Highest APY = <span id="priceApy"></span> SUSTAINABLE APY <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                This APY is based on 5% price rebase.<br/>
+                Unlike balance rebase like others,<br/>
+                price is adjusted by market situation.<br/>
+                If 6% price drops, 1% drops happen instead.<br/>
+                If 6% price rises, 11% rises happen instead.<br/>
+                <br/>
+                As it doesn't go to infinite price,<br/>
+                and adjusted by market sitaution,<br/>
+                it is therefore SUSTAINABLE<br/>
+                <br/>
+                Due to event, changed to 7%
                 "></i>
                 + 475.65% APR <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                <span id='AMOUNTADDED'><span> WEB3 added every day<br/>
+                1440 WEB3 added every day<br/>
                 based on 2022.05.01, <br/>
-                1.3% daily amount increase<br/>
+                This is roughly 1.3% daily amount increase<br/>
+                <br/>
+                Due to event, changed to 1728
                 "></i>
               </div>
               <div class="text-secondary mb-1">
@@ -66,6 +77,40 @@
             </div>
           </div>
         
+          <div class="my-5 col-12">
+            <div id='card'>
+              <div class="row row-cols-1 row-cols-sm-3">
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">$WEB3 Price <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    Our Main Token<br/>
+                    dual
+                    Your $WEB3 balance increases by holding
+                    "></i>
+                  </div>
+                  <h4 id="price" class="fw-bold">$0</h4>
+                </div>
+
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">$wWEB3 Price <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                    Wrapped $WEB3<br/>
+                    Handles rebase
+                    MCAP / Liquidity<br/>
+                    More % makes healthy stable project
+                    "></i>
+
+                  </div>
+                  <h4 id="wPrice" class="fw-bold">$0</h4>
+                </div>
+
+                <div class="col my-3">
+                  <div class="text-secondary mb-1">$xWEB3 Price</div>
+                  <h4 id="xPrice" class="fw-bold">$0</h4>
+                </div>           
+                
+              </div>
+            </div>
+          </div>
+
           <div class="my-5 col-12">
             <div id='card'>
               <span class="fw-medium ms-1">
@@ -83,10 +128,7 @@
               </span>
               
               <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">$WEB3 Price</div>
-                  <h4 id="price" class="fw-bold">$0</h4>
-                </div>
+                
 
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
@@ -264,22 +306,7 @@
             </div>
           </div>
           
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">$wWEB3 Price</div>
-                  <h4 id="wPrice" class="fw-bold">$0</h4>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">$xWEB3 Price</div>
-                  <h4 id="xPrice" class="fw-bold">$0</h4>
-                </div>           
-                
-              </div>
-            </div>
-          </div>
+          
 
           
 
