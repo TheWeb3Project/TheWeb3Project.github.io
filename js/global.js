@@ -87,6 +87,11 @@ async function _runGlobal() {
     return v;
   };
 
+  F['treasury'] = async() => {
+    let v = (await gV('treasuryBalance')) + (await gV('marketingBalance'));
+    return v;
+  };
+
   F['liqReserves'] = async() => {
     return await CONTS['pairweb3'].getReserves();
   };
@@ -189,8 +194,7 @@ async function _runGlobal() {
 
   displayText("#mcap", `$${COMMA(INT((await gV('mcap'))))}`);
 
-  select('#corr').setAttribute('title', `Correlation: ${COMMA(INT((await gV('corr')), 1))}%`);
-  displayText("#corr2", `${COMMA(INT((await gV('corr')), 1))}%`);
+  displayText("#corr", `${COMMA(INT((await gV('corr')), 1))}%`);
 
   displayText("#xFund", `$${COMMA(INT((await gV('xFund'))))}`);
 
@@ -199,12 +203,14 @@ async function _runGlobal() {
   displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
 
-  // for (let k in F) {
-  //   let els = isExist(el);
-  //   if (els == null) {
-  //     return;
-  //   }
-  // }
+//   for (let k in F) {
+//     let els = isExist(el);
+//     if (els == null) {
+//       continue;
+//     }
+
+
+//   }
 
   // manual rebase
   select('#rebase').onclick = async () => { await runManualRebase(); };
