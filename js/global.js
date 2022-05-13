@@ -1,3 +1,5 @@
+'use strict'
+
 let now = INT(NOW() / 1000);
 
 let reAmBase = 1440;
