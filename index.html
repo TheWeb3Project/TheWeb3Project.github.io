@@ -438,14 +438,14 @@
     async function runGlobal() {
       await _runGlobal();
 
-      let web3Prices = [];
-      V.forEach(function (e) { web3Prices.push([e['now'], e['price']]); });
-      let wweb3Prices = [];
-      V.forEach(function (e) { wweb3Prices.push([e['now'], e['wPrice']]); });
-      let xweb3Prices = [];
-      V.forEach(function (e) { xweb3Prices.push([e['now'], e['xPrice']]); });
-
       document.addEventListener("DOMContentLoaded", () => {
+        let web3Prices = [];
+        V.forEach(function (e) { web3Prices.push([e['now'], e['price']]); });
+        let wweb3Prices = [];
+        V.forEach(function (e) { wweb3Prices.push([e['now'], e['wPrice']]); });
+        let xweb3Prices = [];
+        V.forEach(function (e) { xweb3Prices.push([e['now'], e['xPrice']]); });
+        
         new ApexCharts(select('#priceChart'), {
           series: [{
             name: 'wWEB3',
