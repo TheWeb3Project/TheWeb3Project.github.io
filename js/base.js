@@ -77,7 +77,7 @@ if (isBrowser) {
   }
 }
 
-if (typeof PROVIDER === 'undefined')
+if (typeof PROVIDER === 'undefined') {
   PROVIDER = new ethers.providers.JsonRpcProvider(RPCS[1], {name: 'binance', 'chainId': 56});
 }
 
