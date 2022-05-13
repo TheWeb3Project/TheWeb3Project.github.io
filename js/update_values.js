@@ -4,10 +4,16 @@ var fs = require('fs');
 
 async function run() {
   try {
+    // V = fs.readFileSync("jsons/values.json");
+    // V = JSON.parse(V);
+    // VIdx = V.length;
+    // V.push({});
     for (let k in F) {
       await gV(k);
     }
-    V['now'] = NOW();
+    V[VIdx]['now'] = NOW();
+
+    
 
     fs.writeFile("jsons/values.json", JSON.stringify(V), function(e) {
       if (e) {
