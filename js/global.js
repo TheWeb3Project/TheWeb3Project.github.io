@@ -161,6 +161,7 @@ let bigbuyAlarmed = false;
 async function _runGlobal() {
   let cacheData = await fetch('jsons/values.json');
   cacheData = await cacheData.text();
+  cacheData = JSON.parse(cacheData);
   for (let k in cacheData) {
     V[k] = cacheData[k];
   }
