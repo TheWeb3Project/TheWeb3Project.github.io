@@ -25,6 +25,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: |
+        npm install --save ethers
         node js/base.js
         node js/global.js
         node js/update_values.js
