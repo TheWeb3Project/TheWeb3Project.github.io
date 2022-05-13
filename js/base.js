@@ -394,6 +394,7 @@ function UPDATETICK(ticks) {
 let F = {};
 let V = {};
 let P = {};
+let VIdx = 0;
 async function gV(k) {
   if (!(k in V)) {
     if (!(k in F)) {
