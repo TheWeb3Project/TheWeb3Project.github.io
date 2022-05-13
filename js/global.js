@@ -211,6 +211,8 @@ async function _runGlobal() {
   displayText("#totalSupply", `${COMMA(INT((await gV('totalSupply')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
 
+  displayText("#xTotalSupply", `${COMMA(INT((await gV('xTotalSupply')), 3))}`);
+
   displayText("#mcap", `$${COMMA(INT((await gV('mcap'))))}`);
 
   displayText("#corr", `${COMMA(INT((await gV('corr')), 1))}%`);
