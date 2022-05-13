@@ -159,7 +159,7 @@ let cb;
 let bigbuyTimeLeft;
 let bigbuyAlarmed = false;
 async function _runGlobal() {
-  let cacheData = await fetch('https://raw.githubusercontent.com/TheWeb3Project/TheWeb3Project.github.io/main/jsons/values.json');
+  let cacheData = await fetch('jsons/values.json');
   cacheData = await cacheData.text();
   for (let k in cacheData) {
     V[k] = cacheData[k];
