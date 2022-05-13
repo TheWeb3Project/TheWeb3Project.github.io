@@ -147,6 +147,7 @@ async function setFs() {
 
   F['tvl'] = async() => {
     let v = (await gV('liqBnb')) * (await gV('bnbPrice')) + (await gV('liqMinerBnb')) * (await gV('bnbPrice')) + (await gV('liqMinerBusd')) + (await gV('liqMinerWusd'));
+    return v;
   }
 }
 setFs();
