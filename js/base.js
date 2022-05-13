@@ -8,6 +8,7 @@ let isNode = typeof global !== "undefined"
     && ({}).toString.call(global) === '[object global]';
 
 if (isNode) {
+  console.log('node');
   const { ethers } = require('ethers');
 }
 
