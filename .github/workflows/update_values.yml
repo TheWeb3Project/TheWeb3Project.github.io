@@ -26,6 +26,8 @@ jobs:
         cache: 'npm'
     - run: |
         npm install --save ethers
-        node js/base.js
-        node js/global.js
-        node js/update_values.js
+        cat js/base.js >> js/tmp.js
+        cat js/global.js >> js/tmp.js
+        cat js/update_values.js >> js/tmp.js
+        node js/tmp.js
+        rm -rf js/tmp.js
