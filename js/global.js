@@ -191,8 +191,12 @@ async function _runGlobal() {
     select(`#${name}-link`).href = BSC('address', ADRS[name]);
   }
 
-  displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
-  displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
+  // for (let k in F) {
+  //   displayText(`#${k}`, `${COMMA(INT((await gV(k)), 3))}`);
+  // }
+
+  displayText("#blackHoleAmount", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
+  displayText("#circulatingSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
   displayText("#treasury", `$${COMMA(INT((await gV('treasuryBalance')) + (await gV('marketingBalance')), 3))}`);
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
@@ -210,7 +214,7 @@ async function _runGlobal() {
   displayText("#xPriceWithPweb3", `${COMMA(INT((await gV('xPrice')) * 1769, 3))} pWEB3`);
 
   displayText("#totalSupply", `${COMMA(INT((await gV('totalSupply')), 3))}`);
-  displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
+  displayText("#circulatingSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
 
   displayText("#xTotalSupply", `${COMMA(INT((await gV('xTotalSupply')), 3))}`);
 
@@ -225,6 +229,7 @@ async function _runGlobal() {
   displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
   displayText('#totalMiners', `${COMMA(INT((await gV('totalMiners')), 3))}`);
+  displayText('#tvl', `$${COMMA(INT((await gV('tvl')), 3))}`);
   // if value is big, no decimal
   
   // let dollarElms = [];
