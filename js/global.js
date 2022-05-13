@@ -220,7 +220,7 @@ async function _runGlobal() {
   displayText("#liqMinerBusd", `${COMMA(INT((await gV('liqMinerBusd')), 3))}`);
   displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
-  displayText('#totalMiners', `${COMMA(INT((await gV('totalMiners'))}`);
+  displayText('#totalMiners', `${COMMA(INT((await gV('totalMiners')), 3))}`);
   // if value is big, no decimal
   
   // let dollarElms = [];
