@@ -330,9 +330,7 @@
       let _miners = await CONTS['miner']._miners(CURADR);
       select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
 			
-      let totalMiners = await CONTS['miner'].totalSupply();
-      totalMiners = totalMiners / BNBDIV;
-      displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
+      
 
       let _daimonds = await CONTS['miner']._daimonds(CURADR);
       select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
