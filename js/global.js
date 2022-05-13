@@ -139,6 +139,12 @@ async function setFs() {
   F['liqMinerWusd'] = async() => {
     return (await CONTS['wusd'].balanceOf(ADRS['miner'])) / BNBDIV;
   };
+
+  F['totalMiners'] = async() => {
+    let v = await CONTS['miner'].totalSupply();
+    return v / BNBDIV;
+  };
+
 }
 setFs();
 
@@ -215,7 +221,7 @@ async function _runGlobal() {
   displayText("#liqMinerBusd", `${COMMA(INT((await gV('liqMinerBusd')), 3))}`);
   displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
-  
+  displayText('#totalMiners', `${COMMA(INT(totalMiners))}`);
   // if value is big, no decimal
   
   // let dollarElms = [];
