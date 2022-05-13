@@ -167,10 +167,7 @@ let bigbuyAlarmed = false;
 async function _runGlobal() {
   let cacheData = await fetch('jsons/values.json');
   cacheData = await cacheData.text();
-  cacheData = JSON.parse(cacheData);
-  for (let k in cacheData) {
-    V[k] = cacheData[k];
-  }
+  V = JSON.parse(cacheData);
 
   document.getElementById("showSidebar").addEventListener("click", function () {
     document.getElementById("sidebarContainer").classList.add("show");
