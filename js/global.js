@@ -1,43 +1,9 @@
 'use strict'
 
-let now = INT(NOW() / 1000);
-
-let reAmBase = 1440;
-let reAmCur = 1728;
-let rePrBase = 0.026;
-let rePrCur = 0.07;
-
-let wPrice;
-let xPrice;
-
-let cbTimeLeft;
-let jackpotTimeLeft;
-let jpAlarmed = false;
-let cb;
-let bigbuyTimeLeft;
-let bigbuyAlarmed = false;
-async function _runGlobal() {
-  document.getElementById("showSidebar").addEventListener("click", function () {
-    document.getElementById("sidebarContainer").classList.add("show");
-    document.getElementById("overlay").style.display = "block"
-  })
-
-  document.getElementById("overlay").addEventListener("click", function () {
-    document.getElementById("sidebarContainer").classList.remove("show");
-    document.getElementById("overlay").style.display = "none"
-  })
-  
-  displayText('#priceApy', `${COMMA(INT((1 + rePrBase)**365 * 100, 2))}%`);
-  select('#connect').onclick = async () => { await conn(); };
-
-  for (let name in ADRS) {
-    displayText(`#${name}`, ADRS[name]);
-    select(`#${name}-link`).href = BSC('address', ADRS[name]);
-  }
-
+async function setFs() {
   F['xWeb3'] = async() => {
-    return ADRS['xweb3'];
-  };
+      return ADRS['xweb3'];
+    };
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
   F['totalSupply'] = async() => {
@@ -172,7 +138,44 @@ async function _runGlobal() {
 
   F['liqMinerWusd'] = async() => {
     return (await CONTS['wusd'].balanceOf(ADRS['miner'])) / BNBDIV;
-  }; 
+  };
+}
+setFs();
+
+let now = INT(NOW() / 1000);
+
+let reAmBase = 1440;
+let reAmCur = 1728;
+let rePrBase = 0.026;
+let rePrCur = 0.07;
+
+let wPrice;
+let xPrice;
+
+let cbTimeLeft;
+let jackpotTimeLeft;
+let jpAlarmed = false;
+let cb;
+let bigbuyTimeLeft;
+let bigbuyAlarmed = false;
+async function _runGlobal() {
+  document.getElementById("showSidebar").addEventListener("click", function () {
+    document.getElementById("sidebarContainer").classList.add("show");
+    document.getElementById("overlay").style.display = "block"
+  })
+
+  document.getElementById("overlay").addEventListener("click", function () {
+    document.getElementById("sidebarContainer").classList.remove("show");
+    document.getElementById("overlay").style.display = "none"
+  })
+  
+  displayText('#priceApy', `${COMMA(INT((1 + rePrBase)**365 * 100, 2))}%`);
+  select('#connect').onclick = async () => { await conn(); };
+
+  for (let name in ADRS) {
+    displayText(`#${name}`, ADRS[name]);
+    select(`#${name}-link`).href = BSC('address', ADRS[name]);
+  }
 
   displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
