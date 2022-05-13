@@ -7,9 +7,11 @@ let isBrowser = typeof window !== 'undefined'
 let isNode = typeof global !== "undefined" 
     && ({}).toString.call(global) === '[object global]';
 
+let ethers;
 if (isNode) {
   console.log('node');
-  const { ethers } = require('ethers');
+  ethers = require('ethers');
+
 }
 
 function loadScript(url, callback) {
