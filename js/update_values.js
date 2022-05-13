@@ -8,6 +8,7 @@ async function run() {
     // V = JSON.parse(V);
     // VIdx = V.length;
     // V.push({});
+    V.push({});
     for (let k in F) {
       await gV(k);
     }
