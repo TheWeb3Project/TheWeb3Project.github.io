@@ -25,6 +25,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: |
-        node base.js
-        node global.js
-        node update_values.js
+        node js/base.js
+        node js/global.js
+        node js/update_values.js
