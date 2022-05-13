@@ -445,7 +445,7 @@
       let xweb3Prices = [];
       V.forEach(function (e) { xweb3Prices.push([e['now'], e['xPrice']]); });
 
-      document.addEventListener("DOMContentLoaded", function() {
+      document.addEventListener("DOMContentLoaded", () => {
         new ApexCharts(select('#priceChart'), {
           series: [{
             name: 'wWEB3',
