@@ -438,10 +438,12 @@ function makeElem(elemType, elemId = null, elemClass = null) {
 
   return elem;
 }
-let nullDiv = makeElem('div', 'NULL', null);
-nullDiv.style.width = '1px';
-nullDiv.style.display = 'none';
-document.body.append(nullDiv);
+if (isBrowser) {
+  let nullDiv = makeElem('div', 'NULL', null);
+  nullDiv.style.width = '1px';
+  nullDiv.style.display = 'none';
+  document.body.append(nullDiv);
+}
 
 function select(el, all=false) {
   el = el.trim();
