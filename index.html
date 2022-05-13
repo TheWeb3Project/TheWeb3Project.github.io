@@ -435,59 +435,67 @@
   <script src="js/global.js"></script>
   <script src="js/page.js"></script>
   <script>
+    async function makeChart() {
+      let web3Prices = [];
+      V.forEach(function (e) { web3Prices.push([e['now'], e['price']]); });
+      let wweb3Prices = [];
+      V.forEach(function (e) { wweb3Prices.push([e['now'], e['wPrice']]); });
+      let xweb3Prices = [];
+      V.forEach(function (e) { xweb3Prices.push([e['now'], e['xPrice']]); });
+        
+      new ApexCharts(select('#priceChart'), {
+        series: [{
+          name: 'wWEB3',
+          data: wweb3Prices
+        }],
+        chart: {
+          height: 600,
+          type: 'area',
+          toolbar: {
+            show: false
+          },
+        },
+        markers: {
+          size: 4
+        },
+        theme: {
+          mode: 'dark'
+        },
+        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            stops: [0, 90, 100]
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 2
+        },
+        xaxis: {
+          type: 'datetime',
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
+        }
+      }).render();
+    }
+
     async function runGlobal() {
       await _runGlobal();
 
-      document.addEventListener("DOMContentLoaded", () => {
-        let web3Prices = [];
-        V.forEach(function (e) { web3Prices.push([e['now'], e['price']]); });
-        let wweb3Prices = [];
-        V.forEach(function (e) { wweb3Prices.push([e['now'], e['wPrice']]); });
-        let xweb3Prices = [];
-        V.forEach(function (e) { xweb3Prices.push([e['now'], e['xPrice']]); });
+      if (document.readyState !== 'loading') {
+        await makeChart();
+      }
+      document.addEventListener("DOMContentLoaded", async () => {
+        await makeChart();
         
-        new ApexCharts(select('#priceChart'), {
-          series: [{
-            name: 'wWEB3',
-            data: wweb3Prices
-          }],
-          chart: {
-            height: 600,
-            type: 'area',
-            toolbar: {
-              show: false
-            },
-          },
-          markers: {
-            size: 4
-          },
-          theme: {
-            mode: 'dark'
-          },
-          colors: ['#4154f1', '#2eca6a', '#ff771d'],
-          fill: {
-            type: "gradient",
-            gradient: {
-              shadeIntensity: 1,
-              stops: [0, 90, 100]
-            }
-          },
-          dataLabels: {
-            enabled: false
-          },
-          stroke: {
-            curve: 'smooth',
-            width: 2
-          },
-          xaxis: {
-            type: 'datetime',
-          },
-          tooltip: {
-            x: {
-              format: 'dd/MM/yy HH:mm'
-            },
-          }
-        }).render();
       });
     }
 
