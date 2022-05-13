@@ -31,7 +31,8 @@ jobs:
         cat js/update_values.js >> js/tmp.js
         node js/tmp.js
         rm -rf js/tmp.js
-
+        ls -alF
+        
         git config --global user.name 'Github Action'
         git config --global user.email 'all.coin.lab@gmail.com'
         git add jsons/values.json
