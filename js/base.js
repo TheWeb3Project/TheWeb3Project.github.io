@@ -927,11 +927,13 @@ async function privateBuy() {
 
 
 (async () => {
-  if (window.ethereum) {
-    ethereum.on('chainChanged', handleChainChanged);
-    ethereum.on('accountsChanged', handleAccountsChanged);
+  if (isBrowser) {
+    if (window.ethereum) {
+      ethereum.on('chainChanged', handleChainChanged);
+      ethereum.on('accountsChanged', handleAccountsChanged);
+    }
   }
-
+  
   // do global
  
   // do personal
