@@ -8,13 +8,10 @@ let isNode = typeof global !== "undefined"
     && ({}).toString.call(global) === '[object global]';
 
 
-// if 
-// let ethers;
-// if (isNode) {
-//   console.log('node');
-//   ethers = require('ethers');
-
-// }
+if (isNode) {
+  console.log('node');
+  var ethers = require('ethers');
+}
 
 function loadScript(url, callback) {
   let body = document.body;
