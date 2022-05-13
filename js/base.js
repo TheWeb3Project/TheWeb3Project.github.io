@@ -1,6 +1,15 @@
 
 'use strict'
 
+let isBrowser = typeof window !== 'undefined'
+    && ({}).toString.call(window) === '[object Window]';
+
+let isNode = typeof global !== "undefined" 
+    && ({}).toString.call(global) === '[object global]';
+
+if (isNode) {
+  const { ethers } = require('ethers');
+}
 
 function loadScript(url, callback) {
   let body = document.body;
@@ -48,23 +57,27 @@ let RPCS = [
   "https://bsc-dataseed1.ninicoin.io",
 ];
 let PROVIDER;
-if (window.ethereum) {
-	PROVIDER = new ethers.providers.Web3Provider(window.ethereum);
-	(async function () {
-    let network = await PROVIDER.getNetwork();
-    if (network['chainId'] != CHAINID) {
-      alert('Network is not BSC. Requesting to change network');
-      await window.ethereum.request({
-        method: "wallet_addEthereumChain",
-        params: [{
-          chainId: "0x38",
-          rpcUrls: [RPCS[1]],
-        }],
-      });
-    }
-  })();
-  
-} else {
+if (isBrowser) {
+  if (window.ethereum) {
+    PROVIDER = new ethers.providers.Web3Provider(window.ethereum);
+    (async function () {
+      let network = await PROVIDER.getNetwork();
+      if (network['chainId'] != CHAINID) {
+        alert('Network is not BSC. Requesting to change network');
+        await window.ethereum.request({
+          method: "wallet_addEthereumChain",
+          params: [{
+            chainId: "0x38",
+            rpcUrls: [RPCS[1]],
+          }],
+        });
+      }
+    })();
+    
+  }
+}
+
+if (typeof PROVIDER === 'undefined')
   PROVIDER = new ethers.providers.JsonRpcProvider(RPCS[1], {name: 'binance', 'chainId': 56});
 }
 
