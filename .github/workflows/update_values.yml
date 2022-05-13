@@ -27,4 +27,4 @@ jobs:
     - run: |
         node base.js
         node global.js
-        node page.js
+        node update_values.js
