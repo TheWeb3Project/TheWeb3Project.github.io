@@ -202,6 +202,7 @@ async function _runGlobal() {
 
   displayText("#xPriceWithPweb3", `${COMMA(INT((await gV('xPrice')) * 1769, 3))} pWEB3`);
 
+  displayText("#totalSupply", `${COMMA(INT((await gV('totalSupply')), 3))}`);
   displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
 
   displayText("#mcap", `$${COMMA(INT((await gV('mcap'))))}`);
