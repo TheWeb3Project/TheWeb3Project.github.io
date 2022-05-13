@@ -8,7 +8,7 @@ async function run() {
       await gV(k);
     }
 
-    fs.writeFile("values.json", JSON.stringify(V), function(e) {
+    fs.writeFile("jsons/values.json", JSON.stringify(V), function(e) {
       if (e) {
           console.log(e);
       }
