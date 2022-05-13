@@ -7,6 +7,7 @@ async function run() {
     for (let k in F) {
       await gV(k);
     }
+    V['now'] = NOW();
 
     fs.writeFile("jsons/values.json", JSON.stringify(V), function(e) {
       if (e) {
