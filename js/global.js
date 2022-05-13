@@ -196,10 +196,10 @@ async function _runGlobal() {
   displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * (await gV('price'))))}`);
   displayText("#wPrice", `$${COMMA(INT((await gV('wPrice')), 3))}`);
-  wPrice = V['wPrice'];
+  wPrice = V[VIdx]['wPrice'];
 
   displayText("#xPrice", `$${COMMA(INT((await gV('xPrice')), 3))}`);
-	xPrice = V['xPrice'];
+	xPrice = V[VIdx]['xPrice'];
 
   displayText("#wRate", `${COMMA(INT((await gV('wRate')), 2))} $WEB3`);
 

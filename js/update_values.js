@@ -13,6 +13,9 @@ async function run() {
     }
     V[VIdx]['now'] = NOW();
 
+    if (VIdx == 100) {
+      V.shift();
+    }
     
 
     fs.writeFile("jsons/values.json", JSON.stringify(V), function(e) {
