@@ -174,7 +174,7 @@ async function _runGlobal() {
   let cacheData = await fetch('jsons/values.json');
   cacheData = await cacheData.text();
   V = JSON.parse(cacheData);
-  VIdx = V.length;
+  VIdx = V.length - 1;
   
   document.getElementById("showSidebar").addEventListener("click", function () {
     document.getElementById("sidebarContainer").classList.add("show");
