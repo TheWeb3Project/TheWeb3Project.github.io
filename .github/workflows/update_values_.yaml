@@ -1,0 +1,40 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+
+jobs:
+  update_values:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16.x]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ matrix.node-version }}
+        # cache: 'npm'
+    - run: |
+        npm install --save ethers @actions/core tunnel @actions/github fs
+        cat js/base.js >> js/tmp.js
+        cat js/global.js >> js/tmp.js
+        cat js/update_values.js >> js/tmp.js
+        node js/tmp.js
+        rm -rf js/tmp.js
+        ls -alF
+        
+        git config --global user.name 'Github Action'
+        git config --global user.email 'all.coin.lab@gmail.com'
+        git add jsons/values.json
+        git commit -am "Update Value"
+        git push
