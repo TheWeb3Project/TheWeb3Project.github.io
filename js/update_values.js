@@ -7,10 +7,11 @@ async function run() {
     V = fs.readFileSync("jsons/values.json");
     V = JSON.parse(V);
     V.push({});
+    VIdx = V.length - 1;
     for (let k in F) {
       await gV(k);
     }
-    VIdx = V.length - 1;
+    
     V[VIdx]['now'] = NOW();
 
     if (VIdx == 100) {
