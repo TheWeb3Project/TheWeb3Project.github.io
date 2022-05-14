@@ -100,12 +100,12 @@ async function setFs() {
     return (await gV('wPrice')) / (await gV('price'));
   };
 
-  F['wLockedAmount'] = async() => {
+  F['wReservedAmount'] = async() => {
     return (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
   };
 
   F['wCirculatingSupply'] = async() => {
-    return (await gV('wTotalSupply')) - (await gV('wLockedAmount'));
+    return (await gV('wTotalSupply')) - (await gV('wReservedAmount'));
   };
 
   F['mcap'] = async() => {
@@ -145,9 +145,13 @@ async function setFs() {
     return v / BNBDIV;
   };
 
+  F['wLockedAmount'] = async() => {
+    return (await CONTS['wweb3'].balanceOf(ADRS['lock'])) / BNBDIV;
+  };
+
   F['tvl'] = async() => {
-    let v = (await gV('liqBnb')) + (await gV('liqMinerBnb'));
-    v = v * (await gV('bnbPrice'));
+    let v = ((await gV('liqBnb')) + (await gV('liqMinerBnb'))) * (await gV('bnbPrice'));
+    v = v + ((await gV('wLockedAmount'))) * (await gV('wPrice'));
     v = v + (await gV('liqMinerBusd')) + (await gV('liqMinerWusd')) + (await gV('xFund'));
     return v;
   }
