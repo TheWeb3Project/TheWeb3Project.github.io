@@ -87,7 +87,7 @@ function setCss() {
   let elms = select('#card', true);
   for (let elm of elms) {
     elm.classList = "card bg-light text-center p-4 d-block";
-    elm.style = "box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);";
+    elm.style = "";
   }
 }
 setCss();
