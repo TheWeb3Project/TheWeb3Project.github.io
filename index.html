@@ -79,7 +79,18 @@
               </div>
             </div>
           </div>
-        
+          
+          <div class="my-5 col-12">
+            <div id='card'>
+              <div class="text-secondary mb-1">
+                Total Value Locked <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                Liquidity + Miner Contract
+                "></i>
+              </div>
+              <h4 id="tvl" class="fw-bold">$0</h4>
+            </div>
+          </div>
+
           <div class="my-5 col-12">
             <div class="card">
               <div class="row row-cols-1 row-cols-sm-3">
@@ -164,7 +175,7 @@
                     Excludes burn / locked tokens
                     "></i>
                   </div>
-                  <h4 id="cirSupply" class="fw-bold">0</h4>
+                  <h4 id="circulatingSupply" class="fw-bold">0</h4>
                 </div>
 
                 <div class="col my-3">
@@ -174,7 +185,7 @@
                     Check The Black Hole (TBH) in whitepaper
                     "></i>
                   </div>
-                  <h4 id="burned" class="fw-bold">0</h4>
+                  <h4 id="blackHoleAmount" class="fw-bold">0</h4>
                 </div>
 
                 <div class="col my-3">
@@ -371,6 +382,9 @@
             <span id="sellbuyStr" class="fw-medium ms-1"></span>
           </button>
 
+          <div id="priceChart">
+          </div>
+
           <div class="px-sm-3 my-5">
             <div class='card'>
               <div class="text-secondary mb-1"></div>
@@ -420,13 +434,74 @@
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
   
   <script src="js/base.js"></script>
   <script src="js/global.js"></script>
   <script src="js/page.js"></script>
   <script>
+    async function makeChart() {
+      let web3Prices = [];
+      V.forEach(function (e) { web3Prices.push([e['now'], e['price']]); });
+      let wweb3Prices = [];
+      V.forEach(function (e) { wweb3Prices.push([e['now'], e['wPrice']]); });
+      let xweb3Prices = [];
+      V.forEach(function (e) { xweb3Prices.push([e['now'], e['xPrice']]); });
+        
+      new ApexCharts(select('#priceChart'), {
+        series: [{
+          name: 'wWEB3',
+          data: wweb3Prices
+        }],
+        chart: {
+          height: 600,
+          type: 'area',
+          toolbar: {
+            show: false
+          },
+        },
+        markers: {
+          size: 4
+        },
+        theme: {
+          mode: 'dark'
+        },
+        colors: ['#4154f1', '#2eca6a', '#ff771d'],
+        fill: {
+          type: "gradient",
+          gradient: {
+            shadeIntensity: 1,
+            stops: [0, 90, 100]
+          }
+        },
+        dataLabels: {
+          enabled: false
+        },
+        stroke: {
+          curve: 'smooth',
+          width: 2
+        },
+        xaxis: {
+          type: 'datetime',
+        },
+        tooltip: {
+          x: {
+            format: 'dd/MM/yy HH:mm'
+          },
+        }
+      }).render();
+    }
+
     async function runGlobal() {
       await _runGlobal();
+
+      if (document.readyState !== 'loading') {
+        await makeChart();
+      }
+      document.addEventListener("DOMContentLoaded", async () => {
+        await makeChart();
+        
+      });
     }
 
     async function runPersonal() {

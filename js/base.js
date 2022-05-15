@@ -392,10 +392,11 @@ function UPDATETICK(ticks) {
 
 
 let F = {};
-let V = {};
+let V = [];
 let P = {};
+let VIdx = 0;
 async function gV(k) {
-  if (!(k in V)) {
+  if (!(k in V[VIdx])) {
     if (!(k in F)) {
       alert(k);
       return [true, null];
@@ -405,10 +406,10 @@ async function gV(k) {
       P[k] = null;  
     }
 
-    V[k] = await F[k](P[k]);
+    V[VIdx][k] = await F[k](P[k]);
   }
 
-  return V[k];  
+  return V[VIdx][k];  
 }
 
 

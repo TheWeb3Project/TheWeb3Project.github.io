@@ -100,12 +100,12 @@ async function setFs() {
     return (await gV('wPrice')) / (await gV('price'));
   };
 
-  F['wLockedAmount'] = async() => {
+  F['wReservedAmount'] = async() => {
     return (await CONTS['wweb3'].balanceOf(ADRS['wweb3'])) / BNBDIV;
   };
 
   F['wCirculatingSupply'] = async() => {
-    return (await gV('wTotalSupply')) - (await gV('wLockedAmount'));
+    return (await gV('wTotalSupply')) - (await gV('wReservedAmount'));
   };
 
   F['mcap'] = async() => {
@@ -139,6 +139,22 @@ async function setFs() {
   F['liqMinerWusd'] = async() => {
     return (await CONTS['wusd'].balanceOf(ADRS['miner'])) / BNBDIV;
   };
+
+  F['totalMiners'] = async() => {
+    let v = await CONTS['miner'].totalSupply();
+    return v / BNBDIV;
+  };
+
+  F['wLockedAmount'] = async() => {
+    return (await CONTS['wweb3'].balanceOf(ADRS['lock'])) / BNBDIV;
+  };
+
+  F['tvl'] = async() => {
+    let v = ((await gV('liqBnb')) + (await gV('liqMinerBnb'))) * (await gV('bnbPrice'));
+    v = v + ((await gV('wLockedAmount'))) * (await gV('wPrice'));
+    v = v + (await gV('liqMinerBusd')) + (await gV('liqMinerWusd')) + (await gV('xFund'));
+    return v;
+  }
 }
 setFs();
 
@@ -159,6 +175,11 @@ let cb;
 let bigbuyTimeLeft;
 let bigbuyAlarmed = false;
 async function _runGlobal() {
+  let cacheData = await fetch('jsons/values.json');
+  cacheData = await cacheData.text();
+  V = JSON.parse(cacheData);
+  VIdx = V.length - 1;
+  
   document.getElementById("showSidebar").addEventListener("click", function () {
     document.getElementById("sidebarContainer").classList.add("show");
     document.getElementById("overlay").style.display = "block"
@@ -177,8 +198,12 @@ async function _runGlobal() {
     select(`#${name}-link`).href = BSC('address', ADRS[name]);
   }
 
-  displayText("#burned", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
-  displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
+  // for (let k in F) {
+  //   displayText(`#${k}`, `${COMMA(INT((await gV(k)), 3))}`);
+  // }
+
+  displayText("#blackHoleAmount", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
+  displayText("#circulatingSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
   displayText("#treasury", `$${COMMA(INT((await gV('treasuryBalance')) + (await gV('marketingBalance')), 3))}`);
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
@@ -186,16 +211,19 @@ async function _runGlobal() {
   displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
   displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * (await gV('price'))))}`);
   displayText("#wPrice", `$${COMMA(INT((await gV('wPrice')), 3))}`);
-  wPrice = V['wPrice'];
+  wPrice = V[VIdx]['wPrice'];
 
   displayText("#xPrice", `$${COMMA(INT((await gV('xPrice')), 3))}`);
-	xPrice = V['xPrice'];
+	xPrice = V[VIdx]['xPrice'];
 
   displayText("#wRate", `${COMMA(INT((await gV('wRate')), 2))} $WEB3`);
 
   displayText("#xPriceWithPweb3", `${COMMA(INT((await gV('xPrice')) * 1769, 3))} pWEB3`);
 
-  displayText("#cirSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
+  displayText("#totalSupply", `${COMMA(INT((await gV('totalSupply')), 3))}`);
+  displayText("#circulatingSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`);
+
+  displayText("#xTotalSupply", `${COMMA(INT((await gV('xTotalSupply')), 3))}`);
 
   displayText("#mcap", `$${COMMA(INT((await gV('mcap'))))}`);
 
@@ -207,7 +235,8 @@ async function _runGlobal() {
   displayText("#liqMinerBusd", `${COMMA(INT((await gV('liqMinerBusd')), 3))}`);
   displayText("#liqMinerWusd", `${COMMA(INT((await gV('liqMinerWusd')), 3))}`);
 
-  
+  displayText('#totalMiners', `${COMMA(INT((await gV('totalMiners')), 3))}`);
+  displayText('#tvl', `$${COMMA(INT((await gV('tvl')), 3))}`);
   // if value is big, no decimal
   
   // let dollarElms = [];
