@@ -68,7 +68,7 @@
               </span>
             </div>
 
-            <div class="col-12 mx-auto">
+            <div class="col-12 mt-4 mx-auto">
 
               <div id='card'>
                 <h5 class="fw-bold mb-0">Swap $WUSD</h5>
@@ -164,7 +164,17 @@
             
 
             <div class="col-12 mx-auto">
-              <div id="card">
+              <div id="tabs" class="tabs-container">
+
+                <div class="tabs mx-auto mt-5">
+                    <a id="tab1" data-tab="1" class="tab">Lock 1</a>
+                    <a id="tab2" data-tab="2" class="tab">Lock 2</a>
+                    <a id="tab3" data-tab="3" class="tab">Lock 3</a>
+                </div>
+
+                <div class="content">
+                    <div id="tabcontent1" data-tab="1" class="tabcontent p-4">
+                        <div id="">
                 <div class="d-flex justify-content-between">
                   <div class="mb-4">
                   <h5 class="fw-bold mb-0">Lock $WUSD</h5>
@@ -233,7 +243,7 @@
                       <span id="unlock-name" class="button__content">Unlock</span>
                     </button>
                   </div>
-                  
+
                   <div id="run-eunlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                     <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                     border-radius: 20px;
@@ -263,6 +273,278 @@
                     </button>
                   </div>
                 </div>
+                    </div>
+                    <div id="tabcontent2" data-tab="2" class="tabcontent p-4">
+                      <div id="">
+                        <div class="d-flex justify-content-between">
+                          <div class="mb-4">
+                          <h5 class="fw-bold mb-0">Lock $WUSD</h5>
+
+                          <span class="small fw-semibold"><div>And get $WUSD</div> <div> you can lock it for 14 days</div></span>
+                          </div>
+
+                        </div>
+
+                          <div id="run-wusd-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                          border-radius: 20px;
+                          background-image: linear-gradient(134deg,#48acef,#00436f);
+                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                            <span class="button__content">$WUSD Approve to Lock</span>
+                          </button>
+                        </div>
+
+                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                              <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                                  <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                              <input id="lock-input1" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                          </div>
+                                      </div>
+                                      <p class="token-amount-field__balance">Balance: <span id="wusdBalance">0.000</span></p>
+                                      <button type="button" onclick="maxValueLockInput()" class="d-sm-none d-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
+                                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                                          <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
+                                          <div>Max</div>
+                                          <span id="symbol-output" class="token__symbol ellipsis">WUSD</span>
+                                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                                <path
+                                                    d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                                    fill="currentColor"
+                                                ></path>
+                                                <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
+                                <input type="range" min="14" max="365" step="1" value="14" id="days-slider1" class="mb-5">
+                                <div>
+                                  <p>Receive: <span id="rewardAmount">0.000</span> WUSD</p>
+                                </div>
+                            </div>
+
+                          <div id="run-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                            border-radius: 20px;
+                            background-image: linear-gradient(134deg,#48acef,#00436f);
+                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                              <span id="lock-name" class="button__content">Lock</span>
+                            </button>
+                          </div>
+
+                          <div id="run-unlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                            border-radius: 20px;
+                            background-image: linear-gradient(134deg,#48acef,#00436f);
+                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                              <span id="unlock-name" class="button__content">Unlock</span>
+                            </button>
+                          </div>
+
+                          <div id="run-eunlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                            border-radius: 20px;
+                            background-image: linear-gradient(134deg,#48acef,#00436f);
+                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                              <span id="eunlock-name" class="button__content">Emergency Unlock</span>
+                            </button>
+                          </div>
+
+                          <div class="mt-5">
+                            <div class="info  col-12 d-flex justify-content-end">
+                            </div>
+                            <button id="hof-claim" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
+                            border-radius: 20px;
+                          background-color: gray;">
+                              <span id="claim-name" class="button__content">
+                                Claim Hall Of Fame NFT <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                                Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.<br/>
+                                Non transferable NFT obtained by locking your web3 for 365 days.<br/>
+                                Different tiers based on amounts of total supply:<br/>
+                                <br/>
+                                1 <= x < 10 = Tier 1<br/>
+                                10 <= x < 100 = Tier 2<br/>
+                                100 < x = Tier 3<br/>
+                                "></i>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+                    <div id="tabcontent3" data-tab="3" class="tabcontent p-4">
+                      <div id="">
+                        <div class="d-flex justify-content-between">
+                          <div class="mb-4">
+                          <h5 class="fw-bold mb-0">Lock $WUSD</h5>
+
+                          <span class="small fw-semibold"><div>And get $WUSD</div> <div> you can lock it for 14 days</div></span>
+                          </div>
+
+                        </div>
+
+                          <div id="run-wusd-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                          border-radius: 20px;
+                          background-image: linear-gradient(134deg,#48acef,#00436f);
+                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                            <span class="button__content">$WUSD Approve to Lock</span>
+                          </button>
+                        </div>
+
+                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
+                              <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
+                                  <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
+                                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
+                                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
+                                              <input id="lock-input1" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
+                                          </div>
+                                      </div>
+                                      <p class="token-amount-field__balance">Balance: <span id="wusdBalance">0.000</span></p>
+                                      <button type="button" onclick="maxValueLockInput()" class="d-sm-none d-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
+                                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
+                                          <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
+                                          <div>Max</div>
+                                          <span id="symbol-output" class="token__symbol ellipsis">WUSD</span>
+                                            <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
+                                                <path
+                                                    d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
+                                                    fill="currentColor"
+                                                ></path>
+                                                <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
+                                            </svg>
+                                        </div>
+                                    </button>
+                                  </div>
+                                </div>
+
+                                <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
+                                <input type="range" min="14" max="365" step="1" value="14" id="days-slider1" class="mb-5">
+                                <div>
+                                  <p>Receive: <span id="rewardAmount">0.000</span> WUSD</p>
+                                </div>
+                            </div>
+
+                          <div id="run-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                            border-radius: 20px;
+                            background-image: linear-gradient(134deg,#48acef,#00436f);
+                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                              <span id="lock-name" class="button__content">Lock</span>
+                            </button>
+                          </div>
+
+                          <div id="run-unlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                            border-radius: 20px;
+                            background-image: linear-gradient(134deg,#48acef,#00436f);
+                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                              <span id="unlock-name" class="button__content">Unlock</span>
+                            </button>
+                          </div>
+
+                          <div id="run-eunlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                            border-radius: 20px;
+                            background-image: linear-gradient(134deg,#48acef,#00436f);
+                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                              <span id="eunlock-name" class="button__content">Emergency Unlock</span>
+                            </button>
+                          </div>
+
+                          <div class="mt-5">
+                            <div class="info  col-12 d-flex justify-content-end">
+                            </div>
+                            <button id="hof-claim" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
+                            border-radius: 20px;
+                          background-color: gray;">
+                              <span id="claim-name" class="button__content">
+                                Claim Hall Of Fame NFT <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                                Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.<br/>
+                                Non transferable NFT obtained by locking your web3 for 365 days.<br/>
+                                Different tiers based on amounts of total supply:<br/>
+                                <br/>
+                                1 <= x < 10 = Tier 1<br/>
+                                10 <= x < 100 = Tier 2<br/>
+                                100 < x = Tier 3<br/>
+                                "></i>
+                              </span>
+                            </button>
+                          </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="my-5 col-12">
+                  <table class="table table-no-more">
+                    <thead>
+                        <tr>
+                            <th>Amount lock</th>
+                            <th>Time</th>
+                            <th>Claim</th>
+                            <th style="width: 200px;">
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                            <td><span id="lockedAmount1">0.000</span> wWEB3</td>
+                            <td><span id="unlockAfter1"></span></td>
+                            <td><span id="claimAmount1">0.000</span> pWEB3</td>
+                            <td><div id="run-claim1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                              <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                              border-radius: 20px;
+                              background-image: linear-gradient(134deg,#48acef,#00436f);
+                              box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                                <span id="claim-name1" class="button__content">Claim</span>
+                              </button>
+                            </div></td>
+                        </tr>
+                        <tr>
+                          <td><span id="lockedAmount2">0.000</span> wWEB3</td>
+                          <td><span id="unlockAfter2"></span></td>
+                          <td><span id="claimAmount2">0.000</span> pWEB3</td>
+                            <td><div id="run-claim2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                              <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                              border-radius: 20px;
+                              background-image: linear-gradient(134deg,#48acef,#00436f);
+                              box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                                <span id="claim-name2" class="button__content">Claim</span>
+                              </button>
+                            </div></td>
+
+                        </tr>
+                        <tr>
+                          <td><span id="lockedAmount3">0.000</span> wWEB3</td>
+                          <td><span id="unlockAfter3"></span></td>
+                          <td><span id="claimAmount3">0.000</span> pWEB3</td>
+                            <td><div id="run-claim3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                              <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
+                              border-radius: 20px;
+                              background-image: linear-gradient(134deg,#48acef,#00436f);
+                              box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                                <span id="claim-name3" class="button__content">Claim</span>
+                              </button>
+                            </div></td>
+
+                        </tr>
+
+                    </tbody>
+                  </table>
+                  <div class="dark-mode-switch" style="display: none;">
+                    <label class="switch-label" for="dark-mode-switch"></label>
+                    <label class="switch">
+                        <input type="checkbox" id="dark-mode-switch">
+                        <span class="slider round"></span>
+                    </label>
+                  </div>
+                </div>
               </div>
           </div>
         </div>
@@ -285,6 +567,56 @@
   <script src="js/page.js"></script>
 
   <script>
+
+
+// DOM Elements
+const tabs = document.querySelectorAll('.tab')
+const tabContents = document.querySelectorAll('.tabcontent')
+const darkModeSwitch = document.querySelector('#dark-mode-switch')
+
+// Functions
+const activateTab = tabnum => {
+
+    tabs.forEach( tab => {
+      tab.classList.remove('active')
+    })
+
+    tabContents.forEach( tabContent => {
+        tabContent.classList.remove('active')
+    })
+
+    document.querySelector('#tab' + tabnum).classList.add('active')
+    document.querySelector('#tabcontent' + tabnum).classList.add('active')
+    localStorage.setItem('jstabs-opentab', JSON.stringify(tabnum))
+
+}
+
+// Event Listeners
+tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+        activateTab(tab.dataset.tab)
+    })
+})
+
+darkModeSwitch.addEventListener('change', () => {
+    document.querySelector('body').classList.toggle('darkmode')
+    // localStorage.setItem('jstabs-darkmode', JSON.stringify(!darkmode))
+})
+
+// Retrieve stored data
+let darkmode = JSON.parse(localStorage.getItem('jstabs-darkmode'))
+const opentab =  JSON.parse(localStorage.getItem('jstabs-opentab')) || '3'
+
+// and..... Action!
+if (darkmode === null) {
+  document.querySelector('body').classList.add('darkmode')
+}
+if (darkmode) {
+    document.querySelector('body').classList.add('darkmode')
+    document.querySelector('#dark-mode-switch').checked = 'checked'
+}
+activateTab(opentab)
+
     async function runGlobal() {
       await _runGlobal();
     }
@@ -338,7 +670,7 @@
     select('#sidebar-nav').children[4].classList.add('active-neumorphism');
   </script>
     <style>
-      .tooltip{
+  .tooltip{
         width: 200px;
       }
 
@@ -692,6 +1024,171 @@
     overflow: hidden;
     transition: border 250ms ease;
   }
+}
+.customcontainer {
+    display: flex;
+    color: #a2a2a2;
+}
+
+
+
+/* Style the tabs */
+.tabs {
+    margin-bottom: 28px;
+    display: flex;
+      justify-content: space-between;
+}
+
+.tabs a {
+    cursor: pointer;
+    padding: 12px 24px;
+    width: 120px;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 18px;
+    transition: background 0.1s, color 0.1s;
+    background: linear-gradient(145deg, #ffffff, #dcdcdc);
+    box-shadow:  3px 3px 5px #bebebe,
+                 -3px -3px 5px #ffffff;
+}
+.darkmode .tabs a {
+  background-image: linear-gradient(160deg,#424750,#202326);
+  box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);
+}
+
+/* Change background color of tabs on hover */
+.tabs a:hover {
+    background: linear-gradient(145deg, #f4f4f4, #cecece);
+    color: #888;
+}
+.darkmode .tabs a:hover {
+    background: #141414;
+    color: #bbb;
+}
+
+/* Styling for active tab */
+.tabs a.active {
+    background-color: #f4f4f4;
+    color: #bdbdbd;
+    cursor: default;
+    padding: 14px 22px 10px 26px;
+    background: #f4f4f4;
+    box-shadow: inset 3px 3px 5px #cbcbcb,
+                inset -3px -3px 5px #ffffff;
+}
+.darkmode .tabs a.active {
+  background-image: linear-gradient(160deg,#424750,#202326);
+
+    box-shadow: inset  3px 3px 6px #101114,
+                inset -3px -3px 6px #24252a;
+    color: #6a6a6a;
+}
+
+
+/* Style the tab content */
+.tabcontent {
+    padding: 46px;
+    min-height: 288px;
+    display: none;
+    border-radius: 18px;
+    background: #f4f4f4;
+    box-shadow:  3px 3px 6px #bebebe,
+                 -3px -3px 6px #ffffff;
+}
+.darkmode .tabcontent {
+  background-image: linear-gradient(160deg, #424750, #202326);;
+  box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);
+}
+.content .active {
+    display: block;
+}
+.tabcontent p {
+    margin-bottom: 12px;
+}
+.tabcontent p:last-child {
+    margin-bottom: 0;
+}
+.tabcontent .read-more-link a {
+    color: #626262;
+    text-decoration: none;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+.darkmode .tabcontent .read-more-link a {
+    color: #d4d4d4;
+}
+.icon {
+    padding-left: 8px;
+    font-size: 16px;
+}
+
+/* THE DARKMODE SWITCH */
+.dark-mode-switch {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+}
+.dark-mode-switch .switch {
+/*     margin-left: 4px; */
+}
+.switch-label {
+    cursor: pointer;
+    font-size: 0.85em;
+}
+/* the box around the slider */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 22px;
+    margin-left: 4px;
+}
+/* Hide default HTML checkbox */
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+/* The slider */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #1A1B1F;
+    transition: .2s;
+    box-shadow:  2px 2px 3px #ffffff,
+                 -2px -2px 3px #bebebe;
+}
+.darkmode .slider {
+    box-shadow:  2px 2px 3px #34353a,
+                 -2px -2px 3px #000104;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 2px;
+    background: #9294b8;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+input:checked + .slider {
+    background-color: #f4f4f4;
+}
+input:checked + .slider:before {
+    transform: translateX(21px);
+}
+/* Rounded sliders */
+.slider.round {
+    border-radius: 11px;
+}
+.slider.round:before {
+    border-radius: 50%;
 }
 
 
