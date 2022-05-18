@@ -543,16 +543,15 @@ activateTab(opentab)
       for (let idx of [1, 2, 3]) {
         let rates = [1.1, 1.05, 1];
 
-        let _wusdStakedAmount = await CONTS['lock']._wusdStakedAmount(CURADR);
+        let _wusdStakedAmount = await CONTS['lock']._wusdStakedAmount(idx - 1, CURADR);
         displayText(`#stakedAmount${idx}`, `${COMMA(INT(_wusdStakedAmount / BNBDIV, 3))}`);
         if (_wusdStakedAmount == 0) {
           continue;
         }
 
-        let _wusdStakedTime = await CONTS['lock']._wusdStakedTime(CURADR);
+        let _wusdStakedTime = await CONTS['lock']._wusdStakedTime(idx - 1, CURADR);
         let stakedDuration = now - _wusdStakedTime;
         setInterval(function () {
-
           displayText(`#stakedDuration${idx}`, `${INT((stakedDuration / (60*60*24)))}d ${INT((stakedDuration / (60*60)) % 24)}h ${INT((stakedDuration / 60) % 60)}m ${INT(stakedDuration % 60)}s`);
           stakedDuration = stakedDuration + 1;
         }, 1000);
