@@ -282,7 +282,7 @@
 
                       </div>
 
-                        <div id="run-wusd-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                        <div id="run-wusd-approve-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                         <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                         border-radius: 20px;
                         background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -383,7 +383,7 @@
 
                       </div>
 
-                        <div id="run-wusd-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                        <div id="run-wusd-approve-lock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                         <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
                         border-radius: 20px;
                         background-image: linear-gradient(134deg,#48acef,#00436f);
@@ -626,18 +626,37 @@ activateTab(opentab)
 
     async function runPersonal() {
       await _runPersonal();
-      let wusdAllowance = await CONTS['wusd'].allowance(CURADR, ADRS['wusd']);
-      if (BIGINT(0) < wusdAllowance) {
-        select('#run-wusd-approve-wusd').classList.add('d-none');
-      } else {
-        select('#run-wusd-approve-wusd').onclick = async () => { await approve('wusd', ADRS['wusd']); };
+
+      {
+        let allowance = await CONTS['busd'].allowance(CURADR, ADRS['wusd']);
+        if (BIGINT(0) < allowance) {
+          select('#run-busd-approve-wusd').classList.add('d-none');
+        } else {
+          select('#run-busd-approve-wusd').onclick = async () => { await approve('busd', ADRS['wusd']); };
+        }
       }
 
-      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['wusd']);
-      if (BIGINT(0) < wusdAllowance) {
-        select('#run-busd-approve-wusd').classList.add('d-none');
-      } else {
-        select('#run-busd-approve-wusd').onclick = async () => { await approve('busd', ADRS['wusd']); };
+      {
+        let allowance = await CONTS['wusd'].allowance(CURADR, ADRS['wusd']);
+        if (BIGINT(0) < allowance) {
+          select('#run-wusd-approve-wusd').classList.add('d-none');
+        } else {
+          select('#run-wusd-approve-wusd').onclick = async () => { await approve('wusd', ADRS['wusd']); };
+        }
+      }
+
+
+      {
+        let allowance = await CONTS['wusd'].allowance(CURADR, ADRS['lock']);
+        if (BIGINT(0) < allowance) {
+          select('#run-wusd-approve-lock1').classList.add('d-none');
+          select('#run-wusd-approve-lock2').classList.add('d-none');
+          select('#run-wusd-approve-lock3').classList.add('d-none');
+        } else {
+          select('#run-wusd-approve-lock1').onclick = async () => { await approve('wusd', ADRS['lock']); };
+          select('#run-wusd-approve-lock2').onclick = async () => { await approve('wusd', ADRS['lock']); };
+          select('#run-wusd-approve-lock3').onclick = async () => { await approve('wusd', ADRS['lock']); };
+        }
       }
 
       STATES['wusd'] = 'sell';
