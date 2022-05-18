@@ -492,18 +492,10 @@ activateTab(opentab)
       await _runGlobal();
 
       for (let idx of [1, 2, 3]) {
-        let rates = [0.6, 0.4, 0.2];
-        $(document).on('input', `#days-slider${idx}`, function (e) {
-          let days = select(`#days-slider${idx}`).value;
-          displayText('#days', `${days}`);
-          let lockAmount = select(`#lock-input${idx}`).value;
-          lockAmount = lockAmount.replace(/,/g, '.');
-          
-          let bonusRate = INT(days / 30) * 5;
-          let rewardAmount = INT(wPrice) * lockAmount * days * (1 + bonusRate / 100) * rates[idx - 1];
-          displayText(`#rewardAmount`, `${COMMA(INT(rewardAmount, 3))}`);
-        });
-
+        let rates = [1.1, 1.05, 1];
+        
+        
+        displayText(`#rewardAmount${idx}`, 
         select(`#run-stake${idx}`).onclick = async () => { await runStake(idx); };
         select(`#run-unstake${idx}`).onclick = async () => { await runUnstake(idx); };
       }
