@@ -777,14 +777,14 @@ async function maxValueWrapInput() {
   select("#wrap-input").value = bal;
 }
 
-async function maxValueWusdInput() {
-  let bal = select('#wusd-balance-input').innerHTML;
-  select("#wusd-input").value = bal;
-}
-
 async function maxValueLockInput() {
   let bal = select('#wweb3Balance').innerHTML;
   select("#lock-input").value = bal;
+}
+
+async function maxValueWusdInput() {
+  let bal = select('#wweb3Balance').innerHTML;
+  select("#wusd-input").value = bal;
 }
 
 async function maxPweb3Input(id) {
