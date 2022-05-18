@@ -363,7 +363,7 @@
 
                   <tbody>
                       <tr>
-                        <td><span id="lockedAmount1">0.000</span> WUSD</td>
+                        <td><span id="stakedAmount1">0.000</span> WUSD</td>
                         <td><span id="stakedDuration1">0d 0h 0m 0s</span></td>
                         <td><span id="rewardAmount1">0.000</span> WEB3</td>
                           <td><div id="run-unstake1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -376,7 +376,7 @@
                           </div></td>
                       </tr>
                       <tr>
-                        <td><span id="lockedAmount2">0.000</span> WUSD</td>
+                        <td><span id="stakedAmount2">0.000</span> WUSD</td>
                         <td><span id="stakedDuration2">0d 0h 0m 0s</span></td>
                         <td><span id="rewardAmount2">0.000</span> WEB3</td>
                           <td><div id="run-unstake2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -390,7 +390,7 @@
 
                       </tr>
                       <tr>
-                        <td><span id="lockedAmount3">0.000</span> WUSD</td>
+                        <td><span id="stakedAmount3">0.000</span> WUSD</td>
                         <td><span id="stakedDuration3">0d 0h 0m 0s</span></td>
                         <td><span id="rewardAmount3">0.000</span> WEB3</td>
                           <td><div id="run-unstake3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -492,10 +492,6 @@ activateTab(opentab)
       await _runGlobal();
 
       for (let idx of [1, 2, 3]) {
-        let rates = [1.1, 1.05, 1];
-        
-        
-        displayText(`#rewardAmount${idx}`, 
         select(`#run-stake${idx}`).onclick = async () => { await runStake(idx); };
         select(`#run-unstake${idx}`).onclick = async () => { await runUnstake(idx); };
       }
@@ -543,7 +539,28 @@ activateTab(opentab)
       STATES['wusd'] = 'sell';
       await switchWusd();
       select('#wusd-change').onclick = async () => { await switchWusd(); };
+      
+      for (let idx of [1, 2, 3]) {
+        let rates = [1.1, 1.05, 1];
 
+        let _wusdStakedAmount = await CONTS['lock']._wusdStakedAmount(CURADR);
+        displayText(`#stakedAmount${idx}`, `${COMMA(INT(_wusdStakedAmount / BNBDIV, 3))}`);
+        if (_wusdStakedAmount == 0) {
+          continue;
+        }
+
+        let _wusdStakedTime = await CONTS['lock']._wusdStakedTime(CURADR);
+        let stakedDuration = now - _wusdStakedTime;
+        setInterval(function () {
+
+          displayText(`#stakedDuration${idx}`, `${INT((stakedDuration / (60*60*24)))}d ${INT((stakedDuration / (60*60)) % 24)}h ${INT((stakedDuration / 60) % 60)}m ${INT(stakedDuration % 60)}s`);
+          stakedDuration = stakedDuration + 1;
+        }, 1000);
+
+        let rewardAmount = _wusdStakedAmount * INT(stakedDuration / (60*60*24)) * 0.001 / (await gV('price'));
+        rewardAmount = rewardAmount * rates[idx - 1];
+        displayText(`#rewardAmount${idx}`, `${COMMA(INT(rewardAmount / BNBDIV, 3))}`);
+      }
     }
 
     (async () => {

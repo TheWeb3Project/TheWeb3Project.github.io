@@ -198,6 +198,9 @@ ABIS['lock'] = [
   "function _lastClaimsMulti(uint, address) view returns (uint256)",
   
 
+  "function _wusdStakedAmount(uint, address) view returns (uint256)",
+  "function _wusdStakedTime(uint, address) view returns (uint256)",
+
   "function calculateRewardMulti(uint, uint256, uint256) view returns (uint256)"
 
 ];
