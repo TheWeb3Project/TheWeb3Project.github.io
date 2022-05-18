@@ -648,7 +648,7 @@ async function runEmerUnstake(idx) {
 
 
 async function runStake(idx) {
-  let lockAmount = select(`#lock-input${idx}`).value;
+  let stakeAmount = select(`#wusd-input${idx}`).value;
   let days = select("#days").innerHTML;
 
   if (idx > 3) {
@@ -656,7 +656,7 @@ async function runStake(idx) {
     return;
   }
 
-  await SEND_TX('lock', 'stakeWusd', [idx - 1, BIG(lockAmount)]);
+  await SEND_TX('lock', 'stakeWusd', [idx - 1, BIG(stakeAmount)]);
 }
 
 async function runUnstake(idx) {
