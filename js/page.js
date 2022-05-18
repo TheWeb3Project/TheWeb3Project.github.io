@@ -482,7 +482,7 @@ async function handleInputBuyWusd(e) {
   });
 }
 
-async function handleInputSellBusd(e) {
+async function handleInputSellWusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
     let oV = await CONTS['wusd'].getSwapAmount(ADRS['wusd'], BIG(String(v)));
     return oV;
