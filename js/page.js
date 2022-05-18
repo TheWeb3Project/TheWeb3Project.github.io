@@ -584,7 +584,7 @@ async function runBuyWusd() {
 async function runSellWusd() {
   let wusdInput = select('#wusd-input');
   let wusdAmount = BIG(wusdInput.value);
-  await SEND_TX('wusd', 'swap', [ADRS['wusd'], busdAmount]);
+  await SEND_TX('wusd', 'swap', [ADRS['wusd'], wusdAmount]);
 }
 
 
