@@ -801,7 +801,7 @@ async function maxValueLockInput() {
 }
 
 async function maxValueWusdInput() {
-  let bal = select('#wweb3Balance').innerHTML;
+  let bal = select('#wusdBalance').innerHTML;
   select("#wusd-input").value = bal;
 }
 
