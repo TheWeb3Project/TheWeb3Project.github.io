@@ -475,19 +475,16 @@ async function handleInputUnwrap(e) {
   });
 }
 
-async function handleInputToWusd(e) {
+async function handleInputBuyWusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    let oV = await swapRate(v, (await gV('liqBusd')), (await gV('liqWusd')));
+    let oV = await CONTS['wusd'].getSwapAmount(ADRS['busd'], v);
     return oV;
   });
 }
 
-async function handleInputToBusd(e) {
+async function handleInputSellBusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    let oV = await swapRate(v, (await gV('liqWusd')), (await gV('liqBusd')));
-    if (v < oV / BNBDIV) { // busd max 1:1
-      oV = v;
-    }
+    let oV = await CONTS['wusd'].getSwapAmount(ADRS['busd'], v);
     return oV;
   });
 }
@@ -578,16 +575,16 @@ async function runUnwrap() {
   await SEND_TX('wweb3', 'withdraw', [web3Amount]);
 }
 
-async function runToWusd() {
+async function runBuyWusd() {
   let busdInput = select('#wusd-input');
   let busdAmount = BIG(busdInput.value);
-  await SEND_TX('wusd', 'wusdToBusd', [busdAmount]);
+  await SEND_TX('wusd', 'swap', [ADRS['busd'], busdAmount]);
 }
 
-async function runToBusd() {
+async function runSellWusd() {
   let wusdInput = select('#wusd-input');
   let wusdAmount = BIG(wusdInput.value);
-  await SEND_TX('wusd', 'busdToWusd', [wusdAmount]);
+  await SEND_TX('wusd', 'swap', [ADRS['wusd'], busdAmount]);
 }
 
 
