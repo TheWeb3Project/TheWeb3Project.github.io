@@ -650,6 +650,27 @@ async function runEmerUnstake(idx) {
 
 
 
+async function runStake(idx) {
+  let lockAmount = select(`#lock-input${idx}`).value;
+  let days = select("#days").innerHTML;
+
+  if (idx > 3) {
+    alert('wrong idx');
+    return;
+  }
+
+  await SEND_TX('lock', 'stakeWusd', [idx - 1, BIG(lockAmount)]);
+}
+
+async function runUnstake(idx) {
+  if (idx > 3) {
+    alert('wrong idx');
+    return;
+  }
+
+  await SEND_TX('lock', 'unstakeWusd', [idx - 1]);
+}
+
 
 async function captureImg(targetId) {
   let canvas = await html2canvas(select(targetId));
