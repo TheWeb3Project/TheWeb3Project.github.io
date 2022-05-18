@@ -557,9 +557,8 @@ activateTab(opentab)
           stakedDuration = stakedDuration + 1;
         }, 1000);
 
-        let rewardAmount = _wusdStakedAmount * INT(stakedDuration / (60*60*24)) * 0.001 / (await gV('price'));
-        rewardAmount = rewardAmount * rates[idx - 1];
-        displayText(`#rewardAmount${idx}`, `${COMMA(INT(rewardAmount / BNBDIV, 3))}`);
+        let calWusdReward = await CONTS['lock'].calWusdReward(idx - 1, _wusdStakedAmount, stakedDuration);
+        displayText(`#rewardAmount${idx}`, `${COMMA(INT(calWusdReward / BNBDIV, 3))}`);
       }
     }
 

@@ -200,6 +200,10 @@ ABIS['lock'] = [
 
   "function _wusdStakedAmount(uint, address) view returns (uint256)",
   "function _wusdStakedTime(uint, address) view returns (uint256)",
+  
+  "function stakeWusd(uint, uint)",
+  "function unstakeWusd(uint)",
+  "function calWusdReward(uint, uint, uint) view returns (uint)",
 
   "function calculateRewardMulti(uint, uint256, uint256) view returns (uint256)"
 
