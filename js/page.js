@@ -477,14 +477,14 @@ async function handleInputUnwrap(e) {
 
 async function handleInputBuyWusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    let oV = await CONTS['wusd'].getSwapAmount(ADRS['busd'], BIG(String(v)));
+    let oV = await CONTS['wusd'].getSwapAmount(ADRS['busd'], v);
     return oV;
   });
 }
 
 async function handleInputSellWusd(e) {
   await handleInput(e, 'wusd-output', async (v) => {
-    let oV = await CONTS['wusd'].getSwapAmount(ADRS['wusd'], BIG(String(v)));
+    let oV = await CONTS['wusd'].getSwapAmount(ADRS['wusd'], v);
     return oV;
   });
 }
