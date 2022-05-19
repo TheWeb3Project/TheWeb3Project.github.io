@@ -165,7 +165,7 @@ async function setFs() {
   };
 	
   F['wusdStaked'] = async() => {
-    return (await CONTS['lock'].balanceOf(ADRS['wusd'])) / BNBDIV;
+    return (await CONTS['wusd'].balanceOf(ADRS['lock'])) / BNBDIV;
   };
 }
 setFs();
