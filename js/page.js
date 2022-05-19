@@ -797,12 +797,17 @@ async function maxValueWrapInput() {
 
 async function maxValueLockInput() {
   let bal = select('#wweb3Balance').innerHTML;
-  select("#lock-input").value = bal;
+  for (let idx of [1, 2, 3]) {
+		select(`#lock-input${idx}`).value = bal;
+  }
+  
 }
 
 async function maxValueWusdInput() {
   let bal = select('#wusdBalance').innerHTML;
-  select("#wusd-input").value = bal;
+  for (let idx of [1, 2, 3]) {
+		select(`#wusd-input${idx}`).value = bal;
+  }
 }
 
 async function maxPweb3Input(id) {
