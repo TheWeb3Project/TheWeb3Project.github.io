@@ -2,7 +2,7 @@
 
 function htmlSide(url, icon, name) {
   let htmlStr = `
-    <li class="m-2 p-2 rounded-1">
+    <li class="p-2 rounded-1">
       <a href="${url}" class="text-decoration-none text-reset d-flex align-items-center neontext">
         <span class="fs-5"><i class="bi bi-${icon}"></i></span>
         <span class="ms-3">${name}</span>
