@@ -776,9 +776,14 @@ async function runPersonal() { // dummy
 async function runLast() {
   $(document).ready(function() {
     $('[data-bs-toggle="tooltip"]').tooltip(popupSettings);
-    // $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
-    //   MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-    // });
+    $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+      MathJax.Hub.Queue(
+        ["Typeset",MathJax.Hub,document],
+        function () {                
+          $("#thingToHaveMathJaxToolTip").attr("title",$("#toolTipText").html());
+        ]
+      );
+    });
   });
 }
 
