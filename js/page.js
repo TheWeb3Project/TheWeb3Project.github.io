@@ -38,9 +38,9 @@ function displaySidebar() {
             ${htmlSide('wrap.html', 'box-seam', 'Wrap')}
             ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
             ${htmlSide('miner.html', 'minecart-loaded', 'Miner')}
-            ${htmlSide('wusd.html', 'minecart-loaded', 'WUSD')}
-            ${htmlSide('xweb.html', 'minecart-loaded', 'xWEB3')}
-            ${htmlSide('faq.html', 'minecart-loaded', 'FAQ')}
+            ${htmlSide('wusd.html', 'wallet2', 'WUSD')}
+            ${htmlSide('xweb.html', 'bank', 'xWEB3')}
+            ${htmlSide('faq.html', 'question-circle', 'FAQ')}
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
