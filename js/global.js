@@ -241,7 +241,7 @@ async function _runGlobal() {
 
   displayText("#corr", `${COMMA(INT((await gV('corr')), 1))}%`);
 
-  displayText("#xFund", `$${COMMA(INT((await gV('xFund'))))}`);
+  displayText("#xFund", `${COMMA(INT((await gV('xFund'))))}`);
 
   displayText("#liqMinerBnb", `${COMMA(INT((await gV('liqMinerBnb')), 3))}`);
   displayText("#liqMinerBusd", `${COMMA(INT((await gV('liqMinerBusd')), 3))}`);
