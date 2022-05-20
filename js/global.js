@@ -125,7 +125,7 @@ async function setFs() {
   }; 
 
   F['xFund'] = async() => {
-    return (await getBalance(ADRS['xweb3'])) / BNBDIV * (await gV('bnbPrice'));
+    return (await getBalance(ADRS['xweb3'])) / BNBDIV;
   };
 
   F['liqMinerBnb'] = async() => {
