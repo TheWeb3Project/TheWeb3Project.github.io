@@ -166,11 +166,9 @@
 
       await runGlobal();
 
-      
-
       $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip(popupSettings);
-        $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+        $('[data-bs-toggle="tooltip"]').tooltip(popupSettings);
+        $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
           MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         });
       });
@@ -182,8 +180,8 @@
       await runPersonal();
 
       $(document).ready(function() {
-        $('[data-toggle="tooltip"]').tooltip(popupSettings);
-        $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+        $('[data-bs-toggle="tooltip"]').tooltip(popupSettings);
+        $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
           MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
         });
       });
