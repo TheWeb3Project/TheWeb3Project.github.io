@@ -624,7 +624,6 @@ let inputHandlerBuy = function (e) {
   })();
 }
 
-
 let popupSettings = {
   placement: 'bottom',
 };
@@ -765,7 +764,22 @@ async function conn(func=null, popup=false) {
   }
 }
 
+async function runGlobal() { // dummy
+}
+
+async function runAnon() { // dummy
+}
+
 async function runPersonal() { // dummy
+}
+
+async function runLast() {
+  $(document).ready(function() {
+    $('[data-bs-toggle="tooltip"]').tooltip(popupSettings);
+    $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+      MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+    });
+  });
 }
 
 function handleChainChanged(_chainId) {

@@ -166,26 +166,14 @@
 
       await runGlobal();
 
-      $(document).ready(function() {
-        $('[data-bs-toggle="tooltip"]').tooltip(popupSettings);
-        $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
-          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        });
-      });
       await getCurAdr();
       if (CURADR == null) {
-        // connect wallet button
-        return;
+        await runAnon();
+      } else {
+        await runPersonal();
       }
-      await runPersonal();
-
-      $(document).ready(function() {
-        $('[data-bs-toggle="tooltip"]').tooltip(popupSettings);
-        $('[data-bs-toggle="tooltip"]').on('shown.bs.tooltip', function () {
-          MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-        });
-      });
-
+      
+      await runLast();
     })();
 
     select('#sidebar-nav').children[5].classList.add('active-neumorphism');
