@@ -217,7 +217,7 @@ async function _runGlobal() {
   displayText("#blackHoleAmount", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
   displayText("#circulatingSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
-  displayText("#treasury", `$${COMMA(INT((await gV('treasuryBalance')) + (await gV('marketingBalance')), 3))}`);
+  displayText("#treasury", `$${COMMA(INT((await gV('treasury')), 3))}`);
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
 
   displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
