@@ -670,10 +670,8 @@ async function runUnstake(idx) {
 }
 
 
-async function runClaimXreward() {
-  alert('coming soon');
-  
-  // await SEND_TX('xweb3')
+async function runClaimXreward() {  
+  await SEND_TX('xweb3', 'claim', []);
 }
 
 

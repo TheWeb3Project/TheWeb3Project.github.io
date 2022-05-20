@@ -160,13 +160,14 @@
   <script>
     async function runGlobal() {
       await _runGlobal();
-    }
 
+      select(`#run-claim-xReward`).onclick = async () => { await runClaimXreward(); };
+    }
 
     async function runPersonal() {
       await _runPersonal();
 
-      select(`#run-claim-xReward`).onclick = async () => { await runClaimXreward(); };
+      
     }
 
     (async () => {
