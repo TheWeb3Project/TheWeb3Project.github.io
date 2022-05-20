@@ -159,7 +159,13 @@
 
       await runGlobal();
 
-      $('[data-bs-toggle="tooltip"]').tooltip();
+      
+
+      $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip(popupSettings);
+        $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+      })
 
       await getCurAdr();
       if (CURADR == null) {
@@ -167,7 +173,12 @@
         return;
       }
       await runPersonal();
-      $('[data-bs-toggle="tooltip"]').tooltip();
+
+      $(document).ready(function() {
+        $('[data-toggle="tooltip"]').tooltip(popupSettings);
+        $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
+        MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
+      })
 
     })();
 
