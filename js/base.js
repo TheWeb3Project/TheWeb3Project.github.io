@@ -626,6 +626,7 @@ let inputHandlerBuy = function (e) {
 
 let popupSettings = {
   placement: 'bottom',
+  boundary: 'window',
 };
 
 ///////////////////////////////// web3
