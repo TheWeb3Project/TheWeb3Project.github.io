@@ -166,7 +166,7 @@
         $('[data-toggle="tooltip"]').tooltip(popupSettings);
         $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-      })
+      });
 
       await getCurAdr();
       if (CURADR == null) {
@@ -179,7 +179,7 @@
         $('[data-toggle="tooltip"]').tooltip(popupSettings);
         $('[data-toggle="tooltip"]').on('shown.bs.tooltip', function () {
         MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
-      })
+      });
 
     })();
 
