@@ -157,8 +157,13 @@ async function _runPersonal() {
     return v;
   };
 
+  F['lastClaim'] = async() => {
+    let v = await CONTS['xweb3']._lastClaim(CURADR);
+    return v;
+  };
+
   F['xReward'] = async() => {
-    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding')) / 100;
+    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding')) / 100 * (await gV('lastClaim')) / (60*60*24);
     return v;
   };
 

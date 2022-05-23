@@ -151,7 +151,8 @@ ABIS['xweb3'] = [
   "function buyPay() payable",
   "function buy(address, uint)",
 	"function claim()",
-  
+  "function _lastClaim(address) view returns (uint)",
+
   "function approve(address, uint256) returns (bool)",
   "function transfer(address, uint)",
 ];
