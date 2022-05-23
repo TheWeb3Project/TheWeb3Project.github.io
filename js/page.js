@@ -163,7 +163,12 @@ async function _runPersonal() {
   };
 
   F['xReward'] = async() => {
-    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding')) / 100 * (now - await gV('lastClaim')) / (60*60*24);
+    let lastClaim = (await gV('lastClaim'));
+    if (lastClaim == 0) {
+      return 0;
+    }
+
+    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding')) / 100 * (now - lastClaim) / (60*60*24);
     return v;
   };
 
