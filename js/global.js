@@ -117,11 +117,11 @@ async function setFs() {
   };
 
   F['liqWusd'] = async() => {
-    return (await CONTS['wusd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+    return (await CONTS['wusd'].totalSupply()) / BNBDIV;
   }; 
 
   F['liqBusd'] = async() => {
-    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) * 0.8 / BNBDIV;
   }; 
 
   F['xFund'] = async() => {
