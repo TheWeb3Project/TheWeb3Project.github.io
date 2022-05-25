@@ -116,14 +116,6 @@ async function setFs() {
     return (await gV('liqBalance')) / (await gV('mcap')) * 100;
   };
 
-  F['liqWusd'] = async() => {
-    return (await CONTS['wusd'].totalSupply()) / BNBDIV;
-  }; 
-
-  F['liqBusd'] = async() => {
-    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) * 0.8 / BNBDIV;
-  }; 
-
   F['xFund'] = async() => {
     return (await getBalance(ADRS['xweb3'])) / BNBDIV * (await gV('bnbPrice'));
   };
@@ -157,11 +149,11 @@ async function setFs() {
   }
 
   F['liqWusdBusd'] = async() => {
-    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) * 0.8 / BNBDIV;
   }; 
 
   F['liqWusdWusd'] = async() => {
-    return (await CONTS['wusd'].balanceOf(ADRS['wusd'])) / BNBDIV;
+    return (await CONTS['wusd'].totalSupply()) / BNBDIV;
   };
 	
   F['wusdStaked'] = async() => {
