@@ -172,6 +172,11 @@ async function _runPersonal() {
     return v;
   };
 
+  F['lastHire'] = async() => {
+    let v = await CONTS['miner']._lastHire(CURADR);
+    return v;
+  };
+
   displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
   displayText("#xReward", `$${COMMA(INT((await gV('xReward')), 3))}`);
   
