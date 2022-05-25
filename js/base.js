@@ -823,14 +823,14 @@ async function ERR(err, popup=true) {
     if (data['code'] == 3) {
       let msg = data['message'];
       result = msg;
-      alert(result);
+      alert('C:' + result);
       return result;
     }
 
     if (data['code'] == -32000) {
       let msg = data['message'];
       result = msg;
-      alert(result);
+      alert('D:' + result);
       return result;
     }
   }
@@ -908,7 +908,7 @@ async function SEND_TX(name, method, args, value=null, check=true, popup=true) {
   if (check == true) {
     let [res, data] = await GAS(name, method, args, value);
     if (res == true) {
-      alert(data);
+      alert('E:' + data);
       return [ true, data ];
     } 
 
