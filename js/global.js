@@ -149,13 +149,18 @@ async function setFs() {
   }
 
   F['liqWusdBusd'] = async() => {
-    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) * 0.8 / BNBDIV;
+    return (await CONTS['busd'].balanceOf(ADRS['wusd'])) / BNBDIV;
   }; 
 
   F['liqWusdWusd'] = async() => {
     return (await CONTS['wusd'].totalSupply()) / BNBDIV;
   };
 	
+  F['wusdPrice'] = async() => {
+    return (await gV('liqWusdBusd')) * 0.8 / (await gV('liqWusdWusd'));
+  };
+	
+
   F['wusdStaked'] = async() => {
     return (await CONTS['wusd'].balanceOf(ADRS['lock'])) / BNBDIV;
   };
@@ -245,6 +250,7 @@ async function _runGlobal() {
   displayText("#liqWusdBusd", `${COMMA(INT((await gV('liqWusdBusd')), 3))}`);
   displayText("#liqWusdWusd", `${COMMA(INT((await gV('liqWusdWusd')), 3))}`);
 	displayText("#wusdStaked", `${COMMA(INT((await gV('wusdStaked')), 3))}`);
+  displayText("#wusdPrice", `${COMMA(INT((await gV('liqWusdWusd')), 3))}`);
   // if value is big, no decimal
   
   // let dollarElms = [];
