@@ -250,7 +250,7 @@ async function _runGlobal() {
   displayText("#liqWusdBusd", `${COMMA(INT((await gV('liqWusdBusd')), 3))}`);
   displayText("#liqWusdWusd", `${COMMA(INT((await gV('liqWusdWusd')), 3))}`);
 	displayText("#wusdStaked", `${COMMA(INT((await gV('wusdStaked')), 3))}`);
-  displayText("#wusdPrice", `${COMMA(INT((await gV('liqWusdWusd')), 3))}`);
+  displayText("#wusdPrice", `${COMMA(INT((await gV('wusdPrice')), 3))}`);
   // if value is big, no decimal
   
   // let dollarElms = [];
