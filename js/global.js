@@ -157,7 +157,9 @@ async function setFs() {
   };
 	
   F['wusdPrice'] = async() => {
-    return (await CONTS['wusd'].getWusdPriceX10000());
+    let v = (await CONTS['wusd'].getWusdPriceX10000());
+    v = v / 1;
+    return v;
   };
 	
 
