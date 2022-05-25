@@ -536,16 +536,8 @@ if (darkmode) {
 }
 activateTab(opentab)
 
-    async function switchWusd() {
-      await switchTarget(['buy', 'sell'], 'wusd', [handleInputBuyWusd, handleInputSellWusd], [(await gV('busdBalance')), (await gV('wusdBalance'))], [BUSDICONURL, TOKENICONURL], ["BUSD", "WUSD"], [runBuyWusd, runSellWusd]);
-    }
-    
     async function runGlobal() {
       await _runGlobal();
-
-      STATES['wusd'] = 'sell';
-      await switchWusd();
-      select('#wusd-change').onclick = async () => { await switchWusd(); };
 
       for (let idx of [1, 2, 3]) {
         select(`#run-stake${idx}`).onclick = async () => { await runStake(idx); };
@@ -553,7 +545,9 @@ activateTab(opentab)
       }
     }
 
-
+    async function switchWusd() {
+      await switchTarget(['buy', 'sell'], 'wusd', [handleInputBuyWusd, handleInputSellWusd], [(await gV('busdBalance')), (await gV('wusdBalance'))], [BUSDICONURL, TOKENICONURL], ["BUSD", "WUSD"], [runBuyWusd, runSellWusd]);
+    }
 
     async function runPersonal() {
       await _runPersonal();
@@ -590,6 +584,9 @@ activateTab(opentab)
         }
       }
 
+      STATES['wusd'] = 'sell';
+      await switchWusd();
+      select('#wusd-change').onclick = async () => { await switchWusd(); };
       
       for (let idx of [1, 2, 3]) {
         let rates = [1.1, 1.05, 1];
