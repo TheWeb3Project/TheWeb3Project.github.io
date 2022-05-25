@@ -157,7 +157,7 @@ async function setFs() {
   };
 	
   F['wusdPrice'] = async() => {
-    return (await CONTS['wusd'].getWusdPriceX10000()) / 10000 / BNBDIV;
+    return (await CONTS['wusd'].getWusdPriceX10000());
   };
 	
 
