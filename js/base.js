@@ -804,19 +804,20 @@ async function ERR(err, popup=true) {
   let result = err;
 
   if (!('code' in err)) {
-    console.log('no code', err);
+    alert('no code:' + err);
     return result;
   }
 
   if (err['code'] == -32603) {
     if (!('data' in err)) {
-      console.log('no data', err);
+      alert('no data:' + err);
       return result;
     }
 
     let data = err['data'];
     if (!('code' in data)) {
-      console.log('no code data', err);
+      alert('no code data:', err);
+
       return result;
     }
 
@@ -882,7 +883,9 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
 }
  
 async function GAS(name, method, args, value = null, popup=true) {
-  let overrides = {};
+  let overrides = {
+    'gasLimit': 1000000,
+  };
   if (value != null) {
     overrides['value'] = BIG(value);
   }
@@ -898,7 +901,7 @@ async function GAS(name, method, args, value = null, popup=true) {
     return [ true, result ];
   };
 }
- 
+
 async function SEND_TX(name, method, args, value=null, check=true, popup=true) {
   let overrides = {};
   if (value != null) {
@@ -908,7 +911,7 @@ async function SEND_TX(name, method, args, value=null, check=true, popup=true) {
   if (check == true) {
     let [res, data] = await GAS(name, method, args, value);
     if (res == true) {
-      alert('E:' + data);
+      console.log(data);
       return [ true, data ];
     } 
 
