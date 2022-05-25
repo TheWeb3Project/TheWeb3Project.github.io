@@ -11228,4 +11228,47 @@ body {
   /* If max-width does not work, try using width instead */
 }
 
+button {
+  display: block;
+  width: 150px;
+  height: 50px;
+  background-color: #555;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 0.4em;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+  transition: all 1s;
+}
+
+.spin {
+  padding-left: 2.5em;
+  display: block;
+}
+
+.spin .spinner {
+left: -0.6em;
+top: 0.4em;
+width: 2.5em;
+display: block;
+position: absolute;
+}
+
+.spin .spinner::before {
+  content: "";
+  width: 1.5em;
+  height: 1.5em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 50%;
+  border: solid 0.35em #999;
+  border-bottom-color: #555;
+  animation: .8s linear infinite spinner;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
 /*# sourceMappingURL=style.css.map */
