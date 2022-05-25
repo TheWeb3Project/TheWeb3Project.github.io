@@ -171,7 +171,7 @@ ABIS['wusd'] = [
   "function approve(address, uint256) returns (bool)",
   "function transfer(address, uint)",
 
-  "function getWusdPriceX10000()",
+  "function getWusdPriceX10000() view returns (uint)",
   "function getSwapAmount(address, uint) view returns (uint)",
   "function swap(address, uint)",
 ];
