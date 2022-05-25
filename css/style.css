@@ -11240,6 +11240,11 @@ button {
   transition: all 1s;
 }
 
+@keyframes spinner {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 .spin {
   padding-left: 2.5em;
   display: block;
