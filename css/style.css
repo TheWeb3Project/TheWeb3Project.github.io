@@ -11251,9 +11251,8 @@ button {
 }
 
 .spin .spinner {
-left: -0.6em;
-top: 0.4em;
-width: 2.5em;
+left: 20px;
+top: 25%;
 display: block;
 position: absolute;
 }
