@@ -182,7 +182,7 @@
         return `<span class="index">` + index + `</span>` + (correctCount == 0 ? `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span></div>` : correctCount == 6 ? `<div class="all-number-container"><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>` : `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>`);
       });
 
-      displayText('#user-numbers', win.join(''));
+      displayText('#user-numbers', user.join(''));
       
     }
 
