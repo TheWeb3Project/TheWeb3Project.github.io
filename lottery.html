@@ -86,7 +86,24 @@
     async function runLottery() {
       let number = 1234567;
 
-      await SEND_TX('lottery', 'betSingle', [[number]]);
+      let [res, data] = await SEND_TX('lottery', 'betSingle', [[number]]);
+      if (res == true) {
+        return;
+      }
+      let result = data;
+      let txResult = await result.wait();
+      let txLogs = txResult['logs'];
+      let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
+      let lotteryNumber;
+      for (txLog of txLogs) {
+        let topics = txLog['topics'];
+        if (topics[0] == mintEvent) {
+          let decodedData = INTFS['nft'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
+          lotteryNumber = decodedData[0];
+          break;
+        }
+      }
+
       let elm = select('#lottery-result');
       elm.classList = "d-flex align-items-center justify-content-between";
       for (let idx of [0, 1, 2, 3, 4, 5]) {
@@ -96,6 +113,8 @@
         let img = makeElem('img');
         img.src = `images/lottery/lot${idx}.png`;
         div.append(img);
+
+        
         div.innerHTML += `
         <div style="
         top: 50%;
@@ -106,7 +125,7 @@
         font-size: 42px;
         font-weight: 600;
         text-shadow: white -0.75px -0.75px 0px, white 0.75px -0.75px 0px, white -0.75px 0.75px 0px, white 0.75px 0.75px 0px;
-        ">${idx}</div>
+        ">${INT(lotteryNumber / 10**(6 - idx)) % 10}</div>
         `;
         elm.append(div);
       }
