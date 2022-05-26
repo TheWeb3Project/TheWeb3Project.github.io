@@ -164,6 +164,39 @@
       await _runGlobal();
 
       select(`#run-claim-xReward`).onclick = async () => { await runClaimXreward(); };
+
+      //Countdown
+      var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
+
+      // Update the count down every 1 second
+      function countdown() {
+        var x = setInterval(function() {
+
+        // Get the date of today
+        var now = new Date().getTime();
+
+        // Find the difference of the 2 unix timestamps
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Display the result in the element with id="Buttonid"
+        document.getElementById("Buttonid").innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+
+        // If the count down is finished, say Claim
+        if (distance < 0) {
+          clearInterval(x);
+          document.getElementById("Buttonid").innerHTML = "Claim";
+        }
+        }, 1000);
+
+      }
+
     }
 
     async function runPersonal() {
