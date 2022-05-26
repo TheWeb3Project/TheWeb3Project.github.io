@@ -79,6 +79,7 @@
     async function runLottery() {
       let number = 1234567;
       
+      await SEND_TX('lottery', 'betSingle', [[number]]);
     }
 
     async function runGlobal() {
