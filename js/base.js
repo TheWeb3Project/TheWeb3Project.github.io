@@ -257,6 +257,13 @@ ABIS['miner'] = [
   
 ];
 
+ADRS['lottery'] = "0xBBB14B63B5011ADb225973df6e2E4B27B6cC717e";
+ABIS['lottery'] = [
+  "function betSingle(uint[])",  
+];
+
+
+
 ADRS['factory'] = "0xcA143Ce32Fe78f1f7019d7d551a6402fC5350c73";
 ABIS['factory'] = [
   "function getPair(address, address) view returns (address)",
