@@ -82,9 +82,10 @@
   <script src="js/page.js"></script>
 
   <script>
+    let winNumberColors = ["yellow", "green", "cyan", "blue", "purple", "pink"];
 
     async function runLottery() {
-      let number = 1234567;
+      let userNumbers = [1234567, 1234562];
 
       let [res, data] = await SEND_TX('lottery', 'betSingle', [[number]]);
       if (res == true) {
@@ -98,7 +99,7 @@
       for (txLog of txLogs) {
         let topics = txLog['topics'];
         if (topics[0] == mintEvent) {
-          let decodedData = INTFS['nft'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
+          let decodedData = INTFS['lottery'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
           lotteryNumber = decodedData[0];
           break;
         }
@@ -130,6 +131,54 @@
         elm.append(div);
       }
     }
+
+
+//     let win = winNumber.map((w, i) => {
+//   return `<section class="stage">
+//       <figure class="ball ` + winNumberColors[i] + `">
+//         <span class="shadow" />
+//       </figure>
+//       <span class="number">` + w + `</span>
+//     </section>`
+// });
+
+// let user = userNumbers.map((userNumber, index) => {
+//   let wrongNumbers = userNumber.map((number, i) => {
+//     let matchCount = 0;
+
+//     for (let i = 5; i >= 0; i--) {
+//       if (userNumber[i] == winNumber[i]) {
+//         matchCount++;
+//       } else {
+//         break;
+//       }
+//     }
+//     return 6 - matchCount > i ? '<span class="user_number unmatched">' + number + '<span class="wrong-mark">&#10005;</span></span>' : '';
+//   });
+
+//   let correctNumbers = userNumber.map((number, i) => {
+//     let matchCount = 0;
+
+//     for (let i = 5; i >= 0; i--) {
+//       if (userNumber[i] == winNumber[i]) {
+//         matchCount++;
+//       } else {
+//         break;
+//       }
+//     }
+//     return 6 - matchCount <= i ? '<span class="user_number matched">' + number + '<span class="check-mark">&#10004;</span></span>' : '';
+//   });
+
+//   let correctCount = 0;
+//   for (let i = 0; i < 6; i++) {
+//     if (correctNumbers[i] !== '') {
+//       correctCount++;
+//     }
+//   }
+//   return `<span class="index">` + index + `</span>` + (correctCount == 0 ? `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span></div>` : correctCount == 6 ? `<div class="all-number-container"><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>` : `<div class="all-number-container"><span class="wrong-number-container">` + wrongNumbers.join('') + `</span><span class="correct-numbers-container">` + correctNumbers.join('') + `</span></div>`);
+// });
+// document.getElementById("users").innerHTML = user.join('');
+// document.getElementById("win_number_container").innerHTML = win.join('');
 
     async function runGlobal() {
       await _runGlobal();
