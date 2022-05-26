@@ -642,6 +642,16 @@ let popupSettings = {
   boundary: 'window',
 };
 
+function spin(target, on) {
+  let elm = select(target + ' button');
+  if (on) {
+    elm.innerHTML = '<span class="spinner"></span>' + elm.innerHTML;
+    elm.classList.add('spin');
+  } else {
+    elm.classList.remove('spin');
+  }
+}
+
 ///////////////////////////////// web3
 
 function BSC(type, txt) {
