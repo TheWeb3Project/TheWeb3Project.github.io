@@ -85,8 +85,31 @@
 
     async function runLottery() {
       let number = 1234567;
-      
+
       await SEND_TX('lottery', 'betSingle', [[number]]);
+      let elm = select('#lottery-result');
+      elm.classList = "d-flex align-items-center justify-content-between";
+      for (let idx of [0, 1, 2, 3, 4, 5]) {
+        let div = makeElem('div');
+        div.classList = "d-flex align-items-center justify-content-between position-relative";
+
+        let img = makeElem('img');
+        img.src = `images/lottery/lot${idx}.png`;
+        div.append(img);
+        div.innerHTML += `
+        <div style="
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        position: absolute;
+        color: #000000;
+        font-size: 42px;
+        font-weight: 600;
+        text-shadow: white -0.75px -0.75px 0px, white 0.75px -0.75px 0px, white -0.75px 0.75px 0px, white 0.75px 0.75px 0px;
+        ">${idx}</div>
+        `;
+        elm.append(div);
+      }
     }
 
     async function runGlobal() {
