@@ -259,7 +259,8 @@ ABIS['miner'] = [
 
 ADRS['lottery'] = "0xBBB14B63B5011ADb225973df6e2E4B27B6cC717e";
 ABIS['lottery'] = [
-  "function betSingle(uint[])",  
+  "function betSingle(uint[])",
+  "event SingleBetDone(uint)",
 ];
 
 
