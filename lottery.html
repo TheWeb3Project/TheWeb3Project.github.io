@@ -133,7 +133,8 @@
       //   `;
       //   elm.append(div);
       // }
-
+      
+      winNumber = String(winNumber).split('').map(v => INT(v));
       let win = winNumber.map((w, i) => {
         return `<section class="stage">
             <figure class="ball ` + winNumberColors[i] + `">
@@ -145,6 +146,7 @@
       displayText('#win-number', win.join(''));
 
       let user = userNumbers.map((userNumber, index) => {
+        userNumber = String(userNumber).split('').map(v => INT(v));
         let wrongNumbers = userNumber.map((number, i) => {
           let matchCount = 0;
 
