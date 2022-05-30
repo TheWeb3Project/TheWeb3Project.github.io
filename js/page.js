@@ -763,7 +763,7 @@ async function buyMinerMore() {
   let daimonds = await CONTS['miner'].getMyDaimonds(CURADR);
   let miners = daimonds / (await CONTS['miner'].DAIMONDS_TO_HIRE_MINER());
   if (miners < 2) {
-    alert('wait more to hire miners');
+    alert('not enough WUSD to hire miners');
     return;
   }
   
