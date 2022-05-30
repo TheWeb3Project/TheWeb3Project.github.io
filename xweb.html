@@ -193,15 +193,32 @@
 
     }
 
+    
+
+    let claimTimeLeft;
     async function runPersonal() {
       await _runPersonal();
 
-      //Countdown
       let lastClaim = (await gV('lastClaim'));
       if (lastClaim == 0) {
-
+        displayText(`#run-claim-xReward button`, "Claim");
+      } else {
+        claimTimeLeft = lastClaim + 60*24*24 - now;
+        setInterval(function () {
+          if (isNaN(claimTimeLeft)) {
+            return;
+          }
+          
+          if (claimTimeLeft == 0) {
+            displayText(`#run-claim-xReward button`, "Claim");
+            return;
+          }
+          
+          let timeStr = getTimeStr(claimTimeLeft, false, true, true, true);
+          displayText(`#run-claim-xReward button`, timeStr);
+          claimTimeLeft -= 1;
+        }, 1000);
       }
-      var targetTime = new Date("Jan 5, 2024 15:37:25").getTime();
     }
 
     (async () => {
