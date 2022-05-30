@@ -161,31 +161,6 @@
   <script src="js/global.js"></script>
   <script src="js/page.js"></script>
   <script>
-    // Update the count down every 1 second
-    function countdown(target, targetTime) {
-        var x = setInterval(function() {
-
-        // Find the difference of the 2 unix timestamps
-        var distance = targetTime - now;
-
-        // Time calculations for days, hours, minutes and seconds
-        var days = Math.floor(distance / (60 * 60 * 24));
-        var hours = Math.floor((distance % (60 * 60 * 24)) / (60 * 60));
-        var minutes = Math.floor((distance % (60 * 60)) / (60));
-        var seconds = Math.floor((distance % (60)));
-
-        // Display the result in the element with id="Buttonid"
-        displayText(`${target} button`, days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
-
-        // If the count down is finished, say Claim
-        if (distance < 0) {
-          clearInterval(x);
-          displayText(`${target} button`, "Claim");
-        }
-      }, 1000);
-
-    }
-
     async function runGlobal() {
       await _runGlobal();
 
