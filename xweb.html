@@ -161,23 +161,12 @@
   <script src="js/global.js"></script>
   <script src="js/page.js"></script>
   <script>
-    async function runGlobal() {
-      await _runGlobal();
-
-      select(`#run-claim-xReward`).onclick = async () => { await runClaimXreward(); };
-
-      //Countdown
-      var countDownDate = new Date("Jan 5, 2024 15:37:25").getTime();
-
-      // Update the count down every 1 second
-      function countdown() {
+    // Update the count down every 1 second
+    function countdown(target, targetTime) {
         var x = setInterval(function() {
 
-        // Get the date of today
-        var now = new Date().getTime();
-
         // Find the difference of the 2 unix timestamps
-        var distance = countDownDate - now;
+        var distance = targetTime - now;
 
         // Time calculations for days, hours, minutes and seconds
         var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -186,24 +175,33 @@
         var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
         // Display the result in the element with id="Buttonid"
-        document.getElementById("Buttonid").innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
+        displayText(`${target} button`, days + "d " + hours + "h " + minutes + "m " + seconds + "s ");
 
         // If the count down is finished, say Claim
         if (distance < 0) {
           clearInterval(x);
-          document.getElementById("Buttonid").innerHTML = "Claim";
+          displayText(`${target} button`, "Claim");
         }
-        }, 1000);
+      }, 1000);
 
-      }
+    }
+
+    async function runGlobal() {
+      await _runGlobal();
+
+      select(`#run-claim-xReward`).onclick = async () => { await runClaimXreward(); };      
 
     }
 
     async function runPersonal() {
       await _runPersonal();
 
-      
+      //Countdown
+      let lastClaim = (await gV('lastClaim'));
+      if (lastClaim == 0) {
+
+      }
+      var targetTime = new Date("Jan 5, 2024 15:37:25").getTime();
     }
 
     (async () => {
