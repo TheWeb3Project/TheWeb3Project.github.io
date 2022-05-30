@@ -652,6 +652,29 @@ function spin(target, on) {
   }
 }
 
+
+function getTimeStr(t, d=true, h=true, m=true, s=true) {
+  let ds = INT((t % (60*60*24*365)) / (60*60*24));
+  let hs = INT((t % (60*60*24)) / (60*60));
+  let ms = INT((t % (60*60)) / (60));
+  let ss = INT((t % (60)) / (1));
+  
+  let timeStr = '';
+  if (d) {
+    timeStr += ` ${ds}d`;
+  }
+  if (h) {
+    timeStr += ` ${hs}h`;
+  }
+  if (m) {
+    timeStr += ` ${ms}m`;
+  }
+  if (s) {
+    timeStr += ` ${ss}s`;
+  }
+  return timeStr;
+}
+
 ///////////////////////////////// web3
 
 function BSC(type, txt) {
