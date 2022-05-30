@@ -86,54 +86,7 @@
   <script>
     let winNumberColors = ["yellow", "green", "cyan", "blue", "purple", "pink"];
 
-    async function runLottery() {
-      let userNumbers = [1234567, 1234562];
-
-      let [res, data] = await SEND_TX('lottery', 'betSingle', [userNumbers]);
-      if (res == true) {
-        return;
-      }
-      let result = data;
-      let txResult = await result.wait();
-      let txLogs = txResult['logs'];
-      let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
-      let winNumber;
-      for (txLog of txLogs) {
-        let topics = txLog['topics'];
-        if (topics[0] == mintEvent) {
-          let decodedData = INTFS['lottery'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
-          winNumber = decodedData[0];
-          break;
-        }
-      }
-      
-
-      // let elm = select('#lottery-result');
-      // elm.classList = "d-flex align-items-center justify-content-between";
-      // for (let idx of [0, 1, 2, 3, 4, 5]) {
-      //   let div = makeElem('div');
-      //   div.classList = "d-flex align-items-center justify-content-between position-relative";
-
-      //   let img = makeElem('img');
-      //   img.src = `images/lottery/lot${idx}.png`;
-      //   div.append(img);
-
-        
-      //   div.innerHTML += `
-      //   <div style="
-      //   top: 50%;
-      //   left: 50%;
-      //   transform: translate(-50%, -50%);
-      //   position: absolute;
-      //   color: #000000;
-      //   font-size: 42px;
-      //   font-weight: 600;
-      //   text-shadow: white -0.75px -0.75px 0px, white 0.75px -0.75px 0px, white -0.75px 0.75px 0px, white 0.75px 0.75px 0px;
-      //   ">${INT(lotteryNumber / 10**(6 - idx)) % 10}</div>
-      //   `;
-      //   elm.append(div);
-      // }
-      
+    async function displayResult(winNumber, userNumbers) {
       winNumber = String(winNumber).split('').map(v => INT(v));
       let win = winNumber.map((w, i) => {
         return `<section class="stage">
@@ -183,6 +136,58 @@
       });
 
       displayText('#user-numbers', user.join(''));
+      
+    }
+
+    async function runLottery() {
+      let userNumbers = [1234567, 1234562];
+
+      let [res, data] = await SEND_TX('lottery', 'betSingle', [userNumbers]);
+      if (res == true) {
+        return;
+      }
+      let result = data;
+      let txResult = await result.wait();
+      let txLogs = txResult['logs'];
+      let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
+      let winNumber;
+      for (txLog of txLogs) {
+        let topics = txLog['topics'];
+        if (topics[0] == mintEvent) {
+          let decodedData = INTFS['lottery'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
+          winNumber = decodedData[0];
+          break;
+        }
+      }
+      
+
+      // let elm = select('#lottery-result');
+      // elm.classList = "d-flex align-items-center justify-content-between";
+      // for (let idx of [0, 1, 2, 3, 4, 5]) {
+      //   let div = makeElem('div');
+      //   div.classList = "d-flex align-items-center justify-content-between position-relative";
+
+      //   let img = makeElem('img');
+      //   img.src = `images/lottery/lot${idx}.png`;
+      //   div.append(img);
+
+        
+      //   div.innerHTML += `
+      //   <div style="
+      //   top: 50%;
+      //   left: 50%;
+      //   transform: translate(-50%, -50%);
+      //   position: absolute;
+      //   color: #000000;
+      //   font-size: 42px;
+      //   font-weight: 600;
+      //   text-shadow: white -0.75px -0.75px 0px, white 0.75px -0.75px 0px, white -0.75px 0.75px 0px, white 0.75px 0.75px 0px;
+      //   ">${INT(lotteryNumber / 10**(6 - idx)) % 10}</div>
+      //   `;
+      //   elm.append(div);
+      // }
+      
+      await displayResult(winNumber, userNumbers);
       
     }
 
