@@ -159,6 +159,7 @@ async function _runPersonal() {
 
   F['lastClaim'] = async() => {
     let v = await CONTS['xweb3']._lastClaim(CURADR);
+    v = v / 1;
     return v;
   };
 
@@ -174,6 +175,7 @@ async function _runPersonal() {
 
   F['lastHire'] = async() => {
     let v = await CONTS['miner']._lastHire(CURADR);
+    v = v / 1;
     return v;
   };
 
