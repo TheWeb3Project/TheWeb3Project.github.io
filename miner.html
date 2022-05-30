@@ -184,7 +184,7 @@
                       background-image: linear-gradient(134deg,#48acef,#00436f);
                       box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
                         <span id="run-name" class="button__content">
-                          ReHire  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                          <span>ReHire</span><i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                           All Stacked WUSD Reward will be used<br/>
                           You can do rehire 24 hour after hire/rehire
                           "></i>
@@ -309,7 +309,7 @@
     }
 
 
-
+    let rehireTimeLeft;
     async function runPersonal() {
       await _runPersonal();
 
@@ -379,6 +379,24 @@
       } else {
        select('#refAdr').innerHTML = ref;
       }
+      
+      
+      let lastHire = (await gV('lastHire'));
+      rehireTimeLeft = lastHire + 60*24*24 - now;
+      setInterval(function () {
+        if (isNaN(rehireTimeLeft)) {
+          return;
+        }
+        
+        if (rehireTimeLeft == 0) {
+          displayText(`#hireMore span span`, "ReHire");
+          return;
+        }
+          
+          let timeStr = getTimeStr(rehireTimeLeft, false, true, true, true);
+          displayText(`##hireMore span span`, timeStr);
+          rehireTimeLeft -= 1;
+      }, 1000);
 
     }
 
