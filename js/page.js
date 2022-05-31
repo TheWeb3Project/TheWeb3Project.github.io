@@ -31,6 +31,8 @@ function displaySidebar() {
           </a>
 
           <ul id="sidebar-nav" class="list-unstyled py-1">
+
+
             ${htmlSide('index.html', 'collection', 'Dashboard')}
             ${htmlSide('account.html', 'person-circle', 'Account')}
             ${htmlSide('calculator.html', 'calculator-fill', 'Calculator')}
@@ -45,12 +47,19 @@ function displaySidebar() {
           </ul>
 
           <div class="d-flex justify-content-around px-4">
+
             ${htmlSocials('https://t.me/TheWeb3Project', 'send-fill')}
             ${htmlSocials('https://twitter.com/TheWeb3Project', 'twitter')}
             ${htmlSocials('https://discord.gg/crQkCE7Mn6', 'discord')}
             ${htmlSocials('https://www.youtube.com/c/TheWeb3Project', 'youtube')}
           </div>
+          <div class="d-flex justify-content-between ">
+          <input type="checkbox" class="mt-1 " name="alerts" id="alerts">
+          <p class>Turn off alerts</p>
+          </div>
         </div>
+
+
         `;
     select('#sidebarContainer').innerHTML = htmlStr;
 }
@@ -136,6 +145,15 @@ let lockedAmount;
 let lockedDuration;
 let totalSupplyPercentage;
 async function _runPersonal() {
+
+    var checkBox = document.getElementById("alerts");
+    if (checkBox.checked == true){
+      // make alerts off
+    } else {
+      // dont do anything
+    }
+
+
   displayText('#connect', SHORTADR(CURADR));
 
   F['bnbBalance'] = async() => {
