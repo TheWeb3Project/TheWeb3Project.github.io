@@ -84,16 +84,7 @@
 
   <body
     id="titano-finance"
-    style="
-      margin-bottom: 100px;
-      width: 100%;
-      background-image: radial-gradient(
-        circle farthest-corner at 50% 50%,
-        #424750,
-        #202326
-      );
-      font-weight: 400;
-    "
+   class="background"
   >
     <div class="container-fluid">
       <div class="row">
@@ -123,10 +114,7 @@
             <div class="my-5 col-12">
               <div id='card'>
                 <div id="run-web3-approve-router" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon custom-button" >
                     <span class="button__content">$WEB3 Approve to sell</span>
                   </button>
                 </div>
@@ -188,10 +176,7 @@
                 </div>
   
                 <div id="swap-run" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                  border-radius: 20px;
-                  background-image: linear-gradient(134deg,#48acef,#00436f);
-                  box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                  <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon custom-button" >
                     <span id="swap-run-name" class="button__content">Buy</span>
                   </button>
                 </div>
@@ -292,44 +277,7 @@
       select("#sidebar-nav").children[3].classList.add("active-neumorphism");
     </script>
     <style>
-      .active-neumorphism {
-        box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%),
-          -2px -2px 9px 0 rgb(93 100 112 / 90%);
-        background-image: linear-gradient(160deg, #424750, #202326);
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef,
-          5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      }
-      .card {
-        border: none;
-      }
-      .neontext {
-        color: #fff;
-      }
 
-      #titano-finance #sidebar-nav li:hover {
-        color: #fff;
-      }
-      .neontext:hover {
-        color: #fff;
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef,
-          5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      }
-      #dexscreener-embed {
-        position: relative;
-        width: 100%;
-        padding-bottom: 125%;
-      }
-      @media (min-width: 1400px) {
-        #dexscreener-embed {
-          padding-bottom: 65%;
-        }
-      }
-      iframe {
-        height: 55vh;
-        top: 0;
-        left: 0;
-        border: 0;
-      }
     </style>
   </body>
 </html>

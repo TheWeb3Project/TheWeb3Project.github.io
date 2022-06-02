@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="css/flooz.css">
 </head>
 
-<body id="titano-finance" style="margin-bottom: 100px; width: 100%; background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326); font-weight: 400;">
+<body id="titano-finance" class="background">
   <div class="container-fluid">
     <div class="row">
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;  ">
@@ -131,10 +131,7 @@
                   </div>
                   <h4 id="xReward" class="fw-bold">0.000</h4>
                   <div id="run-claim-xReward" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                    border-radius: 20px;
-                    background-image: linear-gradient(134deg,#48acef,#00436f);
-                    box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                    <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                       <span id="lock-name" class="button__content">Claim</span>
                     </button>
                 </div>
@@ -213,27 +210,5 @@
 
     select('#sidebar-nav').children[8].classList.add('active-neumorphism');
   </script>
-    <style>
-      .active-neumorphism {
-        box-shadow:  2px 2px 9px 0 rgb(17 19 20 / 90%),
-           -2px -2px 9px 0 rgb(93 100 112 / 90%);
-        background-image: linear-gradient(160deg, #424750, #202326);
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      }
-      .card {
-        border: none;
-      }
-      .neontext{
-        color: #fff;
-      }
-
-      #titano-finance #sidebar-nav li:hover {
-        color: #fff;
-      }
-      .neontext:hover{
-        color: #fff;
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      }
-    </style>
 </body>
 </html>

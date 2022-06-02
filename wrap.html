@@ -33,7 +33,7 @@
   <link rel="stylesheet" href="css/flooz.css">
 </head>
 
-<body id="titano-finance" style="margin-bottom: 100px; width: 100%; background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326); font-weight: 400;">
+<body id="titano-finance" class="background" >
   <div class="container-fluid">
     <div class="row">
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
@@ -68,13 +68,7 @@
                 <a id="wweb3-link" target="_blank">
                   <span id="wweb3"></span>
                 </a>
-                <button id='copy-wweb3' style="font-size: 16px; 	background: none;
-                color: inherit;
-                border: none;
-                padding: 0;
-                font: inherit;
-                cursor: pointer;
-                outline: inherit;"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
+                <button id='copy-wweb3' class="copy-btn" src="./images/copy-solid.svg" alt=""></button>
               </span>
             </div>
           </div>
@@ -114,19 +108,13 @@
               <h5 class="fw-bold mb-0">Wrap $WEB3</h5>
 
               <div id="run-web3-approve-wweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                border-radius: 20px;
-                background-image: linear-gradient(134deg,#48acef,#00436f);
-                box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
                   <span class="button__content">$WEB3 Approve to wrap</span>
                 </button>
               </div>
 
               <div id="run-wweb3-approve-wweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                border-radius: 20px;
-                background-image: linear-gradient(134deg,#48acef,#00436f);
-                box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
                   <span class="button__content">$wWEB3 Approve to unwrap</span>
                 </button>
               </div>
@@ -188,10 +176,7 @@
               </div>
 
               <div id="wrap-run" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                border-radius: 20px;
-                background-image: linear-gradient(134deg,#48acef,#00436f);
-                box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
                   <span id="wrap-run-name" class="button__content">Wrap</span>
                 </button>
               </div>
@@ -221,10 +206,7 @@
                         </div>
 
                           <div id="run-wweb3-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                          border-radius: 20px;
-                          background-image: linear-gradient(134deg,#48acef,#00436f);
-                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
                             <span class="button__content">$wWEB3 Approve to Lock</span>
                           </button>
                         </div>
@@ -263,28 +245,19 @@
                             </div>
 
                           <div id="run-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="lock-name" class="button__content">Lock</span>
                             </button>
                           </div>
 
                           <div id="run-unlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="unlock-name" class="button__content">Unlock</span>
                             </button>
                           </div>
                           
                           <div id="run-eunlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="eunlock-name" class="button__content">Emergency Unlock</span>
                             </button>
                           </div>
@@ -322,10 +295,7 @@
                         </div>
 
                           <div id="run-wweb3-approve-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                          border-radius: 20px;
-                          background-image: linear-gradient(134deg,#48acef,#00436f);
-                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;">
+                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
                             <span class="button__content">$wWEB3 Approve to stake</span>
                           </button>
                         </div>
@@ -365,28 +335,19 @@
                           </div>
 
                           <div id="run-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="lock-name" class="button__content">Lock</span>
                             </button>
                           </div>
 
                           <div id="run-unlock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="unlock-name" class="button__content">Unlock</span>
                             </button>
                           </div>
                           
                           <div id="run-eunlock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="eunlock-name" class="button__content">Emergency Unlock</span>
                             </button>
                           </div>
@@ -458,28 +419,19 @@
                           </div>
 
                           <div id="run-lock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="lock-name" class="button__content">Lock</span>
                             </button>
                           </div>
 
                           <div id="run-unlock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border"  >
                               <span id="unlock-name" class="button__content">Unlock</span>
                             </button>
                           </div>
                           
                           <div id="run-eunlock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                            border-radius: 20px;
-                            background-image: linear-gradient(134deg,#48acef,#00436f);
-                            box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
                               <span id="eunlock-name" class="button__content">Emergency Unlock</span>
                             </button>
                           </div>
@@ -528,10 +480,7 @@
                         <td><span id="unlockAfter1"></span></td>
                         <td><span id="claimAmount1">0.000</span> pWEB3</td>
                         <td><div id="run-claim1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                          border-radius: 20px;
-                          background-image: linear-gradient(134deg,#48acef,#00436f);
-                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border" >
                             <span id="claim-name1" class="button__content">Claim</span>
                           </button>
                         </div></td>
@@ -541,10 +490,7 @@
                       <td><span id="unlockAfter2"></span></td>
                       <td><span id="claimAmount2">0.000</span> pWEB3</td>
                         <td><div id="run-claim2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                          border-radius: 20px;
-                          background-image: linear-gradient(134deg,#48acef,#00436f);
-                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border" >
                             <span id="claim-name2" class="button__content">Claim</span>
                           </button>
                         </div></td>
@@ -555,10 +501,7 @@
                       <td><span id="unlockAfter3"></span></td>
                       <td><span id="claimAmount3">0.000</span> pWEB3</td>
                         <td><div id="run-claim3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon" style="border: 3px solid #48acef;
-                          border-radius: 20px;
-                          background-image: linear-gradient(134deg,#48acef,#00436f);
-                          box-shadow: inset 0 0 1px 0 #001e32, -2px -2px 10px 0 rgb(93 100 112 / 85%), 2px 2px 10px 0 #111314, inset -2px -2px 3px 0 #48acef, inset 2px 2px 3px 0 #00436f;" >
+                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border" >
                             <span id="claim-name3" class="button__content">Claim</span>
                           </button>
                         </div></td>

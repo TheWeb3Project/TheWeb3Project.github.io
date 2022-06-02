@@ -31,7 +31,7 @@
   <meta property="og:image" content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png">
 </head>
 <!--Fork of titano website. simple and easy to use-->
-<body id="titano-finance" style=" background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
+<body id="titano-finance" class="background" >
   <div class="container-fluid">
     <div class="row">
       <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
@@ -139,13 +139,7 @@
                 <a id="web3-link" target="_blank">
                   <span id="web3"></span>
                 </a>
-                <button id='copy-web3' style="font-size: 16px; 	background: none;
-                color: inherit;
-                border: none;
-                padding: 0;
-                font: inherit;
-                cursor: pointer;
-                outline: inherit;" class="copy-btn"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
+                <button id='copy-web3' class="copy-btn "> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
               </span>
               
               <div class="row row-cols-1 row-cols-sm-3">
@@ -210,7 +204,7 @@
           </div>
 
           <div class="my-5 col-12">
-            <div id="jpS" class="card text-center p-4" style="background-image: linear-gradient(160deg,#424750,#202326);">
+            <div id="jpS" class="card text-center shadow-custom p-4" style="background-image: linear-gradient(160deg,#424750,#202326);">
               <span class="fw-medium ms-1">
                 Jackpot
                 <a id="jackpot-link" target="_blank">
@@ -554,27 +548,6 @@
 
     select('#sidebar-nav').children[0].classList.add('active-neumorphism');
   </script>
-    <style>
-      .active-neumorphism {
-        box-shadow:  2px 2px 9px 0 rgb(17 19 20 / 90%),
-           -2px -2px 9px 0 rgb(93 100 112 / 90%);
-        background-image: linear-gradient(160deg, #424750, #202326);
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      }
-      .card {
-        border: none;
-      }
-      .neontext{
-        color: #fff;
-      }
 
-      #titano-finance #sidebar-nav li:hover {
-        color: #fff;
-      }
-      .neontext:hover{
-        color: #fff;
-        text-shadow: 0 0 1px #0071bc, 0 0 4px #4db8ff, 0 0 16px #48acef, 5px 5px 6px rgb(23 25 28 / 85%), -5px -5px 6px rgb(76 82 92 / 85%);
-      }
-    </style>
 </body>
 </html>
