@@ -57,9 +57,12 @@
 
           <div class="my-5 col-12">
             <div id='card'>
-              <div id="win-number">
-              </div>
-              <div id="user-numbers">
+              <div class="container" id="js-container">
+                <canvas class="canvas" id="js-canvas" width="300" height="300"></canvas>
+                <div class="d-hidden">
+                  Helllllllo
+                  <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
+                </div>
               </div>
             </div>
           </div>
@@ -84,164 +87,6 @@
   <script src="js/page.js"></script>
 
   <script>
-let winNumberColors = ["yellow", "green", "cyan", "blue", "purple", "pink"];
-
-width = document.documentElement.clientWidth;
-height = document.documentElement.clientHeight;
-
-function displayWindowSize(){
-  if(width != document.documentElement.clientWidth || height != document.documentElement.clientHeight) {
-    location.reload();
-    return;
-  }
-  width = document.documentElement.clientWidth;
-  height = document.documentElement.clientHeight;
-}
-  
-window.addEventListener("resize", displayWindowSize);
-
-async function displayResult(winNumber, userNumbers) {
-  winNumber = String(winNumber).split('').map(v => INT(v));
-  let win = winNumber.map((w, i) => {
-    return `<div style="position: absolute; top: ` + (width > 768 ? 50 : 20) + `px; left: ` + ((i + 1) * (width > 768 ? 100 : 50)) + `px">
-        <figure class="ball ` + winNumberColors[i] + `">
-          <span class="shadow" />
-        </figure>
-        <span class="number">` + w + `</span>
-      </section>`
-  });
-  displayText('#win-number', win.join(''));
-
-  let user = userNumbers.map((userNumber, index) => {
-    userNumber = String(userNumber).split('').map(v => INT(v));
-    let wrongNumbers = userNumber.map((number, i) => {
-      let matchCount = 0;
-
-      for (let i = 5; i >= 0; i--) {
-        if (userNumber[i] == winNumber[i]) {
-          matchCount++;
-        } else {
-          break;
-        }
-      }
-      return 6 - matchCount > i ?
-          `<div style="position: absolute; top: 0; left: ` + ((i + 1) * (width > 768 ? 100 : 50)) + `px">
-        <span class="user_number unmatched">` + 
-          number + (userNumber[i] == winNumber[i] ? 
-          `<span class="check-mark">&#10004;</span>
-        </span>
-      </div>` : 
-          `<span class="wrong-mark">&#10005;</span>
-        </span>
-      </div>`) : '';
-    });
-
-    let correctNumbers = userNumber.map((number, i) => {
-      let matchCount = 0;
-
-      for (let i = 5; i >= 0; i--) {
-        if (userNumber[i] == winNumber[i]) {
-          matchCount++;
-        } else {
-          break;
-        }
-      }
-      return 6 - matchCount <= i ? 
-        `<div style="position: absolute; top: 0; left: ` + ((i + 1) * (width > 768 ? 100 : 50)) + `px">
-          <span class="user_number matched">` + 
-            number + (userNumber[i] == winNumber[i] ? 
-              `<span class="check-mark">&#10004;</span>
-          </span>
-        </div>` : 
-              `<span class="wrong-mark">&#10005;</span>
-            </span>
-        </div>`) : '';
-    });
-
-    let correctCount = 0;
-    for (let i = 0; i < 6; i++) {
-      if (correctNumbers[i] !== '') {
-        correctCount++;
-      }
-    }
-    return `<div class="user-number-row">
-    <div class="index">` + index + `</div>` + 
-    (correctCount == 0 ?
-      `<div class="all-number-container">
-        <span class="wrong-number-container">` +
-          wrongNumbers.join('') +
-        `</span>
-      </div></div>` : 
-        `<div class="all-number-container">
-          <span class="wrong-number-container">` +
-            // <div class="wrong-number-border" style="width: ` + (7 - correctCount) * (width > 768 ? 100 : 27.5) + `px"></div>` + 
-            wrongNumbers.join('') + 
-          `</span>
-          <span class="correct-numbers-container">
-            <div class="correct-number-border" style="left: ` + (width > 768 ? (7 - correctCount) * 100 - 45 : (7 - correctCount) * 50 - 22.5) + `px; width: ` + correctCount * (width > 768 ? 100 : 50) + `px;"></div>` + 
-            correctNumbers.join('') + 
-          `</span>
-        </div>
-    </div>`);
-  });
-
-  displayText('#user-numbers', user.join(''));
-  
-}
-
-async function runLottery() {
-  let userNumbers = [123456, 432012];
-
-  let [res, data] = await SEND_TX('lottery', 'betSingle', [userNumbers]);
-  if (res == true) {
-    return;
-  }
-  let result = data;
-  let txResult = await result.wait();
-  let txLogs = txResult['logs'];
-  let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
-  let winNumber;
-  for (txLog of txLogs) {
-    let topics = txLog['topics'];
-    if (topics[0] == mintEvent) {
-      let decodedData = INTFS['lottery'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
-      winNumber = decodedData[0];
-      break;
-    }
-  }
-  
-
-  // let elm = select('#lottery-result');
-  // elm.classList = "d-flex align-items-center justify-content-between";
-  // for (let idx of [0, 1, 2, 3, 4, 5]) {
-  //   let div = makeElem('div');
-  //   div.classList = "d-flex align-items-center justify-content-between position-relative";
-
-  //   let img = makeElem('img');
-  //   img.src = `images/lottery/lot${idx}.png`;
-  //   div.append(img);
-
-    
-  //   div.innerHTML += `
-  //   <div style="
-  //   top: 50%;
-  //   left: 50%;
-  //   transform: translate(-50%, -50%);
-  //   position: absolute;
-  //   color: #000000;
-  //   font-size: 42px;
-  //   font-weight: 600;
-  //   text-shadow: white -0.75px -0.75px 0px, white 0.75px -0.75px 0px, white -0.75px 0.75px 0px, white 0.75px 0.75px 0px;
-  //   ">${INT(lotteryNumber / 10**(6 - idx)) % 10}</div>
-  //   `;
-  //   elm.append(div);
-  // }
-  
-  await displayResult(winNumber, userNumbers);
-  
-}
-
-
 async function runGlobal() {
   await _runGlobal();
   
