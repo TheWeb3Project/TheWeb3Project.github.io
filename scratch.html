@@ -57,12 +57,10 @@
 
           <div class="my-5 col-12">
             <div id='card'>
-              <div class="container" id="js-container">
-                <canvas class="canvas" id="js-canvas" width="426" height="128"></canvas>
-                <div id="scratch-content" class="invisible">
-                  Helllllllo
-                  <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
-                </div>
+              <img src="images/scratch/scratch_bg.png" class="position-relative">
+              <canvas class="canvas position-absolute" id="js-canvas" width="426" height="128"></canvas>
+              <div id="scratch-content" class="invisible">
+              </div>
               </div>
             </div>
           </div>
@@ -88,7 +86,6 @@
 
   <script>
 let isDrawing, lastPoint;
-let container = select('#js-container');
 let canvas = select('#js-canvas');
 let ctx          = canvas.getContext('2d');
 let image        = new Image();
