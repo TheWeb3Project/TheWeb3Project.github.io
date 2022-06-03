@@ -59,7 +59,7 @@
             <div id='card'>
               <div class="container" id="js-container">
                 <canvas class="canvas" id="js-canvas" width="300" height="300"></canvas>
-                <div class="invisible">
+                <div id="scratch-content" class="invisible">
                   Helllllllo
                   <img src="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg" alt="logo-icon" class="col-2">
                 </div>
@@ -101,7 +101,7 @@ image.onload = function() {
   canvas.height = image.height;
   ctx.drawImage(image, 0, 0);
   // Show the form when Image is loaded.
-  document.querySelectorAll('.form')[0].style.visibility = 'visible';
+  select('#scratch-content').classList.add('visible');
 };
 brush.src = "images/scratch/scratch_bg.png";
 canvas.addEventListener('mousedown', handleMouseDown, false);
