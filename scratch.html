@@ -95,13 +95,13 @@ let canvasHeight = canvas.height;
 let ctx          = canvas.getContext('2d');
 let image        = new Image();
 let brush        = new Image();
-image.src = "iamges/scratch/scratch-bg.png";
+image.src = "images/scratch/scratch_bg.png";
 image.onload = function() {
     ctx.drawImage(image, 0, 0);
     // Show the form when Image is loaded.
     document.querySelectorAll('.form')[0].style.visibility = 'visible';
   };
-brush.src = "iamges/scratch/scratch-bg.png";
+brush.src = "images/scratch/scratch_bg.png";
 canvas.addEventListener('mousedown', handleMouseDown, false);
 canvas.addEventListener('touchstart', handleMouseDown, false);
 canvas.addEventListener('mousemove', handleMouseMove, false);
