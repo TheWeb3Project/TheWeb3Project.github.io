@@ -140,7 +140,7 @@
     }
 
     async function runLottery() {
-      let userNumbers = [1234567, 1234562];
+      let userNumbers = [123456, 432012];
 
       let [res, data] = await SEND_TX('lottery', 'betSingle', [userNumbers]);
       if (res == true) {
