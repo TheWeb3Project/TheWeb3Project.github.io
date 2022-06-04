@@ -159,14 +159,15 @@ function displayTicket(n) {
       ctx.drawImage(cover, pos[0][0], pos[0][1]);
       ctx.drawImage(cover, pos[1][0], pos[1][1]);
       select('#scratch-content').classList.add('visible');
-      
-      let picUrl = "https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg";
 
-      select('#pic1').src = picUrl;
+      let a = 1;
+      let b = 6;
+
+      select('#pic1').src = `images/logos/pic_${a}.png`;
       select('#pic1').style.width = `${canvas.width/6}px`;
       select('#pic1').style.left = `${pos[0][0]}px`;
       select('#pic1').style.top = `${pos[0][1]}px`;
-      select('#pic2').src = picUrl;
+      select('#pic2').src = `images/logos/pic_${b}.png`;
       select('#pic2').style.width = `${canvas.width/6}px`;
       select('#pic2').style.left = `${pos[1][0]}px`;
       select('#pic2').style.top = `${pos[1][1]}px`;
