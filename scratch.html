@@ -166,6 +166,7 @@ function handlePercentage(filledInPixels) {
   if (filledInPixels > 50) {
     canvas.parentNode.removeChild(canvas);
     // popup result, congrat
+    // show in bscscan
   }
 }
 
@@ -203,7 +204,10 @@ function handleMouseUp(e) {
 async function buyTicket() {
   //await SEND_TX();
   //a.wait();
-  //displayTicket();
+  let random = 0;
+  let pics = 20;
+  let n = [INT(random / pics), INT(random % pics)];
+  //displayTicket(n);
 }
 
 async function runGlobal() {
