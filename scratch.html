@@ -57,7 +57,7 @@
 
           <div class="my-5 col-12">
             <div id='card'>
-              <div class="position-relative" style="width:426px;">
+              <div class="position-relative d-none" id="ticket" style="width:426px;">
                 <div class="position-relative" style="width:426px;">
                   <img src="images/scratch/scratch_bg.png" class="position-absolute" style="top:0; left:0; z-index: 0;">
                   <img src="images/scratch/scratch_bg.png" class="position-absolute" id="pic1" style="top:0; left:0; z-index: 1;">
@@ -120,6 +120,7 @@ function displayTicket(n) {
       select('#pic1').style.position = `${pos[0][0]}px`;
       select('#pic2').url = picUrl;
       select('#pic2').style.position = `${pos[1][0]}px`;
+      select('#ticket').classList.remove('d-none');
     }
   };
 
