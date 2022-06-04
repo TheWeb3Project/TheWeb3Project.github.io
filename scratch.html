@@ -150,23 +150,6 @@ let brush        = new Image();
 
 let winNumber;
 async function displayTicket(n) {
-  let [res, data] = await SEND_TX('lottery', 'scratch', []);
-  if (res == true) {
-    return;
-  }
-  let result = data;
-  let txResult = await result.wait();
-  let txLogs = txResult['logs'];
-  let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
-  for (txLog of txLogs) {
-    let topics = txLog['topics'];
-    if (topics[0] == mintEvent) {
-      let decodedData = INTFS['lottery'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
-      winNumber = decodedData[0];
-      break;
-    }
-  }
-
   image.src = "images/scratch/scratch_bg.png";
   image.onload = function() {
     canvas.width = image.width;
@@ -183,18 +166,16 @@ async function displayTicket(n) {
       ctx.drawImage(cover, pos[0][0] - 3, pos[0][1] - 15); // little adjust
       ctx.drawImage(cover, pos[1][0] - 3, pos[1][1] - 15);
       select('#scratch-content').classList.add('visible');
-      
-      let a = INT(winNumber / 20);
-      let b = winNumber % 20;
-      if (a == 3) {
+
+      if (n[0] == 2) {
         select('#pic1').src = `images/logos/web3.png`;
       } else {
-        select('#pic1').src = `images/logos/pic_${a}.png`;
+        select('#pic1').src = `images/logos/pic_${n[0]}.png`;
       }
-      if (b == 3) {
+      if (n[1] == 2) {
         select('#pic2').src = `images/logos/web3.png`;
       } else {
-        select('#pic2').src = `images/logos/pic_${b}.png`;
+        select('#pic2').src = `images/logos/pic_${n[1]}.png`;
       }
       select('#pic1').style = `width: ${imgSize}px; left: ${pos[0][0]}px; top: ${pos[0][1]}px`;
       select('#pic2').style = `width: ${imgSize}px; left: ${pos[1][0]}px; top: ${pos[1][1]}px`;
@@ -376,11 +357,25 @@ function handleMouseUp(e) {
 
 
 async function buyTicket() {
-  //await SEND_TX();
-  //a.wait();
-  let random = 101;
+  let [res, data] = await SEND_TX('lottery', 'scratch', []);
+  if (res == true) {
+    return;
+  }
+  let result = data;
+  let txResult = await result.wait();
+  let txLogs = txResult['logs'];
+  let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
+  for (txLog of txLogs) {
+    let topics = txLog['topics'];
+    if (topics[0] == mintEvent) {
+      let decodedData = INTFS['lottery'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
+      winNumber = decodedData[0];
+      break;
+    }
+  }
+
   let pics = 20;
-  let n = [INT(random / pics), INT(random % pics)];
+  let n = [INT(winNumber / pics), INT(winNumber % pics)];
   await displayTicket(n);
 }
 
