@@ -44,6 +44,12 @@
         <div id="container">
           <div class="my-5 col-12">
             <div id='card'>
+              <div id="run-web3-approve-lottery" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
+                  <span class="button__content">$WEB3 Approve to buy</span>
+                </button>
+              </div>
+
               Price = 0.01 WEB3
               <div id="run-lottery" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                 <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon" style="border: 3px solid #48acef;
@@ -350,6 +356,15 @@ async function runGlobal() {
 
 async function runPersonal() {
   await _runPersonal();
+
+  {
+    let allowance = await CONTS['web3'].allowance(CURADR, ADRS['lottery']);
+    if (BIGINT(0) < allowance) {
+      select('#run-web3-approve-lottery').classList.add('d-none');
+    } else {
+      select('#run-web3-approve-lottery').onclick = async () => { await approve('web3', ADRS['lottery']); };
+    }
+  }
 }
 
 (async () => {
