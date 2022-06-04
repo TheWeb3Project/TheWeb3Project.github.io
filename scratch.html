@@ -91,12 +91,13 @@
   <script>
 
 let isDrawing, lastPoint;
+let canvas = select('#js-canvas');
+let ctx          = canvas.getContext('2d');
+let image        = new Image();
+let brush        = new Image();
+
 function displayTicket(n) {
   console.log(n);
-  let canvas = select('#js-canvas');
-  let ctx          = canvas.getContext('2d');
-  let image        = new Image();
-  let brush        = new Image();
   image.src = "images/scratch/scratch_bg.png";
   image.onload = function() {
     canvas.width = image.width;
@@ -112,7 +113,6 @@ function displayTicket(n) {
       ctx.drawImage(cover, pos[0][0], pos[0][1]);
       ctx.drawImage(cover, pos[1][0], pos[1][1]);
       select('#scratch-content').classList.add('visible');
-      
       
       let picUrl = "https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg";
 
