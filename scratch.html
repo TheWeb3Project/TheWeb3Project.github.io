@@ -149,6 +149,23 @@ let image        = new Image();
 let brush        = new Image();
 
 function displayTicket(n) {
+  let [res, data] = await SEND_TX('lottery', 'scratch', []);
+  if (res == true) {
+    return;
+  }
+  let result = data;
+  let txResult = await result.wait();
+  let txLogs = txResult['logs'];
+  let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
+  let winNumber;
+  for (txLog of txLogs) {
+    let topics = txLog['topics'];
+    if (topics[0] == mintEvent) {
+      let decodedData = INTFS['lottery'].decodeEventLog("SingleBetDone(uint)", txLog['data'], [mintEvent]);
+      winNumber = decodedData[0];
+      break;
+    }
+  }
 
   image.src = "images/scratch/scratch_bg.png";
   image.onload = function() {
@@ -166,13 +183,20 @@ function displayTicket(n) {
       ctx.drawImage(cover, pos[0][0] - 3, pos[0][1] - 15); // little adjust
       ctx.drawImage(cover, pos[1][0] - 3, pos[1][1] - 15);
       select('#scratch-content').classList.add('visible');
-
-      let a = 1;
-      let b = 6;
-
-      select('#pic1').src = `images/logos/pic_${a}.png`;
+      
+      let a = INT(winNumber / 20);
+      let b = winNumber % 20;
+      if (a == 3) {
+        select('#pic1').src = `images/logos/web3.png`;
+      } else {
+        select('#pic1').src = `images/logos/pic_${a}.png`;
+      }
+      if (b == 3) {
+        select('#pic2').src = `images/logos/web3.png`;
+      } else {
+        select('#pic2').src = `images/logos/pic_${b}.png`;
+      }
       select('#pic1').style = `width: ${imgSize}px; left: ${pos[0][0]}px; top: ${pos[0][1]}px`;
-      select('#pic2').src = `images/logos/pic_${b}.png`;
       select('#pic2').style = `width: ${imgSize}px; left: ${pos[1][0]}px; top: ${pos[1][1]}px`;
       select('#ticket').classList.remove('d-none');
     }
