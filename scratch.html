@@ -142,7 +142,6 @@
   </style>
   <script>
 
-let isDrawing, lastPoint;
 let canvas = select('#js-canvas');
 let ctx          = canvas.getContext('2d');
 let image        = new Image();
@@ -236,10 +235,6 @@ function animateBlobs() {
 		});
 	});
 }
-
-
-
-
 
 function handlePercentage(filledInPixels) {
   filledInPixels = filledInPixels || 0;
