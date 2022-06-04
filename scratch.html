@@ -119,9 +119,11 @@ function displayTicket(n) {
       select('#pic1').src = picUrl;
       select('#pic1').style.width = `${canvas.width/6}px`;
       select('#pic1').style.left = `${pos[0][0]}px`;
+      select('#pic1').style.top = `${pos[0][1]}px`;
       select('#pic2').src = picUrl;
       select('#pic2').style.width = `${canvas.width/6}px`;
       select('#pic2').style.left = `${pos[1][0]}px`;
+      select('#pic2').style.top = `${pos[1][1]}px`;
       select('#ticket').classList.remove('d-none');
     }
   };
