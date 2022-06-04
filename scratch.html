@@ -90,9 +90,9 @@
 
   <script>
 
+let isDrawing, lastPoint;
 function displayTicket(n) {
   console.log(n);
-  let isDrawing, lastPoint;
   let canvas = select('#js-canvas');
   let ctx          = canvas.getContext('2d');
   let image        = new Image();
