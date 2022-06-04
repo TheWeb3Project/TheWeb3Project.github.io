@@ -58,8 +58,8 @@
 
           <div class="my-5 col-12">
             <div id='card'>
-              <div class="congrats">
-                <h1>Congratulations!</h1>
+              <div id="result" class="d-none congrats">
+                <h1></h1>
               </div>
               <div class="position-relative d-none" id="ticket" style="width:426px; height: 100px; margin: 0 auto;">
                 <div class="position-relative" style="width:426px;">
@@ -283,12 +283,16 @@ function handlePercentage(filledInPixels) {
     console.log('congrats');
     var numberOfStars = 20;
     for (var i = 0; i < numberOfStars; i++) {
-      $('.congrats').append('<div class="blob fa fa-star ' + i + '"></div>');
-    }	
+      $('#result').append('<div class="blob fa fa-star ' + i + '"></div>');
+    }
+    select('#result h1').innerHTML = `
+    Congratulations!<br/>
+    1 WEB3
+    `;
     animateText();
     animateBlobs();
 
-    $('.congrats').click(function() {
+    $('#result').click(function() {
       reset();
       animateText();
       animateBlobs();
