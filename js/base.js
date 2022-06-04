@@ -505,6 +505,14 @@ function displayText(el, text) {
   }
 }
 
+function setClass(target, cls, on=true) {
+  if (on) {
+    select(target).classList.add(cls);
+  } else {
+    select(target).classList.remove(cls);
+  }
+}
+
 
 async function getUrlData(url) {
   let v = await fetch(url);
