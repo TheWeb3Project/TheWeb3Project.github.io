@@ -160,8 +160,8 @@ function displayTicket(n) {
     cover.onload = function() {
       let imgSize = canvas.width / 6;
       let pos = [
-        [canvas.width * 3 / 4 - cover.width/2, canvas.height / 2 - imgSize/2],
-        [canvas.width * 1 / 4 - cover.width/2, canvas.height / 2 - imgSize/2]
+        [canvas.width * 3 / 4 - imgSize/2, canvas.height / 2 - imgSize/2],
+        [canvas.width * 1 / 4 - imgSize/2, canvas.height / 2 - imgSize/2]
       ];
       ctx.drawImage(cover, pos[0][0], pos[0][1]);
       ctx.drawImage(cover, pos[1][0], pos[1][1]);
@@ -171,13 +171,9 @@ function displayTicket(n) {
       let b = 6;
 
       select('#pic1').src = `images/logos/pic_${a}.png`;
-      select('#pic1').style.width = `${imgSize}px`;
-      select('#pic1').style.left = `${pos[0][0]}px`;
-      select('#pic1').style.top = `${pos[0][1]}px`;
+      select('#pic1').style = `width: ${imgSize}px; left: ${pos[0][0]}px; top: ${pos[0][1]}px`;
       select('#pic2').src = `images/logos/pic_${b}.png`;
-      select('#pic2').style.width = `${imgSize}px`;
-      select('#pic2').style.left = `${pos[1][0]}px`;
-      select('#pic2').style.top = `${pos[1][1]}px`;
+      select('#pic2').style = `width: ${imgSize}px; left: ${pos[1][0]}px; top: ${pos[1][1]}px`;
       select('#ticket').classList.remove('d-none');
     }
   };
