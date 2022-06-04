@@ -128,7 +128,7 @@ function angleBetween(point1, point2) {
 function getFilledInPixels(stride) {
   if (!stride || stride < 1) { stride = 1; }
   
-  var pixels   = ctx.getImageData(0, 0, canvasWidth, canvasHeight),
+  var pixels   = ctx.getImageData(0, 0, canvas.width, canvas.height),
       pdata    = pixels.data,
       l        = pdata.length,
       total    = (l / stride),
