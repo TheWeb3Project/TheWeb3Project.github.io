@@ -163,8 +163,8 @@ function displayTicket(n) {
         [canvas.width * 3 / 4 - imgSize/2, canvas.height / 2 - imgSize/2],
         [canvas.width * 1 / 4 - imgSize/2, canvas.height / 2 - imgSize/2]
       ];
-      ctx.drawImage(cover, pos[0][0], pos[0][1]);
-      ctx.drawImage(cover, pos[1][0], pos[1][1]);
+      ctx.drawImage(cover, pos[0][0] - 3, pos[0][1] - 15); // little adjust
+      ctx.drawImage(cover, pos[1][0] - 3, pos[1][1] - 15);
       select('#scratch-content').classList.add('visible');
 
       let a = 1;
