@@ -158,9 +158,10 @@ function displayTicket(n) {
     let cover = new Image();
     cover.src = "images/scratch/scratch_cover.png";
     cover.onload = function() {
+      let imgSize = canvas.width / 6;
       let pos = [
-        [canvas.width * 3 / 4 - cover.width/2, canvas.height / 2 - cover.height/2],
-        [canvas.width * 1 / 4 - cover.width/2, canvas.height / 2 - cover.height/2]
+        [canvas.width * 3 / 4 - cover.width/2, canvas.height / 2 - imgSize/2],
+        [canvas.width * 1 / 4 - cover.width/2, canvas.height / 2 - imgSize/2]
       ];
       ctx.drawImage(cover, pos[0][0], pos[0][1]);
       ctx.drawImage(cover, pos[1][0], pos[1][1]);
@@ -170,11 +171,11 @@ function displayTicket(n) {
       let b = 6;
 
       select('#pic1').src = `images/logos/pic_${a}.png`;
-      select('#pic1').style.width = `${canvas.width/6}px`;
+      select('#pic1').style.width = `${imgSize}px`;
       select('#pic1').style.left = `${pos[0][0]}px`;
       select('#pic1').style.top = `${pos[0][1]}px`;
       select('#pic2').src = `images/logos/pic_${b}.png`;
-      select('#pic2').style.width = `${canvas.width/6}px`;
+      select('#pic2').style.width = `${imgSize}px`;
       select('#pic2').style.left = `${pos[1][0]}px`;
       select('#pic2').style.top = `${pos[1][1]}px`;
       select('#ticket').classList.remove('d-none');
@@ -356,7 +357,19 @@ async function runGlobal() {
 
 async function runPersonal() {
   await _runPersonal();
+  // 213
+  // 71 1/6 426
+  64 - 35.5 = 28.5
+  142 / 284 - 35.5 = 248.5
+  106.5 - 35.5 = 71
+  319.5 - 35.5 = 177.5
+  319.5 - 35.5 = 284
+  ////////// 426 128
 
+
+  // 70/284 25
+  // 22 70
+  // 25 284
   {
     let allowance = await CONTS['web3'].allowance(CURADR, ADRS['lottery']);
     if (BIGINT(0) < allowance) {
