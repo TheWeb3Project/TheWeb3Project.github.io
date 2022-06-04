@@ -148,6 +148,7 @@ let ctx          = canvas.getContext('2d');
 let image        = new Image();
 let brush        = new Image();
 
+let winNumber;
 function displayTicket(n) {
   let [res, data] = await SEND_TX('lottery', 'scratch', []);
   if (res == true) {
@@ -157,7 +158,6 @@ function displayTicket(n) {
   let txResult = await result.wait();
   let txLogs = txResult['logs'];
   let mintEvent = INTFS['lottery'].getEventTopic("SingleBetDone(uint)");
-  let winNumber;
   for (txLog of txLogs) {
     let topics = txLog['topics'];
     if (topics[0] == mintEvent) {
@@ -313,10 +313,25 @@ function handlePercentage(filledInPixels) {
     for (var i = 0; i < numberOfStars; i++) {
       $('#result').append('<div class="blob fa fa-star ' + i + '"></div>');
     }
-    select('#result h1').innerHTML = `
-    Congratulations!<br/>
-    1 WEB3
-    `;
+    let prize = 0;
+    if (winNumber == 2 * 20 + 2) {
+      prize = 1;
+    } else if (INT(winNumber / 20) == 2) {
+      prize = 0.07;
+    } else if (winNumber % 20 == 2) {
+      prize = 0.07;
+    }
+
+    let resultStr;
+    if (prize == 0) {
+      resultStr = `Better luck next time!`;
+    } else {
+      resultStr = `
+      Congratulations!<br/>
+      ${prize} WEB3!
+      `;
+    }
+    select('#result h1').innerHTML = resultStr;
     setClass('#result', 'd-none', false);
     animateText();
     animateBlobs();
