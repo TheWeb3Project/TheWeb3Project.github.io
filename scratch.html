@@ -116,9 +116,9 @@ function displayTicket(n) {
       
       let picUrl = "https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f51681bbd0e1be3f0538bd_cube.svg";
 
-      select('#pic1').url = picUrl;
+      select('#pic1').src = picUrl;
       select('#pic1').style.position = `${pos[0][0]}px`;
-      select('#pic2').url = picUrl;
+      select('#pic2').src = picUrl;
       select('#pic2').style.position = `${pos[1][0]}px`;
       select('#ticket').classList.remove('d-none');
     }
