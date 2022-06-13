@@ -339,6 +339,25 @@ for (let name of ['web3', 'busd', 'cake']) {
   INTFS[name] = new ethers.utils.Interface(ABIS[`pair`]);
 }
 
+async function READ_TX_MORE(adr, name, method, args, params, suffixs) {
+  ADRS[name] = adr;
+  if (!(name in ABIS)) {
+    ABIS[name] = [];
+  }
+
+  if (name in CONTS) {
+    if (method in CONTS[name]) {
+      let abiStr = `function ${method}${params} ${suffixs}`;
+      ABIS[name].push(abiStr);
+
+      CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
+      SIGNS[name] = CONTS[name].connect(SIGNER);
+      INTFS[name] = new ethers.utils.Interface(ABIS[name]);
+    }
+  }
+  return await READ_TX(name, method, args);
+}
+
 // our token launch time: 2022.03.22 02:30:03 PM UTC
 // https://bscscan.com/tx/0x3745eb92a39460e840aa5503872f7c2fe513f061e8e0e7c59b35fad7841b2896
 const STARTBLOCK = 16282771; 
