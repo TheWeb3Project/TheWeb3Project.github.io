@@ -346,14 +346,15 @@ async function READ_TX_MORE(adr, name, method, args, params, suffixs) {
   }
 
   if (name in CONTS) {
-    if (method in CONTS[name]) {
+    if (!(method in CONTS[name])) {
       let abiStr = `function ${method}${params} ${suffixs}`;
       ABIS[name].push(abiStr);
-
-      CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
-      SIGNS[name] = CONTS[name].connect(SIGNER);
-      INTFS[name] = new ethers.utils.Interface(ABIS[name]);
     }
+
+    CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
+    SIGNS[name] = CONTS[name].connect(SIGNER);
+    INTFS[name] = new ethers.utils.Interface(ABIS[name]);
+    
   }
   return await READ_TX(name, method, args);
 }
