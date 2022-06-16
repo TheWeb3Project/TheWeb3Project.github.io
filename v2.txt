@@ -13,9 +13,9 @@ add 11,000 and make x10000 split
 
 Total supply = 3,000,000,000 (3B) (100%)
 Burned = 1,800,000,000 (1.8B) (60%)
-Migration = 300,000,000 (300M) (10%)
+Migration = 300,000,000 (300M) (10%) = locked until v2 launch
 Liquidity = 45,000,000 (45M) (1.5%)
-Locked = 450,000,000 (300M) (15%) = future use
+Locked = 450,000,000 (300M) (15%) = future use, vested 
 Reserved = 405,000,000 (405M) (8.5%) = for presale
 
 migration
@@ -28,6 +28,13 @@ liquidity 100% = 45M
 if raise 1500 BNB, pink fee 5% bnb = 75 BNB
 liquidity = 1425 BNB
 new price = 0.316666 BNB / 10000 ($0.0735)
+if raised lower, price goes low. deal with this issue.
+if raised higher, price goes up.
+we could leave it or block the trade and fill reserved tokens to set to 0.31666 BNB price
+
+correlation
+if burn all reserve, liq / (liq + mig) = 13%
+if fill all reserve, (liq+res) / (liq+res+mig) = 50%
 
 tokenomics
 4% liquidity (by using 4% token, it is 8%)
