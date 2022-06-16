@@ -16,7 +16,7 @@ Burned = 1,800,000,000 (1.8B) (60%)
 Migration = 300,000,000 (300M) (10%) = locked until v2 launch
 Liquidity = 45,000,000 (45M) (1.5%)
 Locked = 450,000,000 (300M) (15%) = future use, vested 
-Reserved = 405,000,000 (405M) (8.5%) = for presale
+Reserved = 405,000,000 (405M) (13.5%) = for presale
 
 migration
 all users will manually claim for v2
