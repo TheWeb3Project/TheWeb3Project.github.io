@@ -12,35 +12,29 @@ to make clean number,
 add 11,000 and make x10000 split
 
 Total supply = 3,000,000,000 (3B) (100%)
-Burned = 1,800,000,000 (1.8B) (60%)
+Locked = 2,100,000,000 (2.1B) (70%) = company ownership, future use, vested 
+Reserved = 300,000,000 (300M) (10%) = for presale
 Migration = 300,000,000 (300M) (10%) = locked until v2 launch
-Liquidity = 45,000,000 (45M) (1.5%)
-Locked = 450,000,000 (300M) (15%) = future use, vested 
-Reserved = 405,000,000 (405M) (13.5%) = for presale
+Burned = 270,000,000 (270M) (9%) = burn more if reserve left more
+presale = 30,000,000 (30M) (1%) = 0.01% for pink fee
+
+
 
 migration
 all users will manually claim for v2
 1 WEB3 = 10,000 WEB3v2
 due to wweb3 and many things, this is safe and fair for all
 
-pinksale fair launch
-liquidity 100% = 45M
-if raise 1500 BNB, pink fee 5% bnb = 75 BNB
-liquidity = 1425 BNB
-new price = 0.316666 BNB / 10000 ($0.0735)
+pinksale fair launch, liq 100%
+target raise 500 BNB, pink fee 2% bnb = 10 BNB
+target liquidity = 490 BNB
+target token liq = 15,000,000 pink fee 2% token = 300,000
+token for presalers = 15,000,000
+new price = 0.326 BNB / 10000 ($0.0735+)
+total token amount = 30,000,000
 
-if raised lower, price goes low. deal with this issue.
-we could do buyback with cur liquidity 1300 BNB but not recommended
-
-if raised higher, price goes up. then we could:
-1. leave it with high price
-2. block the trade and fill reserved tokens to set to 0.31666 BNB price
-3. recal migration split multiplier to have same value
-ex. if raise x5, so price roughly x5, then split x2000 instead of x10000
-
-correlation
-if burn all reserve, liq / (liq + mig) = 13%
-if fill all reserve, (liq+res) / (liq+res+mig) = 60%
+if raised x1/5, lower price. give x50000, can give max x80000
+if raised x5, higher price. give x2000
 
 tokenomics
 4% liquidity (by using 4% token, it is 8%)
