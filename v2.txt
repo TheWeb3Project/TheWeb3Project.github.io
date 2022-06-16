@@ -29,8 +29,11 @@ if raise 1500 BNB, pink fee 5% bnb = 75 BNB
 liquidity = 1425 BNB
 new price = 0.316666 BNB / 10000 ($0.0735)
 if raised lower, price goes low. deal with this issue.
-if raised higher, price goes up.
-we could leave it or block the trade and fill reserved tokens to set to 0.31666 BNB price
+if raised higher, price goes up. then we could:
+1. leave it with high price
+2. block the trade and fill reserved tokens to set to 0.31666 BNB price
+3. recal migration split multiplier to have same value
+ex. if raise x5, so price roughly x5, then split x2000 instead of x10000
 
 correlation
 if burn all reserve, liq / (liq + mig) = 13%
