@@ -40,7 +40,7 @@ ex. if raise x5, so price roughly x5, then split x2000 instead of x10000
 
 correlation
 if burn all reserve, liq / (liq + mig) = 13%
-if fill all reserve, (liq+res) / (liq+res+mig) = 50%
+if fill all reserve, (liq+res) / (liq+res+mig) = 60%
 
 tokenomics
 4% liquidity (by using 4% token, it is 8%)
