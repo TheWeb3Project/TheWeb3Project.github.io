@@ -42,7 +42,6 @@ function displaySidebar() {
             ${htmlSide('miner.html', 'minecart-loaded', 'Miner')}
             ${htmlSide('wusd.html', 'wallet2', 'WUSD')}
             ${htmlSide('xweb.html', 'bank', 'xWEB3')}
-            ${htmlSide('faq.html', 'question-circle', 'FAQ')}
             ${htmlSide('https://docs.theweb3project.com', 'journal-text', 'Docs')}
           </ul>
 
