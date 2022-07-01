@@ -597,7 +597,7 @@ activateTab(opentab)
       await _runGlobal();
       
       for (let idx of [1, 2, 3]) {
-        let rates = [0.6, 0.4, 0.2];
+        let rates = [0.6, 0.2, 0.1];
         $(document).on('input', `#days-slider${idx}`, function (e) {
           let days = select(`#days-slider${idx}`).value;
           displayText('#days', `${days}`);
