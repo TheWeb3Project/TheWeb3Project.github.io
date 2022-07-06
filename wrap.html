@@ -720,59 +720,66 @@ document.addEventListener("DOMContentLoaded", function() {
         select('#run-wweb3-approve-lock3').onclick = async () => { await approve('wweb3', ADRS['lock']); };
       }
 
-      for (let idx of [1, 2, 3]) {
-        if (idx == 1) {
-          [res, data] = await READ_TX('lock', '_rewards', [CURADR]);
-        } else {
-          [res, data] = await READ_TX('lock', '_rewardsMulti', [idx - 1, CURADR]);
-        }
-        let claimAmount = data;
-        claimAmount = claimAmount / BNBDIV;
-        displayText(`#claimAmount${idx}`, `${COMMA(INT(claimAmount, 3))}`);
-        
-        select(`#run-claim${idx}`).onclick = async () => { await runClaim(idx); };
 
-        if (idx == 1) {
-          [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
-        } else {
-          [res, data] = await READ_TX('lock', '_amountsMulti', [idx - 1, CURADR]);
-        }
+      
 
-        let lockedAmount = data;
-        lockedAmount = lockedAmount / BNBDIV;
-        displayText(`#lockedAmount${idx}`, `${COMMA(INT(lockedAmount, 3))}`);
+  let totalDuration = 0;
+  for (let idx of [1, 2, 3]) {
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_rewards', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_rewardsMulti', [idx - 1, CURADR]);
+    }
+    let claimAmount = data;
+    claimAmount = claimAmount / BNBDIV;
+    displayText(`#claimAmount${idx}`, `${COMMA(INT(claimAmount, 3))}`);
+    
+    select(`#run-claim${idx}`).onclick = async () => { await runClaim(idx); };
 
-        if (idx == 1) {
-          [res, data] = await READ_TX('lock', '_durations', [CURADR]);
-        } else {
-          [res, data] = await READ_TX('lock', '_durationsMulti', [idx - 1, CURADR]);
-        }
-        let lockedDuration = data;
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_amountsMulti', [idx - 1, CURADR]);
+    }
 
-        displayText(`#lockedDuration${idx}`, `${COMMA(INT(lockedDuration, 0))}`);
-        
-        if (idx == 1) {
-          [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
-        } else {
-          [res, data] = await READ_TX('lock', '_unlockTimesMulti', [idx - 1, CURADR]);
-        }
-        let unlockTime = data;
+    let lockedAmount = data;
+    lockedAmount = lockedAmount / BNBDIV;
+    displayText(`#lockedAmount${idx}`, `${COMMA(INT(lockedAmount, 3))}`);
 
-        let unlockAfter = unlockTime - NOW() / 1000;
-        setInterval(function () {
-              
-          if (unlockAfter <= 0) {
-            unlockAfter = 0;
-          }
-          displayText(`#unlockAfter${idx}`, `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
-          unlockAfter = UPDATETICK(unlockAfter);
-        }, 1000);
-        
-        if(lockedDuration.toString() >= 360) {
-          document.getElementById('hof-claim').style.border = '3px solid #48acef'
-          document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)'
-        }
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_durations', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_durationsMulti', [idx - 1, CURADR]);
+    }
+    let lockedDuration = data;
+
+    displayText(`#lockedDuration${idx}`, `${COMMA(INT(lockedDuration, 0))}`);
+    totalDuration = totalDuration + INT(lockedDuration);
+
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_unlockTimesMulti', [idx - 1, CURADR]);
+    }
+    let unlockTime = data;
+
+    let unlockAfter = unlockTime - NOW() / 1000;
+    setInterval(function () {
+          
+      if (unlockAfter <= 0) {
+        unlockAfter = 0;
       }
+      displayText(`#unlockAfter${idx}`, `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
+      unlockAfter = UPDATETICK(unlockAfter);
+    }, 1000);
+  }
+
+  if (360 <= totalDuration) {
+    document.getElementById('hof-claim').style.border = '3px solid #48acef';
+    document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)';
+
+    select('#hof-claim').onclick = async () => { await SEND_TX('lock', 'hallOfFame', []); };
+  }
 
       
  
