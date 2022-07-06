@@ -227,7 +227,7 @@ async function _runGlobal() {
   displayText("#xPrice", `$${COMMA(INT((await gV('xPrice')), 3))}`);
 	xPrice = V[VIdx]['xPrice'];
 
-  displayText("#wRate", `${COMMA(INT((await gV('wRate')), 2))} $WEB3`);
+  displayText("#wRate", `${COMMA(INT((await gV('wRate')), 2))} $TWEP`);
 
   displayText("#xPriceWithPweb3", `${COMMA(INT((await gV('xPrice')) * 1769, 3))} pWEB3`);
 

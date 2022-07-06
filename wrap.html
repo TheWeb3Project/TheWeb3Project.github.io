@@ -57,10 +57,10 @@ href="./images/logos/web.png"
           <div class="my-5 col-12">
             <div id='card'>
               <div class="text-secondary mb-1">
-                Wrapped WEB3 ($wWEB3)
+                Wrapped TWEP ($wWEB3)
               </div>
               <div class="text-secondary mb-1">
-                Wrap your WEB3 to use for CEX, ledger, etc <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                Wrap your TWEP to use for CEX, ledger, etc <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                 Rebase still works in the background while wrapped<br/>
                 All rebase rewards until now will be displayed after you unwrap
                 "></i>
@@ -85,7 +85,7 @@ href="./images/logos/web.png"
               <div class="row row-cols-1 row-cols-sm-3">
                 <div class="col">
                   <div class="text-secondary mb-1">
-                    $WEB3 Price
+                    $TWEP Price
                   </div>
                   <h4 id="price" class="fw-bold">$0.000</h4>
                 </div>
@@ -101,7 +101,7 @@ href="./images/logos/web.png"
                   <div .class="text-secondary mb-1">
                     $wWEB3 Rate
                   </div>
-                  <h4 id="wRate" class="fw-bold">0 $WEB3</h4>
+                  <h4 id="wRate" class="fw-bold">0 $TWEP</h4>
                 </div>
               </div>
             </div>
@@ -112,11 +112,11 @@ href="./images/logos/web.png"
 
           <div class="my-5 col-12">
             <div id='card'>
-              <h5 class="fw-bold mb-0">Wrap $WEB3</h5>
+              <h5 class="fw-bold mb-0">Wrap $TWEP</h5>
 
               <div id="run-web3-approve-wweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                 <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                  <span class="button__content">$WEB3 Approve to wrap</span>
+                  <span class="button__content">$TWEP Approve to wrap</span>
                 </button>
               </div>
 
@@ -687,7 +687,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 
     async function switchwrap() {
-      await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('web3Balance')), (await gV('wweb3Balance'))], [TOKENICONURL, TOKENICONURL], ["WEB3", "wWEB3"], [runWrap, runUnwrap]);
+      await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('web3Balance')), (await gV('wweb3Balance'))], [TOKENICONURL, TOKENICONURL], ["TWEP", "wWEB3"], [runWrap, runUnwrap]);
     }
 
     async function runPersonal() {

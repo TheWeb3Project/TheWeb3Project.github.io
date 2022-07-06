@@ -70,7 +70,7 @@ function displayWeb3Header() {
 
       <div class="dropdown ms-auto">
         <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
-          <span class="fw-medium ms-1">WEB3</span> <span id="price" class="ms-1 small text-secondary">$0</span>
+          <span class="fw-medium ms-1">TWEP</span> <span id="price" class="ms-1 small text-secondary">$0</span>
         </button>
 
         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
@@ -222,7 +222,7 @@ async function addEvent(name, event_) {
     let adr = event_[0];
     let amount = event_[1];
     amount = amount / BNBDIV;
-    events.unshift(`${SHORTADR(adr)} buy ${INT(amount, 5)} $WEB3!`);
+    events.unshift(`${SHORTADR(adr)} buy ${INT(amount, 5)} $TWEP!`);
   }
   if (name == 'rebase') {
     let lastSupply = event_[0];
@@ -405,7 +405,7 @@ async function getTotalEarned() {
   // console.log(web3Balance, amount);
   let totalEarned = (await gV('web3Balance')) - amount; // little precision
   let earnRate = totalEarned / (await gV('web3Balance')) * 100;
-  displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $WEB3 (+${COMMA(INT(earnRate, 3))}%)`);
+  displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $TWEP (+${COMMA(INT(earnRate, 3))}%)`);
   displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * (await gV('price')), 3))}`);
 }
 

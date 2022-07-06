@@ -54,7 +54,7 @@ href="./images/logos/web.png"
             <div class="my-5 col-12">
               <div id='card'>
                 <span class="fw-medium ms-1">
-                  Buy/Sell $WEB3 in instance <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                  Buy/Sell $TWEP in instance <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                   No need to care slippage or anything
                   "></i>
                 </span>
@@ -65,7 +65,7 @@ href="./images/logos/web.png"
               <div id='card'>
                 <div id="run-web3-approve-router" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                   <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                    <span class="button__content">$WEB3 Approve to sell</span>
+                    <span class="button__content">$TWEP Approve to sell</span>
                   </button>
                 </div>
 
@@ -186,7 +186,7 @@ href="./images/logos/web.png"
 
     <script>
       async function switchSwap() {
-        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('web3Balance'))], [BNBICONURL, TOKENICONURL], ["BNB", "WEB3"], [runBuy, runSell]);
+        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('web3Balance'))], [BNBICONURL, TOKENICONURL], ["BNB", "TWEP"], [runBuy, runSell]);
       }
 
       async function runPersonal() {
