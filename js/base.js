@@ -339,7 +339,7 @@ for (let name of ['web3', 'busd', 'cake']) {
   INTFS[name] = new ethers.utils.Interface(ABIS[`pair`]);
 }
 
-async function READ_TX_MORE(adr, name, method, args, params, suffixs) {
+async function READ_TX_MORE(adr, name, method, params, suffixs, args) {
   ADRS[name] = adr;
   if (!(name in ABIS)) {
     ABIS[name] = [];
@@ -349,12 +349,11 @@ async function READ_TX_MORE(adr, name, method, args, params, suffixs) {
     if (!(method in CONTS[name])) {
       let abiStr = `function ${method}${params} ${suffixs}`;
       ABIS[name].push(abiStr);
-    }
 
-    CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
-    SIGNS[name] = CONTS[name].connect(SIGNER);
-    INTFS[name] = new ethers.utils.Interface(ABIS[name]);
-    
+      CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
+      SIGNS[name] = CONTS[name].connect(SIGNER);
+      INTFS[name] = new ethers.utils.Interface(ABIS[name]);
+    }
   }
   return await READ_TX(name, method, args);
 }
