@@ -6,7 +6,7 @@ before v2 presale start, v1 trade will be disabled
 after v2 launch, rebase will turn on
 
 v1 supply = 289,000
-cur liquidity = 4,100 WEB3 / 1,300 BNB
+cur liquidity = 4,100 TWEP / 1,300 BNB
 cur price = 0.317 BNB ($73.5)
 to make clean number,
 add 11,000 and make x10000 split
@@ -22,7 +22,7 @@ presale = 30,000,000 (30M) (1%) = 0.01% for pink fee
 
 migration
 all users will manually claim for v2
-1 WEB3 = 10,000 WEB3v2
+1 TWEP = 10,000 WEB3v2
 due to wweb3 and many things, this is safe and fair for all
 
 pinksale fair launch, liq 100%

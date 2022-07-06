@@ -299,11 +299,11 @@ function runScroll() {
         });
 }
 
-let targetCurrency = '$WEB3';
+let targetCurrency = '$TWEP';
 function toggleBtnTab() {
     $('.toggleBtnTab').toggleClass('text-primary bg-white');
     if (targetCurrency == 'BNB') {
-        targetCurrency = '$WEB3';
+        targetCurrency = '$TWEP';
     } else {
         targetCurrency = 'BNB';
     }
