@@ -153,6 +153,15 @@
                       </div> 
                       <div id="_amounts"></div>
                     </div>
+                    <div class="d-flex justify-content-between">
+                      <div>Current daily rate  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
+                        4-6% is usual value<br/>
+                        could be more depending on your early participation
+                        "></i>
+                      </div> 
+                      <div id="_rates"></div>
+                    </div>
+
                     <div class="d-flex justify-content-between"><div>WUSD Rewards   <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
                       4-6% of your invest is usual value<br/>
                       could be more depending on your early participation
@@ -322,6 +331,9 @@
       let _miners = await CONTS['miner']._miners(CURADR);
       select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
 			
+      let _rates = await CONTS['miner'].getRateX10000(CURADR);
+      select('#_rates').innerHTML = `${COMMA(INT(_rates / 10000 * 100, 2))}`;
+
       let _amounts = await CONTS['miner']._amounts(CURADR);
       select('#_amounts').innerHTML = `${COMMA(INT(_amounts / BNBDIV, 1))}`;
 
