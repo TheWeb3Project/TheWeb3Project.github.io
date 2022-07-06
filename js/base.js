@@ -248,9 +248,11 @@ ABIS['miner'] = [
   "function DAIMONDS_TO_HIRE_MINER() view returns (uint)",
   "function _lastHire(address) view returns (uint)",
   
+  "function _amounts(address) view returns (uint256)",
   "function _miners(address) view returns (uint256)",
   "function _daimonds(address) view returns (uint256)",
   "function _tDaimonds() view returns (uint256)",
+  "function getRateX10000(address) view returns (uint256)",
   "function calculateWusdRewards(address) view returns (uint256)",
   "function calculateWusdAmount(address, uint) view returns (uint256)",
   "function getMyDaimonds(address) view returns (uint256)",
@@ -339,7 +341,7 @@ for (let name of ['web3', 'busd', 'cake']) {
   INTFS[name] = new ethers.utils.Interface(ABIS[`pair`]);
 }
 
-async function READ_TX_MORE(adr, name, method, args, params, suffixs) {
+async function READ_TX_MORE(adr, name, method, params, suffixs, args) {
   ADRS[name] = adr;
   if (!(name in ABIS)) {
     ABIS[name] = [];
@@ -349,14 +351,13 @@ async function READ_TX_MORE(adr, name, method, args, params, suffixs) {
     if (!(method in CONTS[name])) {
       let abiStr = `function ${method}${params} ${suffixs}`;
       ABIS[name].push(abiStr);
-    }
 
-    CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
-    SIGNS[name] = CONTS[name].connect(SIGNER);
-    INTFS[name] = new ethers.utils.Interface(ABIS[name]);
-    
+      CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
+      SIGNS[name] = CONTS[name].connect(SIGNER);
+      INTFS[name] = new ethers.utils.Interface(ABIS[name]);
+    }
   }
-  return await READ_TX(name, method, args);
+  return (await READ_TX(name, method, args))[1];
 }
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
