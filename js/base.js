@@ -355,7 +355,7 @@ async function READ_TX_MORE(adr, name, method, params, suffixs, args) {
       INTFS[name] = new ethers.utils.Interface(ABIS[name]);
     }
   }
-  return await READ_TX(name, method, args);
+  return (await READ_TX(name, method, args))[1];
 }
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
