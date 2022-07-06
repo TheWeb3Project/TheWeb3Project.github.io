@@ -331,11 +331,11 @@
       let _miners = await CONTS['miner']._miners(CURADR);
       select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
 			
-      let _rates = await CONTS['miner'].getRateX10000(CURADR);
-      select('#_rates').innerHTML = `${COMMA(INT(_rates / 10000 * 100, 2))}`;
-
       let _amounts = await CONTS['miner']._amounts(CURADR);
-      select('#_amounts').innerHTML = `${COMMA(INT(_amounts / BNBDIV, 1))}`;
+      select('#_amounts').innerHTML = `$${COMMA(INT(_amounts / BNBDIV, 1))}`;
+
+      let _rates = await CONTS['miner'].getRateX10000(CURADR);
+      select('#_rates').innerHTML = `${COMMA(INT(_rates / 10000 * 100, 2))}%`;      
 
       let _daimonds = await CONTS['miner']._daimonds(CURADR);
       select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
