@@ -20,8 +20,15 @@
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
 
-  <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524321551928e3d234161_circled.png" rel="shortcut icon" type="image/x-icon">
-  <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png" rel="apple-touch-icon">
+  <link
+  href="./images/logos/web.png"
+  rel="shortcut icon"
+  type="image/x-icon"
+/>
+<link
+href="./images/logos/web.png"
+  rel="apple-touch-icon"
+/>
 
   <meta name="twitter:image" content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png">
   <meta name="twitter:description" content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!">
@@ -139,7 +146,7 @@
                     <span class="button__content">$pWEB3 Approve to Buy</span>
                   </button>
                 </div>
-                
+
                 <div style="margin-left: 70px;">
                   <img src="./images/Group_68.png" id="minerImage" class="col-8 mx-auto" alt="">
                 </div>
@@ -252,7 +259,7 @@
                             <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
                               <input id="xweb3-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
                             </div>
-                          </div>  
+                          </div>
                           <p class="token-amount-field__balance">Balance: <span id="xweb3Balance">0.000</span></p>
                         </div>
                         <button type="button" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
@@ -269,7 +276,7 @@
                         </button>
                     </div>
                 </div>
-                
+
                 <div id="approved-xweb3"></div>
                   <div id="buy-xweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                     <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
@@ -378,7 +385,7 @@
       } else {
         select('#run-pweb3-approve-nft').onclick = async () => { await approve('pweb3', ADRS['nft']); };
       }
-		
+
       let pppweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['miner']);
       if (BIGINT(0) < pppweb3Allowance) {
         select('#run-pweb3-approve-miner').classList.add('d-none');
@@ -401,7 +408,7 @@
       }
 
     }
-		
+
     function checkValue(val) {
 			val = parseFloat(val);
         if (isNaN(val)) {
@@ -424,7 +431,7 @@
           document.getElementById('minerImage').src = '/images/Group_66.png'
         }
     }
-    
+
 		async function setXweb3Value(val) {
       val = checkValue(val);
 
@@ -436,7 +443,7 @@
       await runGlobal();
 
       $(document).on('input', '#pweb3-slider', function (e) {
-    		setMinerValue(e);    
+    		setMinerValue(e);
       });
 
       $(document).on('input', '#pweb3-sliders', function (e) {

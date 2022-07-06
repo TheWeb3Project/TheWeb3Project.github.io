@@ -20,8 +20,15 @@
   <meta content="summary_large_image" name="twitter:card">
   <meta content="width=device-width, initial-scale=1" name="viewport">
 
-  <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524321551928e3d234161_circled.png" rel="shortcut icon" type="image/x-icon">
-  <link href="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png" rel="apple-touch-icon">
+  <link
+  href="./images/logos/web.png"
+  rel="shortcut icon"
+  type="image/x-icon"
+/>
+<link
+href="./images/logos/web.png"
+  rel="apple-touch-icon"
+/>
 
   <meta name="twitter:image" content="https://uploads-ssl.webflow.com/61f079fe9c0e84c389f618a4/61f524449aab6ada7f12a9ce_circled.png">
   <meta name="twitter:description" content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!">
@@ -58,7 +65,7 @@
               </span>
             </div>
           </div>
-          
+
           <div class="my-5 col-12">
             <div id='card'>
               <div class="row row-cols-1 row-cols-sm-3">
@@ -165,7 +172,7 @@
                       </div>
                       <button type="button" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
                           <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                            <div class="token-logo"><img id="wusd-logo-output" src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo"  /></div>
+                            <div class="token-logo"><img id="wusd-logo-output" src="./images/circled.png" class="token-logo__image" alt="Token logo"  /></div>
                               <span id="wusd-symbol-output" class="token__symbol ellipsis">WUSD</span>
                               <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
                                   <path
@@ -189,7 +196,7 @@
 
 
           </div>
-            
+
           <div class="my-5 col-12">
             <div id="tabs" class="tabs-container">
 
@@ -205,11 +212,11 @@
                         <div class="d-flex justify-content-between">
                           <div class="mb-4">
                           <h5 class="fw-bold mb-0">Stake $WUSD</h5>
-  
+
                           <span class="small fw-semibold"><div>And get $WEB3</div></span>
                           <span class="small fw-semibold">WEB3 Reward Amount = Staked $WUSD Amount * Staked Days / $WEB3 Price at unstake</span>
                           </div>
-  
+
                         </div>
 
                         <div id="run-wusd-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
@@ -229,7 +236,7 @@
                                     <p class="token-amount-field__balance">Balance: <span id="wusdBalance">0.000</span></p>
                                     <button type="button" onclick="maxValueWusdInput()" class="d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
                                       <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                        <div class="token-logo"><img src="https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg" class="token-logo__image" alt="Token logo" /></div>
+                                        <div class="token-logo"><img src="./images/circled.png" class="token-logo__image" alt="Token logo" /></div>
                                         <div>Max</div>
                                         <span id="symbol-input" class="token__symbol ellipsis">WUSD</span>
                                         <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
@@ -423,7 +430,7 @@
               </div>
             </div>
           </div>
-          
+
         </div>
 
       </main>
@@ -546,7 +553,7 @@ activateTab(opentab)
       STATES['wusd'] = 'sell';
       await switchWusd();
       select('#wusd-change').onclick = async () => { await switchWusd(); };
-      
+
       for (let idx of [1, 2, 3]) {
         let rates = [1.1, 1.05, 1];
 
