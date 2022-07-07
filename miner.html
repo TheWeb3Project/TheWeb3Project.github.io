@@ -398,6 +398,16 @@ href="./images/logos/web.png"
 
     }
 
+    async function checkStat(adr) {
+      let _amounts = await CONTS['miner']._amounts(adr);
+      _amounts = _amounts / BNBDIV;
+      let _returns = await CONTS['miner']._returns(adr);
+      _returns = _returns / BNBDIV;
+
+      let rRate = _returns / _amounts * 100;
+      return (_amounts, _returns, rRate);
+    }
+
     (async () => {
       // do global
       await runGlobal();
