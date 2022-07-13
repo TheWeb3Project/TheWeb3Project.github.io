@@ -437,14 +437,14 @@ function changedValue(target, curTarget) {
   // let totalRate = ((1 + dailyRate) ** days);
   // let futAmount = INT(curAmount * totalRate, 2);
 
-  // (1 + 0.0005) ** 365 = 1.20015
-  let futAmount = curAmount + curAmount * reAmCur * days / (V[VIdx]['totalSupply'] + reAmCur * days);
+  // 1 + 0.0548 * 365 = 1.2002
+  let futAmount = curAmount + curAmount * 0.0548 * days;
   select('#futAmount').value = `${COMMA(INT(futAmount, 3))}`;
 	
   let futPrice;
   if (target == 'days') {
     // (1 + 0.00072) ** 365 = 1.30044
-    let dailyPriceRate = 0.000072;
+    let dailyPriceRate = 0.00072;
     // let dailyPriceRate = 0.01801636;
     // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
