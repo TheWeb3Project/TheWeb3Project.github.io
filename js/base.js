@@ -119,6 +119,37 @@ ABIS['web3'] = [
   "event Rebased(uint256 blockNumber, uint256 totalSupply)",
 ];
 
+ADRS['twep'] = "0x1AEb3f66d96bFaF74fCBD15Dc21798De36F6F933",
+ABIS['twep'] = [
+  "function name() view returns (string)",
+  "function symbol() view returns (string)",
+  "function totalSupply() view returns (uint256)",
+  "function balanceOf(address) view returns (uint)",
+  "function allowance(address, address) view returns (uint256)",
+
+  "function approve(address, uint256) returns (bool)",
+  "function transfer(address, uint)",
+
+  "function manualRebase()",
+  "function toggleExperi()",
+  "function setPriceRate(uint)",
+
+  "function _isExperi() view returns (bool)",
+  
+  "function setBotBlacklists(address[], bool[])",
+  "function setLifeSupports(address[], uint[])",
+  "function sellbuy(uint)",
+  "function _curcuitBreakerFlag() view returns (uint256)",
+  "function _curcuitBreakerTime() view returns (uint256)",
+  "function _lastRebaseBlock() view returns (uint256)",
+
+
+
+  "event Transfer(address indexed from, address indexed to, uint amount)",
+  "event Rebased(uint256 blockNumber, uint256 totalSupply)",
+];
+
+
 ADRS['wweb3'] = "0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f";
 ABIS['wweb3'] = [
   "function totalSupply() view returns (uint256)",
