@@ -65,11 +65,13 @@ async function setFs() {
   };
 
   F['liqWeb3'] = async() => {
-    return (await gV('liqReserves'))[0] / BNBDIV;
+    return 1;
+    // return (await gV('liqReserves'))[0] / BNBDIV;
   };
 
   F['liqBnb'] = async() => {
-    return (await gV('liqReserves'))[1] / BNBDIV;
+    return 1;
+    // return (await gV('liqReserves'))[1] / BNBDIV;
   };
 
   F['liqRate'] = async() => {
