@@ -35,8 +35,6 @@ function displaySidebar() {
             ${htmlSide('index.html', 'collection', 'Dashboard')}
             ${htmlSide('account.html', 'person-circle', 'Account')}
             ${htmlSide('calculator.html', 'calculator-fill', 'Calculator')}
-            ${htmlSide('swap.html', 'lightning-charge', 'Swap')}
-            ${htmlSide('wrap.html', 'box-seam', 'Wrap')}
             ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
             ${htmlSide('miner.html', 'minecart-loaded', 'Miner')}
             ${htmlSide('wusd.html', 'wallet2', 'WUSD')}
