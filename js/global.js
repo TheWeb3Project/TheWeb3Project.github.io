@@ -20,7 +20,7 @@ async function setFs() {
   };
   
   F['lockedAmount'] = async() => {
-    let v = await CONTS['twep'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
+    let v = await CONTS['twep'].balanceOf("0x407993575c91ce7643a4d4cCACc9A98c36eE1BBE");
     return v / BNBDIV;
   };
 
