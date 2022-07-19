@@ -30,7 +30,13 @@ async function setFs() {
   };
 
   F['circulatingSupply'] = async() => {
-    return (await gV('totalSupply')) - (await gV('burntAmount')) - (await gV('lockedAmount'));
+    let v = (await gV('totalSupply'));
+    v -= (await gV('burntAmount'));
+    v -= (await gV('lockedAmount')); 
+    v -= (await CONTS['twep'].balanceOf("0xcCa3C1D62C80834f8B303f45D89298866C097B1a"));
+    v -= (await CONTS['twep'].balanceOf("0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175"));
+    v -= (await CONTS['twep'].balanceOf("0x8cA5d2e1cDf875fB063A1d1F0F109BdeE2624296"));
+    return v;
   };
 
   F['trustFundBalance'] = async() => {
