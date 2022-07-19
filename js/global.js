@@ -61,12 +61,11 @@ async function setFs() {
   };
 
   F['liqReserves'] = async() => {
-    return await CONTS['pairweb3'].getReserves();
+    return await CONTS['pairtwep'].getReserves();
   };
 
-  F['liqWeb3'] = async() => {
-    return 1;
-    // return (await gV('liqReserves'))[0] / BNBDIV;
+  F['liqTwep'] = async() => {
+    return (await gV('liqReserves'))[0] / BNBDIV;
   };
 
   F['liqBnb'] = async() => {
@@ -75,7 +74,7 @@ async function setFs() {
   };
 
   F['liqRate'] = async() => {
-    return (await gV('liqBnb')) / (await gV('liqWeb3'));
+    return (await gV('liqBnb')) / (await gV('liqTwep'));
   };
 
   F['liqBalance'] = async() => {
