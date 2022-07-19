@@ -243,7 +243,7 @@ async function _runGlobal() {
   displayText("#treasury", `$${COMMA(INT((await gV('treasury')), 3))}`);
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
 
-  displayText("#price", `$${COMMA(INT((await gV('price')), 5))}`);
+  displayText("#price", `$${INT((await gV('price')), 5)}`);
   displayText("#theBlackHole", `$${COMMA(INT((await gV('burntAmount')) * (await gV('price'))))}`);
   displayText("#wPrice", `$${COMMA(INT((await gV('wPrice')), 3))}`);
   wPrice = V[VIdx]['wPrice'];
