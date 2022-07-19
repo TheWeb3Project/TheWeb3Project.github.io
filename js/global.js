@@ -69,8 +69,7 @@ async function setFs() {
   };
 
   F['liqBnb'] = async() => {
-    return 1;
-    // return (await gV('liqReserves'))[1] / BNBDIV;
+    return (await gV('liqReserves'))[1] / BNBDIV;
   };
 
   F['liqRate'] = async() => {
@@ -82,7 +81,7 @@ async function setFs() {
   };
 
   F['autoLiqBalance'] = async() => {
-    return (await getBalance(ADRS['web3'])) / BNBDIV * (await gV('bnbPrice'));
+    return (await getBalance(ADRS['twep'])) / BNBDIV * (await gV('bnbPrice'));
   };
 
   F['price'] = async() => {
