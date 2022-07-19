@@ -7,7 +7,7 @@ async function setFs() {
 
   F['bnbPrice'] = async() => { return 1 / (await getPrice('busd')); };
   F['totalSupply'] = async() => {
-    let v = await CONTS['web3'].totalSupply();
+    let v = await CONTS['twep'].totalSupply();
     return v / BNBDIV;
   };
   F['wTotalSupply'] = async() => {
@@ -20,17 +20,17 @@ async function setFs() {
   };
   
   F['lockedAmount'] = async() => {
-    let v = await CONTS['web3'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
+    let v = await CONTS['twep'].balanceOf("0x0e46Ee6fE64B4Cf366e6Bd894Becf3A759e69c33");
     return v / BNBDIV;
   };
 
-  F['blackHoleAmount'] = async() => {
-    let v = await CONTS['web3'].balanceOf("0x1C57a30c8E1aFb11b28742561afddAAcF2aBDfb7");
+  F['burntAmount'] = async() => {
+    let v = await CONTS['twep'].balanceOf(DEADADR);
     return v / BNBDIV;
   };
 
   F['circulatingSupply'] = async() => {
-    return (await gV('totalSupply')) - (await gV('blackHoleAmount')) - (await gV('lockedAmount'));
+    return (await gV('totalSupply')) - (await gV('burntAmount')) - (await gV('lockedAmount'));
   };
 
   F['trustFundBalance'] = async() => {
@@ -145,8 +145,10 @@ async function setFs() {
 
   F['tvl'] = async() => {
     let v = ((await gV('liqBnb')) + (await gV('liqMinerBnb'))) * (await gV('bnbPrice'));
-    v = v + ((await gV('wLockedAmount'))) * (await gV('wPrice'));
-    v = v + (await gV('liqMinerBusd')) + (await gV('liqMinerWusd')) + (await gV('xFund'));
+    v += ((await gV('wLockedAmount'))) * (await gV('wPrice'));
+    v += (await gV('liqMinerBusd')) + (await gV('liqMinerWusd'));
+    v += (await gV('xFund'));
+
     return v;
   }
 
@@ -215,14 +217,14 @@ async function _runGlobal() {
   //   displayText(`#${k}`, `${COMMA(INT((await gV(k)), 3))}`);
   // }
 
-  displayText("#blackHoleAmount", `${COMMA(INT((await gV('blackHoleAmount')), 3))}`);
+  displayText("#burntAmount", `${COMMA(INT((await gV('burntAmount')), 3))}`);
   displayText("#circulatingSupply", `${COMMA(INT((await gV('circulatingSupply')), 3))}`); 
   displayText("#trustFund", `$${COMMA(INT((await gV('trustFundBalance')), 3))}`);
   displayText("#treasury", `$${COMMA(INT((await gV('treasury')), 3))}`);
   displayText("#liquidity", `$${COMMA(INT((await gV('liqBalance')), 0))}`);
 
   displayText("#price", `$${COMMA(INT((await gV('price')), 3))}`);
-  displayText("#theBlackHole", `$${COMMA(INT((await gV('blackHoleAmount')) * (await gV('price'))))}`);
+  displayText("#theBlackHole", `$${COMMA(INT((await gV('burntAmount')) * (await gV('price'))))}`);
   displayText("#wPrice", `$${COMMA(INT((await gV('wPrice')), 3))}`);
   wPrice = V[VIdx]['wPrice'];
 

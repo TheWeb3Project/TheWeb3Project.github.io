@@ -53,6 +53,9 @@ const BNBDIV = 10**18;
 const CHAINID = 56;
 const UINT256MAX = 2**256 - 1;
 
+const ZEROADR = 0x0000000000000000000000000000000000000000;
+const DEADADR = 0x000000000000000000000000000000000000dEaD;
+
 let RPCS = [
   "https://bsc-dataseed.binance.org",
   "https://bsc-dataseed1.defibit.io",
