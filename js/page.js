@@ -343,13 +343,13 @@ async function getTotalEarned() {
   let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
   let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
 
-  let amount = getCookie('accountWeb3Amount');
+  let amount = BigInt(0); // getCookie('accountWeb3Amount');
   if (amount == null) {
     amount = BigInt(0);
   }
   amount = BigInt(amount);
 
-  let startBlock = getCookie('accountWeb3StartBlock');
+  let startBlock = STARTBLOCK; // getCookie('accountWeb3StartBlock');
   if (startBlock == null) {
     startBlock = STARTBLOCK;
   }

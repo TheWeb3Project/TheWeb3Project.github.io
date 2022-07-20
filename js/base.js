@@ -395,7 +395,10 @@ async function READ_TX_MORE(adr, name, method, params, suffixs, args) {
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
 // https://bscscan.com/tx/0x3745eb92a39460e840aa5503872f7c2fe513f061e8e0e7c59b35fad7841b2896
-const STARTBLOCK = 16282771; 
+
+// v2 launch time: Jul-18-2022 03:00:20 PM +UTC
+// https://bscscan.com/tx/0x4eb05c11e733d47e2fe5ca6206ea371c641281200dbebf2012e60cefdc34d441
+const STARTBLOCK = 19661447; 
 
 let CURBLOCK;
 async function getCurBlock() {
