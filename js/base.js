@@ -385,13 +385,15 @@ async function READ_TX_MORE(adr, name, method, params, suffixs, args) {
     if (!(method in CONTS[name])) {
       let abiStr = `function ${method}${params} ${suffixs}`;
       ABIS[name].push(abiStr);
-
-      CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
-      SIGNS[name] = CONTS[name].connect(SIGNER);
-      INTFS[name] = new ethers.utils.Interface(ABIS[name]);
     }
   }
-  return (await READ_TX(name, method, args))[1];
+  
+  CONTS[name] = new ethers.Contract(ADRS[name], ABIS[name], PROVIDER);
+  SIGNS[name] = CONTS[name].connect(SIGNER);
+  INTFS[name] = new ethers.utils.Interface(ABIS[name]);
+  
+  let result = CONTS[name][method](...args);
+  return result;
 }
 
 // our token launch time: 2022.03.22 02:30:03 PM UTC
