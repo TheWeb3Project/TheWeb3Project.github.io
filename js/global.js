@@ -346,9 +346,10 @@ async function _runGlobal() {
     let topBuyer = await CONTS['jackpot']._topBuyer(); 
     displayText("#biggestBuyer", `${HREF(BSC('address', topBuyer), SHORTADR(topBuyer))}`);
     
-    let bigbuyAmount = INT(await CONTS['jackpot']._dailyBuyAmounts(topBuyer));
-    bigbuyAmount = bigbuyAmount / BNBDIV;
-    displayText("#bigbuyAmount", `${INT(bigbuyAmount, 1)} BNB`);
+    // let bigbuyAmount = INT(await CONTS['jackpot']._dailyBuyAmounts(topBuyer));
+    // bigbuyAmount = bigbuyAmount / BNBDIV;
+    // if (bigbuyAmount > 100)
+    // displayText("#bigbuyAmount", `${INT(bigbuyAmount, 1)} BNB`);
     
     let _lastWinnerTime = INT(await CONTS['jackpot']._lastWinnerTime());
     _lastWinnerTime = new Date(_lastWinnerTime * 1000);
