@@ -295,7 +295,7 @@
 
                           <div id="run-wweb3-approve-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
                           <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                            <span class="button__content">$wWEB3 Approve to stake</span>
+                            <span class="button__content">$wWEB3 Approve to lock</span>
                           </button>
                         </div>
 
@@ -380,7 +380,12 @@
 
                           <span class="small fw-semibold"><div>And get $pWEB3</div> <div> Which will unlock many things!</div>  <div> you can lock it for 14 days up to 1 years and receive pWEB3</div></span>
                           </div>
-
+                          
+                          <div id="run-wweb3-approve-lock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
+                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
+                              <span class="button__content">$wWEB3 Approve to lock</span>
+                            </button>
+                          </div
                         </div>
 
                           <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
@@ -701,26 +706,13 @@ document.addEventListener("DOMContentLoaded", function() {
       let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
       if (BIGINT(0) < wweb3Allowance2) {
         select('#run-wweb3-approve-lock1').classList.add('d-none');
-      } else {
-        select('#run-wweb3-approve-lock1').onclick = async () => { await approve('wweb3', ADRS['lock']); };
-      }
-
-      let wweb3Allowance3 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
-      if (BIGINT(0) < wweb3Allowance3) {
         select('#run-wweb3-approve-lock2').classList.add('d-none');
-      } else {
-        select('#run-wweb3-approve-lock2').onclick = async () => { await approve('wweb3', ADRS['lock']); };
-      }
-
-      let wweb3Allowance4 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
-      if (BIGINT(0) < wweb3Allowance4) {
         select('#run-wweb3-approve-lock3').classList.add('d-none');
       } else {
+        select('#run-wweb3-approve-lock1').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+        select('#run-wweb3-approve-lock2').onclick = async () => { await approve('wweb3', ADRS['lock']); };
         select('#run-wweb3-approve-lock3').onclick = async () => { await approve('wweb3', ADRS['lock']); };
       }
-
-
-
 
   let totalDuration = 0;
   for (let idx of [1, 2, 3]) {
