@@ -315,11 +315,11 @@ async function runPersonal() {
   await _runPersonal();
 
   {
-    let allowance = await CONTS['web3'].allowance(CURADR, ADRS['lottery']);
+    let allowance = await CONTS['twep'].allowance(CURADR, ADRS['lottery']);
     if (BIGINT(0) < allowance) {
       select('#run-web3-approve-lottery').classList.add('d-none');
     } else {
-      select('#run-web3-approve-lottery').onclick = async () => { await approve('web3', ADRS['lottery']); };
+      select('#run-web3-approve-lottery').onclick = async () => { await approve('twep', ADRS['lottery']); };
     }
   }
 }

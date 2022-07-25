@@ -242,11 +242,11 @@
       async function runPersonal() {
         await _runPersonal();
         
-        let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['router']);
+        let web3Allowance = await CONTS['twep'].allowance(CURADR, ADRS['router']);
         if (BIGINT(0) < web3Allowance) {
           select('#run-web3-approve-router').classList.add('d-none');
         } else {
-          select('#run-web3-approve-router').onclick = async () => { await approve('web3', ADRS['router']); };
+          select('#run-web3-approve-router').onclick = async () => { await approve('twep', ADRS['router']); };
         }
         
         STATES['swap'] = 'sell';

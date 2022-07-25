@@ -691,11 +691,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     async function runPersonal() {
       await _runPersonal();
-      let web3Allowance = await CONTS['web3'].allowance(CURADR, ADRS['wweb3']);
+      let web3Allowance = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
       if (BIGINT(0) < web3Allowance) {
         select('#run-web3-approve-wweb3').classList.add('d-none');
       } else {
-        select('#run-web3-approve-wweb3').onclick = async () => { await approve('web3', ADRS['wweb3']); };
+        select('#run-web3-approve-wweb3').onclick = async () => { await approve('twep', ADRS['wweb3']); };
       }
 
       let wweb3Allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);

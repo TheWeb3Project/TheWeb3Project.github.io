@@ -365,9 +365,9 @@ async function _runGlobal() {
     let bigbuyTime = INT(await CONTS['jackpot']._dailyPrizeTime());
     bigbuyTimeLeft = bigbuyTime + 60*60*24 - now;
 
-    cb = await CONTS['web3']._curcuitBreakerFlag();
+    cb = await CONTS['twep']._curcuitBreakerFlag();
     if (cb == 2) {
-      let cbTime = INT(await CONTS['web3']._curcuitBreakerTime());
+      let cbTime = INT(await CONTS['twep']._curcuitBreakerTime());
       cbTimeLeft = cbTime + 3600 - now;
     }
   }, 5000);

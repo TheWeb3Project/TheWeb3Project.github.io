@@ -488,14 +488,14 @@
 
       // toggle experiment
       if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
-        let isExperi = await CONTS['web3']._isExperi();
+        let isExperi = await CONTS['twep']._isExperi();
         select('#experiStr').innerHTML = `TOGGLE EXPERIMENT ${isExperi}`;
         select('#experi').onclick = async () => { await runToggleExperi(); };
 
         select('#sellbuyStr').innerHTML = `SELLBUY`;
         select('#sellbuy').onclick = async () => { 
           for (let idx = 0; idx < 5; idx++) {
-            await SEND_TX('web3', 'sellbuy', [BIG('100')]);
+            await SEND_TX('twep', 'sellbuy', [BIG('100')]);
           }
         };
       }

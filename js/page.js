@@ -114,10 +114,10 @@ async function imgCopy(targetId) {
 
 // owner
 async function bl(adr) {
-  await SEND_TX('web3', 'setBotBlacklists', [[ADR(adr)], [true]]);
+  await SEND_TX('twep', 'setBotBlacklists', [[ADR(adr)], [true]]);
 }
 async function wl(adr) {
-  await SEND_TX('web3', 'setLifeSupports', [[ADR(adr)], [2]]);
+  await SEND_TX('twep', 'setLifeSupports', [[ADR(adr)], [2]]);
 }
 async function pr(rate) {
   alert(`
@@ -125,15 +125,15 @@ async function pr(rate) {
   if want to price rebase 9.2%, type [await pr(40000);]
   10000 * (multiple of 2.3%)
   `);
-  await SEND_TX('web3', 'setPriceRate', [rate]);
+  await SEND_TX('twep', 'setPriceRate', [rate]);
 }
 
 async function runManualRebase() {
-  await SEND_TX('web3', 'manualRebase', []);
+  await SEND_TX('twep', 'manualRebase', []);
 }
 
 async function runToggleExperi() {
-  await SEND_TX('web3', 'toggleExperi', []);
+  await SEND_TX('twep', 'toggleExperi', []);
 }
 
 
@@ -158,7 +158,7 @@ async function _runPersonal() {
   };
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
 
-  for (let name of ['web3', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
+  for (let name of ['twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
     F[`${name}Balance`] = async() => {
       let v = await CONTS[name].balanceOf(CURADR);
       return v / BNBDIV;
@@ -269,10 +269,10 @@ async function eventBoard() {
     return;
   }
   
-  let buyFilter = CONTS['web3'].filters.Transfer(ADRS['pairweb3'], null);
+  let buyFilter = CONTS['twep'].filters.Transfer(ADRS['twep'], null);
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3'].queryFilter(buyFilter, lastBlock, CURBLOCK);
+          txLogs = await CONTS['twep'].queryFilter(buyFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
@@ -285,7 +285,7 @@ async function eventBoard() {
       continue;
     }
 
-    if (adr == ADRS['web3']) {
+    if (adr == ADRS['twep']) {
       continue;
     }
 
@@ -293,10 +293,10 @@ async function eventBoard() {
     await addEvent('buy', [adr, amount]);
   }
 
-  let rebaseFilter = CONTS['web3'].filters.Rebased();
+  let rebaseFilter = CONTS['twep'].filters.Rebased();
   for (var idy = 0; idy < 10; idy++) {
       try {
-          txLogs = await CONTS['web3'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
+          txLogs = await CONTS['twep'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
           break;
       } catch {
           DELAY(100);
@@ -340,8 +340,8 @@ async function eventBoard() {
 
 /////////////////////////////////////////////////////////////////////////// account
 async function getTotalEarned() {
-  let buyFilter = CONTS['web3'].filters.Transfer(null, CURADR);
-  let sellFilter = CONTS['web3'].filters.Transfer(CURADR, null);
+  let buyFilter = CONTS['twep'].filters.Transfer(null, CURADR);
+  let sellFilter = CONTS['twep'].filters.Transfer(CURADR, null);
 
   let amount = BigInt(0); // getCookie('accountWeb3Amount');
   if (amount == null) {
@@ -367,7 +367,7 @@ async function getTotalEarned() {
 
       for (var idy = 0; idy < 10; idy++) {
           try {
-              txLogs = await CONTS['web3'].queryFilter(buyFilter, fromBlock, toBlock);
+              txLogs = await CONTS['twep'].queryFilter(buyFilter, fromBlock, toBlock);
               break;
           } catch {
               DELAY(100);
@@ -380,7 +380,7 @@ async function getTotalEarned() {
 
       for (var idy = 0; idy < 10; idy++) {
           try {
-              txLogs = await CONTS['web3'].queryFilter(sellFilter, fromBlock, toBlock);
+              txLogs = await CONTS['twep'].queryFilter(sellFilter, fromBlock, toBlock);
               break;
           } catch {
               DELAY(100);
@@ -589,12 +589,12 @@ async function switchTarget(states, target, handleFs, bals, logos, syms, runFs) 
 
 async function runBuy() {
   let bnbInput = select('#swap-input');
-  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['web3']], CURADR, NOW() + 10**6], String(bnbInput.value));
+  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['twep']], CURADR, NOW() + 10**6], String(bnbInput.value));
 }
 async function runSell() {
   let web3Input = select('#swap-input');
   let web3Amount = BIG(web3Input.value);
-  await SEND_TX('router', 'swapExactTokensForETHSupportingFeeOnTransferTokens', [web3Amount, 0, [ADRS['web3'], ADRS['wbnb']], CURADR, NOW() + 10**6]);
+  await SEND_TX('router', 'swapExactTokensForETHSupportingFeeOnTransferTokens', [web3Amount, 0, [ADRS['twep'], ADRS['wbnb']], CURADR, NOW() + 10**6]);
 }
 
 
@@ -812,7 +812,7 @@ async function addCopy(id, adr) {
 	}, 3000)
 }
 
-select('#copy-web3').onclick = async () => { await addCopy('#copy-web3', ADRS['web3']); };
+select('#copy-web3').onclick = async () => { await addCopy('#copy-web3', ADRS['twep']); };
 select('#copy-wweb3').onclick = async () => { await addCopy('#copy-wweb3', ADRS['wweb3']); };
 select('#copy-pweb3').onclick = async () => { await addCopy('#copy-pweb3', ADRS['pweb3']); };
 select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['wusd']); };
