@@ -392,8 +392,8 @@ async function getTotalEarned() {
           amount -= BigInt(data);
       }
 
-      setCookie('accountWeb3Amount', amount, 10);
-      setCookie('accountWeb3StartBlock', toBlock, 10);
+      // setCookie('accountWeb3Amount', amount, 10);
+      // setCookie('accountWeb3StartBlock', toBlock, 10);
 
       if (toBlock == CURBLOCK) {
           break;
