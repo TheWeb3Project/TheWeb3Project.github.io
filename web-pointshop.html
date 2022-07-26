@@ -53,7 +53,7 @@
                   <div class="text-secondary mb-1">
                     $TWEP balance
                   </div>
-                  <h4 id="web3Balance" class="fw-bold">0.000</h4>
+                  <h4 id="twepBalance" class="fw-bold">0.000</h4>
                 </div>
 
                 <div class="col">
@@ -452,7 +452,7 @@
 
 
       select('#setMaxToAmount').onclick = async () => {
-        select('#amount').value = (await gV('web3Balance'));
+        select('#amount').value = (await gV('twepBalance'));
       };
       select('#setCurToApy').onclick = async () => {
         select('#input-apy').value = 404092.65;

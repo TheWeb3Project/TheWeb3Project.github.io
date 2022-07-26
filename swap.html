@@ -180,7 +180,7 @@
 
     <script>
       async function switchSwap() {
-        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('web3Balance'))], [BNBICONURL, TOKENICONURL], ["BNB", "TWEP"], [runBuy, runSell]);
+        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('twepBalance'))], [BNBICONURL, TOKENICONURL], ["BNB", "TWEP"], [runBuy, runSell]);
       }
 
       async function runPersonal() {

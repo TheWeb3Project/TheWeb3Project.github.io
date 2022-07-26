@@ -205,7 +205,7 @@ async function _runPersonal() {
   lockedDuration = await CONTS['lock']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
-  totalSupplyPercentage = ((await gV('web3Balance')) / (await gV('totalSupply'))) * 100;
+  totalSupplyPercentage = ((await gV('twepBalance')) / (await gV('totalSupply'))) * 100;
   if (totalSupplyPercentage < 0.001) {
     displayText("#percentTotalSupply", `< 0.001`);
   } else {
@@ -401,9 +401,9 @@ async function getTotalEarned() {
   }
   amount = INT(amount) / BNBDIV;
 
-  // console.log(web3Balance, amount);
-  let totalEarned = (await gV('web3Balance')) - amount; // little precision
-  let earnRate = totalEarned / (await gV('web3Balance')) * 100;
+  // console.log(twepBalance, amount);
+  let totalEarned = (await gV('twepBalance')) - amount; // little precision
+  let earnRate = totalEarned / (await gV('twepBalance')) * 100;
   displayText("#totalEarned", `${COMMA(INT(totalEarned, 3))} $TWEP (+${COMMA(INT(earnRate, 3))}%)`);
   displayText("#totalEarnedInUsd", `$${COMMA(INT(totalEarned * (await gV('price')), 3))}`);
 }

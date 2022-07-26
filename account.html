@@ -102,18 +102,15 @@
                   <div class="text-secondary mb-1">
                     Total Supply
                   </div>
-                  <!-- <h4 id="totalSupply" class="fw-bold">0</h4> -->
-                  <h4 class="fw-bold">3,000,000,000</h4>
+                  <h4 id="totalSupply" class="fw-bold">0</h4>
                 </div>
 
                 <div class="col my-3">
                   <div class="text-secondary mb-1">
                     Your Balance
                   </div>
-                  <!-- <h4 id="web3Balance" class="fw-bold my-2">0.000</h4> -->
-                  <!-- <span id="balanceInUsd" class="text-secondary">$0.000</span> -->
-                  <h4 class="fw-bold my-2">0.000</h4>
-                  <span class="text-secondary">$0.000</span>
+                  <h4 id="twepBalance" class="fw-bold my-2">0.000</h4>
+                  <span id="balanceInUsd" class="text-secondary">$0.000</span>
                   
                 </div>
 
@@ -121,7 +118,7 @@
                   <div class="text-secondary mb-1">
                     Your Holding %
                   </div>
-                  <!-- <h4 id="percentTotalSupply" class="fw-bold">$0</h4> -->
+                  <h4 id="percentTotalSupply" class="fw-bold">$0</h4>
                 </div>
               </div>
             </div>
@@ -214,9 +211,9 @@
 
       await getTotalEarned();
 
-      displayText("#balanceInUsd", `$${COMMA(INT((await gV('web3Balance')) * (await gV('price')), 3))}`);
+      displayText("#balanceInUsd", `$${COMMA(INT((await gV('twepBalance')) * (await gV('price')), 3))}`);
 
-      let dailyEarning = (await gV('web3Balance')) / (await gV('totalSupply')) * reAmCur;
+      let dailyEarning = (await gV('twepBalance')) / (await gV('totalSupply')) * reAmCur;
       
       // let rebaseRate = 1.00000017;
       let rebaseRate = 1.00000079;
