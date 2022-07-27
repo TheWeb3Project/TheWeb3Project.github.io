@@ -833,21 +833,25 @@ select('#copy-wusd').onclick = async () => { await addCopy('#copy-wusd', ADRS['w
 
 async function maxValueSwapInput() {
   let bal = select('#swap-balance-input').innerHTML;
+  bal = bal.replace(/,/g, '');
   select("#swap-input").value = bal;
 }
 
 async function maxValueWrapInput() {
   let bal = select('#wrap-balance-input').innerHTML;
+  bal = bal.replace(/,/g, '');
   select("#wrap-input").value = bal;
 }
 
 async function maxValueWrapInput() {
   let bal = select('#wrap-balance-input').innerHTML;
+  bal = bal.replace(/,/g, '');
   select("#wrap-input").value = bal;
 }
 
 async function maxValueLockInput() {
   let bal = select('#wweb3Balance').innerHTML;
+  bal = bal.replace(/,/g, '');
   for (let idx of [1, 2, 3]) {
 		select(`#lock-input${idx}`).value = bal;
   }
@@ -856,6 +860,7 @@ async function maxValueLockInput() {
 
 async function maxValueWusdInput() {
   let bal = select('#wusdBalance').innerHTML;
+  bal = bal.replace(/,/g, '');
   for (let idx of [1, 2, 3]) {
 		select(`#wusd-input${idx}`).value = bal;
   }
