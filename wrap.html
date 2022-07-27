@@ -769,7 +769,7 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('hof-claim').style.border = '3px solid #48acef';
     document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)';
 
-    select('#hof-claim').onclick = async () => { await SEND_TX('lock', 'hallOfFame', []); };
+    select('#hof-claim').onclick = async () => { await SEND_TX('nft', 'hallOfFame', []); };
   }
 
       
