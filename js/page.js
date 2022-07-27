@@ -35,6 +35,7 @@ function displaySidebar() {
             ${htmlSide('index.html', 'collection', 'Dashboard')}
             ${htmlSide('account.html', 'person-circle', 'Account')}
             ${htmlSide('calculator.html', 'calculator-fill', 'Calculator')}
+            ${htmlSide('swap.html', 'shop', 'Swap')}
             ${htmlSide('wrap.html', 'shop', 'Wrap')}
             ${htmlSide('web-pointshop.html', 'shop', 'Point Shop')}
             ${htmlSide('miner.html', 'minecart-loaded', 'Miner')}
@@ -478,6 +479,15 @@ async function funcRate(v, rI, rO) {
   return v.mul(b).div(a);
 }
 
+async function swapRatePcs(v, rI, rO) {
+  let a = BIG(String(rI));
+  let b = BIG(String(rO));
+
+  let nume = v.mul(9975).mul(b);
+  let deno = v.mul(9975).add(a.mul(10000));
+  return nume.div(deno);
+}
+
 async function swapRate(v, rI, rO) {
   let a = BIG(String(rI));
   let b = BIG(String(rO));
@@ -489,13 +499,13 @@ async function swapRate(v, rI, rO) {
 
 async function handleInputBuy(e) {
   await handleInput(e, 'swap-output', async (v) => {
-    return await funcRate(v, (await gV('liqBnb')), (await gV('liqTwep')));
+    return await swapRatePcs(v, (await gV('liqBnb')), (await gV('liqTwep')));
   });
 }
 
 async function handleInputSell(e) {
   await handleInput(e, 'swap-output', async (v) => {
-    return await funcRate(v, (await gV('liqTwep')), (await gV('liqBnb')));
+    return await swapRatePcs(v, (await gV('liqTwep')), (await gV('liqBnb')));
   });
 }
 

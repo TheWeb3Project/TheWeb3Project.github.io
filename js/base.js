@@ -503,7 +503,7 @@ async function gV(k) {
 
 const BNBICONURL = "images/bnb-icon.png";
 const BUSDICONURL = "images/busd.png";
-const TOKENICONURL = "https://tokens-list.s3.eu-central-1.amazonaws.com/bsc-0x333FD139cAeF6Aa31056cC905987b77B1044d259.svg";
+const TOKENICONURL = "images/logos/TWEP/TWEP.png";
 
 function HREF(link, txt) {
 	return `<a href="${link}">${txt}</a>`;
