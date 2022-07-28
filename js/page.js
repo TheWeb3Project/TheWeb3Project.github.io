@@ -146,6 +146,18 @@ async function ALERT(msg) {
   select('#showMsg').click();
 }
 
+function BIG(s, decimals=18) {
+  try {
+    if (decimals == 18) {
+      return ethers.utils.parseEther(s);
+    } else {
+      return ethers.utils.parseUnits(s, decimals);
+    }
+  } catch (e) {
+    ALERT(e);
+  }
+}
+
 async function ERR(err, popup=true) {
   let result = err;
 
