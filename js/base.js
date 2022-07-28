@@ -842,7 +842,7 @@ function BIG(s, decimals=18) {
       return ethers.utils.parseUnits(s, decimals);
     }
   } catch (e) {
-    alert(e);
+    ALERT(e);
   }
 }
  
