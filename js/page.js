@@ -141,23 +141,28 @@ async function runToggleExperi() {
 
 
 
+async function ALERT(msg) {
+  select('#msgResult').innerHTML = msg;
+  select('#showMsg').click();
+}
+
 async function ERR(err, popup=true) {
   let result = err;
 
   if (!('code' in err)) {
-    alert('no code:' + err);
+    ALERT('no code:' + err);
     return result;
   }
 
   if (err['code'] == -32603) {
     if (!('data' in err)) {
-      alert('no data:' + err);
+      ALERT('no data:' + err);
       return result;
     }
 
     let data = err['data'];
     if (!('code' in data)) {
-      alert('no code data:', err);
+      ALERT('no code data:', err);
 
       return result;
     }
@@ -165,14 +170,14 @@ async function ERR(err, popup=true) {
     if (data['code'] == 3) {
       let msg = data['message'];
       result = msg;
-      alert('C:' + result);
+      ALERT('C:' + result);
       return result;
     }
 
     if (data['code'] == -32000) {
       let msg = data['message'];
       result = msg;
-      alert('D:' + result);
+      ALERT('D:' + result);
       return result;
     }
   }
@@ -683,7 +688,7 @@ async function runLock(idx) {
   let days = select("#days").innerHTML;
 
   if (idx > 3) {
-    alert('wrong idx');
+    ALERT('wrong idx');
     return;
   }
 
@@ -696,7 +701,7 @@ async function runLock(idx) {
 
 async function runUnlock(idx) {
   if (idx > 3) {
-    alert('wrong idx');
+    ALERT('wrong idx');
     return;
   }
 
@@ -709,7 +714,7 @@ async function runUnlock(idx) {
 
 async function runClaim(idx) {
   if (idx > 3) {
-    alert('wrong idx');
+    ALERT('wrong idx');
     return;
   }
 
@@ -722,7 +727,7 @@ async function runClaim(idx) {
 
 async function runEmerUnstake(idx) {
   if (idx > 3) {
-    alert('wrong idx');
+    ALERT('wrong idx');
     return;
   }
 
@@ -740,7 +745,7 @@ async function runStake(idx) {
   let days = select("#days").innerHTML;
 
   if (idx > 3) {
-    alert('wrong idx');
+    ALERT('wrong idx');
     return;
   }
 
@@ -749,7 +754,7 @@ async function runStake(idx) {
 
 async function runUnstake(idx) {
   if (idx > 3) {
-    alert('wrong idx');
+    ALERT('wrong idx');
     return;
   }
 
@@ -817,7 +822,7 @@ async function buyMiner() {
   let pweb3Amount = select('#miner-input').value;
   pweb3Amount = pweb3Amount.replace(/,/g, '');
   if (pweb3Amount < 8845) {
-    alert('input more than 8845 pWEB3');
+    ALERT('input more than 8845 pWEB3');
     return;
   }
   
@@ -833,7 +838,7 @@ async function buyMinerMore() {
   let daimonds = await CONTS['miner'].getMyDaimonds(CURADR);
   let miners = daimonds / (await CONTS['miner'].DAIMONDS_TO_HIRE_MINER());
   if (miners < 2) {
-    alert('not enough WUSD to hire miners');
+    ALERT('not enough WUSD to hire miners');
     return;
   }
   
@@ -847,7 +852,7 @@ async function sellOre() {
 async function buyXweb3() {
   let amount = select('#xweb3-input').value;
   if (amount < 10000) {
-    alert('use more than 10000 pweb3');
+    ALERT('use more than 10000 pweb3');
     return;
   }
   amount = amount.replace(/,/g, '');

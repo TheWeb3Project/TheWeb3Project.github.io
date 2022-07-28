@@ -69,7 +69,7 @@ if (isBrowser) {
     (async function () {
       let network = await PROVIDER.getNetwork();
       if (network['chainId'] != CHAINID) {
-        alert('Network is not BSC. Requesting to change network');
+        ALERT('Network is not BSC. Requesting to change network');
         await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [{
@@ -945,7 +945,7 @@ async function conn(func=null, popup=false) {
     
   } catch (err) {
     if (err == 'ReferenceError: ethereum is not defined') {
-      alert('Use Dapp to connect wallet!');
+      ALERT('Use Dapp to connect wallet!');
       return;
     }
     
@@ -955,7 +955,7 @@ async function conn(func=null, popup=false) {
     }
   	
     if (popup) {
-    	alert(JSON.stringify(err));
+    	ALERT(JSON.stringify(err));
     }    
   }
 }
