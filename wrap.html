@@ -264,7 +264,7 @@
                           <div class="mt-5">
                             <div class="info  col-12 d-flex justify-content-end">
                             </div>
-                            <button id="hof-claim" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
+                            <button id="hof-claim1" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
                             border-radius: 20px;
                           background-color: gray;">
                               <span id="claim-name" class="button__content">
@@ -354,7 +354,7 @@
                           <div class="mt-5">
                             <div class="info  col-12 d-flex justify-content-end">
                             </div>
-                            <button id="hof-claim" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
+                            <button id="hof-claim2" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
                             border-radius: 20px;
                           background-color: gray;">
                               <span id="claim-name" class="button__content">
@@ -446,7 +446,7 @@
                           <div class="mt-5">
                             <div class="info  col-12 d-flex justify-content-end">
                             </div>
-                            <button id="hof-claim" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
+                            <button id="hof-claim3" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
                             border-radius: 20px;
                           background-color: gray;">
                               <span id="claim-name" class="button__content">
@@ -785,10 +785,12 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   if (360 <= totalDuration) {
-    document.getElementById('hof-claim').style.border = '3px solid #48acef';
-    document.getElementById('hof-claim').style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)';
+    for (let idx of [1, 2, 3]) {
+      select(`hof-claim${idx}`).style.border = '3px solid #48acef';
+      select(`hof-claim${idx}`).style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)';
 
-    select('#hof-claim').onclick = async () => { await SEND_TX('nft', 'hallOfFame', []); };
+      select(`hof-claim${idx}`).onclick = async () => { await SEND_TX('nft', 'hallOfFame', []); };
+    }
   }
 
       
