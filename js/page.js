@@ -139,6 +139,48 @@ async function runToggleExperi() {
 }
 
 
+
+
+async function ERR(err, popup=true) {
+  let result = err;
+
+  if (!('code' in err)) {
+    alert('no code:' + err);
+    return result;
+  }
+
+  if (err['code'] == -32603) {
+    if (!('data' in err)) {
+      alert('no data:' + err);
+      return result;
+    }
+
+    let data = err['data'];
+    if (!('code' in data)) {
+      alert('no code data:', err);
+
+      return result;
+    }
+
+    if (data['code'] == 3) {
+      let msg = data['message'];
+      result = msg;
+      alert('C:' + result);
+      return result;
+    }
+
+    if (data['code'] == -32000) {
+      let msg = data['message'];
+      result = msg;
+      alert('D:' + result);
+      return result;
+    }
+  }
+
+  return result;
+}
+
+
 let lockedAmount;
 let lockedDuration;
 let totalSupplyPercentage;

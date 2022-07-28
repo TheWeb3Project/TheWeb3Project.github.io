@@ -139,6 +139,8 @@
           </div>
 
         </div>
+        
+        <button type="button" id="showMsg" data-toggle="modal" data-target="#msgModal" style="display:none;"></button>
 
         <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog my-5" role="document" style="max-width: 1000px;">
@@ -173,6 +175,7 @@
   <script src="js/global.js"></script>
   <script src="js/page.js"></script>
   <script>
+
     async function runGlobal() {
       await _runGlobal();
 
