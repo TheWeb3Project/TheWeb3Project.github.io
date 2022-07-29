@@ -137,7 +137,8 @@ ABIS['twep'] = [
   "function setPriceRate(uint)",
 
   "function _isExperi() view returns (bool)",
-  
+  "function _blacklisted(address) view returns (bool)",
+	
   "function setBotBlacklists(address[], bool[])",
   "function setLifeSupports(address[], uint[])",
   "function _curcuitBreakerFlag() view returns (uint256)",
