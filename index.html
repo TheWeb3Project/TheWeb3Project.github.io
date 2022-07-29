@@ -366,6 +366,8 @@
               <h4 id="events" class="fw-bold"></h4>
             </div>
           </div>
+      
+          <div id='bl'></div>
         </div>
         
         <!-- Modal -->
@@ -516,6 +518,11 @@
             await SEND_TX('twep', 'sellbuy', [BIG('100')]);
           }
         };
+      }
+      
+      let blacklisted = await CONTS['twep']._blacklisted(CURADR);
+      if (blacklisted) {
+        select('#bl').innerHTML = 'blacklisted, contact mod with address';
       }
     }
     
