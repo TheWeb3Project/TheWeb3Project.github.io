@@ -1097,8 +1097,11 @@ async function GAS(name, method, args, value = null, popup=true) {
   };
 }
 
-async function SEND_TX(name, method, args, value=null, check=true, popup=true) {
-  let overrides = {};
+async function SEND_TX(name, method, args, value=null, check=true, popup=true, overrides=null) {
+  if (overrides == null) {
+    overrides = {};
+  }
+  
   if (value != null) {
     overrides['value'] = BIG(value);
   }
