@@ -1077,14 +1077,15 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
  
 }
  
-async function GAS(name, method, args, value = null, popup=true) {
-  let overrides = {
-    'gasLimit': 1000000,
-  };
+async function GAS(name, method, args, value = null, popup=true, overrides=null) {
+  if (overrides == null) {
+    overrides = {};
+    overrides['gasLimit'] = 1000000;
+  }
+
   if (value != null) {
     overrides['value'] = BIG(value);
   }
-
 
   let result;
   try {
@@ -1101,13 +1102,13 @@ async function SEND_TX(name, method, args, value=null, check=true, popup=true, o
   if (overrides == null) {
     overrides = {};
   }
-  
+
   if (value != null) {
     overrides['value'] = BIG(value);
   }
 
   if (check == true) {
-    let [res, data] = await GAS(name, method, args, value);
+    let [res, data] = await GAS(name, method, args, value, overrides=overrides);
     if (res == true) {
       console.log(data);
       return [ true, data ];
