@@ -1079,17 +1079,18 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
  
 async function GAS(name, method, args, value=null, popup=true, overrides=null) {
   if (overrides == null) {
-    overrides = {};
-    overrides['gasLimit'] = 1000000;
+    overrides = {};  
+    overrides['from'] = CURADR;
   }
 
+  
   if (value != null) {
     overrides['value'] = BIG(value);
   }
 
   let result;
   try {
-    result = await CONTS[name].estimateGas[method](...args, overrides);
+    result = await SIGNS[name].estimateGas[method](...args, overrides);
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
@@ -1101,6 +1102,8 @@ async function GAS(name, method, args, value=null, popup=true, overrides=null) {
 async function SEND_TX(name, method, args, value=null, check=true, popup=true, overrides=null) {
   if (overrides == null) {
     overrides = {};
+    overrides['gasLimit'] = 1000000;
+    overrides['from'] = CURADR;
   }
 
   if (value != null) {
