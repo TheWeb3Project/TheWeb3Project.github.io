@@ -1077,7 +1077,7 @@ async function READ_TX(name, method, args, from="0xe7F0704b198585B8777abe859C312
  
 }
  
-async function GAS(name, method, args, value = null, popup=true, overrides=null) {
+async function GAS(name, method, args, value=null, popup=true, overrides=null) {
   if (overrides == null) {
     overrides = {};
     overrides['gasLimit'] = 1000000;
