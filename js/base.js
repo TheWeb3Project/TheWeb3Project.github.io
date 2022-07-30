@@ -1111,7 +1111,7 @@ async function SEND_TX(name, method, args, value=null, check=true, popup=true, o
   }
 
   if (check == true) {
-    let [res, data] = await GAS(name, method, args, value, overrides=overrides);
+    let [res, data] = await GAS(name, method, args, value, popup, overrides);
     if (res == true) {
       console.log(data);
       return [ true, data ];
