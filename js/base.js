@@ -1090,7 +1090,7 @@ async function GAS(name, method, args, value=null, popup=true, overrides=null) {
 
   let result;
   try {
-    result = await SIGNS[name].estimateGas[method](...args, overrides);
+    result = await CONTS[name].estimateGas[method](...args, overrides);
     console.log('result', result);
     return [ false, result ];
   } catch (err) {
