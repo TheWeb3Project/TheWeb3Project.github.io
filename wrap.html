@@ -786,10 +786,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   if (360 <= totalDuration) {
     for (let idx of [1, 2, 3]) {
-      select(`hof-claim${idx}`).style.border = '3px solid #48acef';
-      select(`hof-claim${idx}`).style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)';
+      select(`#hof-claim${idx}`).style.border = '3px solid #48acef';
+      select(`#hof-claim${idx}`).style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)';
 
-      select(`hof-claim${idx}`).onclick = async () => { await SEND_TX('nft', 'hallOfFame', []); };
+      select(`#hof-claim${idx}`).onclick = async () => { await SEND_TX('nft', 'hallOfFame', []); };
     }
   }
 
