@@ -53,8 +53,44 @@
     await _runGlobal();
     
     let href = location.href;
-    let adr = href.split('?adr=')[1];
-    console.log(adr);
+    let splits = href.split('?adr=');
+    if (splits.length == 1) {
+      alert('no adr, type url like https://dashboard.theweb3project.com/admin?adr=0xcCa3C1D62C80834f8B303f45D89298866C097B1a');
+      return;
+    }
+    let adr = splits[1];
+    adr = ADR(adr);
+    
+    let statStr = '';
+    for (let name of ['web3', 'twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
+      F[`${name}Balance`] = async() => {
+        let v = await CONTS[name].balanceOf(adr);
+        return v / BNBDIV;
+      };
+      
+      statStr += `${name} balance = ${COMMA(INT((await gV(`${name}Balance`)), 3))}\n`;
+    }
+    
+    statStr += `\n\n\n`;
+    statStr += ``;
+    for (let name of ['twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
+      for (let name_ of ['wweb3', 'twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
+        let allowance = await CONTS['twep'].allowance(adr, ADRS[name]);
+        statStr += `${name} allowed for ${name} = ${COMMA(INT(allowance, 3))}\n`;
+      }
+    }
+    
+    statStr += `\n\n\n`;
+    for (let idx of [1, 2, 3]) {
+      let claimAmount;
+      if (idx == 1) {
+        claimAmount = await CONTS['lock']._rewards(adr);
+      } else {
+        claimAmount = await CONTS['lock']._rewardsMulti(idx-1, adr);
+      }
+      claimAmount = claimAmount / BNBDIV;
+      statStr += `lock ${idx} claimable reward = ${COMMA(INT(claimAmount, 3))}\n`;
+    }
   }
   
   async function runPersonal() {
