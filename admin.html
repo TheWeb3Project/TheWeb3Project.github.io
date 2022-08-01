@@ -73,8 +73,8 @@
     
     statStr += `\n\n\n`;
     statStr += ``;
-    for (let name of ['twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
-      for (let name_ of ['wweb3', 'twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
+    for (let name of ['twep', 'wweb3', 'pweb3', 'wusd', 'busd']) {
+      for (let name_ of ['wweb3', 'lock', 'nft', 'miner', 'xweb3', 'wusd']) {
         let allowance = await CONTS[name].allowance(adr, ADRS[name_]);
         statStr += `${name} allowed for ${name_} = ${COMMA(INT(allowance, 3))}\n`;
       }
