@@ -32,7 +32,7 @@
   <link rel="stylesheet" href="css/flooz.css">
 </head>
 <body>
-  <div id="stat"></div>
+  <div id="stat" style="white-space: pre-wrap;margin: 10px;"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
@@ -144,11 +144,12 @@
       statStr += `miner invested weeks passed = ${COMMA(INT(_investTimes, 3))}\n`;
       
       let weeklyRate = _return / amount / _investTimes * 100;
-      statStr += `miner weekly rate = ${COMMA(INT(weeklyRate, 3))}\n`;
+      statStr += `miner weekly rate = ${COMMA(INT(weeklyRate, 3))}%\n`;
       
       let rateX10000 = await CONTS['miner'].getRateX10000(adr);
       rateX10000 /= 10000;
-      statStr += `miner reward rate = ${COMMA(INT(rateX10000, 3))}\n`;
+      rateX10000 *= 100;
+      statStr += `miner reward rate = ${COMMA(INT(rateX10000, 3))}%\n`;
       
       let wusdReward = await CONTS['miner'].calculateWusdRewards(adr);
       wusdReward /= BNBDIV;
@@ -162,11 +163,15 @@
       statStr += `lock${idx} staked wusd amount = ${COMMA(INT(_wusdStakedAmount, 3))}\n`;
       
       let _wusdStakedTime = await CONTS['lock']._wusdStakedTime(idx - 1, adr);
-      let stakedDuration = now - _wusdStakedTime;
-      statStr += `lock ${idx} staked wusd duration = ${INT((stakedDuration / (60*60*24)))}d ${INT((stakedDuration / (60*60)) % 24)}h ${INT((stakedDuration / 60) % 60)}m ${INT(stakedDuration % 60)}s\n`;
+      if (0 < _wusdStakedTime) {
+        let stakedDuration = now - _wusdStakedTime;
+        statStr += `lock ${idx} staked wusd duration = ${INT((stakedDuration / (60*60*24)))}d ${INT((stakedDuration / (60*60)) % 24)}h ${INT((stakedDuration / 60) % 60)}m ${INT(stakedDuration % 60)}s\n`;
+        
+        let calWusdReward = await CONTS['lock'].calWusdReward(idx - 1, _wusdStakedAmount, stakedDuration);
+        statStr += `lock ${idx} reward amount = ${COMMA(INT(calWusdReward / BNBDIV, 3))}\n`;
+      }
       
-      let calWusdReward = await CONTS['lock'].calWusdReward(idx - 1, _wusdStakedAmount, stakedDuration);
-      statStr += `lock ${idx} reward amount = ${COMMA(INT(calWusdReward / BNBDIV, 3))}\n`;
+      
     }
     select('#stat').innerHTML = statStr;
   }
