@@ -51,7 +51,10 @@
   
   async function runGlobal() {
     await _runGlobal();
-
+    
+    let href = location.href;
+    let adr = href.split('?adr=')[1];
+    console.log(adr);
   }
   
   async function runPersonal() {
