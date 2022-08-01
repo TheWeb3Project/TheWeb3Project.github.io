@@ -80,17 +80,19 @@
       }
     }
     
+    let hofAmount = 0;
     statStr += `\n\n\n`;
     for (let idx of [1, 2, 3]) {
-      let amount;
+      let reward;
       if (idx == 1) {
-        amount = await CONTS['lock']._rewards(adr);
+        reward = await CONTS['lock']._rewards(adr);
       } else {
-        amount = await CONTS['lock']._rewardsMulti(idx-1, adr);
+        reward = await CONTS['lock']._rewardsMulti(idx-1, adr);
       }
-      amount = amount / BNBDIV;
-      statStr += `lock ${idx} claimable reward = ${COMMA(INT(amount, 3))}\n`;
+      reward = reward / BNBDIV;
+      statStr += `lock ${idx} claimable reward = ${COMMA(INT(reward, 3))}\n`;
       
+      let amount;
       if (idx == 1) {
         amount = await CONTS['lock']._amounts(adr);
       } else {
@@ -99,25 +101,59 @@
       amount = amount / BNBDIV;
       statStr += `lock ${idx} locked amount = ${COMMA(INT(amount, 3))}\n`;
       
+      let duration;
       if (idx == 1) {
-        amount = await CONTS['lock']._durations(adr);
+        duration = await CONTS['lock']._durations(adr);
       } else {
-        amount = await CONTS['lock']._durationsMulti(idx-1, adr);
+        duration = await CONTS['lock']._durationsMulti(idx-1, adr);
       }
-//       amount = amount / BNBDIV;
-      statStr += `lock ${idx} locked duration days = ${COMMA(INT(amount, 3))}\n`;
+//       duration = duration / BNBDIV;
+      statStr += `lock ${idx} locked duration days = ${COMMA(INT(duration, 3))}\n`;
+      if (360 <= duration) {
+        hofAmount += amount;
+      }
       
+      let unlockTime;
       if (idx == 1) {
-        amount = await CONTS['lock']._unlockTimes(adr);
+        unlockTime = await CONTS['lock']._unlockTimes(adr);
       } else {
-        amount = await CONTS['lock']._unlockTimesMulti(idx-1, adr);
+        unlockTime = await CONTS['lock']._unlockTimesMulti(idx-1, adr);
       }
-      let unlockAfter = amount - NOW() / 1000;
+      let unlockAfter = unlockTime - NOW() / 1000;
       if (unlockAfter <= 0) {
         unlockAfter = 0;
       }
       statStr += `lock ${idx} unlock after = ${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s\n`;
     }
+    
+    statStr += `\n\n`;
+    statStr += `miner values are calibrated due to referral and other things\n`;
+    statStr += `2-8% per week is normal range\n`;
+    {
+      let amount = await CONTS['miner']._amounts(adr);
+      amount /= BNBDIV;
+      statStr += `miner invested amount = ${COMMA(INT(amount, 3))}\n`;
+      
+      let _return = await CONTS['miner']._returns(adr);
+      _return /= BNBDIV;
+      statStr += `miner total rewarded amount = ${COMMA(INT(_return, 3))}\n`;
+      
+      let _investTimes = await CONTS['miner']._investTimes(adr);
+      _investTimes = (NOW() / 1000 - _investTimes) / (60*60*24*7)
+      statStr += `miner invested weeks passed = ${COMMA(INT(_investTimes, 3))}\n`;
+      
+      let weeklyRate = _return / amount / _investTimes * 100;
+      statStr += `miner weekly rate = ${COMMA(INT(weeklyRate, 3))}\n`;
+      
+      let rateX10000 = await CONTS['miner'].getRateX10000(adr);
+      rateX10000 /= 10000;
+      statStr += `miner reward rate = ${COMMA(INT(rateX10000, 3))}\n`;
+      
+      let wusdReward = await CONTS['miner'].calculateWusdRewards(adr);
+      wusdReward /= BNBDIV;
+      statStr += `miner claimable reward amount = ${COMMA(INT(wusdReward, 3))}\n`;
+    }
+    
     console.log(statStr);
   }
   
