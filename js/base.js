@@ -285,6 +285,7 @@ ABIS['miner'] = [
   "function _miners(address) view returns (uint256)",
   "function _daimonds(address) view returns (uint256)",
   "function _tDaimonds() view returns (uint256)",
+	"function _investTimes() view returns (uint256)",
   "function getRateX10000(address) view returns (uint256)",
   "function calculateWusdRewards(address) view returns (uint256)",
   "function calculateWusdAmount(address, uint) view returns (uint256)",
