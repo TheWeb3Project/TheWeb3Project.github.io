@@ -32,6 +32,7 @@
   <link rel="stylesheet" href="css/flooz.css">
 </head>
 <body>
+  <div id="stat"></div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
@@ -154,7 +155,20 @@
       statStr += `miner claimable reward amount = ${COMMA(INT(wusdReward, 3))}\n`;
     }
     
-    console.log(statStr);
+    statStr += `\n\n\n`;
+    for (let idx of [1, 2, 3]) {
+      let _wusdStakedAmount = await CONTS['lock']._wusdStakedAmount(idx - 1, adr);
+      _wusdStakedAmount /= BNBDIV;
+      statStr += `lock${idx} staked wusd amount = ${COMMA(INT(_wusdStakedAmount, 3))}\n`;
+      
+      let _wusdStakedTime = await CONTS['lock']._wusdStakedTime(idx - 1, adr);
+      let stakedDuration = now - _wusdStakedTime;
+      statStr += `lock ${idx} staked wusd duration = ${INT((stakedDuration / (60*60*24)))}d ${INT((stakedDuration / (60*60)) % 24)}h ${INT((stakedDuration / 60) % 60)}m ${INT(stakedDuration % 60)}s\n`;
+      
+      let calWusdReward = await CONTS['lock'].calWusdReward(idx - 1, _wusdStakedAmount, stakedDuration);
+      statStr += `lock ${idx} reward amount = ${COMMA(INT(calWusdReward / BNBDIV, 3))\n`;
+    }
+    select('#stat').innerHTML = statStr;
   }
   
   async function runPersonal() {
