@@ -166,7 +166,7 @@
       statStr += `lock ${idx} staked wusd duration = ${INT((stakedDuration / (60*60*24)))}d ${INT((stakedDuration / (60*60)) % 24)}h ${INT((stakedDuration / 60) % 60)}m ${INT(stakedDuration % 60)}s\n`;
       
       let calWusdReward = await CONTS['lock'].calWusdReward(idx - 1, _wusdStakedAmount, stakedDuration);
-      statStr += `lock ${idx} reward amount = ${COMMA(INT(calWusdReward / BNBDIV, 3))\n`;
+      statStr += `lock ${idx} reward amount = ${COMMA(INT(calWusdReward / BNBDIV, 3))}\n`;
     }
     select('#stat').innerHTML = statStr;
   }
