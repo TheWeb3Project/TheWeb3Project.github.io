@@ -75,22 +75,50 @@
     statStr += ``;
     for (let name of ['twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
       for (let name_ of ['wweb3', 'twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
-        let allowance = await CONTS['twep'].allowance(adr, ADRS[name]);
-        statStr += `${name} allowed for ${name} = ${COMMA(INT(allowance, 3))}\n`;
+        let allowance = await CONTS[name].allowance(adr, ADRS[name_]);
+        statStr += `${name} allowed for ${name_} = ${COMMA(INT(allowance, 3))}\n`;
       }
     }
     
     statStr += `\n\n\n`;
     for (let idx of [1, 2, 3]) {
-      let claimAmount;
+      let amount;
       if (idx == 1) {
-        claimAmount = await CONTS['lock']._rewards(adr);
+        amount = await CONTS['lock']._rewards(adr);
       } else {
-        claimAmount = await CONTS['lock']._rewardsMulti(idx-1, adr);
+        amount = await CONTS['lock']._rewardsMulti(idx-1, adr);
       }
-      claimAmount = claimAmount / BNBDIV;
-      statStr += `lock ${idx} claimable reward = ${COMMA(INT(claimAmount, 3))}\n`;
+      amount = amount / BNBDIV;
+      statStr += `lock ${idx} claimable reward = ${COMMA(INT(amount, 3))}\n`;
+      
+      if (idx == 1) {
+        amount = await CONTS['lock']._amounts(adr);
+      } else {
+        amount = await CONTS['lock']._amountsMulti(idx-1, adr);
+      }
+      amount = amount / BNBDIV;
+      statStr += `lock ${idx} locked amount = ${COMMA(INT(amount, 3))}\n`;
+      
+      if (idx == 1) {
+        amount = await CONTS['lock']._durations(adr);
+      } else {
+        amount = await CONTS['lock']._durationsMulti(idx-1, adr);
+      }
+//       amount = amount / BNBDIV;
+      statStr += `lock ${idx} locked duration days = ${COMMA(INT(amount, 3))}\n`;
+      
+      if (idx == 1) {
+        amount = await CONTS['lock']._unlockTimes(adr);
+      } else {
+        amount = await CONTS['lock']._unlockTimesMulti(idx-1, adr);
+      }
+      let unlockAfter = amount - NOW() / 1000;
+      if (unlockAfter <= 0) {
+        unlockAfter = 0;
+      }
+      statStr += `lock ${idx} unlock after = ${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s\n`;
     }
+    console.log(statStr);
   }
   
   async function runPersonal() {
