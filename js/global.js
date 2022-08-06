@@ -215,12 +215,12 @@ async function _runGlobal() {
   V = JSON.parse(cacheData);
   VIdx = V.length - 1;
   
-  document.getElementById("showSidebar").addEventListener("click", function () {
+  document.getElementById("showSidebar")?.addEventListener("click", function () {
     document.getElementById("sidebarContainer").classList.add("show");
     document.getElementById("overlay").style.display = "block"
   })
 
-  document.getElementById("overlay").addEventListener("click", function () {
+  document.getElementById("overlay")?.addEventListener("click", function () {
     document.getElementById("sidebarContainer").classList.remove("show");
     document.getElementById("overlay").style.display = "none"
   })
