@@ -368,7 +368,7 @@ async function _runGlobal() {
     cb = await CONTS['twep']._curcuitBreakerFlag();
     if (cb == 2) {
       let cbTime = INT(await CONTS['twep']._curcuitBreakerTime());
-      cbTimeLeft = cbTime + 300 - now;
+      cbTimeLeft = cbTime + 60*60 - now;
     }
   }, 5000);
 
