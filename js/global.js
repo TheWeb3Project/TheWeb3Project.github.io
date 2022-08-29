@@ -403,10 +403,12 @@ async function _runGlobal() {
     }
     
     if (bigbuyAlarmed == false) {
-      if (bigbuyTimeLeft < 600) {
-        alert("10 minutes left for big buy jackpot!");
-        bigbuyAlarmed = true;
-      }
+			if (1 <= jpPrize) {
+				if (bigbuyTimeLeft < 600) {
+					alert("10 minutes left for big buy jackpot!");
+					bigbuyAlarmed = true;
+				}
+			}
     }
     
     displayText("#biggestTimer", `${INT((bigbuyTimeLeft % 86400) / 3600)}h ${INT((bigbuyTimeLeft % 3600) / 60)}m ${bigbuyTimeLeft % 60}s`);            
