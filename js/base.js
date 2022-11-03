@@ -897,6 +897,8 @@ let CURADR = null;
 async function getCurAdr() {
 	try {
   	CURADR = await SIGNER.getAddress();
+    $("#connect").css("color","white")
+
   } catch (err) {
   	console.log('not connected yet');
     CURADR = null;
@@ -909,7 +911,7 @@ function displayAccountInformation() {
   let shortAdrStr = SHORTADR(CURADR);
   
   displayText('.connect-wallet', shortAdrStr);
-	
+  $("#connect").css("color","white")
   getBalance(CURADR)
   .then((res) => {
     displayText('#balance-number', BNB(res, 4));

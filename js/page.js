@@ -23,7 +23,7 @@ function htmlSocials(url, icon) {
 }
 
 function displaySidebar() {
-    let htmlStr = `
+  let htmlStr = `
         <div id="sidebar" class="d-flex flex-column align-items-center py-4">
           <a id="logo" href="https://www.theweb3project.com" class="text-decoration-none d-flex align-items-center p-3">
             <img src="./images/logos/randomlogo.png" alt="logo-icon" class="col-12">
@@ -59,56 +59,56 @@ function displaySidebar() {
 
 
         `;
-    select('#sidebarContainer').innerHTML = htmlStr;
+  select('#sidebarContainer').innerHTML = htmlStr;
 }
 displaySidebar();
 
 function displayWeb3Header() {
-    let htmlStr = `
-    <div class="d-flex pt-3 px-sm-3">
-      <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
+  let htmlStr = `
+  <div class="d-flex pt-3 px-sm-3">
+    <button type="button" id="showSidebar" class="d-lg-none btn fs-5"><i class="bi bi-list"></i></button>
 
-      <div class="dropdown ms-auto">
-        <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
-          <span class="fw-medium ms-1">TWEP</span> <span id="price" class="ms-1 small text-secondary">$0</span>
-        </button>
-
-        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
-
-          <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
-        </ul>
-      </div>
-
-      <button id="connect" type="button" class="btn rounded-1 ms-3">
-        Connect Wallet
+    <div class="dropdown ms-auto">
+      <button class="btn rounded-1" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" data-bs-offset="0,14">
+        <span class="fw-medium ms-1">TWEP</span> <span id="price" class="ms-1 small text-secondary">$0</span>
       </button>
-    </div>`;
-    select('#web3-header').innerHTML = htmlStr;
-    select('#web3-header').classList = "w-100 position-fixed end-0 top-0";
-    select('#web3-header').style = "height: 68px; z-index: 100001;"
+
+      <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1">
+
+        <li><a class="dropdown-item" href="https://poocoin.app/tokens/0x333fd139caef6aa31056cc905987b77b1044d259">Chart</a></li>
+      </ul>
+    </div>
+
+    <button id="connect" type="button" class="btn rounded-1 ms-3">
+      Connect Wallet
+    </button>
+  </div>`;
+  select('#web3-header').innerHTML = htmlStr;
+  select('#web3-header').classList = "w-100 position-fixed end-0 top-0";
+  select('#web3-header').style = "height: 68px; z-index: 100001;"
 }
-displayWeb3Header();
+// displayWeb3Header();
 
 function setCss() {
   select('#main').classList = 'col';
   select('#container').classList = 'container mt-5';
   let elms = select('#card', true);
   for (let elm of elms) {
-    elm.classList = "card bg-light text-center p-4 d-block";
-    elm.style = "box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);";
+    // elm.classList = "card bg-light text-center p-4 d-block";
+    // elm.style = "box-shadow: 2px 2px 9px 0 rgb(17 19 20 / 90%), -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);";
   }
 }
 setCss();
 
 
 
-async function imgCopy(targetId) { 
+async function imgCopy(targetId) {
   let canvas = await html2canvas(select(targetId));
   canvas.toBlob((blob) => {
     navigator.clipboard.write([
-        new ClipboardItem({
-            'image/png': blob,
-        })
+      new ClipboardItem({
+        'image/png': blob,
+      })
     ]);
   });
 }
@@ -146,7 +146,7 @@ async function ALERT(msg) {
   select('#showMsg').click();
 }
 
-function BIG(s, decimals=18) {
+function BIG(s, decimals = 18) {
   try {
     if (decimals == 18) {
       return ethers.utils.parseEther(s);
@@ -158,7 +158,7 @@ function BIG(s, decimals=18) {
   }
 }
 
-async function ERR(err, popup=true) {
+async function ERR(err, popup = true) {
   let result = err;
 
   if (!('code' in err)) {
@@ -203,52 +203,52 @@ let lockedDuration;
 let totalSupplyPercentage;
 async function _runPersonal() {
 
-    var checkBox = document.getElementById("alerts");
-    if (checkBox.checked == true){
-      // make alerts off
-    } else {
-      // dont do anything
-    }
+  // var checkBox = document.getElementById("alerts");
+  // if (checkBox.checked == true) {
+  //   // make alerts off
+  // } else {
+  //   // dont do anything
+  // }
 
 
   displayText('#connect', SHORTADR(CURADR));
 
-  F['bnbBalance'] = async() => {
+  F['bnbBalance'] = async () => {
     let v = await getBalance(CURADR)
     return v / BNBDIV;
   };
   displayText("#bnbBalance", `${COMMA(INT((await gV('bnbBalance')), 3))}`);
 
   for (let name of ['web3', 'twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
-    F[`${name}Balance`] = async() => {
+    F[`${name}Balance`] = async () => {
       let v = await CONTS[name].balanceOf(CURADR);
       return v / BNBDIV;
     };
     displayText(`#${name}Balance`, `${COMMA(INT((await gV(`${name}Balance`)), 3))}`);
   }
 
-  F['xHolding'] = async() => {
+  F['xHolding'] = async () => {
     let v = (await gV('xweb3Balance')) / (await gV('xTotalSupply')) * 100;
     return v;
   };
 
-  F['lastClaim'] = async() => {
+  F['lastClaim'] = async () => {
     let v = await CONTS['xweb3']._lastClaim(CURADR);
     v = v / 1;
     return v;
   };
 
-  F['xReward'] = async() => {
+  F['xReward'] = async () => {
     let lastClaim = (await gV('lastClaim'));
     if (lastClaim == 0) {
-      lastClaim = now - 60*60*25;
+      lastClaim = now - 60 * 60 * 25;
     }
 
-    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding')) / 100 * (now - lastClaim) / (60*60*24);
+    let v = (await gV('xFund')) * 0.05 * (await gV('xHolding')) / 100 * (now - lastClaim) / (60 * 60 * 24);
     return v;
   };
 
-  F['lastHire'] = async() => {
+  F['lastHire'] = async () => {
     let v = await CONTS['miner']._lastHire(CURADR);
     v = v / 1;
     return v;
@@ -256,12 +256,12 @@ async function _runPersonal() {
 
   displayText("#xHolding", `${COMMA(INT((await gV('xHolding')), 3))}%`);
   displayText("#xReward", `$${COMMA(INT((await gV('xReward')), 3))}`);
-  
+
 
   lockedAmount = await CONTS['lock']._amounts(CURADR);
   lockedAmount = lockedAmount / BNBDIV;
   displayText("#lockedAmount", `${COMMA(INT(lockedAmount, 3))}`);
-  
+
   lockedDuration = await CONTS['lock']._durations(CURADR);
   displayText("#lockedDuration", `${COMMA(INT(lockedDuration, 3))}`);
 
@@ -329,15 +329,15 @@ async function eventBoard() {
     console.log('not yet', CURBLOCK + 1);
     return;
   }
-  
+
   let buyFilter = CONTS['twep'].filters.Transfer(ADRS['twep'], null);
   for (var idy = 0; idy < 10; idy++) {
-      try {
-          txLogs = await CONTS['twep'].queryFilter(buyFilter, lastBlock, CURBLOCK);
-          break;
-      } catch {
-          DELAY(100);
-      }
+    try {
+      txLogs = await CONTS['twep'].queryFilter(buyFilter, lastBlock, CURBLOCK);
+      break;
+    } catch {
+      DELAY(100);
+    }
   }
 
   for (var idy = 0; idy < txLogs.length; idy++) {
@@ -356,12 +356,12 @@ async function eventBoard() {
 
   let rebaseFilter = CONTS['twep'].filters.Rebased();
   for (var idy = 0; idy < 10; idy++) {
-      try {
-          txLogs = await CONTS['twep'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
-          break;
-      } catch {
-          DELAY(100);
-      }
+    try {
+      txLogs = await CONTS['twep'].queryFilter(rebaseFilter, lastBlock, CURBLOCK);
+      break;
+    } catch {
+      DELAY(100);
+    }
   }
   for (var idy = 0; idy < txLogs.length; idy++) {
     let curSupply = txLogs[idy].args[1];
@@ -380,12 +380,12 @@ async function eventBoard() {
 
   let jackpotFilter = CONTS['jackpot'].filters.Jackpot();
   for (var idy = 0; idy < 10; idy++) {
-      try {
-          txLogs = await CONTS['jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
-          break;
-      } catch {
-          DELAY(100);
-      }
+    try {
+      txLogs = await CONTS['jackpot'].queryFilter(jackpotFilter, lastBlock, CURBLOCK);
+      break;
+    } catch {
+      DELAY(100);
+    }
   }
   for (var idy = 0; idy < txLogs.length; idy++) {
     let winner = txLogs[idy].args[1];
@@ -419,45 +419,45 @@ async function getTotalEarned() {
   let txLogs;
   let n = INT((CURBLOCK - startBlock) / 5000);
   for (var idx = 0; idx < n; idx++) {
-      displayText("#totalEarned", `Getting Updates.. ${INT(idx / n * 100, 1)}%`);
-      let fromBlock = startBlock + 5000 * idx;
-      let toBlock = startBlock + 5000 * idx + 5000;
-      if (CURBLOCK < toBlock) {
-        toBlock = CURBLOCK;
-      }
+    displayText("#totalEarned", `Getting Updates.. ${INT(idx / n * 100, 1)}%`);
+    let fromBlock = startBlock + 5000 * idx;
+    let toBlock = startBlock + 5000 * idx + 5000;
+    if (CURBLOCK < toBlock) {
+      toBlock = CURBLOCK;
+    }
 
-      for (var idy = 0; idy < 10; idy++) {
-          try {
-              txLogs = await CONTS['twep'].queryFilter(buyFilter, fromBlock, toBlock);
-              break;
-          } catch {
-              DELAY(100);
-          }
+    for (var idy = 0; idy < 10; idy++) {
+      try {
+        txLogs = await CONTS['twep'].queryFilter(buyFilter, fromBlock, toBlock);
+        break;
+      } catch {
+        DELAY(100);
       }
-      for (var idy = 0; idy < txLogs.length; idy++) {
-          let data = txLogs[idy]['data'];
-          amount += BigInt(data);
-      }
+    }
+    for (var idy = 0; idy < txLogs.length; idy++) {
+      let data = txLogs[idy]['data'];
+      amount += BigInt(data);
+    }
 
-      for (var idy = 0; idy < 10; idy++) {
-          try {
-              txLogs = await CONTS['twep'].queryFilter(sellFilter, fromBlock, toBlock);
-              break;
-          } catch {
-              DELAY(100);
-          }
+    for (var idy = 0; idy < 10; idy++) {
+      try {
+        txLogs = await CONTS['twep'].queryFilter(sellFilter, fromBlock, toBlock);
+        break;
+      } catch {
+        DELAY(100);
       }
-      for (var idy = 0; idy < txLogs.length; idy++) {
-          let data = txLogs[idy]['data'];
-          amount -= BigInt(data);
-      }
+    }
+    for (var idy = 0; idy < txLogs.length; idy++) {
+      let data = txLogs[idy]['data'];
+      amount -= BigInt(data);
+    }
 
-      // setCookie('accountWeb3Amount', amount, 10);
-      // setCookie('accountWeb3StartBlock', toBlock, 10);
+    // setCookie('accountWeb3Amount', amount, 10);
+    // setCookie('accountWeb3StartBlock', toBlock, 10);
 
-      if (toBlock == CURBLOCK) {
-          break;
-      }
+    if (toBlock == CURBLOCK) {
+      break;
+    }
   }
   amount = INT(amount) / BNBDIV;
 
@@ -499,7 +499,7 @@ function changedValue(target, curTarget) {
   // 1 + 0.000548 * 365 = 1.2002
   let futAmount = curAmount + curAmount * 0.000548 * days;
   select('#futAmount').value = `${COMMA(INT(futAmount, 3))}`;
-	
+
   let futPrice;
   if (target == 'days') {
     // (1 + 0.00072) ** 365 = 1.30044
@@ -507,7 +507,7 @@ function changedValue(target, curTarget) {
     // let dailyPriceRate = 0.01801636;
     // let dailyPriceRate = 0.02301279;
     // let totalPriceRate = ((1 + dailyPriceRate) ** days);
-    futPrice = curPrice * (1 + dailyPriceRate)**days;
+    futPrice = curPrice * (1 + dailyPriceRate) ** days;
     select('#futPrice').value = INT(futPrice, 3);
   } else if (target == 'futPrice') {
     futPrice = curTarget.value;
@@ -521,14 +521,14 @@ function changedValue(target, curTarget) {
 
   displayText("#potenReturn", `$${COMMA(INT(futInvest - initInvest, 2))}`);
 
-  displayText("#spaceTravel", `${COMMA(INT(futInvest / 250000))}`); 
+  displayText("#spaceTravel", `${COMMA(INT(futInvest / 250000))}`);
 }
 
 
 /////////////////////////////////////////////////////////////////////////// wrap
 
 async function approve(name, target) {
-  await SEND_TX(name, 'approve', [target, BIGINT(2**255)]);
+  await SEND_TX(name, 'approve', [target, BIGINT(2 ** 255)]);
 }
 
 async function funcRate(v, rI, rO) {
@@ -595,7 +595,7 @@ async function handleInputSellWusd(e) {
 }
 
 async function handleInput(e, name, func) {
-	let valueIn = e.target.value;
+  let valueIn = e.target.value;
   valueIn = valueIn.replace(/,/g, '.');
   e.target.value = valueIn;
   let ot = select(`#${name}`);
@@ -659,12 +659,12 @@ async function switchTarget(states, target, handleFs, bals, logos, syms, runFs) 
 
 async function runBuy() {
   let bnbInput = select('#swap-input');
-  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['twep']], CURADR, NOW() + 10**6], String(bnbInput.value));
+  await SEND_TX('router', 'swapExactETHForTokensSupportingFeeOnTransferTokens', [0, [ADRS['wbnb'], ADRS['twep']], CURADR, NOW() + 10 ** 6], String(bnbInput.value));
 }
 async function runSell() {
   let web3Input = select('#swap-input');
   let web3Amount = BIG(web3Input.value);
-  await SEND_TX('router', 'swapExactTokensForETHSupportingFeeOnTransferTokens', [web3Amount, 0, [ADRS['twep'], ADRS['wbnb']], CURADR, NOW() + 10**6]);
+  await SEND_TX('router', 'swapExactTokensForETHSupportingFeeOnTransferTokens', [web3Amount, 0, [ADRS['twep'], ADRS['wbnb']], CURADR, NOW() + 10 ** 6]);
 }
 
 
@@ -774,7 +774,7 @@ async function runUnstake(idx) {
 }
 
 
-async function runClaimXreward() {  
+async function runClaimXreward() {
   await SEND_TX('xweb3', 'claim', []);
 }
 
@@ -837,7 +837,7 @@ async function buyMiner() {
     ALERT('input more than 8845 pWEB3');
     return;
   }
-  
+
   await SEND_TX('miner', 'Hire', [ref, ADRS['pweb3'], BIG(pweb3Amount)]);
 }
 
@@ -853,13 +853,13 @@ async function buyMinerMore() {
     ALERT('not enough WUSD to hire miners');
     return;
   }
-  
+
   await SEND_TX('miner', 'HireMore', [ref]);
 }
 
 async function sellOre() {
   await SEND_TX('miner', 'Receive', []);
-} 
+}
 
 async function buyXweb3() {
   let amount = select('#xweb3-input').value;
@@ -874,12 +874,12 @@ async function buyXweb3() {
 
 async function addCopy(id, adr) {
   let button = select(id);
-  
+
   await navigator.clipboard.writeText(adr);
   button.innerText = 'Copied';
   setTimeout(() => {
-		button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
-	}, 3000)
+    button.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+  }, 3000)
 }
 
 select('#copy-web3').onclick = async () => { await addCopy('#copy-web3', ADRS['twep']); };
@@ -912,16 +912,16 @@ async function maxValueLockInput() {
   let bal = select('#wweb3Balance').innerHTML;
   bal = bal.replace(/,/g, '');
   for (let idx of [1, 2, 3]) {
-		select(`#lock-input${idx}`).value = bal;
+    select(`#lock-input${idx}`).value = bal;
   }
-  
+
 }
 
 async function maxValueWusdInput() {
   let bal = select('#wusdBalance').innerHTML;
   bal = bal.replace(/,/g, '');
   for (let idx of [1, 2, 3]) {
-		select(`#wusd-input${idx}`).value = bal;
+    select(`#wusd-input${idx}`).value = bal;
   }
 }
 

@@ -1,278 +1,919 @@
 <!DOCTYPE html>
-<html lang="en" style=" background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title class="title">The Web3 Project | Taking online further beyond</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/fa.css">
+   <!-- ------- fav-icon code ---------- -->
 
-  <title>The Web3 Project | Taking online further beyond</title>
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" name="description">
-  <meta content="The Web3 Project | Taking online further beyond" property="og:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="og:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="og:image">
-  <meta content="The Web3 Project | Taking online further beyond" property="twitter:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="twitter:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="twitter:image">
-  <meta property="og:type" content="website">
-  <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link rel="shortcut icon" href="images/overview-1.svg" />
    
-  <link href="images/logos/TWEP/TWEP.png" rel="shortcut icon" type="image/x-icon" />
-  <link href="images/logos/TWEP/TWEP.png" rel="apple-touch-icon" />
+   <!-- --- style css file link --- -->
 
-  <meta name="twitter:image" content="images/logos/TWEP/TWEP.png">
-  <meta name="twitter:description" content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Web3 Project | Taking online further beyond">
-
-  <meta property="og:image" content="images/logos/TWEP/TWEP.png">
-  <link rel="stylesheet" href="css/flooz.css">
+   <link rel="stylesheet" href="css/style.css" />
 </head>
-<body id="titano-finance" class="background">
-  <div class="container-fluid">
-    <div class="row">
-      <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
+
+<body class="body">
+   
+   <div class="tooltipdiv"></div>
+   <div class="tooltipdiv1"></div>
+   <div class="clipboard"><img src="images/Union.svg" alt="Union" />&ThinSpace;&ThinSpace;<span>Copied to clipboard</span></div>
+   <!-- ------ POP-UP DIV START ------ -->
+   <div class="allmaindiv">
+      <div class="secondmaindiv">
+      <div class="popup-main">
+         <div class="popup-cntdiv">
+            <div class="popup-firstdiv">
+               <div class="share-cnt-div">
+                  <div class="share">
+                     <span><img src="images/headicon.png" alt="offer"></span>
+                     <span class="shareit">Share it</span>
+                  </div>
+                  <div class="close">
+                     <span><img src="images/close-circle.png" alt="close-circle" class="close-circle" onclick="clearModalData()"></span>
+                  </div>
+               </div>
+               <div class="share-icon-div">
+                  <span class="copy-img-cnt">Click here to <span class="CopyToImg" onclick="imgCopyAndDownload()"></span> this image and spreadthis to everywhere</span>
+                  &ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;
+                  <div class="popup-share-img">
+                     <span ><img id="shareTw" src="images/twt.png" class="Social-icons-img" alt="offer"></span>
+                     &ThinSpace;&ThinSpace;
+                     <!-- <span><img id="shareIn" src="images/insta.png" class="Social-icons-img" alt="offer"></span> 
+                     &ThinSpace;&ThinSpace; -->
+                     <span ><img id="shareFb" src="images/fcbk.png" class="Social-icons-img" alt="offer"></span>
+               </div>
+               </div>
+               <hr class="popup-line">
+            </div>
+            <div class="popup-imgdiv">
+               <img src="" alt="" id="dataimg" height="100%" width="100%">
+            </div>
+         </div>
       </div>
+      </div>
+   </div>
 
-      <div id="overlay" style="z-index: 1000001;"></div>
-      
-      <main id='main'>
-        <div id="web3-header">
-        </div>
+   <!-- ------ POP-UP DIV END ------ -->
+   <div class="bg"></div>
+   <div class="wrapper">
+      <div class="side-nav" id="nav">
+         <div class="logo">
+            <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
+         </div>
+         <hr class="hide-m" />
+         <div class="side-tabs-list">
+            <ul class="side-tabs-ul nav-pills">
+               <li class="side-tab-li" onclick="onChangeMenu('index')"><span><i
+                        class="dashboard"></i>Dashboard</span></li>
+               <li class="side-tab-li tab-active background-box1" onclick="onChangeMenu('account')"><span><i class="account"></i>Account</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('swap')"><span><i class="swap"></i>Swap</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('wrap')"><span><i class="wrap"></i>Wrap</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('pointshop')"><span><i class="pointshop"></i>Point Shop</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('miner')"><span><i class="miner"></i>Miner</span></li>
+               <!-- <li class="side-tab-li" onclick="onChangeMenu('wusd')"><span><i class="wusd"></i>WUSD</span></li> -->
+               <li class="side-tab-li" onclick="onChangeMenu('xweb3')"><span><i class="xweb3"></i>xWEB3</span></li>
+               <li class="side-tab-li" onclick="window.open('https://docs.theweb3project.com/','_blank')"><span><i class="docs"></i>Docs</span></li>
+            </ul>
+         </div>
+         <hr />
+         <div class="social-icons-div">
+            <ul>
+               <li>
+                  <a href="https://discord.com/invite/Mn43SWyj3g" target="_blank"><i class="discord"></i></a>
+               </li>
+               <li>
+                  <a href="https://twitter.com/TheWeb3Project" target="_blank"><i class="twitter"></i></a>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/c/TheWeb3Project/featured" target="_blank"><i class="youtube"></i></a>
+               </li>
+               <li>
+                  <a href="https://t.me/TheWeb3ProjectPortal" target="_blank"><i class="telegram"></i></a>
+               </li>
+            </ul>
+         </div>
+         <div class="alert-div">
+            <p class="turnmsg">Turn on alerts</p>
+            <label class="switch">
+               <input type="checkbox" id="turnon"  onclick="turnOnfunction()"/>
+               <span class="slider round"></span>
+            </label>
+         </div>
+      </div>
+      <div class="main-content-div">
 
-        <div id="container">
-          <div class="my-5 col-12">
-            <div id="totalSection" class="card bg-light text-center p-4">
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col my-3">
-                  <div class="text-secondary">
-                    Total Earned
-                    <a href="#"><i id="totalShare" class="bi bi-share" data-toggle="modal" data-target="#jpModal"></i></a>
-                  </div>
-                  <h1 id="totalEarnedInUsd" class="text-primary fw-bold my-2">$0.000</h1>
-                  <span id="totalEarned" class="text-secondary">0.000 $TWEP (+0.000%)</span>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Your Daily Earning<i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    excluding wWEB3<br/>
-                    "></i>
-                    <a href="#"><i id="dailyShare" class="bi bi-share" data-toggle="modal" data-target="#jpModal"></i></a>
-                  </div>
-                  <h4><span id="nextDailyReward" class="fw-bold">0.000</span><span class="fw-bold"> $TWEP</span></h4>
-                  <span>$</span><span id="nextDailyRewardInUsd" class="text-secondary">0.000</span>
-          
-                </div>
-              </div>
+         <div class="upper-div">
+            <div class="logo1">
+               <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
             </div>
-          </div>
-
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Next 1 hour Reward
-                  </div>
-                  <h4><span id="nexthourReward" class="fw-bold">0.000</span><span class="fw-bold"> $TWEP</span></h4>
-                  <span>$</span><span id="nexthourRewardInUsd" class="text-secondary">0.000</span>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Next 1 month Reward
-                  </div>
-                  <h4><span id="nextMonthReward" class="fw-bold">0.000</span><span class="fw-bold"> $TWEP</span></h4>
-                  <span>$</span><span id="nextMonthRewardInUsd" class="text-secondary">0.000</span>
-                  
-                </div>
-
-              </div>
+            <div class="head-title"><i class='title-image account'></i>Account</div>
+            <div class="hum-burgur-div" id="test-check-hum">
+               <input type="checkbox" class="menu-btn" id="hm-burg" onclick="executefunction()" />
+      <label class="menu-icon" for="hm-burg">
+        <span class="nav-icon"></span>
+      </label>
+              
             </div>
-          </div>
-
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Total Supply
-                  </div>
-                  <h4 id="totalSupply" class="fw-bold">0</h4>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Your Balance
-                  </div>
-                  <h4 id="twepBalance" class="fw-bold my-2">0.000</h4>
-                  <span id="balanceInUsd" class="text-secondary">$0.000</span>
-                  
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    Your Holding %
-                  </div>
-                  <h4 id="percentTotalSupply" class="fw-bold">$0</h4>
-                </div>
-              </div>
+            <div class="wallet-div">
+               <div class="w-value">
+                  <a class="background-box" href="https://poocoin.app/tokens/0x1aeb3f66d96bfaf74fcbd15dc21798de36f6f933" target="_blank">
+                     <i class="twep-icon"></i>TWEP <span> <h4 id="price" class="fw-bold">$0</h4></span>
+                  </a>
+               </div>
+               <div class="con-wallet" id="connect">
+                  <!-- Page.js line 66 -->
+                  <a href="#">
+                     Connect Wallet
+                     <!-- <i class="go-icon"></i> -->
+                  </a>
+               </div>
             </div>
-          </div>
+         </div>
+        <!-- *********************************************** -->
+         <!-- ACCOUNT Start -->
+         <!-- ******************************************** -->
 
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    $wWEB3 Balance <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    excluding locked
-                    "></i>
+         <div class="container-div tab-active">
+            <!-- ACCOUNT POP-UP DIV START -->
+            <section class="over-div">
+               <div class="over-main over-account popup-main-account" id="AccountSC">
+                  <p id="totalEarnedInUsd" class="value1">-<i class="twep-value"></i></p>
+                  <div class="contmain1">
+                     <span id="totalEarned" class="text-secondary">0.000 $TWEP (+0.000%)</span>
                   </div>
-                  <h4 id="wweb3Balance" class="fw-bold">0.000</h4>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    $pWEB3 Balance
+                  <div class="contmain2">
+                     <span class="total">Total Earned</span>
+                     <img src="images/Vector.svg" alt="Vector">
                   </div>
-                  <h4 id="pweb3Balance" class="fw-bold">0.000</h4>
-                </div>
-
-                <div class="col my-3">
-                  <div class="text-secondary mb-1">
-                    $xWEB3 Balance
+                  <div class="over-box-div-account">
+                     <div class="detail1 background-box">
+                        <div class="det1item1"><img src="images/money-bag (1) 1.png" alt="money-bag"></div>
+                        <div class="det1item2">
+                           <h3 id="nextDailyReward"> - </h3>
+                        </div>
+                        <div class="det1item3">
+                           <h5 id="nextDailyRewardInUsd">-</h5>
+                        </div>
+                        <div class="det1item4">
+                           <span class="earning">Your Daily Earning</span>
+                           <i class="info-icon tooltip mobToolTip" tooltip-data="excluding wWEB3 \"></i>
+                           <span class="accountline">|</span>
+                           <img src="images/Vector.svg" alt="Arrow">
+                        </div>
+                     </div>
+                     <div class="detail2 background-box">
+                        <div class="det1item1"><img src="images/gift 1.png" alt="gift"></div>
+                        <div class="det1item2">
+                           <h3 id="nexthourReward"> - </h3>
+                        </div>
+                        <div class="det1item3">
+                           <h5 id="nexthourRewardInUsd">-</h5>
+                        </div>
+                        <div class="det1it4">
+                           <span class="earning">Next 1 hour Reward</span>
+                        </div>
+                     </div>
+                     <div class="detail2 background-box">
+                        <div class="det1item1"><img src="images/reminder 1.png" alt="reminder"></div>
+                        <div class="det1item2">
+                           <h3  id="nextMonthReward"> - </h3>
+                        </div>
+                        <div class="det1item3">
+                           <h5 id="nextMonthRewardInUsd">-</h5>
+                        </div>
+                        <div class="det1it4">
+                           <span class="earning">Next 1 month Reward</span>
+                        </div>
+                     </div>
                   </div>
-                  <h4 id="xweb3Balance" class="fw-bold">0.000</h4>
-                </div>
-              </div>
-            </div>
-          </div>
+               </div>
+            </section>
+             
+            <!-- ACCOUNT POP-UP DIV END -->
+            <section class="over-div">
+               <div class="over-main over-account background-box" id="tempAc">
+                  <p id="totalEarnedInUsd" class="value">-<i class="twep-value"></i></p>
+                  <div class="contmain1">
+                     <span id="totalEarned" class="text-secondary">0.000 $TWEP (+0.000%)</span>
+                  </div>
+                  <div class="contmain2">
+                     <span class="total">Total Earned</span>
+                     <img src="images/Vector.svg" alt="shareImg" class="shareImg" onclick="takeScreenShot('AccountSC','tempAc')">
+                  </div>
+                  <div class="over-box-div-account">
+                     <div class="detail1 background-box">
+                        <div class="det1item1"><img src="images/money-bag (1) 1.png" alt="money-bag"></div>
+                        <div class="det1item2">
+                           <h3 id="nextDailyReward"> - </h3>
+                        </div>
+                        <div class="det1item3">
+                           <h5 id="nextDailyRewardInUsd">-</h5>
+                        </div>
+                        <div class="det1item4">
+                           <span class="earning">Your Daily Earning</span>
+                           <i class="info-icon tooltip mobToolTip" tooltip-data="excluding wWEB3 \"></i>
+                           <span class="accountline">|</span>
+                           <img src="images/Vector.svg" alt="shareImg" class="shareImg" onclick="takeScreenShot('AccountSC','tempAc')">
+                        </div>
+                     </div>
+                     <div class="detail2 background-box">
+                        <div class="det1item1"><img src="images/gift 1.png" alt="gift"></div>
+                        <div class="det1item2">
+                           <h3 id="nexthourReward"> - </h3>
+                        </div>
+                        <div class="det1item3">
+                           <h5 id="nexthourRewardInUsd">$0.000</h5>
+                        </div>
+                        <div class="det1it4">
+                           <span class="earning">Next 1 hour Reward</span>
+                        </div>
+                     </div>
+                     <div class="detail2 background-box">
+                        <div class="det1item1"><img src="images/reminder 1.png" alt="reminder"></div>
+                        <div class="det1item2">
+                           <h3 id="nextMonthReward"> 0.000 $TWEP </h3>
+                        </div>
+                        <div class="det1item3">
+                           <h5 id="nextMonthRewardInUsd">$0.000</h5>
+                        </div>
+                        <div class="det1it4">
+                           <span class="earning">Next 1 month Reward</span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="item-details-section">
+               <div class="item-d-div">
+                  <div class="item-d background-box">
+                     <div class="item-d-img"><img src="images/supply-chain 1.png" alt="pot1"></div>
+                     <div class="detail">
+                        <p class="same-p">Total Supply</p>
+                        <h2 id="totalSupply">-</h2>
+                     </div>
+                  </div>
+                  <div class="item-d background-box">
+                     <div class="item-d-img"><img src="images/wallet 1.png" alt="pot2"></div>
+                     <div class="detail">
+                        <p class="same-p">Your Balance</i></p>
+                        <h2 id="twepBalance">-</h2>
+                     </div>
+                  </div>
+                  <div class="item-d background-box">
+                     <div class="item-d-img"><img src="images/discount.png" alt="pot3"></div>
+                     <div class="detail">
+                        <p class="same-p">Your Holding %</i></p>
+                        <h2 id="percentTotalSupply">-</h2>
+                     </div>
+                  </div>
+                  <div class="item-d background-box">
+                     <div class="item-d-img"><img src="images/accprice2.png" alt="pot4"></div>
+                     <div class="detail">
+                        <p class="same-p">$wWEB3 Balance</i>&ThinSpace;<i class="info-icon tooltip mobToolTip"
+                              tooltip-data="excluding locked"></i></p>
+                        <h2 id="wweb3Balance">-</h2>
+                     </div>
+                  </div>
+                  <div class="item-d background-box">
+                     <div class="item-d-img"><img src="images/accprice1.png" alt="pot6"></div>
+                     <div class="detail">
+                        <p class="same-p">$xWEB3 Balance</i></p>
+                        <h2 id="xweb3Balance">-</h2>
+                     </div>
+                  </div>
+                  <div class="item-d background-box">
+                     <div class="item-d-img"><img src="images/image 23.png" alt="pot5"></div>
+                     <div class="detail">
+                        <p class="same-p">$pWEB3 Balance</i></p>
+                        <h2 id="pweb3Balance">-</h2>
+                     </div>
+                  </div>
+               </div>
+            </section>
+         </div>
 
-          
-        </div>
+         <!-- *********************************************** -->
+         <!-- ACCOUNT End -->
+         <!-- ******************************************** -->
 
-        <!-- Modal -->
-        <div class="modal fade" id="jpModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog my-5" role="document" style="max-width: 1000px;">
-            <div class="modal-content" style="background-color: #313131;">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Share it</h5>
-              </div>
-              <div class="modal-body">
-                <h4 id="imgCopy" class="fw-bold">
-                </h4>
-                <h4 class="fw-bold">
-                  Spread this to everywhere!
-                  <a id="shareTw" href="#"><i class="bi bi-twitter"></i></a>
-                  <a id="shareFb" href="#"><i class="bi bi-facebook"></i></a>
-                </h4>
-                <div id="jpCaptured"></div>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Maintenance</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        
-        <button type="button" id="showMsg" data-toggle="modal" data-target="#msgModal" style="display:none;"></button>
+      </div>
+   </div>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
 
-        <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog my-5" role="document" style="max-width: 1000px;">
-            <div class="modal-content" style="background-color: #313131;">
-              <div class="modal-header">
-              </div>
-              <div class="modal-body">
-                <h4 id="msgResult" class="fw-bold">
-                </h4>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
+   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
+   <script src="js/base.js"></script>
+   <script src="js/global.js"></script>
+   <script src="js/page.js"></script>
+   <script>
+      document.getElementById("showSidebar").addEventListener("click", function () {
+        document.getElementById("sidebarContainer").classList.add("show");
+        document.getElementById("overlay").style.display = "block"
+      })
+  
+      document.getElementById("overlay").addEventListener("click", function () {
+        document.getElementById("sidebarContainer").classList.remove("show");
+        document.getElementById("overlay").style.display = "none"
+      })
+    </script>
+   <script>
+      async function makeChart() {
+         let web3Prices = [];
+         V.forEach(function (e) {
+            web3Prices.push([e["now"], e["price"]]);
+         });
+         let wweb3Prices = [];
+         V.forEach(function (e) {
+            wweb3Prices.push([e["now"], e["wPrice"]]);
+         });
+         let xweb3Prices = [];
+         V.forEach(function (e) {
+            xweb3Prices.push([e["now"], e["xPrice"]]);
+         });
+      }
+      //   new ApexCharts(select("#priceChart"), {
+      //     series: [
+      //       {
+      //         name: "wWEB3",
+      //         data: wweb3Prices,
+      //       },
+      //     ],
+      //     chart: {
+      //       height: 600,
+      //       type: "area",
+      //       toolbar: {
+      //         show: false,
+      //       },
+      //     },
+      //     markers: {
+      //       size: 4,
+      //     },
+      //     theme: {
+      //       mode: "dark",
+      //     },
+      //     colors: ["#4154f1", "#2eca6a", "#ff771d"],
+      //     fill: {
+      //       type: "gradient",
+      //       gradient: {
+      //         shadeIntensity: 1,
+      //         stops: [0, 90, 100],
+      //       },
+      //     },
+      //     dataLabels: {
+      //       enabled: false,
+      //     },
+      //     stroke: {
+      //       curve: "smooth",
+      //       width: 2,
+      //     },
+      //     xaxis: {
+      //       type: "datetime",
+      //     },
+      //     tooltip: {
+      //       x: {
+      //         format: "dd/MM/yy HH:mm",
+      //       },
+      //     },
+      //   }).render();
+      // }
 
-    </div>
-  </div>
+      async function runGlobal() {
+         await _runGlobal();
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
+         for (let idx of [1, 2, 3]) {
+        let rates = [0.6, 0.2, 0.1];
+        $(document).on('input', `#days-slider${idx}`, function (e) {
+          let days = select(`#days-slider${idx}`).value;
+          displayText('#days', `${days}`);
+          let lockAmount = select(`#lock-input${idx}`).value;
+          lockAmount = lockAmount.replace(/,/g, '.');
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
-  <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-  <script src="js/base.js"></script>
-  <script src="js/global.js"></script>
-  <script src="js/page.js"></script>
+          let bonusRate = INT(days / 30) * 5;
+          let rewardAmount = INT(wPrice) * lockAmount * days * (1 + bonusRate / 100) * rates[idx - 1];
+          displayText(`#rewardAmount`, `${COMMA(INT(rewardAmount, 3))}`);
+        });
 
-  <script>
-    async function runGlobal() {
-      await _runGlobal();
+        select(`#run-lock${idx}`).onclick = async () => { await runLock(idx); };
+        select(`#run-unlock${idx}`).onclick = async () => { await runUnlock(idx); };
+        select(`#run-eunlock${idx}`).onclick = async () => {
+          alert("This is for the EMERGENCY unstake. you will get 10% of the staked amount. Confirm transaction if you REALLY want to do the emergency unstake");
+          await runEmerUnstake(idx);
+        };
+      }
+      $(document).on('input', 'input[type="range"]', function (e) {
+        changedValue('days', select('input[type="range"]'));
+
+        if(document.getElementById('days').innerHTML < 3333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(document.getElementById('days').innerHTML > 3333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(document.getElementById('days').innerHTML >= 6666){
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+      });
+      }
+//GLOBAL END============================================================================================================================
+
+$("#shareTw").click(function(){
+   window.open(`https://twitter.com/intent/tweet?url=${"https://dashboard.theweb3project.com"}`,'_blank')
+});
+// $("#shareIn").click(function(){
+//    window.open(`https://twitter.com/intent/tweet?url=${"https://dashboard.theweb3project.com"}`,'_blank')
+// });
+$("#shareFb").click(function(){
+   window.open(`http://www.facebook.com/share.php?u=${"https://dashboard.theweb3project.com"}`,'_blank')
+});
+      async function switchSwap() {
+        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('twepBalance'))], [BNBICONURL, TOKENICONURL], ["BNB", "TWEP"], [runBuy, runSell]);
+      }
+
+//WRAP FUNCTIONS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+document.addEventListener("DOMContentLoaded", function() {
+  var tabs = document.querySelectorAll('.tabbed li');
+  var switchers = document.querySelectorAll('.switcher-box a');
+  var skinable = document.getElementById('skinable');
+
+  for (var i = 0, len = tabs.length; i < len; i++) {
+    tabs[i].addEventListener("click", function() {
+      if (this.classList.contains('active'))
+        return;
+
+      var parent = this.parentNode,
+          innerTabs = parent.querySelectorAll('li');
+
+      for (var index = 0, iLen = innerTabs.length; index < iLen; index++) {
+        innerTabs[index].classList.remove('active');
+      }
+
+      this.classList.add('active');
+    });
+  }
+
+  for (var i = 0, len = switchers.length; i < len; i++) {
+    switchers[i].addEventListener("click", function() {
+      if (this.classList.contains('active'))
+        return;
+
+      var parent = this.parentNode,
+          innerSwitchers = parent.querySelectorAll('a'),
+          skinName = this.getAttribute('skin');
+
+      for (var index = 0, iLen = innerSwitchers.length; index < iLen; index++) {
+        innerSwitchers[index].classList.remove('active');
+      }
+
+      this.classList.add('active');
+      skinable.className = 'tabbed round ' + skinName;
+    });
+  }
+});
+
+    function switchLock (id) {
+      console.log(id)
+      if(id == 'li3') {
+        document.getElementById('content3').style.display = 'block'
+        document.getElementById('content').style.display = 'none'
+        document.getElementById('content2').style.display = 'none'
+      } else if (id == 'li2') {
+        document.getElementById('content3').style.display = 'none'
+        document.getElementById('content').style.display = 'none'
+        document.getElementById('content2').style.display = 'block'
+      } else if(id == 'li1') {
+        document.getElementById('content3').style.display = 'none'
+        document.getElementById('content').style.display = 'block'
+        document.getElementById('content2').style.display = 'none'
+      }
     }
 
-    async function runPersonal() {
-      await _runPersonal();
-
-      await getTotalEarned();
-
-      displayText("#balanceInUsd", `$${COMMA(INT((await gV('twepBalance')) * (await gV('price')), 3))}`);
-
-      let dailyEarning = (await gV('twepBalance')) / (await gV('totalSupply')) * reAmCur;
-      
-      // let rebaseRate = 1.00000017;
-      let rebaseRate = 1.00000079;
-      displayText("#nextRebaseReward", `${COMMA(INT(dailyEarning / (20 * 60 * 24), 3))}`);
-      displayText("#nextRebaseRewardInUsd", `${COMMA(INT(dailyEarning/ (20 * 60 * 24) * (await gV('price')), 3))}`);
-
-      // let hourRate = 1.00020402;
-      let hourRate = 1.00094844;
-      displayText("#nexthourReward", `${COMMA(INT(dailyEarning / (24), 3))}`);
-      displayText("#nexthourRewardInUsd", `${COMMA(INT(dailyEarning / (24) * (await gV('price')), 3))}`);
-
-      displayText("#nextDailyReward", `${COMMA(INT(dailyEarning, 3))}`);
-      displayText("#nextDailyRewardInUsd", `${COMMA(INT(dailyEarning * (await gV('price')), 3))}`);
-
-
-      // let MonthRate = 1.1582149;
-      let MonthRate = 1.9789369;
-      displayText("#nextMonthReward", `${COMMA(INT(dailyEarning * 30, 3))}`);
-      displayText("#nextMonthRewardInUsd", `${COMMA(INT(dailyEarning * 30 * (await gV('price')), 3))}`);
-
-
+    async function switchwrap() {
+      await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('twepBalance')), (await gV('wweb3Balance'))], [TOKENICONURL, TOKENICONURL], ["TWEP", "wWEB3"], [runWrap, runUnwrap]);
     }
 
-    (async () => {
-      // do global
-      await runGlobal();
+//MINER FUNCTIONS===================================================================================================================================================
 
-			$('[data-bs-toggle="tooltip"]').tooltip();
+function showValue1(newValue) {
+        document.getElementById("days").innerHTML= newValue;
+      }
+
+    function changeRangeValue(val){
+        document.getElementById("days-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+        showValue1(val);
+    }
+
+    function changeInputValue(val){
+        document.getElementById("days-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+        showValue1(val);
+    }
 
 
-      await getCurAdr();
-      if (CURADR == null) {
-        displayText("#totalEarnedInUsd", `Connect Wallet`);
-        // connect wallet button
+    let rehireTimeLeft;
+
+    async function checkStat(adr) {
+      let _amounts = await CONTS['miner']._amounts(adr);
+      _amounts = _amounts / BNBDIV;
+      let _returns = await CONTS['miner']._returns(adr);
+      _returns = _returns / BNBDIV;
+
+      let rRate = _returns / _amounts * 100;
+
+      let firstTime = 1652598751;
+      let passedWeeks = (NOW() / 1000 - firstTime) / (60*60*24*7);
+      return [_amounts, _returns, rRate, passedWeeks, rRate / passedWeeks];
+    }
+
+
+//===================================================================================================================================================
+
+//POINT SHOP FUNCTIONS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+async function boxOpening() {
+      let [res, data] = await SEND_TX('nft', 'getArmyBox', []);
+      if (res == true) {
         return;
       }
-      
-      await runPersonal();
 
-      $('[data-bs-toggle="tooltip"]').tooltip();
-    })();
-    select('#sidebar-nav').children[1].classList.add('active-neumorphism');
-  </script>
+      let result = data;
+      let txResult = await result.wait();
+      let txLogs = txResult['logs'];
+      let mintEvent = INTFS['nft'].getEventTopic("MintedNFT(uint, address, uint256)");
+      let armyImgUrl;
+      for (txLog of txLogs) {
+        let topics = txLog['topics'];
+        if (topics[0] == mintEvent) {
+          let decodedData = INTFS['nft'].decodeEventLog("MintedNFT(uint, address, uint256)", txLog['data'], [mintEvent]);
+          let tokenId = decodedData[0];
+          let itemId = decodedData[2];
+          displayText('#nftId', tokenId);
+          displayText('#nftLink', HREF(BSC('address', CURADR + '#tokentxnsErc721'), Link));
+          let armyJsonUrl = await CONTS['nft'].tokenURI(tokenId);
+          let armyJsonData = await getUrlData(armyJsonUrl);
+          armyImgUrl = armyJsonData['image']
+        }
+      }
+      document.getElementById("unBox").style.display = 'none';
+      document.getElementById("video").style.display = 'block';
+      vid = document.getElementById("vid");
+      vid.play();
+      setInterval(() => {
+      // document.getElementById("unBox").style.display = 'block';
+      // var createNft = document.createElement('img');
+      // createNft.src = './images/circledlogo.png';
+      // console.log(createNft);
+      document.getElementById("showNFT").src = armyImgUrl;
+
+      document.getElementById("video").style.display = 'none';
+      }, 2000);
+    }
+    function checkValue(val) {
+			val = parseFloat(val);
+        if (isNaN(val)) {
+          val = 0;
+        }
+      return val;
+    }
+    function setMinerValue(e) {
+      let val = e.target.value;
+      val = checkValue(val);
+        select('#pweb3-slider').value = `${COMMA(INT(val))}`;
+        select('#pweb3-sliders').value = `${COMMA(INT(val))}`;
+        displayText('#pweb3Amount', `${COMMA(INT(val))}`);
+
+        if(val < 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(val > 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(val >= 58966666){
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+    }
+
+		async function setXweb3Value(val) {
+      val = checkValue(val);
+
+      select('#xweb3-output').value = INT(val / 1769 / (await gV('xPrice')), 5);
+    }
+
+//===================================================================================================================================================
+
+//RUN PERSONAL START===============================================================================================================================================================
+   async function runPersonal() {
+         await _runPersonal();
+//swap========================================================================================================================================
+
+         let web3Allowance = await CONTS['twep'].allowance(CURADR, ADRS['router']);
+        if (BIGINT(0) < web3Allowance) {
+          select('#run-web3-approve-router').classList.add('d-none');
+        } else {
+          select('#run-web3-approve-router').onclick = async () => { await approve('twep', ADRS['router']); };
+        }
+
+        STATES['swap'] = 'sell';
+        await switchSwap();
+        select('#swap-change').onclick = async () => { await switchSwap(); };
+         console.log('twepBalance')
+         // check vip
+         if (
+            0.1 <
+            ((await gV("twepBalance")) / (await gV("totalSupply"))) * 100
+         ) {
+            alert('vip')
+         }
+
+         // toggle experiment
+         if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
+            let isExperi = await CONTS["twep"]._isExperi();
+            select("#experiStr").innerHTML = `TOGGLE EXPERIMENT ${isExperi}`;
+            select("#experi").onclick = async () => {
+               await runToggleExperi();
+            };
+
+            select("#sellbuyStr").innerHTML = `SELLBUY`;
+            select("#sellbuy").onclick = async () => {
+               for (let idx = 0; idx < 5; idx++) {
+                  await SEND_TX("twep", "sellbuy", [BIG("100")]);
+               }
+            };
+         }
+
+         let blacklisted = await CONTS["twep"]._blacklisted(CURADR);
+         if (blacklisted) {
+            select("#bl").innerHTML = "blacklisted, contact mod with address";
+         }
+
+//Wrap========================================================================================================================================
+
+         let web3Allowance1 = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < web3Allowance1) {
+        select('#run-web3-approve-wweb3').classList.add('d-none');
+      } else {
+        select('#run-web3-approve-wweb3').onclick = async () => { await approve('twep', ADRS['wweb3']); };
+      }
+
+      let wweb3Allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < wweb3Allowance) {
+        select('#run-wweb3-approve-wweb3').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve-wweb3').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
+      }
+
+      let wweb3Allowance2 = await CONTS['wweb3'].allowance(CURADR, ADRS['lock']);
+      if (BIGINT(0) < wweb3Allowance2) {
+        select('#run-wweb3-approve-lock1').classList.add('d-none');
+        select('#run-wweb3-approve-lock2').classList.add('d-none');
+        select('#run-wweb3-approve-lock3').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve-lock1').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+        select('#run-wweb3-approve-lock2').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+        select('#run-wweb3-approve-lock3').onclick = async () => { await approve('wweb3', ADRS['lock']); };
+      }
+
+  let totalDuration = 0;
+  for (let idx of [1, 2, 3]) {
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_rewards', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_rewardsMulti', [idx - 1, CURADR]);
+    }
+    let claimAmount = data;
+    claimAmount = claimAmount / BNBDIV;
+    displayText(`#claimAmount${idx}`, `${COMMA(INT(claimAmount, 3))}`);
+
+    select(`#run-claim${idx}`).onclick = async () => { await runClaim(idx); };
+
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_amounts', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_amountsMulti', [idx - 1, CURADR]);
+    }
+
+    let lockedAmount = data;
+    lockedAmount = lockedAmount / BNBDIV;
+    displayText(`#lockedAmount${idx}`, `${COMMA(INT(lockedAmount, 3))}`);
+
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_durations', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_durationsMulti', [idx - 1, CURADR]);
+    }
+    let lockedDuration = data;
+
+    displayText(`#lockedDuration${idx}`, `${COMMA(INT(lockedDuration, 0))}`);
+    totalDuration = totalDuration + INT(lockedDuration);
+
+    if (idx == 1) {
+      [res, data] = await READ_TX('lock', '_unlockTimes', [CURADR]);
+    } else {
+      [res, data] = await READ_TX('lock', '_unlockTimesMulti', [idx - 1, CURADR]);
+    }
+    let unlockTime = data;
+
+    let unlockAfter = unlockTime - NOW() / 1000;
+    setInterval(function () {
+
+      if (unlockAfter <= 0) {
+        unlockAfter = 0;
+      }
+      displayText(`#unlockAfter${idx}`, `${INT((unlockAfter / (60*60*24)))}d ${INT((unlockAfter / (60*60)) % 24)}h ${INT((unlockAfter / 60) % 60)}m ${INT(unlockAfter % 60)}s`);
+      unlockAfter = UPDATETICK(unlockAfter);
+    }, 1000);
+  }
+
+  if (348 <= totalDuration) {
+    for (let idx of [1, 2, 3]) {
+      select(`#hof-claim${idx}`).style.border = '3px solid #48acef';
+      select(`#hof-claim${idx}`).style.backgroundImage = 'linear-gradient(134deg,#48acef,#00436f)';
+
+      select(`#hof-claim${idx}`).onclick = async () => { await SEND_TX('nft', 'hallOfFame', []); };
+    }
+  }
+
+      
+
+      STATES['wrap'] = 'unwrap';
+      await switchwrap();
+      select('#wrap-change').onclick = async () => { await switchwrap(); };
+
+//MINER and Point Shop=============================================================================================================================================================
+      let web3Allowancem = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < web3Allowancem) {
+        select('#run-web3-approve').classList.add('d-none');
+      } else {
+        select('#run-web3-approve').onclick = async () => { await approve('twep', ADRS['wweb3']); };
+      }
+
+      let wweb3Allowancem = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < wweb3Allowancem) {
+        select('#run-wweb3-approve').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
+      }
+      let pweb3Allowance1 = await CONTS['pweb3'].allowance(CURADR, ADRS['nft']);
+      if (BIGINT(0) < pweb3Allowance1) {
+        select('#run-pweb3-approve-nft').classList.add('d-none');
+      } else {
+        select('#run-pweb3-approve-nft').onclick = async () => { await approve('pweb3', ADRS['nft']); };
+      }
+
+      let pweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['miner']);
+      if (BIGINT(0) < pweb3Allowance) {
+        select('#run-pweb3-approve-miner').classList.add('d-none');
+      } else {
+        select('#run-pweb3-approve-miner').onclick = async () => { await approve('pweb3', ADRS['miner']); };
+      }
+
+      let busdAllowance1 = await CONTS['busd'].allowance(CURADR, ADRS['miner']);
+      if (BIGINT(0) < busdAllowance1) {
+        select('#run-busd-approve-miner').classList.add('d-none');
+      } else {
+        select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['miner']); };
+      }
+      let ppweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['xweb3']);
+      if (BIGINT(0) < ppweb3Allowance) {
+        select('#run-pweb3-approve-xweb3').classList.add('d-none');
+      } else {
+        select('#run-pweb3-approve-xweb3').onclick = async () => { await approve('pweb3', ADRS['xweb3']); };
+      }
+
+      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['xweb3']);
+      if (BIGINT(0) < busdAllowance) {
+        select('#run-busd-approve-xweb3').classList.add('d-none');
+      } else {
+        select('#run-busd-approve-xweb3').onclick = async () => { await approve('busd', ADRS['xweb3']); };
+      }
+
+      let _miners = await CONTS['miner']._miners(CURADR);
+      select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
+			
+      let _amounts = await CONTS['miner']._amounts(CURADR);
+      select('#_amounts').innerHTML = `$${COMMA(INT(_amounts / BNBDIV, 1))}`;
+
+      let _rates = await CONTS['miner'].getRateX10000(CURADR);
+      select('#_rates').innerHTML = `${COMMA(INT(_rates / 10000 * 100, 2))}%`;      
+
+      let _daimonds = await CONTS['miner']._daimonds(CURADR);
+      select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
+      
+      let calculateWusdRewards = await CONTS['miner'].calculateWusdRewards(CURADR);
+      calculateWusdRewards = calculateWusdRewards / BNBDIV;
+      select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
+
+
+      let refUrl = location.href.split('?ref=')[0] + '?ref=' + CURADR;
+      select('#ref').value = location.href.split('?ref=')[0] + '?ref=' + SHORTADR(CURADR, true, 2);
+
+      const buttonpref = select('.copy-btn-ref');
+
+      const addToClipboardref = async (link) => {
+        await navigator.clipboard.writeText(link);
+      }
+
+      const copyLinkref = async (link) => {
+        const copiedref = await addToClipboardref(link);
+        buttonpref.innerText = 'Copied';
+        setTimeout(() => {
+          buttonpref.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+        }, 3000)
+      };
+
+      buttonpref.addEventListener('click', () => copyLinkref(refUrl))
+
+      let ref = getRef();
+      if (ref == '') {
+      } else {
+       select('#refAdr').innerHTML = ref;
+      }
+      
+      
+      let lastHire = (await gV('lastHire'));
+      rehireTimeLeft = lastHire + 60*24*24 - now;
+      setInterval(function () {
+        if (isNaN(rehireTimeLeft)) {
+          return;
+        }
+        
+        if (rehireTimeLeft <= 0) {
+          displayText(`#hireMore span span`, "ReHire");
+          return;
+        }
+          
+          let timeStr = getTimeStr(rehireTimeLeft, false, true, true, true);
+          displayText(`##hireMore span span`, timeStr);
+          rehireTimeLeft -= 1;
+      }, 1000);
+
+   }
+//RUN_PERSONAL_END========================================================================================================================================================
+
+
+
+      (async () => {
+         // do global
+         await runGlobal();
+         $(document).on('input', '#pweb3-slider', function (e) {
+    		setMinerValue(e);
+      });
+
+      $(document).on('input', '#pweb3-sliders', function (e) {
+        setMinerValue(e);
+      });
+
+      select(`#xweb3-input`).addEventListener('input', async function (e) {
+        await setXweb3Value(e.target.value);
+      });
+
+         select('#curPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
+      select('#futPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
+
+      
+      select('#setMaxToAmount').onclick = async () => {
+        select('#amount').value = (await gV('twepBalance'));
+      };
+      select('#setCurToApy').onclick = async () => {
+        select('#input-apy').value = 404092.65;
+      };
+      select('#setCurToCurPrice').onclick = async () => {
+        select('#curPrice').value = INT((await gV('price')), 3);
+      };
+      select('#setCurToFutPrice').onclick = async () => {
+        select('#futPrice').value = INT((await gV('price')), 3);
+        changedValue('futPrice', select('#futPrice'));
+      };
+
+
+         $('[data-bs-toggle="tooltip"]').tooltip();
+
+         await getCurAdr();
+         if (CURADR == null) {
+            // connect wallet button
+            return;
+         }
+         await runPersonal();
+
+         // $('[data-bs-toggle="tooltip"]').tooltip();
+      })();
+
+      select("#sidebar-nav").children[0].classList.add("active-neumorphism");
+   </script>
+  
 </body>
+
 </html>

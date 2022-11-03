@@ -70,10 +70,10 @@
                <li class="side-tab-li" onclick="onChangeMenu('index')"><span><i
                         class="dashboard"></i>Dashboard</span></li>
                <li class="side-tab-li" onclick="onChangeMenu('account')"><span><i class="account"></i>Account</span></li>
-               <li class="side-tab-li tab-active background-box1" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
                <li class="side-tab-li" onclick="onChangeMenu('swap')"><span><i class="swap"></i>Swap</span></li>
                <li class="side-tab-li" onclick="onChangeMenu('wrap')"><span><i class="wrap"></i>Wrap</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('pointshop')"><span><i class="pointshop"></i>Point Shop</span></li>
+               <li class="side-tab-li tab-active background-box1" onclick="onChangeMenu('pointshop')"><span><i class="pointshop"></i>Point Shop</span></li>
                <li class="side-tab-li" onclick="onChangeMenu('miner')"><span><i class="miner"></i>Miner</span></li>
                <!-- <li class="side-tab-li" onclick="onChangeMenu('wusd')"><span><i class="wusd"></i>WUSD</span></li> -->
                <li class="side-tab-li" onclick="onChangeMenu('xweb3')"><span><i class="xweb3"></i>xWEB3</span></li>
@@ -111,16 +111,13 @@
             <div class="logo1">
                <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
             </div>
-            <div class="head-title"><i class='title-image calculator'></i>Calculator</div>
+            <div class="head-title"><i class='title-image pointshop'></i>Point Shop</div>
             <div class="hum-burgur-div" id="test-check-hum">
                <input type="checkbox" class="menu-btn" id="hm-burg" onclick="executefunction()" />
       <label class="menu-icon" for="hm-burg">
         <span class="nav-icon"></span>
       </label>
-               <!-- <input type="checkbox" id="hm-burg" onclick="executefunction()" />
-               <label for="hm-burg">
-                  <span></span>
-               </label> -->
+
             </div>
             <div class="wallet-div">
                <div class="w-value">
@@ -138,95 +135,113 @@
             </div>
          </div>
 
-        <!-- *********************************************** -->
-         <!-- Calculator Start -->
+         <!-- *********************************************** -->
+         <!-- POINT SHOP Start -->
          <!-- ******************************************** -->
 
          <div class="container-div tab-active">
-            <div class="offer background-box">
-               <span><img src="images/headicon.png" alt="offer"></span>
-               <p class="same-p">
-                  Estimate Your Return <i class="info-icon sw-info-ico tooltip mobToolTip"
-                     tooltip-data="Always check dashboard page and community for latest update!"></i>
-               </p>
+            <!-- ----header div ---- -->
+            <div class="offer wrap background-box">
+               <span class="pointshop-img"><img src="images/headicon.png" alt="offer"></span>
+               <div class="same-p p-s-para wr-offer-p">
+                  <span>$pWEB3</span><span class="set-p-s-para" id="content-copy3" onclick="window.open('https://bscscan.com/address/0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569','_blank')">0x877c8140aA1DFBaFA58bE6ACB555e569</span> <span
+                     class="p-s-c-img"><i class="imp-copy1" id="copytext4"></i></span>
+                  <p class="same-p p-s-para1 wr-offer-inner-p">1749 pWEB3 = roughly 1$</p>
+               </div>
             </div>
-            <section class="c-over-div">
-               <div class="c-over-box-div">
-                  <div class="c-over-box c-box12 background-box">
-                     <img src="images/overview-1.svg" alt="overview-1">
-                     <h3 id="price">-</h3>
-                     <p class="same-p">$TWEP Price<i class="info-icon"></i></p>
+
+            <div class="pntshop-detail">
+               <!-- ------- FIRST GIFT DIV ---------- -->
+               <div class="pntshop-detail-box1 background-box">
+                  <span  class="pntsp1">The Web3 Project (army NFT)</span>
+                  <button id="run-pweb3-approve-nft" class="pntsp2 btnLoadAnimation">
+                     <span >$pWEB3 Approve to Buy</span>
+                  </button>
+                  <img src="images/Watch Video (1).png" alt="Watch">
+                  <span class="pntsp3">Web3 army NFT</span>
+                  <span class="pntsp4">Buy NFT with 5,307,000 pWEB3</span>
+                  <span class="pntsp5">Your NFT ID:<span id="nftId"></span><span id="nftLink"></span></span>
+                  <button id="buy-box" class="pntsp6">
+                  <span id="run-name" >Buy</span>
+                  </button>
+
+               </div>
+
+
+
+               <div class="pntshop-detail-box2">
+
+                  <!-- --------- SECOND DIV IN THIRD DIV ---------- -->
+
+                  <div class="box2-cont1 background-box">
+                     <div class="cont1-details background-box">
+                        <img src="images/Group2446.svg" alt="Group2446">
+                        <span id="twepBalance" class="cont1-span">0.000</span>
+                        <span class="cont1-span1">$TWEP balance</span>
+                     </div>
+                     <div class="cont1-details background-box">
+                        <img src="images/image 26.png" alt="img22">
+                        <span id="wweb3Balance" class="cont1-span">0.000</span>
+                        <span class="cont1-span1">$wWEB3 balance</span>
+                     </div>
+                     <div class="cont1-details background-box">
+                        <img src="images/pointshopp.png" alt="img22">
+                        <span id="pweb3Balance" class="cont1-span">0.000</span>
+                        <span class="cont1-span1">$pWEB3 balance</span>
+                     </div>
                   </div>
-                  <div class="c-over-box background-box">
-                     <img src="images/wal 1.png" alt="overview-1">
-                     <!-- <img src="images/overview-1.svg" alt="overview-1"> -->
-                     <h3 id="twepBalance">-</h3>
-                     <p class="c-same-p">Your Balance</p>
+
+                  <!-- --------- THIRD CROWN AND INPUT DIV ---------- -->
+
+                  <div class="box2-cont2 background-box">
+                     <div class="cont2-details1">
+                        <br>
+                        <span class="cont2-details1-sp1 desktopview">xWeb3 Governance <i class="info-icon"></i></span>
+                        <br>
+                        <span class="cont2-details1-sp2">Balance: <span id="pweb3Balance">0.000</span></span>
+                        <div class="input-box1">
+                           <input id="xweb3-input" type="text" class="text" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off">
+                           <div class="max">
+                              <img src="images/image 3.svg" alt="image">&ThinSpace;
+                              <span class="input-box1-span">pWEB3</span>
+                              <span class="input-box1-span1">|</span>
+                              <span onclick="maxPweb3Input('#xweb3-input')" class="input-box1-span2">Max</span>
+                           </div>
+                        </div><br>
+                        <span class="cont2-details1-sp2">Balance:<span id="xweb3Balance">0.000</span></span>
+                        <div class="input-box1">
+                           <input type="text" id="xweb3-output" class="text" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off">
+                           <div class="min">
+                              <img src="images/image 3 (1).svg" alt="image">&ThinSpace;
+                              <span class="input-box1-span">xWEB3</span>
+                           </div>
+                        </div>
+                        <button id="approved-xweb3" class="input-box1-btn">
+                           <span id="buy-xweb3">Buy</span>
+                        </button>
+                     </div>
+
+                     <div class="cont2-details2">
+                        <span class="cont2-details1-sp1 mobileview">xWeb3 Governance <i class="info-icon"></i></span>
+                        <button id="run-pweb3-approve-xweb3" class="pntsp2 btnLoadAnimation">
+                           <span>$pWEB3 Approve to Buy</span>
+                        </button>
+                        <img src="images/Watch Video.png" alt="Watch">
+                        <span class="cont2-details2-cnt1">Quantum investing Share profit</span>
+                        <span class="cont2-details2-cnt2">1 xWEB3 =  <span id="xPrice"></span>
+                           <img src="images/information.svg" alt="Vector">
+                        </span>
+
+                     </div>
                   </div>
 
                </div>
-            </section>
-            <section class="c-item-details-section background-box">
-               <div class="c-ab">
-                  <div class="c-second">
-                     <span for="amount" class="c-div-tittle">TWEP Amount</span>
-                     <div class="c-user-input-div">
-                        <input type="text" id="amount" placeholder="Amount" class="input-style"><span id="setMaxToAmount" class="c-input-text">Max</span>
-                     </div>
 
-                     <span class="same-p c-div-tittle">Future Twep Amount<i class="info-icon tooltip mobToolTip"
-                           tooltip-data="Total Supply increases 1440 per day For event, currently 2880  per day"></i></span>
-                     <div class="c-user-input-div">
-                        <input id="futAmount" type="text" placeholder="Amount" class="input-style"><span></span>
-                     </div>
-
-                     <span for="price" class="c-div-tittle">TWEP Price At Purchase ($)</span>
-                     <div class="c-user-input-div">
-                        <input id="curPrice" type="text"  placeholder="Amount" class="input-style"><span class="c-input-text">Current</span>
-                     </div>
-
-                     <p for="future-price" class="same-p c-div-tittle">Future TWEP price ($)<i class="info-icon tooltip mobToolTip"
-                           tooltip-data="This price happens automatically when buy/sell amount is similar. it may go up or down from that price depending on the buy/sell amount."></i>
-                     </p>
-                     <div class="c-user-input-div">
-                        <input type="text" id="futPrice" placeholder="Amount" class="input-style"><span id="setCurToCurPrice" class="c-input-text">Current</span>
-                     </div>
-
-                     <!-- <p class="range-head"><span id="daysValCal">0 days</span><span class="c-div-tittle">356 Days</span> -->
-
-                     <!-- </p> -->
-                     <label for="days-slider" class="fw-medium"><span id="days">30</span> days</label>
-                     <input type="range" id="rangeCal" class="range-input-style" min="1" max="356" step="1" value="0">
-                  </div>
-               </div>
-
-               <div class="c-ab2">
-                  <div class="c-box1 background-box">
-                     <div class="c-div-image"><img class="div-img" src="images/Group 8.png"></div>
-                     <h4 id="initInvest">$0.00</h4>
-                     <p class="c-same-p">Your initial investment</p>
-                  </div>
-                  <div class="c-box1 background-box">
-                     <div class="c-div-image"><img class="div-img" src="images/Group 8 (1).png"></div>
-                     <h4 id="futWealth">$0.00</h4>
-                     <p class="c-same-p">Future wealth</p>
-                  </div>
-                  <div class="c-box1 background-box">
-                     <div class="c-div-image"><img class="div-img" src="images/Group 8 (2).png"></div>
-                     <h4 id="rewardsEsti">$0.00</h4>
-                     <p class="c-same-p">TWEP rewards</p>
-                  </div>
-                  <div class="c-box1 background-box">
-                     <div class="c-div-image"><img class="div-img" src="images/Group 8 (3).png"></div>
-                     <h4 id="potenReturn">$0.00</h4>
-                     <p class="c-same-p">Potential return</p>
-                  </div>
-               </div>
-            </section>
+            </div>
          </div>
 
          <!-- *********************************************** -->
-         <!-- Calculator End -->
+         <!-- POINT SHOP End -->
          <!-- ******************************************** -->
 
       </div>
@@ -234,29 +249,6 @@
    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
    <script type="text/javascript" src="js/index.js"></script>
-   
-   <script>
-      document.getElementById("rangeCal").oninput = function () {
-  var value = ((this.value - this.min) / (this.max - this.min)) * 100;
-  this.style.background =
-    "linear-gradient(to right, #22d4f3 0%, #22d4f3 " +
-    value +
-    "%,#113048  " +
-    value +
-    "%, #113048 100%)";
-};
-
-const rangeCal = document.getElementById("rangeCal"),
-  daysValCal = document.getElementById("daysValCal"),
-  setValue = () => {
-    const newValue = Number(
-      ((rangeCal.value - rangeCal.min) * 89) / (rangeCal.max - rangeCal.min)
-    );
-    daysValCal.innerHTML = `${rangeCal.value} Days`;
-  };
-document.addEventListener("DOMContentLoaded", setValue);
-rangeCal.addEventListener("input", setValue);
-   </script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
    <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
@@ -855,6 +847,15 @@ async function boxOpening() {
       })();
 
       select("#sidebar-nav").children[0].classList.add("active-neumorphism");
+   </script>
+   
+   <script>
+      let copyButton3 = document.getElementById('copytext4');
+
+copyButton3.addEventListener('click', (event) => {
+  let content3 = document.getElementById('content-copy3').textContent;
+  navigator.clipboard.writeText(content3)
+})
    </script>
   
 </body>

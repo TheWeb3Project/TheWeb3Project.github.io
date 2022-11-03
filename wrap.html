@@ -1,625 +1,513 @@
 <!DOCTYPE html>
-<html lang="en" style=" background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title class="title">The Web3 Project | Taking online further beyond</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/fa.css">
+   <!-- ------- fav-icon code ---------- -->
 
-  <title>The Web3 Project | Taking online further beyond</title>
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" name="description">
-  <meta content="The Web3 Project | Taking online further beyond" property="og:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="og:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="og:image">
-  <meta content="The Web3 Project | Taking online further beyond" property="twitter:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="twitter:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="twitter:image">
-  <meta property="og:type" content="website">
-  <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link rel="shortcut icon" href="images/overview-1.svg" />
    
-  <link href="images/logos/TWEP/TWEP.png" rel="shortcut icon" type="image/x-icon" />
-  <link href="images/logos/TWEP/TWEP.png" rel="apple-touch-icon" />
+   <!-- --- style css file link --- -->
 
-  <meta name="twitter:image" content="images/logos/TWEP/TWEP.png">
-  <meta name="twitter:description" content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Web3 Project | Taking online further beyond">
-
-  <meta property="og:image" content="images/logos/TWEP/TWEP.png">
-  <link rel="stylesheet" href="css/flooz.css">
+   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body id="titano-finance" class="background" >
-  <div class="container-fluid">
-    <div class="row">
-      <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
+<body class="body">
+   
+   <div class="tooltipdiv"></div>
+   <div class="tooltipdiv1"></div>
+   <div class="clipboard"><img src="images/Union.svg" alt="Union" />&ThinSpace;&ThinSpace;<span>Copied to clipboard</span></div>
+   <!-- ------ POP-UP DIV START ------ -->
+   <div class="allmaindiv">
+      <div class="secondmaindiv">
+      <div class="popup-main">
+         <div class="popup-cntdiv">
+            <div class="popup-firstdiv">
+               <div class="share-cnt-div">
+                  <div class="share">
+                     <span><img src="images/headicon.png" alt="offer"></span>
+                     <span class="shareit">Share it</span>
+                  </div>
+                  <div class="close">
+                     <span><img src="images/close-circle.png" alt="close-circle" class="close-circle" onclick="clearModalData()"></span>
+                  </div>
+               </div>
+               <div class="share-icon-div">
+                  <span class="copy-img-cnt">Click here to <span class="CopyToImg" onclick="copyImg()">Copy</span> this image and spreadthis to everywhere</span>
+                  &ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;
+                  <div class="popup-share-img">
+                     <span><img src="images/twt.png" class="Social-icons-img" alt="offer"></span>
+                     &ThinSpace;&ThinSpace;
+                     <span><img src="images/insta.png" class="Social-icons-img" alt="offer"></span>
+                     &ThinSpace;&ThinSpace;
+                     <span><img src="images/fcbk.png" class="Social-icons-img" alt="offer"></span>
+               </div>
+               </div>
+               <hr class="popup-line">
+            </div>
+            <div class="popup-imgdiv">
+               <img src="" alt="" id="dataimg" height="100%" width="100%">
+            </div>
+         </div>
+      </div>
+      </div>
+   </div>
+
+   <!-- ------ POP-UP DIV END ------ -->
+   <div class="bg"></div>
+   <div class="wrapper">
+      <div class="side-nav" id="nav">
+         <div class="logo">
+            <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
+         </div>
+         <hr class="hide-m" />
+         <div class="side-tabs-list">
+            <ul class="side-tabs-ul nav-pills">
+               <li class="side-tab-li" onclick="onChangeMenu('index')"><span><i
+                        class="dashboard"></i>Dashboard</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('account')"><span><i class="account"></i>Account</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('swap')"><span><i class="swap"></i>Swap</span></li>
+               <li class="side-tab-li tab-active background-box1" onclick="onChangeMenu('wrap')"><span><i class="wrap"></i>Wrap</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('pointshop')"><span><i class="pointshop"></i>Point Shop</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('miner')"><span><i class="miner"></i>Miner</span></li>
+               <!-- <li class="side-tab-li" onclick="onChangeMenu('wusd')"><span><i class="wusd"></i>WUSD</span></li> -->
+               <li class="side-tab-li" onclick="onChangeMenu('xweb3')"><span><i class="xweb3"></i>xWEB3</span></li>
+               <li class="side-tab-li" onclick="window.open('https://docs.theweb3project.com/','_blank')"><span><i class="docs"></i>Docs</span></li>
+            </ul>
+         </div>
+         <hr />
+         <div class="social-icons-div">
+            <ul>
+               <li>
+                  <a href="https://discord.com/invite/Mn43SWyj3g" target="_blank"><i class="discord"></i></a>
+               </li>
+               <li>
+                  <a href="https://twitter.com/TheWeb3Project" target="_blank"><i class="twitter"></i></a>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/c/TheWeb3Project/featured" target="_blank"><i class="youtube"></i></a>
+               </li>
+               <li>
+                  <a href="https://t.me/TheWeb3ProjectPortal" target="_blank"><i class="telegram"></i></a>
+               </li>
+            </ul>
+         </div>
+         <div class="alert-div">
+            <p class="turnmsg">Turn on alerts</p>
+            <label class="switch">
+               <input type="checkbox" id="turnon"  onclick="turnOnfunction()"/>
+               <span class="slider round"></span>
+            </label>
+         </div>
+      </div>
+      <div class="main-content-div">
+
+         <div class="upper-div">
+            <div class="logo1">
+               <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
+            </div>
+            <div class="head-title"><i class='title-image wrap'></i>Wrap</div>
+            <div class="hum-burgur-div" id="test-check-hum">
+               <input type="checkbox" class="menu-btn" id="hm-burg" onclick="executefunction()" />
+      <label class="menu-icon" for="hm-burg">
+        <span class="nav-icon"></span>
+      </label>
+
+            </div>
+            <div class="wallet-div">
+               <div class="w-value">
+                  <a class="background-box" href="https://poocoin.app/tokens/0x1aeb3f66d96bfaf74fcbd15dc21798de36f6f933" target="_blank">
+                     <i class="twep-icon"></i>TWEP <span> <h4 id="price" class="fw-bold">$0</h4></span>
+                  </a>
+               </div>
+               <div class="con-wallet" id="connect">
+                  <!-- Page.js line 66 -->
+                  <a href="#">
+                     Connect Wallet
+                     <!-- <i class="go-icon"></i> -->
+                  </a>
+               </div>
+            </div>
+         </div>
+
+        <!-- *********************************************** -->
+         <!-- WRAP Start -->
+         <!-- ******************************************** -->
+
+         <div class="container-div tab-active">
+            <div class="offer wrap background-box">
+               <span class="wrap-img"><img src="images/headicon.png" alt="offer"></span>
+               <div class="same-p wr-offer-p wrap-cnt">
+                  <span>Wrapped TWEP ($wWEB3)</span>
+                  <p class="same-p wr-offer-inner-p">Wrap your TWEP to use for CEX, ledger, etc. <i
+                        class="info-icon tooltip mobToolTip"
+                        tooltip-data="Rebase still works in the background while wrapped All rebase rewards until now will be displayed after you unwrap"></i>
+                  </p>
+               </div>
+            </div>
+            <p class="important wr-impt">
+               <span>$WUSD Contract:</span> <span class="wrap-copy-cnt" onclick="window.open('https://bscscan.com/address/0xE6664F3C20d503beAf78B5B4B059a388fbE9B75f','_blank')"> 0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16 </span>
+            </p>
+            <section class="over-div wr-over-div">
+               <div class="over-main">
+                  <div class="over-box-div">
+                     <div class="over-box background-box for-wrap">
+                        <img src="images/overview-1.svg" alt="overview-1">
+                        <h3 id="price" class="wrap-price">$0.00</h3>
+                        <p class="same-p">$TWEP Price<i class="info-icon"></i></p>
+                     </div>
+                     <div class="over-box background-box for-wrap">
+                        <img src="images/image 26.png" alt="overview-2">
+                        <h3 id="wPrice" class="wrap-price">$00.00</h3>
+                        <p class="same-p">$wWEB3 Price <i class="info-icon"></i></p>
+                     </div>
+                     <div class="over-box background-box for-wrap">
+                        <img src="images/image 26.png" alt="overview-3">
+                        <h3 id="wRate" class="wrap-price">0 $TWEP</h3>
+                        <p class="same-p">$wWEB3 Price <i class="info-icon"></i></p>
+                     </div>
+                  </div>
+               </div>
+            </section>
+            <section class="swap-sell-section wr-swap-sec background-box">
+               <div class="wr-upper">
+                  <h2>Wrap $TWEP</h2>
+                  <div class="wr-upper-btn">
+                     
+                     <a id="run-web3-approve-wweb3" class="same-type-btn approve-wrap wr-upper-space btnLoadAnimation" href="#">$wWEB3 Approve to wrap</a>
+                     <a id="run-wweb3-approve-wweb3"  class="same-type-btn1 approve-wrap btnLoadAnimation" href="#" >$wWEB3 Approve to unwrap</a>
+                  </div>
+               </div>
+               <div class="input-field-div">
+                  <div class="input-text-div">
+                     <div class="upper-part">
+                        <span class="upper-left">From</span>
+                        <span class="upper-right">Balance: <span id="wrap-balance-input">0.000</span></span>
+                     </div>
+                     <div class="bottom-part">
+                        <input id="wrap-input" type="text" class="input-w" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" >
+                        <div class="curr-div">
+                           <span id="wrap-symbol-input" class="token__symbol ellipsis">WEB3</span>
+                           <span onclick="maxValueWrapInput()" class="bottom-txt">Max</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="wrap-change" class="swap-div">
+                     <span class="swap-icon"><img src="images/pavan3.png"  alt="swap-icon"></span>
+                  </div>
+                  <div class="input-text-div">
+                     <div class="upper-part">
+                        <span class="upper-left">To</span>
+                        <span class="upper-right">Balance: <span id="wrap-balance-output">0</span></span>
+                     </div>
+                     <div class="bottom-part">
+                        <input id="wrap-output" type="text" name="toTokenAmount" inputmode="decimal" placeholder="0.00">
+                        <div class="curr-div twp-div">
+                           <span id="wrap-symbol-output" class="token__symbol ellipsis">wWEB3</span>
+                        </div>
+                     </div>
+                  </div>
+                  <div id="wrap-run" class="go-div">
+                     <a class="go-link" href="#">Wrap
+                        <!-- <i class="go-icon"></i> -->
+                     </a>
+                  </div>
+               </div>
+            </section>
+
+            <section class="wr-tab-section background-box">
+               <div class="wr-tabs">
+                  <ul class="wr-tab-ul">
+                     <li class="wr-tab-li wr-tab-active" data-tab="wr-tab-1"><span>Lock 1</span></li>
+                     <li class="wr-tab-li" data-tab="wr-tab-2"><span>Lock 2</span></li>
+                     <li class="wr-tab-li" data-tab="wr-tab-3"><span>Lock 3</span></li>
+                  </ul>
+               </div>
+               <div class="wr-tabs-main">
+                  <!-- 1 -->
+                  <div class="wr-content wr-tab-active" id="wr-tab-1">
+                     <div class="wr-cont-upper-div">
+                        <div class="wr-cont-title">
+                           <h2>Lock $wWEB3 And get $pWEB3</h2>
+                           <p class="same-p">Which will unlock many things! you can lock it for&nbsp; <b>14 days up to 1
+                                 years</b> &nbsp;and receive pWEB3</p>
+                        </div>
+                        <div class="wr-approve-div" id="run-wweb3-approve-lock1">
+                           <a class="same-type-btn approve-wrap btnLoadAnimation" href="#">$wWEB3 Approve to lock</a>
+                        </div>
+                     </div>
+                     <div class="input-field-div wrap-input-div">
+                        <div class="input-text-div">
+                           <div class="upper-part">
+                              <span class="upper-left">Balance: <span id="wweb3Balance">0.000</span></span>
+                           </div>
+                           <div class="bottom-part">
+                              <input id="lock-input1" class="input-w" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="">
+                              <div class="curr-div" onclick="maxValueLockInput()">
+                                 <span class="curr-logo web3-l-icon" id="symbol-input"></span>
+                                 <span class="bottom-txt">Max</span>
+                              </div>
+                           </div>
+                        </div>
+                        
+                     </div>
+                     <div class="warpBar">
+                        <label for="days-slider" class="range-head"><span id="days">14</span> days</label>
+                        <!-- <p class="range-head"><span id="daysValTab1">0 Days</span></p> -->
+                        <!-- <input type="range" min="14" max="365" step="1" value="14" id="days-slider1"  class="range-input-style"> -->
+                        <input type="range" id="rangeTab1" class="range-input-style" min="14" max="356" step="1"
+                           value="14">
+                     </div>
+                     <div class="wr-bottom-div">
+                        <p>Receive:<span id="rewardAmount">0.000</span>pWEB3</p>
+                        <a id="run-lock1" class="same-type-btn btnLoadAnimation" href="#"><span id="lock-name">Lock</span></a>
+                        <a id="run-unlock1" class="same-type-btn btnLoadAnimation" href="#"><span id="unlock-name">Unlock</span></a>
+                        <a id="run-eunlock1" class="same-type-btn btnLoadAnimation" href="#"><span id="eunlock-name">Emergency Unlock</span></a>
+                        <a id="hof-claim1" class="same-type-btn-update" href="#"><span id="claim-name">Claim Hall of Fame NFT</span><i class="info-icon"></i></a>
+                     </div>
+                  </div>
+                  <!-- 1 -->
+
+                  <!-- 2 -->
+
+                  <div class="wr-content" id="wr-tab-2">
+                     <div class="wr-cont-upper-div">
+                        <div class="wr-cont-title">
+                           <h2>Lock $wWEB3 And get $pWEB3</h2>
+                           <p class="same-p">Which will unlock many things! you can lock it for&nbsp; <b>14 days up to 1
+                                 years</b> &nbsp;and receive pWEB3</p>
+                        </div>
+                        <div id="run-wweb3-approve-lock2" class="wr-approve-div">
+                           <a class="same-type-btn btnLoadAnimation" href="#">$wWEB3 Approve to lock</a>
+                        </div>
+                     </div>
+                     <div class="input-field-div wrap-input-div">
+                        <div class="input-text-div">
+                           <div class="upper-part">
+                              <span class="upper-left">Balance: <span id="wweb3Balance">0.000</span></span>
+                           </div>
+                           <div class="bottom-part">
+                              <input id="lock-input2" type="text" class="input-w" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off">
+                              <div class="curr-div">
+                                 <span class="curr-logo web3-l-icon"></span>
+                                 <span onclick="maxValueLockInput()" class="bottom-txt">Max</span>
+                              </div>
+                           </div>
+                        </div>
+                        
+                     </div>
+                     <div class="warpBar">
+                        <label for="days-slider" class="range-head"><span id="days">14</span> days</label>
+                        <input type="range" id="rangeTab2" class="range-input-style" min="14" max="356" step="1" value="0">
+                     </div>
+                     <div class="wr-bottom-div">
+                        <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
+                        <a id="run-lock2" class="same-type-btn btnLoadAnimation" href="#"><span id="lock-name">Lock</span></a>
+                        <a id="run-unlock2" class="same-type-btn btnLoadAnimation" href="#"><span id="unlock-name">Unlock</span></a>
+                        <a id="run-eunlock2" class="same-type-btn btnLoadAnimation" href="#"><span id="eunlock-name">Emergency Unlock</span></a>
+                        <a id="hof-claim2" class="same-type-btn-update" href="#"><span id="claim-name">Claim Hall of Fame NFT</span><i class="info-icon"></i></a>
+                     </div>
+                  </div>
+
+                  <!-- 2 -->
+
+                  <!-- 3 -->
+
+                  <div class="wr-content" id="wr-tab-3">
+                     <div class="wr-cont-upper-div">
+                        <div class="wr-cont-title">
+                           <h2>Lock $wWEB3 And get $pWEB3</h2>
+                           <p class="same-p">Which will unlock many things! you can lock it for&nbsp; <b>14 days up to 1
+                                 years</b> &nbsp;and receive pWEB3</p>
+                        </div>
+                        <div id="run-wweb3-approve-lock3" class="wr-approve-div">
+                           <a class="same-type-btn btnLoadAnimation" href="#">$wWEB3 Approve to lock</a>
+                        </div>
+                     </div>
+                     <div class="input-field-div wrap-input-div">
+                        <div class="input-text-div">
+                           <div class="upper-part">
+                              <span class="upper-left">Balance:<span id="wweb3Balance">0.00</span></span>
+                           </div>
+                           <div class="bottom-part">
+                              <input type="text" class="input-w" id="lock-input3" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off">
+                              <div class="curr-div">
+                                 <span class="curr-logo web3-l-icon"></span>
+                                 <span  onclick="maxValueLockInput()" class="bottom-txt">Max</span>
+                              </div>
+                           </div>
+                        </div>
+                        
+                     </div>
+                     <div class="warpBar">
+                        <label for="days-slider" class="range-head"><span id="days">14</span> days</label>
+                        <input type="range" id="rangeTab3" class="range-input-style" min="14" max="356" step="1"
+                           value="0">
+                     </div>
+                     <div class="wr-bottom-div">
+                        <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
+                        <a id="run-lock3" class="same-type-btn btnLoadAnimation" href="#"><span id="lock-name">Lock</span></a>
+                        <a id="run-unlock3" class="same-type-btn btnLoadAnimation" href="#"><span id="unlock-name">Unlock</span></a>
+                        <a id="run-eunlock3" class="same-type-btn btnLoadAnimation" href="#"><span id="eunlock-name">Emergency Unlock</span></a>
+                        <a id="hof-claim3" class="same-type-btn-update" href="#"><span id="claim-name">Claim Hall of Fame NFT</span><i class="info-icon"></i></a>
+                     </div>
+                  </div>
+
+                  <!-- 3 -->
+               </div>
+            </section>
+
+            <section class="table-section">
+               <div class="table-div">
+                  <ul class="th background-box">
+                     <li class="td-1">Amount Lock</li>
+                     <li class="td-1">Time</li>
+                     <li class="td-1">Claim</li>
+                     <li class="td-1 no-dsply">action</li>
+                  </ul>
+
+                  <ul class="main">
+                     <li class="tr-td-1"><span id="lockedAmount1">0.000 </span> wWEB3</p>
+                     </li>
+                     <li class="tr-td-1"><span id="unlockAfter1">0D 0h 0m 0s</span></p>
+                     </li>
+                     <li class="tr-td-1"><span id="claimAmount1">0.000</span> pWEB3</p>
+                     </li>
+                     <li id="run-claim1" class="unstake"><a id="claim-name1" href="#">Claim</a></li>
+                  </ul>
+
+                  <ul class="main">
+                     <li class="tr-td-1"><span id="lockedAmount2">0.000</span> wWEB3</p>
+                     </li>
+                     <li class="tr-td-1"><span id="unlockAfter2">0D 0h 0m 0s</span></p>
+                     </li>
+                     <li class="tr-td-1"><span id="claimAmount2">0.000</span> pWEB3</p>
+                     </li>
+                     <li id="run-claim2" class="unstake"><a id="claim-name2" href="#">Claim</a></li>
+                  </ul>
+
+                  <ul class="main">
+                     <li class="tr-td-1"><span id="lockedAmount3">0.000</span> wWEB3</p>
+                     </li>
+                     <li class="tr-td-1"><span id="unlockAfter3">0D 0h 0m 0s</span></p>
+                     </li>
+                     <li class="tr-td-1"><span id="claimAmount3">0.000</span> pWEB3</p>
+                     </li>
+                     <li id="run-claim3" class="unstake"><a id="claim-name3" href="#">Claim</a></li>
+                  </ul>
+               </div>
+            </section>
+         </div>
+
+         <!-- *********************************************** -->
+         <!-- WRAP End -->
+         <!-- ******************************************** -->
 
       </div>
-
-      <div id="overlay" style="z-index: 1000001;"></div>
-
-      <main id='main'>
-        <div id="web3-header">
-        </div>
-
-        <div id="container">
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="text-secondary mb-1">
-                Wrapped TWEP ($wWEB3)
-              </div>
-              <div class="text-secondary mb-1">
-                Wrap your TWEP to use for CEX, ledger, etc <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                Rebase still works in the background while wrapped<br/>
-                All rebase rewards until now will be displayed after you unwrap
-                "></i>
-              </div>
-            </div>
-          </div>
-
-          <div class="my-5 col-12">
-            <div id='card'>
-              <span class="fw-medium ms-1">
-                $wWEB3
-                <a id="wweb3-link" target="_blank">
-                  <span id="wweb3"></span>
-                </a>
-                <button id='copy-wweb3' class="copy-btn" src="./images/copy-solid.svg" alt=""></button>
-              </span>
-            </div>
-          </div>
-
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                    $TWEP Price
-                  </div>
-                  <h4 id="price" class="fw-bold">$0.000</h4>
-                </div>
-
-                <div class="col">
-                  <div .class="text-secondary mb-1">
-                    $wWEB3 Price
-                  </div>
-                  <h4 id="wPrice" class="fw-bold">$0.000</h4>
-                </div>
-
-                <div class="col">
-                  <div .class="text-secondary mb-1">
-                    $wWEB3 Rate
-                  </div>
-                  <h4 id="wRate" class="fw-bold">0 $TWEP</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-
-
-          <div class="my-5 col-12">
-            <div id='card'>
-              <h5 class="fw-bold mb-0">Wrap $TWEP</h5>
-
-              <div id="run-web3-approve-wweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                  <span class="button__content">$TWEP Approve to wrap</span>
-                </button>
-              </div>
-
-              <div id="run-wweb3-approve-wweb3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                  <span class="button__content">$wWEB3 Approve to unwrap</span>
-                </button>
-              </div>
-
-              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; margin-top: 65px; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                  <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                  <input id="wrap-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                              </div>
-                              <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
-                          </div>
-                          <p class="token-amount-field__balance">Balance: <span id="wrap-balance-input">0.000</span></p>
-                      </div>
-                      <button type="button" onclick="maxValueWrapInput()" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
-                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                            <div>Max</div>
-                            <div class="token-logo"><img src="images/logos/TWEP/TWEP.png" class="token-logo__image" alt="Token logo"  /></div>
-                            <span id="wrap-symbol-input" class="token__symbol ellipsis">WEB3</span>
-                              <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                  <path
-                                      d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                      fill="currentColor"
-                                  ></path>
-                                  <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                              </svg>
-                          </div>
-                      </button>
-                  </div>
-                  <div id="wrap-change" class="swap-tokens-form__token-pair__switch">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 275" width="320" height="275" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
-                        <g clip-path="url(#__lottie_element_16)"><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M-0.9169999957084656,6.150000095367432 C-0.9169999957084656,6.150000095367432 -5.23799991607666,10.472000122070312 -5.23799991607666,10.472000122070312 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -9.5600004196167,6.150000095367432 -9.5600004196167,6.150000095367432 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -5.23799991607666,-1.0520000457763672 -5.23799991607666,-1.0520000457763672"></path></g></g><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M0.9169999957084656,-5.9079999923706055 C0.9169999957084656,-5.9079999923706055 5.23799991607666,-10.229999542236328 5.23799991607666,-10.229999542236328 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 9.559000015258789,-5.9079999923706055 9.559000015258789,-5.9079999923706055 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 5.23799991607666,1.2940000295639038 5.23799991607666,1.2940000295639038"></path></g></g></g>
-                      </svg>
-                  </div>
-                  <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field" >
-                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                  <input id="wrap-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                              </div>
-                          </div>
-                          <p class="token-amount-field__balance">Balance: <span id="wrap-balance-output">0.000</span></p>
-                      </div>
-                      <button type="button" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
-                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                            <div class="token-logo"><img src="images/logos/TWEP/wweb3.png" class="token-logo__image" alt="Token logo"  /></div>
-                              <span id="wrap-symbol-output" class="token__symbol ellipsis">wWEB3</span>
-                              <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                  <path
-                                      d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                      fill="currentColor"
-                                  ></path>
-                                  <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                              </svg>
-                          </div>
-                      </button>
-                  </div>
-              </div>
-
-              <div id="wrap-run" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                  <span id="wrap-run-name" class="button__content">Wrap</span>
-                </button>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="my-5 col-12">
-            <div id="tabs" class="tabs-container">
-
-                <div class="tabs mx-auto">
-                    <a id="tab1" data-tab="1" class="tab">Lock 1</a>
-                    <a id="tab2" data-tab="2" class="tab">Lock 2</a>
-                    <a id="tab3" data-tab="3" class="tab">Lock 3</a>
-                </div>
-
-                <div class="content">
-                    <div id="tabcontent1" data-tab="1" class="tabcontent p-4">
-                      <div class="" >
-                        <div class="d-flex justify-content-between">
-                          <div class="mb-4">
-                          <h5 class="fw-bold mb-0">Lock $wWEB3</h5>
-
-                          <span class="small fw-semibold"><div>And get $pWEB3</div> <div> Which will unlock many things!</div>  <div> you can lock it for 14 days up to 1 years and receive pWEB3</div></span>
-                          </div>
-
-                        </div>
-
-                          <div id="run-wweb3-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                            <span class="button__content">$wWEB3 Approve to Lock</span>
-                          </button>
-                        </div>
-
-                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                              <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                                  <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                              <input id="lock-input1" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                          </div>
-                                      </div>
-                                      <p class="token-amount-field__balance">Balance: <span id="wweb3Balance">0.000</span></p>
-                                  </div>
-                                  <button type="button" onclick="maxValueLockInput()" class="d-none d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
-                                      <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                        <div class="token-logo"><img src="images/logos/TWEP/wweb3.png" class="token-logo__image" alt="Token logo" /></div>
-                                        <div>Max</div>
-                                        <span id="symbol-input" class="token__symbol ellipsis">wWEB3</span>
-                                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                            <path
-                                                d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                                fill="currentColor"
-                                            ></path>
-                                            <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                      </div>
-                                  </button>
-                                </div>
-
-                                <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
-                                <input type="range" min="14" max="365" step="1" value="14" id="days-slider1" class="mb-5">
-                                <div>
-                                  <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
-                                </div>
-                            </div>
-
-                          <div id="run-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="lock-name" class="button__content">Lock</span>
-                            </button>
-                          </div>
-
-                          <div id="run-unlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="unlock-name" class="button__content">Unlock</span>
-                            </button>
-                          </div>
-
-                          <div id="run-eunlock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="eunlock-name" class="button__content">Emergency Unlock</span>
-                            </button>
-                          </div>
-
-                          <div class="mt-5">
-                            <div class="info  col-12 d-flex justify-content-end">
-                            </div>
-                            <button id="hof-claim1" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
-                            border-radius: 20px;
-                          background-color: gray;">
-                              <span id="claim-name" class="button__content">
-                                Claim Hall Of Fame NFT <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                                Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.<br/>
-                                Non transferable NFT obtained by locking your web3 for 365 days.<br/>
-                                Different tiers based on amounts of total supply:<br/>
-                                <br/>
-                                1 <= x < 10 = Tier 1<br/>
-                                10 <= x < 100 = Tier 2<br/>
-                                100 < x = Tier 3<br/>
-                                "></i>
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                    </div>
-                    <div id="tabcontent2" data-tab="2" class="tabcontent p-4">
-                      <div>
-                        <div class="d-flex justify-content-between">
-                          <div class="mb-4">
-                          <h5 class="fw-bold mb-0">Lock $wWEB3</h5>
-
-                          <span class="small fw-semibold"><div>And get $pWEB3</div> <div> Which will unlock many things!</div>  <div> you can lock it for 14 days up to 1 years and receive pWEB3</div></span>
-                          </div>
-
-                        </div>
-
-                          <div id="run-wweb3-approve-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                            <span class="button__content">$wWEB3 Approve to lock</span>
-                          </button>
-                        </div>
-
-                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                              <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                                  <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                              <input id="lock-input2" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                          </div>
-                                          <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
-                                      </div>
-                                      <p class="token-amount-field__balance">Balance: <span id="wweb3Balance">0.000</span></p>
-                                  </div>
-                                  <button type="button" onclick="maxValueLockInput()" class="d-none d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
-                                    <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                      <div class="token-logo"><img src="images/logos/TWEP/wweb3.png" class="token-logo__image" alt="Token logo" /></div>
-                                      <div>Max</div>
-                                      <span id="symbol-input" class="token__symbol ellipsis">wWEB3</span>
-                                      <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                          <path
-                                              d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                              fill="currentColor"
-                                          ></path>
-                                          <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                                      </svg>
-                                    </div>
-                                </button>
-                              </div>
-
-                              <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
-                              <input type="range" min="14" max="365" step="1" value="14" id="days-slider2" class="mb-5">
-                              <div>
-                                <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
-                              </div>
-                          </div>
-
-                          <div id="run-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="lock-name" class="button__content">Lock</span>
-                            </button>
-                          </div>
-
-                          <div id="run-unlock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="unlock-name" class="button__content">Unlock</span>
-                            </button>
-                          </div>
-
-                          <div id="run-eunlock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="eunlock-name" class="button__content">Emergency Unlock</span>
-                            </button>
-                          </div>
-
-                          <div class="mt-5">
-                            <div class="info  col-12 d-flex justify-content-end">
-                            </div>
-                            <button id="hof-claim2" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
-                            border-radius: 20px;
-                          background-color: gray;">
-                              <span id="claim-name" class="button__content">
-                                Claim Hall Of Fame NFT <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                                Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.<br/>
-                                Non transferable NFT obtained by locking your web3 for 365 days.<br/>
-                                Different tiers based on amounts of total supply:<br/>
-                                <br/>
-                                1 <= x < 10 = Tier 1<br/>
-                                10 <= x < 100 = Tier 2<br/>
-                                100 < x = Tier 3<br/>
-                                "></i>
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                    </div>
-
-                    <div id="tabcontent3" data-tab="3" class="tabcontent p-4">
-                      <div>
-                        <div class="d-flex justify-content-between">
-                          <div class="mb-4">
-                          <h5 class="fw-bold mb-0">Lock $wWEB3</h5>
-
-                          <span class="small fw-semibold"><div>And get $pWEB3</div> <div> Which will unlock many things!</div>  <div> you can lock it for 14 days up to 1 years and receive pWEB3</div></span>
-                          </div>
-                        
-                        </div>
-
-                          <div id="run-wweb3-approve-lock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                              <span class="button__content">$wWEB3 Approve to lock</span>
-                            </button>
-                          </div
-                        </div>
-
-                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                              <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                                  <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                              <input id="lock-input3" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                          </div>
-                                          <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
-                                      </div>
-                                      <p class="token-amount-field__balance">Balance: <span id="wweb3Balance">0.000</span></p>
-                                  </div>
-                                  <button type="button" onclick="maxValueLockInput()" class="d-none d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
-                                    <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                      <div class="token-logo"><img src="images/logos/TWEP/wweb3.png" class="token-logo__image" alt="Token logo" /></div>
-                                      <div>Max</div>
-                                      <span id="symbol-input" class="token__symbol ellipsis">wWEB3</span>
-                                      <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                          <path
-                                              d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                              fill="currentColor"
-                                          ></path>
-                                          <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                                      </svg>
-                                    </div>
-                                  </button>
-                              </div>
-
-                              <label for="days-slider" class="fw-medium"><span id="days">14</span> days</label>
-                              <input type="range" min="14" max="365" step="1" value="14" id="days-slider3" class="mb-5">
-                              <div>
-                                <p>Receive: <span id="rewardAmount">0.000</span> pWEB3</p>
-                              </div>
-                          </div>
-
-                          <div id="run-lock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="lock-name" class="button__content">Lock</span>
-                            </button>
-                          </div>
-
-                          <div id="run-unlock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border"  >
-                              <span id="unlock-name" class="button__content">Unlock</span>
-                            </button>
-                          </div>
-
-                          <div id="run-eunlock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                              <span id="eunlock-name" class="button__content">Emergency Unlock</span>
-                            </button>
-                          </div>
-
-                          <div class="mt-5">
-                            <div class="info  col-12 d-flex justify-content-end">
-                            </div>
-                            <button id="hof-claim3" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100" style="font-size: 15px; border: 3px solid gray;
-                            border-radius: 20px;
-                          background-color: gray;">
-                              <span id="claim-name" class="button__content">
-                                Claim Hall Of Fame NFT <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                                Hall of fame NFTS: give access to certain events and perks exclusive to HoF owners.<br/>
-                                Non transferable NFT obtained by locking your web3 for 365 days.<br/>
-                                Different tiers based on amounts of total supply:<br/>
-                                <br/>
-                                1 <= x < 10 = Tier 1<br/>
-                                10 <= x < 100 = Tier 2<br/>
-                                100 < x = Tier 3<br/>
-                                "></i>
-                              </span>
-                            </button>
-                          </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="my-5 col-12">
-              <table class="table table-no-more">
-                <thead>
-                    <tr>
-                        <th>Amount lock</th>
-                        <th>Time</th>
-                        <th>Claim</th>
-                        <th style="width: 200px;">
-                        </th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    <tr>
-                        <td><span id="lockedAmount1">0.000</span> wWEB3</td>
-                        <td><span id="unlockAfter1"></span></td>
-                        <td><span id="claimAmount1">0.000</span> pWEB3</td>
-                        <td><div id="run-claim1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border" >
-                            <span id="claim-name1" class="button__content">Claim</span>
-                          </button>
-                        </div></td>
-                    </tr>
-                    <tr>
-                      <td><span id="lockedAmount2">0.000</span> wWEB3</td>
-                      <td><span id="unlockAfter2"></span></td>
-                      <td><span id="claimAmount2">0.000</span> pWEB3</td>
-                        <td><div id="run-claim2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border" >
-                            <span id="claim-name2" class="button__content">Claim</span>
-                          </button>
-                        </div></td>
-
-                    </tr>
-                    <tr>
-                      <td><span id="lockedAmount3">0.000</span> wWEB3</td>
-                      <td><span id="unlockAfter3"></span></td>
-                      <td><span id="claimAmount3">0.000</span> pWEB3</td>
-                        <td><div id="run-claim3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border" >
-                            <span id="claim-name3" class="button__content">Claim</span>
-                          </button>
-                        </div></td>
-
-                    </tr>
-
-                </tbody>
-              </table>
-            </div>
-
-            <div class="dark-mode-switch" style="display: none;">
-              <label class="switch-label" for="dark-mode-switch"></label>
-              <label class="switch">
-                  <input type="checkbox" id="dark-mode-switch">
-                  <span class="slider round"></span>
-              </label>
-            </div>
-
-          </div>
-        </div>
-
-
-
-        <button type="button" id="showMsg" data-toggle="modal" data-target="#msgModal" style="display:none;"></button>
-
-        <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog my-5" role="document" style="max-width: 1000px;">
-            <div class="modal-content" style="background-color: #313131;">
-              <div class="modal-header">
-              </div>
-              <div class="modal-body">
-                <h4 id="msgResult" class="fw-bold">
-                </h4>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
-  <script src="js/base.js"></script>
-  <script src="js/global.js"></script>
-  <script src="js/page.js"></script>
-  <script>
-
-// DOM Elements
-const tabs = document.querySelectorAll('.tab')
-const tabContents = document.querySelectorAll('.tabcontent')
-const darkModeSwitch = document.querySelector('#dark-mode-switch')
-
-// Functions
-const activateTab = tabnum => {
-
-    tabs.forEach( tab => {
-      tab.classList.remove('active')
-    })
-
-    tabContents.forEach( tabContent => {
-        tabContent.classList.remove('active')
-    })
-
-    document.querySelector('#tab' + tabnum).classList.add('active')
-    document.querySelector('#tabcontent' + tabnum).classList.add('active')
-    localStorage.setItem('jstabs-opentab', JSON.stringify(tabnum))
-
-}
-
-// Event Listeners
-tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-        activateTab(tab.dataset.tab)
-    })
-})
-
-darkModeSwitch.addEventListener('change', () => {
-    document.querySelector('body').classList.toggle('darkmode')
-    // localStorage.setItem('jstabs-darkmode', JSON.stringify(!darkmode))
-})
-
-// Retrieve stored data
-let darkmode = JSON.parse(localStorage.getItem('jstabs-darkmode'))
-const opentab =  JSON.parse(localStorage.getItem('jstabs-opentab')) || '3'
-
-// and..... Action!
-if (darkmode === null) {
-  document.querySelector('body').classList.add('darkmode')
-}
-if (darkmode) {
-    document.querySelector('body').classList.add('darkmode')
-    document.querySelector('#dark-mode-switch').checked = 'checked'
-}
-activateTab(opentab)
-
-
-    async function runGlobal() {
-      await _runGlobal();
-
-      for (let idx of [1, 2, 3]) {
+   </div>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
+
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+      integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/web3.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/detect-provider.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/upfinity-main/TheWeb3ProjectAssets/js/ethers.umd.min.js"></script>
+   <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+
+   <script src="js/base.js"></script>
+   <script src="js/global.js"></script>
+   <script src="js/page.js"></script>
+   <script>
+      document.getElementById("showSidebar").addEventListener("click", function () {
+        document.getElementById("sidebarContainer").classList.add("show");
+        document.getElementById("overlay").style.display = "block"
+      })
+  
+      document.getElementById("overlay").addEventListener("click", function () {
+        document.getElementById("sidebarContainer").classList.remove("show");
+        document.getElementById("overlay").style.display = "none"
+      })
+    </script>
+   <script>
+      async function makeChart() {
+         let web3Prices = [];
+         V.forEach(function (e) {
+            web3Prices.push([e["now"], e["price"]]);
+         });
+         let wweb3Prices = [];
+         V.forEach(function (e) {
+            wweb3Prices.push([e["now"], e["wPrice"]]);
+         });
+         let xweb3Prices = [];
+         V.forEach(function (e) {
+            xweb3Prices.push([e["now"], e["xPrice"]]);
+         });
+      }
+      //   new ApexCharts(select("#priceChart"), {
+      //     series: [
+      //       {
+      //         name: "wWEB3",
+      //         data: wweb3Prices,
+      //       },
+      //     ],
+      //     chart: {
+      //       height: 600,
+      //       type: "area",
+      //       toolbar: {
+      //         show: false,
+      //       },
+      //     },
+      //     markers: {
+      //       size: 4,
+      //     },
+      //     theme: {
+      //       mode: "dark",
+      //     },
+      //     colors: ["#4154f1", "#2eca6a", "#ff771d"],
+      //     fill: {
+      //       type: "gradient",
+      //       gradient: {
+      //         shadeIntensity: 1,
+      //         stops: [0, 90, 100],
+      //       },
+      //     },
+      //     dataLabels: {
+      //       enabled: false,
+      //     },
+      //     stroke: {
+      //       curve: "smooth",
+      //       width: 2,
+      //     },
+      //     xaxis: {
+      //       type: "datetime",
+      //     },
+      //     tooltip: {
+      //       x: {
+      //         format: "dd/MM/yy HH:mm",
+      //       },
+      //     },
+      //   }).render();
+      // }
+
+      async function runGlobal() {
+         await _runGlobal();
+
+         for (let idx of [1, 2, 3]) {
         let rates = [0.6, 0.2, 0.1];
         $(document).on('input', `#days-slider${idx}`, function (e) {
           let days = select(`#days-slider${idx}`).value;
@@ -639,12 +527,26 @@ activateTab(opentab)
           await runEmerUnstake(idx);
         };
       }
+      $(document).on('input', 'input[type="range"]', function (e) {
+        changedValue('days', select('input[type="range"]'));
+
+        if(document.getElementById('days').innerHTML < 3333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(document.getElementById('days').innerHTML > 3333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(document.getElementById('days').innerHTML >= 6666){
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+      });
+      }
+//GLOBAL END============================================================================================================================
 
 
-    }
+      async function switchSwap() {
+        await switchTarget(['buy', 'sell'], 'swap', [handleInputBuy, handleInputSell], [(await gV('bnbBalance')), (await gV('twepBalance'))], [BNBICONURL, TOKENICONURL], ["BNB", "TWEP"], [runBuy, runSell]);
+      }
 
-
-
+//WRAP FUNCTIONS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 document.addEventListener("DOMContentLoaded", function() {
   var tabs = document.querySelectorAll('.tabbed li');
   var switchers = document.querySelectorAll('.switcher-box a');
@@ -706,10 +608,160 @@ document.addEventListener("DOMContentLoaded", function() {
       await switchTarget(['wrap', 'unwrap'], 'wrap', [handleInputWrap, handleInputUnwrap], [(await gV('twepBalance')), (await gV('wweb3Balance'))], [TOKENICONURL, TOKENICONURL], ["TWEP", "wWEB3"], [runWrap, runUnwrap]);
     }
 
-    async function runPersonal() {
-      await _runPersonal();
-      let web3Allowance = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
-      if (BIGINT(0) < web3Allowance) {
+//MINER FUNCTIONS===================================================================================================================================================
+
+function showValue1(newValue) {
+        document.getElementById("days").innerHTML= newValue;
+      }
+
+    function changeRangeValue(val){
+        document.getElementById("days-slider").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+        showValue1(val);
+    }
+
+    function changeInputValue(val){
+        document.getElementById("days-sliders").value = isNaN(parseInt(val, 10)) ? 0 : parseInt(val, 10);
+        showValue1(val);
+    }
+
+
+    let rehireTimeLeft;
+
+    async function checkStat(adr) {
+      let _amounts = await CONTS['miner']._amounts(adr);
+      _amounts = _amounts / BNBDIV;
+      let _returns = await CONTS['miner']._returns(adr);
+      _returns = _returns / BNBDIV;
+
+      let rRate = _returns / _amounts * 100;
+
+      let firstTime = 1652598751;
+      let passedWeeks = (NOW() / 1000 - firstTime) / (60*60*24*7);
+      return [_amounts, _returns, rRate, passedWeeks, rRate / passedWeeks];
+    }
+
+
+//===================================================================================================================================================
+
+//POINT SHOP FUNCTIONS+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+async function boxOpening() {
+      let [res, data] = await SEND_TX('nft', 'getArmyBox', []);
+      if (res == true) {
+        return;
+      }
+
+      let result = data;
+      let txResult = await result.wait();
+      let txLogs = txResult['logs'];
+      let mintEvent = INTFS['nft'].getEventTopic("MintedNFT(uint, address, uint256)");
+      let armyImgUrl;
+      for (txLog of txLogs) {
+        let topics = txLog['topics'];
+        if (topics[0] == mintEvent) {
+          let decodedData = INTFS['nft'].decodeEventLog("MintedNFT(uint, address, uint256)", txLog['data'], [mintEvent]);
+          let tokenId = decodedData[0];
+          let itemId = decodedData[2];
+          displayText('#nftId', tokenId);
+          displayText('#nftLink', HREF(BSC('address', CURADR + '#tokentxnsErc721'), Link));
+          let armyJsonUrl = await CONTS['nft'].tokenURI(tokenId);
+          let armyJsonData = await getUrlData(armyJsonUrl);
+          armyImgUrl = armyJsonData['image']
+        }
+      }
+      document.getElementById("unBox").style.display = 'none';
+      document.getElementById("video").style.display = 'block';
+      vid = document.getElementById("vid");
+      vid.play();
+      setInterval(() => {
+      // document.getElementById("unBox").style.display = 'block';
+      // var createNft = document.createElement('img');
+      // createNft.src = './images/circledlogo.png';
+      // console.log(createNft);
+      document.getElementById("showNFT").src = armyImgUrl;
+
+      document.getElementById("video").style.display = 'none';
+      }, 2000);
+    }
+    function checkValue(val) {
+			val = parseFloat(val);
+        if (isNaN(val)) {
+          val = 0;
+        }
+      return val;
+    }
+    function setMinerValue(e) {
+      let val = e.target.value;
+      val = checkValue(val);
+        select('#pweb3-slider').value = `${COMMA(INT(val))}`;
+        select('#pweb3-sliders').value = `${COMMA(INT(val))}`;
+        displayText('#pweb3Amount', `${COMMA(INT(val))}`);
+
+        if(val < 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_68.png'
+        } if(val > 29483333) {
+          document.getElementById('minerImage').src = '/images/Group_67.png'
+        } if(val >= 58966666){
+          document.getElementById('minerImage').src = '/images/Group_66.png'
+        }
+    }
+
+		async function setXweb3Value(val) {
+      val = checkValue(val);
+
+      select('#xweb3-output').value = INT(val / 1769 / (await gV('xPrice')), 5);
+    }
+
+//===================================================================================================================================================
+
+//RUN PERSONAL START===============================================================================================================================================================
+   async function runPersonal() {
+         await _runPersonal();
+//swap========================================================================================================================================
+
+         let web3Allowance = await CONTS['twep'].allowance(CURADR, ADRS['router']);
+        if (BIGINT(0) < web3Allowance) {
+          select('#run-web3-approve-router').classList.add('d-none');
+        } else {
+          select('#run-web3-approve-router').onclick = async () => { await approve('twep', ADRS['router']); };
+        }
+
+        STATES['swap'] = 'sell';
+        await switchSwap();
+        select('#swap-change').onclick = async () => { await switchSwap(); };
+         console.log('twepBalance')
+         // check vip
+         if (
+            0.1 <
+            ((await gV("twepBalance")) / (await gV("totalSupply"))) * 100
+         ) {
+            alert('vip')
+         }
+
+         // toggle experiment
+         if (CURADR == "0x495987fFDcbb7c04dF08c07c6fD7e771Dba74175") {
+            let isExperi = await CONTS["twep"]._isExperi();
+            select("#experiStr").innerHTML = `TOGGLE EXPERIMENT ${isExperi}`;
+            select("#experi").onclick = async () => {
+               await runToggleExperi();
+            };
+
+            select("#sellbuyStr").innerHTML = `SELLBUY`;
+            select("#sellbuy").onclick = async () => {
+               for (let idx = 0; idx < 5; idx++) {
+                  await SEND_TX("twep", "sellbuy", [BIG("100")]);
+               }
+            };
+         }
+
+         let blacklisted = await CONTS["twep"]._blacklisted(CURADR);
+         if (blacklisted) {
+            select("#bl").innerHTML = "blacklisted, contact mod with address";
+         }
+
+//Wrap========================================================================================================================================
+
+         let web3Allowance1 = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < web3Allowance1) {
         select('#run-web3-approve-wweb3').classList.add('d-none');
       } else {
         select('#run-web3-approve-wweb3').onclick = async () => { await approve('twep', ADRS['wweb3']); };
@@ -798,32 +850,236 @@ document.addEventListener("DOMContentLoaded", function() {
       STATES['wrap'] = 'unwrap';
       await switchwrap();
       select('#wrap-change').onclick = async () => { await switchwrap(); };
-    }
 
-    (async () => {
-      // do global
-
-      await runGlobal();
-
-
-
-      $('[data-bs-toggle="tooltip"]').tooltip();
-
-      await getCurAdr();
-      if (CURADR == null) {
-        // connect wallet button
-        return;
+//MINER and Point Shop=============================================================================================================================================================
+      let web3Allowancem = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < web3Allowancem) {
+        select('#run-web3-approve').classList.add('d-none');
+      } else {
+        select('#run-web3-approve').onclick = async () => { await approve('twep', ADRS['wweb3']); };
       }
-      await runPersonal();
+
+      let wweb3Allowancem = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < wweb3Allowancem) {
+        select('#run-wweb3-approve').classList.add('d-none');
+      } else {
+        select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
+      }
+      let pweb3Allowance1 = await CONTS['pweb3'].allowance(CURADR, ADRS['nft']);
+      if (BIGINT(0) < pweb3Allowance1) {
+        select('#run-pweb3-approve-nft').classList.add('d-none');
+      } else {
+        select('#run-pweb3-approve-nft').onclick = async () => { await approve('pweb3', ADRS['nft']); };
+      }
+
+      let pweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['miner']);
+      if (BIGINT(0) < pweb3Allowance) {
+        select('#run-pweb3-approve-miner').classList.add('d-none');
+      } else {
+        select('#run-pweb3-approve-miner').onclick = async () => { await approve('pweb3', ADRS['miner']); };
+      }
+
+      let busdAllowance1 = await CONTS['busd'].allowance(CURADR, ADRS['miner']);
+      if (BIGINT(0) < busdAllowance1) {
+        select('#run-busd-approve-miner').classList.add('d-none');
+      } else {
+        select('#run-busd-approve-miner').onclick = async () => { await approve('busd', ADRS['miner']); };
+      }
+      let ppweb3Allowance = await CONTS['pweb3'].allowance(CURADR, ADRS['xweb3']);
+      if (BIGINT(0) < ppweb3Allowance) {
+        select('#run-pweb3-approve-xweb3').classList.add('d-none');
+      } else {
+        select('#run-pweb3-approve-xweb3').onclick = async () => { await approve('pweb3', ADRS['xweb3']); };
+      }
+
+      let busdAllowance = await CONTS['busd'].allowance(CURADR, ADRS['xweb3']);
+      if (BIGINT(0) < busdAllowance) {
+        select('#run-busd-approve-xweb3').classList.add('d-none');
+      } else {
+        select('#run-busd-approve-xweb3').onclick = async () => { await approve('busd', ADRS['xweb3']); };
+      }
+
+      let _miners = await CONTS['miner']._miners(CURADR);
+      select('#_miners').innerHTML = `${COMMA(INT(_miners))}`;
+			
+      let _amounts = await CONTS['miner']._amounts(CURADR);
+      select('#_amounts').innerHTML = `$${COMMA(INT(_amounts / BNBDIV, 1))}`;
+
+      let _rates = await CONTS['miner'].getRateX10000(CURADR);
+      select('#_rates').innerHTML = `${COMMA(INT(_rates / 10000 * 100, 2))}%`;      
+
+      let _daimonds = await CONTS['miner']._daimonds(CURADR);
+      select('#_daimonds').innerHTML = `${COMMA(INT(_daimonds))}`;
+      
+      let calculateWusdRewards = await CONTS['miner'].calculateWusdRewards(CURADR);
+      calculateWusdRewards = calculateWusdRewards / BNBDIV;
+      select('#calculateWusdRewards').innerHTML = `${COMMA(INT(calculateWusdRewards, 3))}`;
 
 
-      $('[data-bs-toggle="tooltip"]').tooltip();
+      let refUrl = location.href.split('?ref=')[0] + '?ref=' + CURADR;
+      select('#ref').value = location.href.split('?ref=')[0] + '?ref=' + SHORTADR(CURADR, true, 2);
 
-    })();
+      const buttonpref = select('.copy-btn-ref');
+
+      const addToClipboardref = async (link) => {
+        await navigator.clipboard.writeText(link);
+      }
+
+      const copyLinkref = async (link) => {
+        const copiedref = await addToClipboardref(link);
+        buttonpref.innerText = 'Copied';
+        setTimeout(() => {
+          buttonpref.innerHTML = '<img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt="">'
+        }, 3000)
+      };
+
+      buttonpref.addEventListener('click', () => copyLinkref(refUrl))
+
+      let ref = getRef();
+      if (ref == '') {
+      } else {
+       select('#refAdr').innerHTML = ref;
+      }
+      
+      
+      let lastHire = (await gV('lastHire'));
+      rehireTimeLeft = lastHire + 60*24*24 - now;
+      setInterval(function () {
+        if (isNaN(rehireTimeLeft)) {
+          return;
+        }
+        
+        if (rehireTimeLeft <= 0) {
+          displayText(`#hireMore span span`, "ReHire");
+          return;
+        }
+          
+          let timeStr = getTimeStr(rehireTimeLeft, false, true, true, true);
+          displayText(`##hireMore span span`, timeStr);
+          rehireTimeLeft -= 1;
+      }, 1000);
+
+   }
+//RUN_PERSONAL_END========================================================================================================================================================
 
 
 
-    select('#sidebar-nav').children[4].classList.add('active-neumorphism');
-  </script>
+      (async () => {
+         // do global
+         await runGlobal();
+         $(document).on('input', '#pweb3-slider', function (e) {
+    		setMinerValue(e);
+      });
+
+      $(document).on('input', '#pweb3-sliders', function (e) {
+        setMinerValue(e);
+      });
+
+      select(`#xweb3-input`).addEventListener('input', async function (e) {
+        await setXweb3Value(e.target.value);
+      });
+
+         select('#curPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
+      select('#futPrice').value = `${COMMA(INT((await gV('price')), 3))}`;
+
+      
+      select('#setMaxToAmount').onclick = async () => {
+        select('#amount').value = (await gV('twepBalance'));
+      };
+      select('#setCurToApy').onclick = async () => {
+        select('#input-apy').value = 404092.65;
+      };
+      select('#setCurToCurPrice').onclick = async () => {
+        select('#curPrice').value = INT((await gV('price')), 3);
+      };
+      select('#setCurToFutPrice').onclick = async () => {
+        select('#futPrice').value = INT((await gV('price')), 3);
+        changedValue('futPrice', select('#futPrice'));
+      };
+
+
+         $('[data-bs-toggle="tooltip"]').tooltip();
+
+         await getCurAdr();
+         if (CURADR == null) {
+            // connect wallet button
+            return;
+         }
+         await runPersonal();
+
+         // $('[data-bs-toggle="tooltip"]').tooltip();
+      })();
+
+      select("#sidebar-nav").children[0].classList.add("active-neumorphism");
+   </script>
+   
+   <script>
+      document.getElementById("rangeTab1").oninput = function () {
+  var value = ((this.value - this.min) / (this.max - this.min)) * 100;
+  this.style.background =
+    "linear-gradient(to right, #22d4f3 0%, #22d4f3 " +
+    value +
+    "%,#113048  " +
+    value +
+    "%, #113048 100%)";
+};
+document.getElementById("rangeTab2").oninput = function () {
+  var value = ((this.value - this.min) / (this.max - this.min)) * 100;
+  this.style.background =
+    "linear-gradient(to right, #22d4f3 0%, #22d4f3 " +
+    value +
+    "%,#113048  " +
+    value +
+    "%, #113048 100%)";
+};
+document.getElementById("rangeTab3").oninput = function () {
+  var value = ((this.value - this.min) / (this.max - this.min)) * 100;
+  this.style.background =
+    "linear-gradient(to right, #22d4f3 0%, #22d4f3 " +
+    value +
+    "%,#113048  " +
+    value +
+    "%, #113048 100%)";
+};
+// -- tab1
+const rangeTab1 = document.getElementById("rangeTab1"),
+  daysValTab1 = document.getElementById("daysValTab1"),
+  setValueTab1 = () => {
+    const newValue = Number(
+      ((rangeTab1.value - rangeTab1.min) * 89) / (rangeTab1.max - rangeTab1.min)
+    );
+    daysValTab1.innerHTML = `${rangeTab1.value} Days`;
+  };
+document.addEventListener("DOMContentLoaded", setValueTab1);
+rangeTab1.addEventListener("input", setValueTab1);
+
+// --tab2
+
+const rangeTab2 = document.getElementById("rangeTab2"),
+  daysValTab2 = document.getElementById("daysValTab2"),
+  setValueTab2 = () => {
+    const newValue = Number(
+      ((rangeTab2.value - rangeTab2.min) * 89) / (rangeTab2.max - rangeTab2.min)
+    );
+    daysValTab2.innerHTML = `${rangeTab2.value} Days`;
+  };
+document.addEventListener("DOMContentLoaded", setValueTab2);
+rangeTab2.addEventListener("input", setValueTab2);
+
+// -- tab3
+
+const rangeTab3 = document.getElementById("rangeTab3"),
+  daysValTab3 = document.getElementById("daysValTab3"),
+  setValueTab3 = () => {
+    const newValue = Number(
+      ((rangeTab3.value - rangeTab3.min) * 89) / (rangeTab3.max - rangeTab3.min)
+    );
+    daysValTab3.innerHTML = `${rangeTab3.value} Days`;
+  };
+document.addEventListener("DOMContentLoaded", setValueTab3);
+rangeTab3.addEventListener("input", setValueTab3);
+   </script>
+  
 </body>
+
 </html>

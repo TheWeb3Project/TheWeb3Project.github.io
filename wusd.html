@@ -1,457 +1,388 @@
 <!DOCTYPE html>
-<html lang="en" style=" background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title class="title">The Web3 Project | Taking online further beyond</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/fa.css">
+   <!-- ------- fav-icon code ---------- -->
 
-  <title>The Web3 Project | Taking online further beyond</title>
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" name="description">
-  <meta content="The Web3 Project | Taking online further beyond" property="og:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="og:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="og:image">
-  <meta content="The Web3 Project | Taking online further beyond" property="twitter:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="twitter:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="twitter:image">
-  <meta property="og:type" content="website">
-  <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link rel="shortcut icon" href="images/overview-1.svg" />
    
-  <link href="images/logos/TWEP/TWEP.png" rel="shortcut icon" type="image/x-icon" />
-  <link href="images/logos/TWEP/TWEP.png" rel="apple-touch-icon" />
+   <!-- --- style css file link --- -->
 
-  <meta name="twitter:image" content="images/logos/TWEP/TWEP.png">
-  <meta name="twitter:description" content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Web3 Project | Taking online further beyond">
-
-  <meta property="og:image" content="images/logos/TWEP/TWEP.png">
-  <link rel="stylesheet" href="css/flooz.css">
+   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body id="titano-finance" class="background">
-  <div class="container-fluid">
-    <div class="row">
-      <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;">
-
+<body class="body">
+   
+   <div class="tooltipdiv"></div>
+   <div class="tooltipdiv1"></div>
+   <div class="clipboard"><img src="images/Union.svg" alt="Union" />&ThinSpace;&ThinSpace;<span>Copied to clipboard</span></div>
+   <!-- ------ POP-UP DIV START ------ -->
+   <div class="allmaindiv">
+      <div class="secondmaindiv">
+      <div class="popup-main">
+         <div class="popup-cntdiv">
+            <div class="popup-firstdiv">
+               <div class="share-cnt-div">
+                  <div class="share">
+                     <span><img src="images/headicon.png" alt="offer"></span>
+                     <span class="shareit">Share it</span>
+                  </div>
+                  <div class="close">
+                     <span><img src="images/close-circle.png" alt="close-circle" class="close-circle" onclick="clearModalData()"></span>
+                  </div>
+               </div>
+               <div class="share-icon-div">
+                  <span class="copy-img-cnt">Click here to <span class="CopyToImg" onclick="copyImg()">Copy</span> this image and spreadthis to everywhere</span>
+                  &ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;
+                  <div class="popup-share-img">
+                     <span><img src="images/twt.png" class="Social-icons-img" alt="offer"></span>
+                     &ThinSpace;&ThinSpace;
+                     <span><img src="images/insta.png" class="Social-icons-img" alt="offer"></span>
+                     &ThinSpace;&ThinSpace;
+                     <span><img src="images/fcbk.png" class="Social-icons-img" alt="offer"></span>
+               </div>
+               </div>
+               <hr class="popup-line">
+            </div>
+            <div class="popup-imgdiv">
+               <img src="" alt="" id="dataimg" height="100%" width="100%">
+            </div>
+         </div>
       </div>
+      </div>
+   </div>
 
-      <div id="overlay" style="z-index: 1000001;"></div>
+   <!-- ------ POP-UP DIV END ------ -->
+   <div class="bg"></div>
+   <div class="wrapper">
+      <div class="side-nav" id="nav">
+         <div class="logo">
+            <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
+         </div>
+         <hr class="hide-m" />
+         <div class="side-tabs-list">
+            <ul class="side-tabs-ul nav-pills">
+               <li class="side-tab-li" onclick="onChangeMenu('index')"><span><i
+                        class="dashboard"></i>Dashboard</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('account')"><span><i class="account"></i>Account</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('swap')"><span><i class="swap"></i>Swap</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('wrap')"><span><i class="wrap"></i>Wrap</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('pointshop')"><span><i class="pointshop"></i>Point Shop</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('miner')"><span><i class="miner"></i>Miner</span></li>
+               <li class="side-tab-li tab-active background-box1" onclick="onChangeMenu('wusd')"><span><i class="wusd"></i>WUSD</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('xweb3')"><span><i class="xweb3"></i>xWEB3</span></li>
+               <li class="side-tab-li" onclick="window.open('https://docs.theweb3project.com/','_blank')"><span><i class="docs"></i>Docs</span></li>
+            </ul>
+         </div>
+         <hr />
+         <div class="social-icons-div">
+            <ul>
+               <li>
+                  <a href="https://discord.com/invite/Mn43SWyj3g" target="_blank"><i class="discord"></i></a>
+               </li>
+               <li>
+                  <a href="https://twitter.com/TheWeb3Project" target="_blank"><i class="twitter"></i></a>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/c/TheWeb3Project/featured" target="_blank"><i class="youtube"></i></a>
+               </li>
+               <li>
+                  <a href="https://t.me/TheWeb3ProjectPortal" target="_blank"><i class="telegram"></i></a>
+               </li>
+            </ul>
+         </div>
+         <div class="alert-div">
+            <p class="turnmsg">Turn on alerts</p>
+            <label class="switch">
+               <input type="checkbox" id="turnon"  onclick="turnOnfunction()"/>
+               <span class="slider round"></span>
+            </label>
+         </div>
+      </div>
+      <div class="main-content-div">
 
-      <main id='main'>
-        <div id="web3-header">
-        </div>
-
-        <div id="container">
-          <div class="my-5 col-12">
-            <div id='card'>
-              <span class="fw-medium ms-1">$WUSD Contract:
-                <a href="https://bscscan.com/token/0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16" target="_blank">
-                  0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16
-                </a>
-                <button id="copy-wusd copy-btn"  src="./images/copy-solid.svg" alt="">
-                </button>
-              </span>
+         <div class="upper-div">
+            <div class="logo1">
+               <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
             </div>
-          </div>
-
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                    BUSD liquidity <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    BUSD amount in WUSD contract<br/>
-                    for safety, busd liquidity size will be limited<br/>
-                    it will be refilled periodically
-                    "></i>
-                  </div>
-                  <h4 id="liqWusdBusd" class="fw-bold">0.000</h4>
-                </div>
-
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                    WUSD liquidity <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    WUSD total supply
-                    "></i>
-                  </div>
-                  <h4 id="liqWusdWusd" class="fw-bold">0.000</h4>
-                </div>
-
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                  	WUSD Price <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    80% BUSD amount in WUSD contract / WUSD total supply<br/>
-                    price range = 0.9 - 1.1
-                    "></i>
-                  </div>
-                  <h4 id="wusdPrice" class="fw-bold">0.000</h4>
-                </div>
-              </div>
-            </div>
-          </div>
-
-
-          <div class="my-5 col-12">
-
-            <div id='card'>
-              <h5 class="fw-bold mb-0">Buy/Sell $WUSD in instance</h5>
-              <span class="small fw-semibold">
-                Rules <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                1% tax for buy/sell<br/>
-                price stays in 0.9-1.1<br/>
-                if price stays in 0.97-1.03, it is at peg<br/>
-                if price is not in 0.97-1.03, it is depegged<br/>
-                if depegged, you can trade bond (coming soon)<br/>
-                "></i>
-              </span>
-              <span class="small fw-semibold">
-                We will provide methods to utilize WUSD (ecosystem, BUSD change, etc) <br/>
-                BUSD liquidity is paused for a while to check potential issues <br/>
-                It will be resumed after the issues are solved
-              </span>
-
-              </span>
-              <div id="run-busd-approve-wusd" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                  <span class="button__content">$BUSD Approve to buy</span>
-                </button>
-              </div>
-
-              <div id="run-wusd-approve-wusd" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                  <span class="button__content">$WUSD Approve to sell</span>
-                </button>
-              </div>
-
-              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; margin-top: 65px; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                  <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                  <input id="wusd-input" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                              </div>
-                              <!-- <button type="button" class="button button--secondary button--size-small button--icon-left token-amount-field__max button--with-icon"><span class="button__content">MAX</span></button> -->
-                          </div>
-                          <p class="token-amount-field__balance">Balance: <span id="wusd-balance-input">0.000</span></p>
-                      </div>
-                      <button type="button" onclick="maxValueWusdInput()" class="d-none d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
-                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                          <div class="token-logo"><img id="wusd-logo-input" src="images/busd.png" class="token-logo__image" alt="Token logo" /></div>
-                          <div>Max</div>
-                          <span id="wusd-symbol-input" class="token__symbol ellipsis">BUSD</span>
-                          <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                              <path
-                                  d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                  fill="currentColor"
-                              ></path>
-                              <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                          </svg>
-                        </div>
-                      </button>
-                  </div>
-                  <div id="wusd-change" class="swap-tokens-form__token-pair__switch">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 275" width="320" height="275" preserveAspectRatio="xMidYMid meet" style="width: 100%; height: 100%; transform: translate3d(0px, 0px, 0px); content-visibility: visible;">
-                        <g clip-path="url(#__lottie_element_16)"><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M-0.9169999957084656,6.150000095367432 C-0.9169999957084656,6.150000095367432 -5.23799991607666,10.472000122070312 -5.23799991607666,10.472000122070312 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -9.5600004196167,6.150000095367432 -9.5600004196167,6.150000095367432 M-5.23799991607666,10.472000122070312 C-5.23799991607666,10.472000122070312 -5.23799991607666,-1.0520000457763672 -5.23799991607666,-1.0520000457763672"></path></g></g><g transform="matrix(6.659999847412109,0,0,6.659999847412109,160,137.5)" opacity="1" style="display: block;"><g opacity="1" transform="matrix(1,0,0,1,0,0)"><path stroke-linecap="round" stroke-linejoin="round" fill-opacity="0" stroke="rgb(255,255,255)" stroke-opacity="1" stroke-width="2.716" d=" M0.9169999957084656,-5.9079999923706055 C0.9169999957084656,-5.9079999923706055 5.23799991607666,-10.229999542236328 5.23799991607666,-10.229999542236328 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 9.559000015258789,-5.9079999923706055 9.559000015258789,-5.9079999923706055 M5.23799991607666,-10.229999542236328 C5.23799991607666,-10.229999542236328 5.23799991607666,1.2940000295639038 5.23799991607666,1.2940000295639038"></path></g></g></g>
-                      </svg>
-                  </div>
-                  <div class="stack-layout d-flex flex-sm-row flex-column stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field" >
-                      <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                          <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                              <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                  <input id="wusd-output" class="input-field__input" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                              </div>
-                          </div>
-                          <p class="token-amount-field__balance">Balance: <span id="wusd-balance-output">0.000</span></p>
-                      </div>
-                      <button type="button" class="d-flex d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border: none;">
-                          <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                            <div class="token-logo"><img id="wusd-logo-output" src="images/logos/TWEP/wusd.png" class="token-logo__image" alt="Token logo"  /></div>
-                              <span id="wusd-symbol-output" class="token__symbol ellipsis">WUSD</span>
-                              <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                  <path
-                                      d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                      fill="currentColor"
-                                  ></path>
-                                  <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                              </svg>
-                          </div>
-                      </button>
-                  </div>
-              </div>
-
-              <div id="wusd-run" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                  <span id="wusd-run-name" class="button__content">Buy</span>
-                </button>
-              </div>
+            <div class="head-title"><i class='title-image wusd'></i>WUSD</div>
+            <div class="hum-burgur-div" id="test-check-hum">
+               <input type="checkbox" class="menu-btn" id="hm-burg" onclick="executefunction()" />
+      <label class="menu-icon" for="hm-burg">
+        <span class="nav-icon"></span>
+      </label>
 
             </div>
-
-
-          </div>
-
-          <div class="my-5 col-12">
-            <div id="tabs" class="tabs-container">
-
-              <div class="tabs mx-auto mt-5">
-                  <a id="tab1" data-tab="1" class="tab">Stake 1</a>
-                  <a id="tab2" data-tab="2" class="tab">Stake 2</a>
-                  <a id="tab3" data-tab="3" class="tab">Stake 3</a>
-              </div>
-
-              <div class="content">
-                  <div id="tabcontent1" data-tab="1" class="tabcontent p-4">
-                      <div id="">
-                        <div class="d-flex justify-content-between">
-                          <div class="mb-4">
-                          <h5 class="fw-bold mb-0">Stake $WUSD</h5>
-
-                          <span class="small fw-semibold"><div>And get $TWEP</div></span>
-                          <span class="small fw-semibold">TWEP Reward Amount = Staked $WUSD Amount * Staked Days / $TWEP Price at unstake</span>
-                          </div>
-
-                        </div>
-
-                        <div id="run-wusd-approve-lock1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                        <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                          <span class="button__content">$WUSD Approve to Stake</span>
-                        </button>
-                      </div>
-
-                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                            <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                                <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                                    <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                            <input id="wusd-input1" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                        </div>
-                                    </div>
-                                    <p class="token-amount-field__balance">Balance: <span id="wusdBalance">0.000</span></p>
-                                    <button type="button" onclick="maxValueWusdInput()" class="d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
-                                      <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                        <div class="token-logo"><img src="images/logos/TWEP/wusd.png" class="token-logo__image" alt="Token logo" /></div>
-                                        <div>Max</div>
-                                        <span id="symbol-input" class="token__symbol ellipsis">WUSD</span>
-                                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                            <path
-                                                d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                                fill="currentColor"
-                                            ></path>
-                                            <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                      </div>
-                                    </button>
-                                </div>
-                              </div>
-                          </div>
-
-                        <div id="run-stake1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                            <span id="lock-name" class="button__content">stake</span>
-                          </button>
-                        </div>
-
-                      </div>
-                  </div>
-                  <div id="tabcontent2" data-tab="2" class="tabcontent p-4">
-                    <div id="">
-                      <div class="d-flex justify-content-between">
-                        <div class="mb-4">
-                        <h5 class="fw-bold mb-0">Stake $WUSD</h5>
-
-                        <span class="small fw-semibold"><div>And get $TWEP</div></span>
-                        </div>
-
-                      </div>
-
-                        <div id="run-wusd-approve-lock2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                        <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                          <span class="button__content">$WUSD Approve to Stake</span>
-                        </button>
-                      </div>
-
-                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                            <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                                <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                                    <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                            <input id="wusd-input2" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                        </div>
-                                    </div>
-                                    <p class="token-amount-field__balance">Balance: <span id="wusdBalance">0.000</span></p>
-                                    <button type="button" onclick="maxValueWusdInput()" class="d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
-                                      <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                        <div class="token-logo"><img src="images/logos/TWEP/wusd.png" class="token-logo__image" alt="Token logo" /></div>
-                                        <div>Max</div>
-                                        <span id="symbol-input" class="token__symbol ellipsis">WUSD</span>
-                                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                            <path
-                                                d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                                fill="currentColor"
-                                            ></path>
-                                            <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                      </div>
-                                    </button>
-                                </div>
-                              </div>
-                          </div>
-
-                        <div id="run-stake2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                            <span id="lock-name" class="button__content">stake</span>
-                          </button>
-                        </div>
-
-                      </div>
-                  </div>
-                  <div id="tabcontent3" data-tab="3" class="tabcontent p-4">
-                    <div id="">
-                      <div class="d-flex justify-content-between">
-                        <div class="mb-4">
-                        <h5 class="fw-bold mb-0">Stake $WUSD</h5>
-
-                        <span class="small fw-semibold"><div>And get $TWEP</div></span>
-                        </div>
-
-                      </div>
-
-                        <div id="run-wusd-approve-lock3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                        <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border">
-                          <span class="button__content">$WUSD Approve to Stake</span>
-                        </button>
-                      </div>
-
-                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form__token-pair" style="margin: 10px 0; box-shadow: inset 2px 2px 9px 0 rgb(17 19 20 / 90%), inset -2px -2px 9px 0 rgb(93 100 112 / 90%);  background-image: linear-gradient(160deg,#424750,#202326);">
-                            <div class="stack-layout stack-layout--gap-100 stack-layout--direction-row stack-layout--align-items-center stack-layout--justify-content-space-between token-field">
-                                <div class="stack-layout stack-layout--gap-0 stack-layout--direction-column stack-layout--align-items-start token-amount-field">
-                                    <div class="stack-layout stack-layout--gap-0 stack-layout--direction-row stack-layout--align-items-baseline">
-                                        <div class="stack-layout stack-layout--gap-50 stack-layout--direction-column input-field">
-                                            <input id="wusd-input3" class="input-field__input" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" style="max-width: 16ch;" />
-                                        </div>
-                                    </div>
-                                    <p class="token-amount-field__balance">Balance: <span id="wusdBalance">0.000</span></p>
-                                    <button type="button" onclick="maxValueWusdInput()" class="d-sm-block button button--secondary button--size-small button--icon-left token-field__token-btn button--with-icon" style="background-image: linear-gradient(160deg,#424750,#202326); border:none;">
-                                      <div class="stack-layout stack-layout--gap-50 stack-layout--direction-row stack-layout--align-items-center token ellipsis">
-                                        <div class="token-logo"><img src="images/logos/TWEP/wusd.png" class="token-logo__image" alt="Token logo" /></div>
-                                        <div>Max</div>
-                                        <span id="symbol-input" class="token__symbol ellipsis">WUSD</span>
-                                        <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 17 18" class="icon token__verified">
-                                            <path
-                                                d="m9.015 1.254 1.233-.63c.568-.29 1.256-.057 1.553.528l.643 1.265c.17.334.478.567.835.633l1.351.247c.624.115 1.048.724.96 1.38l-.193 1.417a1.26 1.26 0 0 0 .32 1.024l.953 1.03c.44.474.44 1.229 0 1.704l-.954 1.03a1.26 1.26 0 0 0-.319 1.024l.193 1.418c.088.654-.336 1.264-.96 1.379l-1.351.247c-.357.066-.665.3-.835.633l-.643 1.265c-.297.584-.984.817-1.553.527l-1.232-.629a1.13 1.13 0 0 0-1.032 0l-1.232.63c-.568.29-1.256.057-1.553-.528l-.643-1.266a1.181 1.181 0 0 0-.835-.633l-1.351-.247c-.624-.115-1.048-.724-.96-1.38l.193-1.417a1.26 1.26 0 0 0-.32-1.024L.33 9.85a1.265 1.265 0 0 1 0-1.704l.954-1.03c.251-.271.37-.65.319-1.023L1.41 4.676c-.089-.654.336-1.265.96-1.378l1.351-.248c.356-.066.664-.3.834-.633l.643-1.265c.297-.584.984-.817 1.553-.527l1.233.629a1.13 1.13 0 0 0 1.03 0z"
-                                                fill="currentColor"
-                                            ></path>
-                                            <path d="m5.599 8.777 2.168 2.119 3.767-4.279" stroke="#fff" stroke-width="1.159" stroke-linecap="round" stroke-linejoin="round"></path>
-                                        </svg>
-                                      </div>
-                                    </button>
-                                </div>
-                              </div>
-                          </div>
-
-                        <div id="run-stake3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                          <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                            <span id="lock-name" class="button__content">stake</span>
-                          </button>
-                        </div>
-
-                      </div>
-                  </div>
-
-              </div>
-
-
-              <div class="my-5 col-12">
-                <table class="table table-no-more">
-                  <thead>
-                      <tr>
-                          <th>Staked Amount</th>
-                          <th>Staked Duration</th>
-                          <th>Reward amount  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                            For safety, reward up to 10 $TWEP can be unstaked<br/>
-                            contact us if you have reward more than 10 $TWEP
-                            "></i>
-                          </th>
-                          <th style="width: 200px;">
-                          </th>
-                      </tr>
-                  </thead>
-
-                  <tbody>
-                      <tr>
-                        <td><span id="stakedAmount1">0.000</span> WUSD</td>
-                        <td><span id="stakedDuration1">0d 0h 0m 0s</span></td>
-                        <td><span id="rewardAmount1">0.000</span> TWEP</td>
-                          <td><div id="run-unstake1" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border">
-                              <span id="claim-name1" class="button__content">Unstake</span>
-                            </button>
-                          </div></td>
-                      </tr>
-                      <tr>
-                        <td><span id="stakedAmount2">0.000</span> WUSD</td>
-                        <td><span id="stakedDuration2">0d 0h 0m 0s</span></td>
-                        <td><span id="rewardAmount2">0.000</span> TWEP</td>
-                          <td><div id="run-unstake2" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border"  >
-                              <span id="claim-name2" class="button__content">Unstake</span>
-                            </button>
-                          </div></td>
-
-                      </tr>
-                      <tr>
-                        <td><span id="stakedAmount3">0.000</span> WUSD</td>
-                        <td><span id="stakedDuration3">0d 0h 0m 0s</span></td>
-                        <td><span id="rewardAmount3">0.000</span> TWEP</td>
-                          <td><div id="run-unstake3" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                            <button type="submit" class="button button--primary py-2 button--icon-left button--with-icon button-border" >
-                              <span id="claim-name3" class="button__content">Unstake</span>
-                            </button>
-                          </div></td>
-
-                      </tr>
-
-                  </tbody>
-                </table>
-                <div class="dark-mode-switch" style="display: none;">
-                  <label class="switch-label" for="dark-mode-switch"></label>
-                  <label class="switch">
-                      <input type="checkbox" id="dark-mode-switch">
-                      <span class="slider round"></span>
-                  </label>
-                </div>
-              </div>
+            <div class="wallet-div">
+               <div class="w-value">
+                  <a class="background-box" href="https://poocoin.app/tokens/0x1aeb3f66d96bfaf74fcbd15dc21798de36f6f933" target="_blank">
+                     <i class="twep-icon"></i>TWEP <span> <h4 id="price" class="fw-bold">$0</h4></span>
+                  </a>
+               </div>
+               <div class="con-wallet" id="connect">
+                  <!-- Page.js line 66 -->
+                  <a href="#">
+                     Connect Wallet
+                     <!-- <i class="go-icon"></i> -->
+                  </a>
+               </div>
             </div>
-          </div>
+         </div>
 
-        </div>
-        
-        <button type="button" id="showMsg" data-toggle="modal" data-target="#msgModal" style="display:none;"></button>
+        <!-- *********************************************** -->
+         <!-- WUSD Start -->
+         <!-- ******************************************** -->
 
-        <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-          <div class="modal-dialog my-5" role="document" style="max-width: 1000px;">
-            <div class="modal-content" style="background-color: #313131;">
-              <div class="modal-header">
-              </div>
-              <div class="modal-body">
-                <h4 id="msgResult" class="fw-bold">
-                </h4>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              </div>
+         <div class="container-div tab-active">
+            <div class="offer background-box">
+               <span class="wusd-img"><img src="images/headicon.png" alt="offer"></span>
+               <div class="same-p p-s-para w-3-para wr-offer-p wusd-cnt">
+                  <span class="w-3-para-1">$WUSD Contract:</span><span
+                     class="set-p-s-para" id="content-copy2" onclick="window.open('https://bscscan.com/token/0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16','_blank')">0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16</span> <span
+                     class="p-s-c-img w-3-img"><i class="imp-copy1" id="copytext3"></i></span>
+               </div>
             </div>
-          </div>
-        </div>
-      </main>
-    </div>
-  </div>
+            <section class="over-div wr-over-div">
+               <div class="over-main">
+                  <div class="over-box-div">
+                     <div class="over-box background-box for-wrap">
+                        <img src="images/safety-1.svg" alt="safety-1">
+                        <h3 id="liqWusdBusd">0.000</h3>
+                        <p class="same-p">BUSD liquidity<i class="info-icon tooltip mobToolTip"
+                              tooltip-data="BUSD amount in WUSD contract for safety, busd liquidity size will be limited it will be refilled periodically"></i>
+                        </p>
+                     </div>
+                     <div class="over-box background-box for-wrap">
+                        <img src="images/safety-2.svg" alt="safety-2">
+                        <h3 id="liqWusdWusd">0</h3>
+                        <p class="same-p">WUSD liquidity<i class="info-icon tooltip"
+                              tooltip-data="WUSD total supply"></i></p>
+                     </div>
+                     <div class="over-box background-box for-wrap">
+                        <img src="images/safety-2.svg" alt="safety-2">
+                        <h3 id="wusdPrice">0</h3>
+                        <p class="same-p">WUSD Price <i class="info-icon tooltip mobToolTip" position="right"
+                              tooltip-data="80% BUSD amount in WUSD contract / WUSD total supply price range = 0.9 - 1.1"></i>
+                        </p>
+                     </div>
+                  </div>
+               </div>
+            </section>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+
+            <section class="wusd-section">
+
+               <!-- 1 -->
+
+               <div class="swap-sell-section wusd-left background-box">
+                  <div class="wusd-part-1">
+                     <h2>Buy/Sell $WUSD in instance<span class="same-p">Rules <i class="info-icon tooltip mobToolTip" position="right"
+                              tooltip-data="1% tax for buy/sell price stays in 0.9-1.1 if price stays in 0.97-1.03, it is at peg if price is not in 0.97-1.03, it is depegged if depegged, you can trade bond (coming soon)"></i></span>
+                     </h2>
+                     <div class="main-p">
+                        <p>We will provide methods to utilize WUSD (ecosystem, BUSD change, etc)</p>
+                     </div>
+                     <div class="main-p">
+                        <p>BUSD liquidity is paused for a while to check potential issues</p>
+                     </div>
+                     <div class="main-p">
+                        <p>It will be resumed after the issues are solved</p>
+                     </div>
+                     <div class="wusd-link-1">
+                        <a id="run-busd-approve-wusd" class="same-type-btn btnLoadAnimation" href="#">$BUSD Approve to Buy</a>
+                        <a id="run-wusd-approve-wusd" class="same-type-btn btnLoadAnimation" href="#">$WUSD Approve to Sell</a>
+                     </div>
+                  </div>
+                  <div class="input-field-div wusd">
+                     <div class="input-text-div">
+                        <div class="upper-part">
+                           <span class="upper-left">From</span>
+                           <span class="upper-right">Balance: <span id="wusd-balance-input">0.000</span></span>
+                        </div>
+                        <div class="bottom-part">
+                           <input id="wusd-input" type="text" class="input-w" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off">
+                           <div class="curr-div">
+                              <span id="wusd-symbol-input">BUSD</span>
+                              <span onclick="maxValueWusdInput()" class="bottom-txt">Max</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="wusd-change" class="swap-div">
+                        <span class="swap-icon"><img src="images/pavan3.png"  alt="swap-icon"></span>
+                     </div>
+                     <div class="input-text-div">
+                        <div class="upper-part">
+                           <span class="upper-left">To</span>
+                           <span class="upper-right">Balance: <span id="wusd-balance-output">0.000</span></span>
+                        </div>
+                        <div class="bottom-part">
+                           <input id="wusd-output" type="text" placeholder="0.00" name="toTokenAmount" inputmode="decimal" autocomplete="off">
+                           <div class="curr-div twp-div">
+                              <span id="wusd-symbol-output">WUSD</span>
+                           </div>
+                        </div>
+                     </div>
+                     <div id="wusd-run" class="go-div">
+                        <a id="wusd-run-name" class="go-link" href="#">Buy
+                           <!-- <i class="go-icon"></i> -->
+                        </a>
+                     </div>
+                  </div>
+
+               </div>
+
+               <!-- 2 -->
+               <div class="swap-sell-section wusd-right background-box">
+
+                  <div class="wusd-tabs">
+                     <ul class="wusd-tab-ul">
+                        <li class="wusd-tab-li wusd-tab-active" data-tab="wusd-tab-1"><span>Stake 1</span></li>
+                        <li class="wusd-tab-li" data-tab="wusd-tab-2"><span>Stake 2</span></li>
+                        <li class="wusd-tab-li" data-tab="wusd-tab-3"><span>Stake 3</span></li>
+                     </ul>
+                  </div>
+
+                  <div class="wusd-content wusd-tab-active" id="wusd-tab-1">
+                     <h2>Stake $WUSD And get $TWEP</h2>
+                     <p>TWEP Reward Amount = Staked $WUSD Amount * Staked Days / $TWEP Price at unstake</p>
+                     <a id="run-wusd-approve-lock1" href="#" class="same-type-btn btnLoadAnimation">$WUSD Approve to Stake</a>
+                     <div class="input-field-div wusd">
+                        <div class="input-text-div">
+                           <div class="upper-part">
+                              <span class="upper-right">Balance: <span id="wusdBalance">0.000</span></span>
+                           </div>
+                           <div class="bottom-part">
+                              <input  id="wusd-input1" type="text" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" class="input-w">
+                              <div class="curr-div">
+                                 <span class="curr-logo wusd-l-ico"></span>
+                                 <span onclick="maxValueWusdInput()" class="bottom-txt">Max</span>
+                              </div>
+                           </div>
+                        </div>
+                        <div id="run-stake1" class="go-div go-div-btn">
+                           <a id="lock-name" class="go-link" href="#">Stake
+                              <!-- <i class="go-icon"></i> -->
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="wusd-content" id="wusd-tab-2">
+                     <h2>Stake $WUSD And get $TWEP</h2>
+                     
+                     <a id="run-wusd-approve-lock2" href="#" class="same-type-btn btnLoadAnimation">$WUSD Approve to Stake</a>
+                     <div class="input-field-div wusd">
+                        <div class="input-text-div">
+                           <div class="upper-part">
+                              <span class="upper-right">Balance:<span id="wusdBalance">0.000</span></span>
+                           </div>
+                           <div class="bottom-part">
+                              <input id="wusd-input2" type="text"  placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value="" class="input-w">
+                              <div class="curr-div">
+                                 <span class="curr-logo wusd-l-ico"></span>
+                                 <span onclick="maxValueWusdInput()" class="bottom-txt">Max</span>
+                              </div>
+                           </div>
+                        </div>
+                        <div id="run-stake2" class="go-div go-div-btn">
+                           <a id="lock-name" class="go-link" href="#">Stake
+                              <!-- <i class="go-icon"></i> -->
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+
+                  <div class="wusd-content" id="wusd-tab-3">
+                     <h2>Stake $WUSD And get $TWEP</h2>
+                     
+                     <a id="run-wusd-approve-lock3" href="#" class="same-type-btn btnLoadAnimation">$WUSD Approve to Stake</a>
+                     <div class="input-field-div wusd">
+                        <div class="input-text-div">
+                           <div class="upper-part">
+                              <span class="upper-right">Balance: <span id="wusdBalance">0.000</span></span>
+                           </div>
+                           <div class="bottom-part">
+                              <input id="wusd-input3" type="text" placeholder="0.00" name="fromTokenAmount" inputmode="decimal" autocomplete="off" value=""class="input-w">
+                              <div class="curr-div">
+                                 <span class="curr-logo wusd-l-ico"></span>
+                                 <span onclick="maxValueWusdInput()" class="bottom-txt">Max</span>
+                              </div>
+                           </div>
+                        </div>
+                        <div id="run-stake3" class="go-div go-div-btn">
+                           <a id="lock-name" class="go-link" href="#">Stake
+                              <!-- <i class="go-icon"></i> -->
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+
+
+
+               </div>
+
+            </section>
+
+            <section class="table-section wusd">
+               <div class="table-div">
+                  <ul class="th background-box">
+                     <li class="td-1">Staked Amount</li>
+                     <li class="td-1">Staked duration</li>
+                     <li class="td-1 wusd">Reward duration <i class="info-icon tooltip wusd mobToolTip" position="right"
+                           tooltip-data="For safety, reward up to 10 $TWEP can be unstaked"></i></li>
+                     <li class="td-1 no-dsply">Action</li>
+                  </ul>
+
+                  <ul class="main">
+                     <li class="tr-td-1"><span id="stakedAmount1">0.000</span> WUSD</p>
+                     </li>
+                     <li class="tr-td-1"><span id="stakedDuration1">0d 0h 0m 0s</span></p>
+                     </li>
+                     <li class="tr-td-1"><span id="rewardAmount1">0.000</span> TWEP</p>
+                     </li>
+                     <li id="run-unstake1" class="unstake"><a id="claim-name1" href="#">Unstake</a></li>
+                  </ul>
+
+                  <ul class="main">
+                     <li class="tr-td-1"><span id="stakedAmount2">0.000</span> WUSD</p>
+                     </li>
+                     <li class="tr-td-1"><span id="stakedDuration2">0d 0h 0m 0s</span></p>
+                     </li>
+                     <li class="tr-td-1"><span id="rewardAmount2">0.000</span> TWEP</p>
+                     </li>
+                     <li id="run-unstake2" class="unstake"><a id="claim-name2" href="#">Unstake</a></li>
+                  </ul>
+
+                  <ul class="main">
+                     <li class="tr-td-1"><span id="stakedAmount3">0.000</span> WUSD</p>
+                     </li>
+                     <li class="tr-td-1"><span id="stakedDuration3">0d 0h 0m 0s</span></p>
+                     </li>
+                     <li class="tr-td-1"><span id="rewardAmount3">0.000</span> TWEP</p>
+                     </li>
+                     <li id="run-unstake3" class="unstake"><a id="claim-name3" href="#">Unstake</a></li>
+                  </ul>
+               </div>
+            </section>
+         </div>
+
+
+         <!-- *********************************************** -->
+         <!-- WUSD End -->
+         <!-- ******************************************** -->
+      </div>
+   </div>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
 
@@ -616,5 +547,16 @@ activateTab(opentab)
 
 
     </style>
+   
+   <script>
+    let copyButton2 = document.getElementById('copytext3');
+
+copyButton2.addEventListener('click', (event) => {
+  let content2 = document.getElementById('content-copy2').textContent;
+  navigator.clipboard.writeText(content2)
+})
+   </script>
+  
 </body>
+
 </html>

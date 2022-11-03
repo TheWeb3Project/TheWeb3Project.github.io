@@ -1,284 +1,191 @@
 <!DOCTYPE html>
-<html lang="en" style=" background-image: radial-gradient(circle farthest-corner at 50% 50%,#424750,#202326);">
+<html>
+
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta charset="UTF-8" />
+   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+   <title class="title">The Web3 Project | Taking online further beyond</title>
 
-  <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="css/fa.css">
+   <!-- ------- fav-icon code ---------- -->
 
-  <title>The Web3 Project | Taking online further beyond</title>
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" name="description">
-  <meta content="The Web3 Project | Taking online further beyond" property="og:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="og:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="og:image">
-  <meta content="The Web3 Project | Taking online further beyond" property="twitter:title">
-  <meta content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!" property="twitter:description">
-  <meta content="images/logos/TWEP/TWEP.png" property="twitter:image">
-  <meta property="og:type" content="website">
-  <meta content="summary_large_image" name="twitter:card">
-  <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link rel="shortcut icon" href="images/overview-1.svg" />
    
-  <link href="images/logos/TWEP/TWEP.png" rel="shortcut icon" type="image/x-icon" />
-  <link href="images/logos/TWEP/TWEP.png" rel="apple-touch-icon" />
+   <!-- --- style css file link --- -->
 
-  <meta name="twitter:image" content="images/logos/TWEP/TWEP.png">
-  <meta name="twitter:description" content="The Web3 Project is on a mission to push web3 mass adoption by building the ultimate social network DApp, Whistle, where all your data will be backed as an NFT on the blockchain and purely under your control!">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="The Web3 Project | Taking online further beyond">
-
-  <meta property="og:image" content="images/logos/TWEP/TWEP.png">
-  <link rel="stylesheet" href="css/flooz.css">
+   <link rel="stylesheet" href="css/style.css" />
 </head>
 
-<body id="titano-finance" class="background">
-  <div class="container-fluid">
-    <div class="row">
-      <div id="sidebarContainer" class="col-auto" style="z-index: 1000002;  ">
-
+<body class="body">
+   
+   <div class="tooltipdiv"></div>
+   <div class="tooltipdiv1"></div>
+   <div class="clipboard"><img src="images/Union.svg" alt="Union" />&ThinSpace;&ThinSpace;<span>Copied to clipboard</span></div>
+   <!-- ------ POP-UP DIV START ------ -->
+   <div class="allmaindiv">
+      <div class="secondmaindiv">
+      <div class="popup-main">
+         <div class="popup-cntdiv">
+            <div class="popup-firstdiv">
+               <div class="share-cnt-div">
+                  <div class="share">
+                     <span><img src="images/headicon.png" alt="offer"></span>
+                     <span class="shareit">Share it</span>
+                  </div>
+                  <div class="close">
+                     <span><img src="images/close-circle.png" alt="close-circle" class="close-circle" onclick="clearModalData()"></span>
+                  </div>
+               </div>
+               <div class="share-icon-div">
+                  <span class="copy-img-cnt">Click here to <span class="CopyToImg" onclick="copyImg()">Copy</span> this image and spreadthis to everywhere</span>
+                  &ThinSpace;&ThinSpace;&ThinSpace;&ThinSpace;
+                  <div class="popup-share-img">
+                     <span><img src="images/twt.png" class="Social-icons-img" alt="offer"></span>
+                     &ThinSpace;&ThinSpace;
+                     <span><img src="images/insta.png" class="Social-icons-img" alt="offer"></span>
+                     &ThinSpace;&ThinSpace;
+                     <span><img src="images/fcbk.png" class="Social-icons-img" alt="offer"></span>
+               </div>
+               </div>
+               <hr class="popup-line">
+            </div>
+            <div class="popup-imgdiv">
+               <img src="" alt="" id="dataimg" height="100%" width="100%">
+            </div>
+         </div>
       </div>
+      </div>
+   </div>
 
-      <div id="overlay" style="z-index: 1000001;"></div>
+   <!-- ------ POP-UP DIV END ------ -->
+   <div class="bg"></div>
+   <div class="wrapper">
+      <div class="side-nav" id="nav">
+         <div class="logo">
+            <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
+         </div>
+         <hr class="hide-m" />
+         <div class="side-tabs-list">
+            <ul class="side-tabs-ul nav-pills">
+               <li class="side-tab-li" onclick="onChangeMenu('index')"><span><i
+                        class="dashboard"></i>Dashboard</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('account')"><span><i class="account"></i>Account</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('swap')"><span><i class="swap"></i>Swap</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('wrap')"><span><i class="wrap"></i>Wrap</span></li>
+               <li class="side-tab-li" onclick="onChangeMenu('pointshop')"><span><i class="pointshop"></i>Point Shop</span></li>
+               <li class="side-tab-li tab-active background-box1" onclick="onChangeMenu('miner')"><span><i class="miner"></i>Miner</span></li>
+               <!-- <li class="side-tab-li" onclick="onChangeMenu('wusd')"><span><i class="wusd"></i>WUSD</span></li> -->
+               <li class="side-tab-li" onclick="onChangeMenu('xweb3')"><span><i class="xweb3"></i>xWEB3</span></li>
+               <li class="side-tab-li" onclick="window.open('https://docs.theweb3project.com/','_blank')"><span><i class="docs"></i>Docs</span></li>
+            </ul>
+         </div>
+         <hr />
+         <div class="social-icons-div">
+            <ul>
+               <li>
+                  <a href="https://discord.com/invite/Mn43SWyj3g" target="_blank"><i class="discord"></i></a>
+               </li>
+               <li>
+                  <a href="https://twitter.com/TheWeb3Project" target="_blank"><i class="twitter"></i></a>
+               </li>
+               <li>
+                  <a href="https://www.youtube.com/c/TheWeb3Project/featured" target="_blank"><i class="youtube"></i></a>
+               </li>
+               <li>
+                  <a href="https://t.me/TheWeb3ProjectPortal" target="_blank"><i class="telegram"></i></a>
+               </li>
+            </ul>
+         </div>
+         <div class="alert-div">
+            <p class="turnmsg">Turn on alerts</p>
+            <label class="switch">
+               <input type="checkbox" id="turnon"  onclick="turnOnfunction()"/>
+               <span class="slider round"></span>
+            </label>
+         </div>
+      </div>
+      <div class="main-content-div">
 
-      <main id='main'>
-        <div id="web3-header">
+         <div class="upper-div">
+            <div class="logo1">
+               <a href="https://dash.a2dweb.com/"><img src="images/Logo.svg" alt="TWEP-Logo" /></a>
+            </div>
+            <div class="head-title"><i class='title-image miner'></i>Miner</div>
+            <div class="hum-burgur-div" id="test-check-hum">
+               <input type="checkbox" class="menu-btn" id="hm-burg" onclick="executefunction()" />
+      <label class="menu-icon" for="hm-burg">
+        <span class="nav-icon"></span>
+      </label>
+
+            </div>
+            <div class="wallet-div">
+               <div class="w-value">
+                  <a class="background-box" href="https://poocoin.app/tokens/0x1aeb3f66d96bfaf74fcbd15dc21798de36f6f933" target="_blank">
+                     <i class="twep-icon"></i>TWEP <span> <h4 id="price" class="fw-bold">$0</h4></span>
+                  </a>
+               </div>
+               <div class="con-wallet" id="connect">
+                  <!-- Page.js line 66 -->
+                  <a href="#">
+                     Connect Wallet
+                     <!-- <i class="go-icon"></i> -->
+                  </a>
+               </div>
+            </div>
+         </div>
+
+         <!-- *********************************************** -->
+         <!-- Miner Start -->
+         <!-- ******************************************** -->
+
+         <div class="container-div tab-active">
+          <div class="offer background-box">
+             <span><img src="images/headicon.png" alt="offer"></span>
+             <p>
+                Miners is closed now. Claim your refund.
+             </p>
+          </div>
+          <section class="over-div miner">
+             <div class="over-main background-box">
+                <h2>Your Earning</h2>
+                <div class="input-field-div">
+                   <div class="input-text-div">
+                      <div class="upper-part">
+                         <span class="upper-left">Initial Investment</span>
+                      </div>
+                      <div class="bottom-part">
+                         <input type="text" class="input-w" value="0.01">
+                      </div>
+                   </div>
+                   <div class="input-text-div">
+                      <div class="upper-part">
+                         <span class="upper-left">Investment Refunded</span>
+                      </div>
+                      <div class="bottom-part">
+                         <input type="text" value="0.01">
+                      </div>
+                   </div>
+                   <div id="sellOre" class="go-div">
+                      <a id="run-name" class="go-link" href="#">Claim
+                         <!-- <i class="go-icon"></i> -->
+                      </a>
+                   </div>
+                </div>
+             </div>
+          </section>
         </div>
 
-        <div id="container">
-          <div class="my-5 col-12">
-            <div id='card'>
-              <div class="text-secondary mb-1">
-                Hire Miners to earn WUSD <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                You can do many things with WUSD <br/>
-                including swap to BUSD (coming soon)
-                "></i>
-                
-              </div>
-              <div class="text-secondary mb-1">
-                Miner Rules and FAQs<br/>
-                Hire/Rehire/Claim shares 3h cooltime<br/>
-                Due to algorithm, if someone refers you, or if you hire, this cooltime could be longer<br/>
-                reward rate cap depending on the situation and your invested time<br/>
-                <br/>
+       <!-- *********************************************** -->
+       <!-- Miner End -->
+       <!-- ******************************************** -->
 
-                Recommended strategy for week<br/>
-                claim every 7 days<br/>
-                rehire after 6 days, claim after 1 day<br/>
-                rehire after 3 days, rehire after 3 days, claim after 1 day<br/>
-              </div>
-            </div>
-          </div>
-
-          <div class="my-5 col-12">
-            <div id='card'>
-              <span class="fw-medium ms-1">
-                Miner
-                <a id="miner-link" target="_blank">
-                  <span id="miner"></span>
-                </a>
-                <button id='copy-miner' class="copy-btn"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
-              </span>
-
-              <div class="row row-cols-1 row-cols-sm-3">
-                <div class="col">
-                  <div class="text-secondary mb-1">
-                    Total Value Locked <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                    200k is invested in many ways to increase fund (coin, node)
-                    "></i>
-                  </div>
-                  <h4 id="liqMinerBnb__" class="fw-bold">$218,629.46</h4>
-                </div>
-
-              </div>
-
-            </div>
-          </div>
-
-          <div class="">
-            <div class="card col-12  mx-auto d-flex p-3 p-sm-4 mt-5 h-100" style="background-color: transparent;">
-              
-              <div id="run-busd-approve-miner" class="stack-layout stack-layout--gap-50 stack-layout--direction-column swap-tokens-form-submit my-1">
-                <button type="submit" class="button button--primary button--size-default button--icon-left button--with-icon button-border" >
-                  <span class="button__content">$BUSD Approve to buy</span>
-                </button>
-              </div>
-
-
-            	<img src="./images/Group_68.png" class="col-12 mx-auto mb-4 pb-2" id="minerImage" alt="" style="width: 20%;">
-              
-              <label for="days-slider" class="fw-medium">Hire miners with <span id="days">100</span> BUSD or BNB</label>
-              <input type="number" min="1" max="10000" step="1" value="100" id="days-sliders" oninput="changeRangeValue(this.value)" class="mb-2">
-              <input type="range" min="1" max="10000" step="1" value="100" id="days-slider" oninput="changeInputValue(this.value)" class="">
-              
-              <div class="d-flex flex-xl-row flex-column justify-content-between mt-2 pt-1">
-                <div class="d-flex flex-column mt-4 col-12">
-                	<p class="">You get x5 more reward by paying with BNB/BUSD</p>
-
-                  <div class="info d-flex flex-column gap-3 mt-5">
-                    <div class="d-flex justify-content-between"><div>Your BNB</div> <div id="bnbBalance"></div></div>
-                    <div class="d-flex justify-content-between"><div>Your BUSD</div> <div id="busdBalance"></div></div>
-                  </div>
-
-                  <div class="d-flex flex-column flex-sm-row gap-3 mt-3">
-                    <button id="hire-miner-bnb" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100 button-border">
-                      <span id="run-name" class="button__content">
-                        Hire with BNB <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                        Rehire process included<br/>
-                        Check info in the rehire button
-                        "></i>
-                      </span>
-                    </button>
-
-                    <button id="hire-miner-busd" type="submit" class="button button--primary button--size-default button--icon-left button--with-icon w-100 button-border">
-                      <span id="run-name" class="button__content">
-                        Hire with BUSD <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                        Rehire process included<br/>
-                        Check info in the rehire button
-                        "></i>
-                      </span>
-                    </button>
-                  </div>
-                  <div class="info d-flex flex-column gap-3 mt-5">
-                    <div class="d-flex justify-content-between"><div>Total Miners</div> 
-                    <a href="https://bscscan.com/token/0x6f17d0dcc709ee57b9d8bb9846ad740032db8661#balances" target="_blank">
-                      <div id="totalMiners"></div>
-                    </a>
-                  </div>
-                    <div class="d-flex justify-content-between">
-                      <div>Your Miners  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                        There is no direct price for miner<br/>
-                        It is determined when you do the hire<br/>
-                        It relatively determines your daily rate and reward
-                        "></i>
-                      </div> 
-                      <div id="_miners"></div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                      <div>Your Invests  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                        Only hire with pweb3/busd/bnb is counted<br/>
-                        Also includes referral<br/>
-                        rehire with WUSD doesnt count!
-                        "></i>
-                      </div> 
-                      <div id="_amounts"></div>
-                    </div>
-                    <div class="d-flex justify-content-between">
-                      <div>Current daily rate  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                        4-6% is usual value<br/>
-                        could be more depending on your early participation
-                        "></i>
-                      </div> 
-                      <div id="_rates"></div>
-                    </div>
-
-                    <div class="d-flex justify-content-between"><div>WUSD Rewards   <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                      4-6% of your invest is usual value<br/>
-                      usually get capped at 5% if do same like others<br/>
-                      could be more depending on your early participation
-                      "></i></div> <div id="calculateWusdRewards"></div>
-                    </div>
-                  </div>
-                  <hr>
-                  <div class="buying">
-                    <div class="d-flex flex-column flex-sm-row gap-3">
-                      <button id="hireMore" class="button button--primary button--size-default button--icon-left button--with-icon w-100 button-border">
-                        <span id="run-name" class="button__content">
-                          ReHire <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                          All Stacked WUSD Reward will be used<br/>
-                          You can do rehire 24 hour after hire/rehire
-                          "></i>
-                        </span>
-                      </button>
-
-                      <button id="sellOre" class="button button--primary button--size-default button--icon-left button--with-icon w-100 button-border" >
-                      	<span id="run-name" class="button__content">
-                          Claim WUSD  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                          All stacked WUSD Reward will be claimed
-                          "></i>
-                        </span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="info d-flex flex-column gap-3 mt-5">
-                    <div class="d-flex justify-content-between">
-                      <div>Referral Address</div> <div id="refAdr"></div></div>
-                    </div>
-                  <hr>
-                  <div class="more_stats d-flex flex-column gap-3">
-                    <div>Miner stats</div>
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        Max Daily production:  <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                        decreases as time goes by<br/>
-                        decreases as you claim WUSD<br/>
-                        increases as you rehire<br/>
-                        recommended strategy is rehire for 6 days<br/>
-                        and claim WUSD at 7th day<br/>
-                        roughly 4% to 6% is achieved in usual cases<br/>
-                        It may be up or down depending on various situation
-                        "></i>
-                      </div> <div>6.9%</div></div>
-                    <div class="d-flex justify-content-between"><div>Hiring Fee:</div> <div>3%</div></div>
-                  </div>
-                    <div class="refferal">
-                      <div class="d-flex">
-                      <input
-                      id="ref"
-                      class="input-field__input"
-                      placeholder="Referral address"
-                      name=""
-                      inputmode="decimal"
-                      autocomplete="off"
-                      value=""
-                      style="max-width: 100%; font-size: 13px;"
-                    />
-                    <button style="font-size: 16px; 	background: none;
-                color: inherit;
-                border: none;
-                padding: 0;
-                font: inherit;
-                cursor: pointer;
-                outline: inherit;" class="copy-btn-ref"> <img style="width: 16px; height: 16px; margin-left: 10px; " src="./images/copy-solid.svg" alt=""></button>
-                      </div>
-                      <div>
-
-                        <p class="mx-auto text-center mt-3">earn 10% by referral!   <i class="bi bi-patch-question-fill" data-bs-toggle="tooltip" data-bs-html="true" title="
-                          10% of the payment by anyone who uses your link<br/>
-                          will be stackred as your reward<br/>
-                          referral payment<br/>
-                          BNB / BUSD used to hire<br/>
-                          WUSD used to hire more<br/>
-                          "></i>
-                      </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <button type="button" id="showMsg" data-toggle="modal" data-target="#msgModal" style="display:none;"></button>
-
-          <div class="modal fade" id="msgModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog my-5" role="document" style="max-width: 1000px;">
-              <div class="modal-content" style="background-color: #313131;">
-                <div class="modal-header">
-                </div>
-                <div class="modal-body">
-                  <h4 id="msgResult" class="fw-bold">
-                  </h4>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-              </div>
-            </div>
-          </div>
-      </main>
-    </div>
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+      </div>
+   </div>
+   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js" integrity="sha512-wUa0ktp10dgVVhWdRVfcUO4vHS0ryT42WOEcXjVVF2+2rcYBKTY7Yx7JCEzjWgPV+rj2EDUr8TwsoWF6IoIOPg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <script type="text/javascript" src="js/index.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/rangeslider.js@2.3.3/dist/rangeslider.min.js"></script>
 
@@ -328,15 +235,15 @@
       await _runPersonal();
 
 
-      let web3Allowance = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
-      if (BIGINT(0) < web3Allowance) {
+      let web3Allowancem = await CONTS['twep'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < web3Allowancem) {
         select('#run-web3-approve').classList.add('d-none');
       } else {
         select('#run-web3-approve').onclick = async () => { await approve('twep', ADRS['wweb3']); };
       }
 
-      let wweb3Allowance = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
-      if (BIGINT(0) < wweb3Allowance) {
+      let wweb3Allowancem = await CONTS['wweb3'].allowance(CURADR, ADRS['wweb3']);
+      if (BIGINT(0) < wweb3Allowancem) {
         select('#run-wweb3-approve').classList.add('d-none');
       } else {
         select('#run-wweb3-approve').onclick = async () => { await approve('wweb3', ADRS['wweb3']); };
@@ -456,5 +363,7 @@
 
     select('#sidebar-nav').children[6].classList.add('active-neumorphism');
   </script>
+  
 </body>
+
 </html>
