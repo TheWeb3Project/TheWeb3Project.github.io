@@ -40,7 +40,7 @@
     rgba(255, 255, 255, 0.108) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-  backdrop-filter: blur(5px);
+ /* backdrop-filter: blur(5px);*/
 }
 .background-box:before {
   content: "";
@@ -77,7 +77,7 @@
     rgba(255, 255, 255, 0.108) 0%,
     rgba(255, 255, 255, 0) 100%
   );
-  backdrop-filter: blur(5px);
+ /* backdrop-filter: blur(5px);*/
 }
 .background-box1:before {
   content: "";
@@ -862,7 +862,7 @@ section.over-div {
   z-index: 25000;
   background: linear-gradient(99.03deg, rgba(0, 9, 54, 0.65) -5.7%, rgba(14, 14, 24, 0.65) 103.31%);
   box-shadow: 10px 10px 15px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(2.5px);
+  /*backdrop-filter: blur(2.5px);*/
 }
 
 .shareImg {
@@ -1139,7 +1139,7 @@ section.item-details-section {
   cursor: pointer;
 }
 /* .important i.imp-copy {
-  background-image: url(../images/pavan.png);
+  background-image: url(../images/copy.png);
 } */
 /* .important i.imp-share {
   background-image: url(../images/share.svg);
@@ -3505,6 +3505,8 @@ i.imp-copy1 {
   }
   .side-nav.h-set {
     height: 100%;
+    animation: fadeIn;
+    animation-duration: 0.75s;
   }
   .side-nav hr.hide-m {
     display: none;
