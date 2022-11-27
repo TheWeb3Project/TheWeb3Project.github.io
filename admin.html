@@ -74,7 +74,7 @@
     
     statStr += `\n\n\n`;
     statStr += ``;
-    for (let name of ['twep', 'pweb3', 'wusd']) {
+    for (let name of ['twep', 'xweb3', 'wusd']) {
       let bl = await CONTS[name]._blacklisted(adr);
       statStr += `${name} blacklisted = ${bl}\n`;
     }
