@@ -74,6 +74,17 @@
     
     statStr += `\n\n\n`;
     statStr += ``;
+    for (let name of ['twep', 'pweb3', 'wusd']) {
+      let bl = await CONTS[name]._blacklisted(adr);
+      statStr += `${name} blacklisted = ${bl}\n`;
+    }
+    for (let name of ['wweb3']) {
+      let bl = await CONTS[name]._blacklists(adr);
+      statStr += `${name} blacklisted = ${bl}\n`;
+    }
+    
+    statStr += `\n\n\n`;
+    statStr += ``;
     for (let name of ['twep', 'wweb3', 'pweb3', 'wusd', 'busd']) {
       for (let name_ of ['wweb3', 'lock', 'nft', 'miner', 'xweb3', 'wusd']) {
         let allowance = await CONTS[name].allowance(adr, ADRS[name_]);
