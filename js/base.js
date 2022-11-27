@@ -144,7 +144,7 @@ ABIS['twep'] = [
   "function _curcuitBreakerFlag() view returns (uint256)",
   "function _curcuitBreakerTime() view returns (uint256)",
 
-
+  "function _blacklisted(address) view returns (bool)",
 
   "event Transfer(address indexed from, address indexed to, uint amount)",
   "event Rebased(uint256 blockNumber, uint256 totalSupply)",
@@ -162,6 +162,8 @@ ABIS['wweb3'] = [
   
   "function deposit(uint)",
   "function withdraw(uint)",
+  
+  "function _blacklists(address) view returns (uint)",
 ];
 
 ADRS['pweb3'] = "0x877c8140a936ee49cA1DFBaFA58bE6AcB555e569";
@@ -187,6 +189,8 @@ ABIS['xweb3'] = [
 
   "function approve(address, uint256) returns (bool)",
   "function transfer(address, uint)",
+  
+  "function _blacklisted(address) view returns (bool)",
 ];
 
 ADRS['wusd'] = "0x0F42185278864e22e9b2Cc0bac43A17D5c7a6A16";
@@ -206,6 +210,8 @@ ABIS['wusd'] = [
   "function getWusdPriceX10000() view returns (uint)",
   "function getSwapAmount(address, uint) view returns (uint)",
   "function swap(address, uint)",
+  
+  "function _blacklisted(address) view returns (bool)",
 ];
 
 
