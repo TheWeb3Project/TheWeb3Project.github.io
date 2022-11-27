@@ -63,6 +63,10 @@
     adr = ADR(adr);
     
     let statStr = '';
+    {
+      let bal = await getBalance(adr);
+      statStr += `BNB balance = ${bal}\n`;
+    }
     for (let name of ['web3', 'twep', 'wweb3', 'pweb3', 'xweb3', 'wusd', 'busd', 'miner']) {
       F[`${name}Balance`] = async() => {
         let v = await CONTS[name].balanceOf(adr);
