@@ -139,7 +139,7 @@ ABIS['twep'] = [
 
   "function _isExperi() view returns (bool)",
   "function _blacklisted(address) view returns (bool)",
-  "function _isDualRebase(address) view returns (bool)",
+  "function _isDualRebase() view returns (bool)",
 	
   "function setBotBlacklists(address[], bool[])",
   "function setLifeSupports(address[], uint[])",
