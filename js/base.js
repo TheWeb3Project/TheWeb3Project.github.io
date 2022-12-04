@@ -135,7 +135,8 @@ ABIS['twep'] = [
   "function manualRebase()",
   "function toggleExperi()",
   "function setPriceRate(uint)",
-
+  "function toggleDualRebase()",
+  
   "function _isExperi() view returns (bool)",
   "function _blacklisted(address) view returns (bool)",
 	
