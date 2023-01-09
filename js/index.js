@@ -86,6 +86,19 @@ function onChangeMenu(fileName) {
 
 }
 
+function show() {
+  const isHidden = $("#cont")[0].hidden;
+  if(isHidden) {
+    $("#legacy").addClass("tab-active background-box1");
+    $("#cont")[0].hidden = false
+  }else {
+    $("#legacy").removeClass("tab-active background-box1");
+    $("#cont")[0].hidden = true
+  }
+  
+
+}
+
 function executefunction() {
   var checkboxValue = document.getElementById("hm-burg").checked;
   var side = document.querySelector(".side-nav");
