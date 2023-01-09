@@ -70,15 +70,16 @@
             <ul class="side-tabs-ul nav-pills">
                <li class="side-tab-li" onclick="onChangeMenu('index')"><span><i
                         class="dashboard"></i>Dashboard</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('account')"><span><i class="account"></i>Account</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
                <li class="side-tab-li" onclick="onChangeMenu('swap')"><span><i class="swap"></i>Swap</span></li>
-               <li class="side-tab-li tab-active background-box1" onclick="onChangeMenu('wrap')"><span><i class="wrap"></i>Wrap</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('pointshop')"><span><i class="pointshop"></i>Point Shop</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('miner')"><span><i class="miner"></i>Miner</span></li>
-               <!-- <li class="side-tab-li" onclick="onChangeMenu('wusd')"><span><i class="wusd"></i>WUSD</span></li> -->
-               <li class="side-tab-li" onclick="onChangeMenu('xweb3')"><span><i class="xweb3"></i>xWEB3</span></li>
-               <li class="side-tab-li" onclick="window.open('https://docs.theweb3project.com/','_blank')"><span><i class="docs"></i>Docs</span></li>
+               <li class="side-tab-li tab-active background-box1" id="legacy" onclick="show()"><span><i class="legacy"></i>Legacy<i class="d-own"></i></span></li>
+               <li class="dropdown-container" id="cont">
+                  <a class="active" onclick="onChangeMenu('wrap')">Wrap</a>
+                  <a onclick="onChangeMenu('pointshop')" href="#">Pointshop</a>
+                  <a onclick="onChangeMenu('miner')">Miner</a>
+                  <a onclick="onChangeMenu('wusd')">WUSD</a>
+                  <a onclick="onChangeMenu('xweb3')">xWEB3</a>
+                 </li>
+              <li class="side-tab-li" onclick="window.open('https://docs.theweb3project.com/','_blank')"><span><i class="docs"></i>Docs</span></li>
             </ul>
          </div>
          <hr />

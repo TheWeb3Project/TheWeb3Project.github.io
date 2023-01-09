@@ -70,14 +70,15 @@
             <ul class="side-tabs-ul nav-pills">
                <li class="side-tab-li tab-active background-box1"><span><i
                         class="dashboard"></i>Dashboard</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('account')"><span><i class="account"></i>Account</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('calculator')"><span><i class="calculator"></i>Calculator</span></li>
                <li class="side-tab-li" onclick="onChangeMenu('swap')"><span><i class="swap"></i>Swap</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('wrap')" ><span><i class="wrap"></i>Wrap</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('pointshop')" ><span><i class="pointshop"></i>Point Shop</span></li>
-               <li class="side-tab-li" onclick="onChangeMenu('miner')" ><span><i class="miner"></i>Miner</span></li>
-               <!-- <li class="side-tab-li" onclick="onChangeMenu('wusd')" ><span><i class="wusd"></i>WUSD</span></li> -->
-               <li class="side-tab-li" onclick="onChangeMenu('xweb3')" ><span><i class="xweb3"></i>xWEB3</span></li>
+               <li class="side-tab-li" id="legacy" onclick="show()"><span><i class="legacy"></i>Legacy<i class="d-own"></i></span></li>
+               <li class="dropdown-container hidden" hidden id="cont">
+                <a onclick="onChangeMenu('wrap')">Wrap</a>
+                <a onclick="onChangeMenu('pointshop')" href="#">Pointshop</a>
+                <a onclick="onChangeMenu('miner')">Miner</a>
+                <a onclick="onChangeMenu('wusd')">WUSD</a>
+                <a onclick="onChangeMenu('xweb3')">xWEB3</a>
+               </li>
                <li class="side-tab-li" onclick="window.open('https://docs.theweb3project.com/','_blank')"><span><i class="docs"></i>Docs</span></li>
             </ul>
          </div>
@@ -241,43 +242,43 @@
                  </div>
               </section>
               </div>
-               <!-- ------ DASHBOARD POPUP DIV END ------ -->
-               <div class="offer background-box">
-                  <span><img src="images/headicon.png" alt="offer"></span>
-                  <p>
-                     Enjoy 20% APY and 30% APB (Annual Price Boost) thanks to our unique proprietary system WARP™.
-                  </p>
-               </div>
-               <section class="over-div">
-                  <div class="over-main background-box">
-                     <h2>Overview</h2>
-                     <!-- <p class="same-p-1"></p> -->
-                        <!-- <p id="tvl" class="value">-<i class="twep-value"></i></p> -->
-                     <div class="over-box-div">
-                        <div class="over-box background-box">
-                           <img src="images/overview-1.svg" alt="overview-1">
-                           <h3 id="price" class="dashboard-price">-</h3>
-                           <p class="same-p">$TWEP Price<i class="info-icon mobToolTip tooltip" tooltip-data="Our Main Token 
-                              Your$TWEP balance increases by holding"></i></p>
+              <section class="item-details-section">
+               <div style="display: flex; flex-flow: row wrap;width: 100%;justify-content: space-between;">
+                  
+                  <div class="item-d-div full-need-take1">
+                     <div class="item-d background-box">
+                       <div class="item-d-img"><img src="images/supply-chain 1.png" alt="pot4"></div>
+                       <div class="detail">
+                          <p class="same-p">Total Supply</p>
+                             <h2 id="totalSupply">-</h2>
+                       </div>
+                       
+                    </div>
+                 </div>
+              
+                  <div class="item-d-div full-need-take1">
+                      <div class="item-d background-box">
+                        <div class="item-d-img"><img src="images/wallet 1.png" alt="pot1"></div>
+                        <div class="detail">
+                           <p class="same-p">Your Balance</p>
+                              <h2 id="twepBalance">-</h2>
                         </div>
-                        <div class="over-box background-box">
-                           <img src="images/image 26.png" alt="overview-2">
-                           <h3 id="wPrice" class="dashboard-price">-</h3>
-                           <p class="same-p">$wWEB3 Price <i class="info-icon mobToolTip tooltip"
-                                 tooltip-data="Wrapped $TWEP 
-                              Use for where rebase is not supported (CEX, ledger, etc) Rebase happens internally with special algorithm you will get full rebase reward of wrapped duration when you unwrap"></i>
-                           </p>
-                        </div>
-                        <div class="over-box background-box">
-                           <img src="images/image 25.png" alt="overview-3">
-                           <h3 id="xPrice" class="dashboard-price">-</h3>
-                           <p class="same-p">$xWEB3 Price <i class="info-icon mobToolTip tooltip" position="right" tooltip-data="Governance Token 
-                              Used for Quantum invest
-                              Claim daily reward"></i></p>
+                        
+                     </div>
+                  </div>
+                  
+                  <div class="item-d-div full-need-take1">
+                     <div class="item-d background-box">
+                        <div class="item-d-img"><img src="images/discount.png" alt="pot4"></div>
+                        <div class="detail">
+                           <p class="same-p">Your Holding %</p>
+                           <h2 id="percentTotalSupply">-</h2>
                         </div>
                      </div>
                   </div>
-               </section>
+                </div>  
+            </section>
+               
                <section class="item-details-section">
                   <p class="important">
                      <span>$TWEP</span> <span id="content-copy" onclick="window.open('https://bscscan.com/address/0x1AEb3f66d96bFaF74fCBD15Dc21798De36F6F933','_blank')"> 0x1AEb3f66d96bFaF74fCBD15Dc21798De36F6F933 </span> 
@@ -322,117 +323,7 @@
                      </div>
                    </div>  
                </section>
-               <section class="jacpot-section">
-                  <p class="important jack">
-                     <span>Jackpot</span> <a class="shareCon" href="https://bscscan.com/address/0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba" target="_blank"> 0x59E4a7C380e9AA63f24873EBD185D13B0ee76Dba </a> 
-                     <img src="images/share.png" alt="shareimg" class="shareImg" onclick="takeScreenShot('DashboardSC','twepDB')">
-                     <!-- <i class="imp-share"></i> -->
-                  </p>
-                  <div id="twepDB">
-                  <div class="jack-div">
-                     <div class="pot background-box make-b">
-                        <div class="jp-img">
-                           <img src="images/jack1.svg" alt="jack1" />
-                        </div>
-                        <h2 id="jpTimer"></h2>
-                        <p class="same-p">Jackpot Timer<i class="info-icon tooltip mobToolTip"
-                              tooltip-data="If no buy for 10 min, last buyer will get jackpot(buy should not be less than 0.1 BNB)"></i>
-                        </p>
-                     </div>
-                     <div class="pot background-box">
-                        <div class="jp-img">
-                           <img src="images/jack2.svg" alt="jack2" />
-                        </div>
-                        <h2 id="jpPrize">-</h2>
-                        <p class="same-p">Jackpot Prize<i class="info-icon tooltip mobToolTip"
-                              tooltip-data="if exceeds $100,000,big buyback will happen"></i></p>
-                     </div>
-                     <div class="pot background-box">
-                        <div class="jp-img">
-                           <img src="images/jack3.svg" alt="jack3" />
-                        </div>
-                        <h2 id="lastBuyer">-</h2>
-                        <p class="same-p">Last Buyer<i class="info-icon tooltip mobToolTip" position="right"
-                              tooltip-data="If no buy for 10 min, last buyer will get jackpot(buy should not be less than 0.1 BNB) last buyer gets 50% of total prize"></i>
-                        </p>
-                     </div>
-                  </div>
-                  <div class="jack-div">
-                     <ul>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/wait-icon.png" alt="pot-1">
-                              <p class="same-p">Daily Prize Timer <i class="info-icon"></i></p>
-                           </div>
-                           <h4 id="biggestTimer" class="fw-bold">-</h4>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/trophy 1.png" alt="pot-1">
-                              <p class="same-p">Biggest Buyer Bought<i class="info-icon tooltip mobToolTip"
-                                    tooltip-data="Total buys during this day Biggest buyer will get 5% of jackpot"></i></p>
-                           </div>
-                           <span id="bigbuyAmount">-</span>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/bag.png" alt="pot-1">
-                              <p class="same-p">Biggest Buyer <i class="info-icon tooltip mobToolTip"
-                                    tooltip-data="Total buys during this day Biggest buyer will get 5% of jackpot"></i></p>
-                           </div>
-                           <span id="biggestBuyer">-</span>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/famous.png" alt="pot-1">
-                              <p class="same-p">Last Jackpot Time <i class="info-icon"></i></p>
-                           </div>
-                           <span id="_lastWinnerTime">-</span>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/coin 1.png" alt="pot-1">
-                              <p class="same-p">Last Jackpot <i class="info-icon"></i></p>
-                           </div>
-                           <span id="_lastWinnerAmount">-</span>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/win 1.png" alt="pot-1">
-                              <p class="same-p">Last Jackpot Winner <i class="info-icon"></i></p>
-                           </div>
-                           <span id="_lastWinner">-</span>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/alarm 1.png" alt="pot-1">
-                              <p class="same-p">TOP Jackpot Time <i class="info-icon"></i></p>
-                           </div>
-                           <span id="_topWinnerTime">-</span>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/jackpot 1.png" alt="pot-1">
-                              <p class="same-p">TOP Jackpot <i class="info-icon"></i></p>
-                           </div>
-                           <span id="_topWinnerAmount">-</span>
-                        </li>
-                        <li class="background-box">
-                           <div class="j-2-div">
-                              <img src="images/winner 1.png" alt="pot-1">
-                              <p class="same-p">TOP Jackpot Winner <i class="info-icon"></i></p>
-                           </div>
-                           <span id="_topWinner">-</span>
-                        </li>
-                     </ul>
-                  </div>
-               </div>
-                  <!-- <div class="jack-div dashboard-graph">
-                     <div class="jack-graph background-box">
-                        <div id="chart"></div>
-                     </div>
-                  </div> -->
-               </section>
+               
          </div>
          <!-- **************************************** -->
          <!-- Dashboard - End -->
